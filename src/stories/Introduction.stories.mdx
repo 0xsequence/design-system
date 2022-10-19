@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs/'
+
+<Meta title="Introduction" />
+
+# Sequence Design System
+
+Sequence Design System is a reusable component library uses across the Sequence product suite.
+
+Components are written in [React](https://reactjs.org/) with [Vanilla Extract](https://vanilla-extract.style/), and its stories are written in [Component Story Format](https://medium.com/storybookjs/component-story-format-66f4c32366df).
+
+### Install
+
+```
+yarn add @0xsequence/design-system
+```
+
+### Use
+
+Import components you want into your UI
+
+`import { Button, Badge } from '@0xsequence/design-system'`
+
+and use them like so
+
+```
+const example = () => (
+
+<div>
+  <Button appearance="primary" onClick={() => 0}>
+    Do something
+  </Button>
+  <Badge onClick={this.clear}>Cool</Badge>
+</div>
+)
+
+```
+
+### Run and Develop Locally
+
+Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/design-system) then start Storybook.
+
+```
+yarn && yarn storybook
+```
+
+### Used by
+
+- [Sequence Wallet](https://sequence.app/)
+- [Sequence Console](https://sequence.dev/)
+- [Sequence Status](https://status.sequence.info/)
+- [Sequence Demo Dapp Github Project](https://github.com/0xsequence/demo-dapp)
+
+Note: this package is not used in Storybook's UI, but the visual design is identical.
+
+### **Resources**
+
+- [Storybook Documentation](https://storybook.js.org/docs/react/get-started/introduction)
+- [GitHub Repository](https://github.com/0xsequence/design-system)
