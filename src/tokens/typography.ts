@@ -1,18 +1,16 @@
 export const fonts = {
-  mono: `"iAWriter Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
-  sans: `"Inter var", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`
+  heading: "'Euclid Circular B'",
+  body: 'Inter',
+  mono: `"iAWriter Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
 }
 
 export const fontSizes = {
-  headingOne: '3rem',
-  headingTwo: '1.875rem',
-  headingThree: '1.5rem',
-  extraLarge: '1.3125rem',
-  large: '1.1875rem',
-  small: '0.9375rem',
-  extraSmall: '0.875rem',
-  label: '0.8125rem',
-  base: '1.0625rem',
+  xs: '0.625rem	', // 10px
+  sm: '0.75rem', // 12px
+  md: '1rem', // 16px
+  lg: '1.125rem', // 18px
+  xl: '1.25rem', // 20px
+  xxl: '2.1875rem', // 35px
   root: '16px'
 }
 
@@ -20,24 +18,18 @@ export const fontWeights = {
   light: '300',
   normal: '400',
   medium: '500',
-  semiBold: '550',
-  bold: '650'
+  semiBold: '600',
+  bold: '700'
 }
 
 export const letterSpacings = {
-  '-0.02': '-0.02em',
-  '-0.015': '-0.015em',
-  '-0.01': '-0.01em',
-  normal: '0',
-  '0.03': '0.03em'
+  heading: '0.01em',
+  body: '0.02em'
 }
 
 export const lineHeights = {
   normal: 'normal',
   none: '1',
-  '1.25': '1.25', // tight
-  '1.375': '1.375', // snug
-  '1.5': '1.5', // normal
-  '1.625': '1.625', // relaxed
-  '2': '2' // loose
+  heading: '1.3',
+  body: '1.4'
 }

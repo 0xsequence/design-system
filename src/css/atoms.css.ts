@@ -1,64 +1,73 @@
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
+
 import { tokens } from '../tokens'
+import { Breakpoint, breakpointNames, breakpoints } from './breakpoints'
+import { vars } from './vars.css'
 
 const responsiveProperties = defineProperties({
   conditions: {
-    mobile: {},
-    tablet: { '@media': 'screen and (min-width: 768px)' },
-    desktop: { '@media': 'screen and (min-width: 1024px)' }
+    sm: {},
+    md: { '@media': `(min-width: ${breakpoints.md}px)` },
+    lg: { '@media': `(min-width: ${breakpoints.lg}px)` },
+    xl: { '@media': `(min-width: ${breakpoints.xl}px)` }
   },
-  defaultCondition: 'mobile',
+  defaultCondition: 'sm',
   properties: {
-    position: ['absolute', 'relative', 'fixed'],
-    display: ['none', 'flex', 'block', 'inline', 'inline-flex'],
+    borderWidth: vars.borderWidths,
+    borderBottomWidth: vars.borderWidths,
+    borderLeftWidth: vars.borderWidths,
+    borderRightWidth: vars.borderWidths,
+    borderTopWidth: vars.borderWidths,
+    borderRadius: vars.radii,
+    borderBottomLeftRadius: vars.radii,
+    borderBottomRightRadius: vars.radii,
+    borderTopLeftRadius: vars.radii,
+    borderTopRightRadius: vars.radii,
+
+    // space
+    top: vars.space,
+    bottom: vars.space,
+    left: vars.space,
+    right: vars.space,
+    paddingTop: vars.space,
+    paddingBottom: vars.space,
+    paddingLeft: vars.space,
+    paddingRight: vars.space,
+    marginTop: vars.space,
+    marginBottom: vars.space,
+    marginLeft: vars.space,
+    marginRight: vars.space,
+    gap: vars.space,
+
+    // typography
+    fontFamily: vars.fonts,
+    fontSize: vars.fontSizes,
+    fontWeight: vars.fontWeights,
+    letterSpacing: vars.letterSpacings,
+    lineHeight: vars.lineHeights,
+
+    display: ['block', 'flex', 'grid', 'inline-block', 'none', 'contents'],
+    position: ['absolute', 'fixed', 'relative', 'sticky'],
     flexDirection: ['row', 'column'],
     justifyContent: ['stretch', 'flex-start', 'center', 'flex-end', 'space-around', 'space-between'],
     alignItems: ['stretch', 'flex-start', 'center', 'flex-end'],
-    overflow: ['auto', 'hidden'],
-    paddingTop: tokens.space,
-    paddingBottom: tokens.space,
-    paddingLeft: tokens.space,
-    paddingRight: tokens.space,
-    marginTop: tokens.space,
-    marginBottom: tokens.space,
-    marginLeft: tokens.space,
-    marginRight: tokens.space,
-    borderRadius: tokens.radii
+    overflow: ['auto', 'hidden']
   },
   shorthands: {
-    padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
-    paddingX: ['paddingLeft', 'paddingRight'],
-    paddingY: ['paddingTop', 'paddingBottom'],
+    borderLeftRadius: ['borderBottomLeftRadius', 'borderTopLeftRadius'],
+    borderRightRadius: ['borderBottomRightRadius', 'borderTopRightRadius'],
+    borderTopRadius: ['borderTopLeftRadius', 'borderTopRightRadius'],
+    borderBottomRadius: ['borderBottomLeftRadius', 'borderBottomRightRadius'],
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
     marginX: ['marginLeft', 'marginRight'],
     marginY: ['marginTop', 'marginBottom'],
+    padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
+    paddingX: ['paddingLeft', 'paddingRight'],
+    paddingY: ['paddingTop', 'paddingBottom'],
     placeItems: ['justifyContent', 'alignItems']
   }
 })
 
-const colors = {
-  'blue-50': '#eff6ff',
-  'blue-100': '#dbeafe',
-  'blue-200': '#bfdbfe',
-  'gray-700': '#374151',
-  'gray-800': '#1f2937',
-  'gray-900': '#111827'
-  // etc.
-}
-
-const colorProperties = defineProperties({
-  conditions: {
-    lightMode: {},
-    darkMode: { '@media': '(prefers-color-scheme: dark)' }
-  },
-  defaultCondition: 'lightMode',
-  properties: {
-    color: colors,
-    background: colors
-    // etc.
-  }
-})
-
-export const atoms = createSprinkles(responsiveProperties, colorProperties)
+export const atoms = createSprinkles(responsiveProperties)
 
 export type Atoms = Parameters<typeof atoms>[0]

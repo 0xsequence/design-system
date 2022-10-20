@@ -20,10 +20,8 @@ export const parameters = {
 const withTheme: DecoratorFn = (StoryFn, context) => {
   const { theme } = context.parameters
 
-  console.log('StoryContext', context)
-
   return (
-    <ThemeProvider theme={theme || 'light'}>
+    <ThemeProvider theme={'dark'}>
       <StoryFn />
     </ThemeProvider>
   )

@@ -1,10 +1,9 @@
 import { globalStyle, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 import { atoms, vars } from '../../css'
+import { typography } from '../../css/typography.css'
 
 export const COLLAPSED_HEIGHT = '65px'
-
-console.log('VARS', vars)
 
 export const root = style([
   atoms({
@@ -39,29 +38,32 @@ export const content = style({
   transformOrigin: 'top'
 })
 
-export const label = style({
-  color: '$textPrimary',
-  display: 'flex',
-  alignItems: 'center',
-  height: '30px'
+export const label = style([
+  typography.h2,
+  {
+    color: vars.colors.scale12,
+    display: 'flex',
+    alignItems: 'center',
+    height: '30px'
+  }
+])
+
+export const icon = recipe({
+  base: {
+    color: vars.colors.scale11,
+    position: 'absolute',
+    right: '-6px',
+    marginRight: '15px',
+    transition: 'all 0.1s linear',
+    transform: 'rotate(90deg)',
+    opacity: 0.7
+  },
+
+  variants: {
+    expanded: {
+      true: {
+        transform: 'rotate(0deg)'
+      }
+    }
+  }
 })
-
-// export const ExpandIcon = recipe({
-//   base: {
-//   color: '$textSecondary',
-//   position: 'absolute',
-//   right: '-6px',
-//   marginRight: '15px',
-//   transition: 'all 0.1s linear',
-//   transform: 'rotate(90deg)',
-//   opacity: 0.7,
-//   },
-
-//   variants: {
-//     expanded: {
-//       true: {
-//         transform: 'rotate(0deg)'
-//       }
-//     }
-//   }
-// })
