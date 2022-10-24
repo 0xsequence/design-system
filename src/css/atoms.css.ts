@@ -1,7 +1,6 @@
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
 
-import { tokens } from '../tokens'
-import { Breakpoint, breakpointNames, breakpoints } from './breakpoints'
+import { breakpoints } from './breakpoints'
 import { vars } from './vars.css'
 
 const responsiveProperties = defineProperties({

@@ -1,8 +1,6 @@
-import React from 'react'
-import { ComponentStory, ComponentMeta, ArgTypes } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Box, Stack } from '../../components'
-import { tokens } from '../../tokens'
+import { Stack } from '../../components'
 
 export default {
   title: 'Components/Stack',

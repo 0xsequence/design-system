@@ -1,8 +1,8 @@
 import { borderStyles, borderWidths, radii } from './border'
 import { colors } from './color'
 import { opacity } from './opacity'
-import { space } from './space'
 import { shadows } from './shadow'
+import { space } from './space'
 import { fontSizes, fontWeights, fonts, letterSpacings, lineHeights } from './typography'
 
 export const tokens = {

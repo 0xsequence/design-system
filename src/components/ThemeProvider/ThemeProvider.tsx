@@ -1,5 +1,5 @@
 //import { setElementVars } from '@vanilla-extract/dynamic';
-import { createContext, PropsWithChildren, useEffect, useMemo, useState } from 'react'
+import { createContext, PropsWithChildren, useEffect, useMemo } from 'react'
 
 const THEME_ATTR = 'data-theme'
 

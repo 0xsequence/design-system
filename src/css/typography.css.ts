@@ -1,4 +1,5 @@
 import { styleVariants } from '@vanilla-extract/css'
+
 import { vars } from './vars.css'
 
 export const typography = styleVariants({

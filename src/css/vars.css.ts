@@ -1,9 +1,10 @@
 import { createGlobalTheme, createGlobalThemeContract } from '@vanilla-extract/css'
 
 import { ColorScheme, tokens } from '../tokens'
+
 import { getVarName } from './utils'
 
-const { colors, ...baseTokens } = tokens
+const { colors: _, ...baseTokens } = tokens
 
 export const baseVars = createGlobalThemeContract(baseTokens, getVarName)
 

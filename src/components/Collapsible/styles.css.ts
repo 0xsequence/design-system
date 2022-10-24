@@ -1,5 +1,6 @@
-import { globalStyle, style } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
+
 import { atoms, vars } from '../../css'
 import { typography } from '../../css/typography.css'
 

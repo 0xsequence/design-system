@@ -1,6 +1,8 @@
-import { atoms, Atoms } from './atoms.css'
-import { vars, ThemeVars } from './vars.css'
+export { breakpoints } from './breakpoints'
+export type { Breakpoint } from './breakpoints'
 
-export { atoms, vars }
+export { atoms } from './atoms.css'
+export type { Atoms } from './atoms.css'
 
-export type { Atoms, ThemeVars }
+export { vars } from './vars.css'
+export type { ThemeVars } from './vars.css'

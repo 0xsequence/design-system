@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import { forwardRef, PropsWithChildren } from 'react'
+
 import { typography } from '../../css/typography.css'
 import { Box } from '../Box/Box'
 
