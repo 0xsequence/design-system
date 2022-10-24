@@ -2,6 +2,7 @@ import { DecoratorFn } from '@storybook/react'
 import React from 'react'
 
 import { ThemeProvider } from '../src/components'
+import { vars } from '../src/css'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,16 +13,33 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Introduction', 'Design System', 'Components']
+      order: ['Introduction', 'Design System', ['Tokens', 'Colors', 'Typography', 'Iconography'], 'Components']
+    }
+  }
+}
+
+export const globalTypes = {
+  // Theme select toggle
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'light',
+    toolbar: {
+      title: 'Theme',
+      icon: 'circlehollow',
+      items: [
+        { value: 'light', icon: 'circlehollow', title: 'Light' },
+        { value: 'dark', icon: 'circle', title: 'Dark' }
+      ]
     }
   }
 }
 
 const withTheme: DecoratorFn = (StoryFn, context) => {
-  const { theme } = context.parameters
+  const { theme } = context.globals
 
   return (
-    <ThemeProvider theme={'dark'}>
+    <ThemeProvider theme={theme || 'light'}>
       <StoryFn />
     </ThemeProvider>
   )
