@@ -20,5 +20,5 @@ export const tokens = {
   space
 }
 
-export type { Accent, ColorScheme } from './color'
+export type { ColorScheme } from './color'
 export type Tokens = typeof tokens

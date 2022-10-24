@@ -21,6 +21,5 @@ export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
   padding: 'xl',
-  background: 'blue-50',
   children: 'Hello'
 }
