@@ -39,6 +39,9 @@ export default defineConfig({
       formats: ['es', 'cjs'],
       fileName: format => `index.${format}.js`
     },
-    outDir: path.resolve(__dirname, 'dist')
+    outDir: path.resolve(__dirname, 'dist'),
+    rollupOptions: {
+      external: ['react', 'react-dom']
+    }
   }
 })
