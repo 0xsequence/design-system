@@ -1,16 +1,15 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
-import type { TabsProps as BaseTabsProps } from '@radix-ui/react-tabs'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useState, ComponentPropsWithoutRef } from 'react'
 
 import * as styles from './styles.css'
 
-interface TabsProps extends BaseTabsProps {
+interface TabsProps extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
   tabs: TabItemProps[]
 }
 
 interface TabItemProps {
   value: string
-  title: string
+  title: ReactNode
   content: ReactNode
 }
 

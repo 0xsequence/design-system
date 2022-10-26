@@ -14,7 +14,7 @@ export const root = style([
     background: vars.colors.scale3,
     minHeight: COLLAPSED_HEIGHT,
     position: 'relative',
-    borderRadius: '$md',
+    borderRadius: vars.radii.md,
     marginBottom: '25px',
     overflow: 'hidden'
   })

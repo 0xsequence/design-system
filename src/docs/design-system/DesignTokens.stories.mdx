@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/addon-docs/'
+import { tokens } from '../../tokens'
+
+<Meta title="Design System/Design Tokens" />
+
+# Design Tokens
+
+Design tokens are the data representaion, the base properties and their values, on which design system is constructed. These tokens define spacing, typography, weights, colors, animation, shadows, etc.
+
+### Space
+
+**tokens.space**
+
+<div>
+  {Object.entries(tokens.space).map(([key, value]) => (
+    <li>
+      <b>{key}:</b> {value}
+    </li>
+  ))}
+</div>
+
+### Border
+
+**tokens.radii**
+
+<div>
+  {Object.entries(tokens.radii).map(([key, value]) => (
+    <li>
+      <b>{key}:</b> {value}
+    </li>
+  ))}
+</div>
+
+**tokens.borderWidths**
+
+<div>
+  {Object.entries(tokens.borderWidths).map(([key, value]) => (
+    <li>
+      <b>{key}:</b> {value}
+    </li>
+  ))}
+</div>
+
+### Typography
+
+**tokens.fonts**
+
+<div>
+  {Object.entries(tokens.fonts).map(([key, value]) => (
+    <li>
+      <b>{key}:</b> {value}
+    </li>
+  ))}
+</div>
+
+**tokens.fontSizes**
+
+<div>
+  {Object.entries(tokens.fontSizes).map(([key, value]) => (
+    <li>
+      <b>{key}:</b> {value}
+    </li>
+  ))}
+</div>
+
+**tokens.fontWeights**
+
+<div>
+  {Object.entries(tokens.fontWeights).map(([key, value]) => (
+    <li>
+      <b>{key}:</b> {value}
+    </li>
+  ))}
+</div>
+
+**tokens.letterSpacings**
+
+<div>
+  {Object.entries(tokens.letterSpacings).map(([key, value]) => (
+    <li>
+      <b>{key}:</b> {value}
+    </li>
+  ))}
+</div>
+
+**tokens.lineHeights**
+
+<div>
+  {Object.entries(tokens.lineHeights).map(([key, value]) => (
+    <li>
+      <b>{key}:</b> {value}
+    </li>
+  ))}
+</div>

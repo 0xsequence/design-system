@@ -1,0 +1,17 @@
+import { Meta, Title, IconGallery, IconItem } from '@storybook/addon-docs/'
+
+import * as icons from '../../icons'
+
+<Meta title="Design System/Iconography" />
+
+# Iconography
+
+Collection of icons used in the design system.
+
+<IconGallery>
+  {Object.entries(icons).map(([key, Icon]) => (
+    <IconItem name={key}>
+      <Icon />
+    </IconItem>
+  ))}
+</IconGallery>

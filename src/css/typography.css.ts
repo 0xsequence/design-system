@@ -6,8 +6,8 @@ export const typography = styleVariants({
   h1: {
     fontFamily: vars.fonts.heading,
     fontStyle: 'normal',
-    fontWeight: vars.fontWeights.medium,
-    fontSize: vars.fontSizes.lg,
+    fontWeight: vars.fontWeights.semiBold,
+    fontSize: vars.fontSizes.xl,
     lineHeight: vars.lineHeights.heading,
     letterSpacing: vars.letterSpacings.heading
   },
@@ -15,15 +15,15 @@ export const typography = styleVariants({
     fontFamily: vars.fonts.heading,
     fontStyle: 'normal',
     fontWeight: vars.fontWeights.medium,
-    fontSize: '14px',
+    fontSize: vars.fontSizes.lg,
     lineHeight: vars.lineHeights.heading,
     letterSpacing: vars.letterSpacings.heading
   },
   h3: {
     fontFamily: vars.fonts.heading,
     fontStyle: 'normal',
-    fontWeight: vars.fontWeights.semiBold,
-    fontSize: vars.fontSizes.xl,
+    fontWeight: vars.fontWeights.medium,
+    fontSize: '14px',
     lineHeight: vars.lineHeights.heading,
     letterSpacing: vars.letterSpacings.heading
   },

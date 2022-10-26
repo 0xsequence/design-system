@@ -1,8 +1,3 @@
-export const borderStyles = {
-  none: 'none',
-  solid: 'solid'
-}
-
 export const borderWidths = {
   thin: '1px',
   thick: '2px'
@@ -10,8 +5,8 @@ export const borderWidths = {
 
 export const radii = {
   none: '0',
-  sm: '10px',
-  md: '15px',
-  lg: '25px',
+  sm: '8px',
+  md: '16px',
+  lg: '24px',
   full: '9999px'
 }

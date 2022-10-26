@@ -1,0 +1,38 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs'
+
+import { colorSchemes } from '../../tokens/color'
+
+<Meta title="Design System/Colors" />
+
+# Colors
+
+Color schemes, scales, accents, and gradients.
+
+### Color Schemes
+
+<ColorPalette>
+  <ColorItem
+    title={'Light'}
+    colors={Object.fromEntries(Object.entries(colorSchemes.light).filter(x => x[0].startsWith('scale')))}
+  />
+  <ColorItem
+    title={'Dark'}
+    colors={Object.fromEntries(Object.entries(colorSchemes.dark).filter(x => x[0].startsWith('scale')))}
+  />
+</ColorPalette>
+
+### Accents
+
+<ColorPalette>
+  <ColorItem title={'Accents'} subtitle={'vars.colors.accents'} colors={colorSchemes.light.accents} />
+</ColorPalette>
+
+### Gradients
+
+<ColorPalette>
+  <ColorItem
+    title={'Primary Gradient'}
+    subtitle={'vars.colors.gradients.primary'}
+    colors={{ primary: colorSchemes.light.gradients.primary }}
+  />
+</ColorPalette>

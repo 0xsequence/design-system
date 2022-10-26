@@ -4,14 +4,14 @@ import { ColorScheme, tokens } from '../tokens'
 
 import { getVarName } from './utils'
 
-const { colors: _, ...baseTokens } = tokens
+const { colorSchemes: _, ...baseTokens } = tokens
 
 export const baseVars = createGlobalThemeContract(baseTokens, getVarName)
 
 createGlobalTheme(':root', baseVars, baseTokens)
 
 const makeColorScheme = (mode: ColorScheme = 'light') => {
-  const colors = tokens.colors[mode]
+  const colors = tokens.colorSchemes[mode]
 
   return {
     colors
@@ -20,7 +20,7 @@ const makeColorScheme = (mode: ColorScheme = 'light') => {
 
 export const colorSchemeVars = createGlobalThemeContract(makeColorScheme(), getVarName)
 
-for (const colorScheme of Object.keys(tokens.colors) as ColorScheme[]) {
+for (const colorScheme of Object.keys(tokens.colorSchemes) as ColorScheme[]) {
   createGlobalTheme(`[data-theme="${colorScheme}"]`, colorSchemeVars, makeColorScheme(colorScheme))
 }
 
