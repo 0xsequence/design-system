@@ -1,16 +1,21 @@
 import { ReactNode } from 'react'
 
-import { Box } from '../Box/Box'
+import { Box, BoxLayoutProps, BoxProps } from '../Box/Box'
 
-interface StackProps {
+interface StackProps extends BoxLayoutProps {
   children: ReactNode
   style?: any
   className?: string
-  layout?: 'rows' | 'grid'
+  flexDirection?: BoxProps['flexDirection']
+  gap?: BoxProps['gap']
 }
 
 export const Stack = (props: StackProps) => {
-  const { children } = props
+  const { children, flexDirection, gap } = props
 
-  return <Box display="flex">{children}</Box>
+  return (
+    <Box display="flex" flexDirection={flexDirection} gap={gap}>
+      {children}
+    </Box>
+  )
 }

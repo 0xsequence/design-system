@@ -34,6 +34,13 @@ export const Box = forwardRef<HTMLElement, Props>(({ as = 'div', className, ...p
   })
 })
 
+Box.displayName = 'Box'
+
 export type BoxProps = Parameters<typeof Box>[0]
 
-Box.displayName = 'Box'
+export type BoxLayoutProps = {
+  marginLeft: BoxProps['marginLeft']
+  marginRight: BoxProps['marginRight']
+  marginTop: BoxProps['marginTop']
+  marginBottom: BoxProps['marginBottom']
+}
