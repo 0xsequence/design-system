@@ -1,6 +1,6 @@
 {
   "name": "@0xsequence/design-system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "dist/index.es.js",
   "module": "dist/index.cjs.js",
