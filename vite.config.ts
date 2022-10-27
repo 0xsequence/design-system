@@ -41,7 +41,8 @@ export default defineConfig({
     },
     outDir: path.resolve(__dirname, 'dist'),
     rollupOptions: {
-      external: ['react', 'react-dom']
-    }
+      external: ['react', 'react-dom', 'framer-motion']
+    },
+    minify: false
   }
 })
