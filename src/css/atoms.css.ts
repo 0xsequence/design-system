@@ -1,16 +1,16 @@
-import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
+import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
 
-import { breakpoints } from './breakpoints'
-import { vars } from './vars.css'
+import { breakpoints } from './breakpoints';
+import { vars } from './vars.css';
 
-const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const
+const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
 const responsiveProperties = defineProperties({
   conditions: {
     sm: {},
     md: { '@media': `(min-width: ${breakpoints.md}px)` },
     lg: { '@media': `(min-width: ${breakpoints.lg}px)` },
-    xl: { '@media': `(min-width: ${breakpoints.xl}px)` }
+    xl: { '@media': `(min-width: ${breakpoints.xl}px)` },
   },
   defaultCondition: 'sm',
   properties: {
@@ -52,11 +52,21 @@ const responsiveProperties = defineProperties({
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
     overflowX: ['auto', 'hidden', 'scroll'],
-    overflowY: ['auto', 'hidden', 'scroll']
+    overflowY: ['auto', 'hidden', 'scroll'],
   },
   shorthands: {
-    borderWidth: ['borderBottomWidth', 'borderLeftWidth', 'borderRightWidth', 'borderTopWidth'],
-    borderRadius: ['borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomLeftRadius', 'borderBottomRightRadius'],
+    borderWidth: [
+      'borderBottomWidth',
+      'borderLeftWidth',
+      'borderRightWidth',
+      'borderTopWidth',
+    ],
+    borderRadius: [
+      'borderTopLeftRadius',
+      'borderTopRightRadius',
+      'borderBottomLeftRadius',
+      'borderBottomRightRadius',
+    ],
     borderLeftRadius: ['borderBottomLeftRadius', 'borderTopLeftRadius'],
     borderRightRadius: ['borderBottomRightRadius', 'borderTopRightRadius'],
     borderTopRadius: ['borderTopLeftRadius', 'borderTopRightRadius'],
@@ -68,9 +78,9 @@ const responsiveProperties = defineProperties({
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
-    placeItems: ['justifyContent', 'alignItems']
-  }
-})
+    placeItems: ['justifyContent', 'alignItems'],
+  },
+});
 
 const unresponsiveProperties = defineProperties({
   properties: {
@@ -78,10 +88,29 @@ const unresponsiveProperties = defineProperties({
     fontFamily: vars.fonts,
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     visibility: ['hidden', 'visible'],
-    zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' }
-  }
-})
+    zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' },
+  },
+});
 
-export const atoms = createSprinkles(responsiveProperties, unresponsiveProperties)
+const selectorProperties = defineProperties({
+  conditions: {
+    base: {},
+    active: { selector: '&:active' },
+    focus: { selector: '&:focus' },
+    hover: { selector: '&:hover' },
+  },
+  defaultCondition: 'base',
+  properties: {
+    backgroundColor: vars.colors,
+    borderColor: vars.colors,
+    color: vars.colors,
+  },
+});
 
-export type Atoms = Parameters<typeof atoms>[0]
+export const atoms = createSprinkles(
+  responsiveProperties,
+  unresponsiveProperties,
+  selectorProperties
+);
+
+export type Atoms = Parameters<typeof atoms>[0];
