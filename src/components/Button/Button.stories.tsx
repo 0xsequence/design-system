@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-
-import { ScanIcon } from '../../icons'
+import { ScanIcon } from 'icons'
 
 import { Button } from './Button'
 

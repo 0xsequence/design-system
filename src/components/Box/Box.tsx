@@ -1,9 +1,11 @@
 import { clsx, ClassValue } from 'clsx'
+import { atoms, Atoms } from 'css'
 import { createElement, forwardRef } from 'react'
 
-import { atoms, Atoms } from '../../css'
-
-type HTMLProperties = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'className' | 'color' | 'height' | 'width'>
+type HTMLProperties = Omit<
+  React.AllHTMLAttributes<HTMLElement>,
+  'as' | 'className' | 'color' | 'height' | 'width'
+>
 
 type Props = Atoms &
   HTMLProperties & {
@@ -11,28 +13,30 @@ type Props = Atoms &
     className?: ClassValue
   }
 
-export const Box = forwardRef<HTMLElement, Props>(({ as = 'div', className, ...props }: Props, ref) => {
-  const atomProps: Record<string, unknown> = {}
-  const nativeProps: Record<string, unknown> = {}
+export const Box = forwardRef<HTMLElement, Props>(
+  ({ as = 'div', className, ...props }: Props, ref) => {
+    const atomProps: Record<string, unknown> = {}
+    const nativeProps: Record<string, unknown> = {}
 
-  for (const key in props) {
-    if (atoms.properties.has(key as keyof Atoms)) {
-      atomProps[key] = props[key as keyof typeof props]
-    } else {
-      nativeProps[key] = props[key as keyof typeof props]
+    for (const key in props) {
+      if (atoms.properties.has(key as keyof Atoms)) {
+        atomProps[key] = props[key as keyof typeof props]
+      } else {
+        nativeProps[key] = props[key as keyof typeof props]
+      }
     }
+
+    const atomicClasses = atoms({
+      ...atomProps,
+    })
+
+    return createElement(as, {
+      className: clsx(atomicClasses, className),
+      ...nativeProps,
+      ref,
+    })
   }
-
-  const atomicClasses = atoms({
-    ...atomProps
-  })
-
-  return createElement(as, {
-    className: clsx(atomicClasses, className),
-    ...nativeProps,
-    ref
-  })
-})
+)
 
 Box.displayName = 'Box'
 

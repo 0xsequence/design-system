@@ -1,10 +1,9 @@
-import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
+import { style } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
+import { atoms, vars } from 'css'
+import { typography } from 'css/typography.css'
 
-import { atoms, vars } from '../../css';
-import { typography } from '../../css/typography.css';
-
-export const COLLAPSED_HEIGHT = '65px';
+export const COLLAPSED_HEIGHT = '65px'
 
 export const root = style([
   atoms({
@@ -18,7 +17,7 @@ export const root = style([
     marginBottom: '25px',
     overflow: 'hidden',
   }),
-]);
+])
 
 export const trigger = style({
   border: 'none',
@@ -31,13 +30,13 @@ export const trigger = style({
   alignItems: 'center',
   cursor: 'pointer',
   userSelect: 'none',
-});
+})
 
 export const content = style({
   width: '100%',
   padding: '0 15px 15px',
   transformOrigin: 'top',
-});
+})
 
 export const label = style([
   typography.h2,
@@ -47,7 +46,7 @@ export const label = style([
     alignItems: 'center',
     height: '30px',
   },
-]);
+])
 
 export const icon = recipe({
   base: {
@@ -67,4 +66,4 @@ export const icon = recipe({
       },
     },
   },
-});
+})

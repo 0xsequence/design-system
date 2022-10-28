@@ -1,6 +1,5 @@
+import { Box } from 'components/Box'
 import { forwardRef } from 'react'
-
-import { Box, BoxProps } from '../Box/Box'
 
 import * as styles from './styles.css'
 
@@ -13,8 +12,22 @@ export const Spinner = forwardRef<HTMLElement, SpinnerProps>((props, ref) => {
   return (
     <Box className={styles.variants({ size })} ref={ref}>
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" fill="none" r="10" strokeDasharray="42" strokeLinecap="round" />
-        <circle cx="12" cy="12" fill="none" opacity="0.25" r="10" strokeLinecap="round" />
+        <circle
+          cx="12"
+          cy="12"
+          fill="none"
+          r="10"
+          strokeDasharray="42"
+          strokeLinecap="round"
+        />
+        <circle
+          cx="12"
+          cy="12"
+          fill="none"
+          opacity="0.25"
+          r="10"
+          strokeLinecap="round"
+        />
       </svg>
     </Box>
   )

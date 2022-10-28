@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-
-import { tokens } from '../../tokens'
+import { tokens } from 'tokens'
 
 import { Box } from './Box'
 
@@ -21,7 +20,7 @@ export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
   padding: 'xl',
-  backgroundColor: 'backgroundSecondary',
+  background: 'backgroundSecondary',
   color: 'textTitle',
   children: 'Hello',
 }
