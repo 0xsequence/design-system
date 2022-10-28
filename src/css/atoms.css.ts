@@ -101,7 +101,7 @@ const selectorProperties = defineProperties({
   },
   defaultCondition: 'base',
   properties: {
-    backgroundColor: vars.colors,
+    background: vars.colors,
     borderColor: vars.colors,
     color: vars.colors,
   },

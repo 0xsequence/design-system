@@ -1,7 +1,7 @@
-import { recipe } from '@vanilla-extract/recipes';
+import { recipe } from '@vanilla-extract/recipes'
 
-import { vars } from '../../css';
-import { typography } from '../../css/typography.css';
+import { vars } from '../../css'
+import { typography } from '../../css/typography.css'
 
 export const button = recipe({
   base: {
@@ -45,4 +45,4 @@ export const button = recipe({
       },
     },
   },
-});
+})

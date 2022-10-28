@@ -7,6 +7,27 @@ import { ColorScheme, colorSchemes, tokens } from '../tokens'
 
 import { getVarName } from './utils'
 
+export const capitalize = (s: string) => {
+  if (s === '') {
+    return ''
+  }
+
+  return s[0].toUpperCase() + s.slice(1)
+}
+
+type MapTokens<P extends string, T> = {
+  [K in keyof T & string as `${P}${Capitalize<K>}`]: string
+}
+
+const mapTokens = <P extends string, T extends {}>(
+  prefix: P,
+  tokens: T
+): MapTokens<P, T> => {
+  return Object.entries(tokens).reduce((acc, [key, value]) => {
+    return { ...acc, [`${prefix}${capitalize(key)}`]: value }
+  }, {}) as MapTokens<P, T>
+}
+
 const { colors, ...baseTokens } = tokens
 
 export const baseVars = createGlobalThemeContract(baseTokens, getVarName)
@@ -19,21 +40,10 @@ const makeColorScheme = (mode: ColorScheme = 'light') => {
   return {
     ...colors.base,
     ...colors.accents,
-    gradientPrimary: colors.gradients.primary,
-    gradientBackdrop: colors.gradients.backdrop,
-    backgroundPrimary: schemeTokens.background.primary,
-    backgroundSecondary: schemeTokens.background.secondary,
-    backgroundComponent: schemeTokens.background.component,
-    backgroundBackdrop: schemeTokens.background.backdrop,
-    backgroundInverse: schemeTokens.background.inverse,
-    borderSubtle: schemeTokens.border.subtle,
-    border: schemeTokens.border.normal,
-    borderFirm: schemeTokens.border.firm,
-    borderInverse: schemeTokens.border.inverse,
-    text: schemeTokens.text.body,
-    textFaded: schemeTokens.text.faded,
-    textTitle: schemeTokens.text.title,
-    textInverse: schemeTokens.text.inverse,
+    ...mapTokens('gradient', colors.gradients),
+    ...mapTokens('background', schemeTokens.background),
+    ...mapTokens('border', schemeTokens.border),
+    ...mapTokens('text', schemeTokens.text),
   }
 }
 
