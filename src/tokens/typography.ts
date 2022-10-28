@@ -1,7 +1,7 @@
 export const fonts = {
   heading: "'Euclid Circular B'",
   body: 'Inter',
-  mono: `"iAWriter Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
+  mono: `"iAWriter Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
 }
 
 export const fontSizes = {
@@ -11,7 +11,7 @@ export const fontSizes = {
   lg: '1.125rem', // 18px
   xl: '1.25rem', // 20px
   xxl: '2rem', // 32px
-  root: '16px'
+  root: '16px',
 }
 
 export const fontWeights = {
@@ -19,17 +19,17 @@ export const fontWeights = {
   normal: '400',
   medium: '500',
   semiBold: '600',
-  bold: '700'
+  bold: '700',
 }
 
 export const letterSpacings = {
   heading: '0.01em',
-  body: '0.02em'
+  body: '0.02em',
 }
 
 export const lineHeights = {
   normal: 'normal',
   none: '1',
   heading: '1.3',
-  body: '1.4'
+  body: '1.4',
 }

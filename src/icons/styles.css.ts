@@ -5,26 +5,26 @@ const iconSize = createVar()
 
 export const icon = recipe({
   base: {
-    width: iconSize
+    width: iconSize,
   },
 
   variants: {
     size: {
       sm: {
         vars: {
-          [iconSize]: '12px'
-        }
+          [iconSize]: '12px',
+        },
       },
       md: {
         vars: {
-          [iconSize]: '16px'
-        }
+          [iconSize]: '16px',
+        },
       },
       lg: {
         vars: {
-          [iconSize]: '32px'
-        }
-      }
-    }
-  }
+          [iconSize]: '32px',
+        },
+      },
+    },
+  },
 })

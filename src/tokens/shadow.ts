@@ -1,3 +1,3 @@
 export const shadows = {
-  none: 'none'
+  none: 'none',
 }
