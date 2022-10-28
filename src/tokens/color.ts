@@ -1,18 +1,13 @@
-export type ColorScheme = 'dark' | 'light';
+export type ColorScheme = 'dark' | 'light'
 
 const accents = {
   positive: 'hsla(146, 73%, 44%, 1)',
   negative: 'hsla(0, 100%, 66%, 1)',
   warning: 'hsla(38, 89%, 60%, 1)',
   info: 'hsla(212, 63%, 53%, 1)',
-};
+}
 
-type Background =
-  | 'primary'
-  | 'secondary'
-  | 'component'
-  | 'backdrop'
-  | 'inverse';
+type Background = 'primary' | 'secondary' | 'component' | 'backdrop' | 'inverse'
 
 const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
   dark: {
@@ -29,9 +24,9 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
     backdrop: 'rgba(255, 255, 255, 0.9)',
     inverse: '#000000',
   },
-};
+}
 
-type BorderColor = 'subtle' | 'normal' | 'firm' | 'inverse';
+type BorderColor = 'subtle' | 'normal' | 'firm' | 'inverse'
 
 const borderColors: { [key in ColorScheme]: { [key in BorderColor]: string } } =
   {
@@ -48,7 +43,7 @@ const borderColors: { [key in ColorScheme]: { [key in BorderColor]: string } } =
       firm: 'rgba(255, 255, 255, 0.5)',
       inverse: 'rgba(255, 255, 255, 0.9)',
     },
-  };
+  }
 
 const gradients = {
   primary: `linear-gradient(
@@ -63,9 +58,9 @@ const gradients = {
     rgba(49, 41, 223, 0.85) 63.54%, 
     rgba(7, 98, 149, 0.85) 100%
   )`,
-};
+}
 
-type TextColor = 'body' | 'faded' | 'title' | 'inverse';
+type TextColor = 'body' | 'faded' | 'title' | 'inverse'
 
 const textColors: { [key in ColorScheme]: { [key in TextColor]: string } } = {
   dark: {
@@ -80,7 +75,7 @@ const textColors: { [key in ColorScheme]: { [key in TextColor]: string } } = {
     title: '#222222',
     inverse: '#ffffff',
   },
-};
+}
 
 export const colorSchemes = {
   dark: {
@@ -93,7 +88,7 @@ export const colorSchemes = {
     text: textColors.light,
     border: borderColors.light,
   },
-} as const;
+} as const
 
 export const colors = {
   base: {
@@ -105,4 +100,4 @@ export const colors = {
   gradients,
   dark: colorSchemes.dark,
   light: colorSchemes.light,
-} as const;
+} as const

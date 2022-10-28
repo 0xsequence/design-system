@@ -1,15 +1,15 @@
-import { borderWidths, radii } from './border';
-import { colors } from './color';
-import { opacity } from './opacity';
-import { shadows } from './shadow';
-import { space } from './space';
+import { borderWidths, radii } from './border'
+import { colors } from './color'
+import { opacity } from './opacity'
+import { shadows } from './shadow'
+import { space } from './space'
 import {
   fonts,
   fontSizes,
   fontWeights,
   letterSpacings,
   lineHeights,
-} from './typography';
+} from './typography'
 
 export const tokens = {
   borderWidths,
@@ -23,9 +23,9 @@ export const tokens = {
   radii,
   shadows,
   space,
-};
+}
 
-export { colorSchemes } from './color';
+export { colorSchemes } from './color'
 
-export type { ColorScheme } from './color';
-export type Tokens = typeof tokens;
+export type { ColorScheme } from './color'
+export type Tokens = typeof tokens

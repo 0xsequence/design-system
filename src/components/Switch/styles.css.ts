@@ -1,6 +1,6 @@
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
-import { vars } from '../../css';
+import { vars } from '../../css'
 
 export const root = style({
   cursor: 'pointer',
@@ -23,7 +23,7 @@ export const root = style({
       background: vars.colors.positive,
     },
   },
-});
+})
 
 export const thumb = style({
   display: 'block',
@@ -45,4 +45,4 @@ export const thumb = style({
       background: vars.colors.backgroundInverse,
     },
   },
-});
+})

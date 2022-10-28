@@ -1,7 +1,7 @@
-import { DecoratorFn } from '@storybook/react';
-import React from 'react';
+import { DecoratorFn } from '@storybook/react'
+import React from 'react'
 
-import { ThemeProvider } from '../src/components';
+import { ThemeProvider } from '../src/components'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -21,7 +21,7 @@ export const parameters = {
       ],
     },
   },
-};
+}
 
 export const globalTypes = {
   // Theme select toggle
@@ -38,17 +38,17 @@ export const globalTypes = {
       ],
     },
   },
-};
+}
 
 const withTheme: DecoratorFn = (StoryFn, context) => {
-  const { theme } = context.globals;
+  const { theme } = context.globals
 
   return (
     <ThemeProvider theme={theme || 'light'}>
       <StoryFn />
     </ThemeProvider>
-  );
-};
+  )
+}
 
 // export all decorators that should be globally applied in an array
-export const decorators = [withTheme];
+export const decorators = [withTheme]

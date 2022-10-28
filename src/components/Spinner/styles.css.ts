@@ -1,11 +1,11 @@
-import { keyframes, style } from '@vanilla-extract/css';
-import { RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { keyframes, style } from '@vanilla-extract/css'
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { vars } from '../../css';
+import { vars } from '../../css'
 
 const rotate = keyframes({
   '100%': { transform: 'rotate(1turn)' },
-});
+})
 
 export const variants = recipe({
   base: [
@@ -30,6 +30,6 @@ export const variants = recipe({
       },
     },
   },
-});
+})
 
-export type Variants = RecipeVariants<typeof variants>;
+export type Variants = RecipeVariants<typeof variants>

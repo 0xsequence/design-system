@@ -1,9 +1,9 @@
-import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
+import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
 
-import { breakpoints } from './breakpoints';
-import { vars } from './vars.css';
+import { breakpoints } from './breakpoints'
+import { vars } from './vars.css'
 
-const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
+const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const
 
 const responsiveProperties = defineProperties({
   conditions: {
@@ -80,7 +80,7 @@ const responsiveProperties = defineProperties({
     paddingY: ['paddingTop', 'paddingBottom'],
     placeItems: ['justifyContent', 'alignItems'],
   },
-});
+})
 
 const unresponsiveProperties = defineProperties({
   properties: {
@@ -90,7 +90,7 @@ const unresponsiveProperties = defineProperties({
     visibility: ['hidden', 'visible'],
     zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' },
   },
-});
+})
 
 const selectorProperties = defineProperties({
   conditions: {
@@ -105,12 +105,12 @@ const selectorProperties = defineProperties({
     borderColor: vars.colors,
     color: vars.colors,
   },
-});
+})
 
 export const atoms = createSprinkles(
   responsiveProperties,
   unresponsiveProperties,
   selectorProperties
-);
+)
 
-export type Atoms = Parameters<typeof atoms>[0];
+export type Atoms = Parameters<typeof atoms>[0]

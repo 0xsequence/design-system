@@ -1,20 +1,20 @@
 import {
   createGlobalTheme,
   createGlobalThemeContract,
-} from '@vanilla-extract/css';
+} from '@vanilla-extract/css'
 
-import { ColorScheme, colorSchemes, tokens } from '../tokens';
+import { ColorScheme, colorSchemes, tokens } from '../tokens'
 
-import { getVarName } from './utils';
+import { getVarName } from './utils'
 
-const { colors, ...baseTokens } = tokens;
+const { colors, ...baseTokens } = tokens
 
-export const baseVars = createGlobalThemeContract(baseTokens, getVarName);
+export const baseVars = createGlobalThemeContract(baseTokens, getVarName)
 
-createGlobalTheme(':root', baseVars, baseTokens);
+createGlobalTheme(':root', baseVars, baseTokens)
 
 const makeColorScheme = (mode: ColorScheme = 'light') => {
-  const schemeTokens = colors[mode];
+  const schemeTokens = colors[mode]
 
   return {
     ...colors.base,
@@ -34,21 +34,21 @@ const makeColorScheme = (mode: ColorScheme = 'light') => {
     textFaded: schemeTokens.text.faded,
     textTitle: schemeTokens.text.title,
     textInverse: schemeTokens.text.inverse,
-  };
-};
+  }
+}
 
 export const colorSchemeVars = createGlobalThemeContract(
   makeColorScheme(),
   getVarName
-);
+)
 
 for (const colorScheme of Object.keys(colorSchemes) as ColorScheme[]) {
   createGlobalTheme(
     `[data-theme="${colorScheme}"]`,
     colorSchemeVars,
     makeColorScheme(colorScheme)
-  );
+  )
 }
 
-export const vars = { ...baseVars, colors: colorSchemeVars };
-export type ThemeVars = typeof vars;
+export const vars = { ...baseVars, colors: colorSchemeVars }
+export type ThemeVars = typeof vars
