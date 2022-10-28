@@ -1,6 +1,7 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs'
 
 import { colorSchemes } from '../../tokens/color'
+import { vars } from '../../css'
 
 <Meta title="Design System/Colors" />
 
@@ -8,23 +9,20 @@ import { colorSchemes } from '../../tokens/color'
 
 Color schemes, scales, accents, and gradients.
 
-### Color Schemes
-
-<ColorPalette>
-  <ColorItem
-    title={'Light'}
-    colors={Object.fromEntries(Object.entries(colorSchemes.light).filter(x => x[0].startsWith('scale')))}
-  />
-  <ColorItem
-    title={'Dark'}
-    colors={Object.fromEntries(Object.entries(colorSchemes.dark).filter(x => x[0].startsWith('scale')))}
-  />
-</ColorPalette>
-
 ### Accents
 
 <ColorPalette>
-  <ColorItem title={'Accents'} subtitle={'vars.colors.accents'} colors={colorSchemes.light.accents} />
+  <ColorItem 
+  title={'Accents'} 
+  subtitle={'Status Colours'} 
+  colors={{
+    positive: vars.colors.positive,
+    info: vars.colors.info,
+    warning: vars.colors.warning,
+    negative: vars.colors.negative,
+  }} 
+/>
+
 </ColorPalette>
 
 ### Gradients
@@ -32,7 +30,12 @@ Color schemes, scales, accents, and gradients.
 <ColorPalette>
   <ColorItem
     title={'Primary Gradient'}
-    subtitle={'vars.colors.gradients.primary'}
-    colors={{ primary: colorSchemes.light.gradients.primary }}
+    subtitle={'vars.colors.gradientPrimary'}
+    colors={{ primary: vars.colors.gradientPrimary }}
+  />
+  <ColorItem
+    title={'Primary Gradient'}
+    subtitle={'vars.colors.gradientBackdrop'}
+    colors={{ primary: vars.colors.gradientBackdrop }}
   />
 </ColorPalette>

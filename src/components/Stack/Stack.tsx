@@ -14,7 +14,12 @@ export const Stack = (props: StackProps) => {
   const { children, flexDirection, gap } = props
 
   return (
-    <Box display="flex" flexDirection={flexDirection} gap={gap}>
+    <Box
+      display="flex"
+      color="textTitle"
+      flexDirection={flexDirection}
+      gap={gap}
+    >
       {children}
     </Box>
   )

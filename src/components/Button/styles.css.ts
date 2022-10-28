@@ -14,8 +14,8 @@ export const button = recipe({
     border: 'none',
     lineHeight: 0,
     backdropFilter: 'blur(12.5px)',
-    background: vars.colors.scale6,
-    color: vars.colors.scale12
+    background: vars.colors.backgroundComponent,
+    color: vars.colors.white,
   },
 
   variants: {
@@ -25,24 +25,24 @@ export const button = recipe({
         {
           height: '24px',
           borderRadius: vars.radii.sm,
-          padding: `0 ${vars.space.md}`
-        }
+          padding: `0 ${vars.space.md}`,
+        },
       ],
       md: {
         height: '32px',
         borderRadius: vars.radii.full,
-        padding: `0 ${vars.space.lg}`
+        padding: `0 ${vars.space.lg}`,
       },
       lg: {
         height: '48px',
-        borderRadius: vars.radii.md
-      }
+        borderRadius: vars.radii.md,
+      },
     },
     variant: {
       primary: {
-        background: vars.colors.gradients.primary,
-        color: 'white'
-      }
-    }
-  }
+        background: vars.colors.gradientPrimary,
+        color: 'white',
+      },
+    },
+  },
 })

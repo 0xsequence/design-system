@@ -1,27 +1,27 @@
-import { globalStyle, style } from '@vanilla-extract/css'
-import { recipe } from '@vanilla-extract/recipes'
+import { globalStyle, style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
-import { vars } from '../../css'
-import { typography } from '../../css/typography.css'
+import { vars } from '../../css';
+import { typography } from '../../css/typography.css';
 
 export const root = style({
   width: '100%',
-  margin: '25px 0'
-})
+  margin: '25px 0',
+});
 
 export const header = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  height: '50px'
-})
+  height: '50px',
+});
 
 export const title = style([
   typography.h2,
   {
-    color: vars.colors.scale9
-  }
-])
+    color: vars.colors.white,
+  },
+]);
 
 export const items = recipe({
   variants: {
@@ -41,14 +41,14 @@ export const items = recipe({
 
         '@media': {
           'screen and (min-width: 1024px)': {
-            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))'
-          }
-        }
-      }
-    }
-  }
-})
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+          },
+        },
+      },
+    },
+  },
+});
 
 globalStyle(`${items({ layout: 'rows' })} > *:not(:last-child)`, {
-  marginBottom: 12
-})
+  marginBottom: 12,
+});

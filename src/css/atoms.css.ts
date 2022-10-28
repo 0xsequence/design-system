@@ -92,9 +92,25 @@ const unresponsiveProperties = defineProperties({
   },
 })
 
+const selectorProperties = defineProperties({
+  conditions: {
+    base: {},
+    active: { selector: '&:active' },
+    focus: { selector: '&:focus' },
+    hover: { selector: '&:hover' },
+  },
+  defaultCondition: 'base',
+  properties: {
+    background: vars.colors,
+    borderColor: vars.colors,
+    color: vars.colors,
+  },
+})
+
 export const atoms = createSprinkles(
   responsiveProperties,
-  unresponsiveProperties
+  unresponsiveProperties,
+  selectorProperties
 )
 
 export type Atoms = Parameters<typeof atoms>[0]

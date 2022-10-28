@@ -1,24 +1,24 @@
-import { style } from '@vanilla-extract/css'
-import { recipe } from '@vanilla-extract/recipes'
+import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
-import { atoms, vars } from '../../css'
-import { typography } from '../../css/typography.css'
+import { atoms, vars } from '../../css';
+import { typography } from '../../css/typography.css';
 
-export const COLLAPSED_HEIGHT = '65px'
+export const COLLAPSED_HEIGHT = '65px';
 
 export const root = style([
   atoms({
-    borderRadius: 'md'
+    borderRadius: 'md',
   }),
   style({
-    background: vars.colors.scale3,
+    background: vars.colors.backgroundComponent,
     minHeight: COLLAPSED_HEIGHT,
     position: 'relative',
     borderRadius: vars.radii.md,
     marginBottom: '25px',
-    overflow: 'hidden'
-  })
-])
+    overflow: 'hidden',
+  }),
+]);
 
 export const trigger = style({
   border: 'none',
@@ -30,41 +30,41 @@ export const trigger = style({
   display: 'flex',
   alignItems: 'center',
   cursor: 'pointer',
-  userSelect: 'none'
-})
+  userSelect: 'none',
+});
 
 export const content = style({
   width: '100%',
   padding: '0 15px 15px',
-  transformOrigin: 'top'
-})
+  transformOrigin: 'top',
+});
 
 export const label = style([
   typography.h2,
   {
-    color: vars.colors.scale12,
+    color: vars.colors.white,
     display: 'flex',
     alignItems: 'center',
-    height: '30px'
-  }
-])
+    height: '30px',
+  },
+]);
 
 export const icon = recipe({
   base: {
-    color: vars.colors.scale11,
+    color: vars.colors.white,
     position: 'absolute',
     right: '-6px',
     marginRight: '15px',
     transition: 'all 0.1s linear',
     transform: 'rotate(90deg)',
-    opacity: 0.7
+    opacity: 0.7,
   },
 
   variants: {
     expanded: {
       true: {
-        transform: 'rotate(0deg)'
-      }
-    }
-  }
-})
+        transform: 'rotate(0deg)',
+      },
+    },
+  },
+});

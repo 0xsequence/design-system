@@ -1,7 +1,7 @@
-import { style } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css';
 
-import { vars } from '../../css'
-import { typography } from '../../css/typography.css'
+import { vars } from '../../css';
+import { typography } from '../../css/typography.css';
 
 export const trigger = style([
   typography.h2,
@@ -16,27 +16,27 @@ export const trigger = style([
     cursor: 'pointer',
     userSelect: 'none',
 
-    color: vars.colors.scale10,
+    color: vars.colors.textFaded,
 
     selectors: {
       '&[data-state="active"]': {
-        color: vars.colors.scale12
+        color: vars.colors.white,
       },
       '&[disabled]': {
         opacity: 0.3,
-        pointerEvents: 'none'
-      }
-    }
-  }
-])
+        pointerEvents: 'none',
+      },
+    },
+  },
+]);
 
 export const list = style({
-  background: vars.colors.scale3,
+  background: vars.colors.backgroundSecondary,
   width: '100%',
   height: '50px',
   borderRadius: vars.radii.md,
-  position: 'relative'
-})
+  position: 'relative',
+});
 
 export const selectorContainer = style({
   height: '32px',
@@ -45,11 +45,11 @@ export const selectorContainer = style({
   bottom: '9px',
   left: '15px',
   right: '15px',
-  position: 'absolute'
-})
+  position: 'absolute',
+});
 
 export const selector = style({
-  background: vars.colors.scale5,
+  background: vars.colors.backgroundComponent,
   position: 'absolute',
   width: '50%',
   height: '100%',
@@ -60,5 +60,5 @@ export const selector = style({
 
   borderRadius: vars.radii.md,
 
-  transition: 'transform 200ms ease-out'
-})
+  transition: 'transform 200ms ease-out',
+});

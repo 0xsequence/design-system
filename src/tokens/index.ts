@@ -1,5 +1,5 @@
 import { borderWidths, radii } from './border'
-import { colorSchemes } from './color'
+import { colors } from './color'
 import { opacity } from './opacity'
 import { shadows } from './shadow'
 import { space } from './space'
@@ -13,7 +13,7 @@ import {
 
 export const tokens = {
   borderWidths,
-  colorSchemes,
+  colors,
   fonts,
   fontSizes,
   fontWeights,
@@ -24,6 +24,8 @@ export const tokens = {
   shadows,
   space,
 }
+
+export { colorSchemes } from './color'
 
 export type { ColorScheme } from './color'
 export type Tokens = typeof tokens
