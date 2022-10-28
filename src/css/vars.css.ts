@@ -1,4 +1,7 @@
-import { createGlobalTheme, createGlobalThemeContract } from '@vanilla-extract/css'
+import {
+  createGlobalTheme,
+  createGlobalThemeContract,
+} from '@vanilla-extract/css'
 
 import { ColorScheme, tokens } from '../tokens'
 
@@ -14,14 +17,21 @@ const makeColorScheme = (mode: ColorScheme = 'light') => {
   const colors = tokens.colorSchemes[mode]
 
   return {
-    colors
+    colors,
   }
 }
 
-export const colorSchemeVars = createGlobalThemeContract(makeColorScheme(), getVarName)
+export const colorSchemeVars = createGlobalThemeContract(
+  makeColorScheme(),
+  getVarName
+)
 
 for (const colorScheme of Object.keys(tokens.colorSchemes) as ColorScheme[]) {
-  createGlobalTheme(`[data-theme="${colorScheme}"]`, colorSchemeVars, makeColorScheme(colorScheme))
+  createGlobalTheme(
+    `[data-theme="${colorScheme}"]`,
+    colorSchemeVars,
+    makeColorScheme(colorScheme)
+  )
 }
 
 export const vars = { ...baseVars, ...colorSchemeVars }

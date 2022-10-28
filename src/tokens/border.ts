@@ -1,6 +1,6 @@
 export const borderWidths = {
   thin: '1px',
-  thick: '2px'
+  thick: '2px',
 }
 
 export const radii = {
@@ -8,5 +8,5 @@ export const radii = {
   sm: '8px',
   md: '16px',
   lg: '24px',
-  full: '9999px'
+  full: '9999px',
 }

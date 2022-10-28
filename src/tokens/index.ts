@@ -3,7 +3,13 @@ import { colorSchemes } from './color'
 import { opacity } from './opacity'
 import { shadows } from './shadow'
 import { space } from './space'
-import { fonts, fontSizes, fontWeights, letterSpacings, lineHeights } from './typography'
+import {
+  fonts,
+  fontSizes,
+  fontWeights,
+  letterSpacings,
+  lineHeights,
+} from './typography'
 
 export const tokens = {
   borderWidths,
@@ -16,7 +22,7 @@ export const tokens = {
   opacity,
   radii,
   shadows,
-  space
+  space,
 }
 
 export type { ColorScheme } from './color'

@@ -10,7 +10,7 @@ const responsiveProperties = defineProperties({
     sm: {},
     md: { '@media': `(min-width: ${breakpoints.md}px)` },
     lg: { '@media': `(min-width: ${breakpoints.lg}px)` },
-    xl: { '@media': `(min-width: ${breakpoints.xl}px)` }
+    xl: { '@media': `(min-width: ${breakpoints.xl}px)` },
   },
   defaultCondition: 'sm',
   properties: {
@@ -52,11 +52,21 @@ const responsiveProperties = defineProperties({
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
     overflowX: ['auto', 'hidden', 'scroll'],
-    overflowY: ['auto', 'hidden', 'scroll']
+    overflowY: ['auto', 'hidden', 'scroll'],
   },
   shorthands: {
-    borderWidth: ['borderBottomWidth', 'borderLeftWidth', 'borderRightWidth', 'borderTopWidth'],
-    borderRadius: ['borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomLeftRadius', 'borderBottomRightRadius'],
+    borderWidth: [
+      'borderBottomWidth',
+      'borderLeftWidth',
+      'borderRightWidth',
+      'borderTopWidth',
+    ],
+    borderRadius: [
+      'borderTopLeftRadius',
+      'borderTopRightRadius',
+      'borderBottomLeftRadius',
+      'borderBottomRightRadius',
+    ],
     borderLeftRadius: ['borderBottomLeftRadius', 'borderTopLeftRadius'],
     borderRightRadius: ['borderBottomRightRadius', 'borderTopRightRadius'],
     borderTopRadius: ['borderTopLeftRadius', 'borderTopRightRadius'],
@@ -68,8 +78,8 @@ const responsiveProperties = defineProperties({
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
-    placeItems: ['justifyContent', 'alignItems']
-  }
+    placeItems: ['justifyContent', 'alignItems'],
+  },
 })
 
 const unresponsiveProperties = defineProperties({
@@ -78,10 +88,13 @@ const unresponsiveProperties = defineProperties({
     fontFamily: vars.fonts,
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     visibility: ['hidden', 'visible'],
-    zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' }
-  }
+    zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' },
+  },
 })
 
-export const atoms = createSprinkles(responsiveProperties, unresponsiveProperties)
+export const atoms = createSprinkles(
+  responsiveProperties,
+  unresponsiveProperties
+)
 
 export type Atoms = Parameters<typeof atoms>[0]
