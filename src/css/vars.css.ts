@@ -2,8 +2,7 @@ import {
   createGlobalTheme,
   createGlobalThemeContract,
 } from '@vanilla-extract/css'
-
-import { ColorScheme, colorSchemes, tokens } from '../tokens'
+import { ColorScheme, colorSchemes, tokens } from 'tokens'
 
 import { getVarName } from './utils'
 

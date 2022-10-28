@@ -1,27 +1,26 @@
-import { globalStyle, style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
-
-import { vars } from '../../css';
-import { typography } from '../../css/typography.css';
+import { globalStyle, style } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
+import { vars } from 'css'
+import { typography } from 'css/typography.css'
 
 export const root = style({
   width: '100%',
   margin: '25px 0',
-});
+})
 
 export const header = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   height: '50px',
-});
+})
 
 export const title = style([
   typography.h2,
   {
     color: vars.colors.white,
   },
-]);
+])
 
 export const items = recipe({
   variants: {
@@ -47,8 +46,8 @@ export const items = recipe({
       },
     },
   },
-});
+})
 
 globalStyle(`${items({ layout: 'rows' })} > *:not(:last-child)`, {
   marginBottom: 12,
-});
+})

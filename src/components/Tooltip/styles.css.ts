@@ -1,7 +1,6 @@
 import { style } from '@vanilla-extract/css'
-
-import { vars } from '../../css'
-import { typography } from '../../css/typography.css'
+import { vars } from 'css'
+import { typography } from 'css/typography.css'
 
 export const content = style([
   typography.b2,

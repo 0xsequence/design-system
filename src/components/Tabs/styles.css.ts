@@ -1,7 +1,6 @@
-import { style } from '@vanilla-extract/css';
-
-import { vars } from '../../css';
-import { typography } from '../../css/typography.css';
+import { style } from '@vanilla-extract/css'
+import { vars } from 'css'
+import { typography } from 'css/typography.css'
 
 export const trigger = style([
   typography.h2,
@@ -28,7 +27,7 @@ export const trigger = style([
       },
     },
   },
-]);
+])
 
 export const list = style({
   background: vars.colors.backgroundSecondary,
@@ -36,7 +35,7 @@ export const list = style({
   height: '50px',
   borderRadius: vars.radii.md,
   position: 'relative',
-});
+})
 
 export const selectorContainer = style({
   height: '32px',
@@ -46,7 +45,7 @@ export const selectorContainer = style({
   left: '15px',
   right: '15px',
   position: 'absolute',
-});
+})
 
 export const selector = style({
   background: vars.colors.backgroundComponent,
@@ -61,4 +60,4 @@ export const selector = style({
   borderRadius: vars.radii.md,
 
   transition: 'transform 200ms ease-out',
-});
+})
