@@ -1,5 +1,7 @@
-import { SVGProps } from 'react'
+import { BoxProps } from '../components/Box/Box'
 
 export type IconSize = 'sm' | 'md' | 'lg'
 
-export type IconProps = SVGProps<SVGSVGElement> & { size?: IconSize }
+export interface IconProps {
+  className?: BoxProps['className']
+}

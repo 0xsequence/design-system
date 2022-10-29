@@ -8,11 +8,11 @@ module.exports = {
   features: { storyStoreV7: true },
   staticDirs: ['../public'],
   core: {
-    builder: '@storybook/builder-vite'
+    builder: '@storybook/builder-vite',
   },
   async viteFinal(config) {
     return mergeConfig(config, {
-      plugins: [vanillaExtractPlugin()]
+      plugins: [vanillaExtractPlugin()],
     })
-  }
+  },
 }

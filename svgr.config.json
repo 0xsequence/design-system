@@ -1,0 +1,9 @@
+{
+  "typescript": true,
+  "jsxRuntime": "automatic",
+  "removeViewBox": false,
+  "svgProps": {
+    "width": "{props.width}",
+    "height": "{props.height}"
+  }
+}

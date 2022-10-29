@@ -22,6 +22,7 @@
   "scripts": {
     "start": "yarn storybook",
     "build": "tsc && vite build",
+    "build:icons": "yarn svgr -d ./src/icons ./public/static/icons --config-file ./svgr.config.json --template ./src/icons/template.cjs",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
@@ -50,6 +51,7 @@
     "@storybook/addon-links": "^6.5.12",
     "@storybook/builder-vite": "^0.2.5",
     "@storybook/react": "^6.5.12",
+    "@svgr/cli": "^6.5.1",
     "@testing-library/dom": "^8.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
