@@ -1,6 +1,7 @@
-import { Box } from 'components/Box'
-import { typography } from 'css/typography.css'
 import { forwardRef, PropsWithChildren, Ref } from 'react'
+
+import { Box } from '~/components/Box'
+import { typography } from '~/css/typography.css'
 
 interface TextProps {
   type: keyof typeof typography

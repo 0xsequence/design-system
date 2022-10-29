@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css'
-import { vars } from 'css'
+
+import { vars } from '~/css'
 
 export const root = style({
   cursor: 'pointer',

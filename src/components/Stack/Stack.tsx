@@ -1,5 +1,7 @@
-import { Box, BoxLayoutProps, BoxProps } from 'components/Box'
 import { ReactNode } from 'react'
+
+import { Box, BoxLayoutProps, BoxProps } from '~/components/Box'
+
 interface StackProps extends BoxLayoutProps {
   children: ReactNode
   style?: any

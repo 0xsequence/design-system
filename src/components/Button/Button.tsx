@@ -1,6 +1,7 @@
-import { Box } from 'components/Box'
-import { IconProps } from 'icons/types'
 import { createElement, forwardRef, ReactElement } from 'react'
+
+import { Box } from '~/components/Box'
+import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
 

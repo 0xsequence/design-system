@@ -1,7 +1,7 @@
 import { globalStyle, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
-import { vars } from 'css'
-import { typography } from 'css/typography.css'
+
+import { vars, typography } from '~/css'
 
 export const root = style({
   width: '100%',
