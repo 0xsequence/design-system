@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { tokens } from 'tokens'
+
+import { tokens } from '~/tokens'
 
 import { Box } from './Box'
 

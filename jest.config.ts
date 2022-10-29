@@ -12,11 +12,14 @@ const config: Config.InitialOptions = {
       'ts-jest',
       {
         babelConfig: {
-          plugins: ['@vanilla-extract/babel-plugin']
-        }
-      }
-    ]
-  }
+          plugins: ['@vanilla-extract/babel-plugin'],
+        },
+      },
+    ],
+  },
+  moduleNameMapper: {
+    '^~/(.*)$': '<rootDir>/src/$1',
+  },
 }
 
 export default config

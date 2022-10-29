@@ -1,6 +1,7 @@
 import { keyframes, style } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
-import { vars } from 'css'
+
+import { vars } from '~/css'
 
 const rotate = keyframes({
   '100%': { transform: 'rotate(1turn)' },

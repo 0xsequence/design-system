@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Switch } from '..'
+import { Switch } from './Switch'
 
 export default {
   title: 'Components/Switch',
-  component: Switch
+  component: Switch,
 } as ComponentMeta<typeof Switch>
 
 const Template: ComponentStory<typeof Switch> = args => {

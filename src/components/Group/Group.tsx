@@ -1,6 +1,7 @@
 import { clsx } from 'clsx'
-import { Box } from 'components/Box'
 import { ReactNode, Children } from 'react'
+
+import { Box } from '~/components/Box'
 
 import * as styles from './styles.css'
 

@@ -1,5 +1,6 @@
-import { Box } from 'components/Box'
 import { forwardRef } from 'react'
+
+import { Box } from '~/components/Box'
 
 import * as styles from './styles.css'
 

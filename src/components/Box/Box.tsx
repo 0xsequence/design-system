@@ -1,6 +1,7 @@
 import { clsx, ClassValue } from 'clsx'
-import { atoms, Atoms } from 'css'
 import { createElement, forwardRef } from 'react'
+
+import { atoms, Atoms } from '~/css'
 
 type HTMLProperties = Omit<
   React.AllHTMLAttributes<HTMLElement>,
