@@ -43,9 +43,14 @@ Box.displayName = 'Box'
 
 export type BoxProps = Parameters<typeof Box>[0]
 
-export type BoxLayoutProps = {
-  marginLeft: BoxProps['marginLeft']
-  marginRight: BoxProps['marginRight']
-  marginTop: BoxProps['marginTop']
-  marginBottom: BoxProps['marginBottom']
-}
+export type BoxLayoutProps = Pick<
+  BoxProps,
+  | 'children'
+  | 'margin'
+  | 'marginX'
+  | 'marginY'
+  | 'marginBottom'
+  | 'marginLeft'
+  | 'marginRight'
+  | 'marginTop'
+>

@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 
-import { atoms, vars, typography } from '~/css'
+import { atoms, vars } from '~/css'
 
 export const COLLAPSED_HEIGHT = '65px'
 
@@ -38,15 +38,11 @@ export const content = style({
   transformOrigin: 'top',
 })
 
-export const label = style([
-  typography.h2,
-  {
-    color: vars.colors.white,
-    display: 'flex',
-    alignItems: 'center',
-    height: '30px',
-  },
-])
+export const label = style({
+  display: 'flex',
+  alignItems: 'center',
+  height: '30px',
+})
 
 export const icon = recipe({
   base: {

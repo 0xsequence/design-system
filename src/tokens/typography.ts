@@ -7,9 +7,9 @@ export const fonts = {
 export const fontSizes = {
   xs: '0.625rem	', // 10px
   sm: '0.75rem', // 12px
-  md: '1rem', // 16px
-  lg: '1.125rem', // 18px
-  xl: '1.25rem', // 20px
+  md: '0.875rem', // 14px
+  lg: '1rem', // 16px
+  xl: '1.125rem', // 18px
   xxl: '2rem', // 32px
   root: '16px',
 }
