@@ -12,37 +12,37 @@ export default defineConfig({
   plugins: [
     tsconfigPaths(),
     vanillaExtractPlugin({
-      identifiers: 'short' // 'short' | 'debug'
+      identifiers: 'short', // 'short' | 'debug'
     }),
     react(),
     eslint({
-      include: ['**/*.ts', '**/*.tsx']
+      include: ['**/*.ts', '**/*.tsx'],
     }),
     dts({
       exclude: ['src/**/*.test.ts*'],
       beforeWriteFile: (filePath, content) => ({
         content,
-        filePath: filePath.replace('src', '')
+        filePath: filePath.replace('src', ''),
       }),
       compilerOptions: {
         baseUrl: './src/',
         emitDeclarationOnly: true,
-        noEmit: false
+        noEmit: false,
       },
-      outputDir: 'dist/types'
-    })
+      outputDir: 'dist/types',
+    }),
   ],
   build: {
     lib: {
       name: 'SequenceDesignSystem',
       entry: path.resolve(__dirname, 'src/index.ts'),
       formats: ['es', 'cjs'],
-      fileName: format => `index.${format}.js`
+      fileName: format => `index.${format}.js`,
     },
     outDir: path.resolve(__dirname, 'dist'),
     rollupOptions: {
-      external: ['react', 'react-dom', 'framer-motion']
+      external: ['react', 'react-dom', 'framer-motion'],
     },
-    minify: false
-  }
+    minify: false,
+  },
 })
