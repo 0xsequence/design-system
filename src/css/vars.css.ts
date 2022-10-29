@@ -5,15 +5,7 @@ import {
 
 import { ColorScheme, colorSchemes, tokens } from '~/tokens'
 
-import { getVarName } from './utils'
-
-export const capitalize = (s: string) => {
-  if (s === '') {
-    return ''
-  }
-
-  return s[0].toUpperCase() + s.slice(1)
-}
+import { capitalize, getVarName } from './utils'
 
 type MapTokens<P extends string, T> = {
   [K in keyof T & string as `${P}${Capitalize<K>}`]: string
