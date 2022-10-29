@@ -1,5 +1,5 @@
 import { Box } from 'components/Box'
-import { IconProps } from 'icons'
+import { IconProps } from 'icons/types'
 import { createElement, forwardRef, ReactElement } from 'react'
 
 import * as styles from './styles.css'
@@ -25,7 +25,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={styles.button({ size, variant })}
         ref={ref}
       >
-        {icon && <Box marginRight="sm">{createElement(icon, { size })}</Box>}
+        {icon && <Box marginRight="sm">{createElement(icon)}</Box>}
         <div>{label}</div>
       </Box>
     )
