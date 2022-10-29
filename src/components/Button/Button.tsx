@@ -1,6 +1,7 @@
 import { createElement, forwardRef, ReactElement } from 'react'
 
 import { Box } from '~/components/Box'
+import { Text } from '~/components/Text'
 import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
@@ -27,7 +28,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
       >
         {icon && <Box marginRight="sm">{createElement(icon)}</Box>}
-        <div>{label}</div>
+        <Text color="inherit">{label}</Text>
       </Box>
     )
   }

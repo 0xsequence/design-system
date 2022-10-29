@@ -1,33 +1,30 @@
 import { style } from '@vanilla-extract/css'
 
-import { vars, typography } from '~/css'
+import { vars } from '~/css'
 
-export const trigger = style([
-  typography.h2,
-  {
-    appearance: 'none',
-    border: 'none',
-    background: 'none',
-    height: '100%',
-    width: '50%',
-    position: 'relative',
-    zIndex: '2',
-    cursor: 'pointer',
-    userSelect: 'none',
+export const trigger = style({
+  appearance: 'none',
+  border: 'none',
+  background: 'none',
+  height: '100%',
+  width: '50%',
+  position: 'relative',
+  zIndex: '2',
+  cursor: 'pointer',
+  userSelect: 'none',
 
-    color: vars.colors.textFaded,
+  color: vars.colors.textFaded,
 
-    selectors: {
-      '&[data-state="active"]': {
-        color: vars.colors.white,
-      },
-      '&[disabled]': {
-        opacity: 0.3,
-        pointerEvents: 'none',
-      },
+  selectors: {
+    '&[data-state="active"]': {
+      color: vars.colors.textTitle,
+    },
+    '&[disabled]': {
+      opacity: 0.3,
+      pointerEvents: 'none',
     },
   },
-])
+})
 
 export const list = style({
   background: vars.colors.backgroundSecondary,

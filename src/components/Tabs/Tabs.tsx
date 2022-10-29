@@ -1,9 +1,12 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { ReactNode, useState, ComponentPropsWithoutRef } from 'react'
 
+import { Text } from '~/components/Text'
+
 import * as styles from './styles.css'
 
-interface TabsProps extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
+interface TabsProps
+  extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
   tabs: TabItemProps[]
 }
 
@@ -15,7 +18,9 @@ interface TabItemProps {
 
 export const Tabs = (props: TabsProps) => {
   const { tabs, onValueChange, ...rest } = props
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(rest.defaultValue)
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    rest.defaultValue
+  )
   if (!tabs.length) {
     return null
   }
@@ -34,12 +39,19 @@ export const Tabs = (props: TabsProps) => {
         <div className={styles.selectorContainer}>
           <div
             className={styles.selector}
-            style={{ width: `${selectorWidth}%`, transform: `translateX(${selectedIdx * 100}%)` }}
+            style={{
+              width: `${selectorWidth}%`,
+              transform: `translateX(${selectedIdx * 100}%)`,
+            }}
           />
         </div>
         {tabs.map(tab => (
-          <TabsPrimitive.Trigger className={styles.trigger} key={tab.value} value={tab.value}>
-            {tab.title}
+          <TabsPrimitive.Trigger
+            className={styles.trigger}
+            key={tab.value}
+            value={tab.value}
+          >
+            <Text variant="h2">{tab.title}</Text>
           </TabsPrimitive.Trigger>
         ))}
       </TabsPrimitive.List>

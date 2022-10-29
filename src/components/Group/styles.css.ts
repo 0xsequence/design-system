@@ -1,8 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 
-import { vars, typography } from '~/css'
-
 export const root = style({
   width: '100%',
   margin: '25px 0',
@@ -14,13 +12,6 @@ export const header = style({
   alignItems: 'center',
   height: '50px',
 })
-
-export const title = style([
-  typography.h2,
-  {
-    color: vars.colors.white,
-  },
-])
 
 export const items = recipe({
   variants: {

@@ -2,6 +2,7 @@ import { clsx } from 'clsx'
 import { ReactNode, Children } from 'react'
 
 import { Box } from '~/components/Box'
+import { Text } from '~/components/Text'
 
 import * as styles from './styles.css'
 
@@ -27,7 +28,7 @@ export const Group = (props: GroupProps) => {
   return (
     <Box className={clsx(styles.root, className)} style={style}>
       <div className={styles.header}>
-        {label && <div className={styles.title}>{label}</div>}
+        {label && <Text variant="h2">{label}</Text>}
         {contentRight && <div>{contentRight}</div>}
       </div>
       <div className={styles.items({ layout })}>

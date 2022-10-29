@@ -3,10 +3,15 @@ import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
+import { Text } from '~/components/Text'
+
 import * as styles from './styles.css'
 
 export const Collapsible = (
-  props: CollapsiblePrimitive.CollapsibleProps & { label: string | JSX.Element; className?: string }
+  props: CollapsiblePrimitive.CollapsibleProps & {
+    label: string | JSX.Element
+    className?: string
+  }
 ) => {
   const { defaultOpen, label, children, className } = props
   const [expanded, toggleExpanded] = useState(defaultOpen)
@@ -24,12 +29,22 @@ export const Collapsible = (
         transition={{ ease: 'easeOut', duration: 0.3 }}
       >
         <CollapsiblePrimitive.Trigger className={styles.trigger}>
-          {typeof label === 'string' ? <div className={styles.label}>{label}</div> : label}
+          {typeof label === 'string' ? (
+            <div className={styles.label}>
+              <Text variant="h2">{label}</Text>
+            </div>
+          ) : (
+            label
+          )}
           <div className={styles.icon({ expanded })}>▼</div>
         </CollapsiblePrimitive.Trigger>
         <AnimatePresence>
           {expanded && (
-            <CollapsiblePrimitive.Content className={styles.content} asChild forceMount>
+            <CollapsiblePrimitive.Content
+              className={styles.content}
+              asChild
+              forceMount
+            >
               <motion.div
                 initial={{ opacity: defaultOpen ? 1 : 0 }}
                 animate={{ opacity: 1 }}
