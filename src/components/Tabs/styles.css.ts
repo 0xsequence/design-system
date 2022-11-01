@@ -17,7 +17,7 @@ export const trigger = style({
 
   selectors: {
     '&[data-state="active"]': {
-      color: vars.colors.textTitle,
+      color: vars.colors.textBody,
     },
     '&[disabled]': {
       opacity: 0.3,
@@ -45,7 +45,7 @@ export const selectorContainer = style({
 })
 
 export const selector = style({
-  background: vars.colors.backgroundComponent,
+  background: vars.colors.backgroundButton,
   position: 'absolute',
   width: '50%',
   height: '100%',

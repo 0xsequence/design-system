@@ -7,5 +7,5 @@ export const content = style({
   fill: vars.colors.backgroundInverse,
   boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.5)',
   borderRadius: vars.radii.sm,
-  padding: vars.space.md,
+  padding: vars.space.tight,
 })

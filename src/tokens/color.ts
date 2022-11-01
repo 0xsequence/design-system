@@ -1,28 +1,37 @@
 export type ColorScheme = 'dark' | 'light'
 
 const accents = {
-  positive: 'hsla(146, 73%, 44%, 1)',
-  negative: 'hsla(0, 100%, 66%, 1)',
-  warning: 'hsla(38, 89%, 60%, 1)',
-  info: 'hsla(212, 63%, 53%, 1)',
+  positive: '#1FC266',
+  negative: '#C2501F',
 }
 
-type Background = 'primary' | 'secondary' | 'component' | 'backdrop' | 'inverse'
+type Background =
+  | 'primary'
+  | 'secondary'
+  | 'button'
+  | 'backdrop'
+  | 'inverse'
+  | 'dark' // glass
+  | 'light' // glass
 
 const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
   dark: {
     primary: '#000000',
-    secondary: '#151515',
-    component: 'rgba(85, 85, 85, 0.3)',
+    secondary: '#1A1A1A',
+    button: '#292929',
     backdrop: 'rgba(0, 0, 0, 0.9)',
     inverse: '#ffffff',
+    dark: 'rgba(0, 0, 0, 0.4)',
+    light: 'rgba(85, 85, 85, 0.3)',
   },
   light: {
     primary: '#f4f4f4',
     secondary: '#ffffff',
-    component: '#f4f4f4',
+    button: '#f4f4f4',
     backdrop: 'rgba(255, 255, 255, 0.9)',
     inverse: '#000000',
+    dark: 'rgba(255, 255, 255, 0.4)',
+    light: 'rgba(170, 170, 170, 0.3)',
   },
 }
 
@@ -46,12 +55,7 @@ const borderColors: { [key in ColorScheme]: { [key in BorderColor]: string } } =
   }
 
 const gradients = {
-  primary: `linear-gradient(
-    39.17deg, 
-    rgba(38, 34, 255, 0.7) -6.62%, 
-    rgba(82, 7, 240, 0.7) 40.22%, 
-    rgba(134, 77, 255, 0.7) 108.67%
-  )`,
+  primary: `linear-gradient(89.69deg, #6634FF 0.27%, #9C6DFF 99.73%)`,
   backdrop: `linear-gradient(
     243.18deg, 
     rgba(86, 52, 189, 0.85) 0%, 
@@ -60,20 +64,22 @@ const gradients = {
   )`,
 }
 
-type TextColor = 'body' | 'faded' | 'title' | 'inverse'
+type TextColor = 'body' | 'faded' | 'inactive' | 'inverse' | 'overlay'
 
 const textColors: { [key in ColorScheme]: { [key in TextColor]: string } } = {
   dark: {
-    body: '#ffffff',
-    faded: 'rgba(0, 0, 0, 0.5)',
-    title: '#ffffff',
+    body: '#FFFFFF',
+    faded: '#7F7F7F',
+    inactive: '#404040',
     inverse: '#000000',
+    overlay: 'rgba(255, 255, 255, 0.5)',
   },
   light: {
     body: '#222222',
-    faded: 'rgba(0, 0, 0, 0.5)',
-    title: '#222222',
-    inverse: '#ffffff',
+    faded: '#8A8A8A',
+    inactive: '#D7D7D7',
+    inverse: '#FFFFFF',
+    overlay: 'rgba(0, 0, 0, 0.5)',
   },
 }
 

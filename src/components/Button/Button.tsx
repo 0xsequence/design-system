@@ -27,7 +27,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={styles.button({ size, variant })}
         ref={ref}
       >
-        {icon && <Box marginRight="sm">{createElement(icon)}</Box>}
+        {icon && <Box marginRight="xtight">{createElement(icon)}</Box>}
         <Text color="inherit">{label}</Text>
       </Box>
     )

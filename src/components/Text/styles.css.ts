@@ -18,6 +18,7 @@ export const variants = recipe({
           letterSpacing: 'none',
           textSize: 'xlarge',
           weight: 'bold',
+          color: 'textBody',
         }),
       ]),
       h2: style([
@@ -25,6 +26,7 @@ export const variants = recipe({
           letterSpacing: 'regular',
           textSize: 'large',
           weight: 'semiBold',
+          color: 'textBody',
         }),
       ]),
       h3: style([
@@ -32,6 +34,7 @@ export const variants = recipe({
           letterSpacing: 'regular',
           textSize: 'medium',
           weight: 'bold',
+          color: 'textBody',
         }),
       ]),
       label: style([

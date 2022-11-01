@@ -6,10 +6,10 @@ export const root = style({
   cursor: 'pointer',
   width: '45px',
   height: '30px',
-  background: vars.colors.backgroundComponent,
+  background: vars.colors.backgroundButton,
   border: `${vars.borderWidths.thick} solid ${vars.colors.borderSubtle}`,
-  padding: vars.space.xs,
-  borderRadius: vars.radii.full,
+  padding: vars.space.xxtight,
+  borderRadius: vars.radii.circle,
   position: 'relative',
 
   transition: 'background 100ms ease-out',
@@ -30,7 +30,7 @@ export const thumb = style({
   width: 22,
   height: 22,
   background: vars.colors.backgroundSecondary,
-  borderRadius: vars.radii.full,
+  borderRadius: vars.radii.circle,
   transition: 'transform 100ms ease-out, background 100ms ease-out',
   transform: 'translateX(0)',
   willChange: 'transform',
@@ -38,7 +38,7 @@ export const thumb = style({
   selectors: {
     '&[data-state="checked"]': {
       transform: 'translateX(15px)',
-      background: vars.colors.backgroundComponent,
+      background: vars.colors.backgroundButton,
     },
 
     [`${root}:hover:not([data-state="checked"]) &`]: {
