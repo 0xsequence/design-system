@@ -4,7 +4,7 @@ export const fonts = {
 }
 
 export const fontSizes = {
-  xsmall: '0.625rem	', // 10px
+  xsmall: '0.625rem', // 10px
   small: '0.75rem', // 12px
   normal: '0.875rem', // 14px
   medium: '1rem', // 16px
