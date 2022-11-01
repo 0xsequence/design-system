@@ -32,15 +32,15 @@ Heading3.args = {
 export const Bold = Template.bind({})
 Bold.args = {
   variant: 'p',
-  weight: 'bold',
-  color: 'title',
+  fontWeight: 'bold',
+  color: 'textFaded',
   children: 'Hello, world!',
 }
 
 export const BodyLarge = Template.bind({})
 BodyLarge.args = {
   variant: 'p',
-  size: 'large',
+  fontSize: 'lg',
   children: 'Hello, world!',
 }
 
