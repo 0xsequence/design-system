@@ -30,7 +30,7 @@ export const list = style({
   background: vars.colors.backgroundSecondary,
   width: '100%',
   height: '50px',
-  borderRadius: vars.radii.md,
+  borderRadius: vars.radii.medium,
   position: 'relative',
 })
 
@@ -54,7 +54,7 @@ export const selector = style({
 
   zIndex: '1',
 
-  borderRadius: vars.radii.md,
+  borderRadius: vars.radii.medium,
 
   transition: 'transform 200ms ease-out',
 })

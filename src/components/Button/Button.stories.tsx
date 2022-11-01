@@ -2,6 +2,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { ScanIcon } from '~/icons'
 
+import { Text } from '../Text'
+
 import { Button } from './Button'
 
 export default {
@@ -15,28 +17,36 @@ const Template: ComponentStory<typeof Button> = args => {
 
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Click me',
+  children: <Text>Click me</Text>,
   size: 'md',
 }
 
 export const DefaultWithIcon = Template.bind({})
 DefaultWithIcon.args = {
-  label: 'Click me',
+  children: (
+    <>
+      <Text>Click me</Text>
+      <ScanIcon />
+    </>
+  ),
   size: 'md',
-  icon: ScanIcon,
 }
 
 export const Primary = Template.bind({})
 Primary.args = {
-  label: 'Click me',
+  children: <Text>Click me</Text>,
   size: 'md',
   variant: 'primary',
 }
 
 export const PrimaryWithIcon = Template.bind({})
 PrimaryWithIcon.args = {
-  label: 'Click me',
+  children: (
+    <>
+      <ScanIcon />
+      <Text>Click me</Text>
+    </>
+  ),
   size: 'md',
   variant: 'primary',
-  icon: ScanIcon,
 }
