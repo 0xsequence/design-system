@@ -3,14 +3,14 @@ import { style } from '@vanilla-extract/css'
 import { vars } from '~/css'
 
 export const content = style({
-  backgroundColor: vars.colors.backgroundComponent,
-  padding: vars.space.lg,
+  backgroundColor: vars.colors.backgroundButton,
+  padding: vars.space.loose,
   borderRadius: vars.radii.sm,
   width: 160,
 })
 
 export const arrow = style({
-  fill: vars.colors.backgroundComponent,
+  fill: vars.colors.backgroundButton,
 })
 
 export const item = style({

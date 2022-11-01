@@ -5,8 +5,8 @@ export const borderWidths = {
 
 export const radii = {
   none: '0',
-  sm: '8px',
-  md: '16px',
-  lg: '24px',
-  full: '9999px',
+  sm: '0.25rem',
+  md: '0.75rem',
+  lg: '1.5rem',
+  circle: '999px',
 }

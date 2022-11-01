@@ -16,7 +16,7 @@ export const Stack = (props: StackProps) => {
   return (
     <Box
       display="flex"
-      color="textTitle"
+      color="textBody"
       flexDirection={flexDirection}
       gap={gap}
     >

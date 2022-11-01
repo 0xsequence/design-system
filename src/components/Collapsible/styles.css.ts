@@ -10,7 +10,7 @@ export const root = style([
     borderRadius: 'md',
   }),
   style({
-    background: vars.colors.backgroundComponent,
+    background: vars.colors.backgroundButton,
     minHeight: COLLAPSED_HEIGHT,
     position: 'relative',
     borderRadius: vars.radii.md,
