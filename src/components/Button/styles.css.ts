@@ -1,44 +1,73 @@
-import { recipe } from '@vanilla-extract/recipes'
+import { style } from '@vanilla-extract/css'
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { vars } from '~/css'
+import { atoms, vars } from '~/css'
 
-export const button = recipe({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    width: 'auto',
-    userSelect: 'none',
-    cursor: 'pointer',
-    appearance: 'none',
-    border: 'none',
-    lineHeight: 0,
-    backdropFilter: 'blur(12.5px)',
-    background: vars.colors.backgroundSecondary,
-    color: vars.colors.textBody,
-  },
+export const variants = recipe({
+  base: style([
+    atoms({
+      background: 'backgroundSecondary',
+      cursor: 'pointer',
+      display: 'inline-block',
+      fontFamily: 'body',
+    }),
+    style({
+      border: 'none',
+      lineHeight: 'inherit',
+    }),
+  ]),
+  // {
+  //     color: vars.colors.textTitle,
+  //   },
 
   variants: {
-    size: {
-      sm: {
-        height: '24px',
-        borderRadius: vars.radii.sm,
-        padding: `0 ${vars.space.tight}`,
-      },
-      md: {
-        height: '32px',
-        borderRadius: vars.radii.circle,
-        padding: `0 ${vars.space.normal}`,
-      },
-      lg: {
-        height: '48px',
-        borderRadius: vars.radii.md,
-      },
-    },
     variant: {
       primary: {
         background: vars.colors.gradientPrimary,
         color: 'white',
       },
     },
+
+    size: {
+      sm: style([
+        atoms({
+          borderRadius: 'subtle',
+          textSize: 'xsmall',
+          weight: 'semiBold',
+          paddingX: 'sm',
+          paddingY: 'xs',
+        }),
+        style({
+          height: '24px',
+        }),
+      ]),
+      md: style([
+        atoms({
+          borderRadius: 'medium',
+          paddingX: 'md',
+          paddingY: 'sm',
+          fontSize: 'small',
+          weight: 'bold',
+        }),
+        style({
+          height: '34px',
+        }),
+      ]),
+      lg: {
+        height: '48px',
+      },
+    },
+
+    blur: {
+      false: {},
+      true: {
+        backdropFilter: 'blur(12.5px)',
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
   },
 })
+
+export type Variants = RecipeVariants<typeof variants>
