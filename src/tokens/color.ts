@@ -64,14 +64,14 @@ type TextColor = 'body' | 'faded' | 'title' | 'inverse'
 
 const textColors: { [key in ColorScheme]: { [key in TextColor]: string } } = {
   dark: {
-    body: '#8a8a8a',
-    faded: '#555555',
+    body: '#ffffff',
+    faded: 'rgba(0, 0, 0, 0.5)',
     title: '#ffffff',
     inverse: '#000000',
   },
   light: {
-    body: '#8a8a8a',
-    faded: '#555555',
+    body: '#222222',
+    faded: 'rgba(0, 0, 0, 0.5)',
     title: '#222222',
     inverse: '#ffffff',
   },
@@ -93,6 +93,7 @@ export const colorSchemes = {
 export const colors = {
   base: {
     black: '#000000',
+    inherit: 'inherit',
     transparent: 'transparent',
     white: '#ffffff',
   },
