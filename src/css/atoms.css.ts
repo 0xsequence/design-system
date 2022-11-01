@@ -79,6 +79,8 @@ const responsiveProperties = defineProperties({
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
     placeItems: ['justifyContent', 'alignItems'],
+    textSize: ['fontSize', 'lineHeight'],
+    weight: ['fontWeight'],
   },
 })
 
@@ -89,6 +91,9 @@ const unresponsiveProperties = defineProperties({
     fontFamily: vars.fonts,
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     visibility: ['hidden', 'visible'],
+    whiteSpace: ['normal', 'nowrap', 'initial', 'inherit'],
+    wordBreak: ['break-word'],
+    wordWrap: ['normal', 'break-word', 'initial', 'inherit'],
     zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' },
   },
 })

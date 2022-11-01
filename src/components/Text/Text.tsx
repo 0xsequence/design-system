@@ -4,11 +4,41 @@ import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
-type TextProps = BoxProps & styles.Variants
+type TextProps = Pick<
+  BoxProps,
+  | 'alignSelf'
+  | 'color'
+  | 'fontFamily'
+  | 'justifySelf'
+  | 'letterSpacing'
+  | 'margin'
+  | 'marginBottom'
+  | 'marginLeft'
+  | 'marginRight'
+  | 'marginTop'
+  | 'marginX'
+  | 'marginY'
+  | 'padding'
+  | 'paddingBottom'
+  | 'paddingLeft'
+  | 'paddingRight'
+  | 'paddingTop'
+  | 'paddingX'
+  | 'paddingY'
+  | 'textSize'
+  | 'textTransform'
+  | 'visibility'
+  | 'weight'
+  | 'whiteSpace'
+  | 'wordBreak'
+  | 'wordWrap'
+  | 'zIndex'
+> &
+  styles.Variants
 
 export const Text = forwardRef(
   (props: PropsWithChildren<TextProps>, ref: Ref<HTMLElement>) => {
-    const { italic, underline, variant, children, ...boxProps } = props
+    const { italic, underline, variant = 'span', children, ...boxProps } = props
 
     return (
       <Box
