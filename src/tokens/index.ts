@@ -1,5 +1,6 @@
 import { borderWidths, radii } from './border'
 import { colors } from './color'
+import { blur } from './effect'
 import { opacity } from './opacity'
 import { shadows } from './shadow'
 import { space } from './space'
@@ -12,6 +13,7 @@ import {
 } from './typography'
 
 export const tokens = {
+  blur,
   borderWidths,
   colors,
   fonts,

@@ -84,6 +84,7 @@ const responsiveProperties = defineProperties({
 
 const unresponsiveProperties = defineProperties({
   properties: {
+    backdropFilter: vars.blur,
     cursor: ['default', 'pointer', 'not-allowed'],
     fontFamily: vars.fonts,
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
