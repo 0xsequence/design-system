@@ -3,67 +3,81 @@ import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms } from '~/css'
 
-const bodyVariant = style([
-  atoms({
-    fontSize: 'md',
-    fontWeight: 'medium',
-    lineHeight: 'body',
-    color: 'textBody',
-    fontFamily: 'body',
-  }),
-])
-
 export const variants = recipe({
-  base: bodyVariant,
+  base: style([
+    atoms({
+      fontFamily: 'body',
+      color: 'inherit',
+    }),
+  ]),
   variants: {
     /** style presets */
     variant: {
       h1: style([
         atoms({
-          fontSize: 'xl',
-          fontWeight: 'medium',
-          lineHeight: 'heading',
-          color: 'textTitle',
+          letterSpacing: 'none',
+          textSize: 'xlarge',
+          weight: 'bold',
         }),
       ]),
       h2: style([
         atoms({
-          fontSize: 'xl',
-          fontWeight: 'medium',
-          lineHeight: 'heading',
-          color: 'textTitle',
+          letterSpacing: 'regular',
+          textSize: 'large',
+          weight: 'semiBold',
         }),
       ]),
       h3: style([
         atoms({
-          fontSize: 'sm',
-          fontWeight: 'medium',
-          lineHeight: 'body',
-          color: 'textTitle',
+          letterSpacing: 'regular',
+          textSize: 'medium',
+          weight: 'bold',
         }),
       ]),
       label: style([
         atoms({
-          fontSize: 'sm',
-          fontWeight: 'semiBold',
-          lineHeight: 'heading',
-          color: 'textTitle',
+          letterSpacing: 'open',
+          textSize: 'small',
+          weight: 'semiBold',
         }),
       ]),
       code: style([
         atoms({
+          letterSpacing: 'open',
           fontFamily: 'mono',
-          fontSize: 'md',
-          fontWeight: 'medium',
-          lineHeight: 'body',
-          color: 'textBody',
+          textSize: 'normal',
+          weight: 'regular',
         }),
       ]),
-      p: bodyVariant,
-      span: bodyVariant,
+      p: style([
+        atoms({
+          letterSpacing: 'open',
+          textSize: 'normal',
+          weight: 'regular',
+        }),
+      ]),
+      span: style([
+        atoms({
+          letterSpacing: 'open',
+          textSize: 'normal',
+          weight: 'regular',
+        }),
+      ]),
     },
 
     /** prop overrides */
+    ellipsis: {
+      true: style([
+        style({
+          textOverflow: 'ellipsis',
+        }),
+        atoms({
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+        }),
+      ]),
+    },
+
     italic: {
       true: style({
         fontStyle: 'italic',
@@ -75,9 +89,6 @@ export const variants = recipe({
         textDecoration: 'underline',
       }),
     },
-  },
-  defaultVariants: {
-    variant: 'span',
   },
 })
 
