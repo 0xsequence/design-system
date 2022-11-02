@@ -1,70 +1,77 @@
 import { style } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { atoms, vars } from '~/css'
+import { atoms } from '~/css'
 
 export const variants = recipe({
   base: style([
     atoms({
-      background: 'backgroundSecondary',
       cursor: 'pointer',
       display: 'inline-block',
       fontFamily: 'body',
       color: 'textBody',
     }),
-    style({
-      border: 'none',
-      lineHeight: 'inherit',
-    }),
+    style({ border: 'none' }),
   ]),
 
   variants: {
     variant: {
-      primary: {
-        background: vars.colors.gradientPrimary,
-        color: 'white',
-      },
-      solid: {},
-      glass: {},
+      primary: style([
+        atoms({ background: 'gradientPrimary' }),
+        style({ color: 'white' }),
+      ]),
+      solid: style([atoms({ background: 'backgroundButton' })]),
+      glass: style([
+        atoms({
+          backdropFilter: 'blur',
+          background: 'backgroundLight',
+        }),
+      ]),
     },
 
     size: {
       sm: style([
         atoms({
-          borderRadius: 'sm',
-          textSize: 'xsmall',
-          weight: 'semiBold',
+          borderRadius: 'circle',
           paddingX: 'tight',
-          paddingY: 'xtight',
+          paddingY: 'xxtight',
+          textSize: 'xsmall',
+          weight: 'bold',
         }),
-        style({
-          height: '24px',
-        }),
+        style({ height: '28px' }),
       ]),
       md: style([
         atoms({
-          borderRadius: 'md',
-          paddingX: 'tight',
-          paddingY: 'xtight',
-          fontSize: 'small',
+          borderRadius: 'lg',
+          paddingY: 'tight',
+          textSize: 'normal',
           weight: 'bold',
         }),
         style({
-          height: '34px',
+          height: '44px',
+          paddingLeft: '1.25rem',
+          paddingRight: '1.25rem',
         }),
       ]),
-      lg: {
-        height: '48px',
-      },
+      lg: style([
+        atoms({
+          borderRadius: 'lg',
+          paddingY: 'tight',
+          textSize: 'small',
+          weight: 'semiBold',
+        }),
+        style({
+          height: '59px',
+          paddingLeft: '1.25rem',
+          paddingRight: '1.25rem',
+        }),
+      ]),
     },
 
     blur: {
       false: {},
       true: style([atoms({ backdropFilter: 'blur' })]),
     },
-  },
-  defaultVariants: {
-    size: 'md',
   },
 })
 

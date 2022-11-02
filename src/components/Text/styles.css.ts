@@ -62,8 +62,6 @@ export const variants = recipe({
       span: style([
         atoms({
           letterSpacing: 'open',
-          textSize: 'normal',
-          weight: 'regular',
         }),
       ]),
     },

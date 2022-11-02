@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { ScanIcon } from '~/icons'
 
+import { Box } from '../Box'
 import { Text } from '../Text'
 
 import { Button } from './Button'
@@ -12,7 +13,11 @@ export default {
 } as ComponentMeta<typeof Button>
 
 const Template: ComponentStory<typeof Button> = args => {
-  return <Button {...args} />
+  return (
+    <Box padding="tight" background="backgroundSecondary" borderRadius="sm">
+      <Button {...args} />
+    </Box>
+  )
 }
 
 export const Default = Template.bind({})
@@ -25,8 +30,8 @@ export const DefaultWithIcon = Template.bind({})
 DefaultWithIcon.args = {
   children: (
     <>
-      <Text>Click me</Text>
       <ScanIcon />
+      <Text>Click me</Text>
     </>
   ),
   size: 'md',

@@ -11,7 +11,7 @@ type ButtonProps = styles.Variants &
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props: PropsWithChildren<ButtonProps>, ref: Ref<HTMLElement>) => {
-    const { children, size = 'md', variant, type } = props
+    const { children, size = 'md', variant = 'solid', type = 'button' } = props
 
     return (
       <Box
@@ -20,7 +20,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={styles.variants({ size, variant })}
         ref={ref}
       >
-        {children}
+        <Box as="span" display="flex" placeItems="flex-start">
+          {children}
+        </Box>
       </Box>
     )
   }
