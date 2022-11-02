@@ -1,29 +1,35 @@
 import { clsx, ClassValue } from 'clsx'
-import { createElement, forwardRef } from 'react'
+import {
+  createElement,
+  ElementType,
+  ReactElement,
+  forwardRef,
+  Ref,
+  ComponentPropsWithRef,
+} from 'react'
 
 import { atoms, Atoms } from '~/css'
 
-type HTMLProperties = Omit<
-  React.AllHTMLAttributes<HTMLElement>,
-  'as' | 'className' | 'color' | 'height' | 'width'
->
+export type Props<T extends ElementType = 'div'> = ComponentPropsWithRef<T> & {
+  as?: T
+  className?: ClassValue
+} & Atoms
 
-type Props = Atoms &
-  HTMLProperties & {
-    as?: React.ElementType
-    className?: ClassValue
-  }
+type PolymorphicComponent = <T extends ElementType = 'div'>(
+  props: Props<T>
+) => ReactElement | null
 
-export const Box = forwardRef<HTMLElement, Props>(
-  ({ as = 'div', className, ...props }: Props, ref) => {
+export const Box: PolymorphicComponent = forwardRef(
+  <T extends ElementType>(props: Props<T>, ref: Ref<T>) => {
+    const { as = 'div', className, ...restProps } = props
     const atomProps: Record<string, unknown> = {}
     const nativeProps: Record<string, unknown> = {}
 
-    for (const key in props) {
+    for (const key in restProps) {
       if (atoms.properties.has(key as keyof Atoms)) {
-        atomProps[key] = props[key as keyof typeof props]
+        atomProps[key] = restProps[key as keyof typeof restProps]
       } else {
-        nativeProps[key] = props[key as keyof typeof props]
+        nativeProps[key] = restProps[key as keyof typeof restProps]
       }
     }
 
@@ -39,13 +45,10 @@ export const Box = forwardRef<HTMLElement, Props>(
   }
 )
 
-Box.displayName = 'Box'
-
 export type BoxProps = Parameters<typeof Box>[0]
 
 export type BoxLayoutProps = Pick<
-  BoxProps,
-  | 'children'
+  Atoms,
   | 'margin'
   | 'marginX'
   | 'marginY'
