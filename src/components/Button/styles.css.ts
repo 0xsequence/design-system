@@ -24,6 +24,8 @@ export const variants = recipe({
         background: vars.colors.gradientPrimary,
         color: 'white',
       },
+      solid: {},
+      glass: {},
     },
 
     size: {
@@ -58,9 +60,7 @@ export const variants = recipe({
 
     blur: {
       false: {},
-      true: {
-        backdropFilter: 'blur(12.5px)',
-      },
+      true: style([atoms({ backdropFilter: 'blur' })]),
     },
   },
   defaultVariants: {
