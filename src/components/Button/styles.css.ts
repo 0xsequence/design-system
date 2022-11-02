@@ -7,9 +7,7 @@ export const variants = recipe({
   base: style([
     atoms({
       cursor: 'pointer',
-      display: 'inline-block',
       fontFamily: 'body',
-      color: 'textBody',
     }),
     style({ border: 'none' }),
   ]),
@@ -17,15 +15,42 @@ export const variants = recipe({
   variants: {
     variant: {
       primary: style([
-        atoms({ background: 'gradientPrimary' }),
-        style({ color: 'white' }),
+        atoms({
+          background: {
+            base: 'gradientPrimary',
+            hover: 'backgroundButton',
+            active: 'backgroundLight',
+          },
+          color: {
+            base: 'white',
+            hover: 'textBody',
+            active: 'textBody',
+          },
+        }),
       ]),
-      solid: style([atoms({ background: 'backgroundButton' })]),
+      solid: style([
+        atoms({
+          background: {
+            base: 'backgroundButton',
+            hover: 'backgroundLight',
+            active: 'backgroundDark',
+          },
+          color: 'textBody',
+        }),
+      ]),
       glass: style([
         atoms({
           backdropFilter: 'blur',
           background: 'backgroundLight',
+          color: 'textBody',
         }),
+      ]),
+      // TODO
+      disabled: style([
+        atoms({ background: 'backgroundButton', color: 'textBody' }),
+      ]),
+      pending: style([
+        atoms({ background: 'backgroundButton', color: 'textBody' }),
       ]),
     },
 
@@ -68,9 +93,9 @@ export const variants = recipe({
       ]),
     },
 
-    blur: {
-      false: {},
-      true: style([atoms({ backdropFilter: 'blur' })]),
+    width: {
+      full: style([atoms({ display: 'block' }), style({ width: '100%' })]),
+      normal: style([atoms({ display: 'inline-block' })]),
     },
   },
 })
