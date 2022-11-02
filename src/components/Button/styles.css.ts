@@ -10,15 +10,13 @@ export const variants = recipe({
       cursor: 'pointer',
       display: 'inline-block',
       fontFamily: 'body',
+      color: 'textBody',
     }),
     style({
       border: 'none',
       lineHeight: 'inherit',
     }),
   ]),
-  // {
-  //     color: vars.colors.textTitle,
-  //   },
 
   variants: {
     variant: {
@@ -31,11 +29,11 @@ export const variants = recipe({
     size: {
       sm: style([
         atoms({
-          borderRadius: 'subtle',
+          borderRadius: 'sm',
           textSize: 'xsmall',
           weight: 'semiBold',
-          paddingX: 'sm',
-          paddingY: 'xs',
+          paddingX: 'tight',
+          paddingY: 'xtight',
         }),
         style({
           height: '24px',
@@ -43,9 +41,9 @@ export const variants = recipe({
       ]),
       md: style([
         atoms({
-          borderRadius: 'medium',
-          paddingX: 'md',
-          paddingY: 'sm',
+          borderRadius: 'md',
+          paddingX: 'tight',
+          paddingY: 'xtight',
           fontSize: 'small',
           weight: 'bold',
         }),
