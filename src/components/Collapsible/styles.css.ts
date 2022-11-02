@@ -7,7 +7,7 @@ export const COLLAPSED_HEIGHT = '65px'
 
 export const root = style([
   atoms({
-    borderRadius: 'medium',
+    borderRadius: 'md',
   }),
   style({
     background: vars.colors.backgroundButton,
