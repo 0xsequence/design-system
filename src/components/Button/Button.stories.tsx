@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { ScanIcon } from '~/icons'
+import { ArrowRightIcon, ScanIcon } from '~/icons'
 
 import { Box } from '../Box'
 import { Text } from '../Text'
@@ -14,44 +14,44 @@ export default {
 
 const Template: ComponentStory<typeof Button> = args => {
   return (
-    <Box padding="tight" background="backgroundSecondary" borderRadius="sm">
+    <Box padding="tight" background="backgroundSecondary" borderRadius="md">
       <Button {...args} />
     </Box>
   )
 }
 
-export const Default = Template.bind({})
-Default.args = {
+export const TextOnly = Template.bind({})
+TextOnly.args = {
   children: <Text>Click me</Text>,
   size: 'md',
+  variant: 'solid',
 }
 
-export const DefaultWithIcon = Template.bind({})
-DefaultWithIcon.args = {
+export const WithIcon = Template.bind({})
+WithIcon.args = {
   children: (
     <>
       <ScanIcon />
-      <Text>Click me</Text>
+      Click me
     </>
   ),
   size: 'md',
+  variant: 'solid',
 }
 
-export const Primary = Template.bind({})
-Primary.args = {
-  children: <Text>Click me</Text>,
-  size: 'md',
-  variant: 'primary',
-}
-
-export const PrimaryWithIcon = Template.bind({})
-PrimaryWithIcon.args = {
+export const WithRightIcon = Template.bind({})
+WithRightIcon.args = {
   children: (
     <>
-      <ScanIcon />
-      <Text>Click me</Text>
+      <Box display="flex" placeItems="flex-start" gap="xtight">
+        <ScanIcon />
+        <Text>Click me</Text>
+      </Box>
+      <ArrowRightIcon />
     </>
   ),
   size: 'md',
-  variant: 'primary',
+  variant: 'solid',
+  justifyContent: 'space-between',
+  width: 'full',
 }
