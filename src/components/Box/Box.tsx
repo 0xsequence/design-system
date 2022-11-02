@@ -10,17 +10,18 @@ import {
 
 import { atoms, Atoms } from '~/css'
 
-export type Props<T extends ElementType = 'div'> = ComponentPropsWithRef<T> & {
-  as?: T
-  className?: ClassValue
-} & Atoms
+export type BoxProps<T extends ElementType = 'div'> =
+  ComponentPropsWithRef<T> & {
+    as?: T
+    className?: ClassValue
+  } & Atoms
 
 type PolymorphicComponent = <T extends ElementType = 'div'>(
-  props: Props<T>
+  props: BoxProps<T>
 ) => ReactElement | null
 
 export const Box: PolymorphicComponent = forwardRef(
-  <T extends ElementType>(props: Props<T>, ref: Ref<T>) => {
+  <T extends ElementType>(props: BoxProps<T>, ref: Ref<T>) => {
     const { as = 'div', className, ...restProps } = props
     const atomProps: Record<string, unknown> = {}
     const nativeProps: Record<string, unknown> = {}
@@ -44,8 +45,6 @@ export const Box: PolymorphicComponent = forwardRef(
     })
   }
 )
-
-export type BoxProps = Parameters<typeof Box>[0]
 
 export type BoxLayoutProps = Pick<
   Atoms,
