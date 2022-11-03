@@ -1,7 +1,7 @@
-import { BoxProps } from '../components/Box/Box'
+import { BoxLayoutProps, BoxProps } from '../components/Box'
 
 export type IconSize = 'sm' | 'md' | 'lg'
 
-export interface IconProps {
+export interface IconProps extends BoxLayoutProps {
   className?: BoxProps['className']
 }
