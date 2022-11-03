@@ -3,7 +3,9 @@
   "jsxRuntime": "automatic",
   "removeViewBox": false,
   "svgProps": {
-    "width": "{props.width}",
-    "height": "{props.height}"
+    "width": "18",
+    "height": "18",
+    "fontSize": "inherit",
+    "overflow": "visible"
   }
 }
