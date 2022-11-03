@@ -8,13 +8,12 @@ import { IconProps } from './types'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    width="18"
-    height="18"
+    width="1em"
+    height="1em"
     viewBox="0 0 18 18"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    fontSize="inherit"
-    overflow="visible"
+    fontSize="1.5em"
     {...props}
   >
     <rect
