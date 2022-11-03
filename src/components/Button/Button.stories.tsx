@@ -43,7 +43,12 @@ export const WithRightIcon = Template.bind({})
 WithRightIcon.args = {
   children: (
     <>
-      <Box display="flex" placeItems="flex-start" gap="xtight">
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="flex-start"
+        gap="xtight"
+      >
         <ScanIcon />
         <Text>Click me</Text>
       </Box>
