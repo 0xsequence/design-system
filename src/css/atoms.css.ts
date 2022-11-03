@@ -44,7 +44,15 @@ const responsiveProperties = defineProperties({
     letterSpacing: vars.letterSpacings,
     lineHeight: vars.lineHeights,
 
-    display: ['block', 'flex', 'grid', 'inline-block', 'none', 'contents'],
+    display: [
+      'block',
+      'flex',
+      'grid',
+      'inline-block',
+      'inline-flex',
+      'none',
+      'contents',
+    ],
     position: ['absolute', 'fixed', 'relative', 'sticky'],
     flexDirection: ['column', 'column-reverse', 'row', 'row-reverse'],
     justifyContent: [...flexAlignment, 'space-around', 'space-between'],
