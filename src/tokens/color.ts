@@ -11,6 +11,8 @@ type Background =
   | 'button'
   | 'backdrop'
   | 'inverse'
+  | 'modal'
+  | 'overlay'
   | 'dark' // glass
   | 'light' // glass
 
@@ -23,6 +25,9 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
     inverse: '#ffffff',
     dark: 'rgba(0, 0, 0, 0.4)',
     light: 'rgba(85, 85, 85, 0.3)',
+    modal: '#151515',
+    overlay:
+      'linear-gradient(243.18deg, rgba(86, 52, 189, 0.85) 0%, rgba(49, 41, 223, 0.85) 63.54%, rgba(7, 98, 149, 0.85) 100%)',
   },
   light: {
     primary: '#f4f4f4',
@@ -32,6 +37,9 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
     inverse: '#000000',
     dark: 'rgba(255, 255, 255, 0.4)',
     light: 'rgba(170, 170, 170, 0.3)',
+    modal: '#151515',
+    overlay:
+      'linear-gradient(243.18deg, rgba(86, 52, 189, 0.85) 0%, rgba(49, 41, 223, 0.85) 63.54%, rgba(7, 98, 149, 0.85) 100%)',
   },
 }
 
