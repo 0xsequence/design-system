@@ -8,6 +8,7 @@ export const radii = {
   none: '0',
   sm: '0.25rem', // 4px
   md: '0.75rem', // 12px
-  lg: '1.5rem', // 24px
+  lg: '1rem', // 16px
+  xl: '1.5rem', // 24px
   circle: '999px',
 }

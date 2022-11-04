@@ -67,7 +67,7 @@ export const variants = recipe({
       ]),
       md: style([
         atoms({
-          borderRadius: 'lg',
+          borderRadius: 'xl',
           paddingY: 'tight',
           textSize: 'normal',
           weight: 'bold',
@@ -80,7 +80,7 @@ export const variants = recipe({
       ]),
       lg: style([
         atoms({
-          borderRadius: 'lg',
+          borderRadius: 'xl',
           paddingY: 'tight',
           textSize: 'small',
           weight: 'semiBold',
