@@ -1,0 +1,117 @@
+import { Meta } from '@storybook/addon-docs/'
+
+<Meta title="Caveats" />
+
+# Caveats for Developers
+
+Sequence Design System uses [Vanilla Extract Sprinkles](https://vanilla-extract.style/documentation/packages/sprinkles/) package to create reusable atomic classes.
+Atomic classes is a paradigm first created by [Tailwindcss](https://tailwindcss.com/) which create a single css rule per class.
+The reusable native of these atomics means that the generated css will be of fixed size and will not grow unless you add your own custom styling rules.
+
+eg.
+
+```css
+.pl-1 {
+  padding-left: 4px;
+}
+
+.pl-2 {
+  padding-left: 8px;
+}
+
+.pos-a {
+  position: absolute;
+}
+
+.pos-r {
+  position: relative;
+}
+```
+
+### Examples of Breakage
+
+Assuming we have design tokens for `fontSizes` with properties ordered:
+
+```typescript
+export const fontSizes = {
+  xsmall: '0.625rem', // 10px
+  small: '0.75rem', // 12px
+  normal: '0.875rem', // 14px
+  medium: '1rem', // 16px
+  large: '1.25rem', // 20px
+  xlarge: '1.875rem', // 30px
+}
+```
+
+The following example will break in unexpected ways
+
+```typescript
+import { recipe } from '@vanilla-extract/recipes'
+
+import { atoms } from '~/css/atoms.css'
+
+export const myStyle = recipe({
+  base: [
+    atoms({
+      fontSize: 'normal',
+    }),
+  ],
+
+  variants: {
+    size: {
+      xsmall: [
+        atoms({
+          fontSize: 'xsmall', // Has lower precedence than 'normal' ❌
+        }),
+      ],
+      small: [
+        atoms({
+          fontSize: 'small', // Has lower precedence than 'normal' ❌
+        }),
+      ],
+
+      medium: [
+        atoms({
+          fontSize: 'medium', // Has higher precedence than 'normal' ✔
+        }),
+      ],
+
+      large: [
+        atoms({
+          fontSize: 'large', // Has higher precedence than 'normal' ✔
+        }),
+      ],
+
+      xlarge: [
+        atoms({
+          fontSize: 'xlarge', // Has higher precedence than 'normal' ✔
+        }),
+      ],
+    },
+  },
+})
+```
+
+Mixing atoms and non-atomic css rules will be even more dangerous when overlapping properties.
+This is because atomic classes are always included in the top of the css document and custom styles
+will be included below giving them a higher precedence.
+
+```typescript
+export const myStyle = recipe({
+  base: {
+    fontSize: '1rem'
+  },
+
+  variants: {
+    size: {
+      xsmall: [
+        atoms({
+          fontSize: 'xsmall' // Has lower precedence than base style ❌
+        })
+      ],
+      ...
+    }
+  }
+)
+
+```
