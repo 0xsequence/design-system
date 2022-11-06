@@ -49,14 +49,14 @@ const borderColors: { [key in ColorScheme]: { [key in BorderColor]: string } } =
   {
     dark: {
       subtle: 'rgba(85, 85, 85, 0.3)',
-      normal: 'rgba(255, 255, 255, 0.15)',
+      normal: '#7F7F7F',
       firm: 'rgba(255, 255, 255, 0.5)',
       inverse: 'rgba(255, 255, 255, 0.9)',
     },
     light: {
       // TODO: update for light values
       subtle: 'rgba(85, 85, 85, 0.3)',
-      normal: 'rgba(255, 255, 255, 0.15)',
+      normal: '#7F7F7F',
       firm: 'rgba(255, 255, 255, 0.5)',
       inverse: 'rgba(255, 255, 255, 0.9)',
     },
