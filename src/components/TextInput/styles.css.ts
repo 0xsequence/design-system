@@ -20,6 +20,6 @@ export const input = style([
     position: 'relative',
   }),
   style({
-    minWidth: '100%',
+    // minWidth: '100%',
   }),
 ])

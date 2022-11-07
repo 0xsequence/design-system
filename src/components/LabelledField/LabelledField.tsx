@@ -1,14 +1,17 @@
-import { PropsWithChildren } from 'react'
+import { ElementType, PropsWithChildren } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 import { Text } from '~/components/Text'
 
 import * as styles from './styles.css'
 
-type LabelledFieldProps = BoxProps & {
+type LabelledFieldProps<T extends ElementType = 'div'> = BoxProps<T> & {
   label?: string
   labelLocation?: 'left' | 'top' | 'hidden'
 }
+
+// TODO: handle error text and secondary description label
+// TODO: handle isRequired in label?
 
 export const LabelledField = ({
   children,
@@ -18,12 +21,15 @@ export const LabelledField = ({
 }: PropsWithChildren<LabelledFieldProps>) => (
   <Box
     className={styles.labelledField}
+    display="flex"
     alignItems={labelLocation === 'left' ? 'center' : 'stretch'}
     flexDirection={labelLocation === 'left' ? 'row' : 'column'}
-    gap={labelLocation === 'left' ? 'tight' : 'normal'}
+    gap="tight"
     {...boxProps}
   >
-    <Text as="label">{label}</Text>
+    <Text variant="label" hidden={labelLocation === 'hidden'}>
+      {label}
+    </Text>
 
     {children}
   </Box>

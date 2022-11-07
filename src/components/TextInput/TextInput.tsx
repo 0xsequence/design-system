@@ -47,6 +47,16 @@ type AsTextArea = {
   type: never
 }
 
+type hiddenLabel = {
+  label?: string
+  labelLocation?: 'hidden'
+}
+
+type hasLabel = {
+  label: string
+  labelLocation: 'left' | 'top'
+}
+
 type TextInputProps<T extends 'input' | 'textarea' = 'input'> = Partial<
   Pick<
     BoxProps<T>,
@@ -62,13 +72,13 @@ type TextInputProps<T extends 'input' | 'textarea' = 'input'> = Partial<
     | 'marginY'
   >
 > &
-  (AsInput | AsTextArea) & {
-    // AsInput & {
+  (AsInput | AsTextArea) &
+  (hasLabel | hiddenLabel) & {
     name?: string
     disabled?: boolean
-    labelLocation?: 'left' | 'top' | 'hidden'
     processing?: boolean
     placeholder?: string
+    value?: string
   }
 
 export const TextInput = forwardRef(
@@ -78,11 +88,12 @@ export const TextInput = forwardRef(
       disabled = false,
       processing = false,
       type = 'text',
+      label = '',
       labelLocation = 'hidden',
       ...boxProps
     } = props
     return (
-      <LabelledField labelLocation={labelLocation}>
+      <LabelledField label={label} labelLocation={labelLocation}>
         <Box
           as={as}
           type={type}
