@@ -60,3 +60,16 @@ WithRightIcon.args = {
   justifyContent: 'space-between',
   width: 'full',
 }
+
+export const AnchorButton = Template.bind({})
+AnchorButton.args = {
+  children: (
+    <>
+      <ScanIcon />
+      Click me
+    </>
+  ),
+  as: 'a',
+  size: 'md',
+  href: '/wallet',
+}

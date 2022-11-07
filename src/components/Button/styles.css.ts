@@ -9,7 +9,10 @@ export const variants = recipe({
       cursor: 'pointer',
       fontFamily: 'body',
     }),
-    style({ border: 'none' }),
+    style({
+      border: 'none',
+      textDecoration: 'none',
+    }),
   ]),
 
   variants: {
