@@ -87,8 +87,6 @@ const responsiveProperties = defineProperties({
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
     placeItems: ['justifyContent', 'alignItems'],
-    textSize: ['fontSize', 'lineHeight'],
-    weight: ['fontWeight'],
   },
 })
 

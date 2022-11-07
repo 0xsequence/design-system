@@ -1,52 +1,62 @@
-import { forwardRef, PropsWithChildren, Ref } from 'react'
+import { ElementType, forwardRef, PropsWithChildren, Ref } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
-type TextProps = Pick<
-  BoxProps,
-  | 'alignSelf'
-  | 'color'
-  | 'fontFamily'
-  | 'justifySelf'
-  | 'letterSpacing'
-  | 'margin'
-  | 'marginBottom'
-  | 'marginLeft'
-  | 'marginRight'
-  | 'marginTop'
-  | 'marginX'
-  | 'marginY'
-  | 'padding'
-  | 'paddingBottom'
-  | 'paddingLeft'
-  | 'paddingRight'
-  | 'paddingTop'
-  | 'paddingX'
-  | 'paddingY'
-  | 'textSize'
-  | 'textTransform'
-  | 'visibility'
-  | 'weight'
-  | 'whiteSpace'
-  | 'wordBreak'
-  | 'wordWrap'
-  | 'zIndex'
+type TextProps<T extends ElementType = 'span'> = Partial<
+  Pick<
+    BoxProps<T>,
+    | 'as'
+    | 'color'
+    | 'fontWeight'
+    | 'alignSelf'
+    | 'justifySelf'
+    | 'margin'
+    | 'marginBottom'
+    | 'marginLeft'
+    | 'marginRight'
+    | 'marginTop'
+    | 'marginX'
+    | 'marginY'
+    | 'padding'
+    | 'paddingBottom'
+    | 'paddingLeft'
+    | 'paddingRight'
+    | 'paddingTop'
+    | 'paddingX'
+    | 'paddingY'
+    | 'textTransform'
+    | 'visibility'
+    | 'whiteSpace'
+    | 'wordBreak'
+    | 'wordWrap'
+    | 'zIndex'
+  >
 > &
   styles.Variants
 
 export const Text = forwardRef(
-  (props: PropsWithChildren<TextProps>, ref: Ref<HTMLElement>) => {
-    const { italic, underline, variant = 'span', children, ...boxProps } = props
+  <T extends ElementType>(
+    props: PropsWithChildren<TextProps<T>>,
+    ref: Ref<T>
+  ) => {
+    const {
+      as = 'span',
+      variant = 'inherit',
+      italic,
+      underline,
+      children,
+      ...boxProps
+    } = props
 
     return (
       <Box
-        as={variant}
+        as={as}
         className={styles.variants({
+          variant,
           italic,
           underline,
-          variant,
         })}
         ref={ref}
         {...boxProps}

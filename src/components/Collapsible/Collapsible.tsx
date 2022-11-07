@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
 import { Text } from '~/components/Text'
+import { ChevronLeftIcon } from '~/icons'
 
 import * as styles from './styles.css'
 
@@ -31,12 +32,16 @@ export const Collapsible = (
         <CollapsiblePrimitive.Trigger className={styles.trigger}>
           {typeof label === 'string' ? (
             <div className={styles.label}>
-              <Text variant="h2">{label}</Text>
+              <Text variant="medium" color="white">
+                {label}
+              </Text>
             </div>
           ) : (
             label
           )}
-          <div className={styles.icon({ expanded })}>▼</div>
+          <div className={styles.icon({ expanded })}>
+            <ChevronLeftIcon />
+          </div>
         </CollapsiblePrimitive.Trigger>
         <AnimatePresence>
           {expanded && (

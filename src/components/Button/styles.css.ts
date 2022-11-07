@@ -1,23 +1,23 @@
-import { style } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms } from '~/css'
 
+import { variants as textVariants } from '../Text/styles.css'
+
 export const variants = recipe({
-  base: style([
+  base: [
     atoms({
       cursor: 'pointer',
-      fontFamily: 'body',
     }),
-    style({
+    {
       border: 'none',
       textDecoration: 'none',
-    }),
-  ]),
+    },
+  ],
 
   variants: {
     variant: {
-      primary: style([
+      primary: [
         atoms({
           background: {
             base: 'gradientPrimary',
@@ -30,8 +30,8 @@ export const variants = recipe({
             active: 'textBody',
           },
         }),
-      ]),
-      solid: style([
+      ],
+      solid: [
         atoms({
           background: {
             base: 'backgroundButton',
@@ -40,65 +40,60 @@ export const variants = recipe({
           },
           color: 'textBody',
         }),
-      ]),
-      glass: style([
+      ],
+      glass: [
         atoms({
           backdropFilter: 'blur',
           background: 'backgroundLight',
           color: 'textBody',
         }),
-      ]),
+      ],
       // TODO
-      disabled: style([
-        atoms({ background: 'backgroundButton', color: 'textBody' }),
-      ]),
-      pending: style([
-        atoms({ background: 'backgroundButton', color: 'textBody' }),
-      ]),
+      disabled: [atoms({ background: 'backgroundButton', color: 'textBody' })],
+      pending: [atoms({ background: 'backgroundButton', color: 'textBody' })],
     },
 
     size: {
-      sm: style([
+      sm: [
+        textVariants({ variant: 'xsmall' }),
         atoms({
           borderRadius: 'circle',
           paddingX: 'tight',
           paddingY: 'xxtight',
-          textSize: 'xsmall',
-          weight: 'bold',
         }),
-        style({ height: '28px' }),
-      ]),
-      md: style([
+        { height: '28px' },
+      ],
+      md: [
+        textVariants({ variant: 'normal' }),
         atoms({
           borderRadius: 'lg',
           paddingY: 'tight',
-          textSize: 'normal',
-          weight: 'bold',
+          fontWeight: 'bold',
         }),
-        style({
+        {
           height: '44px',
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
-        }),
-      ]),
-      lg: style([
+        },
+      ],
+      lg: [
+        textVariants({ variant: 'normal' }),
         atoms({
           borderRadius: 'lg',
           paddingY: 'tight',
-          textSize: 'small',
-          weight: 'semiBold',
+          fontWeight: 'bold',
         }),
-        style({
+        {
           height: '59px',
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
-        }),
-      ]),
+        },
+      ],
     },
 
     width: {
-      full: style([atoms({ display: 'block' }), style({ width: '100%' })]),
-      normal: style([atoms({ display: 'inline-block' })]),
+      full: [atoms({ display: 'block' }), { width: '100%' }],
+      normal: [atoms({ display: 'inline-block' })],
     },
   },
 })

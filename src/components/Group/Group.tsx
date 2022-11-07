@@ -28,7 +28,7 @@ export const Group = (props: GroupProps) => {
   return (
     <Box className={clsx(styles.root, className)} style={style}>
       <div className={styles.header}>
-        {label && <Text variant="h2">{label}</Text>}
+        {label && <Text variant="medium">{label}</Text>}
         {contentRight && <div>{contentRight}</div>}
       </div>
       <div className={styles.items({ layout })}>

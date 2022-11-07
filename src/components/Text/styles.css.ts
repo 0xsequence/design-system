@@ -4,66 +4,78 @@ import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 import { atoms } from '~/css'
 
 export const variants = recipe({
-  base: style([
-    atoms({
-      fontFamily: 'body',
-      color: 'inherit',
-    }),
-  ]),
   variants: {
-    /** style presets */
     variant: {
-      h1: style([
+      inherit: {
+        fontFamily: 'inherit',
+        fontSize: 'inherit',
+        lineHeight: 'inherit',
+        letterSpacing: 'inherit',
+        fontWeight: 'inherit',
+      },
+      xlarge: [
         atoms({
+          fontFamily: 'body',
+          fontSize: 'xlarge',
+          lineHeight: 'xlarge',
           letterSpacing: 'none',
-          textSize: 'xlarge',
-          weight: 'bold',
-          color: 'textBody',
+          fontWeight: 'bold',
         }),
-      ]),
-      h2: style([
+      ],
+      large: [
         atoms({
+          fontFamily: 'body',
+          fontSize: 'large',
+          lineHeight: 'large',
           letterSpacing: 'regular',
-          textSize: 'large',
-          weight: 'semiBold',
-          color: 'textBody',
+          fontWeight: 'semiBold',
         }),
-      ]),
-      h3: style([
+      ],
+      medium: [
         atoms({
+          fontFamily: 'body',
+          fontSize: 'medium',
+          lineHeight: 'medium',
           letterSpacing: 'regular',
-          textSize: 'medium',
-          weight: 'bold',
-          color: 'textBody',
+          fontWeight: 'bold',
         }),
-      ]),
-      label: style([
+      ],
+      normal: [
         atoms({
+          fontFamily: 'body',
+          fontSize: 'normal',
+          lineHeight: 'normal',
           letterSpacing: 'open',
-          textSize: 'small',
-          weight: 'semiBold',
+          fontWeight: 'regular',
         }),
-      ]),
-      code: style([
+      ],
+      small: [
         atoms({
+          fontFamily: 'body',
+          fontSize: 'small',
+          lineHeight: 'small',
           letterSpacing: 'open',
+          fontWeight: 'medium',
+        }),
+      ],
+      xsmall: [
+        atoms({
+          fontFamily: 'body',
+          fontSize: 'xsmall',
+          lineHeight: 'xsmall',
+          letterSpacing: 'open',
+          fontWeight: 'bold',
+        }),
+      ],
+      code: [
+        atoms({
           fontFamily: 'mono',
-          textSize: 'normal',
-          weight: 'regular',
+          fontSize: 'normal',
+          lineHeight: 'normal',
+          letterSpacing: 'none',
+          fontWeight: 'regular',
         }),
-      ]),
-      p: style([
-        atoms({
-          letterSpacing: 'open',
-          textSize: 'normal',
-          weight: 'regular',
-        }),
-      ]),
-      span: style([
-        atoms({
-          letterSpacing: 'open',
-        }),
-      ]),
+      ],
     },
 
     /** prop overrides */

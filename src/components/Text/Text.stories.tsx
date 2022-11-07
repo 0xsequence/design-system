@@ -8,44 +8,44 @@ export default {
 } as ComponentMeta<typeof Text>
 
 const Template: ComponentStory<typeof Text> = args => {
-  return <Text {...args} />
+  return <Text color="textBody" {...args} />
 }
 
 export const Heading1 = Template.bind({})
 Heading1.args = {
-  variant: 'h1',
+  variant: 'xlarge',
   children: 'Hello, world!',
 }
 
 export const Heading2 = Template.bind({})
 Heading2.args = {
-  variant: 'h2',
+  variant: 'large',
   children: 'Hello, world!',
 }
 
 export const Heading3 = Template.bind({})
 Heading3.args = {
-  variant: 'h3',
+  variant: 'medium',
   children: 'Hello, world!',
 }
 
 export const Bold = Template.bind({})
 Bold.args = {
-  variant: 'p',
-  weight: 'bold',
+  variant: 'normal',
+  fontWeight: 'bold',
   children: 'Hello, world!',
 }
 
 export const BodyLarge = Template.bind({})
 BodyLarge.args = {
-  variant: 'p',
-  textSize: 'large',
+  variant: 'large',
+  as: 'p',
   children: 'Hello, world!',
 }
 
 export const Body = Template.bind({})
 Body.args = {
-  variant: 'p',
+  variant: 'normal',
   children: 'Hello, world!',
 }
 
