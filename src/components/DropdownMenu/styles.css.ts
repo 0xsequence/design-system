@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
 
-import { atoms, vars } from '~/css'
+import { vars } from '~/css'
 
 export const content = style({
   backgroundColor: vars.colors.backgroundButton,

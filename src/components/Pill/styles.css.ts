@@ -2,17 +2,17 @@ import { style } from '@vanilla-extract/css'
 
 import { atoms } from '~/css'
 
+import { variants as textVariants } from '../Text/styles.css'
+
 export const pill = style([
+  textVariants({ variant: 'xsmall' }),
   atoms({
     backdropFilter: 'blur',
     borderRadius: 'sm',
     display: 'inline-flex',
-    fontFamily: 'body',
-    fontSize: 'xsmall',
     gap: 'xxtight',
     paddingX: 'xtight',
     paddingY: 'xxtight',
-    weight: 'semiBold',
     whiteSpace: 'nowrap',
   }),
   style({

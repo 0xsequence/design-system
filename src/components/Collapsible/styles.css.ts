@@ -9,13 +9,13 @@ export const root = style([
   atoms({
     borderRadius: 'md',
   }),
-  style({
+  {
     background: vars.colors.backgroundButton,
     minHeight: COLLAPSED_HEIGHT,
     position: 'relative',
     marginBottom: '25px',
     overflow: 'hidden',
-  }),
+  },
 ])
 
 export const trigger = style({
@@ -47,17 +47,17 @@ export const icon = recipe({
   base: {
     color: vars.colors.white,
     position: 'absolute',
-    right: '-6px',
+    // right: '-6px',
+    right: 0,
     marginRight: '15px',
     transition: 'all 0.1s linear',
-    transform: 'rotate(90deg)',
     opacity: 0.7,
   },
 
   variants: {
     expanded: {
       true: {
-        transform: 'rotate(0deg)',
+        transform: 'rotate(-90deg)',
       },
     },
   },

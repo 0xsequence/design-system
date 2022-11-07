@@ -12,9 +12,8 @@ type ButtonProps<T extends ElementType> = styles.Variants &
     | 'fontFamily'
     | 'fontSize'
     | 'lineHeight'
+    | 'fontWeight'
     | 'size'
-    | 'textSize'
-    | 'weight'
     | 'width'
   > & {
     width?: 'full' | 'normal'

@@ -51,7 +51,7 @@ export const Tabs = (props: TabsProps) => {
             key={tab.value}
             value={tab.value}
           >
-            <Text variant="h2">{tab.title}</Text>
+            <Text variant="medium">{tab.title}</Text>
           </TabsPrimitive.Trigger>
         ))}
       </TabsPrimitive.List>
