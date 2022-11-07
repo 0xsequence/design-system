@@ -1,13 +1,12 @@
-import { forwardRef, PropsWithChildren, Ref } from 'react'
+import { forwardRef, PropsWithChildren, Ref, ElementType } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
-type ButtonProps = styles.Variants &
+type ButtonProps<T extends ElementType> = styles.Variants &
   Omit<
-    BoxProps,
-    | 'as'
+    BoxProps<T>,
     | 'background'
     | 'display'
     | 'fontFamily'
@@ -19,16 +18,18 @@ type ButtonProps = styles.Variants &
     | 'width'
   > & {
     width?: 'full' | 'normal'
-    type?: 'button' | 'submit' | 'reset'
   }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props: PropsWithChildren<ButtonProps>, ref: Ref<HTMLElement>) => {
+export const Button = forwardRef(
+  <T extends ElementType>(
+    props: PropsWithChildren<ButtonProps<T>>,
+    ref: Ref<T>
+  ) => {
     const {
+      as = 'button',
       children,
       justifyContent = 'flex-start',
       size = 'md',
-      type = 'button',
       variant = 'solid',
       width = 'normal',
       ...boxProps
@@ -36,8 +37,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Box
-        as="button"
-        type={type}
+        as={as}
         className={styles.variants({ size, variant, width })}
         ref={ref}
         {...boxProps}
