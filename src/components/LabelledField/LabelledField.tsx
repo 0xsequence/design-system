@@ -3,8 +3,6 @@ import { ElementType, PropsWithChildren } from 'react'
 import { Box, BoxProps } from '~/components/Box'
 import { Text } from '~/components/Text'
 
-import * as styles from './styles.css'
-
 type LabelledFieldProps<T extends ElementType = 'div'> = BoxProps<T> & {
   label?: string
   labelLocation?: 'left' | 'top' | 'hidden'
@@ -18,9 +16,8 @@ export const LabelledField = ({
   label = '',
   labelLocation = 'hidden',
   ...boxProps
-}: PropsWithChildren<LabelledFieldProps>) => (
+}: PropsWithChildren<LabelledFieldProps<'div'>>) => (
   <Box
-    className={styles.labelledField}
     display="flex"
     alignItems={labelLocation === 'left' ? 'center' : 'stretch'}
     flexDirection={labelLocation === 'left' ? 'row' : 'column'}
