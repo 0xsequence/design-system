@@ -93,6 +93,20 @@ export const variants = recipe({
       ]),
     },
 
+    // hidden text for screen readers
+    hidden: {
+      true: style({
+        border: 0,
+        clip: 'rect(0 0 0 0)',
+        height: 1,
+        margin: '-1px',
+        overflow: 'hidden',
+        padding: 0,
+        position: 'absolute',
+        width: '1px',
+      }),
+    },
+
     italic: {
       true: style({
         fontStyle: 'italic',

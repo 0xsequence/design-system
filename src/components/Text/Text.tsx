@@ -44,6 +44,7 @@ export const Text = forwardRef(
     const {
       as = 'span',
       variant = 'inherit',
+      hidden,
       italic,
       underline,
       children,
@@ -55,6 +56,7 @@ export const Text = forwardRef(
         as={as}
         className={styles.variants({
           variant,
+          hidden,
           italic,
           underline,
         })}

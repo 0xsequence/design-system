@@ -12,4 +12,15 @@ const Template: ComponentStory<typeof TextInput> = args => {
 }
 
 export const Basic = Template.bind({})
-Basic.args = {}
+Basic.args = {
+  label: 'This the label',
+  labelLocation: 'hidden',
+  placeholder: 'This is the placeholder',
+}
+
+export const TopLabel = Template.bind({})
+TopLabel.args = {
+  label: 'This the label',
+  labelLocation: 'top',
+  placeholder: 'This is the placeholder',
+}
