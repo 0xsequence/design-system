@@ -1,9 +1,11 @@
 export const fonts = {
+  inherit: 'inherit',
   body: `Inter, system-ui, Roboto, "Helvetica Neue", Arial`,
   mono: `"iAWriter Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
 }
 
 export const fontSizes = {
+  inherit: 'inherit',
   xsmall: '0.625rem', // 10px
   small: '0.75rem', // 12px
   normal: '0.875rem', // 14px
@@ -13,6 +15,7 @@ export const fontSizes = {
 }
 
 export const fontWeights = {
+  inherit: 'inherit',
   regular: '400',
   medium: '500',
   semiBold: '600',
@@ -20,6 +23,7 @@ export const fontWeights = {
 }
 
 export const letterSpacings = {
+  inherit: 'inherit',
   none: '0',
   regular: '0.01em',
   open: '0.03em',
@@ -27,6 +31,7 @@ export const letterSpacings = {
 
 /** Coupled with fontSizes in atoms */
 export const lineHeights = {
+  inherit: 'inherit',
   xsmall: '1rem', // 16px
   small: '1rem', // 16px
   normal: '1.25rem', // 20px

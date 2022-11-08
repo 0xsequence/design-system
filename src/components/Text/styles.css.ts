@@ -6,13 +6,15 @@ import { atoms } from '~/css'
 export const variants = recipe({
   variants: {
     variant: {
-      inherit: {
-        fontFamily: 'inherit',
-        fontSize: 'inherit',
-        lineHeight: 'inherit',
-        letterSpacing: 'inherit',
-        fontWeight: 'inherit',
-      },
+      inherit: [
+        atoms({
+          fontFamily: 'inherit',
+          fontSize: 'inherit',
+          lineHeight: 'inherit',
+          letterSpacing: 'inherit',
+          fontWeight: 'inherit',
+        }),
+      ],
       xlarge: [
         atoms({
           fontFamily: 'body',
