@@ -24,7 +24,7 @@ export const LabelledField = ({
     gap="tight"
     {...boxProps}
   >
-    <Text variant="label" hidden={labelLocation === 'hidden'}>
+    <Text as="label" variant="small" hidden={labelLocation === 'hidden'}>
       {label}
     </Text>
 

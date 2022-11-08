@@ -2,7 +2,10 @@ import { style } from '@vanilla-extract/css'
 
 import { atoms } from '~/css'
 
+import { variants as textVariants } from '../Text/styles.css'
+
 export const input = style([
+  textVariants({ variant: 'normal' }),
   atoms({
     borderWidth: 'thin',
     borderRadius: 'md',
@@ -13,13 +16,8 @@ export const input = style([
     paddingY: 'tight',
     borderColor: 'borderNormal',
 
-    fontFamily: 'body',
-    textSize: 'normal',
-    weight: 'medium',
+    fontWeight: 'medium',
     letterSpacing: 'regular',
     position: 'relative',
-  }),
-  style({
-    // minWidth: '100%',
   }),
 ])
