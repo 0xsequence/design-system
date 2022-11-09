@@ -21,7 +21,7 @@ export const TextInput = forwardRef(
     } = props
     return (
       <LabelledField label={label} labelLocation={labelLocation}>
-        <Box display="flex" position="relative" alignItems="center">
+        <Box className={styles.wrap}>
           <Box as="span" className={styles.leftIcon}>
             {leftIcon}
           </Box>
