@@ -7,7 +7,7 @@ export const root = style({
   width: '45px',
   height: '30px',
   background: vars.colors.backgroundButton,
-  border: `${vars.borderWidths.thick} solid ${vars.colors.borderSubtle}`,
+  border: `${vars.borderWidths.thick} solid ${vars.colors.borderNormal}`,
   padding: vars.space.xxtight,
   borderRadius: vars.radii.circle,
   position: 'relative',
@@ -16,7 +16,7 @@ export const root = style({
 
   selectors: {
     '&:hover': {
-      borderColor: vars.colors.borderFirm,
+      borderColor: vars.colors.borderFocus,
     },
 
     '&[data-state="checked"]': {

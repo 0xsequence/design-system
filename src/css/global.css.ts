@@ -1,13 +1,15 @@
 import { globalStyle } from '@vanilla-extract/css'
 
+import { vars } from './vars.css'
+
 globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
 })
 
 globalStyle('*:focus', {
-  outlineColor: 'rgba(255,255,255,0.5)',
+  outlineColor: vars.colors.borderFocus,
   outlineStyle: 'solid',
-  outlineOffset: '-2px',
-  outlineWidth: '2px',
+  outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+  outlineWidth: vars.borderWidths.thick,
   borderColor: 'transparent',
 })

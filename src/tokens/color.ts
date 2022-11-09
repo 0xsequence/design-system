@@ -43,22 +43,17 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
   },
 }
 
-type BorderColor = 'subtle' | 'normal' | 'firm' | 'inverse'
+type BorderColor = 'normal' | 'focus'
 
 const borderColors: { [key in ColorScheme]: { [key in BorderColor]: string } } =
   {
     dark: {
-      subtle: 'rgba(85, 85, 85, 0.3)',
-      normal: '#7F7F7F',
-      firm: 'rgba(255, 255, 255, 0.5)',
-      inverse: 'rgba(255, 255, 255, 0.9)',
+      normal: 'rgba(255, 255, 255, 0.25)',
+      focus: 'rgba(255, 255, 255, 0.5)',
     },
     light: {
-      // TODO: update for light values
-      subtle: 'rgba(85, 85, 85, 0.3)',
-      normal: '#7F7F7F',
-      firm: 'rgba(255, 255, 255, 0.5)',
-      inverse: 'rgba(255, 255, 255, 0.9)',
+      normal: 'rgba(0, 0, 0, 0.25)',
+      focus: 'rgba(0, 0, 0, 0.5)',
     },
   }
 
