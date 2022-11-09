@@ -1,12 +1,7 @@
-import {
-  forwardRef,
-  PropsWithChildren,
-  Ref,
-  ElementType,
-  ReactNode,
-} from 'react'
+import { forwardRef, Ref, ElementType, ReactNode } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
+import { Text } from '~/components/Text'
 
 import * as styles from './styles.css'
 
@@ -14,6 +9,7 @@ type ButtonProps<T extends ElementType> = styles.Variants &
   Omit<
     BoxProps<T>,
     | 'background'
+    | 'children'
     | 'display'
     | 'fontFamily'
     | 'fontSize'
@@ -22,24 +18,23 @@ type ButtonProps<T extends ElementType> = styles.Variants &
     | 'size'
     | 'width'
   > & {
-    disabled?: boolean
-    isPending?: boolean
-    leftIcon: ReactNode | null
-    rightIcon: ReactNode | null
-    width?: 'full' | 'normal'
+    disabled: boolean
+    isPending: boolean
+    label?: string
+    leftIcon?: ReactNode
+    rightIcon?: ReactNode
+    width: 'full' | 'normal'
   }
 
 export const Button = forwardRef(
-  <T extends ElementType>(
-    props: PropsWithChildren<ButtonProps<T>>,
-    ref: Ref<T>
-  ) => {
+  <T extends ElementType>(props: ButtonProps<T>, ref: Ref<T>) => {
     const {
       as = 'button',
-      children,
       disabled = false,
       isPending = false,
-      justifyContent = 'flex-start',
+      label,
+      leftIcon,
+      rightIcon,
       size = 'md',
       variant = 'solid',
       width = 'normal',
@@ -57,11 +52,27 @@ export const Button = forwardRef(
         <Box
           as="span"
           display="flex"
-          justifyContent={justifyContent}
+          justifyContent="space-between"
           alignItems="center"
-          gap={width === 'normal' ? 'xtight' : undefined}
+          gap={width === 'normal' && rightIcon ? 'xtight' : undefined}
         >
-          {children}
+          <Box
+            as="span"
+            display="flex"
+            justifyContent="flex-start"
+            alignItems="center"
+            gap={leftIcon ? 'xtight' : undefined}
+          >
+            <Box as="span" className={styles.icon}>
+              {leftIcon}
+            </Box>
+
+            <Text>{label}</Text>
+          </Box>
+
+          <Box as="span" className={styles.icon}>
+            {rightIcon}
+          </Box>
         </Box>
       </Box>
     )
