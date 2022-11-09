@@ -7,7 +7,10 @@ import { textVariants } from '../Text/styles.css'
 export const variants = recipe({
   base: [
     atoms({
-      cursor: 'pointer',
+      cursor: {
+        base: 'pointer',
+        disabled: 'not-allowed',
+      },
     }),
   ],
 
@@ -15,38 +18,64 @@ export const variants = recipe({
     variant: {
       primary: [
         atoms({
-          background: {
-            base: 'gradientPrimary',
-            hover: 'backgroundButton',
-            active: 'backgroundLight',
-          },
-          color: {
-            base: 'white',
-            hover: 'textBody',
-            active: 'textBody',
+          background: 'gradientPrimary',
+          color: 'white',
+          opacity: {
+            base: '100',
+            hover: '80',
+            disabled: '50',
           },
         }),
       ],
       solid: [
         atoms({
-          background: {
-            base: 'backgroundButton',
-            hover: 'backgroundLight',
-            active: 'backgroundDark',
-          },
+          background: 'backgroundButton',
           color: 'textBody',
+          opacity: {
+            base: '100',
+            hover: '80',
+            disabled: '50',
+          },
         }),
       ],
       glass: [
         atoms({
           backdropFilter: 'blur',
-          background: 'backgroundLight',
+          background: 'backgroundGlass',
           color: 'textBody',
+          opacity: {
+            base: '100',
+            hover: '80',
+            disabled: '50',
+          },
         }),
       ],
-      // TODO
-      disabled: [atoms({ background: 'backgroundButton', color: 'textBody' })],
-      pending: [atoms({ background: 'backgroundButton', color: 'textBody' })],
+      nested: [
+        atoms({
+          backdropFilter: 'blur',
+          background: 'backgroundNestedGlass',
+          color: 'textBody',
+          opacity: {
+            base: '100',
+            hover: '80',
+            disabled: '50',
+          },
+        }),
+      ],
+      text: [
+        atoms({
+          background: {
+            base: 'transparent',
+            hover: 'backgroundGlass',
+          },
+          color: 'textBody',
+          opacity: {
+            base: '100',
+            hover: '80',
+            disabled: '50',
+          },
+        }),
+      ],
     },
 
     size: {

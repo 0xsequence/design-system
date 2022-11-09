@@ -25,6 +25,7 @@ TextOnly.args = {
   children: <Text>Click me</Text>,
   size: 'md',
   variant: 'solid',
+  disabled: false,
 }
 
 export const WithIcon = Template.bind({})

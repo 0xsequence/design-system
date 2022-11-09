@@ -93,9 +93,7 @@ const responsiveProperties = defineProperties({
 const unresponsiveProperties = defineProperties({
   properties: {
     backdropFilter: vars.blur,
-    cursor: ['default', 'pointer', 'not-allowed'],
     fontFamily: vars.fonts,
-    opacity: vars.opacity,
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     visibility: ['hidden', 'visible'],
     whiteSpace: ['normal', 'nowrap', 'initial', 'inherit'],
@@ -109,14 +107,17 @@ const selectorProperties = defineProperties({
   conditions: {
     base: {},
     active: { selector: '&:active' },
+    disabled: { selector: '&:disabled' },
     focus: { selector: '&:focus' },
-    hover: { selector: '&:hover' },
+    hover: { selector: '&:hover:not([disabled])' },
   },
   defaultCondition: 'base',
   properties: {
     background: vars.colors,
     borderColor: vars.colors,
     color: vars.colors,
+    cursor: ['default', 'pointer', 'not-allowed'],
+    opacity: vars.opacity,
   },
 })
 

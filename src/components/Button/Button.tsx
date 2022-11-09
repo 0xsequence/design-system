@@ -1,4 +1,10 @@
-import { forwardRef, PropsWithChildren, Ref, ElementType } from 'react'
+import {
+  forwardRef,
+  PropsWithChildren,
+  Ref,
+  ElementType,
+  ReactNode,
+} from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 
@@ -16,6 +22,10 @@ type ButtonProps<T extends ElementType> = styles.Variants &
     | 'size'
     | 'width'
   > & {
+    disabled?: boolean
+    isPending?: boolean
+    leftIcon: ReactNode | null
+    rightIcon: ReactNode | null
     width?: 'full' | 'normal'
   }
 
@@ -27,6 +37,8 @@ export const Button = forwardRef(
     const {
       as = 'button',
       children,
+      disabled = false,
+      isPending = false,
       justifyContent = 'flex-start',
       size = 'md',
       variant = 'solid',
@@ -38,6 +50,7 @@ export const Button = forwardRef(
       <Box
         as={as}
         className={styles.variants({ size, variant, width })}
+        disabled={disabled || isPending}
         ref={ref}
         {...boxProps}
       >
