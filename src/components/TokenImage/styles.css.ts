@@ -1,8 +1,7 @@
 import { style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 
-import { atoms } from '~/css/atoms.css'
-import { vars } from '~/css/vars.css'
+import { atoms, vars } from '~/css'
 
 import { variants as textVariants } from '../Text/styles.css'
 
