@@ -9,15 +9,29 @@ export const input = style([
   atoms({
     borderWidth: 'thin',
     borderRadius: 'md',
-    display: 'flex',
-    alignItems: 'center',
-    gap: 'xtight',
-    paddingX: 'normal',
+    display: 'inline-block',
     paddingY: 'tight',
     borderColor: 'borderNormal',
 
-    fontWeight: 'medium',
-    letterSpacing: 'regular',
-    position: 'relative',
+    fontWeight: 'regular',
+    letterSpacing: 'open',
+  }),
+  style({
+    minWidth: '100%',
   }),
 ])
+
+const inputIcon = style([
+  atoms({
+    position: 'absolute',
+    fontSize: 'small',
+  }),
+  style({
+    top: '50%',
+    transform: 'translateY(-50%)',
+    height: '1.5em',
+  }),
+])
+
+export const leftIcon = style([inputIcon, atoms({ left: 'normal' })])
+export const rightIcon = style([inputIcon, atoms({ right: 'normal' })])
