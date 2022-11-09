@@ -29,13 +29,6 @@ export const input = style([
   style({
     minWidth: '100%',
     borderStyle: 'solid',
-
-    selectors: {
-      '&:focus': {
-        boxShadow: `${vars.colors.backgroundPrimary} 0px 0px 0px 1px, ${vars.colors.textBody} 0px 0px 0px 4px`,
-        outline: 'none',
-      },
-    },
   }),
 ])
 
