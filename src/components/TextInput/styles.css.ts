@@ -16,7 +16,6 @@ export const input = style([
   textVariants({ variant: 'normal' }),
   atoms({
     color: 'textBody',
-    background: 'transparent',
     borderWidth: 'thin',
     borderRadius: 'md',
     display: 'inline-block',

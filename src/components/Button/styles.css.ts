@@ -9,10 +9,6 @@ export const variants = recipe({
     atoms({
       cursor: 'pointer',
     }),
-    {
-      border: 'none',
-      textDecoration: 'none',
-    },
   ],
 
   variants: {
