@@ -49,6 +49,20 @@ Body.args = {
   children: 'Hello, world!',
 }
 
+export const TextAsChild = Template.bind({})
+TextAsChild.args = {
+  variant: 'normal',
+  as: 'p',
+  children: (
+    <>
+      <Text fontWeight="bold" color="positive">
+        Hello
+      </Text>
+      {' World!'}
+    </>
+  ),
+}
+
 export const Code = Template.bind({})
 Code.args = {
   variant: 'code',
