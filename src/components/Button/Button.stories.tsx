@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { ArrowRightIcon, ScanIcon } from '~/icons'
 
 import { Box } from '../Box'
-import { Text } from '../Text'
 
 import { Button } from './Button'
 
@@ -22,54 +21,48 @@ const Template: ComponentStory<typeof Button> = args => {
 
 export const TextOnly = Template.bind({})
 TextOnly.args = {
-  children: <Text>Click me</Text>,
+  label: 'Click me',
   size: 'md',
   variant: 'solid',
   disabled: false,
+  width: 'normal',
 }
 
 export const WithIcon = Template.bind({})
 WithIcon.args = {
-  children: (
-    <>
-      <ScanIcon />
-      Click me
-    </>
-  ),
+  label: 'Click me',
+  leftIcon: <ScanIcon />,
   size: 'md',
   variant: 'solid',
+  disabled: false,
+  width: 'normal',
 }
 
 export const WithRightIcon = Template.bind({})
 WithRightIcon.args = {
-  children: (
-    <>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="flex-start"
-        gap="xtight"
-      >
-        <ScanIcon />
-        <Text>Click me</Text>
-      </Box>
-      <ArrowRightIcon />
-    </>
-  ),
+  label: 'Click me',
+  rightIcon: <ArrowRightIcon />,
   size: 'md',
   variant: 'solid',
-  justifyContent: 'space-between',
-  width: 'full',
+  disabled: false,
+  width: 'normal',
+}
+
+export const WithBothIcons = Template.bind({})
+WithBothIcons.args = {
+  label: 'Click me',
+  leftIcon: <ScanIcon />,
+  rightIcon: <ArrowRightIcon />,
+  size: 'md',
+  variant: 'solid',
+  disabled: false,
+  width: 'normal',
 }
 
 export const AnchorButton = Template.bind({})
 AnchorButton.args = {
-  children: (
-    <>
-      <ScanIcon />
-      Click me
-    </>
-  ),
+  label: 'Click me',
+  leftIcon: <ScanIcon />,
   as: 'a',
   size: 'md',
   href: '/wallet',

@@ -1,3 +1,4 @@
+import { style } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms } from '~/css'
@@ -124,3 +125,5 @@ export const variants = recipe({
 })
 
 export type Variants = RecipeVariants<typeof variants>
+
+export const icon = style({ height: '1.5em' })
