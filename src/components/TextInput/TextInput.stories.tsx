@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
+import { ArrowRightIcon, ScanIcon } from '~/icons'
+
 import { TextInput } from './TextInput'
 
 export default {
@@ -14,13 +16,27 @@ const Template: ComponentStory<typeof TextInput> = args => {
 export const Basic = Template.bind({})
 Basic.args = {
   label: 'This the label',
-  labelLocation: 'hidden',
   placeholder: 'This is the placeholder',
 }
 
-export const TopLabel = Template.bind({})
-TopLabel.args = {
+export const WithLeftIcon = Template.bind({})
+WithLeftIcon.args = {
   label: 'This the label',
-  labelLocation: 'top',
   placeholder: 'This is the placeholder',
+  leftIcon: <ScanIcon />,
+}
+
+export const WithRightIcon = Template.bind({})
+WithRightIcon.args = {
+  label: 'This the label',
+  placeholder: 'This is the placeholder',
+  rightIcon: <ArrowRightIcon />,
+}
+
+export const WithBothIcons = Template.bind({})
+WithBothIcons.args = {
+  label: 'This the label',
+  placeholder: 'This is the placeholder',
+  leftIcon: <ScanIcon />,
+  rightIcon: <ArrowRightIcon />,
 }

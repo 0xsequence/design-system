@@ -24,8 +24,6 @@ type AsNumber = {
 type AsInput = {
   as?: 'input'
   onChange?: EventHandler<ChangeEvent<HTMLInputElement>>
-  leftIcon?: ReactNode
-  rightIcon?: ReactNode
 } & (AsText | AsEmail | AsNumber)
 
 type AsTextArea = {
@@ -68,4 +66,6 @@ export type TextInputProps<T extends 'input' | 'textarea' = 'input'> = Partial<
     processing?: boolean
     placeholder?: string
     value?: string
+    leftIcon?: ReactNode
+    rightIcon?: ReactNode
   }
