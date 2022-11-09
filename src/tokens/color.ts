@@ -13,8 +13,8 @@ type Background =
   | 'inverse'
   | 'modal'
   | 'overlay'
-  | 'dark' // glass
-  | 'light' // glass
+  | 'glass' // lighter on dark mode
+  | 'nestedGlass' // darker on dark mode
 
 const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
   dark: {
@@ -23,8 +23,8 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
     button: '#292929',
     backdrop: 'rgba(0, 0, 0, 0.9)',
     inverse: '#ffffff',
-    dark: 'rgba(0, 0, 0, 0.4)',
-    light: 'rgba(85, 85, 85, 0.3)',
+    glass: 'rgba(85, 85, 85, 0.3)',
+    nestedGlass: 'rgba(0, 0, 0, 0.4)',
     modal: '#151515',
     overlay:
       'linear-gradient(243.18deg, rgba(86, 52, 189, 0.85) 0%, rgba(49, 41, 223, 0.85) 63.54%, rgba(7, 98, 149, 0.85) 100%)',
@@ -35,8 +35,8 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
     button: '#f4f4f4',
     backdrop: 'rgba(255, 255, 255, 0.9)',
     inverse: '#000000',
-    dark: 'rgba(255, 255, 255, 0.4)',
-    light: 'rgba(170, 170, 170, 0.3)',
+    glass: 'rgba(159, 159, 159, 0.3)',
+    nestedGlass: 'rgba(244, 244, 244, 0.4)',
     modal: '#151515',
     overlay:
       'linear-gradient(243.18deg, rgba(86, 52, 189, 0.85) 0%, rgba(49, 41, 223, 0.85) 63.54%, rgba(7, 98, 149, 0.85) 100%)',
