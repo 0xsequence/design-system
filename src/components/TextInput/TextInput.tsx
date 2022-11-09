@@ -11,14 +11,15 @@ export const TextInput = forwardRef(
     const {
       as = 'input',
       disabled = false,
-      processing = false,
-      type = 'text',
       label = '',
       labelLocation = 'hidden',
       leftIcon,
+      processing = false,
       rightIcon,
+      type = 'text',
       ...boxProps
     } = props
+
     return (
       <LabelledField label={label} labelLocation={labelLocation}>
         <Box className={styles.wrap}>
