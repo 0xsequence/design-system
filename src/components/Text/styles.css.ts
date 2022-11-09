@@ -3,7 +3,7 @@ import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms } from '~/css'
 
-export const variants = recipe({
+export const textVariants = recipe({
   variants: {
     variant: {
       inherit: [
@@ -121,4 +121,4 @@ export const variants = recipe({
   },
 })
 
-export type Variants = RecipeVariants<typeof variants>
+export type TextVariants = RecipeVariants<typeof textVariants>

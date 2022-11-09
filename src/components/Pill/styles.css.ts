@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css'
 
 import { atoms } from '~/css'
 
-import { variants as textVariants } from '../Text/styles.css'
+import { textVariants } from '../Text/styles.css'
 
 export const pill = style([
   textVariants({ variant: 'xsmall' }),

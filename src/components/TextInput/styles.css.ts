@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css'
 
 import { atoms, vars } from '~/css'
 
-import { variants as textVariants } from '../Text/styles.css'
+import { textVariants } from '../Text/styles.css'
 
 export const wrap = atoms({
   display: 'flex',

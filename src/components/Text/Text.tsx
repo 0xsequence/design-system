@@ -34,7 +34,7 @@ type TextProps<T extends ElementType = 'span'> = Partial<
     | 'zIndex'
   >
 > &
-  styles.Variants
+  styles.TextVariants
 
 export const Text = forwardRef(
   <T extends ElementType>(
@@ -54,7 +54,7 @@ export const Text = forwardRef(
     return (
       <Box
         as={as}
-        className={styles.variants({
+        className={styles.textVariants({
           variant,
           hidden,
           italic,
