@@ -7,4 +7,4 @@ export type { Atoms } from './atoms.css'
 export { vars } from './vars.css'
 export type { ThemeVars } from './vars.css'
 
-import './reset.css'
+import './global.css'
