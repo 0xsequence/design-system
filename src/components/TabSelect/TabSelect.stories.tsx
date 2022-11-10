@@ -13,6 +13,8 @@ const Template: ComponentStory<typeof TabSelect> = ({ ...args }) => {
   return <TabSelect {...args} />
 }
 
+const delay = (sec: number) => new Promise(res => setTimeout(res, sec * 1000))
+
 const tabs: TabOption[] = [
   {
     label: 'Wallet',
@@ -26,7 +28,9 @@ const tabs: TabOption[] = [
     label: 'History',
     LeftIcon: TransactionIcon,
     value: 'history',
-    onClick: () => {
+    onClick: async () => {
+      console.log('processing...')
+      await delay(1)
       console.log('History')
       return true
     },
@@ -35,9 +39,10 @@ const tabs: TabOption[] = [
     label: 'Contacts',
     LeftIcon: ProfileIcon,
     value: 'contacts',
-    onClick: () => {
-      console.log('Contacts')
-      return true
+    onClick: async () => {
+      console.log('expecting fail...')
+      await delay(1)
+      return false
     },
   },
 ]

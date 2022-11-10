@@ -28,14 +28,19 @@ export const TabSelect = ({ activeTab, tabs, ...rest }: TabSelectProps) => {
     tabIndex: number
   ) => {
     event.preventDefault()
-    const activeTabBeforeLoad = activeTabValue
+
+    if (activeTabValue === option.value) {
+      return
+    }
+
+    const prevTab = activeTabValue
     setActiveTabValue(tabs[tabIndex].value)
     setIsLoading(true)
     const loadSucceeded = await option.onClick?.()
     setIsLoading(false)
 
     if (!loadSucceeded) {
-      setActiveTabValue(activeTabBeforeLoad)
+      setActiveTabValue(prevTab)
     }
   }
 
@@ -45,12 +50,12 @@ export const TabSelect = ({ activeTab, tabs, ...rest }: TabSelectProps) => {
         {tabs.map((option, tabIndex) => (
           <Box as="li" display="block" key={tabIndex}>
             <Button
-              isPending={isLoading && activeTabValue === option.value}
               label={option.label}
               LeftIcon={option.LeftIcon ?? undefined}
               onClick={(e: MouseEvent<HTMLButtonElement>) =>
                 handleTabClick(e, option, tabIndex)
               }
+              pending={isLoading && activeTabValue === option.value}
               size="tab"
               variant={option.value === activeTabValue ? 'active' : 'inactive'}
             />
