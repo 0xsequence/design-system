@@ -1,31 +1,40 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { TabSelect } from './TabSelect'
+import { ProfileIcon, TransactionIcon } from '~/icons'
+
+import { TabOption, TabSelect } from './TabSelect'
 
 export default {
   title: 'Components/TabSelect',
   component: TabSelect,
 } as ComponentMeta<typeof TabSelect>
 
-const Template: ComponentStory<typeof TabSelect> = args => {
+const Template: ComponentStory<typeof TabSelect> = ({ ...args }) => {
   return <TabSelect {...args} />
 }
 
-const tabs = [
+const tabs: TabOption[] = [
   {
-    value: 'coins',
-    label: 'Coins',
-    content: 'Coins',
+    label: 'Wallet',
+    value: 'wallet',
+    onClick: () => console.log('Coins'),
   },
   {
-    value: 'collectibles',
-    label: 'Collectibles',
-    content: 'Collectibles',
+    label: 'History',
+    LeftIcon: TransactionIcon,
+    value: 'history',
+    onClick: () => console.log('History'),
+  },
+  {
+    label: 'Contacts',
+    LeftIcon: ProfileIcon,
+    value: 'contacts',
+    onClick: () => console.log('Contacts'),
   },
 ]
 
 export const Default = Template.bind({})
 Default.args = {
-  activeTab: 'coins',
+  activeTab: 'wallet',
   tabs,
 }

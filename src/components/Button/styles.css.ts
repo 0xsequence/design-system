@@ -76,6 +76,12 @@ export const buttonVariants = recipe({
           },
         }),
       ],
+      active: [
+        atoms({
+          background: 'backgroundInverse',
+          color: 'textInverse',
+        }),
+      ],
     },
 
     size: {
@@ -114,6 +120,16 @@ export const buttonVariants = recipe({
           paddingRight: '1.25rem',
         },
       ],
+      tab: [
+        textVariants({ variant: 'normal' }),
+        atoms({
+          borderRadius: 'circle',
+          fontWeight: 'bold',
+          paddingX: 'xtight',
+          paddingY: 'xxtight',
+        }),
+        { height: '28px' },
+      ],
     },
 
     width: {
@@ -139,6 +155,10 @@ export const iconVariants = recipe({
       lg: {
         height: vars.lineHeights.normal,
         width: vars.lineHeights.normal,
+      },
+      tab: {
+        height: vars.lineHeights.small,
+        width: vars.lineHeights.small,
       },
     },
   },

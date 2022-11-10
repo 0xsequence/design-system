@@ -1,7 +1,13 @@
-import { Box } from '~/components/Box'
+import { ComponentType } from 'react'
 
-type TabOption = {
+import { Box } from '~/components/Box'
+import { Button } from '~/components/Button'
+import { IconProps } from '~/icons/types'
+
+export type TabOption = {
   label: string
+  LeftIcon?: ComponentType<IconProps>
+  value: string
   onClick?: () => void | boolean | Promise<void> | Promise<boolean>
 }
 
@@ -18,7 +24,12 @@ export const TabSelect = ({ activeTab, tabs, ...boxProps }: TabSelectProps) => {
       <Box as="ul" display="flex" gap="xtight">
         {tabs.map((option, tabIndex) => (
           <Box as="li" display="block" key={tabIndex}>
-            <Box>{option.label}</Box>
+            <Button
+              variant="active"
+              size="tab"
+              label={option.label}
+              LeftIcon={option.LeftIcon ?? undefined}
+            />
           </Box>
         ))}
       </Box>
