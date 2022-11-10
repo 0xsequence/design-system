@@ -1,7 +1,8 @@
-import { forwardRef, Ref, ElementType, ReactNode } from 'react'
+import { forwardRef, Ref, ElementType, ComponentType } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 import { Text } from '~/components/Text'
+import { IconProps } from '~/icons/types'
 
 import { buttonVariants, iconVariants, ButtonVariants } from './styles.css'
 
@@ -21,8 +22,8 @@ type ButtonProps<T extends ElementType> = ButtonVariants &
     disabled: boolean
     isPending: boolean
     label?: string
-    leftIcon?: ReactNode
-    rightIcon?: ReactNode
+    LeftIcon?: ComponentType<IconProps>
+    RightIcon?: ComponentType<IconProps>
     width: 'full' | 'normal'
   }
 
@@ -33,8 +34,8 @@ export const Button = forwardRef(
       disabled = false,
       isPending = false,
       label,
-      leftIcon,
-      rightIcon,
+      LeftIcon,
+      RightIcon,
       size = 'md',
       variant = 'solid',
       width = 'normal',
@@ -54,29 +55,21 @@ export const Button = forwardRef(
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          gap={width === 'normal' && rightIcon ? 'xtight' : undefined}
+          gap={width === 'normal' && RightIcon ? 'xtight' : undefined}
         >
           <Box
             as="span"
             display="flex"
             justifyContent="flex-start"
             alignItems="center"
-            gap={leftIcon ? 'xtight' : undefined}
+            gap={LeftIcon ? 'xtight' : undefined}
           >
-            {leftIcon && (
-              <Box as="span" className={iconVariants({ size })}>
-                {leftIcon}
-              </Box>
-            )}
+            {LeftIcon && <LeftIcon className={iconVariants({ size })} />}
 
             <Text>{label}</Text>
           </Box>
 
-          {rightIcon && (
-            <Box as="span" className={iconVariants({ size })}>
-              {rightIcon}
-            </Box>
-          )}
+          {RightIcon && <RightIcon className={iconVariants({ size })} />}
         </Box>
       </Box>
     )
