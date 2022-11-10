@@ -1,11 +1,11 @@
-import { forwardRef, Ref, ElementType, ReactNode } from 'react'
+import { forwardRef, Ref, ElementType, ReactNode, createElement } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 import { Text } from '~/components/Text'
 
-import * as styles from './styles.css'
+import { buttonVariants, iconVariants, ButtonVariants } from './styles.css'
 
-type ButtonProps<T extends ElementType> = styles.Variants &
+type ButtonProps<T extends ElementType> = ButtonVariants &
   Omit<
     BoxProps<T>,
     | 'background'
@@ -44,7 +44,7 @@ export const Button = forwardRef(
     return (
       <Box
         as={as}
-        className={styles.variants({ size, variant, width })}
+        className={buttonVariants({ size, variant, width })}
         disabled={disabled || isPending}
         ref={ref}
         {...boxProps}
@@ -63,16 +63,20 @@ export const Button = forwardRef(
             alignItems="center"
             gap={leftIcon ? 'xtight' : undefined}
           >
-            <Box as="span" className={styles.icon}>
-              {leftIcon}
-            </Box>
+            {leftIcon && (
+              <Box as="span" className={iconVariants({ size })}>
+                {leftIcon}
+              </Box>
+            )}
 
             <Text>{label}</Text>
           </Box>
 
-          <Box as="span" className={styles.icon}>
-            {rightIcon}
-          </Box>
+          {rightIcon && (
+            <Box as="span" className={iconVariants({ size })}>
+              {rightIcon}
+            </Box>
+          )}
         </Box>
       </Box>
     )

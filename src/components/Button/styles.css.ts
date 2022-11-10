@@ -1,11 +1,10 @@
-import { style } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms } from '~/css'
 
 import { textVariants } from '../Text/styles.css'
 
-export const variants = recipe({
+export const buttonVariants = recipe({
   base: [
     atoms({
       cursor: {
@@ -124,6 +123,23 @@ export const variants = recipe({
   },
 })
 
-export type Variants = RecipeVariants<typeof variants>
+export type ButtonVariants = RecipeVariants<typeof buttonVariants>
 
-export const icon = style({ height: '1.5em' })
+export const iconVariants = recipe({
+  variants: {
+    size: {
+      sm: {
+        height: '1rem',
+        width: '1rem',
+      },
+      md: {
+        height: '1.25rem',
+        width: '1.25rem',
+      },
+      lg: {
+        height: '1.25rem',
+        width: '1.25rem',
+      },
+    },
+  },
+})
