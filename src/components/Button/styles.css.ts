@@ -76,10 +76,20 @@ export const buttonVariants = recipe({
           },
         }),
       ],
+      // TabSelect options
       active: [
         atoms({
           background: 'backgroundInverse',
           color: 'textInverse',
+        }),
+      ],
+      inactive: [
+        atoms({
+          background: 'transparent',
+          color: {
+            base: 'textFaded',
+            hover: 'textBody',
+          },
         }),
       ],
     },
