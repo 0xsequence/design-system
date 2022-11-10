@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof TextInput>
 
 const Template: ComponentStory<typeof TextInput> = args => {
-  return <TextInput {...args} />
+  return <TextInput id="myInput" {...args} />
 }
 
 export const Basic = Template.bind({})
