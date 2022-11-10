@@ -6,7 +6,7 @@ describe('<Button />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
-    render(<Button>Hello, world!</Button>)
+    render(<Button label="Hello, world!" />)
 
     expect(screen.getByText('Hello, world!')).toBeInTheDocument()
   })
