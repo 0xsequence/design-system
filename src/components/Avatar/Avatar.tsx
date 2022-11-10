@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { memo } from 'react'
 import Blockies from 'react-blockies'
 
@@ -12,7 +12,7 @@ const scale: Record<AvatarSize, number> = {
   sm: 3,
   md: 4,
   lg: 6,
-  xl: 8
+  xl: 8,
 }
 
 interface AvatarProps extends BoxLayoutProps {

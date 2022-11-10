@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { memo } from 'react'
 
 import { Box, BoxLayoutProps } from '../Box'
