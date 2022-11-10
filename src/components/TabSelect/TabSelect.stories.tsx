@@ -17,24 +17,33 @@ const tabs: TabOption[] = [
   {
     label: 'Wallet',
     value: 'wallet',
-    onClick: () => console.log('Coins'),
+    onClick: () => {
+      console.log('Wallet')
+      return true
+    },
   },
   {
     label: 'History',
     LeftIcon: TransactionIcon,
     value: 'history',
-    onClick: () => console.log('History'),
+    onClick: () => {
+      console.log('History')
+      return true
+    },
   },
   {
     label: 'Contacts',
     LeftIcon: ProfileIcon,
     value: 'contacts',
-    onClick: () => console.log('Contacts'),
+    onClick: () => {
+      console.log('Contacts')
+      return true
+    },
   },
 ]
 
 export const Default = Template.bind({})
 Default.args = {
-  activeTab: 'wallet',
+  activeTab: 'history',
   tabs,
 }
