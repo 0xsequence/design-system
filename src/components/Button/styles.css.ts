@@ -1,6 +1,6 @@
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { atoms } from '~/css'
+import { atoms, vars } from '~/css'
 
 import { textVariants } from '../Text/styles.css'
 
@@ -129,16 +129,16 @@ export const iconVariants = recipe({
   variants: {
     size: {
       sm: {
-        height: '1rem',
-        width: '1rem',
+        height: vars.lineHeights.xsmall,
+        width: vars.lineHeights.xsmall,
       },
       md: {
-        height: '1.25rem',
-        width: '1.25rem',
+        height: vars.lineHeights.normal,
+        width: vars.lineHeights.normal,
       },
       lg: {
-        height: '1.25rem',
-        width: '1.25rem',
+        height: vars.lineHeights.normal,
+        width: vars.lineHeights.normal,
       },
     },
   },
