@@ -6,6 +6,7 @@ import { Text } from '~/components/Text'
 type LabelledFieldProps<T extends ElementType = 'div'> = BoxProps<T> & {
   label?: string
   labelLocation?: 'left' | 'top' | 'hidden'
+  forId?: string
 }
 
 // TODO: handle error text and secondary description label
@@ -15,6 +16,7 @@ export const LabelledField = ({
   children,
   label = '',
   labelLocation = 'hidden',
+  forId,
   ...boxProps
 }: PropsWithChildren<LabelledFieldProps<'div'>>) => (
   <Box
@@ -24,7 +26,12 @@ export const LabelledField = ({
     gap="tight"
     {...boxProps}
   >
-    <Text as="label" variant="small" hidden={labelLocation === 'hidden'}>
+    <Text
+      as="label"
+      variant="small"
+      hidden={labelLocation === 'hidden'}
+      htmlFor={forId}
+    >
       {label}
     </Text>
 

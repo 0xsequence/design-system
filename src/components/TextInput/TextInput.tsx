@@ -10,6 +10,7 @@ export const TextInput = forwardRef(
   <T extends 'input' | 'textarea'>(props: TextInputProps<T>, ref: Ref<T>) => {
     const {
       as = 'input',
+      id,
       disabled = false,
       label = '',
       labelLocation = 'hidden',
@@ -21,7 +22,7 @@ export const TextInput = forwardRef(
     } = props
 
     return (
-      <LabelledField label={label} labelLocation={labelLocation}>
+      <LabelledField label={label} labelLocation={labelLocation} forId={id}>
         <Box className={styles.wrap}>
           <Box as="span" className={styles.leftIcon}>
             {leftIcon}
@@ -29,6 +30,7 @@ export const TextInput = forwardRef(
 
           <Box
             as={as}
+            id={id}
             type={type}
             className={styles.input}
             disabled={disabled || processing}
