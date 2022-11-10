@@ -54,15 +54,15 @@ export const TabSelect = ({
         {tabs.map((option, tabIndex) => (
           <Box as="li" display="block" key={tabIndex}>
             <Button
+              disabled={isLoading}
               label={option.label}
               LeftIcon={option.LeftIcon ?? undefined}
               onClick={(e: MouseEvent<HTMLButtonElement>) =>
                 handleTabClick(e, option, tabIndex)
               }
-              pending={isLoading && activeTabValue === option.value}
+              paddingLeft={option.LeftIcon ? 'xxtight' : 'xtight'}
               size="tab"
               variant={option.value === activeTabValue ? 'active' : 'inactive'}
-              paddingLeft={option.LeftIcon ? 'xxtight' : 'xtight'}
             />
           </Box>
         ))}
