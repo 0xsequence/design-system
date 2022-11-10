@@ -81,6 +81,10 @@ export const buttonVariants = recipe({
         atoms({
           background: 'backgroundInverse',
           color: 'textInverse',
+          opacity: {
+            base: '100',
+            disabled: '50',
+          },
         }),
       ],
       inactive: [
