@@ -1,4 +1,4 @@
-import { forwardRef, Ref, ElementType, ReactNode, createElement } from 'react'
+import { forwardRef, Ref, ElementType, ReactNode } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 import { Text } from '~/components/Text'
