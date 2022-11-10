@@ -139,7 +139,7 @@ export const buttonVariants = recipe({
         atoms({
           borderRadius: 'circle',
           fontWeight: 'bold',
-          paddingX: 'xtight',
+          paddingRight: 'xtight',
           paddingY: 'xxtight',
         }),
         { height: '28px' },

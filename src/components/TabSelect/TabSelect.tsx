@@ -1,6 +1,6 @@
-import { ComponentType, MouseEvent, useState } from 'react'
+import { ComponentType, ElementType, MouseEvent, useState } from 'react'
 
-import { Box } from '~/components/Box'
+import { Box, BoxProps } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { IconProps } from '~/icons/types'
 
@@ -11,12 +11,16 @@ export type TabOption = {
   onClick?: () => boolean | Promise<boolean>
 }
 
-type TabSelectProps = {
+type TabSelectProps<T extends ElementType> = BoxProps<T> & {
   activeTab?: string
   tabs: TabOption[]
 }
 
-export const TabSelect = ({ activeTab, tabs, ...rest }: TabSelectProps) => {
+export const TabSelect = ({
+  activeTab,
+  tabs,
+  ...rest
+}: TabSelectProps<'div'>) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [activeTabValue, setActiveTabValue] = useState<string>(
     activeTab ?? tabs[0].value
@@ -58,6 +62,7 @@ export const TabSelect = ({ activeTab, tabs, ...rest }: TabSelectProps) => {
               pending={isLoading && activeTabValue === option.value}
               size="tab"
               variant={option.value === activeTabValue ? 'active' : 'inactive'}
+              paddingLeft={option.LeftIcon ? 'xxtight' : 'xtight'}
             />
           </Box>
         ))}
