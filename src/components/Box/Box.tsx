@@ -9,12 +9,12 @@ import {
 } from 'react'
 
 import { atoms, Atoms } from '~/css'
-
 export type BoxProps<T extends ElementType = 'div'> =
   ComponentPropsWithRef<T> & {
     as?: T
     className?: ClassValue
-  } & Atoms
+    sx?: Atoms
+  }
 
 type PolymorphicComponent = <T extends ElementType = 'div'>(
   props: BoxProps<T>
@@ -22,24 +22,10 @@ type PolymorphicComponent = <T extends ElementType = 'div'>(
 
 export const Box: PolymorphicComponent = forwardRef(
   <T extends ElementType>(props: BoxProps<T>, ref: Ref<T>) => {
-    const { as = 'div', className, ...restProps } = props
-    const atomProps: Record<string, unknown> = {}
-    const nativeProps: Record<string, unknown> = {}
-
-    for (const key in restProps) {
-      if (atoms.properties.has(key as keyof Atoms)) {
-        atomProps[key] = restProps[key as keyof typeof restProps]
-      } else {
-        nativeProps[key] = restProps[key as keyof typeof restProps]
-      }
-    }
-
-    const atomicClasses = atoms({
-      ...atomProps,
-    })
+    const { as = 'div', className, sx, ...nativeProps } = props
 
     return createElement(as, {
-      className: clsx(atomicClasses, className),
+      className: clsx(atoms({ ...sx }), className),
       ...nativeProps,
       ref,
     })

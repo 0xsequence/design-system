@@ -1,4 +1,10 @@
-import { AllHTMLAttributes, ChangeEvent, EventHandler, ReactNode } from 'react'
+import {
+  AllHTMLAttributes,
+  ChangeEvent,
+  ElementType,
+  EventHandler,
+  ReactNode,
+} from 'react'
 
 import { BoxProps } from '~/components/Box'
 
@@ -44,15 +50,14 @@ type hasLabel = {
   labelLocation: 'left' | 'top'
 }
 
-export type TextInputProps<T extends 'input' | 'textarea' = 'input'> =
-  BoxProps<T> &
-    (AsInput | AsTextArea) &
-    (hasLabel | hiddenLabel) & {
-      name?: string
-      disabled?: boolean
-      processing?: boolean
-      placeholder?: string
-      value?: string
-      leftIcon?: ReactNode
-      rightIcon?: ReactNode
-    }
+export type TextInputProps<T extends ElementType> = BoxProps<T> &
+  (AsInput | AsTextArea) &
+  (hasLabel | hiddenLabel) & {
+    name?: string
+    disabled?: boolean
+    processing?: boolean
+    placeholder?: string
+    value?: string
+    leftIcon?: ReactNode
+    rightIcon?: ReactNode
+  }

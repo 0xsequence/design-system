@@ -35,8 +35,10 @@ export const TextInput = forwardRef(
             className={styles.input}
             disabled={disabled || processing}
             ref={ref}
-            paddingLeft={leftIcon ? 'xxloose' : 'normal'}
-            paddingRight={rightIcon ? 'xxloose' : 'normal'}
+            sx={{
+              paddingLeft: leftIcon ? 'xxloose' : 'normal',
+              paddingRight: rightIcon ? 'xxloose' : 'normal',
+            }}
             {...boxProps}
           />
 

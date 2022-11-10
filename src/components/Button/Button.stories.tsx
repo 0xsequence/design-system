@@ -13,7 +13,13 @@ export default {
 
 const Template: ComponentStory<typeof Button> = args => {
   return (
-    <Box padding="tight" background="backgroundSecondary" borderRadius="md">
+    <Box
+      sx={{
+        padding: 'tight',
+        background: 'backgroundSecondary',
+        borderRadius: 'md',
+      }}
+    >
       <Button {...args} />
     </Box>
   )

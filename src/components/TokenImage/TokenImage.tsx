@@ -8,22 +8,16 @@ import * as styles from './styles.css'
 type TokenIconSize = 'xs' | 'sm' | 'md' | 'lg'
 
 interface TokenIconProps extends BoxProps {
-  className?: string
-  style?: any
   src?: string
   symbol?: string
   size?: TokenIconSize
 }
 
 export const TokenImage = memo((props: TokenIconProps) => {
-  const { className, style, src, symbol, size = 'md', ...boxProps } = props
+  const { className, src, symbol, size = 'md', ...boxProps } = props
 
   return (
-    <Box
-      className={clsx(className, styles.root({ size }))}
-      style={style}
-      {...boxProps}
-    >
+    <Box className={clsx(className, styles.root({ size }))} {...boxProps}>
       {src ? (
         <img className={styles.img} src={src} />
       ) : (

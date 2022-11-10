@@ -1,9 +1,7 @@
-import { ElementType, PropsWithChildren } from 'react'
-
 import { Box, BoxProps } from '~/components/Box'
 import { Text } from '~/components/Text'
 
-type LabelledFieldProps<T extends ElementType = 'div'> = BoxProps<T> & {
+type LabelledFieldProps = BoxProps & {
   label?: string
   labelLocation?: 'left' | 'top' | 'hidden'
   forId?: string
@@ -15,15 +13,19 @@ type LabelledFieldProps<T extends ElementType = 'div'> = BoxProps<T> & {
 export const LabelledField = ({
   children,
   label = '',
-  labelLocation = 'hidden',
   forId,
+  labelLocation = 'hidden',
+  sx,
   ...boxProps
-}: PropsWithChildren<LabelledFieldProps<'div'>>) => (
+}: LabelledFieldProps) => (
   <Box
-    display="flex"
-    alignItems={labelLocation === 'left' ? 'center' : 'stretch'}
-    flexDirection={labelLocation === 'left' ? 'row' : 'column'}
-    gap="tight"
+    sx={{
+      display: 'flex',
+      alignItems: labelLocation === 'left' ? 'center' : 'stretch',
+      flexDirection: labelLocation === 'left' ? 'row' : 'column',
+      gap: 'tight',
+      ...sx,
+    }}
     {...boxProps}
   >
     <Text

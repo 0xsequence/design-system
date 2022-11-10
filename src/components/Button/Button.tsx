@@ -1,4 +1,10 @@
-import { forwardRef, Ref, ElementType, ComponentType } from 'react'
+import {
+  forwardRef,
+  Ref,
+  ElementType,
+  ComponentType,
+  ReactElement,
+} from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 import { Text } from '~/components/Text'
@@ -8,15 +14,17 @@ import { buttonVariants, iconVariants, ButtonVariants } from './styles.css'
 
 type ButtonProps<T extends ElementType> = BoxProps<T> &
   ButtonVariants & {
-    disabled: boolean
-    pending: boolean
+    disabled?: boolean
+    pending?: boolean
     label?: string
-    width: 'full' | 'normal'
+    width?: 'full' | 'normal'
     LeftIcon?: ComponentType<IconProps>
     RightIcon?: ComponentType<IconProps>
   }
 
-export const Button = forwardRef(
+export const Button: <T extends ElementType>(
+  props: ButtonProps<T>
+) => ReactElement | null = forwardRef(
   <T extends ElementType>(props: ButtonProps<T>, ref: Ref<T>) => {
     const {
       as = 'button',
@@ -41,17 +49,21 @@ export const Button = forwardRef(
       >
         <Box
           as="span"
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          gap={width === 'normal' && RightIcon ? 'xtight' : undefined}
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: width === 'normal' && RightIcon ? 'xtight' : undefined,
+          }}
         >
           <Box
             as="span"
-            display="flex"
-            justifyContent="flex-start"
-            alignItems="center"
-            gap={LeftIcon ? 'xtight' : undefined}
+            sx={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              gap: LeftIcon ? 'xtight' : undefined,
+            }}
           >
             {LeftIcon && <LeftIcon className={iconVariants({ size })} />}
 

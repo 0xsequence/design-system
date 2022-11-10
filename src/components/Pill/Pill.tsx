@@ -1,23 +1,31 @@
 import { PropsWithChildren } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
+import { Atoms } from '~/css'
 
 import * as styles from './styles.css'
 
-interface PillProps extends BoxProps {}
+type PillProps = BoxProps & {
+  background?: Atoms['background']
+  color?: Atoms['color']
+}
 
 export const Pill = (props: PropsWithChildren<PillProps>) => {
   const {
     background = 'positive',
     children,
     color = 'white',
+    sx,
     ...boxProps
   } = props
   return (
     <Box
-      background={background}
       className={styles.pill}
-      color={color}
+      sx={{
+        background,
+        color,
+        ...sx,
+      }}
       {...boxProps}
     >
       {children}
