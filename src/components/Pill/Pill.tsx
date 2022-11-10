@@ -4,16 +4,7 @@ import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
-type PillProps = Pick<
-  BoxProps,
-  | 'background'
-  | 'color'
-  | 'margin'
-  | 'marginBottom'
-  | 'marginLeft'
-  | 'marginRight'
-  | 'marginTop'
->
+interface PillProps extends BoxProps {}
 
 export const Pill = (props: PropsWithChildren<PillProps>) => {
   const {

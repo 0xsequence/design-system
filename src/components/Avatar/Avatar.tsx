@@ -2,7 +2,7 @@ import { clsx } from 'clsx'
 import { memo } from 'react'
 import Blockies from 'react-blockies'
 
-import { Box, BoxLayoutProps } from '../Box'
+import { Box, BoxProps } from '../Box'
 
 import * as styles from './styles.css'
 
@@ -15,7 +15,7 @@ const scale: Record<AvatarSize, number> = {
   xl: 8,
 }
 
-interface AvatarProps extends BoxLayoutProps {
+interface AvatarProps extends BoxProps {
   address: string
   size?: AvatarSize
   className?: string

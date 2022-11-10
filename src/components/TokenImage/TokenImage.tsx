@@ -1,13 +1,13 @@
 import { clsx } from 'clsx'
 import { memo } from 'react'
 
-import { Box, BoxLayoutProps } from '../Box'
+import { Box, BoxProps } from '../Box'
 
 import * as styles from './styles.css'
 
 type TokenIconSize = 'xs' | 'sm' | 'md' | 'lg'
 
-interface TokenIconProps extends BoxLayoutProps {
+interface TokenIconProps extends BoxProps {
   className?: string
   style?: any
   src?: string

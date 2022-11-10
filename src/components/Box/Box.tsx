@@ -45,14 +45,3 @@ export const Box: PolymorphicComponent = forwardRef(
     })
   }
 )
-
-export type BoxLayoutProps = Pick<
-  Atoms,
-  | 'margin'
-  | 'marginX'
-  | 'marginY'
-  | 'marginBottom'
-  | 'marginLeft'
-  | 'marginRight'
-  | 'marginTop'
->

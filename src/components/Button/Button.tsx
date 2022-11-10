@@ -6,25 +6,14 @@ import { IconProps } from '~/icons/types'
 
 import { buttonVariants, iconVariants, ButtonVariants } from './styles.css'
 
-type ButtonProps<T extends ElementType> = ButtonVariants &
-  Omit<
-    BoxProps<T>,
-    | 'background'
-    | 'children'
-    | 'display'
-    | 'fontFamily'
-    | 'fontSize'
-    | 'lineHeight'
-    | 'fontWeight'
-    | 'size'
-    | 'width'
-  > & {
+type ButtonProps<T extends ElementType> = BoxProps<T> &
+  ButtonVariants & {
     disabled: boolean
-    isPending: boolean
+    pending: boolean
     label?: string
+    width: 'full' | 'normal'
     LeftIcon?: ComponentType<IconProps>
     RightIcon?: ComponentType<IconProps>
-    width: 'full' | 'normal'
   }
 
 export const Button = forwardRef(
@@ -32,7 +21,7 @@ export const Button = forwardRef(
     const {
       as = 'button',
       disabled = false,
-      isPending = false,
+      pending = false,
       label,
       LeftIcon,
       RightIcon,
@@ -46,7 +35,7 @@ export const Button = forwardRef(
       <Box
         as={as}
         className={buttonVariants({ size, variant, width })}
-        disabled={disabled || isPending}
+        disabled={disabled || pending}
         ref={ref}
         {...boxProps}
       >
