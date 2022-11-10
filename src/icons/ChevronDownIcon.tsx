@@ -14,7 +14,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M5 7L9 11L13 7"
+      d="m5 7 4 4 4-4"
       stroke="currentcolor"
       strokeWidth={2}
       strokeLinecap="round"

@@ -16,13 +16,13 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M10.1538 7H6V13.4615H10.1538V7ZM5 6V14.4615H11.1538V6H5Z"
+      d="M10.154 7H6v6.461h4.154V7ZM5 6v8.461h6.154V6H5Z"
       fill="currentcolor"
     />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M6.80859 3.5H13.3629V12.1923H10.7701V11.1923H12.3629V4.5H7.80859V6.2724H6.80859V3.5Z"
+      d="M6.809 3.5h6.554v8.692H10.77v-1h1.593V4.5H7.809v1.772h-1V3.5Z"
       fill="currentcolor"
     />
   </svg>
