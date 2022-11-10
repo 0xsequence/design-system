@@ -8,16 +8,20 @@ import { IconProps } from './types'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    width="1em"
-    height="1em"
     viewBox="0 0 18 18"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    fontSize="1.5em"
     {...props}
   >
     <path
-      d="m13 5-8 8M5 5l8 8"
+      d="M13 5L5 13"
+      stroke="currentcolor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5 5L13 13"
       stroke="currentcolor"
       strokeWidth={2}
       strokeLinecap="round"
