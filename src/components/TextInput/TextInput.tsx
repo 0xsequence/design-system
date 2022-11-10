@@ -18,7 +18,7 @@ export const TextInput = forwardRef(
       processing = false,
       rightIcon,
       type = 'text',
-      ...boxProps
+      ...rest
     } = props
 
     return (
@@ -39,7 +39,7 @@ export const TextInput = forwardRef(
               paddingLeft: leftIcon ? 'xxloose' : 'normal',
               paddingRight: rightIcon ? 'xxloose' : 'normal',
             }}
-            {...boxProps}
+            {...rest}
           />
 
           <Box as="span" className={styles.rightIcon}>

@@ -19,7 +19,7 @@ export const Text = forwardRef(
       italic,
       underline,
       children,
-      ...boxProps
+      ...rest
     } = props
 
     return (
@@ -32,7 +32,7 @@ export const Text = forwardRef(
           underline,
         })}
         ref={ref}
-        {...boxProps}
+        {...rest}
       >
         {children}
       </Box>

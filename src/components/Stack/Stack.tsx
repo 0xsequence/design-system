@@ -7,7 +7,7 @@ interface StackProps extends BoxProps {
 }
 
 export const Stack = (props: StackProps) => {
-  const { children, flexDirection, gap, sx, ...boxProps } = props
+  const { children, flexDirection, gap, sx, ...rest } = props
 
   return (
     <Box
@@ -18,7 +18,7 @@ export const Stack = (props: StackProps) => {
         gap,
         ...sx,
       }}
-      {...boxProps}
+      {...rest}
     >
       {children}
     </Box>

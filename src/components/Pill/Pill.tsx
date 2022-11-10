@@ -16,7 +16,7 @@ export const Pill = (props: PropsWithChildren<PillProps>) => {
     children,
     color = 'white',
     sx,
-    ...boxProps
+    ...rest
   } = props
   return (
     <Box
@@ -26,7 +26,7 @@ export const Pill = (props: PropsWithChildren<PillProps>) => {
         color,
         ...sx,
       }}
-      {...boxProps}
+      {...rest}
     >
       {children}
     </Box>

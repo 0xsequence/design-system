@@ -14,10 +14,10 @@ interface TokenIconProps extends BoxProps {
 }
 
 export const TokenImage = memo((props: TokenIconProps) => {
-  const { className, src, symbol, size = 'md', ...boxProps } = props
+  const { className, src, symbol, size = 'md', ...rest } = props
 
   return (
-    <Box className={clsx(className, styles.root({ size }))} {...boxProps}>
+    <Box className={clsx(className, styles.root({ size }))} {...rest}>
       {src ? (
         <img className={styles.img} src={src} />
       ) : (

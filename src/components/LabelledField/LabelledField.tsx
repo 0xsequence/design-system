@@ -16,7 +16,7 @@ export const LabelledField = ({
   forId,
   labelLocation = 'hidden',
   sx,
-  ...boxProps
+  ...rest
 }: LabelledFieldProps) => (
   <Box
     sx={{
@@ -26,7 +26,7 @@ export const LabelledField = ({
       gap: 'tight',
       ...sx,
     }}
-    {...boxProps}
+    {...rest}
   >
     <Text
       as="label"

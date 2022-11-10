@@ -36,7 +36,7 @@ export const Button: <T extends ElementType>(
       size = 'md',
       variant = 'solid',
       width = 'normal',
-      ...boxProps
+      ...rest
     } = props
 
     return (
@@ -45,7 +45,7 @@ export const Button: <T extends ElementType>(
         className={buttonVariants({ size, variant, width })}
         disabled={disabled || pending}
         ref={ref}
-        {...boxProps}
+        {...rest}
       >
         <Box
           as="span"
