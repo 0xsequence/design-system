@@ -4,36 +4,7 @@ import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
-type TextProps<T extends ElementType = 'span'> = Partial<
-  Pick<
-    BoxProps<T>,
-    | 'as'
-    | 'color'
-    | 'fontWeight'
-    | 'alignSelf'
-    | 'justifySelf'
-    | 'margin'
-    | 'marginBottom'
-    | 'marginLeft'
-    | 'marginRight'
-    | 'marginTop'
-    | 'marginX'
-    | 'marginY'
-    | 'padding'
-    | 'paddingBottom'
-    | 'paddingLeft'
-    | 'paddingRight'
-    | 'paddingTop'
-    | 'paddingX'
-    | 'paddingY'
-    | 'textTransform'
-    | 'visibility'
-    | 'whiteSpace'
-    | 'wordBreak'
-    | 'wordWrap'
-    | 'zIndex'
-  >
-> &
+type TextProps<T extends ElementType = 'span'> = BoxProps<T> &
   styles.TextVariants
 
 export const Text = forwardRef(

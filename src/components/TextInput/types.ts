@@ -44,28 +44,15 @@ type hasLabel = {
   labelLocation: 'left' | 'top'
 }
 
-export type TextInputProps<T extends 'input' | 'textarea' = 'input'> = Partial<
-  Pick<
-    BoxProps<T>,
-    | 'as'
-    | 'alignSelf'
-    | 'justifySelf'
-    | 'margin'
-    | 'marginBottom'
-    | 'marginLeft'
-    | 'marginRight'
-    | 'marginTop'
-    | 'marginX'
-    | 'marginY'
-  >
-> &
-  (AsInput | AsTextArea) &
-  (hasLabel | hiddenLabel) & {
-    name?: string
-    disabled?: boolean
-    processing?: boolean
-    placeholder?: string
-    value?: string
-    leftIcon?: ReactNode
-    rightIcon?: ReactNode
-  }
+export type TextInputProps<T extends 'input' | 'textarea' = 'input'> =
+  BoxProps<T> &
+    (AsInput | AsTextArea) &
+    (hasLabel | hiddenLabel) & {
+      name?: string
+      disabled?: boolean
+      processing?: boolean
+      placeholder?: string
+      value?: string
+      leftIcon?: ReactNode
+      rightIcon?: ReactNode
+    }

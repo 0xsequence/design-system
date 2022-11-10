@@ -1,5 +1,5 @@
 export { Box } from './Box'
-export type { BoxProps, BoxLayoutProps } from './Box'
+export type { BoxProps } from './Box'
 export { Group } from './Group'
 export { Collapsible } from './Collapsible'
 export { Stack } from './Stack'
