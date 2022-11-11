@@ -1,27 +1,32 @@
-import { clsx, ClassValue } from 'clsx'
-import {
+import { clsx } from 'clsx'
+import React, {
   createElement,
-  ElementType,
   ReactElement,
+  ElementType,
   forwardRef,
   Ref,
   ComponentPropsWithRef,
 } from 'react'
 
 import { atoms, Atoms } from '~/css'
-export type BoxProps<T extends ElementType = 'div'> =
-  ComponentPropsWithRef<T> & {
+
+export type BoxProps<T extends React.ElementType> =
+  React.ComponentPropsWithoutRef<T> & {
     as?: T
-    className?: ClassValue
     sx?: Atoms
+    ref?: Ref<ComponentPropsWithRef<T>['ref']> | null
   }
 
-type PolymorphicComponent = <T extends ElementType = 'div'>(
-  props: BoxProps<T>
+export type PolymorphicProps<P, T extends ElementType> = P & BoxProps<T>
+
+export type PolymorphicComponent<P, D extends ElementType> = <
+  T extends React.ElementType = D
+>(
+  props: PolymorphicProps<P, T>
 ) => ReactElement | null
 
-export const Box: PolymorphicComponent = forwardRef(
-  <T extends ElementType>(props: BoxProps<T>, ref: Ref<T>) => {
+export const Box: PolymorphicComponent<{}, 'div'> = forwardRef(
+  <T extends ElementType>(props: BoxProps<T>, ref: Ref<HTMLElement>) => {
     const { as = 'div', className, sx, ...nativeProps } = props
 
     return createElement(as, {
