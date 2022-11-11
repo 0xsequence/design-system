@@ -1,6 +1,6 @@
-import { ComponentType, ElementType, MouseEvent, useState } from 'react'
+import { ComponentType, MouseEvent, useState } from 'react'
 
-import { Box, BoxProps } from '~/components/Box'
+import { Box, PolymorphicProps } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { IconProps } from '~/icons/types'
 
@@ -11,7 +11,7 @@ export type TabOption = {
   onClick?: () => boolean | Promise<boolean>
 }
 
-type TabSelectProps<T extends ElementType> = BoxProps<T> & {
+type TabSelectProps = {
   activeTab?: string
   tabs: TabOption[]
 }
@@ -20,7 +20,7 @@ export const TabSelect = ({
   activeTab,
   tabs,
   ...rest
-}: TabSelectProps<'div'>) => {
+}: PolymorphicProps<TabSelectProps, 'div'>) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [activeTabValue, setActiveTabValue] = useState<string>(
     activeTab ?? tabs[0].value
