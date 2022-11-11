@@ -1,16 +1,20 @@
-import { ElementType, forwardRef, PropsWithChildren, Ref } from 'react'
+import { ElementType, forwardRef } from 'react'
 
-import { Box, BoxProps } from '~/components/Box'
+import {
+  Box,
+  PolymorphicComponent,
+  PolymorphicProps,
+  PolymorphicRef,
+} from '~/components/Box'
 
 import * as styles from './styles.css'
 
-type TextProps<T extends ElementType = 'span'> = BoxProps<T> &
-  styles.TextVariants
+type TextProps = styles.TextVariants
 
-export const Text = forwardRef(
+export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
   <T extends ElementType>(
-    props: PropsWithChildren<TextProps<T>>,
-    ref: Ref<T>
+    props: PolymorphicProps<TextProps, T>,
+    ref: PolymorphicRef<T>
   ) => {
     const {
       as = 'span',

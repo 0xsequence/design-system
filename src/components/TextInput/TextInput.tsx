@@ -1,50 +1,78 @@
-import { forwardRef, Ref } from 'react'
+import { ElementType, forwardRef, ReactNode } from 'react'
 
-import { Box } from '~/components/Box'
+import {
+  Box,
+  PolymorphicComponent,
+  PolymorphicProps,
+  PolymorphicRef,
+} from '~/components/Box'
 import { LabelledField } from '~/components/LabelledField'
 
 import * as styles from './styles.css'
-import { TextInputProps } from './types'
 
-export const TextInput = forwardRef(
-  <T extends 'input' | 'textarea'>(props: TextInputProps<T>, ref: Ref<T>) => {
-    const {
-      as = 'input',
-      id,
-      disabled = false,
-      label = '',
-      labelLocation = 'hidden',
-      leftIcon,
-      processing = false,
-      rightIcon,
-      type = 'text',
-      ...boxProps
-    } = props
+type hiddenLabel = {
+  label?: string
+  labelLocation?: 'hidden'
+}
 
-    return (
-      <LabelledField label={label} labelLocation={labelLocation} forId={id}>
-        <Box className={styles.wrap}>
-          <Box as="span" className={styles.leftIcon}>
-            {leftIcon}
+type hasLabel = {
+  label: string
+  labelLocation: 'left' | 'top'
+}
+
+export type TextInputProps = (hasLabel | hiddenLabel) & {
+  name?: string
+  disabled?: boolean
+  processing?: boolean
+  placeholder?: string
+  value?: string
+  leftIcon?: ReactNode
+  rightIcon?: ReactNode
+}
+
+export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
+  forwardRef(
+    <T extends ElementType>(
+      props: PolymorphicProps<TextInputProps, T>,
+      ref: PolymorphicRef<T>
+    ) => {
+      const {
+        as = 'input',
+        id,
+        disabled = false,
+        label = '',
+        labelLocation = 'hidden',
+        leftIcon,
+        processing = false,
+        rightIcon,
+        type = 'text',
+        ...boxProps
+      } = props
+
+      return (
+        <LabelledField label={label} labelLocation={labelLocation} forId={id}>
+          <Box className={styles.wrap}>
+            <Box as="span" className={styles.leftIcon}>
+              {leftIcon}
+            </Box>
+
+            <Box
+              as={as}
+              id={id}
+              type={type}
+              className={styles.input}
+              disabled={disabled || processing}
+              ref={ref}
+              paddingLeft={leftIcon ? 'xxloose' : 'normal'}
+              paddingRight={rightIcon ? 'xxloose' : 'normal'}
+              {...boxProps}
+            />
+
+            <Box as="span" className={styles.rightIcon}>
+              {rightIcon}
+            </Box>
           </Box>
-
-          <Box
-            as={as}
-            id={id}
-            type={type}
-            className={styles.input}
-            disabled={disabled || processing}
-            ref={ref}
-            paddingLeft={leftIcon ? 'xxloose' : 'normal'}
-            paddingRight={rightIcon ? 'xxloose' : 'normal'}
-            {...boxProps}
-          />
-
-          <Box as="span" className={styles.rightIcon}>
-            {rightIcon}
-          </Box>
-        </Box>
-      </LabelledField>
-    )
-  }
-)
+        </LabelledField>
+      )
+    }
+  )
