@@ -1,6 +1,11 @@
-import { forwardRef, Ref } from 'react'
+import { ElementType, forwardRef } from 'react'
 
-import { Box } from '~/components/Box'
+import {
+  Box,
+  PolymorphicComponent,
+  PolymorphicProps,
+  PolymorphicRef,
+} from '~/components/Box'
 
 import * as styles from './styles.css'
 
@@ -8,8 +13,11 @@ type SpinnerProps = {
   // color?: BoxProps['color']
 } & styles.Variants
 
-export const Spinner = forwardRef(
-  (props: SpinnerProps, ref: Ref<HTMLDivElement>) => {
+export const Spinner: PolymorphicComponent<SpinnerProps> = forwardRef(
+  <T extends ElementType>(
+    props: PolymorphicProps<SpinnerProps, T>,
+    ref: PolymorphicRef<T>
+  ) => {
     const { size = 'md' } = props
 
     return (
@@ -36,5 +44,3 @@ export const Spinner = forwardRef(
     )
   }
 )
-
-Spinner.displayName = 'Spinner'
