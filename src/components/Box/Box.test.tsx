@@ -1,7 +1,12 @@
 import { cleanup, render, screen } from '@testing-library/react'
-import React, { forwardRef } from 'react'
+import { ElementType, forwardRef } from 'react'
 
-import { Box, PolymorphicComponent, PolymorphicProps } from './Box'
+import {
+  Box,
+  PolymorphicComponent,
+  PolymorphicProps,
+  PolymorphicRef,
+} from './Box'
 
 describe('<Box />', () => {
   afterEach(cleanup)
@@ -31,14 +36,14 @@ describe('Type errors', () => {
       </a>
     )
 
-    type ButtonProps = {//<T extends React.ElementType> = BoxProps<T> & {
+    type ButtonProps = {
       variant?: 'primary' | 'normal'
       size?: 'sm' | 'md' | 'lg'
       label: string
     }
 
     const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
-        <E extends React.ElementType = 'button'>(props: PolymorphicProps<ButtonProps, E>, ref: typeof props.ref /* BoxProps<E>['ref']*/) => {
+        <T extends ElementType>(props: PolymorphicProps<ButtonProps, T>, ref: PolymorphicRef<T>) => {
       const { as = 'button', variant = 'normal', size = "md", label, ...rest } = props
 
       return (
@@ -83,7 +88,7 @@ describe('Type errors', () => {
 
     render(<Box as={Link} to="/home">Home</Box>) // ok
 
-    // @ts-expect-error - `display2` is not a valid sx prop`
-    expect(() => render(<Box sx={{ display2: 'block' }} />)).toThrow()
+    // @ts-expect-error - `displayx` is not a valid sx prop`
+    expect(() => render(<Box sx={{ displayx: 'block' }} />)).toThrow()
   })
 })

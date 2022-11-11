@@ -1,31 +1,30 @@
-import {
-  forwardRef,
-  Ref,
-  ElementType,
-  ComponentType,
-  ReactElement,
-} from 'react'
+import { forwardRef, ElementType, ComponentType } from 'react'
 
-import { Box, BoxProps } from '~/components/Box'
+import {
+  Box,
+  PolymorphicComponent,
+  PolymorphicProps,
+  PolymorphicRef,
+} from '~/components/Box'
 import { Text } from '~/components/Text'
 import { IconProps } from '~/icons/types'
 
 import { buttonVariants, iconVariants, ButtonVariants } from './styles.css'
 
-type ButtonProps<T extends ElementType> = BoxProps<T> &
-  ButtonVariants & {
-    disabled?: boolean
-    pending?: boolean
-    label?: string
-    width?: 'full' | 'normal'
-    LeftIcon?: ComponentType<IconProps>
-    RightIcon?: ComponentType<IconProps>
-  }
+type ButtonProps = ButtonVariants & {
+  disabled?: boolean
+  pending?: boolean
+  label?: string
+  width?: 'full' | 'normal'
+  LeftIcon?: ComponentType<IconProps>
+  RightIcon?: ComponentType<IconProps>
+}
 
-export const Button: <T extends ElementType>(
-  props: ButtonProps<T>
-) => ReactElement | null = forwardRef(
-  <T extends ElementType>(props: ButtonProps<T>, ref: Ref<T>) => {
+export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
+  <T extends ElementType>(
+    props: PolymorphicProps<ButtonProps, T>,
+    ref: PolymorphicRef<T>
+  ) => {
     const {
       as = 'button',
       disabled = false,

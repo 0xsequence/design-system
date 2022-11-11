@@ -55,7 +55,7 @@ TextAsChild.args = {
   as: 'p',
   children: (
     <>
-      <Text fontWeight="bold" color="positive">
+      <Text weight="bold" color="positive">
         Hello
       </Text>
       {' World!'}

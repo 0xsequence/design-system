@@ -7,7 +7,7 @@ const rotate = keyframes({
   '100%': { transform: 'rotate(1turn)' },
 })
 
-export const variants = recipe({
+export const spinnerVariants = recipe({
   base: [
     style({
       stroke: vars.colors.textBody,
@@ -32,4 +32,4 @@ export const variants = recipe({
   },
 })
 
-export type Variants = RecipeVariants<typeof variants>
+export type SpinnerVariants = RecipeVariants<typeof spinnerVariants>

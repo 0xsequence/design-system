@@ -1,19 +1,30 @@
-import { forwardRef, Ref } from 'react'
+import { clsx } from 'clsx'
+import { forwardRef, ElementType } from 'react'
 
-import { Box } from '~/components/Box'
+import {
+  Box,
+  PolymorphicComponent,
+  PolymorphicProps,
+  PolymorphicRef,
+} from '~/components/Box'
 
 import * as styles from './styles.css'
 
-type SpinnerProps = {
-  // color?: BoxProps['color']
-} & styles.Variants
+type SpinnerProps = styles.SpinnerVariants
 
-export const Spinner = forwardRef(
-  (props: SpinnerProps, ref: Ref<HTMLDivElement>) => {
-    const { size = 'md' } = props
+export const Spinner: PolymorphicComponent<SpinnerProps> = forwardRef(
+  <T extends ElementType>(
+    props: PolymorphicProps<SpinnerProps, T>,
+    ref: PolymorphicRef<T>
+  ) => {
+    const { className, size = 'md', ...rest } = props
 
     return (
-      <Box className={styles.variants({ size })} ref={ref}>
+      <Box
+        className={clsx(className, styles.spinnerVariants({ size }))}
+        ref={ref}
+        {...rest}
+      >
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <circle
             cx="12"
@@ -36,5 +47,3 @@ export const Spinner = forwardRef(
     )
   }
 )
-
-Spinner.displayName = 'Spinner'
