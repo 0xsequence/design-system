@@ -3,6 +3,7 @@ export type ColorScheme = 'dark' | 'light'
 const context = {
   positive: '#1FC266',
   negative: '#C2501F',
+  info: '#0076CC',
 }
 
 type Background =
