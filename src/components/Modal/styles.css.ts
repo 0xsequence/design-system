@@ -20,7 +20,7 @@ export const root = style([
 export const overlay = style([
   atoms({
     position: 'fixed',
-    background: 'backgroundOverlay',
+    background: 'gradientBackdrop',
   }),
   {
     top: 0,
@@ -34,7 +34,7 @@ export const content = style([
   atoms({
     position: 'fixed',
     overflow: 'hidden',
-    background: 'backgroundModal',
+    background: 'backgroundSecondary',
     padding: 'normal',
   }),
   {

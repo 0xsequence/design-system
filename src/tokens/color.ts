@@ -1,6 +1,6 @@
 export type ColorScheme = 'dark' | 'light'
 
-const accents = {
+const context = {
   positive: '#1FC266',
   negative: '#C2501F',
 }
@@ -11,10 +11,8 @@ type Background =
   | 'button'
   | 'backdrop'
   | 'inverse'
-  | 'modal'
-  | 'overlay'
   | 'glass' // lighter on dark mode
-  | 'nestedGlass' // darker on dark mode
+  | 'glassSecondary' // darker on dark mode
 
 const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
   dark: {
@@ -24,10 +22,7 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
     backdrop: 'rgba(0, 0, 0, 0.9)',
     inverse: '#ffffff',
     glass: 'rgba(85, 85, 85, 0.3)',
-    nestedGlass: 'rgba(0, 0, 0, 0.4)',
-    modal: '#151515',
-    overlay:
-      'linear-gradient(243.18deg, rgba(86, 52, 189, 0.85) 0%, rgba(49, 41, 223, 0.85) 63.54%, rgba(7, 98, 149, 0.85) 100%)',
+    glassSecondary: 'rgba(0, 0, 0, 0.5)',
   },
   light: {
     primary: '#f4f4f4',
@@ -36,10 +31,7 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
     backdrop: 'rgba(255, 255, 255, 0.9)',
     inverse: '#000000',
     glass: 'rgba(159, 159, 159, 0.3)',
-    nestedGlass: 'rgba(244, 244, 244, 0.4)',
-    modal: '#151515',
-    overlay:
-      'linear-gradient(243.18deg, rgba(86, 52, 189, 0.85) 0%, rgba(49, 41, 223, 0.85) 63.54%, rgba(7, 98, 149, 0.85) 100%)',
+    glassSecondary: 'rgba(255, 255, 255, 0.5)',
   },
 }
 
@@ -58,7 +50,7 @@ const borderColors: { [key in ColorScheme]: { [key in BorderColor]: string } } =
   }
 
 const gradients = {
-  primary: `linear-gradient(89.69deg, #6634FF 0.27%, #9C6DFF 99.73%)`,
+  primary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
   backdrop: `linear-gradient(
     243.18deg, 
     rgba(86, 52, 189, 0.85) 0%, 
@@ -106,7 +98,7 @@ export const colors = {
     transparent: 'transparent',
     white: '#ffffff',
   },
-  accents,
+  context,
   gradients,
   dark: colorSchemes.dark,
   light: colorSchemes.light,
