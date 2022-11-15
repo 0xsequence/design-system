@@ -53,7 +53,7 @@ export const buttonVariants = recipe({
       nested: [
         atoms({
           backdropFilter: 'blur',
-          background: 'backgroundNestedGlass',
+          background: 'backgroundGlassSecondary',
           color: 'textBody',
           opacity: {
             base: '100',
