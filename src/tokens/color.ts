@@ -1,38 +1,27 @@
 export type ColorScheme = 'dark' | 'light'
 
-const context = {
+type Context = 'positive' | 'negative' | 'info'
+
+const context: { [key in Context]: string } = {
   positive: '#1FC266',
   negative: '#C2501F',
   info: '#0076CC',
 }
 
-type Background =
-  | 'primary'
-  | 'secondary'
-  | 'button'
-  | 'backdrop'
-  | 'inverse'
-  | 'glass' // lighter on dark mode
-  | 'glassSecondary' // darker on dark mode
+type Background = 'primary' | 'secondary' | 'control' | 'inverse'
 
 const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
   dark: {
-    primary: '#000000',
-    secondary: '#1A1A1A',
-    button: '#292929',
-    backdrop: 'rgba(0, 0, 0, 0.9)',
-    inverse: '#ffffff',
-    glass: 'rgba(85, 85, 85, 0.3)',
-    glassSecondary: 'rgba(0, 0, 0, 0.5)',
+    primary: 'rgba(0, 0, 0, 1)',
+    secondary: 'rgba(255, 255, 255, 0.1)',
+    control: 'rgba(255, 255, 255, 0.25)',
+    inverse: 'rgba(255, 255, 255, 1)',
   },
   light: {
-    primary: '#f4f4f4',
-    secondary: '#ffffff',
-    button: '#f4f4f4',
-    backdrop: 'rgba(255, 255, 255, 0.9)',
-    inverse: '#000000',
-    glass: 'rgba(159, 159, 159, 0.3)',
-    glassSecondary: 'rgba(255, 255, 255, 0.5)',
+    primary: 'rgba(244, 244, 244, 1)',
+    secondary: 'rgba(0, 0, 0, 0.1)',
+    control: 'rgba(0, 0, 0, 0.25)',
+    inverse: 'rgba(0, 0, 0, 1)',
   },
 }
 
@@ -50,7 +39,26 @@ const borderColors: { [key in ColorScheme]: { [key in BorderColor]: string } } =
     },
   }
 
-const gradients = {
+type Button = 'solid' | 'glass' | 'emphasis' | 'inverse'
+
+const buttons: { [key in ColorScheme]: { [key in Button]: string } } = {
+  dark: {
+    solid: 'rgba(255, 255, 255, 0.15)',
+    glass: 'rgba(255, 255, 255, 0.3)',
+    emphasis: 'rgba(0, 0, 0, 0.5)',
+    inverse: 'rgba(255, 255, 255, 0.8)',
+  },
+  light: {
+    solid: 'rgba(0, 0, 0, 0.15)',
+    glass: 'rgba(0, 0, 0, 0.3)',
+    emphasis: 'rgba(255, 255, 255, 0.5)',
+    inverse: 'rgba(0, 0, 0, 0.8)',
+  },
+}
+
+type Gradient = 'primary' | 'backdrop'
+
+const gradients: { [key in Gradient]: string } = {
   primary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
   backdrop: `linear-gradient(
     243.18deg, 
@@ -60,35 +68,35 @@ const gradients = {
   )`,
 }
 
-type TextColor = 'body' | 'faded' | 'inactive' | 'inverse' | 'overlay'
+type TextColor = 'body' | 'faded' | 'inactive' | 'inverse'
 
 const textColors: { [key in ColorScheme]: { [key in TextColor]: string } } = {
   dark: {
-    body: '#FFFFFF',
-    faded: '#7F7F7F',
-    inactive: '#404040',
-    inverse: '#000000',
-    overlay: 'rgba(255, 255, 255, 0.5)',
+    body: 'rgba(255, 255, 255, 1)',
+    inactive: 'rgba(255, 255, 255, 0.8)',
+    faded: 'rgba(255, 255, 255, 0.5)',
+    inverse: 'rgba(0, 0, 0, 1)',
   },
   light: {
-    body: '#222222',
-    faded: '#8A8A8A',
-    inactive: '#D7D7D7',
-    inverse: '#FFFFFF',
-    overlay: 'rgba(0, 0, 0, 0.5)',
+    body: 'rgba(34, 34, 34, 1)',
+    inactive: 'rgba(34, 34, 34, 0.8)',
+    faded: 'rgba(34, 34, 34, 0.5)',
+    inverse: 'rgba(255, 255, 255, 1)',
   },
 }
 
 export const colorSchemes = {
   dark: {
     background: backgrounds.dark,
-    text: textColors.dark,
     border: borderColors.dark,
+    button: buttons.dark,
+    text: textColors.dark,
   },
   light: {
     background: backgrounds.light,
-    text: textColors.light,
     border: borderColors.light,
+    button: buttons.light,
+    text: textColors.light,
   },
 } as const
 

@@ -5,85 +5,50 @@ import { atoms, vars } from '~/css'
 import { textVariants } from '../Text/styles.css'
 
 export const buttonVariants = recipe({
-  base: [
-    atoms({
-      cursor: {
-        base: 'pointer',
-        disabled: 'not-allowed',
-      },
-    }),
-  ],
+  base: atoms({
+    borderRadius: 'circle',
+    color: {
+      base: 'textBody',
+      disabled: 'textInactive',
+    },
+    cursor: {
+      base: 'pointer',
+      disabled: 'not-allowed',
+    },
+    fontWeight: 'bold',
+    opacity: {
+      base: '100',
+      hover: '80',
+      disabled: '50',
+    },
+  }),
 
   variants: {
     variant: {
-      primary: [
-        atoms({
-          background: 'gradientPrimary',
-          color: 'white',
-          opacity: {
-            base: '100',
-            hover: '80',
-            disabled: '50',
-          },
-        }),
-      ],
-      solid: [
-        atoms({
-          background: 'backgroundButton',
-          color: 'textBody',
-          opacity: {
-            base: '100',
-            hover: '80',
-            disabled: '50',
-          },
-        }),
-      ],
-      glass: [
-        atoms({
-          backdropFilter: 'blur',
-          background: 'backgroundGlass',
-          color: 'textBody',
-          opacity: {
-            base: '100',
-            hover: '80',
-            disabled: '50',
-          },
-        }),
-      ],
-      nested: [
-        atoms({
-          backdropFilter: 'blur',
-          background: 'backgroundGlassSecondary',
-          color: 'textBody',
-          opacity: {
-            base: '100',
-            hover: '80',
-            disabled: '50',
-          },
-        }),
-      ],
+      primary: atoms({ background: 'gradientPrimary' }),
+      solid: atoms({ backdropFilter: 'blur', background: 'buttonSolid' }),
+      glass: atoms({ backdropFilter: 'blur', background: 'buttonGlass' }),
+      emphasis: atoms({ backdropFilter: 'blur', background: 'buttonEmphasis' }),
+
       text: [
+        textVariants({ variant: 'small' }),
         atoms({
-          background: {
-            base: 'transparent',
-            hover: 'backgroundGlass',
+          background: 'transparent',
+          color: {
+            base: 'textFaded',
+            disabled: 'textInactive',
           },
-          color: 'textBody',
-          opacity: {
-            base: '100',
-            hover: '80',
-            disabled: '50',
-          },
+          padding: 'none',
         }),
       ],
+
       // TabSelect options
       active: [
         atoms({
-          background: 'backgroundInverse',
-          color: 'textInverse',
-          opacity: {
-            base: '100',
-            disabled: '50',
+          background: 'buttonInverse',
+          color: {
+            base: 'textInverse',
+            disabled: 'textInactive',
           },
         }),
       ],
@@ -93,28 +58,38 @@ export const buttonVariants = recipe({
           color: {
             base: 'textFaded',
             hover: 'textBody',
+            disabled: 'textInactive',
           },
         }),
       ],
     },
 
+    iconOnly: { true: {} },
+
     size: {
-      sm: [
+      tiny: [
         textVariants({ variant: 'xsmall' }),
+        atoms({ paddingX: 'tight' }),
+        {
+          height: '28px',
+          paddingTop: '0.375rem',
+          paddingBottom: '0.375rem',
+        },
+      ],
+      sm: [
+        textVariants({ variant: 'normal' }),
         atoms({
-          borderRadius: 'circle',
-          paddingX: 'tight',
-          paddingY: 'xxtight',
+          borderRadius: 'md',
+          paddingX: 'normal',
+          paddingY: 'xtight',
         }),
-        { height: '28px' },
+        {
+          height: '36px',
+        },
       ],
       md: [
         textVariants({ variant: 'normal' }),
-        atoms({
-          borderRadius: 'lg',
-          paddingY: 'tight',
-          fontWeight: 'bold',
-        }),
+        atoms({ paddingY: 'tight' }),
         {
           height: '44px',
           paddingLeft: '1.25rem',
@@ -123,26 +98,26 @@ export const buttonVariants = recipe({
       ],
       lg: [
         textVariants({ variant: 'normal' }),
-        atoms({
-          borderRadius: 'lg',
-          paddingY: 'tight',
-          fontWeight: 'bold',
-        }),
+        atoms({ paddingY: 'normal' }),
         {
-          height: '59px',
+          height: '52px',
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
         },
       ],
+      tabTiny: [
+        textVariants({ variant: 'xsmall' }),
+        atoms({ paddingX: 'xtight', paddingY: 'xxtight' }),
+        {
+          height: '24px',
+        },
+      ],
       tab: [
         textVariants({ variant: 'normal' }),
-        atoms({
-          borderRadius: 'circle',
-          fontWeight: 'bold',
-          paddingRight: 'xtight',
-          paddingY: 'xxtight',
-        }),
-        { height: '28px' },
+        {
+          height: '32px',
+          padding: '0.375rem 1.25rem',
+        },
       ],
     },
 
@@ -151,24 +126,43 @@ export const buttonVariants = recipe({
       normal: [atoms({ display: 'inline-block' })],
     },
   },
+
+  compoundVariants: [
+    {
+      variants: { iconOnly: true, size: 'tiny' },
+      style: { padding: '0.375rem' },
+    },
+    {
+      variants: { iconOnly: true, size: 'sm' },
+      style: { padding: '0.5rem' },
+    },
+    {
+      variants: { iconOnly: true, size: 'md' },
+      style: { padding: '0.75rem' },
+    },
+  ],
 })
 
 export type ButtonVariants = RecipeVariants<typeof buttonVariants>
 
 export const iconVariants = recipe({
+  base: {
+    height: vars.lineHeights.normal,
+    width: vars.lineHeights.normal,
+  },
+
   variants: {
     size: {
-      sm: {
+      tiny: {
         height: vars.lineHeights.xsmall,
         width: vars.lineHeights.xsmall,
       },
-      md: {
-        height: vars.lineHeights.normal,
-        width: vars.lineHeights.normal,
-      },
-      lg: {
-        height: vars.lineHeights.normal,
-        width: vars.lineHeights.normal,
+      sm: {},
+      md: {},
+      lg: {},
+      tabTiny: {
+        height: vars.lineHeights.small,
+        width: vars.lineHeights.small,
       },
       tab: {
         height: vars.lineHeights.small,
