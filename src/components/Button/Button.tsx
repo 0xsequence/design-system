@@ -38,10 +38,18 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       ...boxProps
     } = props
 
+    const iconOnly = LeftIcon !== undefined && label === undefined
+    const tinyGaps = ['tab', 'tabTiny', 'tiny'].includes(size)
+
     return (
       <Box
         as={as}
-        className={buttonVariants({ size, variant, width })}
+        className={buttonVariants({
+          iconOnly,
+          size: variant === 'text' ? undefined : size,
+          variant,
+          width,
+        })}
         disabled={disabled || pending}
         ref={ref}
         {...boxProps}
@@ -51,24 +59,17 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          gap={
-            width === 'normal' && RightIcon
-              ? size === 'tab'
-                ? 'xxtight'
-                : 'xtight'
-              : undefined
-          }
+          gap={tinyGaps ? 'xxtight' : 'xtight'}
         >
           <Box
             as="span"
             display="flex"
             justifyContent="flex-start"
             alignItems="center"
-            gap={LeftIcon ? (size === 'tab' ? 'xxtight' : 'xtight') : undefined}
+            gap={tinyGaps ? 'xxtight' : 'xtight'}
           >
             {LeftIcon && <LeftIcon className={iconVariants({ size })} />}
-
-            <Text>{label}</Text>
+            {!iconOnly && <Text>{label}</Text>}
           </Box>
 
           {RightIcon && <RightIcon className={iconVariants({ size })} />}

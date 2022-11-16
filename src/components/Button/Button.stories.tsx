@@ -1,8 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
+import { Box } from '~/components/Box'
 import { ArrowRightIcon, ScanIcon } from '~/icons'
-
-import { Box } from '../Box'
 
 import { Button } from './Button'
 

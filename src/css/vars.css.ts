@@ -35,6 +35,7 @@ const makeColorScheme = (mode: ColorScheme = 'light') => {
     ...mapTokens('gradient', colors.gradients),
     ...mapTokens('background', schemeTokens.background),
     ...mapTokens('border', schemeTokens.border),
+    ...mapTokens('button', schemeTokens.button),
     ...mapTokens('text', schemeTokens.text),
   }
 }

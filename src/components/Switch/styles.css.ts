@@ -4,10 +4,9 @@ import { vars } from '~/css'
 
 export const root = style({
   cursor: 'pointer',
-  width: '45px',
-  height: '30px',
-  background: vars.colors.backgroundButton,
-  border: `${vars.borderWidths.thick} solid ${vars.colors.borderNormal}`,
+  width: '48px',
+  height: '28px',
+  background: vars.colors.backgroundControl,
   padding: vars.space.xxtight,
   borderRadius: vars.radii.circle,
   position: 'relative',
@@ -20,16 +19,18 @@ export const root = style({
     },
 
     '&[data-state="checked"]': {
-      background: vars.colors.positive,
+      background: vars.colors.gradientPrimary,
     },
   },
 })
 
 export const thumb = style({
-  display: 'block',
+  position: 'absolute',
+  top: 3,
+  left: 3,
   width: 22,
   height: 22,
-  background: vars.colors.backgroundSecondary,
+  background: vars.colors.backgroundInverse,
   borderRadius: vars.radii.circle,
   transition: 'transform 100ms ease-out, background 100ms ease-out',
   transform: 'translateX(0)',
@@ -37,8 +38,8 @@ export const thumb = style({
 
   selectors: {
     '&[data-state="checked"]': {
-      transform: 'translateX(15px)',
-      background: vars.colors.backgroundButton,
+      transform: 'translateX(20px)',
+      background: vars.colors.backgroundInverse,
     },
 
     [`${root}:hover:not([data-state="checked"]) &`]: {
