@@ -9,6 +9,6 @@ describe('Icons', () => {
     const { container } = render(<ScanIcon />)
     const el = container.querySelector('svg')
 
-    expect(el?.getAttribute('viewBox')).toBe('0 0 18 18')
+    expect(el?.getAttribute('viewBox')).toBe('0 0 20 20')
   })
 })
