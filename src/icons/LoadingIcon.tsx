@@ -16,18 +16,18 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M11.395 7.109h-5.96v9.431h5.96V7.11ZM4 5.649V18h8.83V5.65H4Z"
-      fill="#fff"
+      d="M10 3.6a6.4 6.4 0 0 1 6.4 6.4H18a8 8 0 0 0-8-8v1.6ZM16.4 10a6.4 6.4 0 0 1-6.4 6.4V18a8 8 0 0 0 8-8h-1.6Z"
+      fill="#D9D9D9"
     />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M6.595 2H16v12.688h-3.72v-1.46h2.285V3.46H8.03v2.587H6.595V2Z"
-      fill="#fff"
+      d="M3.6 10a6.4 6.4 0 0 0 6.4 6.4V18a8 8 0 0 1-8-8h1.6Z"
+      fill="#D9D9D9"
     />
   </svg>
 )
 
-const SvgCopyIcon = (props: IconProps) => <Box as={Svg} {...props} />
+const SvgLoadingIcon = (props: IconProps) => <Box as={Svg} {...props} />
 
-export default SvgCopyIcon
+export default SvgLoadingIcon
