@@ -30,13 +30,15 @@ const makeColorScheme = (mode: ColorScheme = 'light') => {
   const schemeTokens = colors[mode]
 
   return {
-    ...colors.base,
-    ...colors.context,
-    ...mapTokens('gradient', colors.gradients),
-    ...mapTokens('background', schemeTokens.background),
-    ...mapTokens('border', schemeTokens.border),
-    ...mapTokens('button', schemeTokens.button),
-    ...mapTokens('text', schemeTokens.text),
+    colors: {
+      ...colors.base,
+      ...colors.context,
+      ...mapTokens('gradient', colors.gradients),
+      ...mapTokens('background', schemeTokens.background),
+      ...mapTokens('border', schemeTokens.border),
+      ...mapTokens('button', schemeTokens.button),
+      ...mapTokens('text', schemeTokens.text),
+    },
   }
 }
 
@@ -53,5 +55,5 @@ for (const colorScheme of Object.keys(colorSchemes) as ColorScheme[]) {
   )
 }
 
-export const vars = { ...baseVars, colors: colorSchemeVars }
+export const vars = { ...baseVars, ...colorSchemeVars }
 export type ThemeVars = typeof vars
