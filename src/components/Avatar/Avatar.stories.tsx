@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof Avatar> = args => {
   return (
-    <Box padding="tight" background="backgroundSecondary" borderRadius="md">
+    <Box padding="3" background="backgroundSecondary" borderRadius="md">
       <Avatar {...args} />
     </Box>
   )

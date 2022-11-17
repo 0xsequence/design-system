@@ -7,7 +7,7 @@ export const root = style({
   width: '48px',
   height: '28px',
   background: vars.colors.backgroundControl,
-  padding: vars.space.xxtight,
+  padding: vars.space['1'],
   borderRadius: vars.radii.circle,
   position: 'relative',
 

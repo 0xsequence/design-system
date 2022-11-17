@@ -10,9 +10,9 @@ export const pill = style([
     backdropFilter: 'blur',
     borderRadius: 'sm',
     display: 'inline-flex',
-    gap: 'xxtight',
-    paddingX: 'xtight',
-    paddingY: 'xxtight',
+    gap: '1',
+    paddingX: '2',
+    paddingY: '1',
     whiteSpace: 'nowrap',
   }),
   style({

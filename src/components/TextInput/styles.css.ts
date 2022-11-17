@@ -19,7 +19,7 @@ export const input = style([
     borderWidth: 'thin',
     borderRadius: 'md',
     display: 'inline-block',
-    paddingY: 'tight',
+    paddingY: '3',
     borderColor: 'borderNormal',
 
     fontWeight: 'regular',
@@ -43,5 +43,5 @@ const inputIcon = style([
   }),
 ])
 
-export const leftIcon = style([inputIcon, atoms({ left: 'normal' })])
-export const rightIcon = style([inputIcon, atoms({ right: 'normal' })])
+export const leftIcon = style([inputIcon, atoms({ left: '4' })])
+export const rightIcon = style([inputIcon, atoms({ right: '4' })])

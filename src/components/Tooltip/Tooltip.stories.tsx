@@ -12,7 +12,7 @@ export default {
 
 const Template: ComponentStory<typeof Tooltip> = args => {
   return (
-    <Box background="backgroundSecondary" padding="normal">
+    <Box background="backgroundSecondary" padding="4">
       <Tooltip {...args} />
     </Box>
   )
