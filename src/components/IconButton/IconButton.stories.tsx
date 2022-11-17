@@ -12,7 +12,7 @@ export default {
 
 const Template: ComponentStory<typeof IconButton> = args => {
   return (
-    <Box padding="tight" background="backgroundSecondary" borderRadius="md">
+    <Box padding="3" background="backgroundSecondary" borderRadius="md">
       <IconButton {...args} />
     </Box>
   )

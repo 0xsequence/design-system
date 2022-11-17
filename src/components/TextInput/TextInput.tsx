@@ -63,8 +63,8 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               className={styles.input}
               disabled={disabled || processing}
               ref={ref}
-              paddingLeft={leftIcon ? 'xxloose' : 'normal'}
-              paddingRight={rightIcon ? 'xxloose' : 'normal'}
+              paddingLeft={leftIcon ? '10' : '4'}
+              paddingRight={rightIcon ? '10' : '4'}
               {...boxProps}
             />
 

@@ -35,7 +35,7 @@ export const content = style([
     position: 'fixed',
     overflow: 'hidden',
     background: 'backgroundSecondary',
-    padding: 'normal',
+    padding: '4',
   }),
   {
     outline: 'none',

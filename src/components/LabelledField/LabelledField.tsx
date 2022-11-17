@@ -23,7 +23,7 @@ export const LabelledField = ({
     display="flex"
     alignItems={labelLocation === 'left' ? 'center' : 'stretch'}
     flexDirection={labelLocation === 'left' ? 'row' : 'column'}
-    gap="tight"
+    gap="3"
     {...boxProps}
   >
     <Text

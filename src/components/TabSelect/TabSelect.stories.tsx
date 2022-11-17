@@ -21,7 +21,7 @@ const DemoContent = ({
   title: string
   content: string
 }) => (
-  <Box padding="normal" color="textBody">
+  <Box padding="4" color="textBody">
     <Text as="h3" variant="large">
       {title}
     </Text>
@@ -68,8 +68,8 @@ const StoryTemplate: Story = ({ ...args }) => {
   ]
 
   return (
-    <Box background="backgroundSecondary" padding="loose" borderRadius="md">
-      <TabSelect tabs={tabs} marginBottom="loose" {...args} />
+    <Box background="backgroundSecondary" padding="6" borderRadius="md">
+      <TabSelect tabs={tabs} marginBottom="6" {...args} />
 
       <DemoContent {...data} />
     </Box>

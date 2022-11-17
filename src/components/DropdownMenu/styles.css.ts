@@ -4,7 +4,7 @@ import { vars } from '~/css'
 
 export const content = style({
   backgroundColor: vars.colors.backgroundSecondary,
-  padding: vars.space.loose,
+  padding: vars.space['6'],
   borderRadius: vars.radii.sm,
   width: 160,
 })

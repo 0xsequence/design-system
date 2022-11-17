@@ -7,9 +7,9 @@ export const content = style([
     backdropFilter: 'blur',
     background: 'buttonSolid',
     borderRadius: 'sm',
-    paddingX: 'tight',
-    paddingBottom: 'xtight',
-    paddingTop: 'xxtight',
+    paddingX: '3',
+    paddingBottom: '2',
+    paddingTop: '1',
   }),
   {
     fill: vars.colors.buttonSolid,

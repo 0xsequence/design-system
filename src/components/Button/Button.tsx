@@ -59,14 +59,14 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          gap={tinyGaps ? 'xxtight' : 'xtight'}
+          gap={tinyGaps ? '1' : '2'}
         >
           <Box
             as="span"
             display="flex"
             justifyContent="flex-start"
             alignItems="center"
-            gap={tinyGaps ? 'xxtight' : 'xtight'}
+            gap={tinyGaps ? '1' : '2'}
           >
             {LeftIcon && <LeftIcon className={iconVariants({ size })} />}
             {!iconOnly && <Text>{label}</Text>}

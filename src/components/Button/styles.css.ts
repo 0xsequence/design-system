@@ -38,7 +38,7 @@ export const buttonVariants = recipe({
             base: 'textFaded',
             disabled: 'textInactive',
           },
-          padding: 'none',
+          padding: '0',
         }),
       ],
 
@@ -69,7 +69,7 @@ export const buttonVariants = recipe({
     size: {
       tiny: [
         textVariants({ variant: 'xsmall' }),
-        atoms({ paddingX: 'tight' }),
+        atoms({ paddingX: '3' }),
         {
           height: '28px',
           paddingTop: '0.375rem',
@@ -80,8 +80,8 @@ export const buttonVariants = recipe({
         textVariants({ variant: 'normal' }),
         atoms({
           borderRadius: 'md',
-          paddingX: 'normal',
-          paddingY: 'xtight',
+          paddingX: '4',
+          paddingY: '2',
         }),
         {
           height: '36px',
@@ -89,25 +89,21 @@ export const buttonVariants = recipe({
       ],
       md: [
         textVariants({ variant: 'normal' }),
-        atoms({ paddingY: 'tight' }),
+        atoms({ paddingX: '5', paddingY: '3' }),
         {
           height: '44px',
-          paddingLeft: '1.25rem',
-          paddingRight: '1.25rem',
         },
       ],
       lg: [
         textVariants({ variant: 'normal' }),
-        atoms({ paddingY: 'normal' }),
+        atoms({ paddingX: '5', paddingY: '4' }),
         {
           height: '52px',
-          paddingLeft: '1.25rem',
-          paddingRight: '1.25rem',
         },
       ],
       tabTiny: [
         textVariants({ variant: 'xsmall' }),
-        atoms({ paddingX: 'xtight', paddingY: 'xxtight' }),
+        atoms({ paddingX: '2', paddingY: '1' }),
         {
           height: '24px',
         },
