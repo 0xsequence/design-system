@@ -1,8 +1,8 @@
 // prettier-ignore
 export const space = {
   '0':    '0',          // 0px  none
-  '0.25': '0.0625rem',  // 1px
-  '0.5':  '0.125rem',   // 2px  
+  // '0.25': '0.0625rem',  // 1px
+  // '0.5':  '0.125rem',   // 2px  
   '1':    '0.25rem',    // 4px  xxtight
   '2':    '0.5rem',     // 8px  xtight
   '3':    '0.75rem',    // 12px tight
