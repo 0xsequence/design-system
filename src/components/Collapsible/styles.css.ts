@@ -8,40 +8,54 @@ export const COLLAPSED_HEIGHT = '65px'
 export const root = style([
   atoms({
     borderRadius: 'md',
+    background: 'backgroundSecondary',
+    position: 'relative',
+    overflow: 'hidden',
+    marginBottom: '5',
   }),
   {
-    background: vars.colors.backgroundSecondary,
     minHeight: COLLAPSED_HEIGHT,
-    position: 'relative',
-    marginBottom: '25px',
-    overflow: 'hidden',
   },
 ])
 
-export const trigger = style({
-  border: 'none',
-  appearance: 'none',
-  background: 'none',
-  height: COLLAPSED_HEIGHT,
-  width: '100%',
-  padding: '15px',
-  display: 'flex',
-  alignItems: 'center',
-  cursor: 'pointer',
-  userSelect: 'none',
-})
+export const trigger = style([
+  atoms({
+    display: 'flex',
+    alignItems: 'center',
+    background: 'transparent',
+    padding: '4',
+  }),
+  {
+    border: 'none',
+    appearance: 'none',
+    height: COLLAPSED_HEIGHT,
+    width: '100%',
+    cursor: 'pointer',
+    userSelect: 'none',
+  },
+])
 
-export const content = style({
-  width: '100%',
-  padding: '0 15px 15px',
-  transformOrigin: 'top',
-})
+export const content = style([
+  atoms({
+    paddingTop: '0',
+    paddingX: '4',
+    paddingBottom: '4',
+  }),
+  {
+    width: '100%',
+    transformOrigin: 'top',
+  },
+])
 
-export const label = style({
-  display: 'flex',
-  alignItems: 'center',
-  height: '30px',
-})
+export const label = style([
+  atoms({
+    display: 'flex',
+    alignItems: 'center',
+  }),
+  {
+    height: '30px',
+  },
+])
 
 export const icon = recipe({
   base: {
