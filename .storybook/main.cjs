@@ -3,7 +3,6 @@ const path = require('path')
 const { mergeConfig } = require('vite')
 const { vanillaExtractPlugin } = require('@vanilla-extract/vite-plugin')
 const { default: react } = require('@vitejs/plugin-react')
-// const { default: dts } = require('vite-plugin-dts')
 const { default: tsconfigPaths } = require('vite-tsconfig-paths')
 
 module.exports = {
@@ -15,7 +14,11 @@ module.exports = {
   core: {
     builder: '@storybook/builder-vite',
   },
-  async viteFinal(config) {
+  async viteFinal(config, { configType }) {
+    if (configType === 'PRODUCTION') {
+      config.base = './'
+    }
+
     return mergeConfig(config, {
       plugins: [
         tsconfigPaths(),
