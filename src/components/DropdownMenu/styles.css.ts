@@ -1,13 +1,17 @@
 import { style } from '@vanilla-extract/css'
 
-import { vars } from '~/css'
+import { atoms, vars } from '~/css'
 
-export const content = style({
-  backgroundColor: vars.colors.backgroundSecondary,
-  padding: vars.space['6'],
-  borderRadius: vars.radii.sm,
-  width: 160,
-})
+export const content = style([
+  atoms({
+    background: 'backgroundSecondary',
+    padding: '6',
+    borderRadius: 'sm',
+  }),
+  {
+    width: 160,
+  },
+])
 
 export const arrow = style({
   fill: vars.colors.backgroundSecondary,
