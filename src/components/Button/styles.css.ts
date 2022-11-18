@@ -6,11 +6,6 @@ import { textVariants } from '../Text/styles.css'
 
 export const buttonVariants = recipe({
   base: atoms({
-    borderRadius: 'circle',
-    color: {
-      base: 'textBody',
-      disabled: 'textInactive',
-    },
     cursor: {
       base: 'pointer',
       disabled: 'not-allowed',
@@ -25,10 +20,29 @@ export const buttonVariants = recipe({
 
   variants: {
     variant: {
-      primary: atoms({ background: 'gradientPrimary' }),
-      solid: atoms({ backdropFilter: 'blur', background: 'buttonSolid' }),
-      glass: atoms({ backdropFilter: 'blur', background: 'buttonGlass' }),
-      emphasis: atoms({ backdropFilter: 'blur', background: 'buttonEmphasis' }),
+      primary: atoms({
+        background: 'gradientPrimary',
+        color: {
+          base: 'white',
+          disabled: 'textInactive',
+        },
+      }),
+      glass: atoms({
+        backdropFilter: 'blur',
+        background: 'buttonGlass',
+        color: {
+          base: 'textBody',
+          disabled: 'textInactive',
+        },
+      }),
+      emphasis: atoms({
+        backdropFilter: 'blur',
+        background: 'buttonEmphasis',
+        color: {
+          base: 'textBody',
+          disabled: 'textInactive',
+        },
+      }),
 
       text: [
         textVariants({ variant: 'small' }),
@@ -67,53 +81,25 @@ export const buttonVariants = recipe({
     iconOnly: { true: {} },
 
     size: {
-      tiny: [
+      xs: [
         textVariants({ variant: 'xsmall' }),
-        atoms({ paddingX: '3' }),
-        {
-          height: '28px',
-          paddingTop: '0.375rem',
-          paddingBottom: '0.375rem',
-        },
+        atoms({ borderRadius: 'sm', paddingX: '3', paddingY: '1.5' }),
+        { height: '28px' },
       ],
       sm: [
         textVariants({ variant: 'normal' }),
-        atoms({
-          borderRadius: 'md',
-          paddingX: '4',
-          paddingY: '2',
-        }),
-        {
-          height: '36px',
-        },
+        atoms({ borderRadius: 'md', paddingX: '4', paddingY: '2' }),
+        { height: '36px' },
       ],
       md: [
         textVariants({ variant: 'normal' }),
-        atoms({ paddingX: '5', paddingY: '3' }),
-        {
-          height: '44px',
-        },
+        atoms({ borderRadius: 'circle', paddingX: '5', paddingY: '3' }),
+        { height: '44px' },
       ],
       lg: [
         textVariants({ variant: 'normal' }),
-        atoms({ paddingX: '5', paddingY: '4' }),
-        {
-          height: '52px',
-        },
-      ],
-      tabTiny: [
-        textVariants({ variant: 'xsmall' }),
-        atoms({ paddingX: '2', paddingY: '1' }),
-        {
-          height: '24px',
-        },
-      ],
-      tab: [
-        textVariants({ variant: 'normal' }),
-        {
-          height: '32px',
-          padding: '0.375rem 1.25rem',
-        },
+        atoms({ borderRadius: 'circle', paddingX: '5', paddingY: '4' }),
+        { height: '52px' },
       ],
     },
 
@@ -125,7 +111,7 @@ export const buttonVariants = recipe({
 
   compoundVariants: [
     {
-      variants: { iconOnly: true, size: 'tiny' },
+      variants: { iconOnly: true, size: 'xs' },
       style: { padding: '0.375rem' },
     },
     {
@@ -149,21 +135,13 @@ export const iconVariants = recipe({
 
   variants: {
     size: {
-      tiny: {
+      xs: {
         height: vars.lineHeights.xsmall,
         width: vars.lineHeights.xsmall,
       },
       sm: {},
       md: {},
       lg: {},
-      tabTiny: {
-        height: vars.lineHeights.small,
-        width: vars.lineHeights.small,
-      },
-      tab: {
-        height: vars.lineHeights.small,
-        width: vars.lineHeights.small,
-      },
     },
   },
 })

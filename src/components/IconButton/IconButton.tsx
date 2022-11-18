@@ -12,7 +12,7 @@ type IconButtonProps = Omit<
   ButtonVariants,
   'width' | 'label' | 'LeftIcon' | 'RightIcon' | 'size'
 > & {
-  size?: 'tiny' | 'sm' | 'md'
+  size?: 'xs' | 'sm' | 'md'
   Icon: ComponentType<IconProps>
 }
 
