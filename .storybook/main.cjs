@@ -2,7 +2,6 @@ const path = require('path')
 
 const { mergeConfig } = require('vite')
 const { vanillaExtractPlugin } = require('@vanilla-extract/vite-plugin')
-const { default: react } = require('@vitejs/plugin-react')
 const { default: tsconfigPaths } = require('vite-tsconfig-paths')
 
 module.exports = {
@@ -23,7 +22,6 @@ module.exports = {
       plugins: [
         tsconfigPaths(),
         vanillaExtractPlugin({ identifiers: 'short' }),
-        react(),
       ],
       resolve: {
         alias: [
