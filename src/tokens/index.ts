@@ -1,7 +1,7 @@
 import { borderWidths, radii } from './border'
 import { colors } from './color'
 import { blur } from './effect'
-import { networks } from './network'
+import { networkColors } from './network'
 import { opacity } from './opacity'
 import { space } from './space'
 import {
@@ -21,7 +21,7 @@ export const tokens = {
   fontWeights,
   letterSpacings,
   lineHeights,
-  networks,
+  networkColors,
   opacity,
   radii,
   space,

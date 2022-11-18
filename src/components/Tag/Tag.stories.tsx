@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Tag> = args => {
 
 export const Base = Template.bind({})
 Base.args = {
-  background: 'positive',
+  background: 'ethereumDark',
   color: 'white',
   Icon: SettingsIcon,
   label: 'Static Tag',

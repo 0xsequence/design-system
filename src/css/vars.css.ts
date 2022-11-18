@@ -20,6 +20,19 @@ const mapTokens = <P extends string, T extends {}>(
   }, {}) as MapTokens<P, T>
 }
 
+type NetworkColors = typeof tokens.networkColors
+
+const mapNetworkColors = <
+  T extends NetworkColors,
+  K extends keyof NetworkColors
+>(
+  networkColors: T
+) => {
+  return Object.entries(networkColors).reduce((acc, [key, value]) => {
+    return { ...acc, ...mapTokens(key.toLowerCase(), value) }
+  }, {} as MapTokens<Lowercase<K>, T[K]>)
+}
+
 const { colors, ...baseTokens } = tokens
 
 export const baseVars = createGlobalThemeContract(baseTokens, mapVarName)
@@ -38,6 +51,7 @@ const makeColorScheme = (mode: ColorScheme = 'light') => {
       ...mapTokens('border', schemeTokens.border),
       ...mapTokens('button', schemeTokens.button),
       ...mapTokens('text', schemeTokens.text),
+      ...mapNetworkColors(baseTokens.networkColors),
     },
   }
 }
