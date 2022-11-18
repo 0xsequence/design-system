@@ -5,21 +5,12 @@ import { atoms, vars } from '~/css'
 import { textVariants } from '../Text/styles.css'
 
 export const buttonVariants = recipe({
-  base: atoms({
-    cursor: {
-      base: 'pointer',
-      disabled: 'not-allowed',
-    },
-    fontWeight: 'bold',
-    opacity: {
-      base: '100',
-      hover: '80',
-      disabled: '50',
-    },
-  }),
+  base: atoms({ fontWeight: 'bold' }),
 
   variants: {
     variant: {
+      base: {},
+
       primary: atoms({
         background: 'gradientPrimary',
         color: {
@@ -77,6 +68,12 @@ export const buttonVariants = recipe({
         }),
       ],
     },
+
+    clickable: {
+      true: atoms({ cursor: 'pointer', opacity: { base: '100', hover: '80' } }),
+    },
+
+    disabled: { true: atoms({ cursor: 'not-allowed', opacity: '50' }) },
 
     iconOnly: { true: {} },
 
