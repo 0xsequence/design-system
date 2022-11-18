@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { ComponentType, MouseEvent, useState } from 'react'
+import { ComponentType, MouseEvent, ReactNode, useState } from 'react'
 
 import { Box, PolymorphicProps } from '~/components/Box'
 import { Button } from '~/components/Button'
@@ -8,7 +8,7 @@ import { IconProps } from '~/icons/types'
 import * as styles from './styles.css'
 
 export type TabOption = {
-  label: string
+  label: ReactNode
   LeftIcon?: ComponentType<IconProps>
   value: string
   onClick?: () => boolean | Promise<boolean>

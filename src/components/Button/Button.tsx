@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { forwardRef, ElementType, ComponentType } from 'react'
+import { forwardRef, ElementType, ComponentType, ReactNode } from 'react'
 
 import {
   Box,
@@ -15,7 +15,7 @@ import { buttonVariants, iconVariants, ButtonVariants } from './styles.css'
 type ButtonProps = ButtonVariants & {
   disabled?: boolean
   pending?: boolean
-  label?: string
+  label?: ReactNode
   width?: 'full' | 'normal'
   LeftIcon?: ComponentType<IconProps>
   RightIcon?: ComponentType<IconProps>

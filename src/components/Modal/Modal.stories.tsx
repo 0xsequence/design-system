@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof Modal> = args => {
 
   return (
     <>
-      <Button onClick={() => toggleModal(!isOpen)}>Open Modal</Button>
+      <Button label="Open Modal" onClick={() => toggleModal(!isOpen)} />
       <AnimatePresence>
         {isOpen && <Modal {...args} onClose={() => toggleModal(false)} />}
       </AnimatePresence>
