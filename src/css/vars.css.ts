@@ -5,7 +5,7 @@ import {
 
 import { ColorScheme, colorSchemes, tokens } from '~/tokens'
 
-import { capitalize, getVarName } from './utils'
+import { capitalize, mapVarName } from './utils'
 
 type MapTokens<P extends string, T> = {
   [K in keyof T & string as `${P}${Capitalize<K>}`]: string
@@ -22,7 +22,7 @@ const mapTokens = <P extends string, T extends {}>(
 
 const { colors, ...baseTokens } = tokens
 
-export const baseVars = createGlobalThemeContract(baseTokens, getVarName)
+export const baseVars = createGlobalThemeContract(baseTokens, mapVarName)
 
 createGlobalTheme(':root', baseVars, baseTokens)
 
@@ -44,7 +44,7 @@ const makeColorScheme = (mode: ColorScheme = 'light') => {
 
 export const colorSchemeVars = createGlobalThemeContract(
   makeColorScheme(),
-  getVarName
+  mapVarName
 )
 
 for (const colorScheme of Object.keys(colorSchemes) as ColorScheme[]) {
