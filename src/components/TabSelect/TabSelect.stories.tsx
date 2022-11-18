@@ -79,4 +79,5 @@ const StoryTemplate: Story = ({ ...args }) => {
 export const PageDemo = StoryTemplate.bind({})
 PageDemo.args = {
   activeTab: 'wallet',
+  size: 'sm',
 }

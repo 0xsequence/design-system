@@ -39,18 +39,16 @@ const borderColors: { [key in ColorScheme]: { [key in BorderColor]: string } } =
     },
   }
 
-type Button = 'solid' | 'glass' | 'emphasis' | 'inverse'
+type Button = 'glass' | 'emphasis' | 'inverse'
 
 const buttons: { [key in ColorScheme]: { [key in Button]: string } } = {
   dark: {
-    solid: 'rgba(255, 255, 255, 0.15)',
-    glass: 'rgba(255, 255, 255, 0.3)',
+    glass: 'rgba(255, 255, 255, 0.15)',
     emphasis: 'rgba(0, 0, 0, 0.5)',
     inverse: 'rgba(255, 255, 255, 0.8)',
   },
   light: {
-    solid: 'rgba(0, 0, 0, 0.15)',
-    glass: 'rgba(0, 0, 0, 0.3)',
+    glass: 'rgba(0, 0, 0, 0.15)',
     emphasis: 'rgba(255, 255, 255, 0.5)',
     inverse: 'rgba(0, 0, 0, 0.8)',
   },
@@ -79,8 +77,8 @@ const textColors: { [key in ColorScheme]: { [key in TextColor]: string } } = {
   },
   light: {
     body: 'rgba(34, 34, 34, 1)',
-    inactive: 'rgba(34, 34, 34, 0.8)',
-    faded: 'rgba(34, 34, 34, 0.5)',
+    inactive: 'rgba(0, 0, 0, 0.8)',
+    faded: 'rgba(0, 0, 0, 0.5)',
     inverse: 'rgba(255, 255, 255, 1)',
   },
 }

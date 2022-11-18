@@ -33,13 +33,12 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       LeftIcon,
       RightIcon,
       size = 'md',
-      variant = 'solid',
+      variant = 'glass',
       width = 'normal',
       ...boxProps
     } = props
 
     const iconOnly = LeftIcon !== undefined && label === undefined
-    const tinyGaps = ['tab', 'tabTiny', 'tiny'].includes(size)
 
     return (
       <Box
@@ -59,14 +58,14 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          gap={tinyGaps ? '1' : '2'}
+          gap={size === 'xs' ? '1' : '2'}
         >
           <Box
             as="span"
             display="flex"
             justifyContent="flex-start"
             alignItems="center"
-            gap={tinyGaps ? '1' : '2'}
+            gap={size === 'xs' ? '1' : '2'}
           >
             {LeftIcon && <LeftIcon className={iconVariants({ size })} />}
             {!iconOnly && <Text>{label}</Text>}

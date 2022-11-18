@@ -45,7 +45,7 @@ export const selectorContainer = style({
 })
 
 export const selector = style({
-  background: vars.colors.buttonSolid,
+  background: vars.colors.buttonGlass,
   position: 'absolute',
   width: '50%',
   height: '100%',

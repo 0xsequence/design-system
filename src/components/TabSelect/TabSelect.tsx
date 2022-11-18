@@ -13,11 +13,13 @@ export type TabOption = {
 
 type TabSelectProps = {
   activeTab?: string
+  size?: 'xs' | 'sm'
   tabs: TabOption[]
 }
 
 export const TabSelect = ({
   activeTab,
+  size = 'sm',
   tabs,
   ...rest
 }: PolymorphicProps<TabSelectProps, 'div'>) => {
@@ -61,7 +63,8 @@ export const TabSelect = ({
                 handleTabClick(e, option, tabIndex)
               }
               paddingLeft={option.LeftIcon ? '1' : '2'}
-              size="tab"
+              size={size}
+              borderRadius="circle"
               variant={option.value === activeTabValue ? 'active' : 'inactive'}
             />
           </Box>
