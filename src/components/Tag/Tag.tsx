@@ -1,33 +1,29 @@
 import { ComponentType, ElementType, forwardRef } from 'react'
 
 import {
+  Box,
   PolymorphicComponent,
   PolymorphicProps,
   PolymorphicRef,
 } from '~/components/Box'
-import { Button, ButtonVariants } from '~/components/Button'
+import { Text } from '~/components/Text'
 import { IconProps } from '~/icons/types'
 
-type TagProps = Omit<
-  ButtonVariants,
-  'width' | 'LeftIcon' | 'RightIcon' | 'size'
-> & {
+import * as styles from './styles.css'
+
+type TagProps = {
   label: string
   Icon?: ComponentType<IconProps>
 }
 
-export const Tag: PolymorphicComponent<TagProps, 'button'> = forwardRef(
+export const Tag: PolymorphicComponent<TagProps, 'div'> = forwardRef(
   <T extends ElementType>(
     { Icon, label, ...otherProps }: PolymorphicProps<TagProps, T>,
     ref: PolymorphicRef<T>
   ) => (
-    <Button
-      label={label}
-      LeftIcon={Icon}
-      ref={ref}
-      size="xs"
-      variant="base"
-      {...otherProps}
-    />
+    <Box className={styles.tag} ref={ref} {...otherProps}>
+      {Icon && <Icon className={styles.tagIcon} />}
+      <Text>{label}</Text>
+    </Box>
   )
 )

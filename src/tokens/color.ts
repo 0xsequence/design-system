@@ -1,3 +1,5 @@
+import { networkColors } from './network'
+
 export type ColorScheme = 'dark' | 'light'
 
 type Context = 'positive' | 'negative' | 'info'
@@ -107,6 +109,7 @@ export const colors = {
   },
   context,
   gradients,
+  networkColors,
   dark: colorSchemes.dark,
   light: colorSchemes.light,
 } as const
