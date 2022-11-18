@@ -22,7 +22,7 @@ export const TextOnly = Template.bind({})
 TextOnly.args = {
   label: 'Click me',
   size: 'md',
-  variant: 'solid',
+  variant: 'glass',
   disabled: false,
   width: 'normal',
 }
@@ -32,7 +32,7 @@ WithIcon.args = {
   label: 'Click me',
   LeftIcon: ScanIcon,
   size: 'md',
-  variant: 'solid',
+  variant: 'glass',
   disabled: false,
   width: 'normal',
 }
@@ -42,7 +42,7 @@ WithRightIcon.args = {
   label: 'Click me',
   RightIcon: ArrowRightIcon,
   size: 'md',
-  variant: 'solid',
+  variant: 'glass',
   disabled: false,
   width: 'normal',
 }
@@ -53,7 +53,7 @@ WithBothIcons.args = {
   LeftIcon: ScanIcon,
   RightIcon: ArrowRightIcon,
   size: 'md',
-  variant: 'solid',
+  variant: 'glass',
   disabled: false,
   width: 'normal',
 }

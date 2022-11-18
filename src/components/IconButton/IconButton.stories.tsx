@@ -23,5 +23,5 @@ Base.args = {
   Icon: ArrowRightIcon,
   disabled: false,
   size: 'md',
-  variant: 'solid',
+  variant: 'glass',
 }
