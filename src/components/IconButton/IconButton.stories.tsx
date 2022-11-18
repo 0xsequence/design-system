@@ -23,5 +23,6 @@ Base.args = {
   Icon: ArrowRightIcon,
   disabled: false,
   size: 'md',
+  onClick: () => console.log('ouch!'),
   variant: 'glass',
 }

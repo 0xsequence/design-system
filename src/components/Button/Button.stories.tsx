@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Box } from '~/components/Box'
+import { InfoBubble } from '~/components/InfoBubble'
 import { ArrowRightIcon, ScanIcon } from '~/icons'
 
 import { Button } from './Button'
@@ -29,8 +30,8 @@ LabelOnly.args = {
   width: 'normal',
 }
 
-export const WithIcon = Template.bind({})
-WithIcon.args = {
+export const WithLeftIcon = Template.bind({})
+WithLeftIcon.args = {
   disabled: false,
   label: 'Click me',
   onClick: () => console.log('Clicked!'),
@@ -58,6 +59,22 @@ WithBothIcons.args = {
   LeftIcon: ScanIcon,
   onClick: () => console.log('Clicked!'),
   RightIcon: ArrowRightIcon,
+  size: 'md',
+  variant: 'glass',
+  width: 'normal',
+}
+
+export const WithCountIcon = Template.bind({})
+WithCountIcon.args = {
+  disabled: false,
+  label: (
+    <Box display="flex" gap="1">
+      Click me
+      <InfoBubble info="3" />
+    </Box>
+  ),
+  onClick: () => console.log('Clicked!'),
+  LeftIcon: ScanIcon,
   size: 'md',
   variant: 'glass',
   width: 'normal',
