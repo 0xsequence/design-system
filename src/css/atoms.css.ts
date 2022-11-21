@@ -5,6 +5,18 @@ import { vars } from './vars.css'
 
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const
 
+export const dimension = {
+  none: '0',
+  auto: 'auto',
+  full: '100%',
+  half: '50%',
+  fit: 'fit-content',
+  max: 'max-content',
+  min: 'min-content',
+  vw: '100vw',
+  vh: '100vh',
+}
+
 const responsiveProperties = defineProperties({
   conditions: {
     sm: {},
@@ -14,14 +26,8 @@ const responsiveProperties = defineProperties({
   },
   defaultCondition: 'sm',
   properties: {
-    borderBottomWidth: vars.borderWidths,
-    borderLeftWidth: vars.borderWidths,
-    borderRightWidth: vars.borderWidths,
-    borderTopWidth: vars.borderWidths,
-    borderBottomLeftRadius: vars.radii,
-    borderBottomRightRadius: vars.radii,
-    borderTopLeftRadius: vars.radii,
-    borderTopRightRadius: vars.radii,
+    width: dimension,
+    height: dimension,
 
     // space
     top: vars.space,
@@ -37,6 +43,15 @@ const responsiveProperties = defineProperties({
     marginLeft: vars.space,
     marginRight: vars.space,
     gap: vars.space,
+
+    borderBottomWidth: vars.borderWidths,
+    borderLeftWidth: vars.borderWidths,
+    borderRightWidth: vars.borderWidths,
+    borderTopWidth: vars.borderWidths,
+    borderBottomLeftRadius: vars.radii,
+    borderBottomRightRadius: vars.radii,
+    borderTopLeftRadius: vars.radii,
+    borderTopRightRadius: vars.radii,
 
     // typography
     fontSize: vars.fontSizes,
