@@ -3,6 +3,8 @@ import React from 'react'
 
 import { ThemeProvider } from '../src/components'
 
+import theme from './theme.cjs'
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -20,6 +22,9 @@ export const parameters = {
         ['Atoms', 'Molecules', 'Organisms'],
       ],
     },
+  },
+  docs: {
+    theme,
   },
 }
 
