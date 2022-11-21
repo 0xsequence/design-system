@@ -115,6 +115,7 @@ const unresponsiveProperties = defineProperties({
     wordBreak: ['break-word'],
     wordWrap: ['normal', 'break-word', 'initial', 'inherit'],
     zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' },
+    userSelect: ['none'],
   },
 })
 
@@ -132,6 +133,7 @@ const selectorProperties = defineProperties({
     borderColor: vars.colors,
     color: vars.colors,
     cursor: ['default', 'pointer', 'not-allowed'],
+    pointerEvents: ['none', 'auto'],
     opacity: vars.opacity,
   },
 })

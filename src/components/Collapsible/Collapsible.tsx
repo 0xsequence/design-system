@@ -6,6 +6,8 @@ import { useState } from 'react'
 import { Text } from '~/components/Text'
 import { ChevronLeftIcon } from '~/icons'
 
+import { Box } from '../Box'
+
 import * as styles from './styles.css'
 
 export const Collapsible = (
@@ -31,17 +33,23 @@ export const Collapsible = (
       >
         <CollapsiblePrimitive.Trigger className={styles.trigger}>
           {typeof label === 'string' ? (
-            <div className={styles.label}>
-              <Text variant="medium" color="white">
-                {label}
-              </Text>
-            </div>
+            <Text variant="medium" color="textBody">
+              {label}
+            </Text>
           ) : (
             label
           )}
-          <div className={styles.icon({ expanded })}>
-            <ChevronLeftIcon />
-          </div>
+          <Box
+            as={motion.div}
+            position="absolute"
+            right="0"
+            marginRight="4"
+            initial={{ rotate: defaultOpen ? -90 : 0 }}
+            animate={{ rotate: expanded ? -90 : 0 }}
+            transition={{ ease: 'linear', duration: 0.1 }}
+          >
+            <ChevronLeftIcon className={styles.icon} color="textFaded" />
+          </Box>
         </CollapsiblePrimitive.Trigger>
         <AnimatePresence>
           {expanded && (
