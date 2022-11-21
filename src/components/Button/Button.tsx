@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { forwardRef, ElementType, ComponentType } from 'react'
 
 import {
@@ -27,12 +28,11 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
   ) => {
     const {
       as = 'button',
+      className,
       disabled = false,
-      href,
       pending = false,
       label,
       LeftIcon,
-      onClick,
       RightIcon,
       size = 'md',
       variant = 'glass',
@@ -41,23 +41,23 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
     } = props
 
     const iconOnly = LeftIcon !== undefined && label === undefined
-    const clickable =
-      !disabled && !pending && (href !== undefined || onClick !== undefined)
+    const clickable = !disabled && !pending
 
     return (
       <Box
         as={as}
-        className={buttonVariants({
-          clickable,
-          disabled: disabled || pending,
-          iconOnly,
-          size: variant === 'text' ? undefined : size,
-          variant,
-          width,
-        })}
+        className={clsx(
+          className,
+          buttonVariants({
+            clickable,
+            disabled: disabled || pending,
+            iconOnly,
+            size: variant === 'text' ? undefined : size,
+            variant,
+            width,
+          })
+        )}
         disabled={disabled || pending}
-        href={href}
-        onClick={onClick}
         ref={ref}
         {...boxProps}
       >
