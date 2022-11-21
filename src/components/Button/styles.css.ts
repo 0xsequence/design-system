@@ -46,27 +46,6 @@ export const buttonVariants = recipe({
           padding: '0',
         }),
       ],
-
-      // TabSelect options
-      active: [
-        atoms({
-          background: 'buttonInverse',
-          color: {
-            base: 'textInverse',
-            disabled: 'textInactive',
-          },
-        }),
-      ],
-      inactive: [
-        atoms({
-          background: 'transparent',
-          color: {
-            base: 'textFaded',
-            hover: 'textBody',
-            disabled: 'textInactive',
-          },
-        }),
-      ],
     },
 
     clickable: {
@@ -101,23 +80,23 @@ export const buttonVariants = recipe({
     },
 
     width: {
-      full: [atoms({ display: 'block' }), { width: '100%' }],
-      normal: [atoms({ display: 'inline-block' })],
+      full: [atoms({ display: 'block', width: 'full' })],
+      normal: [atoms({ display: 'inline-block', width: 'auto' })],
     },
   },
 
   compoundVariants: [
     {
       variants: { iconOnly: true, size: 'xs' },
-      style: { padding: '0.375rem' },
+      style: { padding: vars.space['1.5'] },
     },
     {
       variants: { iconOnly: true, size: 'sm' },
-      style: { padding: '0.5rem' },
+      style: { padding: vars.space['2'] },
     },
     {
       variants: { iconOnly: true, size: 'md' },
-      style: { padding: '0.75rem' },
+      style: { padding: vars.space['3'] },
     },
   ],
 })

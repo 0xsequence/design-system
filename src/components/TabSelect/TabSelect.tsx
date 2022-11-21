@@ -1,8 +1,11 @@
+import { clsx } from 'clsx'
 import { ComponentType, MouseEvent, useState } from 'react'
 
 import { Box, PolymorphicProps } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { IconProps } from '~/icons/types'
+
+import * as styles from './styles.css'
 
 export type TabOption = {
   label: string
@@ -17,12 +20,8 @@ type TabSelectProps = {
   tabs: TabOption[]
 }
 
-export const TabSelect = ({
-  activeTab,
-  size = 'sm',
-  tabs,
-  ...rest
-}: PolymorphicProps<TabSelectProps, 'div'>) => {
+export const TabSelect = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
+  const { className, activeTab, size = 'sm', tabs, ...rest } = props
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [activeTabValue, setActiveTabValue] = useState<string>(
     activeTab ?? tabs[0].value
@@ -56,6 +55,10 @@ export const TabSelect = ({
         {tabs.map((option, tabIndex) => (
           <Box as="li" display="block" key={tabIndex}>
             <Button
+              className={clsx(
+                className,
+                styles.tab({ active: option.value === activeTabValue })
+              )}
               disabled={isLoading}
               label={option.label}
               LeftIcon={option.LeftIcon ?? undefined}
@@ -65,7 +68,6 @@ export const TabSelect = ({
               paddingLeft={option.LeftIcon ? '1' : '2'}
               size={size}
               borderRadius="circle"
-              variant={option.value === activeTabValue ? 'active' : 'inactive'}
             />
           </Box>
         ))}
