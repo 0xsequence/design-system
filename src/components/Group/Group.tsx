@@ -26,14 +26,18 @@ export const Group = (props: GroupProps) => {
   } = props
 
   return (
-    <Box className={clsx(styles.root, className)} style={style}>
-      <div className={styles.header}>
-        {label && <Text variant="medium">{label}</Text>}
-        {contentRight && <div>{contentRight}</div>}
-      </div>
-      <div className={styles.items({ layout })}>
+    <Box className={clsx(styles.root, className)} style={style} marginTop="10">
+      <Box display="flex" justifyContent="space-between" marginBottom="3">
+        {label && (
+          <Text variant="normal" fontWeight="medium" color="textFaded">
+            {label}
+          </Text>
+        )}
+        {contentRight && <Box>{contentRight}</Box>}
+      </Box>
+      <Box className={styles.items({ layout })}>
         {Children.map(children, child => child)?.filter(Boolean)}
-      </div>
+      </Box>
     </Box>
   )
 }
