@@ -1,4 +1,4 @@
-export { atoms, breakpoints, vars } from '~/css'
+export { atoms, breakpoints, vars, responsiveStyle } from '~/css'
 export type { Atoms, Breakpoint, ThemeVars } from '~/css'
 
 export * from '~/components'
