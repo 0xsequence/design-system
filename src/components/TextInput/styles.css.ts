@@ -32,14 +32,12 @@ export const input = style([
 ])
 
 const inputIcon = style([
-  atoms({
-    position: 'absolute',
-    fontSize: 'small',
-  }),
+  atoms({ position: 'absolute' }),
   style({
     top: '50%',
     transform: 'translateY(-50%)',
-    height: '1.5em',
+    height: '1.25em',
+    width: '1.25em',
   }),
 ])
 

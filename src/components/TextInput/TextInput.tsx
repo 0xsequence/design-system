@@ -1,4 +1,4 @@
-import { ElementType, forwardRef, ReactNode } from 'react'
+import { ComponentType, ElementType, forwardRef } from 'react'
 
 import {
   Box,
@@ -7,6 +7,7 @@ import {
   PolymorphicRef,
 } from '~/components/Box'
 import { LabelledField } from '~/components/LabelledField'
+import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
 
@@ -26,8 +27,8 @@ export type TextInputProps = (hasLabel | hiddenLabel) & {
   processing?: boolean
   placeholder?: string
   value?: string
-  leftIcon?: ReactNode
-  rightIcon?: ReactNode
+  LeftIcon?: ComponentType<IconProps>
+  RightIcon?: ComponentType<IconProps>
 }
 
 export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
@@ -38,13 +39,15 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
     ) => {
       const {
         as = 'input',
+        autoComplete = 'off',
         id,
         disabled = false,
         label = '',
         labelLocation = 'hidden',
-        leftIcon,
+        LeftIcon,
+        name,
         processing = false,
-        rightIcon,
+        RightIcon,
         type = 'text',
         ...boxProps
       } = props
@@ -52,25 +55,23 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       return (
         <LabelledField label={label} labelLocation={labelLocation} forId={id}>
           <Box className={styles.wrap}>
-            <Box as="span" className={styles.leftIcon}>
-              {leftIcon}
-            </Box>
+            {LeftIcon && <LeftIcon className={styles.leftIcon} />}
 
             <Box
               as={as}
-              id={id}
-              type={type}
+              autoComplete={autoComplete}
               className={styles.input}
               disabled={disabled || processing}
+              id={id}
+              name={name}
+              paddingLeft={LeftIcon ? '10' : '4'}
+              paddingRight={RightIcon ? '10' : '4'}
               ref={ref}
-              paddingLeft={leftIcon ? '10' : '4'}
-              paddingRight={rightIcon ? '10' : '4'}
+              type={type}
               {...boxProps}
             />
 
-            <Box as="span" className={styles.rightIcon}>
-              {rightIcon}
-            </Box>
+            {RightIcon && <RightIcon className={styles.rightIcon} />}
           </Box>
         </LabelledField>
       )

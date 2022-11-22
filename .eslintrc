@@ -24,7 +24,10 @@
 
   "rules": {
     "@typescript-eslint/no-inferrable-types": "off",
-    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -55,7 +58,6 @@
 
     "react/prop-types": "off",
     "react/display-name": "off",
-    "react-hooks/exhaustive-deps": "off",
     "react/no-unescaped-entities": "off",
 
     "curly": ["warn"]

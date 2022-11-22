@@ -23,20 +23,20 @@ export const WithLeftIcon = Template.bind({})
 WithLeftIcon.args = {
   label: 'This the label',
   placeholder: 'This is the placeholder',
-  leftIcon: <ScanIcon />,
+  LeftIcon: ScanIcon,
 }
 
 export const WithRightIcon = Template.bind({})
 WithRightIcon.args = {
   label: 'This the label',
   placeholder: 'This is the placeholder',
-  rightIcon: <ArrowRightIcon />,
+  RightIcon: ArrowRightIcon,
 }
 
 export const WithBothIcons = Template.bind({})
 WithBothIcons.args = {
   label: 'This the label',
   placeholder: 'This is the placeholder',
-  leftIcon: <ScanIcon />,
-  rightIcon: <ArrowRightIcon />,
+  LeftIcon: ScanIcon,
+  RightIcon: ArrowRightIcon,
 }
