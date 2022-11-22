@@ -1,12 +1,10 @@
-import { cleanup, render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 import { TextInput } from './TextInput'
 
 describe('<TextInput />', () => {
-  afterEach(cleanup)
-
   it('renders', () => {
-    render(<TextInput placeholder="Enter address" />)
+    render(<TextInput name="address" placeholder="Enter address" />)
 
     const el = screen.getByRole('textbox')
 
