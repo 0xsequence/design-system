@@ -36,6 +36,6 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgRecieveIcon = (props: IconProps) => <Box as={Svg} {...props} />
+const SvgReceiveIcon = (props: IconProps) => <Box as={Svg} {...props} />
 
-export default SvgRecieveIcon
+export default SvgReceiveIcon
