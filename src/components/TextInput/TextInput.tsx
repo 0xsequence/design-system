@@ -1,4 +1,5 @@
 import { ComponentType, ElementType, forwardRef } from 'react'
+import { RegisterOptions, useFormContext } from 'react-hook-form'
 
 import {
   Box,
@@ -22,13 +23,13 @@ type hasLabel = {
 }
 
 export type TextInputProps = (hasLabel | hiddenLabel) & {
-  name?: string
   disabled?: boolean
-  processing?: boolean
-  placeholder?: string
-  value?: string
   LeftIcon?: ComponentType<IconProps>
+  name: string
+  registerWith?: RegisterOptions
+  processing?: boolean
   RightIcon?: ComponentType<IconProps>
+  value?: string
 }
 
 export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
@@ -47,10 +48,20 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
         LeftIcon,
         name,
         processing = false,
+        registerWith = {},
         RightIcon,
         type = 'text',
-        ...boxProps
+        ...rest
       } = props
+
+      const methods = useFormContext()
+      const usingFormContext = methods !== null
+
+      const registerProps = usingFormContext
+        ? methods.register(name, registerWith)
+        : { ref: null }
+
+      const { ref: registerRef, ...restRegisterProps } = registerProps
 
       return (
         <LabelledField label={label} labelLocation={labelLocation} forId={id}>
@@ -66,9 +77,17 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               name={name}
               paddingLeft={LeftIcon ? '10' : '4'}
               paddingRight={RightIcon ? '10' : '4'}
-              ref={ref}
               type={type}
-              {...boxProps}
+              ref={e => {
+                if (registerRef) {
+                  registerRef(e)
+                }
+                if (ref?.current) {
+                  ref.current = e
+                }
+              }}
+              {...rest}
+              {...restRegisterProps}
             />
 
             {RightIcon && <RightIcon className={styles.rightIcon} />}
