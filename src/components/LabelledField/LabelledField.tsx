@@ -1,9 +1,10 @@
-import { ElementType, PropsWithChildren } from 'react'
+import { ElementType } from 'react'
 
-import { Box, BoxProps } from '~/components/Box'
+import { Box, PolymorphicComponent, PolymorphicProps } from '~/components/Box'
 import { Text } from '~/components/Text'
 
-type LabelledFieldProps<T extends ElementType = 'div'> = BoxProps<T> & {
+type LabelledFieldProps = {
+  color?: string
   label?: string
   labelLocation?: 'left' | 'top' | 'hidden'
   forId?: string
@@ -12,14 +13,18 @@ type LabelledFieldProps<T extends ElementType = 'div'> = BoxProps<T> & {
 // TODO: handle error text and secondary description label
 // TODO: handle isRequired in label?
 
-export const LabelledField = ({
+export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
+  T extends ElementType
+>({
+  color,
   children,
   label = '',
   labelLocation = 'hidden',
   forId,
   ...boxProps
-}: PropsWithChildren<LabelledFieldProps<'div'>>) => (
+}: PolymorphicProps<LabelledFieldProps, T>) => (
   <Box
+    color={color ?? 'textBody'}
     display="flex"
     alignItems={labelLocation === 'left' ? 'center' : 'stretch'}
     flexDirection={labelLocation === 'left' ? 'row' : 'column'}
