@@ -47,7 +47,7 @@ const StoryTemplate: Story = ({ ...args }) => {
     },
     {
       label: (
-        <Box display="flex" gap="1">
+        <Box gap="1">
           History
           <InfoBubble info="3" />
         </Box>

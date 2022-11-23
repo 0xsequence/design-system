@@ -18,7 +18,6 @@ const Template: Story = ({ ...args }) => {
     <Box background="backgroundSecondary" padding="4" borderRadius="md">
       <Form
         background="backgroundPrimary"
-        display="flex"
         flexDirection="column"
         gap="3"
         padding="4"
@@ -40,7 +39,7 @@ const Template: Story = ({ ...args }) => {
           placeholder="Enter last name"
         />
 
-        <Box display="flex" flexDirection="row-reverse" marginTop="2">
+        <Box flexDirection="row-reverse" marginTop="2">
           <Button type="submit" label="Submit" />
         </Box>
       </Form>
