@@ -6,12 +6,12 @@ import { InfoBubble } from '~/components/InfoBubble'
 import { Text } from '~/components/Text'
 import { ProfileIcon, TransactionIcon } from '~/icons'
 
-import { TabOption, TabSelect } from './TabSelect'
+import { TabOption, TabbedNav } from './TabbedNav'
 
 export default {
-  title: 'Components/TabSelect',
-  component: TabSelect,
-} as ComponentMeta<typeof TabSelect>
+  title: 'Components/TabbedNav',
+  component: TabbedNav,
+} as ComponentMeta<typeof TabbedNav>
 
 const delay = (sec: number) => new Promise(res => setTimeout(res, sec * 1000))
 
@@ -75,15 +75,15 @@ const StoryTemplate: Story = ({ ...args }) => {
 
   return (
     <Box background="backgroundSecondary" padding="6" borderRadius="md">
-      <TabSelect tabs={tabs} marginBottom="6" {...args} />
+      <TabbedNav tabs={tabs} marginBottom="6" {...args} />
 
       <DemoContent {...data} />
     </Box>
   )
 }
 
-export const PageDemo = StoryTemplate.bind({})
-PageDemo.args = {
+export const Demo = StoryTemplate.bind({})
+Demo.args = {
   activeTab: 'wallet',
   size: 'sm',
 }

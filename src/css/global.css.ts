@@ -11,7 +11,7 @@ globalStyle('*', {
   fontStyle: 'unset',
   fontVariant: 'unset',
   fontWeight: 'unset',
-  listStyleType: 'unset',
+  listStyleType: 'none',
   margin: 0,
   outline: 'unset',
   padding: 0,

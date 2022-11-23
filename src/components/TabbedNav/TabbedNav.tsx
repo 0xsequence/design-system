@@ -20,7 +20,7 @@ type TabSelectProps = {
   tabs: TabOption[]
 }
 
-export const TabSelect = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
+export const TabbedNav = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
   const { className, activeTab, size = 'sm', tabs, ...rest } = props
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [activeTabValue, setActiveTabValue] = useState<string>(

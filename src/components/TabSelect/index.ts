@@ -1,1 +1,0 @@
-export { TabSelect } from './TabSelect'
