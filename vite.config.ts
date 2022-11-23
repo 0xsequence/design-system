@@ -19,16 +19,6 @@ export default defineConfig({
       include: ['**/*.ts', '**/*.tsx'],
     }),
     dts({
-      exclude: ['src/**/*.test.ts*'],
-      beforeWriteFile: (filePath, content) => ({
-        content,
-        filePath: filePath.replace('src', ''),
-      }),
-      compilerOptions: {
-        baseUrl: './src/',
-        emitDeclarationOnly: true,
-        noEmit: false,
-      },
       outputDir: 'dist/types',
     }),
   ],
