@@ -116,6 +116,7 @@ const unresponsiveProperties = defineProperties({
     wordWrap: ['normal', 'break-word', 'initial', 'inherit'],
     zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' },
     userSelect: ['none'],
+    textOverflow: ['ellipsis', 'clip'],
   },
 })
 

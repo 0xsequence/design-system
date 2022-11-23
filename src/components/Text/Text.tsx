@@ -23,6 +23,7 @@ export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
       italic,
       underline,
       children,
+      ellipsis,
       ...boxProps
     } = props
 
@@ -32,6 +33,7 @@ export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
         className={styles.textVariants({
           variant,
           hidden,
+          ellipsis,
           italic,
           underline,
         })}
