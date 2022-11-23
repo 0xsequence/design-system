@@ -68,7 +68,7 @@ export const WithCountIcon = Template.bind({})
 WithCountIcon.args = {
   disabled: false,
   label: (
-    <Box display="flex" gap="1">
+    <Box gap="1">
       Click me
       <InfoBubble info="3" />
     </Box>

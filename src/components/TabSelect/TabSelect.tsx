@@ -51,9 +51,9 @@ export const TabSelect = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
 
   return (
     <Box as="nav" {...rest}>
-      <Box as="ul" display="flex" gap="2">
+      <Box as="ul" gap="2">
         {tabs.map((option, tabIndex) => (
-          <Box as="li" display="block" key={tabIndex}>
+          <Box as="li" key={tabIndex}>
             <Button
               className={clsx(
                 className,

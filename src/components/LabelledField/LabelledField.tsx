@@ -25,7 +25,6 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
 }: PolymorphicProps<LabelledFieldProps, T>) => (
   <Box
     color={color ?? 'textBody'}
-    display="flex"
     alignItems={labelLocation === 'left' ? 'center' : 'stretch'}
     flexDirection={labelLocation === 'left' ? 'row' : 'column'}
     gap="3"

@@ -27,7 +27,7 @@ export const Group = (props: GroupProps) => {
 
   return (
     <Box className={clsx(styles.root, className)} style={style} marginTop="10">
-      <Box display="flex" justifyContent="space-between" marginBottom="3">
+      <Box justifyContent="space-between" marginBottom="3">
         {label && (
           <Text variant="normal" fontWeight="medium" color="textFaded">
             {label}
