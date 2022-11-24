@@ -112,8 +112,8 @@ export const iconVariants = recipe({
   variants: {
     size: {
       xs: {
-        height: vars.lineHeights.xsmall,
-        width: vars.lineHeights.xsmall,
+        height: vars.lineHeights.small,
+        width: vars.lineHeights.small,
       },
       sm: {},
       md: {},

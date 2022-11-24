@@ -32,7 +32,6 @@ export const letterSpacings = {
 /** Coupled with fontSizes in atoms */
 export const lineHeights = {
   inherit: 'inherit',
-  xsmall: '1rem', // 16px
   small: '1rem', // 16px
   normal: '1.25rem', // 20px
   medium: '1.5rem', // 24px

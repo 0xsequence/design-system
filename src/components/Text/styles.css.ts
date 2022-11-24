@@ -50,7 +50,7 @@ export const textVariants = recipe({
       xsmall: atoms({
         fontFamily: 'body',
         fontSize: 'xsmall',
-        lineHeight: 'xsmall',
+        lineHeight: 'small',
         letterSpacing: 'open',
         fontWeight: 'bold',
       }),

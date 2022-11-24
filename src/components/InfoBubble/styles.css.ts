@@ -17,7 +17,7 @@ export const variants = recipe({
     },
 
     tiny: {
-      true: { height: vars.lineHeights.xsmall, width: vars.lineHeights.xsmall },
+      true: { height: vars.lineHeights.small, width: vars.lineHeights.small },
       false: {
         height: vars.lineHeights.normal,
         width: vars.lineHeights.normal,
