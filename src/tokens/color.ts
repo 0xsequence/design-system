@@ -2,12 +2,13 @@ import { networkColors } from './network'
 
 export type ColorScheme = 'dark' | 'light'
 
-type Context = 'positive' | 'negative' | 'info'
+type Context = 'positive' | 'negative' | 'info' | 'warning'
 
 const context: { [key in Context]: string } = {
   positive: '#1FC266',
   negative: '#C2501F',
   info: '#0076CC',
+  warning: '#F4B03E',
 }
 
 type Background = 'primary' | 'secondary' | 'control' | 'inverse'
