@@ -9,7 +9,7 @@ Components are written in [React](https://reactjs.org/) with [Vanilla Extract](h
 ### Install
 
 ```
-yarn add @0xsequence/design-system
+pnpm add @0xsequence/design-system
 ```
 
 ### Use
@@ -35,7 +35,7 @@ const example = () => (
 Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/design-system) then start Storybook.
 
 ```
-yarn && yarn storybook
+pnpm install && pnpm storybook
 ```
 
 ### Used by

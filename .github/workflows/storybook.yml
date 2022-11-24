@@ -13,12 +13,11 @@ jobs:
 
       - name: Install and Build
         run: |
-          yarn
-          yarn build-storybook
+          pnpm install
+          pnpm build-storybook
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           branch: gh-pages
-          folder: docs 
-
+          folder: docs
