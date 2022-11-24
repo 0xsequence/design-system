@@ -1,4 +1,5 @@
 export { Avatar } from './Avatar'
+export { Badge } from './Badge'
 export { Box } from './Box'
 export type {
   BoxProps,
@@ -10,7 +11,6 @@ export { Button } from './Button'
 export { Collapsible } from './Collapsible'
 export { Group } from './Group'
 export { IconButton } from './IconButton'
-export { InfoBubble } from './InfoBubble'
 export { LabelledField } from './LabelledField'
 export { Modal } from './Modal'
 export { Spinner } from './Spinner'

@@ -1,8 +1,8 @@
 import { ComponentMeta, Story } from '@storybook/react'
 import { useState } from 'react'
 
+import { Badge } from '~/components/Badge'
 import { Box } from '~/components/Box'
-import { InfoBubble } from '~/components/InfoBubble'
 import { Text } from '~/components/Text'
 import { ProfileIcon, TransactionIcon } from '~/icons'
 
@@ -57,7 +57,7 @@ const StoryTemplate: Story = ({ ...args }) => {
       label: (
         <Box gap="1">
           History
-          <InfoBubble info="3" />
+          <Badge info="3" />
         </Box>
       ),
       LeftIcon: TransactionIcon,

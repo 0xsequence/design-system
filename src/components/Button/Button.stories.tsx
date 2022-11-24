@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
+import { Badge } from '~/components/Badge'
 import { Box } from '~/components/Box'
-import { InfoBubble } from '~/components/InfoBubble'
 import { ArrowRightIcon, ScanIcon } from '~/icons'
 
 import { Button } from './Button'
@@ -70,7 +70,7 @@ WithCountIcon.args = {
   label: (
     <Box gap="1">
       Click me
-      <InfoBubble info="3" />
+      <Badge info="3" />
     </Box>
   ),
   onClick: () => console.log('Clicked!'),

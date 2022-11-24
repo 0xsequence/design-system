@@ -2,7 +2,7 @@ import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms, vars } from '~/css'
 
-export const variants = recipe({
+export const badgeVariants = recipe({
   base: atoms({
     display: 'inline-block',
     color: 'white',
@@ -16,7 +16,7 @@ export const variants = recipe({
       negative: atoms({ background: 'negative' }),
     },
 
-    tiny: {
+    sm: {
       true: { height: vars.lineHeights.small, width: vars.lineHeights.small },
       false: {
         height: vars.lineHeights.normal,
@@ -26,4 +26,4 @@ export const variants = recipe({
   },
 })
 
-export type Variants = RecipeVariants<typeof variants>
+export type BadgeVariants = RecipeVariants<typeof badgeVariants>
