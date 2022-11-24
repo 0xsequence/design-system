@@ -6,7 +6,7 @@ import { Text } from '~/components/Text'
 type LabelledFieldProps = {
   color?: string
   label?: string
-  labelLocation?: 'left' | 'top' | 'hidden'
+  labelLocation?: 'left' | 'right' | 'top' | 'hidden'
   forId?: string
 }
 
@@ -22,14 +22,8 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
   labelLocation = 'hidden',
   forId,
   ...boxProps
-}: PolymorphicProps<LabelledFieldProps, T>) => (
-  <Box
-    color={color ?? 'textBody'}
-    alignItems={labelLocation === 'left' ? 'center' : 'stretch'}
-    flexDirection={labelLocation === 'left' ? 'row' : 'column'}
-    gap="3"
-    {...boxProps}
-  >
+}: PolymorphicProps<LabelledFieldProps, T>) => {
+  const renderLabel = () => (
     <Text
       as="label"
       variant="small"
@@ -38,7 +32,21 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
     >
       {label}
     </Text>
+  )
 
-    {children}
-  </Box>
-)
+  const horizontal = labelLocation === 'left' || labelLocation === 'right'
+
+  return (
+    <Box
+      color={color ?? 'textBody'}
+      alignItems={horizontal ? 'center' : 'stretch'}
+      flexDirection={horizontal ? 'row' : 'column'}
+      gap="3"
+      {...boxProps}
+    >
+      {['left', 'top', 'hidden'].includes(labelLocation) && renderLabel()}
+      {children}
+      {labelLocation === 'right' && renderLabel()}
+    </Box>
+  )
+}

@@ -17,6 +17,7 @@ export const Basic = Template.bind({})
 Basic.args = {
   label: 'This the label',
   placeholder: 'This is the placeholder',
+  labelLocation: 'top',
 }
 
 export const WithLeftIcon = Template.bind({})

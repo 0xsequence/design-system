@@ -19,7 +19,7 @@ type hiddenLabel = {
 
 type hasLabel = {
   label: string
-  labelLocation: 'left' | 'top'
+  labelLocation: 'left' | 'right' | 'top'
 }
 
 export type TextInputProps = (hasLabel | hiddenLabel) & {
