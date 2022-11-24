@@ -28,6 +28,7 @@ export const Avatar = memo((props: AvatarProps) => {
     <Box
       as={Blockies}
       className={clsx(styles.root, styles.blockies, className)}
+      display="inline-block"
       seed={address.toUpperCase()}
       size={8}
       scale={scale[size]}
