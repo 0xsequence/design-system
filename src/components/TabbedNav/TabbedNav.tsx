@@ -59,6 +59,7 @@ export const TabbedNav = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
                 className,
                 styles.tab({ active: option.value === activeTabValue })
               )}
+              variant="base"
               disabled={isLoading}
               label={option.label}
               LeftIcon={option.LeftIcon ?? undefined}

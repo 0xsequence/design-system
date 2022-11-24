@@ -46,6 +46,14 @@ const StoryTemplate: Story = ({ ...args }) => {
       },
     },
     {
+      label: 'Another Tab',
+      value: 'another',
+      onClick: () => {
+        setData({ title: 'Some Content Title', content: 'some body content' })
+        return true
+      },
+    },
+    {
       label: (
         <Box gap="1">
           History
