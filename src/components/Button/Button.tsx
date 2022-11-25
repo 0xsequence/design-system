@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { forwardRef, ElementType, ComponentType, ReactNode } from 'react'
+import { ComponentType, forwardRef, ElementType, ReactNode } from 'react'
 
 import {
   Box,
@@ -10,7 +10,7 @@ import {
 import { Text } from '~/components/Text'
 import { IconProps } from '~/icons/types'
 
-import { buttonVariants, iconVariants, ButtonVariants } from './styles.css'
+import { buttonVariants, ButtonVariants } from './styles.css'
 
 type ButtonProps = ButtonVariants & {
   disabled?: boolean
@@ -42,6 +42,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
 
     const iconOnly = LeftIcon !== undefined && label === undefined
     const clickable = !disabled && !pending
+    const iconSize = size === 'xs' ? 'xs' : 'sm'
 
     return (
       <Box
@@ -73,11 +74,11 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
             alignItems="center"
             gap={size === 'xs' ? '1' : '2'}
           >
-            {LeftIcon && <LeftIcon className={iconVariants({ size })} />}
+            {LeftIcon && <LeftIcon size={iconSize} />}
             {!iconOnly && <Text>{label}</Text>}
           </Box>
 
-          {RightIcon && <RightIcon className={iconVariants({ size })} />}
+          {RightIcon && <RightIcon size={iconSize} />}
         </Box>
       </Box>
     )

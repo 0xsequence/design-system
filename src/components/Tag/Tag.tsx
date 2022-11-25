@@ -9,7 +9,7 @@ import {
 import { Text } from '~/components/Text'
 import { IconProps } from '~/icons/types'
 
-import * as styles from './styles.css'
+import { tagStyle } from './styles.css'
 
 type TagProps = {
   label: string
@@ -21,8 +21,8 @@ export const Tag: PolymorphicComponent<TagProps, 'div'> = forwardRef(
     { Icon, label, ...otherProps }: PolymorphicProps<TagProps, T>,
     ref: PolymorphicRef<T>
   ) => (
-    <Box className={styles.tag} ref={ref} {...otherProps}>
-      {Icon && <Icon className={styles.tagIcon} />}
+    <Box className={tagStyle} ref={ref} {...otherProps}>
+      {Icon && <Icon size="xs" />}
       <Text>{label}</Text>
     </Box>
   )
