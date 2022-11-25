@@ -132,10 +132,22 @@ const selectorProperties = defineProperties({
   properties: {
     background: vars.colors,
     borderColor: vars.colors,
+    borderTopStyle: ['solid', 'dashed', 'dotted'],
+    borderRightStyle: ['solid', 'dashed', 'dotted'],
+    borderBottomStyle: ['solid', 'dashed', 'dotted'],
+    borderLeftStyle: ['solid', 'dashed', 'dotted'],
     color: vars.colors,
     cursor: ['default', 'pointer', 'not-allowed'],
     pointerEvents: ['none', 'auto'],
     opacity: vars.opacity,
+  },
+  shorthands: {
+    borderStyle: [
+      'borderTopStyle',
+      'borderRightStyle',
+      'borderBottomStyle',
+      'borderLeftStyle',
+    ],
   },
 })
 
