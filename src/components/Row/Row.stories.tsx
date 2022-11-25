@@ -3,15 +3,15 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Box } from '~/components/Box'
 import { Text } from '~/components/Text'
 
-import { Stack } from './Stack'
+import { Row } from './Row'
 
 export default {
-  title: 'Components/Stack',
-  component: Stack,
-} as ComponentMeta<typeof Stack>
+  title: 'Components/Row',
+  component: Row,
+} as ComponentMeta<typeof Row>
 
-const Template: ComponentStory<typeof Stack> = ({ ...args }) => (
-  <Stack
+const Template: ComponentStory<typeof Row> = ({ ...args }) => (
+  <Row
     borderWidth="thin"
     borderColor="borderNormal"
     borderStyle="dashed"
@@ -22,7 +22,7 @@ const Template: ComponentStory<typeof Stack> = ({ ...args }) => (
     </Box>
 
     <Box background="negative" padding="2">
-      <Text color="white">a commonly used vertical layout,</Text>
+      <Text color="white">a commonly used horizontal layout,</Text>
     </Box>
 
     <Box background="info" padding="2">
@@ -30,9 +30,9 @@ const Template: ComponentStory<typeof Stack> = ({ ...args }) => (
     </Box>
 
     <Box background="backgroundSecondary" padding="2">
-      <Text color="textBody">to vertically space components.</Text>
+      <Text color="textBody">to horizontally space components.</Text>
     </Box>
-  </Stack>
+  </Row>
 )
 
 export const Default = Template.bind({})
