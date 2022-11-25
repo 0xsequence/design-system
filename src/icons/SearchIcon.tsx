@@ -4,6 +4,7 @@ import { SVGProps } from 'react'
 
 import { Box } from '~/components/Box'
 
+import { iconVariants } from './styles.css'
 import { IconProps } from './types'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
@@ -28,6 +29,14 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgSearchIcon = (props: IconProps) => <Box as={Svg} {...props} />
+const SvgSearchIcon = ({ size = 'sm', ...props }: IconProps) => (
+  <Box
+    as={Svg}
+    className={iconVariants({
+      size,
+    })}
+    {...props}
+  />
+)
 
 export default SvgSearchIcon

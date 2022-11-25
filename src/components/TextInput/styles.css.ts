@@ -36,8 +36,6 @@ const inputIcon = style([
   style({
     top: '50%',
     transform: 'translateY(-50%)',
-    height: '1.25em',
-    width: '1.25em',
   }),
 ])
 

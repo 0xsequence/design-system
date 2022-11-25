@@ -1,7 +1,5 @@
 import { BoxProps } from '~/components/Box'
 
-export type IconSize = 'sm' | 'md' | 'lg'
+import { IconVariants } from './styles.css'
 
-export interface IconProps extends BoxProps {
-  className?: string
-}
+export type IconProps = IconVariants & BoxProps

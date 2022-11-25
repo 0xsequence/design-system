@@ -102,22 +102,3 @@ export const buttonVariants = recipe({
 })
 
 export type ButtonVariants = RecipeVariants<typeof buttonVariants>
-
-export const iconVariants = recipe({
-  base: {
-    height: vars.lineHeights.normal,
-    width: vars.lineHeights.normal,
-  },
-
-  variants: {
-    size: {
-      xs: {
-        height: vars.lineHeights.small,
-        width: vars.lineHeights.small,
-      },
-      sm: {},
-      md: {},
-      lg: {},
-    },
-  },
-})

@@ -66,7 +66,11 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       return (
         <LabelledField label={label} labelLocation={labelLocation} forId={id}>
           <Box className={styles.wrap}>
-            {LeftIcon && <LeftIcon className={styles.leftIcon} />}
+            {LeftIcon && (
+              <Box display="flex" className={styles.leftIcon}>
+                <LeftIcon size="sm" />
+              </Box>
+            )}
 
             <Box
               as={as}
@@ -90,7 +94,11 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               {...restRegisterProps}
             />
 
-            {RightIcon && <RightIcon className={styles.rightIcon} />}
+            {RightIcon && (
+              <Box display="flex" className={styles.rightIcon}>
+                <RightIcon size="sm" />
+              </Box>
+            )}
           </Box>
         </LabelledField>
       )
