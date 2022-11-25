@@ -28,9 +28,9 @@ specifiers:
   '@types/react': ^18.0.25
   '@types/react-blockies': ^1.4.1
   '@types/react-dom': ^18.0.9
+  '@types/testing-library__jest-dom': ^5.14.5
   '@typescript-eslint/eslint-plugin': ^5.43.0
   '@typescript-eslint/parser': ^5.43.0
-  '@vanilla-extract/babel-plugin': ^1.2.0
   '@vanilla-extract/css': ^1.9.2
   '@vanilla-extract/css-utils': ^0.1.3
   '@vanilla-extract/dynamic': ^2.0.3
@@ -58,7 +58,7 @@ specifiers:
   ts-node: ^10.9.1
   typescript: ^4.6.4
   vite: ^3.2.4
-  vite-plugin-dts: ^1.6.6
+  vite-plugin-dts: 1.6.6
   vite-plugin-eslint: ^1.8.1
   vite-tsconfig-paths: ^3.5.1
 
@@ -73,7 +73,9 @@ dependencies:
   '@radix-ui/react-switch': 1.0.1_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-tabs': 1.0.1_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-tooltip': 1.0.2_2zx2umvpluuhvlq44va5bta2da
+  react: 18.2.0
   react-blockies: 1.4.1_react@18.2.0
+  react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.39.5_react@18.2.0
 
 devDependencies:
@@ -94,9 +96,9 @@ devDependencies:
   '@types/react': 18.0.25
   '@types/react-blockies': 1.4.1
   '@types/react-dom': 18.0.9
+  '@types/testing-library__jest-dom': 5.14.5
   '@typescript-eslint/eslint-plugin': 5.44.0_c5rgyxfozmk6acmvyot27wcp74
   '@typescript-eslint/parser': 5.44.0_typescript@4.9.3
-  '@vanilla-extract/babel-plugin': 1.2.0
   '@vanilla-extract/css': 1.9.2
   '@vanilla-extract/css-utils': 0.1.3
   '@vanilla-extract/dynamic': 2.0.3
@@ -116,13 +118,11 @@ devDependencies:
   jest: 29.3.1_ts-node@10.9.1
   jest-environment-jsdom: 29.3.1
   prettier: 2.8.0
-  react: 18.2.0
-  react-dom: 18.2.0_react@18.2.0
   ts-jest: 29.0.3_tdndgt4m4qpjkcqifsiolntjxu
   ts-node: 10.9.1_typescript@4.9.3
   typescript: 4.9.3
   vite: 3.2.4
-  vite-plugin-dts: 1.7.1_vite@3.2.4
+  vite-plugin-dts: 1.6.6_vite@3.2.4
   vite-plugin-eslint: 1.8.1_vite@3.2.4
   vite-tsconfig-paths: 3.6.0_vite@3.2.4
 
@@ -2797,20 +2797,6 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rollup/pluginutils/5.0.2:
-    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@types/estree': 1.0.0
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-    dev: true
-
   /@rushstack/node-core-library/3.53.2:
     resolution: {integrity: sha512-FggLe5DQs0X9MNFeJN3/EXwb+8hyZUTEp2i+V1e8r4Va4JgkjBNY0BuEaQI+3DW6S4apV3UtXU3im17MSY00DA==}
     dependencies:
@@ -4859,17 +4845,6 @@ packages:
       - supports-color
     dev: true
 
-  /@vanilla-extract/babel-plugin/1.2.0:
-    resolution: {integrity: sha512-4R+hqoyzoyJIrE+NgrYxZuL6GqGH28hiBrPUOxwtvqnJJ5WnUl2/WzItLDDH9YT1Auwl3cIR7pcbrV6HIchORA==}
-    deprecated: The features of this plugin are now built-in to all vanilla-extract bundler integrations — making this plugin no longer required. For more information about test environment integrations, see https://vanilla-extract.style/documentation/test-environments/
-    dependencies:
-      '@babel/core': 7.20.2
-      '@babel/template': 7.18.10
-      '@vanilla-extract/integration': 5.0.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@vanilla-extract/css-utils/0.1.3:
     resolution: {integrity: sha512-PZAcHROlgtCUGI2y0JntdNwvPwCNyeVnkQu6KTYKdmxBbK3w72XJUmLFYapfaFfgami4I9CTLnrJTPdtmS3gpw==}
     dev: true
@@ -4894,18 +4869,6 @@ packages:
     resolution: {integrity: sha512-Rglfw2gXAYiBzAQ4jgUG7rBgE2c88e/zcG27ZVoIqMHVq56wf2C1katGMm1yFMNBgzqM7oBNYzz4YOMzznydkg==}
     dependencies:
       '@vanilla-extract/private': 1.0.3
-    dev: true
-
-  /@vanilla-extract/integration/5.0.1:
-    resolution: {integrity: sha512-HRV/HvC/lihb9wT3x5s7pf5qLjqxSd9nBePJ10juOuMB5cl2ZClEcts076m9BuRKM3wRK2h7KuwkNsaUtjujxQ==}
-    dependencies:
-      '@vanilla-extract/css': 1.9.2
-      esbuild: 0.11.23
-      eval: 0.1.6
-      find-up: 5.0.0
-      javascript-stringify: 2.1.0
-      lodash: 4.17.21
-      outdent: 0.8.0
     dev: true
 
   /@vanilla-extract/integration/6.0.1:
@@ -6201,7 +6164,7 @@ packages:
       glob: 7.2.3
       infer-owner: 1.0.4
       lru-cache: 6.0.0
-      minipass: 3.3.4
+      minipass: 3.3.6
       minipass-collect: 1.0.2
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
@@ -8503,7 +8466,7 @@ packages:
     resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.4
+      minipass: 3.3.6
     dev: true
 
   /fs-monkey/1.0.3:
@@ -10883,25 +10846,25 @@ packages:
     resolution: {integrity: sha512-6T6lH0H8OG9kITm/Jm6tdooIbogG9e0tLgpY6mphXSm/A9u8Nq1ryBG+Qspiub9LjWlBPsPS3tWQ/Botq4FdxA==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.4
+      minipass: 3.3.6
     dev: true
 
   /minipass-flush/1.0.5:
     resolution: {integrity: sha512-JmQSYYpPUqX5Jyn1mXaRwOda1uQ8HP5KAT/oDSLCzt1BYRhQU0/hDtsB1ufZfEEzMZ9aAVmsBw8+FWsIXlClWw==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.4
+      minipass: 3.3.6
     dev: true
 
   /minipass-pipeline/1.2.4:
     resolution: {integrity: sha512-xuIq7cIOt09RPRJ19gdi4b+RiNvDFYe5JH+ggNvBqGqpQXcru3PcRmOZuHBKWK1Txf9+cQ+HMVN4d6z46LZP7A==}
     engines: {node: '>=8'}
     dependencies:
-      minipass: 3.3.4
+      minipass: 3.3.6
     dev: true
 
-  /minipass/3.3.4:
-    resolution: {integrity: sha512-I9WPbWHCGu8W+6k1ZiGpPu0GkoKBeorkfKNuAFBNS1HNFJvke82sxvI5bzcCNpWPorkOO5QQ+zomzzwRxejXiw==}
+  /minipass/3.3.6:
+    resolution: {integrity: sha512-DxiNidxSEK+tHG6zOIklvNOwm3hvCrbUrdtzY74U6HKTJxvIDfOUL5W5P2Ghd3DTkhhKPYGqeNUIh5qcM4YBfw==}
     engines: {node: '>=8'}
     dependencies:
       yallist: 4.0.0
@@ -10911,7 +10874,7 @@ packages:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.4
+      minipass: 3.3.6
       yallist: 4.0.0
     dev: true
 
@@ -13070,7 +13033,7 @@ packages:
     resolution: {integrity: sha512-97qShzy1AiyxvPNIkLWoGua7xoQzzPjQ0HAH4B0rWKo7SZ6USuPcrUiAFrws0UH8RrbWmgq3LMTObhPIHbbBeQ==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.4
+      minipass: 3.3.6
     dev: true
 
   /stable/0.1.8:
@@ -13408,7 +13371,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 3.3.4
+      minipass: 3.3.6
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
@@ -14219,14 +14182,13 @@ packages:
       vfile-message: 2.0.4
     dev: true
 
-  /vite-plugin-dts/1.7.1_vite@3.2.4:
-    resolution: {integrity: sha512-2oGMnAjcrZN7jM1TloiS1b1mCn42s3El04ix2RFhId5P1WfMigF8WAwsqT6a6jk0Yso8t7AeZsBkkxYShR0hBQ==}
+  /vite-plugin-dts/1.6.6_vite@3.2.4:
+    resolution: {integrity: sha512-XEZQlcAN5Bi1PWL0l/E08cI3VpjTCWY5x7C4/bVyC7lpS+/q9CDBCV8gGsqV97/g34N7gNNRNhqs8r0m6JAmIQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: '>=2.9.0'
     dependencies:
       '@microsoft/api-extractor': 7.33.6
-      '@rollup/pluginutils': 5.0.2
       '@rushstack/node-core-library': 3.53.2
       debug: 4.3.4
       fast-glob: 3.2.12
@@ -14235,7 +14197,6 @@ packages:
       ts-morph: 16.0.0
       vite: 3.2.4
     transitivePeerDependencies:
-      - rollup
       - supports-color
     dev: true
 

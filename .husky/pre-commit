@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm build
-pnpm test --changedSince master
+pnpm run build
+pnpm run test --changedSince master
