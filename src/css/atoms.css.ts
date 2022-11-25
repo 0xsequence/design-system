@@ -3,6 +3,8 @@ import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
 import { breakpoints } from './breakpoints'
 import { vars } from './vars.css'
 
+const borderStyles = ['solid', 'dashed', 'dotted'] as const
+
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const
 
 export const dimension = {
@@ -132,10 +134,10 @@ const selectorProperties = defineProperties({
   properties: {
     background: vars.colors,
     borderColor: vars.colors,
-    borderTopStyle: ['solid', 'dashed', 'dotted'],
-    borderRightStyle: ['solid', 'dashed', 'dotted'],
-    borderBottomStyle: ['solid', 'dashed', 'dotted'],
-    borderLeftStyle: ['solid', 'dashed', 'dotted'],
+    borderTopStyle: borderStyles,
+    borderRightStyle: borderStyles,
+    borderBottomStyle: borderStyles,
+    borderLeftStyle: borderStyles,
     color: vars.colors,
     cursor: ['default', 'pointer', 'not-allowed'],
     pointerEvents: ['none', 'auto'],
