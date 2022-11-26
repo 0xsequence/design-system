@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ThemeProvider } from '../src/components'
 
-import theme from './theme.cjs'
+import docsTheme from './theme.cjs'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -24,7 +24,7 @@ export const parameters = {
     },
   },
   docs: {
-    theme,
+    theme: docsTheme,
   },
 }
 
@@ -33,7 +33,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Global theme for components',
-    defaultValue: 'light',
+    defaultValue: 'dark',
     toolbar: {
       title: 'Theme',
       icon: 'circlehollow',
@@ -49,7 +49,7 @@ const withTheme: DecoratorFn = (StoryFn, context) => {
   const { theme } = context.globals
 
   return (
-    <ThemeProvider theme={theme || 'light'}>
+    <ThemeProvider theme={theme}>
       <StoryFn />
     </ThemeProvider>
   )
