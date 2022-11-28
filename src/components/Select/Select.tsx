@@ -1,7 +1,26 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { ElementType, forwardRef, Ref } from 'react'
+import { forwardRef, Ref } from 'react'
 
-import { LabelledField } from '~/components/LabelledField'
+import {
+  HasLabel,
+  HiddenLabel,
+  LabelledField,
+} from '~/components/LabelledField'
+
+import * as styles from './styles.css'
+
+type SelectOption = {
+  label: string
+  value: string
+}
+
+type SelectProps = (HasLabel | HiddenLabel) &
+  SelectPrimitive.SelectProps & {
+    id?: string
+    placeholder?: string
+    processing?: boolean
+    options: SelectOption[]
+  }
 
 const SelectItem = forwardRef(
   (
@@ -24,12 +43,34 @@ const SelectItem = forwardRef(
 )
 
 export const Select = forwardRef(
-  (props: SelectPrimitive.SelectProps, ref: Ref<HTMLButtonElement>) => {
+  (
+    {
+      autoComplete = 'off',
+      disabled = false,
+      id,
+      label = '',
+      labelLocation = 'hidden',
+      name,
+      placeholder,
+      processing = false,
+      ...props
+    }: SelectProps,
+    ref: Ref<HTMLButtonElement>
+  ) => {
     return (
-      <LabelledField label="Select" labelLocation="top">
-        <SelectPrimitive.Root {...props}>
-          <SelectPrimitive.Trigger ref={ref}>
-            <SelectPrimitive.Value placeholder="Select a fruit…" />
+      <LabelledField
+        forId={id ?? name}
+        label={label}
+        labelLocation={labelLocation}
+        whiteSpace="nowrap"
+      >
+        <SelectPrimitive.Root
+          autoComplete={autoComplete}
+          disabled={disabled || processing}
+          {...props}
+        >
+          <SelectPrimitive.Trigger className={styles.trigger} ref={ref}>
+            <SelectPrimitive.Value placeholder={placeholder} />
           </SelectPrimitive.Trigger>
           <SelectPrimitive.Portal>
             <SelectPrimitive.Content>
