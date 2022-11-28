@@ -97,7 +97,7 @@
     "vite-tsconfig-paths": "^3.5.1"
   },
   "peerDependencies": {
-    "framer-motion": ">=7",
+    "framer-motion": ">=6",
     "react": ">=17",
     "react-dom": ">=17"
   }
