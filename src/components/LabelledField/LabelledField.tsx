@@ -3,10 +3,18 @@ import { ElementType } from 'react'
 import { Box, PolymorphicComponent, PolymorphicProps } from '~/components/Box'
 import { Text } from '~/components/Text'
 
-type LabelledFieldProps = {
-  color?: string
+export type HiddenLabel = {
   label?: string
-  labelLocation?: 'left' | 'right' | 'top' | 'hidden'
+  labelLocation?: 'hidden'
+}
+
+export type HasLabel = {
+  label: string
+  labelLocation: 'left' | 'right' | 'top'
+}
+
+type LabelledFieldProps = (HasLabel | HiddenLabel) & {
+  color?: string
   forId?: string
 }
 

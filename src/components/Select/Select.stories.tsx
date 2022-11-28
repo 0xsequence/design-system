@@ -18,3 +18,8 @@ const Template: ComponentStory<typeof Select> = args => {
 }
 
 export const Demo = Template.bind({})
+Demo.args = {
+  label: 'Select',
+  labelLocation: 'top',
+  placeholder: 'Select an option',
+}

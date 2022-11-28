@@ -7,22 +7,16 @@ import {
   PolymorphicProps,
   PolymorphicRef,
 } from '~/components/Box'
-import { LabelledField } from '~/components/LabelledField'
+import {
+  HasLabel,
+  HiddenLabel,
+  LabelledField,
+} from '~/components/LabelledField'
 import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
 
-type hiddenLabel = {
-  label?: string
-  labelLocation?: 'hidden'
-}
-
-type hasLabel = {
-  label: string
-  labelLocation: 'left' | 'right' | 'top'
-}
-
-export type TextInputProps = (hasLabel | hiddenLabel) & {
+export type TextInputProps = (HasLabel | HiddenLabel) & {
   disabled?: boolean
   LeftIcon?: ComponentType<IconProps>
   name: string
@@ -64,7 +58,11 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       const { ref: registerRef, ...restRegisterProps } = registerProps
 
       return (
-        <LabelledField label={label} labelLocation={labelLocation} forId={id}>
+        <LabelledField
+          label={label}
+          labelLocation={labelLocation}
+          forId={id ?? name}
+        >
           <Box className={styles.wrap}>
             {LeftIcon && (
               <Box display="flex" className={styles.leftIcon}>
@@ -77,7 +75,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               autoComplete={autoComplete}
               className={styles.input}
               disabled={disabled || processing}
-              id={id}
+              id={id ?? name}
               name={name}
               paddingLeft={LeftIcon ? '10' : '4'}
               paddingRight={RightIcon ? '10' : '4'}
