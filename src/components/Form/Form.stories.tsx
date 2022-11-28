@@ -21,7 +21,7 @@ const Template: Story = ({ ...args }) => {
         flexDirection="column"
         gap="3"
         padding="4"
-        borderRadius="sm"
+        borderRadius="xs"
         onSubmit={onSubmit}
         {...args}
       >

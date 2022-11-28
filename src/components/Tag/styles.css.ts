@@ -7,7 +7,7 @@ import { textVariants } from '../Text/styles.css'
 export const tagStyle = style([
   textVariants({ variant: 'xsmall' }),
   atoms({
-    borderRadius: 'sm',
+    borderRadius: 'xs',
     display: 'inline-flex',
     gap: '1',
     paddingX: '2',
