@@ -6,8 +6,9 @@ export const borderWidths = {
 
 export const radii = {
   none: '0',
-  sm: '0.25rem', // 4px
+  xs: '0.25rem', // 4px
+  sm: '0.5rem', // 8px
   md: '0.75rem', // 12px
-  lg: '1.5rem', // 24px
-  circle: '999px',
+  lg: '1rem', // 16px
+  circle: '9999px',
 }

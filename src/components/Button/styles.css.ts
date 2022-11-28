@@ -52,6 +52,11 @@ export const buttonVariants = recipe({
       true: atoms({ cursor: 'pointer', opacity: { base: '100', hover: '80' } }),
     },
 
+    shape: {
+      circle: atoms({ borderRadius: 'circle' }),
+      square: atoms({ borderRadius: 'sm' }),
+    },
+
     disabled: { true: atoms({ cursor: 'not-allowed', opacity: '50' }) },
 
     iconOnly: { true: {} },
@@ -59,22 +64,22 @@ export const buttonVariants = recipe({
     size: {
       xs: [
         textVariants({ variant: 'xsmall' }),
-        atoms({ borderRadius: 'sm', paddingX: '3', paddingY: '1.5' }),
+        atoms({ paddingX: '3', paddingY: '1.5' }),
         { height: '28px' },
       ],
       sm: [
         textVariants({ variant: 'normal' }),
-        atoms({ borderRadius: 'md', paddingX: '4', paddingY: '2' }),
+        atoms({ paddingX: '4', paddingY: '2' }),
         { height: '36px' },
       ],
       md: [
         textVariants({ variant: 'normal' }),
-        atoms({ borderRadius: 'circle', paddingX: '5', paddingY: '3' }),
+        atoms({ paddingX: '5', paddingY: '3' }),
         { height: '44px' },
       ],
       lg: [
         textVariants({ variant: 'normal' }),
-        atoms({ borderRadius: 'circle', paddingX: '5', paddingY: '4' }),
+        atoms({ paddingX: '5', paddingY: '4' }),
         { height: '52px' },
       ],
     },
