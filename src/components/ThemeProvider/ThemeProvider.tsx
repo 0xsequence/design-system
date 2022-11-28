@@ -8,7 +8,7 @@ import {
 } from 'react'
 
 const THEME_ATTR = 'data-theme'
-const STORAGE_KEY = 'sds-theme'
+const STORAGE_KEY = '@sequence.theme'
 
 interface ThemeContextValue {
   theme: 'light' | 'dark'
