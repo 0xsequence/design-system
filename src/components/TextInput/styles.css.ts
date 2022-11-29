@@ -15,19 +15,16 @@ export const wrap = atoms({
 export const input = style([
   textVariants({ variant: 'normal' }),
   atoms({
-    color: 'textBody',
-    borderWidth: 'thin',
+    borderColor: 'borderNormal',
     borderRadius: 'md',
+    borderStyle: 'solid',
+    borderWidth: 'thin',
+    color: 'textBody',
     display: 'inline-block',
     paddingY: '3',
-    borderColor: 'borderNormal',
-
-    fontWeight: 'regular',
-    letterSpacing: 'open',
   }),
   style({
     minWidth: '100%',
-    borderStyle: 'solid',
   }),
 ])
 
