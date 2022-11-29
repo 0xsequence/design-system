@@ -1,15 +1,25 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
+import { clsx } from 'clsx'
 import { forwardRef, Ref } from 'react'
 
+import { Box } from '~/components/Box'
 import {
   HasLabel,
   HiddenLabel,
   LabelledField,
 } from '~/components/LabelledField'
+import { Text } from '~/components/Text'
+import { ChevronDownIcon } from '~/icons'
 
-import * as styles from './styles.css'
+import {
+  contentStyle,
+  groupLabelStyle,
+  optionStyle,
+  triggerStyle,
+} from './styles.css'
 
 type SelectOption = {
+  className?: string
   label: string
   value: string
 }
@@ -24,19 +34,16 @@ type SelectProps = (HasLabel | HiddenLabel) &
 
 const SelectItem = forwardRef(
   (
-    { children, ...props }: SelectPrimitive.SelectItemProps,
+    { children, className, ...props }: SelectPrimitive.SelectItemProps,
     ref: Ref<HTMLDivElement>
   ) => {
     return (
       <SelectPrimitive.Item
-        // className={classnames('SelectItem', className)}
+        className={clsx(optionStyle, className)}
         {...props}
         ref={ref}
       >
         <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-        <SelectPrimitive.ItemIndicator className="SelectItemIndicator">
-          Ch
-        </SelectPrimitive.ItemIndicator>
       </SelectPrimitive.Item>
     )
   }
@@ -51,51 +58,54 @@ export const Select = forwardRef(
       label = '',
       labelLocation = 'hidden',
       name,
+      options,
       placeholder,
       processing = false,
       ...props
     }: SelectProps,
     ref: Ref<HTMLButtonElement>
-  ) => {
-    return (
-      <LabelledField
-        forId={id ?? name}
-        label={label}
-        labelLocation={labelLocation}
-        whiteSpace="nowrap"
+  ) => (
+    <LabelledField
+      forId={id ?? name}
+      label={label}
+      labelLocation={labelLocation}
+      whiteSpace="nowrap"
+    >
+      <SelectPrimitive.Root
+        autoComplete={autoComplete}
+        disabled={disabled || processing}
+        {...props}
       >
-        <SelectPrimitive.Root
-          autoComplete={autoComplete}
-          disabled={disabled || processing}
-          {...props}
+        <SelectPrimitive.Trigger
+          id={id ?? name}
+          className={triggerStyle}
+          ref={ref}
         >
-          <SelectPrimitive.Trigger className={styles.trigger} ref={ref}>
-            <SelectPrimitive.Value placeholder={placeholder} />
-          </SelectPrimitive.Trigger>
-          <SelectPrimitive.Portal>
-            <SelectPrimitive.Content>
-              <SelectPrimitive.ScrollUpButton>
-                Up
-              </SelectPrimitive.ScrollUpButton>
-              <SelectPrimitive.Viewport>
-                <SelectPrimitive.Group>
-                  <SelectPrimitive.Label className="SelectLabel">
-                    Fruits
-                  </SelectPrimitive.Label>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
-                </SelectPrimitive.Group>
-              </SelectPrimitive.Viewport>
-              <SelectPrimitive.ScrollDownButton>
-                Down
-              </SelectPrimitive.ScrollDownButton>
-            </SelectPrimitive.Content>
-          </SelectPrimitive.Portal>
-        </SelectPrimitive.Root>
-      </LabelledField>
-    )
-  }
+          <SelectPrimitive.Value placeholder={placeholder} />
+          <Box as={SelectPrimitive.Icon} display="inline-flex">
+            <ChevronDownIcon />
+          </Box>
+        </SelectPrimitive.Trigger>
+
+        <SelectPrimitive.Content className={contentStyle}>
+          <SelectPrimitive.Viewport>
+            <SelectPrimitive.Group>
+              <SelectPrimitive.Label className={groupLabelStyle}>
+                <Text>{placeholder}</Text>
+                <Box as={SelectPrimitive.Icon} display="inline-flex">
+                  <ChevronDownIcon />
+                </Box>
+              </SelectPrimitive.Label>
+
+              {options.map(({ value, label, ...rest }) => (
+                <SelectItem key={label} value={value} {...rest}>
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectPrimitive.Group>
+          </SelectPrimitive.Viewport>
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Root>
+    </LabelledField>
+  )
 )

@@ -111,14 +111,14 @@ const unresponsiveProperties = defineProperties({
   properties: {
     backdropFilter: vars.blur,
     fontFamily: vars.fonts,
+    textOverflow: ['ellipsis', 'clip'],
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
+    userSelect: ['none'],
     visibility: ['hidden', 'visible'],
     whiteSpace: ['normal', 'nowrap', 'initial', 'inherit'],
     wordBreak: ['break-word'],
     wordWrap: ['normal', 'break-word', 'initial', 'inherit'],
     zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' },
-    userSelect: ['none'],
-    textOverflow: ['ellipsis', 'clip'],
   },
 })
 
@@ -129,19 +129,21 @@ const selectorProperties = defineProperties({
     disabled: { selector: '&:disabled' },
     focus: { selector: '&:focus' },
     hover: { selector: '&:hover:not([disabled])' },
+    checked: { selector: '&[data-state="checked"]' },
   },
   defaultCondition: 'base',
   properties: {
     background: vars.colors,
-    borderColor: vars.colors,
-    borderTopStyle: borderStyles,
-    borderRightStyle: borderStyles,
     borderBottomStyle: borderStyles,
+    borderColor: vars.colors,
     borderLeftStyle: borderStyles,
+    borderRightStyle: borderStyles,
+    borderTopStyle: borderStyles,
     color: vars.colors,
     cursor: ['default', 'pointer', 'not-allowed'],
-    pointerEvents: ['none', 'auto'],
     opacity: vars.opacity,
+    outline: ['none'],
+    pointerEvents: ['none', 'auto'],
   },
   shorthands: {
     borderStyle: [
