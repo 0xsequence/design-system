@@ -7,6 +7,8 @@ import dts from 'vite-plugin-dts'
 import eslint from 'vite-plugin-eslint'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
+import { peerDependencies } from './package.json'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -39,7 +41,7 @@ export default defineConfig({
     },
     outDir: path.resolve(__dirname, 'dist'),
     rollupOptions: {
-      external: ['react', 'react-dom', 'framer-motion'],
+      external: Object.keys(peerDependencies),
     },
     minify: false,
   },
