@@ -20,6 +20,7 @@ import {
 
 type SelectOption = {
   className?: string
+  disabled?: boolean
   label: string
   value: string
 }

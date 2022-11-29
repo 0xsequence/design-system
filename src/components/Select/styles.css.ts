@@ -54,17 +54,28 @@ export const optionStyle = style([
   atoms({
     display: 'flex',
     justifyContent: 'space-between',
-    cursor: 'pointer',
+    cursor: {
+      base: 'pointer',
+      disabled: 'not-allowed',
+    },
     paddingX: '4',
     paddingY: '3',
     outline: {
       focus: 'none',
       hover: 'none',
     },
+    color: {
+      base: 'textBody',
+      disabled: 'textInactive',
+    },
     background: {
       focus: 'backgroundSecondary',
       hover: 'backgroundSecondary',
       checked: 'backgroundControl',
+    },
+    opacity: {
+      base: '100',
+      disabled: '50',
     },
   }),
 ])
