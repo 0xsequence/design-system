@@ -10,7 +10,7 @@ export const Row = (props: RowProps) => {
     flexDirection = 'row',
     gap = '2',
     justifyContent = 'flex-start',
-    padding = '2',
+    alignItems = 'center',
     ...rest
   } = props
 
@@ -18,8 +18,8 @@ export const Row = (props: RowProps) => {
     <Box
       flexDirection={flexDirection}
       gap={gap}
-      padding={padding}
       justifyContent={justifyContent}
+      alignItems={alignItems}
       {...rest}
     >
       {children}
