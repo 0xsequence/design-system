@@ -1,5 +1,5 @@
 import { ComponentType, ElementType, forwardRef } from 'react'
-import { RegisterOptions, useFormContext } from 'react-hook-form'
+import { RegisterOptions, UseFormRegister } from 'react-hook-form'
 
 import {
   Box,
@@ -16,10 +16,11 @@ import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
 
-export type TextInputProps = (HasLabel | HiddenLabel) & {
+type TextInputProps = (HasLabel | HiddenLabel) & {
   disabled?: boolean
   LeftIcon?: ComponentType<IconProps>
   name: string
+  register?: UseFormRegister<any>
   processing?: boolean
   RightIcon?: ComponentType<IconProps>
   rules?: RegisterOptions
@@ -42,19 +43,14 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
         LeftIcon,
         name,
         processing = false,
+        register,
         RightIcon,
         rules = {},
         type = 'text',
         ...rest
       } = props
 
-      const methods = useFormContext()
-      const usingFormContext = methods !== null
-
-      const registerProps = usingFormContext
-        ? methods.register(name, rules)
-        : { ref: null }
-
+      const registerProps = !register ? { ref: null } : register(name, rules)
       const { ref: registerRef, ...restRegisterProps } = registerProps
 
       return (
