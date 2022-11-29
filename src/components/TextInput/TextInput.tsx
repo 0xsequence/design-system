@@ -20,9 +20,9 @@ export type TextInputProps = (HasLabel | HiddenLabel) & {
   disabled?: boolean
   LeftIcon?: ComponentType<IconProps>
   name: string
-  registerWith?: RegisterOptions
   processing?: boolean
   RightIcon?: ComponentType<IconProps>
+  rules?: RegisterOptions
   value?: string
 }
 
@@ -35,15 +35,15 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       const {
         as = 'input',
         autoComplete = 'off',
-        id,
         disabled = false,
+        id,
         label = '',
         labelLocation = 'hidden',
         LeftIcon,
         name,
         processing = false,
-        registerWith = {},
         RightIcon,
+        rules = {},
         type = 'text',
         ...rest
       } = props
@@ -52,16 +52,16 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       const usingFormContext = methods !== null
 
       const registerProps = usingFormContext
-        ? methods.register(name, registerWith)
+        ? methods.register(name, rules)
         : { ref: null }
 
       const { ref: registerRef, ...restRegisterProps } = registerProps
 
       return (
         <LabelledField
+          forId={id ?? name}
           label={label}
           labelLocation={labelLocation}
-          forId={id ?? name}
         >
           <Box className={styles.wrap}>
             {LeftIcon && (
@@ -79,7 +79,6 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               name={name}
               paddingLeft={LeftIcon ? '10' : '4'}
               paddingRight={RightIcon ? '10' : '4'}
-              type={type}
               ref={e => {
                 if (registerRef) {
                   registerRef(e)
@@ -88,6 +87,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
                   ref.current = e
                 }
               }}
+              type={type}
               {...rest}
               {...restRegisterProps}
             />

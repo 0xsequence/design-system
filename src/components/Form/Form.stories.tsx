@@ -27,7 +27,7 @@ const Template: Story = ({ onSubmit, ...args }) => (
         labelLocation="top"
         name="firstName"
         placeholder="Enter first name"
-        registerWith={{ required: 'required' }}
+        rules={{ required: 'This field is required.' }}
       />
       <TextInput
         label="Last Name"
