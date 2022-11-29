@@ -19,6 +19,12 @@ const Template: ComponentStory<typeof Select> = args => {
 
 export const Demo = Template.bind({})
 Demo.args = {
+  onValueChange: value => {
+    console.log('selected: ', value)
+    if (value === 'option-5') {
+      alert('custom action selected')
+    }
+  },
   name: 'selectDemo',
   label: 'Select',
   labelLocation: 'top',
@@ -28,5 +34,6 @@ Demo.args = {
     { label: 'Option 2', value: 'option-2' },
     { label: 'Option 3', value: 'option-3' },
     { label: 'Disabled Option', value: 'option-4', disabled: true },
+    { label: 'Custom Action', value: 'option-5' },
   ],
 }
