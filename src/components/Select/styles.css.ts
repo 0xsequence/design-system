@@ -24,7 +24,12 @@ export const triggerStyle = style([
     padding: '4',
     userSelect: 'none',
   }),
-  { height: 52 },
+  {
+    height: 52,
+    selectors: {
+      '&[data-placeholder]:not(:focus)': { opacity: 0.8 },
+    },
+  },
 ])
 
 export const contentStyle = style([

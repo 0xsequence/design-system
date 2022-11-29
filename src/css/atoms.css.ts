@@ -126,7 +126,7 @@ const selectorProperties = defineProperties({
   conditions: {
     base: {},
     active: { selector: '&:active' },
-    disabled: { selector: '&:disabled,&[aria-disabled="true"]' },
+    disabled: { selector: '&:disabled,&[data-disabled]' },
     focus: { selector: '&:focus' },
     hover: { selector: '&:hover:not([disabled])' },
     checked: { selector: '&[data-state="checked"]' },
