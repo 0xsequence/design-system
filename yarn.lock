@@ -1946,6 +1946,21 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-primitive" "1.0.1"
 
+"@radix-ui/react-checkbox@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-checkbox/-/react-checkbox-1.0.1.tgz#80cb38b1fd2cbe73f3ad0f4db8aebead0ab0617a"
+  integrity sha512-TisH0B8hWmYP3ONRduYCyN04rR9yLPIw/Rwyn1RoC1suSoGCa8Wn+YPdSSSarSszeIbcg3p2lBkDp2XXit4sZw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-presence" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-use-controllable-state" "1.0.0"
+    "@radix-ui/react-use-previous" "1.0.0"
+    "@radix-ui/react-use-size" "1.0.0"
+
 "@radix-ui/react-collapsible@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-collapsible/-/react-collapsible-1.0.1.tgz#7184312ce18e703628b9ef75cdc44b896d6f06b1"
@@ -2139,6 +2154,23 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-context" "1.0.0"
     "@radix-ui/react-primitive" "1.0.1"
+
+"@radix-ui/react-radio-group@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-radio-group/-/react-radio-group-1.1.0.tgz#e1719e1c9af03230d1b02c1f180dee816544e1ec"
+  integrity sha512-7rrkZCXu0Q7oC0MxCm497X1DdV/tI78oNIGXA8sDbCkboiTkuLSe728zCCpRYHw+9PifHIx86nsbITPEq5yijg==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-direction" "1.0.0"
+    "@radix-ui/react-presence" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-roving-focus" "1.0.1"
+    "@radix-ui/react-use-controllable-state" "1.0.0"
+    "@radix-ui/react-use-previous" "1.0.0"
+    "@radix-ui/react-use-size" "1.0.0"
 
 "@radix-ui/react-roving-focus@1.0.1":
   version "1.0.1"
