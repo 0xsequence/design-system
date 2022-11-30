@@ -9,4 +9,4 @@ import './global.css'
 export { atoms } from './atoms.css'
 export type { Atoms } from './atoms.css'
 
-export { responsiveStyle } from './utils'
+export { responsiveStyle, selectorize } from './utils'
