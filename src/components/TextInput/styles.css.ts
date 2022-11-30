@@ -9,7 +9,10 @@ export const wrap = atoms({
   position: 'relative',
   alignItems: 'center',
   background: 'transparent',
-  color: 'textBody',
+  color: {
+    base: 'textBody',
+    disabled: 'textInactive',
+  },
 })
 
 export const input = style([
@@ -19,21 +22,20 @@ export const input = style([
     borderRadius: 'md',
     borderStyle: 'solid',
     borderWidth: 'thin',
-    color: 'textBody',
     display: 'inline-block',
-    paddingY: '3',
+    paddingY: '4',
+    opacity: {
+      base: '100',
+      hover: '80',
+      disabled: '50',
+    },
   }),
-  style({
-    minWidth: '100%',
-  }),
+  { height: 52, minWidth: '100%' },
 ])
 
 const inputIcon = style([
   atoms({ position: 'absolute' }),
-  style({
-    top: '50%',
-    transform: 'translateY(-50%)',
-  }),
+  { top: '50%', transform: 'translateY(-50%)' },
 ])
 
 export const leftIcon = style([inputIcon, atoms({ left: '4' })])

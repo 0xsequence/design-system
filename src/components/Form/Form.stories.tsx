@@ -2,6 +2,7 @@ import { ComponentMeta, Story } from '@storybook/react'
 
 import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
+import { ControlledCheckbox as Checkbox } from '~/components/Checkbox'
 import { ControlledSelect as Select } from '~/components/Select'
 import { ControlledSwitch as Switch } from '~/components/Switch'
 import { Text } from '~/components/Text'
@@ -21,13 +22,19 @@ const selectOptions = [
 ]
 
 const Template: Story = ({ onSubmit, ...args }) => (
-  <Box background="backgroundSecondary" padding="4" borderRadius="md">
+  <Box
+    background="backgroundSecondary"
+    borderRadius="md"
+    flexDirection="column"
+    gap="4"
+    padding="4"
+  >
     <Form defaultValues={{ firstName: '' }} onSubmit={onSubmit} {...args}>
       {({ control, reset, formState: { errors }, setValue }) => (
         <Box
           background="backgroundPrimary"
           flexDirection="column"
-          gap="3"
+          gap="5"
           padding="4"
           borderRadius="xs"
         >
@@ -78,6 +85,17 @@ const Template: Story = ({ onSubmit, ...args }) => (
             name="switchOption"
             onCheckedChange={(value: boolean) =>
               setValue('switchOption', value)
+            }
+            defaultChecked={false}
+          />
+
+          <Checkbox
+            control={control}
+            label="Checkbox Option"
+            labelLocation="right"
+            name="checkboxOption"
+            onCheckedChange={(value: boolean) =>
+              setValue('checkboxOption', value)
             }
             defaultChecked={false}
           />
