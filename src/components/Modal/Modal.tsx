@@ -6,11 +6,13 @@ import { CloseIcon } from '~/icons'
 
 import { Box } from '../Box'
 import { IconButton } from '../IconButton'
+import { Scroll } from '../Scroll'
 
 import * as styles from './styles.css'
 
 export interface ModalProps {
   onClose?: () => void
+  scroll?: boolean
   closeOnOverlayClick?: boolean
   closeOnEscape?: boolean
   className?: string
@@ -21,6 +23,7 @@ export interface ModalProps {
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const {
     children,
+    scroll = true,
     onClose,
     closeOnOverlayClick = true,
     closeOnEscape = true,
@@ -64,7 +67,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               exit={{ y: '100%' }}
               transition={{ type: 'tween', ease: 'easeOut' }}
             >
-              {children}
+              {scroll ? <Scroll>{children}</Scroll> : children}
+
               {closeOnOverlayClick && (
                 <Dialog.Close asChild>
                   <IconButton
