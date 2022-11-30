@@ -27,7 +27,9 @@ type SelectOption = {
 
 export type SelectProps = (HasLabel | HiddenLabel) &
   SelectPrimitive.SelectProps & {
+    disabled?: boolean
     id?: string
+    name: string
     placeholder?: string
     processing?: boolean
     options: SelectOption[]
@@ -53,7 +55,6 @@ const SelectItem = forwardRef(
 export const Select = forwardRef(
   (
     {
-      autoComplete = 'off',
       disabled = false,
       id,
       label = '',
@@ -73,8 +74,8 @@ export const Select = forwardRef(
       whiteSpace="nowrap"
     >
       <SelectPrimitive.Root
-        autoComplete={autoComplete}
         disabled={disabled || processing}
+        name={name}
         {...props}
       >
         <SelectPrimitive.Trigger
