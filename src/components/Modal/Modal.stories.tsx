@@ -29,7 +29,12 @@ const Template: ComponentStory<typeof Modal> = args => {
 export const Default = Template.bind({})
 Default.args = {
   children: (
-    <Box flexDirection="column" justifyContent="space-between" height="full">
+    <Box
+      flexDirection="column"
+      justifyContent="space-between"
+      height="full"
+      padding="4"
+    >
       <Box>
         <Text as="h1" variant="medium" color="textBody">
           New Dapp

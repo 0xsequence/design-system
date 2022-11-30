@@ -31,7 +31,6 @@ export const content = style([
     position: 'fixed',
     overflow: 'hidden',
     background: 'backgroundPrimary',
-    padding: '4',
     width: 'vw',
     bottom: '0',
     outline: {
@@ -60,5 +59,6 @@ export const close = style([
     position: 'absolute',
     right: '0',
     top: '0',
+    zIndex: '20',
   }),
 ])
