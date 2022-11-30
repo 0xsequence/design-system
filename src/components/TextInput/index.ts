@@ -1,1 +1,2 @@
-export { ControlledTextInput, TextInput } from './TextInput'
+export { TextInput } from './TextInput'
+export { ControlledTextInput } from './ControlledTextInput'
