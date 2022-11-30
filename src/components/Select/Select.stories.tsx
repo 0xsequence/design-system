@@ -5,7 +5,7 @@ import { Box } from '~/components/Box'
 import { Select } from './Select'
 
 export default {
-  title: 'Components/Forms/Select',
+  title: 'Forms/Select',
   component: Select,
 } as ComponentMeta<typeof Select>
 

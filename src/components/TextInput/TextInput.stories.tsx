@@ -5,7 +5,7 @@ import { ArrowRightIcon, ScanIcon } from '~/icons'
 import { TextInput } from './TextInput'
 
 export default {
-  title: 'Components/Forms/TextInput',
+  title: 'Forms/TextInput',
   component: TextInput,
 } as ComponentMeta<typeof TextInput>
 
