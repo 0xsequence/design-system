@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
+import { Box } from '../Box'
 import { Button } from '../Button'
 import { Text } from '../Text'
 
@@ -28,13 +29,19 @@ const Template: ComponentStory<typeof Modal> = args => {
 export const Default = Template.bind({})
 Default.args = {
   children: (
-    <>
-      <Text as="h1" variant="medium" color="textBody">
-        New Dapp
-      </Text>
-      <Text as="p" variant="normal" color="textFaded">
-        You can always change these settings later
-      </Text>
-    </>
+    <Box flexDirection="column" justifyContent="space-between" height="full">
+      <Box>
+        <Text as="h1" variant="medium" color="textBody">
+          New Dapp
+        </Text>
+        <Text as="p" variant="normal" color="textFaded">
+          You can always change these settings later.
+        </Text>
+      </Box>
+
+      <Box justifyContent="flex-end">
+        <Button variant="primary" shape="square" label="Create" />
+      </Box>
+    </Box>
   ),
 }

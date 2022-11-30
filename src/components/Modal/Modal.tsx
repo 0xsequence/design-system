@@ -5,6 +5,7 @@ import { PropsWithChildren } from 'react'
 import { CloseIcon } from '~/icons'
 
 import { Box } from '../Box'
+import { IconButton } from '../IconButton'
 
 import * as styles from './styles.css'
 
@@ -40,11 +41,9 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 ease: 'linear',
               }}
             >
-              {closeOnOverlayClick && (
-                <Box className={styles.close}>
-                  <CloseIcon />
-                </Box>
-              )}
+              {/* {closeOnOverlayClick && (
+                <IconButton Icon={CloseIcon} className={styles.close} />
+              )} */}
             </motion.div>
           </Dialog.Overlay>
 
@@ -66,6 +65,16 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               transition={{ type: 'tween', ease: 'easeOut' }}
             >
               {children}
+              {closeOnOverlayClick && (
+                <Dialog.Close asChild>
+                  <IconButton
+                    Icon={CloseIcon}
+                    size="xs"
+                    className={styles.close}
+                    aria-label="Close"
+                  />
+                </Dialog.Close>
+              )}
             </motion.div>
           </Dialog.Content>
         </Box>
