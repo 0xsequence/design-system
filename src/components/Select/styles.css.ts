@@ -42,6 +42,7 @@ export const contentStyle = style([
     borderWidth: 'thin',
     color: 'textBody',
     overflow: 'hidden',
+    zIndex: '10',
   }),
 ])
 

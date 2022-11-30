@@ -3,6 +3,7 @@ import { ComponentMeta, Story } from '@storybook/react'
 import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { ControlledSelect } from '~/components/Select'
+import { ControlledSwitch } from '~/components/Switch'
 import { Text } from '~/components/Text'
 import { ControlledTextInput } from '~/components/TextInput'
 
@@ -12,6 +13,12 @@ export default {
   title: 'Forms/Form',
   component: Form,
 } as ComponentMeta<typeof Form>
+
+const selectOptions = [
+  { label: 'Option 1', value: 'option-1' },
+  { label: 'Option 2', value: 'option-2' },
+  { label: 'Option 3', value: 'option-3' },
+]
 
 const Template: Story = ({ onSubmit, ...args }) => (
   <Box background="backgroundSecondary" padding="4" borderRadius="md">
@@ -26,9 +33,9 @@ const Template: Story = ({ onSubmit, ...args }) => (
         >
           <ControlledTextInput
             control={control}
-            name="firstName"
             label="First Name"
             labelLocation="top"
+            name="firstName"
             placeholder="Enter first name"
             rules={{ required: 'First name is required' }}
           />
@@ -38,12 +45,12 @@ const Template: Story = ({ onSubmit, ...args }) => (
 
           <ControlledTextInput
             control={control}
-            name="lastName"
+            defaultValue=""
             label="Last Name"
             labelLocation="top"
+            name="lastName"
             placeholder="Enter last name"
             rules={{ required: 'Last name is required' }}
-            defaultValue=""
           />
           {errors.lastName?.message && (
             <Text color="negative">{errors.lastName.message as string}</Text>
@@ -51,16 +58,13 @@ const Template: Story = ({ onSubmit, ...args }) => (
 
           <ControlledSelect
             control={control}
-            name="selectOption"
+            defaultValue={selectOptions[0].value}
             label="Select Option"
             labelLocation="top"
-            placeholder="Select an option"
+            name="selectOption"
             onValueChange={value => setValue('selectOption', value)}
-            options={[
-              { label: 'Option 1', value: 'option-1' },
-              { label: 'Option 2', value: 'option-2' },
-              { label: 'Option 3', value: 'option-3' },
-            ]}
+            options={selectOptions}
+            placeholder="Select an option"
             rules={{ required: 'A selection is required' }}
           />
           {errors.selectOption?.message && (
@@ -68,6 +72,13 @@ const Template: Story = ({ onSubmit, ...args }) => (
               {errors.selectOption.message as string}
             </Text>
           )}
+
+          <ControlledSwitch
+            control={control}
+            name="switchOption"
+            onCheckedChange={value => setValue('switchOption', value)}
+            defaultChecked={false}
+          />
 
           <Box flexDirection="row-reverse" marginTop="2" gap="2">
             <Button type="submit" label="Submit" variant="primary" />
