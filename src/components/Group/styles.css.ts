@@ -1,18 +1,19 @@
-import { style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 
 import { atoms, vars } from '~/css'
 import { responsiveStyle } from '~/css/utils'
 
-export const root = style({
-  width: '100%',
-  margin: '25px 0',
+export const root = atoms({
+  width: 'full',
+  marginY: '8',
 })
 
 export const items = recipe({
   variants: {
     layout: {
       rows: atoms({
+        display: 'flex',
+        flexDirection: 'column',
         gap: '2',
       }),
 
