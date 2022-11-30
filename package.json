@@ -46,7 +46,7 @@
     "@radix-ui/react-tabs": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.2",
     "react-blockies": "^1.4.1",
-    "react-hook-form": "^7.39.5"
+    "react-hook-form": "^7.40.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
