@@ -34,7 +34,7 @@ export const content = style([
   atoms({
     position: 'fixed',
     overflow: 'hidden',
-    background: 'backgroundSecondary',
+    background: 'backgroundPrimary',
     padding: '4',
   }),
   {

@@ -29,10 +29,10 @@ export const Default = Template.bind({})
 Default.args = {
   children: (
     <>
-      <Text variant="medium" color="textBody">
+      <Text as="h1" variant="medium" color="textBody">
         New Dapp
       </Text>
-      <Text variant="normal" color="textFaded">
+      <Text as="p" variant="normal" color="textFaded">
         You can always change these settings later
       </Text>
     </>
