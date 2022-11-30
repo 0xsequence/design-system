@@ -1,1 +1,2 @@
-export { ControlledSelect, Select } from './Select'
+export { Select } from './Select'
+export { ControlledSelect } from './ControlledSelect'

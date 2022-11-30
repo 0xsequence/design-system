@@ -2,10 +2,10 @@ import { ComponentMeta, Story } from '@storybook/react'
 
 import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
-import { ControlledSelect } from '~/components/Select'
-import { ControlledSwitch } from '~/components/Switch'
+import { ControlledSelect as Select } from '~/components/Select'
+import { ControlledSwitch as Switch } from '~/components/Switch'
 import { Text } from '~/components/Text'
-import { ControlledTextInput } from '~/components/TextInput'
+import { ControlledTextInput as TextInput } from '~/components/TextInput'
 
 import { Form } from './Form'
 
@@ -31,7 +31,7 @@ const Template: Story = ({ onSubmit, ...args }) => (
           padding="4"
           borderRadius="xs"
         >
-          <ControlledTextInput
+          <TextInput
             control={control}
             label="First Name"
             labelLocation="top"
@@ -43,7 +43,7 @@ const Template: Story = ({ onSubmit, ...args }) => (
             <Text color="negative">{errors.firstName.message as string}</Text>
           )}
 
-          <ControlledTextInput
+          <TextInput
             control={control}
             defaultValue=""
             label="Last Name"
@@ -56,13 +56,13 @@ const Template: Story = ({ onSubmit, ...args }) => (
             <Text color="negative">{errors.lastName.message as string}</Text>
           )}
 
-          <ControlledSelect
+          <Select
             control={control}
             defaultValue={selectOptions[0].value}
             label="Select Option"
             labelLocation="top"
             name="selectOption"
-            onValueChange={value => setValue('selectOption', value)}
+            onValueChange={(value: string) => setValue('selectOption', value)}
             options={selectOptions}
             placeholder="Select an option"
             rules={{ required: 'A selection is required' }}
@@ -73,10 +73,12 @@ const Template: Story = ({ onSubmit, ...args }) => (
             </Text>
           )}
 
-          <ControlledSwitch
+          <Switch
             control={control}
             name="switchOption"
-            onCheckedChange={value => setValue('switchOption', value)}
+            onCheckedChange={(value: boolean) =>
+              setValue('switchOption', value)
+            }
             defaultChecked={false}
           />
 

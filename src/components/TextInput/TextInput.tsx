@@ -1,5 +1,4 @@
 import { ComponentType, ElementType, forwardRef } from 'react'
-import { Control, Controller } from 'react-hook-form'
 
 import {
   Box,
@@ -16,7 +15,7 @@ import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
 
-type TextInputProps = (HasLabel | HiddenLabel) & {
+export type TextInputProps = (HasLabel | HiddenLabel) & {
   disabled?: boolean
   LeftIcon?: ComponentType<IconProps>
   name: string
@@ -83,25 +82,3 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       )
     }
   )
-
-type ControlledTextInputProps = PolymorphicProps<TextInputProps, 'input'> & {
-  defaultValue?: string
-  control: Control
-  rules?: {}
-}
-
-export const ControlledTextInput = ({
-  defaultValue,
-  name,
-  control,
-  rules,
-  ...inputProps
-}: ControlledTextInputProps) => (
-  <Controller
-    defaultValue={defaultValue}
-    name={name}
-    control={control}
-    rules={rules}
-    render={({ field }) => <TextInput {...field} {...inputProps} />}
-  />
-)
