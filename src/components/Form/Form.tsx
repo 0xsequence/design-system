@@ -1,32 +1,21 @@
-import { ElementType } from 'react'
+import { ReactNode } from 'react'
 import {
   FieldValues,
-  FormProvider,
   SubmitHandler,
   useForm,
+  UseFormReturn,
 } from 'react-hook-form'
 
-import { Box, PolymorphicComponent, PolymorphicProps } from '~/components/Box'
-
 type FormProps = {
+  children: (methods: UseFormReturn) => ReactNode
   onSubmit: SubmitHandler<FieldValues>
+  defaultValues?: FieldValues
 }
 
-export const Form: PolymorphicComponent<FormProps, 'form'> = <
-  T extends ElementType
->({
-  children,
-  onSubmit,
-  ...rest
-}: PolymorphicProps<FormProps, T>) => {
-  const methods = useForm()
-  const { handleSubmit } = methods
+export const Form = ({ children, defaultValues = {}, onSubmit }: FormProps) => {
+  const methods = useForm({ defaultValues })
 
   return (
-    <FormProvider {...methods}>
-      <Box as="form" onSubmit={handleSubmit(onSubmit)} {...rest}>
-        {children}
-      </Box>
-    </FormProvider>
+    <form onSubmit={methods.handleSubmit(onSubmit)}>{children(methods)}</form>
   )
 }

@@ -1,5 +1,5 @@
 import { ComponentType, ElementType, forwardRef } from 'react'
-import { RegisterOptions, useFormContext } from 'react-hook-form'
+import { Control, Controller } from 'react-hook-form'
 
 import {
   Box,
@@ -16,13 +16,12 @@ import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
 
-export type TextInputProps = (HasLabel | HiddenLabel) & {
+type TextInputProps = (HasLabel | HiddenLabel) & {
   disabled?: boolean
   LeftIcon?: ComponentType<IconProps>
   name: string
   processing?: boolean
   RightIcon?: ComponentType<IconProps>
-  rules?: RegisterOptions
   value?: string
 }
 
@@ -43,19 +42,9 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
         name,
         processing = false,
         RightIcon,
-        rules = {},
         type = 'text',
         ...rest
       } = props
-
-      const methods = useFormContext()
-      const usingFormContext = methods !== null
-
-      const registerProps = usingFormContext
-        ? methods.register(name, rules)
-        : { ref: null }
-
-      const { ref: registerRef, ...restRegisterProps } = registerProps
 
       return (
         <LabelledField
@@ -79,17 +68,9 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               name={name}
               paddingLeft={LeftIcon ? '10' : '4'}
               paddingRight={RightIcon ? '10' : '4'}
-              ref={e => {
-                if (registerRef) {
-                  registerRef(e)
-                }
-                if (ref?.current) {
-                  ref.current = e
-                }
-              }}
+              ref={ref}
               type={type}
               {...rest}
-              {...restRegisterProps}
             />
 
             {RightIcon && (
@@ -102,3 +83,25 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       )
     }
   )
+
+type ControlledTextInputProps = PolymorphicProps<TextInputProps, 'input'> & {
+  defaultValue?: string
+  control: Control
+  rules?: {}
+}
+
+export const ControlledTextInput = ({
+  defaultValue,
+  name,
+  control,
+  rules,
+  ...inputProps
+}: ControlledTextInputProps) => (
+  <Controller
+    defaultValue={defaultValue}
+    name={name}
+    control={control}
+    rules={rules}
+    render={({ field }) => <TextInput {...field} {...inputProps} />}
+  />
+)
