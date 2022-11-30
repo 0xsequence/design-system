@@ -1,1 +1,1 @@
-export { Switch } from './Switch'
+export { ControlledSwitch, Switch } from './Switch'
