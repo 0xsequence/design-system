@@ -2,20 +2,21 @@ import { ComponentMeta, Story } from '@storybook/react'
 
 import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
+import { ControlledSelect } from '~/components/Select'
 import { Text } from '~/components/Text'
 import { ControlledTextInput } from '~/components/TextInput'
 
 import { Form } from './Form'
 
 export default {
-  title: 'Components/Forms/Form',
+  title: 'Forms/Form',
   component: Form,
 } as ComponentMeta<typeof Form>
 
 const Template: Story = ({ onSubmit, ...args }) => (
   <Box background="backgroundSecondary" padding="4" borderRadius="md">
     <Form defaultValues={{ firstName: '' }} onSubmit={onSubmit} {...args}>
-      {({ control, reset, formState: { errors } }) => (
+      {({ control, reset, formState: { errors }, setValue }) => (
         <Box
           background="backgroundPrimary"
           flexDirection="column"
@@ -46,6 +47,26 @@ const Template: Story = ({ onSubmit, ...args }) => (
           />
           {errors.lastName?.message && (
             <Text color="negative">{errors.lastName.message as string}</Text>
+          )}
+
+          <ControlledSelect
+            control={control}
+            name="selectOption"
+            label="Select Option"
+            labelLocation="top"
+            placeholder="Select an option"
+            onValueChange={value => setValue('selectOption', value)}
+            options={[
+              { label: 'Option 1', value: 'option-1' },
+              { label: 'Option 2', value: 'option-2' },
+              { label: 'Option 3', value: 'option-3' },
+            ]}
+            rules={{ required: 'A selection is required' }}
+          />
+          {errors.selectOption?.message && (
+            <Text color="negative">
+              {errors.selectOption.message as string}
+            </Text>
           )}
 
           <Box flexDirection="row-reverse" marginTop="2" gap="2">
