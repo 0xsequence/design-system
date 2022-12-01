@@ -1,5 +1,3 @@
-export { Avatar } from './Avatar'
-export { Badge } from './Badge'
 export { Box } from './Box'
 export type {
   BoxProps,
@@ -7,6 +5,9 @@ export type {
   PolymorphicProps,
   PolymorphicRef,
 } from './Box'
+
+export { Avatar } from './Avatar'
+export { Badge } from './Badge'
 export { Button } from './Button'
 export { Collapsible } from './Collapsible'
 export { Form } from './Form'
@@ -15,11 +16,12 @@ export { IconButton } from './IconButton'
 export { LabelledField } from './LabelledField'
 export { Modal } from './Modal'
 export { Row } from './Row'
+export { Scroll } from './Scroll'
 export { Spinner } from './Spinner'
 export { Stack } from './Stack'
 export { Switch } from './Switch'
-export { Tabs } from './Tabs'
 export { TabbedNav } from './TabbedNav'
+export { Tabs } from './Tabs'
 export { Tag } from './Tag'
 export { Text } from './Text'
 export { TextInput } from './TextInput'
