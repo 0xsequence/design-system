@@ -59,8 +59,6 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
       const [fileData, setFileData] = useState<FileData>()
 
       const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.files)
-
         const filelist = e.target.files as FileList
         if (!filelist || !filelist[0]) {
           return
@@ -69,8 +67,6 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
         const file = filelist[0]
         const filename = file.name
         const filesize = file.size / 1000
-
-        console.log(file)
 
         setFileData({
           name: filename,
