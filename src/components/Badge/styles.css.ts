@@ -2,26 +2,39 @@ import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms, vars } from '~/css'
 
-export const badgeVariants = recipe({
-  base: atoms({
-    display: 'inline-block',
-    color: 'white',
-    borderRadius: 'circle',
-  }),
+import { textVariants } from '../Text/styles.css'
 
+export const badgeVariants = recipe({
   variants: {
     variant: {
       info: atoms({ background: 'info' }),
-      positive: atoms({ background: 'positive' }),
-      negative: atoms({ background: 'negative' }),
+      warning: atoms({ background: 'warning' }),
+      success: atoms({ background: 'positive' }),
+      error: atoms({ background: 'negative' }),
     },
 
-    sm: {
-      true: { height: vars.lineHeights.small, width: vars.lineHeights.small },
-      false: {
-        height: vars.lineHeights.normal,
-        width: vars.lineHeights.normal,
-      },
+    size: {
+      sm: [
+        textVariants({ variant: 'small' }),
+        {
+          height: vars.lineHeights.small,
+          minWidth: vars.lineHeights.small,
+        },
+      ],
+      md: [
+        textVariants({ variant: 'normal' }),
+        {
+          height: vars.lineHeights.normal,
+          minWidth: vars.lineHeights.normal,
+        },
+      ],
+      lg: [
+        textVariants({ variant: 'large' }),
+        {
+          height: vars.lineHeights.large,
+          minWidth: vars.lineHeights.large,
+        },
+      ],
     },
   },
 })

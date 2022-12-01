@@ -70,7 +70,7 @@ WithCountIcon.args = {
   label: (
     <Box gap="1">
       Click me
-      <Badge info="3" />
+      <Badge value="3" />
     </Box>
   ),
   onClick: () => console.log('Clicked!'),

@@ -57,7 +57,7 @@ const StoryTemplate: Story = ({ ...args }) => {
       label: (
         <Box gap="1">
           History
-          <Badge info="3" />
+          <Badge value="3" />
         </Box>
       ),
       LeftIcon: TransactionIcon,

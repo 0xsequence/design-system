@@ -50,11 +50,11 @@ export const Box: PolymorphicComponent<{}, 'div'> = forwardRef(
       }
     }
 
-    atomProps.display =
-      atomProps.display ??
-      Object.keys(atomProps).some(k => FLEX_PROPS.includes(k))
-        ? 'flex'
-        : undefined
+    atomProps.display ||= Object.keys(atomProps).some(k =>
+      FLEX_PROPS.includes(k)
+    )
+      ? 'flex'
+      : undefined
 
     const atomicClasses = atoms({
       ...atomProps,

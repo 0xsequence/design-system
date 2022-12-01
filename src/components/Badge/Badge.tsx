@@ -1,11 +1,22 @@
+import { ReactElement } from 'react'
+
 import { Box } from '~/components/Box'
 
 import { badgeVariants, BadgeVariants } from './styles.css'
 
 type BadgeProps = BadgeVariants & {
-  info: number | string
+  value: ReactElement | string | number
 }
 
-export const Badge = ({ info, variant = 'info', sm = false }: BadgeProps) => (
-  <Box className={badgeVariants({ variant, sm })}>{info}</Box>
+export const Badge = ({ value, variant = 'info', size = 'md' }: BadgeProps) => (
+  <Box
+    className={badgeVariants({ variant, size })}
+    display="inline-flex"
+    placeItems="center"
+    borderRadius="circle"
+    color="white"
+    paddingX="1"
+  >
+    {value}
+  </Box>
 )
