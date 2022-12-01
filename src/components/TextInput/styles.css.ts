@@ -1,8 +1,7 @@
 import { style } from '@vanilla-extract/css'
 
+import { textVariants } from '~/components/Text/styles.css'
 import { atoms } from '~/css'
-
-import { textVariants } from '../Text/styles.css'
 
 export const wrap = atoms({
   display: 'flex',

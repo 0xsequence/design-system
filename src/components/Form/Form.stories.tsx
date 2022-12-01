@@ -3,6 +3,7 @@ import { ComponentMeta, Story } from '@storybook/react'
 import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { ControlledCheckbox as Checkbox } from '~/components/Checkbox'
+import { ControlledRadioGroup as RadioGroup } from '~/components/RadioGroup'
 import { ControlledSelect as Select } from '~/components/Select'
 import { ControlledSwitch as Switch } from '~/components/Switch'
 import { Text } from '~/components/Text'
@@ -98,6 +99,16 @@ const Template: Story = ({ onSubmit, ...args }) => (
               setValue('checkboxOption', value)
             }
             defaultChecked={false}
+          />
+
+          <RadioGroup
+            control={control}
+            defaultValue={selectOptions[0].value}
+            flexDirection="row"
+            gap="4"
+            onValueChange={(value: string) => setValue('radioOption', value)}
+            options={selectOptions}
+            name="radioOption"
           />
 
           <Box flexDirection="row-reverse" marginTop="2" gap="2">
