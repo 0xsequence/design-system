@@ -14,7 +14,7 @@ import { atoms, Atoms } from '~/css'
 export type BoxProps<T extends ElementType = 'div'> =
   ComponentPropsWithoutRef<T> & {
     as?: T
-    ref?: Ref<ComponentPropsWithRef<T>['ref']> | null
+    ref?: ComponentPropsWithRef<T>['ref'] | null
   } & Atoms
 
 export type PolymorphicProps<P, T extends ElementType> = P & BoxProps<T>
