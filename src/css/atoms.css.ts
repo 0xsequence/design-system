@@ -9,9 +9,12 @@ const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const
 
 export const dimension = {
   none: '0',
+  px: '1px',
   auto: 'auto',
   full: '100%',
   half: '50%',
+  third: '33.33333%',
+  quarter: '25%',
   fit: 'fit-content',
   max: 'max-content',
   min: 'min-content',
@@ -30,6 +33,10 @@ const responsiveProperties = defineProperties({
   properties: {
     width: dimension,
     height: dimension,
+    maxWidth: dimension,
+    maxHeight: dimension,
+    minWidth: dimension,
+    minHeight: dimension,
 
     // space
     top: vars.space,
