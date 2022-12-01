@@ -14,7 +14,11 @@ yarn add @0xsequence/design-system
 
 ### Use
 
-Import components you want into your UI
+Import the styles at the root of your app
+
+`import '@0xsequence/design-system/styles'`
+
+Then import components you want into your UI
 
 `import { Box, Text, Button } from '@0xsequence/design-system'`
 
