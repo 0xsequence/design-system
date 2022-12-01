@@ -10,7 +10,7 @@ Collection of icons used in the design system.
 
 <IconGallery>
   {Object.entries(icons).map(([key, Icon]) => (
-    <IconItem name={key}>
+    <IconItem name={key} key={key}>
       <Icon />
     </IconItem>
   ))}
