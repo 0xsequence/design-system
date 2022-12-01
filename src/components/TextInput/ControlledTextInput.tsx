@@ -5,8 +5,9 @@ import { PolymorphicProps } from '~/components/Box'
 import { TextInput, TextInputProps } from './TextInput'
 
 type ControlledTextInputProps = PolymorphicProps<TextInputProps, 'input'> & {
-  defaultValue?: string
   control: Control
+  defaultValue?: string
+  name: string
   rules?: {}
 }
 
