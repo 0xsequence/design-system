@@ -1,8 +1,8 @@
 import { Control, Controller } from 'react-hook-form'
 
-import { Select, SelectProps } from './Select'
+import { RadioGroup, RadioGroupProps } from './RadioGroup'
 
-type ControlledSelectProps = SelectProps & {
+type ControlledRadioGroupProps = RadioGroupProps & {
   control: Control
   defaultValue?: string
   name: string
@@ -10,25 +10,25 @@ type ControlledSelectProps = SelectProps & {
   rules?: {}
 }
 
-export const ControlledSelect = ({
+export const ControlledRadioGroup = ({
   control,
   defaultValue,
   name,
   onValueChange,
   rules,
-  ...selectProps
-}: ControlledSelectProps) => (
+  ...radioProps
+}: ControlledRadioGroupProps) => (
   <Controller
     defaultValue={defaultValue}
     name={name}
     control={control}
     rules={rules}
     render={({ field }) => (
-      <Select
+      <RadioGroup
         onValueChange={onValueChange}
         defaultValue={defaultValue}
         {...field}
-        {...selectProps}
+        {...radioProps}
       />
     )}
   />
