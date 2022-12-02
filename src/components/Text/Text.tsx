@@ -24,6 +24,8 @@ export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
       underline,
       children,
       ellipsis,
+      uppercase,
+      capitalize,
       ...boxProps
     } = props
 
@@ -36,6 +38,8 @@ export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
           ellipsis,
           italic,
           underline,
+          uppercase,
+          capitalize,
         })}
         ref={ref}
         {...boxProps}

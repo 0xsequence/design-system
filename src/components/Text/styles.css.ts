@@ -72,6 +72,30 @@ export const textVariants = recipe({
       }),
     },
 
+    italic: {
+      true: {
+        fontStyle: 'italic',
+      },
+    },
+
+    underline: {
+      true: {
+        textDecoration: 'underline',
+      },
+    },
+
+    uppercase: {
+      true: {
+        textTransform: 'uppercase',
+      },
+    },
+
+    capitalize: {
+      true: {
+        textTransform: 'capitalize',
+      },
+    },
+
     // hidden text for screen readers
     hidden: {
       true: {
@@ -83,18 +107,6 @@ export const textVariants = recipe({
         padding: 0,
         position: 'absolute',
         width: '1px',
-      },
-    },
-
-    italic: {
-      true: {
-        fontStyle: 'italic',
-      },
-    },
-
-    underline: {
-      true: {
-        textDecoration: 'underline',
       },
     },
   },
