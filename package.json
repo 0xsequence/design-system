@@ -30,7 +30,8 @@
     "lint": "eslint -c .eslintrc './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint -c .eslintrc --fix './src/**/*.{ts,tsx}'",
     "format": "prettier --list-different --write src/**/*.{ts,tsx}",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "patch": "yarn version --patch && git push --follow-tags"
   },
   "dependencies": {
     "@radix-ui/colors": "^0.1.8",
