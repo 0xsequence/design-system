@@ -57,16 +57,17 @@ const buttons: { [key in ColorScheme]: { [key in Button]: string } } = {
   },
 }
 
-type Gradient = 'primary' | 'backdrop'
+type Gradient = 'backdrop' | 'primary' | 'secondary'
 
 const gradients: { [key in Gradient]: string } = {
-  primary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
   backdrop: `linear-gradient(
     243.18deg, 
     rgba(86, 52, 189, 0.85) 0%, 
     rgba(49, 41, 223, 0.85) 63.54%, 
     rgba(7, 98, 149, 0.85) 100%
   )`,
+  primary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
+  secondary: `linear-gradient(32.51deg, #951990 -15.23%, #3A35B1 48.55%, #20A8B0 100%)`,
 }
 
 type TextColor = 'body' | 'faded' | 'inactive' | 'inverse'
