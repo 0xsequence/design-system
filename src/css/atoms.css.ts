@@ -68,6 +68,8 @@ const responsiveProperties = defineProperties({
     letterSpacing: vars.letterSpacings,
     lineHeight: vars.lineHeights,
 
+    textAlign: ['center', 'left', 'right'],
+
     display: [
       'block',
       'flex',
