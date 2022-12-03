@@ -1,9 +1,7 @@
 import { style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 
-import { atoms, vars } from '~/css'
-
-import { textVariants } from '../Text/styles.css'
+import { atoms, selectorize } from '~/css'
 
 export const root = recipe({
   base: atoms({
@@ -49,44 +47,39 @@ export const img = style({
   width: '100%',
 
   selectors: {
-    [`${root({ size: 'xs' })} &`]: {
-      maxWidth: '16px',
-      maxHeight: '16px',
+    [`${selectorize(root({ size: 'xs' }))} &`]: {
+      maxWidth: '12px',
+      maxHeight: '12px',
     },
 
-    [`${root({ size: 'sm' })} &`]: {
-      maxWidth: '24px',
-      maxHeight: '24px',
+    [`${selectorize(root({ size: 'sm' }))} &`]: {
+      maxWidth: '20px',
+      maxHeight: '20px',
     },
 
-    [`${root({ size: 'md' })} &`]: {
+    [`${selectorize(root({ size: 'md' }))} &`]: {
       maxWidth: '32px',
       maxHeight: '32px',
     },
 
-    [`${root({ size: 'lg' })} &`]: {
-      maxWidth: '64px',
-      maxHeight: '64px',
+    [`${selectorize(root({ size: 'lg' }))} &`]: {
+      maxWidth: '40px',
+      maxHeight: '40px',
     },
   },
 })
 
 export const fallback = style([
-  textVariants({ variant: 'normal' }),
-  {
-    background: 'gray',
-    color: 'black',
-    //background: vars.colors.scale7,
-    //color: vars.colors.scale9,
-    fontWeight: 'bold',
-    borderRadius: vars.radii.circle,
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden',
-    textTransform: 'uppercase',
+  atoms({
+    background: 'backgroundSecondary',
+    borderRadius: 'circle',
+    width: 'full',
+    height: 'full',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    placeItems: 'center',
+    overflow: 'hidden',
+  }),
+  {
     fontSize: 'inherit',
   },
 ])
