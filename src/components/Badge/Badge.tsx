@@ -8,15 +8,19 @@ type BadgeProps = BadgeVariants & {
   value: ReactElement | string | number
 }
 
-export const Badge = ({ value, variant = 'info', size = 'md' }: BadgeProps) => (
-  <Box
-    className={badgeVariants({ variant, size })}
-    display="inline-flex"
-    placeItems="center"
-    borderRadius="circle"
-    color="white"
-    paddingX="1"
-  >
-    {value}
-  </Box>
-)
+export const Badge = (props: BadgeProps) => {
+  const { value, variant = 'info', size = 'md' } = props
+
+  return (
+    <Box
+      className={badgeVariants({ variant, size })}
+      display="inline-flex"
+      placeItems="center"
+      borderRadius="circle"
+      color="white"
+      paddingX="1"
+    >
+      {value}
+    </Box>
+  )
+}
