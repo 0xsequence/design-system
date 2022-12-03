@@ -31,8 +31,8 @@ export const TokenImage = memo((props: TokenIconProps) => {
         <Text
           className={styles.fallback}
           variant="normal"
-          fontWeight="bold"
-          color="textInverse"
+          fontWeight="medium"
+          color="textFaded"
           uppercase
         >
           {symbol?.replace(/\s/, '').slice(0, 4)}

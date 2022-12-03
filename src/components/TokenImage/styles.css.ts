@@ -28,13 +28,13 @@ export const root = recipe({
       md: {
         width: '32px',
         height: '32px',
-        fontSize: '10px',
+        fontSize: '9px',
       },
 
       lg: {
         width: '40px',
         height: '40px',
-        fontSize: '14px',
+        fontSize: '11px',
       },
     },
   },
