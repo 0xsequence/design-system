@@ -16,14 +16,14 @@ export const root = recipe({
   variants: {
     size: {
       xs: {
-        width: '16px',
-        height: '16px',
+        width: '12px',
+        height: '12px',
         fontSize: '4px',
       },
 
       sm: {
-        width: '24px',
-        height: '24px',
+        width: '20px',
+        height: '20px',
         fontSize: '8px',
       },
 
@@ -34,9 +34,9 @@ export const root = recipe({
       },
 
       lg: {
-        width: '64px',
-        height: '64px',
-        fontSize: '16px',
+        width: '40px',
+        height: '40px',
+        fontSize: '14px',
       },
     },
   },
