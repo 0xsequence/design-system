@@ -17,22 +17,22 @@ export const badgeVariants = recipe({
       sm: [
         textVariants({ variant: 'small' }),
         {
-          height: vars.lineHeights.small,
-          minWidth: vars.lineHeights.small,
+          height: vars.lineHeights[4],
+          minWidth: vars.lineHeights[4],
         },
       ],
       md: [
         textVariants({ variant: 'normal' }),
         {
-          height: vars.lineHeights.normal,
-          minWidth: vars.lineHeights.normal,
+          height: vars.lineHeights[5],
+          minWidth: vars.lineHeights[5],
         },
       ],
       lg: [
         textVariants({ variant: 'large' }),
         {
-          height: vars.lineHeights.large,
-          minWidth: vars.lineHeights.large,
+          height: vars.lineHeights[7],
+          minWidth: vars.lineHeights[7],
         },
       ],
     },

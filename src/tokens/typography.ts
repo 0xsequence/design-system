@@ -16,25 +16,24 @@ export const fontSizes = {
 
 export const fontWeights = {
   inherit: 'inherit',
-  regular: '400',
+  normal: '400',
   medium: '500',
-  semiBold: '600',
+  semibold: '600',
   bold: '700',
 }
 
 export const letterSpacings = {
   inherit: 'inherit',
   none: '0',
-  regular: '0.01em',
-  open: '0.03em',
+  normal: '0.01em',
+  wide: '0.03em',
 }
 
-/** Coupled with fontSizes in atoms */
 export const lineHeights = {
   inherit: 'inherit',
-  small: '1rem', // 16px
-  normal: '1.25rem', // 20px
-  medium: '1.5rem', // 24px
-  large: '1.75rem', // 28px
-  xlarge: '2.25rem', // 36px
+  '4': '1rem', // 16px
+  '5': '1.25rem', // 20px
+  '6': '1.5rem', // 24px
+  '7': '1.75rem', // 28px
+  '9': '2.25rem', // 36px
 }

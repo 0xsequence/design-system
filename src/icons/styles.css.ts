@@ -6,24 +6,24 @@ export const iconVariants = recipe({
   variants: {
     size: {
       xs: {
-        height: vars.lineHeights.small,
-        width: vars.lineHeights.small,
+        height: vars.lineHeights[4],
+        width: vars.lineHeights[4],
       },
       sm: {
-        height: vars.lineHeights.normal,
-        width: vars.lineHeights.normal,
+        height: vars.lineHeights[5],
+        width: vars.lineHeights[5],
       },
       md: {
-        height: vars.lineHeights.medium,
-        width: vars.lineHeights.medium,
+        height: vars.lineHeights[6],
+        width: vars.lineHeights[6],
       },
       lg: {
-        height: vars.lineHeights.large,
-        width: vars.lineHeights.large,
+        height: vars.lineHeights[7],
+        width: vars.lineHeights[7],
       },
       xl: {
-        height: vars.lineHeights.xlarge,
-        width: vars.lineHeights.xlarge,
+        height: vars.lineHeights[9],
+        width: vars.lineHeights[9],
       },
     },
   },
