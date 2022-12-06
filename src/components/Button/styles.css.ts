@@ -83,11 +83,6 @@ export const buttonVariants = recipe({
         { height: '52px' },
       ],
     },
-
-    width: {
-      full: [atoms({ display: 'block', width: 'full' })],
-      normal: [atoms({ display: 'inline-block', width: 'auto' })],
-    },
   },
 
   compoundVariants: [

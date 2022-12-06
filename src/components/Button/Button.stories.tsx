@@ -27,7 +27,6 @@ LabelOnly.args = {
   label: 'Click me',
   size: 'md',
   variant: 'glass',
-  width: 'normal',
 }
 
 export const WithLeftIcon = Template.bind({})
@@ -38,7 +37,6 @@ WithLeftIcon.args = {
   LeftIcon: ScanIcon,
   size: 'md',
   variant: 'glass',
-  width: 'normal',
 }
 
 export const WithRightIcon = Template.bind({})
@@ -49,7 +47,6 @@ WithRightIcon.args = {
   RightIcon: ArrowRightIcon,
   size: 'md',
   variant: 'glass',
-  width: 'normal',
 }
 
 export const WithBothIcons = Template.bind({})
@@ -61,7 +58,6 @@ WithBothIcons.args = {
   RightIcon: ArrowRightIcon,
   size: 'md',
   variant: 'glass',
-  width: 'normal',
 }
 
 export const WithCountIcon = Template.bind({})
@@ -77,7 +73,6 @@ WithCountIcon.args = {
   LeftIcon: ScanIcon,
   size: 'md',
   variant: 'glass',
-  width: 'normal',
 }
 
 export const AnchorButton = Template.bind({})

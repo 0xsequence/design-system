@@ -30,6 +30,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       as = 'button',
       className,
       disabled = false,
+      display = 'inline-flex',
       fontWeight = 'bold',
       pending = false,
       label,
@@ -37,7 +38,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       RightIcon,
       size = 'md',
       variant = 'glass',
-      width = 'normal',
+      width = 'max',
       shape = 'circle',
       ...boxProps
     } = props
@@ -58,12 +59,13 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
             size: variant === 'text' ? undefined : size,
             shape,
             variant,
-            width,
           })
         )}
         disabled={disabled || pending}
+        display={display}
         fontWeight={fontWeight}
         ref={ref}
+        width={width}
         {...boxProps}
       >
         <Box
