@@ -87,6 +87,7 @@ const responsiveProperties = defineProperties({
     alignSelf: [...flexAlignment, 'baseline'],
     overflowX: ['auto', 'hidden', 'scroll'],
     overflowY: ['auto', 'hidden', 'scroll'],
+    visibility: ['hidden', 'visible'],
   },
   shorthands: {
     borderWidth: [
@@ -152,7 +153,6 @@ const selectorProperties = defineProperties({
     opacity: vars.opacity,
     outline: ['none'],
     pointerEvents: ['none', 'auto'],
-    visibility: ['hidden', 'visible'],
   },
   shorthands: {
     borderStyle: [
