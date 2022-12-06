@@ -123,7 +123,6 @@ const unresponsiveProperties = defineProperties({
     textOverflow: ['ellipsis', 'clip'],
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     userSelect: ['none'],
-    visibility: ['hidden', 'visible'],
     whiteSpace: ['normal', 'nowrap', 'initial', 'inherit'],
     wordBreak: ['break-word'],
     wordWrap: ['normal', 'break-word', 'initial', 'inherit'],
@@ -153,6 +152,7 @@ const selectorProperties = defineProperties({
     opacity: vars.opacity,
     outline: ['none'],
     pointerEvents: ['none', 'auto'],
+    visibility: ['hidden', 'visible'],
   },
   shorthands: {
     borderStyle: [
