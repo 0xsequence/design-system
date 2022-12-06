@@ -4,6 +4,7 @@ export {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuItemIndicator,
+  DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuRoot,

@@ -12,6 +12,13 @@ export { Button } from './Button'
 export { ControlledCheckbox, Checkbox } from './Checkbox'
 export { Collapsible } from './Collapsible'
 export { Divider } from './Divider'
+export {
+  DropdownMenuArrow,
+  DropdownMenuContent,
+  DropdownMenuPortal,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+} from './DropdownMenu'
 export { FileInput } from './FileInput'
 export { Form } from './Form'
 export { Group } from './Group'

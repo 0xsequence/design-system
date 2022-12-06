@@ -7,6 +7,7 @@ export const DropdownMenuRoot = DropdownMenuPrimitive.Root
 
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
 
+export const DropdownMenuPortal = DropdownMenuPrimitive.Portal
 export const DropdownMenuContent = DropdownMenuPrimitive.Content
 export const DropdownMenuArrow = DropdownMenuPrimitive.Arrow
 
