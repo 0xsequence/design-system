@@ -39,7 +39,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       variant = 'glass',
       width = 'fit',
       shape = 'circle',
-      ...boxProps
+      ...restProps
     } = props
 
     const iconOnly = LeftIcon !== undefined && label === undefined
@@ -65,7 +65,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
         fontWeight={fontWeight}
         ref={ref}
         width={width}
-        {...boxProps}
+        {...restProps}
       >
         <Box
           as="span"

@@ -83,6 +83,10 @@ export const buttonVariants = recipe({
         { height: '52px' },
       ],
     },
+
+    space: {
+      tight: {},
+    },
   },
 
   compoundVariants: [
@@ -97,6 +101,10 @@ export const buttonVariants = recipe({
     {
       variants: { iconOnly: true, size: 'md' },
       style: { padding: vars.space['3'] },
+    },
+    {
+      variants: { space: 'tight', size: 'sm' },
+      style: { padding: vars.space['2'] },
     },
   ],
 })
