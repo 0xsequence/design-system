@@ -16,7 +16,6 @@ type ButtonProps = ButtonVariants & {
   disabled?: boolean
   pending?: boolean
   label?: ReactNode
-  width?: 'full' | 'normal'
   LeftIcon?: ComponentType<IconProps>
   RightIcon?: ComponentType<IconProps>
 }
@@ -38,7 +37,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       RightIcon,
       size = 'md',
       variant = 'glass',
-      width = 'max',
+      width = 'fit',
       shape = 'circle',
       ...boxProps
     } = props
