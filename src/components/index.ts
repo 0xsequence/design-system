@@ -15,6 +15,7 @@ export { Divider } from './Divider'
 export {
   DropdownMenuArrow,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuPortal,
   DropdownMenuRoot,
   DropdownMenuTrigger,
