@@ -30,6 +30,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       as = 'button',
       className,
       disabled = false,
+      fontWeight = 'bold',
       pending = false,
       label,
       LeftIcon,
@@ -61,6 +62,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
           })
         )}
         disabled={disabled || pending}
+        fontWeight={fontWeight}
         ref={ref}
         {...boxProps}
       >

@@ -5,7 +5,7 @@ import { atoms, vars } from '~/css'
 import { textVariants } from '../Text/styles.css'
 
 export const buttonVariants = recipe({
-  base: atoms({ fontWeight: 'bold' }),
+  base: atoms({ overflow: 'hidden', whiteSpace: 'nowrap' }),
 
   variants: {
     variant: {
