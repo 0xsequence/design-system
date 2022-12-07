@@ -16,8 +16,8 @@ type ButtonProps = ButtonVariants & {
   disabled?: boolean
   pending?: boolean
   label?: ReactNode
-  LeftIcon?: ComponentType<IconProps>
-  RightIcon?: ComponentType<IconProps>
+  leftIcon?: ComponentType<IconProps>
+  rightIcon?: ComponentType<IconProps>
 }
 
 export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
@@ -33,8 +33,8 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       fontWeight = 'bold',
       pending = false,
       label,
-      LeftIcon,
-      RightIcon,
+      leftIcon: LeftIcon,
+      rightIcon: RightIcon,
       size = 'md',
       variant = 'glass',
       width = 'fit',

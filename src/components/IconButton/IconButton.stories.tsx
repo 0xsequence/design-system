@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof IconButton> = args => {
 
 export const Base = Template.bind({})
 Base.args = {
-  Icon: ArrowRightIcon,
+  icon: ArrowRightIcon,
   disabled: false,
   size: 'md',
   onClick: () => console.log('ouch!'),

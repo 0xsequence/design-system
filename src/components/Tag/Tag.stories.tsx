@@ -17,6 +17,6 @@ export const Base = Template.bind({})
 Base.args = {
   background: 'ethereumDark',
   color: 'white',
-  Icon: SettingsIcon,
+  icon: SettingsIcon,
   label: 'Static Tag',
 }

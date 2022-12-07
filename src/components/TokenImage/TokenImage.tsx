@@ -23,6 +23,7 @@ export const TokenImage = memo((props: TokenIconProps) => {
     <Box
       className={clsx(className, styles.root({ size }))}
       style={style}
+      flexShrink="0"
       {...boxProps}
     >
       {src ? (

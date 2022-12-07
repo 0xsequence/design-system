@@ -9,7 +9,7 @@ import * as styles from './styles.css'
 
 export type TabOption = {
   label: ReactNode
-  LeftIcon?: ComponentType<IconProps>
+  leftIcon?: ComponentType<IconProps>
   value: string
   onClick?: () => boolean | Promise<boolean>
 }
@@ -62,11 +62,11 @@ export const TabbedNav = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
               variant="base"
               disabled={isLoading}
               label={option.label}
-              LeftIcon={option.LeftIcon ?? undefined}
+              leftIcon={option.leftIcon ?? undefined}
               onClick={(e: MouseEvent<HTMLButtonElement>) =>
                 handleTabClick(e, option, tabIndex)
               }
-              paddingLeft={option.LeftIcon ? '1' : '2'}
+              paddingLeft={option.leftIcon ? '1' : '2'}
               size={size}
               borderRadius="circle"
             />

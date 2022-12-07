@@ -22,11 +22,11 @@ export const SearchInput: PolymorphicComponent<SearchInputProps, 'input'> =
       <TextInput
         ref={ref}
         name={name}
-        LeftIcon={SearchIcon}
-        RightIcon={() => (
+        leftIcon={SearchIcon}
+        controls={
           <IconButton
+            icon={CloseIcon}
             size="xs"
-            Icon={CloseIcon}
             onClick={() =>
               onChange?.({
                 target: { value: '' },
@@ -34,7 +34,7 @@ export const SearchInput: PolymorphicComponent<SearchInputProps, 'input'> =
             }
             disabled={!value}
           />
-        )}
+        }
         placeholder={placeholder}
         value={value}
         onChange={(ev: ChangeEvent<HTMLInputElement>) => onChange?.(ev)}

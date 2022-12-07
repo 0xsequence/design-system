@@ -60,7 +60,7 @@ const StoryTemplate: Story = ({ ...args }) => {
           <Badge value="3" />
         </Box>
       ),
-      LeftIcon: TransactionIcon,
+      leftIcon: TransactionIcon,
       value: 'history',
       onClick: async () => {
         console.log('processing...')
@@ -71,7 +71,7 @@ const StoryTemplate: Story = ({ ...args }) => {
     },
     {
       label: 'Contacts (Fails to load)',
-      LeftIcon: ProfileIcon,
+      leftIcon: ProfileIcon,
       value: 'contacts',
       onClick: async () => {
         console.log('expecting fail...')

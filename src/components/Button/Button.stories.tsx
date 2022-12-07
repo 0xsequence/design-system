@@ -34,7 +34,7 @@ WithLeftIcon.args = {
   disabled: false,
   label: 'Click me',
   onClick: () => console.log('Clicked!'),
-  LeftIcon: ScanIcon,
+  leftIcon: ScanIcon,
   size: 'md',
   variant: 'glass',
 }
@@ -44,7 +44,7 @@ WithRightIcon.args = {
   disabled: false,
   label: 'Click me',
   onClick: () => console.log('Clicked!'),
-  RightIcon: ArrowRightIcon,
+  rightIcon: ArrowRightIcon,
   size: 'md',
   variant: 'glass',
 }
@@ -53,9 +53,9 @@ export const WithBothIcons = Template.bind({})
 WithBothIcons.args = {
   disabled: false,
   label: 'Click me',
-  LeftIcon: ScanIcon,
+  leftIcon: ScanIcon,
   onClick: () => console.log('Clicked!'),
-  RightIcon: ArrowRightIcon,
+  rightIcon: ArrowRightIcon,
   size: 'md',
   variant: 'glass',
 }
@@ -70,7 +70,7 @@ WithCountIcon.args = {
     </Box>
   ),
   onClick: () => console.log('Clicked!'),
-  LeftIcon: ScanIcon,
+  leftIcon: ScanIcon,
   size: 'md',
   variant: 'glass',
 }
@@ -80,6 +80,6 @@ AnchorButton.args = {
   as: 'a',
   href: '/wallet',
   label: 'Click me',
-  LeftIcon: ScanIcon,
+  leftIcon: ScanIcon,
   size: 'md',
 }

@@ -10,20 +10,28 @@ import { IconProps } from '~/icons/types'
 
 type IconButtonProps = Omit<
   ButtonVariants,
-  'width' | 'label' | 'LeftIcon' | 'RightIcon' | 'size'
+  'width' | 'label' | 'leftIcon' | 'rightIcon' | 'size'
 > & {
   size?: 'xs' | 'sm' | 'md'
-  Icon: ComponentType<IconProps>
+  icon: ComponentType<IconProps>
 }
 
 export const IconButton: PolymorphicComponent<IconButtonProps, 'button'> =
   forwardRef(
     <T extends ElementType>(
-      {
-        Icon,
-        size = 'md',
-        ...otherProps
-      }: PolymorphicProps<IconButtonProps, T>,
+      props: PolymorphicProps<IconButtonProps, T>,
       ref: PolymorphicRef<T>
-    ) => <Button LeftIcon={Icon} size={size} ref={ref} {...otherProps} />
+    ) => {
+      const { icon, size = 'md', ...rest } = props
+
+      return (
+        <Button
+          leftIcon={icon}
+          size={size}
+          flexShrink="0"
+          ref={ref}
+          {...rest}
+        />
+      )
+    }
   )

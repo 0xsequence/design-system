@@ -1,9 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
+import { Box, Button, IconButton } from '~/components'
 import { ArrowRightIcon, CloseIcon, ScanIcon, SearchIcon } from '~/icons'
-import { Box } from '../Box'
-import { Button } from '../Button'
-import { IconButton } from '../IconButton'
 
 import { TextInput } from './TextInput'
 
@@ -27,29 +25,29 @@ export const WithLeftIcon = Template.bind({})
 WithLeftIcon.args = {
   label: 'This the label',
   placeholder: 'This is the placeholder',
-  LeftIcon: ScanIcon,
+  leftIcon: ScanIcon,
 }
 
 export const WithRightIcon = Template.bind({})
 WithRightIcon.args = {
   label: 'This the label',
   placeholder: 'This is the placeholder',
-  RightIcon: ArrowRightIcon,
+  rightIcon: ArrowRightIcon,
 }
 
 export const WithBothIcons = Template.bind({})
 WithBothIcons.args = {
   label: 'This the label',
   placeholder: 'This is the placeholder',
-  LeftIcon: ScanIcon,
-  RightIcon: ArrowRightIcon,
+  leftIcon: ScanIcon,
+  rightIcon: ArrowRightIcon,
 }
 
 export const SearchInput = Template.bind({})
 SearchInput.args = {
   placeholder: 'Search for coins or collectibles',
-  LeftIcon: SearchIcon,
-  controls: <IconButton Icon={CloseIcon} size="xs" />,
+  leftIcon: SearchIcon,
+  controls: <IconButton icon={CloseIcon} size="xs" />,
 }
 
 export const WithComplexControls = Template.bind({})

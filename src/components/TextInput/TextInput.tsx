@@ -17,10 +17,10 @@ import * as styles from './styles.css'
 
 export type TextInputProps = (HasLabel | HiddenLabel) & {
   disabled?: boolean
-  LeftIcon?: ComponentType<IconProps>
+  leftIcon?: ComponentType<IconProps>
+  rightIcon?: ComponentType<IconProps>
   name: string
   processing?: boolean
-  RightIcon?: ComponentType<IconProps>
   controls?: ReactNode
   value?: string
 }
@@ -38,10 +38,10 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
         id,
         label = '',
         labelLocation = 'hidden',
-        LeftIcon,
+        leftIcon: LeftIcon,
+        rightIcon: RightIcon,
         name,
         processing = false,
-        RightIcon,
         controls,
         type = 'text',
         ...rest

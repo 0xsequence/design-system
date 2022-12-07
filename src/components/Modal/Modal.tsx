@@ -45,7 +45,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               }}
             >
               {/* {closeOnOverlayClick && (
-                <IconButton Icon={CloseIcon} className={styles.close} />
+                <IconButton icon={CloseIcon} className={styles.close} />
               )} */}
             </motion.div>
           </Dialog.Overlay>
@@ -72,7 +72,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               {closeOnOverlayClick && (
                 <Dialog.Close asChild>
                   <IconButton
-                    Icon={CloseIcon}
+                    icon={CloseIcon}
                     size="xs"
                     className={styles.close}
                     aria-label="Close"

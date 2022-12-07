@@ -81,6 +81,8 @@ const responsiveProperties = defineProperties({
     ],
     position: ['absolute', 'fixed', 'relative', 'sticky'],
     flexDirection: ['column', 'column-reverse', 'row', 'row-reverse'],
+    flexShrink: ['0', '1'],
+    flexGrow: ['0', '1'],
     justifyContent: [...flexAlignment, 'space-around', 'space-between'],
     justifySelf: flexAlignment,
     alignItems: [...flexAlignment, 'baseline'],
