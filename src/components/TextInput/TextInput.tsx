@@ -1,4 +1,4 @@
-import { ComponentType, ElementType, forwardRef } from 'react'
+import { ComponentType, ElementType, forwardRef, ReactNode } from 'react'
 
 import {
   Box,
@@ -21,6 +21,7 @@ export type TextInputProps = (HasLabel | HiddenLabel) & {
   name: string
   processing?: boolean
   RightIcon?: ComponentType<IconProps>
+  controls?: ReactNode
   value?: string
 }
 
@@ -41,22 +42,19 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
         name,
         processing = false,
         RightIcon,
+        controls,
         type = 'text',
         ...rest
       } = props
 
       return (
         <LabelledField
-          forId={id ?? name}
           label={label}
+          forId={id ?? name}
           labelLocation={labelLocation}
         >
           <Box className={styles.wrap}>
-            {LeftIcon && (
-              <Box display="flex" className={styles.leftIcon}>
-                <LeftIcon size="sm" />
-              </Box>
-            )}
+            {LeftIcon && <LeftIcon size="sm" />}
 
             <Box
               as={as}
@@ -65,18 +63,13 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               disabled={disabled || processing}
               id={id ?? name}
               name={name}
-              paddingLeft={LeftIcon ? '10' : '4'}
-              paddingRight={RightIcon ? '10' : '4'}
               ref={ref}
               type={type}
               {...rest}
             />
 
-            {RightIcon && (
-              <Box display="flex" className={styles.rightIcon}>
-                <RightIcon size="sm" />
-              </Box>
-            )}
+            {RightIcon && <RightIcon size="sm" />}
+            {controls}
           </Box>
         </LabelledField>
       )

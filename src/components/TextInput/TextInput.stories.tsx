@@ -1,6 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { ArrowRightIcon, ScanIcon } from '~/icons'
+import { ArrowRightIcon, CloseIcon, ScanIcon, SearchIcon } from '~/icons'
+import { Box } from '../Box'
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
 
 import { TextInput } from './TextInput'
 
@@ -40,4 +43,23 @@ WithBothIcons.args = {
   placeholder: 'This is the placeholder',
   LeftIcon: ScanIcon,
   RightIcon: ArrowRightIcon,
+}
+
+export const SearchInput = Template.bind({})
+SearchInput.args = {
+  placeholder: 'Search for coins or collectibles',
+  LeftIcon: SearchIcon,
+  controls: <IconButton Icon={CloseIcon} size="xs" />,
+}
+
+export const WithComplexControls = Template.bind({})
+WithComplexControls.args = {
+  label: 'This the label',
+  placeholder: 'This is the placeholder',
+  controls: (
+    <Box gap="2">
+      <Button label="Max" size="xs" shape="square" />
+      <Button label="Paste" size="xs" shape="square" />
+    </Box>
+  ),
 }
