@@ -58,6 +58,8 @@ export const buttonVariants = recipe({
     disabled: { true: atoms({ cursor: 'not-allowed', opacity: '50' }) },
 
     iconOnly: { true: {} },
+    hasLeftIcon: { true: {} },
+    hasRightIcon: { true: {} },
 
     size: {
       xs: [
@@ -81,26 +83,9 @@ export const buttonVariants = recipe({
         { height: '52px' },
       ],
     },
-
-    space: {
-      normal: {},
-      tight: {},
-    },
   },
 
   compoundVariants: [
-    {
-      variants: { space: 'tight', size: 'sm' },
-      style: { padding: vars.space['2'] },
-    },
-    {
-      variants: { space: 'tight', size: 'md' },
-      style: { padding: vars.space['3'] },
-    },
-    {
-      variants: { space: 'tight', size: 'lg' },
-      style: { padding: vars.space['4'] },
-    },
     {
       variants: { iconOnly: true, size: 'xs' },
       style: { padding: vars.space['1.5'] },
@@ -112,6 +97,30 @@ export const buttonVariants = recipe({
     {
       variants: { iconOnly: true, size: 'md' },
       style: { padding: vars.space['3'] },
+    },
+    {
+      variants: { hasLeftIcon: true, size: 'xs' },
+      style: { paddingLeft: vars.space['2'] },
+    },
+    {
+      variants: { hasLeftIcon: true, size: 'sm' },
+      style: { paddingLeft: vars.space['2'] },
+    },
+    {
+      variants: { hasLeftIcon: true, size: 'md' },
+      style: { paddingLeft: vars.space['4'] },
+    },
+    {
+      variants: { hasRightIcon: true, size: 'xs' },
+      style: { paddingRight: vars.space['2'] },
+    },
+    {
+      variants: { hasRightIcon: true, size: 'sm' },
+      style: { paddingRight: vars.space['2'] },
+    },
+    {
+      variants: { hasRightIcon: true, size: 'md' },
+      style: { paddingRight: vars.space['4'] },
     },
   ],
 })

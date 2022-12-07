@@ -39,11 +39,13 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       variant = 'glass',
       width = 'fit',
       shape = 'circle',
-      space = 'normal',
       ...restProps
     } = props
 
+    const hasLeftIcon = LeftIcon !== undefined && label !== undefined
+    const hasRightIcon = RightIcon !== undefined && label !== undefined
     const iconOnly = LeftIcon !== undefined && label === undefined
+
     const clickable = !disabled && !pending
     const iconSize = size === 'xs' ? 'xs' : 'sm'
 
@@ -55,11 +57,12 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
           buttonVariants({
             clickable,
             disabled: disabled || pending,
+            hasLeftIcon,
+            hasRightIcon,
             iconOnly,
             size: variant === 'text' ? undefined : size,
             shape,
             variant,
-            space,
           })
         )}
         disabled={disabled || pending}
