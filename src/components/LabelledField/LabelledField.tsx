@@ -32,12 +32,7 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
   ...boxProps
 }: PolymorphicProps<LabelledFieldProps, T>) => {
   const renderLabel = () => (
-    <Text
-      as="label"
-      variant="small"
-      hidden={labelLocation === 'hidden'}
-      htmlFor={forId}
-    >
+    <Text variant="small" hidden={labelLocation === 'hidden'}>
       {label}
     </Text>
   )
@@ -46,9 +41,11 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
 
   return (
     <Box
+      as="label"
       color={color ?? 'textBody'}
       alignItems={horizontal ? 'center' : 'stretch'}
       flexDirection={horizontal ? 'row' : 'column'}
+      htmlFor={forId}
       gap="3"
       {...boxProps}
     >
