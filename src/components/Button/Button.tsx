@@ -70,13 +70,12 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
         {...restProps}
       >
         <Box
-          as="span"
+          width="full"
           justifyContent="space-between"
           alignItems="center"
           gap={size === 'xs' ? '1' : '2'}
         >
           <Box
-            as="span"
             justifyContent="flex-start"
             alignItems="center"
             gap={size === 'xs' ? '1' : '2'}
