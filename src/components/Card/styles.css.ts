@@ -4,13 +4,17 @@ import { atoms } from '~/css'
 
 export const cardVariants = recipe({
   variants: {
-    hover: {
+    clickable: {
       true: atoms({
         opacity: {
           hover: '80',
         },
         cursor: 'pointer',
       }),
+    },
+
+    disabled: {
+      true: { opacity: 0.5, cursor: 'not-allowed', pointerEvents: 'none' },
     },
 
     outlined: {
@@ -24,14 +28,6 @@ export const cardVariants = recipe({
     blur: {
       true: atoms({
         backdropFilter: 'blur',
-      }),
-    },
-
-    disabled: {
-      true: atoms({
-        opacity: '50',
-        cursor: 'not-allowed',
-        pointerEvents: 'none',
       }),
     },
   },

@@ -10,7 +10,7 @@ import {
 import * as styles from './styles.css'
 
 interface CardProps {
-  hover?: boolean
+  clickable?: boolean
   outlined?: boolean
   disabled?: boolean
   blur?: boolean
@@ -23,7 +23,7 @@ export const Card: PolymorphicComponent<CardProps, 'div'> = forwardRef(
   ) => {
     const {
       children,
-      hover,
+      clickable,
       outlined,
       disabled,
       blur,
@@ -32,7 +32,7 @@ export const Card: PolymorphicComponent<CardProps, 'div'> = forwardRef(
     } = props
     return (
       <Box
-        className={styles.cardVariants({ hover, outlined, disabled, blur })}
+        className={styles.cardVariants({ clickable, outlined, disabled, blur })}
         background={outlined ? 'transparent' : 'backgroundSecondary'}
         borderRadius="md"
         padding="4"

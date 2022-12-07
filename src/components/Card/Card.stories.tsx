@@ -31,11 +31,11 @@ export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {}
 
-export const Hover = Template.bind({})
-Hover.args = { hover: true }
+export const Clickable = Template.bind({})
+Clickable.args = { clickable: true }
 
 export const Disabled = Template.bind({})
-Disabled.args = { disabled: true }
+Disabled.args = { clickable: true, disabled: true }
 
 export const Outlined = Template.bind({})
 Outlined.args = { outlined: true }
