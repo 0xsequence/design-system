@@ -39,6 +39,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       variant = 'glass',
       width = 'fit',
       shape = 'circle',
+      space = 'normal',
       ...restProps
     } = props
 
@@ -58,6 +59,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
             size: variant === 'text' ? undefined : size,
             shape,
             variant,
+            space,
           })
         )}
         disabled={disabled || pending}

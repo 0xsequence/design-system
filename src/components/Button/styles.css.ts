@@ -19,7 +19,6 @@ export const buttonVariants = recipe({
         },
       }),
       glass: atoms({
-        backdropFilter: 'blur',
         background: 'buttonGlass',
         color: {
           base: 'textBody',
@@ -27,7 +26,6 @@ export const buttonVariants = recipe({
         },
       }),
       emphasis: atoms({
-        backdropFilter: 'blur',
         background: 'buttonEmphasis',
         color: {
           base: 'textBody',
@@ -85,11 +83,24 @@ export const buttonVariants = recipe({
     },
 
     space: {
+      normal: {},
       tight: {},
     },
   },
 
   compoundVariants: [
+    {
+      variants: { space: 'tight', size: 'sm' },
+      style: { padding: vars.space['2'] },
+    },
+    {
+      variants: { space: 'tight', size: 'md' },
+      style: { padding: vars.space['3'] },
+    },
+    {
+      variants: { space: 'tight', size: 'lg' },
+      style: { padding: vars.space['4'] },
+    },
     {
       variants: { iconOnly: true, size: 'xs' },
       style: { padding: vars.space['1.5'] },
@@ -101,10 +112,6 @@ export const buttonVariants = recipe({
     {
       variants: { iconOnly: true, size: 'md' },
       style: { padding: vars.space['3'] },
-    },
-    {
-      variants: { space: 'tight', size: 'sm' },
-      style: { padding: vars.space['2'] },
     },
   ],
 })
