@@ -1,9 +1,12 @@
+import { Box, BoxProps } from '~/components/Box'
+
 import * as styles from './styles.css'
 
 type GradientAvatarProps = {
   address: string
   initials?: string
-} & styles.AvatarVariants
+} & styles.AvatarVariants &
+  BoxProps
 
 export const djb2 = (str: string) => {
   let hash = 5381
@@ -26,15 +29,17 @@ const generateGradient = (value: string) => {
 }
 
 export const GradientAvatar = (props: GradientAvatarProps) => {
-  const { address, size = 'md' } = props
+  const { address, size = 'md', ...boxProps } = props
   const gradient = generateGradient(address)
 
   return (
-    <svg
+    <Box
+      as="svg"
       className={styles.avatar({ size })}
       viewBox={`0 0 20 20`}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      {...boxProps}
     >
       <g>
         <defs>
@@ -60,6 +65,6 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
           </text>
         )} */}
       </g>
-    </svg>
+    </Box>
   )
 }

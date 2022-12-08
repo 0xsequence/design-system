@@ -1,7 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Box } from '../Box'
-
 import { GradientAvatar } from './GradientAvatar'
 
 export default {
@@ -10,9 +8,7 @@ export default {
 } as ComponentMeta<typeof GradientAvatar>
 
 const Template: ComponentStory<typeof GradientAvatar> = args => (
-  <Box background="backgroundSecondary">
-    <GradientAvatar {...args} />
-  </Box>
+  <GradientAvatar {...args} />
 )
 
 export const Default = Template.bind({})
