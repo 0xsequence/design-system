@@ -22,6 +22,7 @@ export const Default = Template.bind({})
 Default.args = {
   padding: '4',
   background: 'backgroundSecondary',
+  borderRadius: 'md',
   color: 'textBody',
   children: 'Hello',
 }
