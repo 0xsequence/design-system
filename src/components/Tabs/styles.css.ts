@@ -1,60 +1,79 @@
 import { style } from '@vanilla-extract/css'
 
-import { vars } from '~/css'
+import { atoms, vars } from '~/css'
 
-export const trigger = style({
-  appearance: 'none',
-  border: 'none',
-  background: 'none',
-  height: '100%',
-  width: '50%',
-  position: 'relative',
-  zIndex: '2',
-  cursor: 'pointer',
-  userSelect: 'none',
-
-  color: vars.colors.textFaded,
-
-  selectors: {
-    '&[data-state="active"]': {
-      color: vars.colors.textBody,
-    },
-    '&[disabled]': {
-      opacity: 0.3,
-      pointerEvents: 'none',
+export const list = style([
+  atoms({
+    position: 'relative',
+    width: 'full',
+    borderRadius: 'md',
+    background: 'backgroundSecondary',
+    height: '12',
+  }),
+  {
+    selectors: {
+      '&:focus-within': {
+        outlineColor: vars.colors.borderFocus,
+        outlineStyle: 'solid',
+        outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+        outlineWidth: vars.borderWidths.thick,
+      },
     },
   },
-})
+])
 
-export const list = style({
-  background: vars.colors.backgroundSecondary,
-  width: '100%',
-  height: '50px',
-  borderRadius: vars.radii.md,
-  position: 'relative',
-})
+export const trigger = style([
+  atoms({
+    height: 'full',
+    width: '1/2',
+    borderRadius: 'sm',
+    outline: 'none',
+    cursor: 'pointer',
+    position: 'relative',
+    background: 'transparent',
+    userSelect: 'none',
+  }),
+  {
+    appearance: 'none',
+    border: 'none',
+    zIndex: '2',
+    color: vars.colors.textFaded,
 
-export const selectorContainer = style({
-  height: '32px',
+    selectors: {
+      '&[data-state="active"]': {
+        color: vars.colors.textBody,
+      },
+      '&[disabled]': {
+        opacity: 0.3,
+        // pointerEvents: 'none',
+      },
+    },
+  },
+])
+
+export const selectorContainer = atoms({
+  position: 'absolute',
+  inset: '2',
+  height: '8',
   display: 'flex',
-  top: '9px',
-  bottom: '9px',
-  left: '15px',
-  right: '15px',
-  position: 'absolute',
 })
 
-export const selector = style({
-  background: vars.colors.buttonGlass,
-  position: 'absolute',
-  width: '50%',
-  height: '100%',
-  top: '0',
-  left: '0',
+export const selector = style([
+  atoms({
+    position: 'absolute',
+    borderRadius: 'sm',
+    top: '0',
+    left: '0',
+    width: '1/2',
+    height: '8',
+    background: 'buttonGlass',
+    pointerEvents: 'none',
+  }),
+  {
+    transition: 'transform 200ms ease-out',
+  },
+])
 
-  zIndex: '1',
-
-  borderRadius: vars.radii.md,
-
-  transition: 'transform 200ms ease-out',
+export const content = style({
+  outline: 'none',
 })

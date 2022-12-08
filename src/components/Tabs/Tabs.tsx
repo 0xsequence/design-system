@@ -35,7 +35,10 @@ export const Tabs = (props: TabsProps) => {
 
   return (
     <TabsPrimitive.Root onValueChange={handleValueChange} {...rest}>
-      <TabsPrimitive.List className={styles.list}>
+      <TabsPrimitive.List
+        className={styles.list}
+        style={{ outline: undefined }}
+      >
         <div className={styles.selectorContainer}>
           <div
             className={styles.selector}
@@ -56,7 +59,11 @@ export const Tabs = (props: TabsProps) => {
         ))}
       </TabsPrimitive.List>
       {tabs.map(tab => (
-        <TabsPrimitive.Content key={tab.value} value={tab.value}>
+        <TabsPrimitive.Content
+          className={styles.content}
+          key={tab.value}
+          value={tab.value}
+        >
           {tab.content}
         </TabsPrimitive.Content>
       ))}
