@@ -24,16 +24,17 @@ export const SearchInput: PolymorphicComponent<SearchInputProps, 'input'> =
         name={name}
         leftIcon={SearchIcon}
         controls={
-          <IconButton
-            icon={CloseIcon}
-            size="xs"
-            onClick={() =>
-              onChange?.({
-                target: { value: '' },
-              } as ChangeEvent<HTMLInputElement>)
-            }
-            disabled={!value}
-          />
+          value ? (
+            <IconButton
+              icon={CloseIcon}
+              size="xs"
+              onClick={() =>
+                onChange?.({
+                  target: { value: '' },
+                } as ChangeEvent<HTMLInputElement>)
+              }
+            />
+          ) : undefined
         }
         placeholder={placeholder}
         value={value}
