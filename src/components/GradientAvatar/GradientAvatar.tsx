@@ -37,6 +37,7 @@ const generateGradient = (value: number) => {
   const hueC = (value + 240) % 360
 
   return {
+    id: cyrb53(`${hueA}-${hueB}-${hueC}`),
     a: `hsl(${hueA}deg 100% 50%)`,
     b: `hsl(${hueB}deg 100% 50%)`,
     c: `hsl(${hueC}deg 100% 50%)`,
@@ -105,41 +106,50 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
           ></feGaussianBlur>
         </filter>
 
-        {gradients.map((gradient, idx) => (
-          <Fragment key={idx}>
-            <radialGradient id={`gradient-a-${idx}`}>
+        {gradients.map(gradient => (
+          <Fragment key={gradient.id}>
+            <radialGradient id={`gradient-primary-${gradient.id}`}>
               <stop offset="0" stopColor={gradient.a} />
               <stop offset="1" stopColor={gradient.b} />
             </radialGradient>
 
-            <radialGradient id={`gradient-b-${idx}`}>
-              <stop offset="0" stopColor={gradient.b} />
+            <radialGradient id={`gradient-secondary-${gradient.id}`}>
+              <stop offset="0" stopColor={gradient.c} />
               <stop offset="1" stopColor={gradient.a} />
             </radialGradient>
           </Fragment>
         ))}
 
-        <linearGradient id={`gradient-background`} x1="0" y1="0" x2="1" y2="1">
+        <linearGradient
+          id={`gradient-background-${gradients[0].id}`}
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1"
+        >
           <stop offset="0" stopColor={gradients[0].a} />
           <stop offset="1" stopColor={gradients[0].c} />
         </linearGradient>
       </defs>
 
       <g clipPath="url(#circle-clip)">
-        <rect width="100%" height="100%" fill="url(#gradient-background)" />
+        <rect
+          width="100%"
+          height="100%"
+          fill={`url(#gradient-background-${gradients[0].id})`}
+        />
 
         <g filter="url(#blur)">
-          {gradients.map((gradient, idx) => (
-            <Fragment key={idx}>
+          {gradients.map(gradient => (
+            <Fragment key={gradient.id}>
               <circle
-                fill={`url(#gradient-a-${idx})`}
+                fill={`url(#gradient-primary-${gradient.id})`}
                 cx={gradient.x}
                 cy={gradient.y}
                 r={gradient.r}
               />
               <circle
-                key={idx}
-                fill={`url(#gradient-b-${idx})`}
+                fill={`url(#gradient-secondary-${gradient.id})`}
                 cx={gradient.y}
                 cy={gradient.x}
                 r={gradient.r / 2}
