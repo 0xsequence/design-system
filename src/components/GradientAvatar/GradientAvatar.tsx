@@ -31,39 +31,50 @@ const cyrb53 = (str: string, seed: number = 0): number => {
   return 4294967296 * (2097151 & h2) + (h1 >>> 0)
 }
 
-const generateGradient = (value: number) => {
-  const hueA = value % 360
-  const hueB = (value + 120) % 360
-  const hueC = (value + 240) % 360
+const generateGradient = (a: number, b: number, c: number) => {
+  const hueA = a % 360
+  const hueB = (a + 120) % 360
+  const hueC = c % 360
 
   return {
     id: cyrb53(`${hueA}-${hueB}-${hueC}`),
-    a: `hsl(${hueA}deg 100% 50%)`,
+    a: `hsl(${hueA}deg 100% 40%)`,
     b: `hsl(${hueB}deg 100% 50%)`,
     c: `hsl(${hueC}deg 100% 50%)`,
   }
 }
 
+interface HashState {
+  a: number
+  b: number
+  c: number
+  x: number
+  y: number
+  r: number
+}
+
 export const GradientAvatar = (props: GradientAvatarProps) => {
   const { address, size = 'md', complexity = 1, ...rest } = props
 
-  const hashes = []
+  const hashes: HashState[] = []
   for (let i = 0; i < complexity; i++) {
-    const offset = i * 4
+    const offset = i * 6
 
     hashes.push({
-      a: cyrb53(address, offset),
-      b: cyrb53(address, offset + 1),
-      c: cyrb53(address, offset + 2),
-      d: cyrb53(address, offset + 3),
+      a: cyrb53(address + 'a', offset),
+      b: cyrb53(address + 'b', offset + 1),
+      c: cyrb53(address + 'c', offset + 2),
+      x: cyrb53(address + 'd', offset + 3),
+      y: cyrb53(address + 'e', offset + 4),
+      r: cyrb53(address + 'f', offset + 5),
     })
   }
 
   const gradients = hashes.map((hash, idx) => ({
-    ...generateGradient(hash.a),
-    x: hash.c % 1000,
-    y: hash.d % 1000,
-    r: hash.b % (1000 / (idx + 1)),
+    ...generateGradient(hash.a, hash.b, hash.c),
+    x: hash.x % 1000,
+    y: hash.y % 1000,
+    r: 100 + (hash.r % (1500 / (idx + 1))),
   }))
 
   gradients.map(gradient => {
@@ -101,7 +112,7 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
             result="shape"
           ></feBlend>
           <feGaussianBlur
-            stdDeviation="120"
+            stdDeviation="100"
             result="effect1_foregroundBlur"
           ></feGaussianBlur>
         </filter>
@@ -115,7 +126,7 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
 
             <radialGradient id={`gradient-secondary-${gradient.id}`}>
               <stop offset="0" stopColor={gradient.c} />
-              <stop offset="1" stopColor={gradient.a} />
+              <stop offset="1" stopColor={gradient.b} />
             </radialGradient>
           </Fragment>
         ))}
@@ -127,8 +138,8 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
           x2="1"
           y2="1"
         >
-          <stop offset="0" stopColor={gradients[0].a} />
-          <stop offset="1" stopColor={gradients[0].c} />
+          <stop offset="0" stopColor={gradients[0].c} />
+          <stop offset="1" stopColor={gradients[0].a} />
         </linearGradient>
       </defs>
 
