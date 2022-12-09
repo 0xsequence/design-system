@@ -1,10 +1,6 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 
 export const avatar = recipe({
-  base: {
-    backgroundColor: 'white',
-  },
-
   variants: {
     size: {
       sm: {
