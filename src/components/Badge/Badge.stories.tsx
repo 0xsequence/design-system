@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { CheckmarkIcon, CloseIcon } from '~/icons'
+import { CloseIcon } from '~/icons'
 
 import { Badge } from './Badge'
 

@@ -8,6 +8,7 @@ export type {
 
 export { Avatar } from './Avatar'
 export { Badge } from './Badge'
+export { Breadcrumbs } from './Breadcrumbs'
 export { Button } from './Button'
 export { Card } from './Card'
 export { ControlledCheckbox, Checkbox } from './Checkbox'
