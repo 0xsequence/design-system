@@ -77,10 +77,6 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
     r: 100 + (hash.r % (1500 / (idx + 1))),
   }))
 
-  gradients.map(gradient => {
-    console.log('x', gradient.x, 'y', gradient.y)
-  })
-
   return (
     <Box
       as="svg"
