@@ -23,7 +23,6 @@ export {
 } from './DropdownMenu'
 export { FileInput } from './FileInput'
 export { Form } from './Form'
-export { Group } from './Group'
 export { IconButton } from './IconButton'
 export { LabelledField } from './LabelledField'
 export { Modal } from './Modal'
