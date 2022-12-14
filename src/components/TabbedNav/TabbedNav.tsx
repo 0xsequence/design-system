@@ -14,18 +14,25 @@ export type TabOption = {
   onClick?: () => boolean | Promise<boolean>
 }
 
-type TabSelectProps = {
-  activeTab?: string
+type TabbedNavProps = {
+  defaultValue?: string
   size?: 'xs' | 'sm'
   tabs: TabOption[]
+  onTabChange?: (value: string) => void
 }
 
-export const TabbedNav = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
-  const { className, activeTab, size = 'sm', tabs, ...rest } = props
+export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
+  const {
+    className,
+    defaultValue,
+    size = 'sm',
+    tabs,
+    onTabChange,
+    ...rest
+  } = props
+
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [activeTabValue, setActiveTabValue] = useState<string>(
-    activeTab ?? tabs[0].value
-  )
+  const [value, setValue] = useState<string>(defaultValue ?? tabs[0].value)
 
   const handleTabClick = async (
     event: MouseEvent<HTMLButtonElement>,
@@ -34,18 +41,23 @@ export const TabbedNav = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
   ) => {
     event.preventDefault()
 
-    if (activeTabValue === option.value) {
+    const prevValue = value
+
+    if (value === option.value) {
       return
     }
 
-    const prevTab = activeTabValue
-    setActiveTabValue(tabs[tabIndex].value)
+    setValue(tabs[tabIndex].value)
     setIsLoading(true)
+
     const loadSucceeded = await option.onClick?.()
+
     setIsLoading(false)
 
-    if (!loadSucceeded) {
-      setActiveTabValue(prevTab)
+    if (loadSucceeded) {
+      onTabChange?.(option.value)
+    } else {
+      setValue(prevValue)
     }
   }
 
@@ -57,14 +69,14 @@ export const TabbedNav = (props: PolymorphicProps<TabSelectProps, 'div'>) => {
             <Button
               className={clsx(
                 className,
-                styles.tab({ active: option.value === activeTabValue })
+                styles.tab({ active: option.value === value })
               )}
               variant="base"
               disabled={isLoading}
               label={option.label}
               leftIcon={option.leftIcon ?? undefined}
-              onClick={(e: MouseEvent<HTMLButtonElement>) =>
-                handleTabClick(e, option, tabIndex)
+              onClick={(ev: MouseEvent<HTMLButtonElement>) =>
+                handleTabClick(ev, option, tabIndex)
               }
               paddingLeft={option.leftIcon ? '1' : '2'}
               size={size}

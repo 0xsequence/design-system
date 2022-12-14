@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { useState } from 'react'
 
 import { Badge } from '~/components/Badge'
@@ -6,7 +6,7 @@ import { Box } from '~/components/Box'
 import { Text } from '~/components/Text'
 import { ProfileIcon, TransactionIcon } from '~/icons'
 
-import { TabOption, TabbedNav } from './TabbedNav'
+import { TabbedNav } from './TabbedNav'
 
 export default {
   title: 'Components/TabbedNav',
@@ -15,33 +15,41 @@ export default {
 
 const delay = (sec: number) => new Promise(res => setTimeout(res, sec * 1000))
 
-const DemoContent = ({
-  title,
-  content,
-}: {
-  title: string
-  content: string
-}) => (
-  <Box padding="4" color="textBody">
-    <Text as="h3" variant="large">
-      {title}
-    </Text>
-    <Text as="p">{content}</Text>
-  </Box>
-)
+const StoryTemplate: ComponentStory<typeof TabbedNav> = ({ ...args }) => {
+  const [value, setValue] = useState<string | undefined>()
 
-const StoryTemplate: Story = ({ ...args }) => {
-  const [data, setData] = useState({
-    title: '',
-    content: 'Click tab to change',
-  })
+  const handleTabChange = (value: string) => {
+    setValue(value)
+  }
 
-  const tabs: TabOption[] = [
+  return (
+    <Box flexDirection="column" gap="4">
+      <Box background="backgroundSecondary" padding="4" borderRadius="md">
+        <TabbedNav
+          marginBottom="6"
+          {...args}
+          onTabChange={value => handleTabChange(value)}
+        />
+      </Box>
+
+      <Box background="backgroundSecondary" padding="4" borderRadius="md">
+        <Text variant="normal" color="textBody">
+          {value}
+        </Text>
+      </Box>
+    </Box>
+  )
+}
+
+export const Demo = StoryTemplate.bind({})
+Demo.args = {
+  defaultValue: 'wallet',
+  size: 'sm',
+  tabs: [
     {
       label: 'Wallet',
       value: 'wallet',
       onClick: () => {
-        setData({ title: 'Wallet Content', content: 'body content' })
         return true
       },
     },
@@ -49,7 +57,6 @@ const StoryTemplate: Story = ({ ...args }) => {
       label: 'Another Tab',
       value: 'another',
       onClick: () => {
-        setData({ title: 'Some Content Title', content: 'some body content' })
         return true
       },
     },
@@ -65,7 +72,6 @@ const StoryTemplate: Story = ({ ...args }) => {
       onClick: async () => {
         console.log('processing...')
         await delay(1)
-        setData({ title: 'Async Loaded Content', content: 'demo content' })
         return true
       },
     },
@@ -79,19 +85,5 @@ const StoryTemplate: Story = ({ ...args }) => {
         return false
       },
     },
-  ]
-
-  return (
-    <Box background="backgroundSecondary" padding="6" borderRadius="md">
-      <TabbedNav tabs={tabs} marginBottom="6" {...args} />
-
-      <DemoContent {...data} />
-    </Box>
-  )
-}
-
-export const Demo = StoryTemplate.bind({})
-Demo.args = {
-  activeTab: 'wallet',
-  size: 'sm',
+  ],
 }
