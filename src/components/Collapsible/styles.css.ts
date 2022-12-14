@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css'
 
 import { atoms } from '~/css'
 
-export const COLLAPSED_HEIGHT = '65px'
+export const COLLAPSED_HEIGHT = '64px'
 
 export const root = style([
   atoms({
@@ -10,7 +10,6 @@ export const root = style([
     background: 'backgroundSecondary',
     position: 'relative',
     overflow: 'hidden',
-    marginBottom: '5',
   }),
   {
     minHeight: COLLAPSED_HEIGHT,
