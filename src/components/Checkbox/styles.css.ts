@@ -30,8 +30,8 @@ export type CheckboxVariants = RecipeVariants<typeof checkboxVariants>
 
 export const indicatorVariants = recipe({
   base: atoms({
-    color: 'textBody',
-    background: 'textFaded',
+    color: 'text100',
+    background: 'text50',
   }),
 
   variants: {

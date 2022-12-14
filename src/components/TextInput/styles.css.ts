@@ -8,10 +8,7 @@ export const wrap = style([
     display: 'inline-flex',
     alignItems: 'center',
     background: 'transparent',
-    color: {
-      base: 'textBody',
-      disabled: 'textInactive',
-    },
+    color: 'text100',
     opacity: {
       base: '100',
       hover: '80',

@@ -85,14 +85,11 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
           label={label}
           labelLocation={labelLocation}
         >
-          <Box
-            color={fileData ? 'textBody' : 'textFaded'}
-            className={styles.wrap}
-          >
+          <Box color={fileData ? 'text100' : 'text50'} className={styles.wrap}>
             {fileData ? (
               <Box flexDirection="row" gap="2" alignItems="baseline">
                 <Text>{fileData.name}</Text>
-                <Text color="textFaded" variant="xsmall">
+                <Text color="text50" variant="xsmall">
                   {fileData.size.toFixed(2)} kb
                 </Text>
               </Box>

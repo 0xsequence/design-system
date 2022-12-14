@@ -17,10 +17,10 @@ export default {
 const Template: ComponentStory<typeof Card> = args => (
   <Card {...args}>
     <Box flexDirection="column">
-      <Text variant="large" color="textBody">
+      <Text variant="large" color="text100">
         Card
       </Text>
-      <Text variant="normal" color="textFaded">
+      <Text variant="normal" color="text50">
         Description
       </Text>
     </Box>

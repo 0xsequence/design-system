@@ -42,7 +42,7 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
   return (
     <Box
       as="label"
-      color={color ?? 'textBody'}
+      color={color ?? 'text100'}
       alignItems={horizontal ? 'center' : 'stretch'}
       flexDirection={horizontal ? 'row' : 'column'}
       htmlFor={forId}

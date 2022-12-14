@@ -36,10 +36,10 @@ Default.args = {
       padding="4"
     >
       <Box>
-        <Text as="h1" variant="medium" color="textBody">
+        <Text as="h1" variant="medium" color="text100">
           New Dapp
         </Text>
-        <Text as="p" variant="normal" color="textFaded">
+        <Text as="p" variant="normal" color="text50">
           You can always change these settings later.
         </Text>
       </Box>

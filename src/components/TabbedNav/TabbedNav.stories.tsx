@@ -29,7 +29,7 @@ const StoryTemplate: ComponentStory<typeof TabbedNav> = ({ ...args }) => {
       </Box>
 
       <Box background="backgroundSecondary" padding="4" borderRadius="md">
-        <Text variant="normal" color="textBody">
+        <Text variant="normal" color="text100">
           {value}
         </Text>
       </Box>
@@ -81,6 +81,11 @@ Demo.args = {
         await delay(1)
         return false
       },
+    },
+    {
+      label: 'Disabled',
+      value: 'disabled',
+      disabled: true,
     },
   ],
 }

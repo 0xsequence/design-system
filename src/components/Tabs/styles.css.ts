@@ -32,19 +32,19 @@ export const trigger = style([
     position: 'relative',
     background: 'transparent',
     userSelect: 'none',
+    color: 'text80',
   }),
   {
     appearance: 'none',
     border: 'none',
     zIndex: '2',
-    color: vars.colors.textFaded,
 
     selectors: {
       '&[data-state="active"]': {
-        color: vars.colors.textBody,
+        color: vars.colors.text100,
       },
       '&[disabled]': {
-        opacity: 0.3,
+        opacity: 0.5,
         // pointerEvents: 'none',
       },
     },

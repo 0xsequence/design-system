@@ -40,7 +40,7 @@ export const contentStyle = style([
     borderRadius: 'sm',
     borderStyle: 'solid',
     borderWidth: 'thin',
-    color: 'textBody',
+    color: 'text100',
     overflow: 'hidden',
     zIndex: '10',
   }),
@@ -52,11 +52,12 @@ export const groupLabelStyle = style([
     justifyContent: 'space-between',
     paddingX: '4',
     paddingY: '3',
-    color: 'textFaded',
+    color: 'text50',
   }),
 ])
 
 export const optionStyle = style([
+  textVariants({ variant: 'normal' }),
   atoms({
     display: 'flex',
     justifyContent: 'space-between',
@@ -70,10 +71,7 @@ export const optionStyle = style([
       focus: 'none',
       hover: 'none',
     },
-    color: {
-      base: 'textBody',
-      disabled: 'textInactive',
-    },
+    color: 'text100',
     background: {
       focus: 'backgroundSecondary',
       hover: 'backgroundSecondary',

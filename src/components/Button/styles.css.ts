@@ -13,34 +13,22 @@ export const buttonVariants = recipe({
 
       primary: atoms({
         background: 'gradientPrimary',
-        color: {
-          base: 'white',
-          disabled: 'textInactive',
-        },
+        color: 'white',
       }),
       glass: atoms({
         background: 'buttonGlass',
-        color: {
-          base: 'textBody',
-          disabled: 'textInactive',
-        },
+        color: 'text100',
       }),
       emphasis: atoms({
         background: 'buttonEmphasis',
-        color: {
-          base: 'textBody',
-          disabled: 'textInactive',
-        },
+        color: 'text100',
       }),
 
       text: [
         textVariants({ variant: 'small' }),
         atoms({
           background: 'transparent',
-          color: {
-            base: 'textFaded',
-            disabled: 'textInactive',
-          },
+          color: 'text50',
           padding: '0',
         }),
       ],

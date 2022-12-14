@@ -22,7 +22,7 @@ export const Breadcrumbs = ({
 
   return (
     <Box {...props}>
-      <Text as="p" variant="small" fontWeight="medium" color="textFaded">
+      <Text as="p" variant="small" fontWeight="medium" color="text50">
         {restPaths.map(({ label, url }, key) => (
           <Box as="a" href={url} key={key}>
             {label}
@@ -30,7 +30,7 @@ export const Breadcrumbs = ({
           </Box>
         ))}
 
-        <Text as="a" color="textBody">
+        <Text as="a" color="text100">
           {lastPath.label}
         </Text>
       </Text>

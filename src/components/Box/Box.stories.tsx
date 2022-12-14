@@ -23,6 +23,6 @@ Default.args = {
   padding: '4',
   background: 'backgroundSecondary',
   borderRadius: 'md',
-  color: 'textBody',
+  color: 'text100',
   children: 'Hello',
 }

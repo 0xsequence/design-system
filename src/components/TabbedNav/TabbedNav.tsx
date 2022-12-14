@@ -11,6 +11,7 @@ export type TabOption = {
   label: ReactNode
   leftIcon?: ComponentType<IconProps>
   value: string
+  disabled?: boolean
   onLoad?: () => boolean | Promise<boolean>
 }
 
@@ -73,7 +74,7 @@ export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
                 styles.tab({ active: option.value === value })
               )}
               variant="base"
-              disabled={isLoading}
+              disabled={isLoading || option.disabled}
               label={option.label}
               leftIcon={option.leftIcon ?? undefined}
               onClick={(ev: MouseEvent<HTMLButtonElement>) =>

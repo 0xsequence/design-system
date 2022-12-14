@@ -26,110 +26,110 @@ Default.args = {
   padding: '2',
   children: (
     <>
-      <Text as="h1" variant="xlarge" color="textBody">
+      <Text as="h1" variant="xlarge" color="text100">
         Title
       </Text>
-      <Text as="p" variant="medium" color="textFaded">
+      <Text as="p" variant="medium" color="text50">
         Description
       </Text>
 
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
-      <Text as="p" variant="normal" color="textBody">
+      <Text as="p" variant="normal" color="text100">
         Paragraph
       </Text>
     </>

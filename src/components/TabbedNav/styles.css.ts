@@ -7,18 +7,20 @@ export const tab = recipe({
     active: {
       true: atoms({
         background: 'buttonInverse',
-        color: {
-          base: 'textInverse',
-          disabled: 'textInactive',
+        color: 'textInverse100',
+        opacity: {
+          hover: '100',
         },
       }),
       false: atoms({
         background: 'transparent',
-        color: {
-          base: 'textFaded',
-          hover: 'textBody',
-          disabled: 'textInactive',
-        },
+        color: 'text80',
+      }),
+    },
+
+    disabled: {
+      true: atoms({
+        opacity: '50',
       }),
     },
   },

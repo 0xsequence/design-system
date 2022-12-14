@@ -33,7 +33,7 @@ export const Collapsible = (
       >
         <CollapsiblePrimitive.Trigger className={styles.trigger}>
           {typeof label === 'string' ? (
-            <Text variant="medium" color="textBody">
+            <Text variant="medium" color="text100">
               {label}
             </Text>
           ) : (
@@ -48,7 +48,7 @@ export const Collapsible = (
             animate={{ rotate: expanded ? -90 : 0 }}
             transition={{ ease: 'linear', duration: 0.1 }}
           >
-            <ChevronLeftIcon className={styles.icon} color="textFaded" />
+            <ChevronLeftIcon className={styles.icon} color="text50" />
           </Box>
         </CollapsiblePrimitive.Trigger>
         <AnimatePresence>

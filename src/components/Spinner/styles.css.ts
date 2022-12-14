@@ -10,7 +10,7 @@ const rotate = keyframes({
 export const variants = recipe({
   base: [
     style({
-      stroke: vars.colors.textBody,
+      stroke: vars.colors.text100,
       animation: `1.4s linear infinite ${rotate}`,
     }),
   ],

@@ -29,6 +29,16 @@ LabelOnly.args = {
   variant: 'glass',
 }
 
+export const Disabled = Template.bind({})
+Disabled.args = {
+  as: 'a',
+  disabled: true,
+  href: '#',
+  label: 'Click me',
+  size: 'md',
+  variant: 'glass',
+}
+
 export const WithLeftIcon = Template.bind({})
 WithLeftIcon.args = {
   disabled: false,

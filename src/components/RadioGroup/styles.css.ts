@@ -30,7 +30,7 @@ export const indicatorVariants = recipe({
       position: 'relative',
       width: 'full',
       height: 'full',
-      color: 'textBody',
+      color: 'text100',
     }),
     {
       selectors: {

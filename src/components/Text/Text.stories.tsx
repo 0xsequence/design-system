@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Text>
 
 const Template: ComponentStory<typeof Text> = args => {
-  return <Text color="textBody" {...args} />
+  return <Text color="text100" {...args} />
 }
 
 export const Heading1 = Template.bind({})

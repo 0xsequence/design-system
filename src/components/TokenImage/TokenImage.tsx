@@ -33,7 +33,7 @@ export const TokenImage = memo((props: TokenIconProps) => {
           className={styles.fallback}
           variant="normal"
           fontWeight="medium"
-          color="textFaded"
+          color="text50"
           uppercase
         >
           {symbol?.replace(/\s/, '').slice(0, 4)}

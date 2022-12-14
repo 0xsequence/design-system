@@ -70,20 +70,20 @@ const gradients: { [key in Gradient]: string } = {
   secondary: `linear-gradient(32.51deg, #951990 -15.23%, #3A35B1 48.55%, #20A8B0 100%)`,
 }
 
-type TextColor = 'body' | 'faded' | 'inactive' | 'inverse'
+type TextColor = '100' | '80' | '50' | 'inverse100'
 
 const textColors: { [key in ColorScheme]: { [key in TextColor]: string } } = {
   dark: {
-    body: 'rgba(255, 255, 255, 1)',
-    inactive: 'rgba(255, 255, 255, 0.8)',
-    faded: 'rgba(255, 255, 255, 0.5)',
-    inverse: 'rgba(0, 0, 0, 1)',
+    '100': 'rgba(255, 255, 255, 1)',
+    '80': 'rgba(255, 255, 255, 0.8)',
+    '50': 'rgba(255, 255, 255, 0.5)',
+    inverse100: 'rgba(0, 0, 0, 1)',
   },
   light: {
-    body: 'rgba(34, 34, 34, 1)',
-    inactive: 'rgba(0, 0, 0, 0.8)',
-    faded: 'rgba(0, 0, 0, 0.5)',
-    inverse: 'rgba(255, 255, 255, 1)',
+    '100': 'rgba(0, 0, 0, 1)',
+    '80': 'rgba(0, 0, 0, 0.8)',
+    '50': 'rgba(0, 0, 0, 0.5)',
+    inverse100: 'rgba(255, 255, 255, 1)',
   },
 }
 
