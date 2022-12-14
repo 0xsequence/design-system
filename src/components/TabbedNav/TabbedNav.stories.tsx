@@ -16,7 +16,7 @@ export default {
 const delay = (sec: number) => new Promise(res => setTimeout(res, sec * 1000))
 
 const StoryTemplate: ComponentStory<typeof TabbedNav> = ({ ...args }) => {
-  const [value, setValue] = useState<string | undefined>()
+  const [value, setValue] = useState<string>('wallet')
 
   const handleTabChange = (value: string) => {
     setValue(value)
@@ -25,11 +25,7 @@ const StoryTemplate: ComponentStory<typeof TabbedNav> = ({ ...args }) => {
   return (
     <Box flexDirection="column" gap="4">
       <Box background="backgroundSecondary" padding="4" borderRadius="md">
-        <TabbedNav
-          marginBottom="6"
-          {...args}
-          onTabChange={value => handleTabChange(value)}
-        />
+        <TabbedNav {...args} onTabChange={value => handleTabChange(value)} />
       </Box>
 
       <Box background="backgroundSecondary" padding="4" borderRadius="md">
@@ -49,14 +45,15 @@ Demo.args = {
     {
       label: 'Wallet',
       value: 'wallet',
-      onClick: () => {
+      onLoad: () => {
         return true
       },
     },
+    { label: 'Simple', value: 'simple' }, // no onClick
     {
       label: 'Another Tab',
       value: 'another',
-      onClick: () => {
+      onLoad: () => {
         return true
       },
     },
@@ -69,7 +66,7 @@ Demo.args = {
       ),
       leftIcon: TransactionIcon,
       value: 'history',
-      onClick: async () => {
+      onLoad: async () => {
         console.log('processing...')
         await delay(1)
         return true
@@ -79,7 +76,7 @@ Demo.args = {
       label: 'Contacts (Fails to load)',
       leftIcon: ProfileIcon,
       value: 'contacts',
-      onClick: async () => {
+      onLoad: async () => {
         console.log('expecting fail...')
         await delay(1)
         return false
