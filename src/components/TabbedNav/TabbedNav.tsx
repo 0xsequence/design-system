@@ -11,7 +11,7 @@ export type TabOption = {
   label: ReactNode
   leftIcon?: ComponentType<IconProps>
   value: string
-  onClick?: () => boolean | Promise<boolean>
+  onLoad?: () => boolean | Promise<boolean>
 }
 
 type TabbedNavProps = {
@@ -48,9 +48,10 @@ export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
     }
 
     setValue(tabs[tabIndex].value)
+
     setIsLoading(true)
 
-    const loadSucceeded = await option.onClick?.()
+    const loadSucceeded = option.onLoad ? await option.onLoad?.() : true
 
     setIsLoading(false)
 
