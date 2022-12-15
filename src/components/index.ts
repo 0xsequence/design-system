@@ -35,7 +35,14 @@ export { Spinner } from './Spinner'
 export { ControlledSwitch, Switch } from './Switch'
 export { GradientAvatar } from './GradientAvatar'
 export { TabbedNav } from './TabbedNav'
-export { Tabs } from './Tabs'
+export {
+  Tabs,
+  TabsHeader,
+  TabsRoot,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from './Tabs'
 export { Tag } from './Tag'
 export { Text, textVariants } from './Text'
 export { ControlledTextInput, TextInput } from './TextInput'
