@@ -28,7 +28,6 @@ export const trigger = style([
     borderRadius: 'md',
   }),
   {
-    outline: 'none !important',
     border: 'none',
     appearance: 'none',
     height: COLLAPSED_HEIGHT,
