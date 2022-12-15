@@ -29,11 +29,13 @@ const getTheme = (): Theme => {
 
   if (THEMES.includes(persistedTheme)) {
     return persistedTheme
-  } else if (matchMedia(`(prefers-color-scheme: light)`).matches) {
-    return 'light'
-  } else if (matchMedia(`(prefers-color-scheme: dark)`).matches) {
-    return 'dark'
   }
+
+  // else if (matchMedia(`(prefers-color-scheme: light)`).matches) {
+  //   return 'light'
+  // } else if (matchMedia(`(prefers-color-scheme: dark)`).matches) {
+  //   return 'dark'
+  // }
 
   return DEFAULT_THEME
 }
