@@ -52,6 +52,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
           label={label}
           forId={id ?? name}
           labelLocation={labelLocation}
+          disabled={disabled}
         >
           <Box className={styles.wrap}>
             {LeftIcon && <LeftIcon size="sm" />}

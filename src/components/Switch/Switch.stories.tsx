@@ -12,4 +12,6 @@ const Template: ComponentStory<typeof Switch> = args => {
 }
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  disabled: false,
+}

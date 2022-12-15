@@ -9,11 +9,6 @@ export const wrap = style([
     alignItems: 'center',
     background: 'transparent',
     color: 'text100',
-    opacity: {
-      base: '100',
-      hover: '80',
-      disabled: '50',
-    },
     borderColor: 'borderNormal',
     borderRadius: 'md',
     borderStyle: 'solid',
@@ -26,9 +21,10 @@ export const wrap = style([
     height: '52px',
 
     selectors: {
-      // ':disabled, [disabled]': {
-      //   cursor: 'not-allowed',
-      // },
+      '&:has(:disabled), &:has(:disabled):hover': {
+        cursor: 'default',
+        opacity: 0.5,
+      },
 
       '&:focus-within': {
         opacity: '1 !important',

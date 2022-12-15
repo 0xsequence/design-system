@@ -12,7 +12,7 @@ export const list = style([
   }),
   {
     selectors: {
-      '&:focus-within': {
+      '&:has(:focus-visible)': {
         outlineColor: vars.colors.borderFocus,
         outlineStyle: 'solid',
         outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,

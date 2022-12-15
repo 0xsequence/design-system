@@ -14,7 +14,7 @@ export const cardVariants = recipe({
     },
 
     disabled: {
-      true: { opacity: 0.5, cursor: 'not-allowed', pointerEvents: 'none' },
+      true: { opacity: 0.5, cursor: 'default', pointerEvents: 'none' },
     },
 
     outlined: {

@@ -8,15 +8,9 @@ import {
   HiddenLabel,
   LabelledField,
 } from '~/components/LabelledField'
-import { Text } from '~/components/Text'
 import { ChevronDownIcon } from '~/icons'
 
-import {
-  contentStyle,
-  groupLabelStyle,
-  optionStyle,
-  triggerStyle,
-} from './styles.css'
+import { contentStyle, optionStyle, triggerStyle } from './styles.css'
 
 type SelectOption = {
   className?: string
@@ -72,6 +66,7 @@ export const Select = forwardRef(
       label={label}
       labelLocation={labelLocation}
       whiteSpace="nowrap"
+      disabled={disabled}
     >
       <SelectPrimitive.Root
         disabled={disabled || processing}
@@ -92,12 +87,12 @@ export const Select = forwardRef(
         <SelectPrimitive.Content className={contentStyle}>
           <SelectPrimitive.Viewport>
             <SelectPrimitive.Group>
-              <SelectPrimitive.Label className={groupLabelStyle}>
+              {/* <SelectPrimitive.Label className={groupLabelStyle}>
                 <Text>{placeholder}</Text>
                 <Box as={SelectPrimitive.Icon} display="inline-flex">
                   <ChevronDownIcon />
                 </Box>
-              </SelectPrimitive.Label>
+              </SelectPrimitive.Label> */}
 
               {options.map(({ value, label, ...rest }) => (
                 <SelectItem key={label} value={value} {...rest}>

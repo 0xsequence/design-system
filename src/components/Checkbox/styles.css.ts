@@ -16,6 +16,10 @@ export const checkboxVariants = recipe({
       hover: '80',
       disabled: '50',
     },
+    cursor: {
+      base: 'pointer',
+      disabled: 'default',
+    },
   }),
 
   variants: {

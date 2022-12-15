@@ -16,4 +16,5 @@ Demo.args = {
   label: 'This is the label (CheckmarkIcon is missing)',
   labelLocation: 'right',
   size: 'sm',
+  disabled: false,
 }

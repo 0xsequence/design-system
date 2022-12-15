@@ -43,7 +43,7 @@ export const buttonVariants = recipe({
       square: atoms({ borderRadius: 'sm' }),
     },
 
-    disabled: { true: atoms({ cursor: 'not-allowed', opacity: '50' }) },
+    disabled: { true: atoms({ cursor: 'default', opacity: '50' }) },
 
     iconOnly: { true: {} },
     hasLeftIcon: { true: {} },

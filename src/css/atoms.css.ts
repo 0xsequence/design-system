@@ -154,7 +154,7 @@ const selectorProperties = defineProperties({
     borderRightStyle: borderStyles,
     borderTopStyle: borderStyles,
     color: vars.colors,
-    cursor: ['default', 'pointer', 'not-allowed'],
+    cursor: ['default', 'pointer'],
     opacity: vars.opacity,
     outline: ['none'],
     pointerEvents: ['none', 'auto'],

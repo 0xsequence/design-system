@@ -22,7 +22,7 @@ globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
 })
 
-globalStyle('*:focus', {
+globalStyle('*:focus-visible', {
   outlineColor: vars.colors.borderFocus,
   outlineStyle: 'solid',
   outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,

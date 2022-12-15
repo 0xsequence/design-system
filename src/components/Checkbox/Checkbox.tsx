@@ -48,6 +48,7 @@ export const Checkbox = forwardRef(
       label={label}
       labelLocation={labelLocation}
       whiteSpace="nowrap"
+      disabled={disabled}
     >
       <CheckboxPrimitive.Root
         className={checkboxVariants({ size })}

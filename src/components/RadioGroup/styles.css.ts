@@ -9,6 +9,13 @@ export const radioItemVariants = recipe({
     borderRadius: 'circle',
     borderStyle: 'solid',
     borderColor: 'borderFocus',
+    cursor: {
+      base: 'pointer',
+      disabled: 'default',
+    },
+    opacity: {
+      disabled: '50',
+    },
   }),
 
   variants: {

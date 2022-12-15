@@ -3,13 +3,13 @@ import { style } from '@vanilla-extract/css'
 import { vars } from '~/css'
 
 export const root = style({
-  cursor: 'pointer',
   width: '48px',
   height: '28px',
   background: vars.colors.backgroundControl,
   padding: vars.space['1'],
   borderRadius: vars.radii.circle,
   position: 'relative',
+  cursor: 'pointer',
 
   transition: 'background 100ms ease-out',
 
@@ -20,6 +20,11 @@ export const root = style({
 
     '&[data-state="checked"]': {
       background: vars.colors.gradientPrimary,
+    },
+
+    '&:disabled': {
+      cursor: 'default',
+      opacity: '0.5',
     },
   },
 })

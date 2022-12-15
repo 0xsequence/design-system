@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css'
 
 import { textVariants } from '~/components/Text/styles.css'
-import { atoms } from '~/css'
+import { atoms, vars } from '~/css'
 
 export const triggerStyle = style([
   textVariants({ variant: 'normal' }),
@@ -12,7 +12,6 @@ export const triggerStyle = style([
     borderRadius: 'md',
     borderStyle: 'solid',
     borderWidth: 'thin',
-    cursor: 'pointer',
     display: 'inline-flex',
     fontWeight: 'medium',
     gap: '1',
@@ -20,15 +19,17 @@ export const triggerStyle = style([
     opacity: {
       base: '100',
       hover: '80',
+      disabled: '50',
     },
     padding: '4',
     userSelect: 'none',
+    cursor: {
+      base: 'pointer',
+      disabled: 'default',
+    },
   }),
   {
     height: 52,
-    selectors: {
-      '&[data-placeholder]:not(:focus)': { opacity: 0.8 },
-    },
   },
 ])
 
@@ -61,9 +62,10 @@ export const optionStyle = style([
   atoms({
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
     cursor: {
       base: 'pointer',
-      disabled: 'not-allowed',
+      disabled: 'default',
     },
     paddingX: '4',
     paddingY: '3',
@@ -72,14 +74,21 @@ export const optionStyle = style([
       hover: 'none',
     },
     color: 'text100',
-    background: {
-      focus: 'backgroundSecondary',
-      hover: 'backgroundSecondary',
-      checked: 'backgroundControl',
-    },
     opacity: {
       base: '100',
       disabled: '50',
     },
   }),
+  {
+    height: 52,
+
+    selectors: {
+      '&[data-highlighted]': {
+        background: vars.colors.backgroundSecondary,
+      },
+      '&[data-state="checked"]': {
+        background: vars.colors.backgroundControl,
+      },
+    },
+  },
 ])

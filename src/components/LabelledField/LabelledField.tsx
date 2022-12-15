@@ -16,6 +16,7 @@ export type HasLabel = {
 type LabelledFieldProps = (HasLabel | HiddenLabel) & {
   color?: string
   forId?: string
+  disabled?: boolean
 }
 
 // TODO: handle error text and secondary description label
@@ -29,10 +30,15 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
   label = '',
   labelLocation = 'hidden',
   forId,
+  disabled,
   ...boxProps
 }: PolymorphicProps<LabelledFieldProps, T>) => {
   const renderLabel = () => (
-    <Text variant="small" hidden={labelLocation === 'hidden'}>
+    <Text
+      variant="small"
+      hidden={labelLocation === 'hidden'}
+      opacity={disabled ? '50' : '100'}
+    >
       {label}
     </Text>
   )

@@ -13,6 +13,7 @@ import {
 type RadioOption = {
   label: string
   value: string
+  disabled?: boolean
 }
 
 export type RadioGroupProps = RadioItemVariants &
@@ -28,15 +29,28 @@ type RadioOptionProps = RadioItemVariants & {
   id: string
   label: string
   value: string
+  disabled?: boolean
 }
 
-const RadioOption = ({ id, label, size = 'sm', value }: RadioOptionProps) => (
+const RadioOption = ({
+  id,
+  label,
+  size = 'sm',
+  value,
+  disabled,
+}: RadioOptionProps) => (
   <Box alignItems="center">
-    <LabelledField label={label} labelLocation="right" forId={id}>
+    <LabelledField
+      label={label}
+      labelLocation="right"
+      forId={id}
+      disabled={disabled}
+    >
       <RadioPrimitive.Item
         className={radioItemVariants({ size })}
         value={value}
         id={id}
+        disabled={disabled}
       >
         <RadioPrimitive.Indicator className={indicatorVariants({ size })} />
       </RadioPrimitive.Item>
@@ -59,13 +73,14 @@ export const RadioGroup = forwardRef(
   ) => (
     <RadioPrimitive.Root disabled={disabled} name={name} ref={ref} {...props}>
       <Box flexDirection={flexDirection} gap={gap}>
-        {options.map(({ label, value }) => (
+        {options.map(({ label, value, disabled }) => (
           <RadioOption
             id={`${name}-${value}`}
             key={value}
             label={label}
             size={size}
             value={value}
+            disabled={disabled}
           />
         ))}
       </Box>
