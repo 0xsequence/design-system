@@ -34,6 +34,7 @@ const FLEX_PROPS = [
   'gap',
   'justifyContent',
   'justifySelf',
+  'placeItems',
 ]
 
 export const Box: PolymorphicComponent<{}, 'div'> = forwardRef(
