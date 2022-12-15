@@ -1,19 +1,19 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { ReactNode, useState, ComponentPropsWithoutRef } from 'react'
 
-import { Text } from '~/components/Text'
+import { Box } from '../Box'
+import { Text } from '../Text'
 
 import * as styles from './styles.css'
 
-interface TabsProps
+export interface TabsProps
   extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
-  tabs: TabItemProps[]
+  tabs: (TabItemProps & { content: ReactNode })[]
 }
 
-interface TabItemProps {
+export interface TabItemProps {
   value: string
-  title: ReactNode
-  content: ReactNode
+  label: ReactNode
 }
 
 export const Tabs = (props: TabsProps) => {
@@ -25,9 +25,6 @@ export const Tabs = (props: TabsProps) => {
     return null
   }
 
-  const selectorWidth = 100 / tabs.length
-  const selectedIdx = tabs.findIndex(tab => tab.value === selectedValue)
-
   const handleValueChange = (value: string) => {
     setSelectedValue(value)
     onValueChange?.(value)
@@ -35,29 +32,8 @@ export const Tabs = (props: TabsProps) => {
 
   return (
     <TabsPrimitive.Root onValueChange={handleValueChange} {...rest}>
-      <TabsPrimitive.List
-        className={styles.list}
-        style={{ outline: undefined }}
-      >
-        <div className={styles.selectorContainer}>
-          <div
-            className={styles.selector}
-            style={{
-              width: `${selectorWidth}%`,
-              transform: `translateX(${selectedIdx * 100}%)`,
-            }}
-          />
-        </div>
-        {tabs.map(tab => (
-          <TabsPrimitive.Trigger
-            className={styles.trigger}
-            key={tab.value}
-            value={tab.value}
-          >
-            <Text variant="medium">{tab.title}</Text>
-          </TabsPrimitive.Trigger>
-        ))}
-      </TabsPrimitive.List>
+      <TabsHeader tabs={tabs} value={selectedValue} />
+
       {tabs.map(tab => (
         <TabsPrimitive.Content
           className={styles.content}
@@ -71,40 +47,50 @@ export const Tabs = (props: TabsProps) => {
   )
 }
 
-// export const TabsRoot = TabsPrimitive.Root
+export interface TabsHeaderProps {
+  tabs: TabItemProps[]
+  value: string | undefined
+}
 
-// export const TabsContent = TabsPrimitive.TabsContent
+export const TabsHeader = (props: TabsHeaderProps) => {
+  const { tabs, value } = props
 
-// export const TabsTrigger = forwardRef<
-//   React.ElementRef<typeof TabsPrimitive.TabsTrigger>,
-//   React.ComponentPropsWithoutRef<typeof TabsPrimitive.TabsTrigger>
-// >((props, forwardedRef) => {
-//   const { className, ...rest } = props
-//   return <TabsPrimitive.TabsTrigger className={clsx(className, styles.trigger)} {...rest} ref={forwardedRef} />
-// })
-// TabsTrigger.displayName = 'TabsTrigger'
+  if (!tabs.length) {
+    return null
+  }
 
-// export const TabsList = (props: PropsWithChildren<{}>) => {
-//   const { children } = props
+  const selectorWidth = 100 / tabs.length
+  const selectedIdx = tabs.findIndex(tab => tab.value === value)
 
-//   const selectorWidth = 100 / Children.count(children)
+  return (
+    <TabsPrimitive.List className={styles.list} style={{ outline: undefined }}>
+      <Box display="flex" position="absolute" inset="2" height="8">
+        <div
+          className={styles.selector}
+          style={{
+            width: `${selectorWidth}%`,
+            transform: `translateX(${selectedIdx * 100}%)`,
+          }}
+        />
+      </Box>
 
-//   const selectedIdx = Children.toArray(children).findIndex(child => {
-//     if (!isValidElement(child)) {
-//       return
-//     }
+      {tabs.map(tab => (
+        <TabsPrimitive.Trigger
+          className={styles.trigger}
+          key={tab.value}
+          value={tab.value}
+        >
+          <Text variant="medium">{tab.label}</Text>
+        </TabsPrimitive.Trigger>
+      ))}
+    </TabsPrimitive.List>
+  )
+}
 
-//     const { value } = child.props
+export const TabsRoot = TabsPrimitive.Root
 
-//     console.log('child props', child.props)
-//   })
+export const TabsList = TabsPrimitive.TabsList
 
-//   return (
-//     <TabsPrimitive.TabsList className={styles.list} >
-//       <div className={styles.selectorContainer}>
-//         <div className={styles.selector} style={{ width: `${selectorWidth}%`, transform: `translateX(${selectedIdx * 100}%)` }} />
-//       </div>
-//       {children}
-//     </TabsPrimitive.TabsList>
-//   )
-// }
+export const TabsTrigger = TabsPrimitive.TabsTrigger
+
+export const TabsContent = TabsPrimitive.TabsContent

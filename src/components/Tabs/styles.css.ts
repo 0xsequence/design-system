@@ -4,6 +4,7 @@ import { atoms, vars } from '~/css'
 
 export const list = style([
   atoms({
+    display: 'flex',
     position: 'relative',
     width: 'full',
     borderRadius: 'md',
@@ -24,8 +25,8 @@ export const list = style([
 
 export const trigger = style([
   atoms({
+    width: 'full',
     height: 'full',
-    width: '1/2',
     borderRadius: 'sm',
     outline: 'none',
     cursor: 'pointer',
@@ -51,20 +52,12 @@ export const trigger = style([
   },
 ])
 
-export const selectorContainer = atoms({
-  position: 'absolute',
-  inset: '2',
-  height: '8',
-  display: 'flex',
-})
-
 export const selector = style([
   atoms({
     position: 'absolute',
     borderRadius: 'sm',
     top: '0',
     left: '0',
-    width: '1/2',
     height: '8',
     background: 'buttonGlass',
     pointerEvents: 'none',
