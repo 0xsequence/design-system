@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { ElementType, forwardRef } from 'react'
 
 import {
@@ -19,6 +20,7 @@ export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
     const {
       as = 'span',
       variant = 'inherit',
+      className,
       hidden,
       italic,
       underline,
@@ -32,15 +34,18 @@ export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
     return (
       <Box
         as={as}
-        className={styles.textVariants({
-          variant,
-          hidden,
-          ellipsis,
-          italic,
-          underline,
-          uppercase,
-          capitalize,
-        })}
+        className={clsx(
+          className,
+          styles.textVariants({
+            variant,
+            hidden,
+            ellipsis,
+            italic,
+            underline,
+            uppercase,
+            capitalize,
+          })
+        )}
         ref={ref}
         {...boxProps}
       >
