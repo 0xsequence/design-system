@@ -16,6 +16,7 @@ import { IconProps } from '~/icons/types'
 import * as styles from './styles.css'
 
 export type TextInputProps = (HasLabel | HiddenLabel) & {
+  description?: string
   disabled?: boolean
   leftIcon?: ComponentType<IconProps>
   rightIcon?: ComponentType<IconProps>
@@ -34,6 +35,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       const {
         as = 'input',
         autoComplete = 'off',
+        description,
         disabled = false,
         id,
         label = '',
@@ -49,6 +51,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
 
       return (
         <LabelledField
+          description={description}
           label={label}
           forId={id ?? name}
           labelLocation={labelLocation}

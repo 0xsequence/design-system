@@ -15,6 +15,7 @@ export type HasLabel = {
 
 type LabelledFieldProps = (HasLabel | HiddenLabel) & {
   color?: string
+  description?: string
   forId?: string
   disabled?: boolean
 }
@@ -27,20 +28,36 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
 >({
   color,
   children,
+  description,
   label = '',
-  labelLocation = 'hidden',
+  labelLocation = 'top',
   forId,
   disabled,
   ...boxProps
 }: PolymorphicProps<LabelledFieldProps, T>) => {
   const renderLabel = () => (
-    <Text
-      variant="small"
-      hidden={labelLocation === 'hidden'}
-      opacity={disabled ? '50' : '100'}
-    >
-      {label}
-    </Text>
+    <Box flexDirection="column" gap="0.5">
+      {label && (
+        <Text
+          variant="small"
+          hidden={labelLocation === 'hidden'}
+          opacity={disabled ? '50' : '100'}
+        >
+          {label}
+        </Text>
+      )}
+
+      {description && (
+        <Text
+          color="text50"
+          variant="small"
+          hidden={labelLocation === 'hidden'}
+          opacity={disabled ? '50' : '100'}
+        >
+          {description}
+        </Text>
+      )}
+    </Box>
   )
 
   const horizontal = labelLocation === 'left' || labelLocation === 'right'

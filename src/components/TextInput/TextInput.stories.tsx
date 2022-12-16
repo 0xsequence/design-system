@@ -17,6 +17,7 @@ const Template: ComponentStory<typeof TextInput> = args => {
 export const Basic = Template.bind({})
 Basic.args = {
   label: 'This the label',
+  description: 'This is the description',
   placeholder: 'This is the placeholder',
   labelLocation: 'top',
 }
