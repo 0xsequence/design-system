@@ -10,7 +10,7 @@ import { Scroll } from '../Scroll'
 
 import * as styles from './styles.css'
 
-export interface ModalProps {
+export type ModalProps = {
   backdropColor?: BoxProps['background']
   className?: string
   closeOnEscape?: boolean
@@ -18,7 +18,7 @@ export interface ModalProps {
   disableAnimation?: boolean
   onClose?: () => void
   scroll?: boolean
-}
+} & styles.ContentVariants
 
 // const portalRoot = document.getElementById('portal')
 
@@ -26,11 +26,12 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const {
     backdropColor = 'gradientBackdrop',
     children,
-    disableAnimation = false,
-    scroll = true,
-    onClose,
-    closeOnOverlayClick = true,
     closeOnEscape = true,
+    closeOnOverlayClick = true,
+    disableAnimation = false,
+    onClose,
+    scroll = true,
+    size = 'lg',
   } = props
 
   return (
@@ -61,7 +62,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
           </Box>
 
           <Dialog.Content
-            className={styles.content}
+            className={styles.contentVariants({ size })}
             onEscapeKeyDown={() => {
               if (closeOnEscape) {
                 onClose?.()

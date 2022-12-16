@@ -28,6 +28,7 @@ const Template: ComponentStory<typeof Modal> = args => {
 
 export const Default = Template.bind({})
 Default.args = {
+  size: 'lg',
   children: (
     <Box
       flexDirection="column"

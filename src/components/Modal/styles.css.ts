@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css'
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms, responsiveStyle, vars } from '~/css'
 
@@ -25,32 +26,58 @@ export const overlay = style([
   }),
 ])
 
-export const content = style([
-  atoms({
-    position: 'fixed',
-    overflow: 'hidden',
-    background: 'backgroundPrimary',
-    width: 'vw',
-    bottom: '0',
-    outline: {
-      focus: 'none',
-    },
-  }),
-  {
-    height: 'calc(100vh - 70px)',
-    borderRadius: `${vars.radii.lg} ${vars.radii.lg} 0 0`,
-
-    '@media': responsiveStyle({
-      lg: {
-        width: '720px',
-        bottom: 'auto',
-        maxHeight: 'min(800px, calc(100vh - 80px))',
-        height: '800px',
-        borderRadius: vars.radii.lg,
+export const contentVariants = recipe({
+  base: [
+    atoms({
+      position: 'fixed',
+      overflow: 'hidden',
+      background: 'backgroundPrimary',
+      bottom: '0',
+      outline: {
+        focus: 'none',
       },
     }),
+    {
+      borderRadius: `${vars.radii.lg} ${vars.radii.lg} 0 0`,
+      '@media': responsiveStyle({
+        lg: {
+          bottom: 'auto',
+          borderRadius: vars.radii.lg,
+        },
+      }),
+    },
+  ],
+  variants: {
+    size: {
+      sm: {
+        width: '100vw',
+        minHeight: 100,
+
+        '@media': responsiveStyle({
+          lg: {
+            width: 'fit-content',
+            minWidth: '540px',
+            maxHeight: 'min(800px, calc(100vh - 80px))',
+          },
+        }),
+      },
+      lg: {
+        width: '100vw',
+        height: 'calc(100vh - 70px)',
+
+        '@media': responsiveStyle({
+          lg: {
+            width: '720px',
+            maxHeight: 'min(800px, calc(100vh - 80px))',
+            height: '800px',
+          },
+        }),
+      },
+    },
   },
-])
+})
+
+export type ContentVariants = RecipeVariants<typeof contentVariants>
 
 export const close = style([
   atoms({
