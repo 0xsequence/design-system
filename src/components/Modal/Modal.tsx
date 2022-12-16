@@ -46,8 +46,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
           >
             <motion.div
               key="modal-overlay"
-              initial={disableAnimation ? undefined : { opacity: 0 }}
-              animate={disableAnimation ? undefined : { opacity: 1 }}
+              initial={disableAnimation ? false : { opacity: 0 }}
+              animate={disableAnimation ? false : { opacity: 1 }}
               exit={disableAnimation ? undefined : { opacity: 0 }}
               transition={{
                 type: 'tween',
@@ -72,8 +72,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
           >
             <motion.div
               key="modal-content"
-              initial={disableAnimation ? undefined : { y: '100%' }}
-              animate={disableAnimation ? undefined : { y: 0 }}
+              initial={disableAnimation ? false : { y: '100%' }}
+              animate={disableAnimation ? false : { y: 0 }}
               exit={disableAnimation ? undefined : { y: '100%' }}
               transition={{ type: 'tween', ease: 'easeOut' }}
             >
