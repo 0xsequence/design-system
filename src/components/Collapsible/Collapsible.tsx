@@ -33,7 +33,7 @@ export const Collapsible = (
       >
         <CollapsiblePrimitive.Trigger className={styles.trigger}>
           {typeof label === 'string' ? (
-            <Text variant="medium" color="text100">
+            <Text variant="normal" fontWeight="bold" color="text80">
               {label}
             </Text>
           ) : (
@@ -73,3 +73,9 @@ export const Collapsible = (
     </CollapsiblePrimitive.Root>
   )
 }
+
+export const CollapsibleRoot = CollapsiblePrimitive.Root
+
+export const CollapsibleTrigger = CollapsiblePrimitive.Trigger
+
+export const CollapsibleContent = CollapsiblePrimitive.Content

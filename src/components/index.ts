@@ -12,7 +12,12 @@ export { Breadcrumbs } from './Breadcrumbs'
 export { Button } from './Button'
 export { Card } from './Card'
 export { ControlledCheckbox, Checkbox } from './Checkbox'
-export { Collapsible } from './Collapsible'
+export {
+  Collapsible,
+  CollapsibleRoot,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from './Collapsible'
 export { Divider } from './Divider'
 export {
   DropdownMenuArrow,
