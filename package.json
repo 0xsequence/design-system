@@ -1,6 +1,6 @@
 {
   "name": "@0xsequence/design-system",
-  "version": "0.1.57",
+  "version": "0.1.58",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.es.js",
