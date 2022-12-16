@@ -2,27 +2,31 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { motion } from 'framer-motion'
 import { PropsWithChildren } from 'react'
 
+import { Box, BoxProps } from '~/components/Box'
 import { CloseIcon } from '~/icons'
 
-import { Box } from '../Box'
 import { IconButton } from '../IconButton'
 import { Scroll } from '../Scroll'
 
 import * as styles from './styles.css'
 
 export interface ModalProps {
+  backdropColor?: BoxProps['background']
+  className?: string
+  closeOnEscape?: boolean
+  closeOnOverlayClick?: boolean
+  disableAnimation?: boolean
   onClose?: () => void
   scroll?: boolean
-  closeOnOverlayClick?: boolean
-  closeOnEscape?: boolean
-  className?: string
 }
 
 // const portalRoot = document.getElementById('portal')
 
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const {
+    backdropColor = 'gradientBackdrop',
     children,
+    disableAnimation = false,
     scroll = true,
     onClose,
     closeOnOverlayClick = true,
@@ -33,12 +37,18 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     <Dialog.Root defaultOpen onOpenChange={onClose}>
       <Dialog.Portal forceMount /* container={portalRoot} */>
         <Box className={styles.root}>
-          <Dialog.Overlay className={styles.overlay} forceMount asChild>
+          <Box
+            as={Dialog.Overlay}
+            asChild
+            background={backdropColor}
+            className={styles.overlay}
+            forceMount
+          >
             <motion.div
               key="modal-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={disableAnimation ? undefined : { opacity: 0 }}
+              animate={disableAnimation ? undefined : { opacity: 1 }}
+              exit={disableAnimation ? undefined : { opacity: 0 }}
               transition={{
                 type: 'tween',
                 ease: 'linear',
@@ -48,7 +58,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 <IconButton icon={CloseIcon} className={styles.close} />
               )} */}
             </motion.div>
-          </Dialog.Overlay>
+          </Box>
 
           <Dialog.Content
             className={styles.content}
@@ -62,9 +72,9 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
           >
             <motion.div
               key="modal-content"
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
+              initial={disableAnimation ? undefined : { y: '100%' }}
+              animate={disableAnimation ? undefined : { y: 0 }}
+              exit={disableAnimation ? undefined : { y: '100%' }}
               transition={{ type: 'tween', ease: 'easeOut' }}
             >
               {scroll ? <Scroll>{children}</Scroll> : children}

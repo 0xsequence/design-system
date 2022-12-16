@@ -18,7 +18,6 @@ export const root = style([
 export const overlay = style([
   atoms({
     position: 'fixed',
-    background: 'gradientBackdrop',
     top: '0',
     left: '0',
     right: '0',

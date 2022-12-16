@@ -11,7 +11,7 @@ const context: { [key in Context]: string } = {
   warning: '#F4B03E',
 }
 
-type Background = 'primary' | 'secondary' | 'control' | 'inverse'
+type Background = 'primary' | 'secondary' | 'control' | 'inverse' | 'backdrop'
 
 const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
   dark: {
@@ -19,12 +19,14 @@ const backgrounds: { [key in ColorScheme]: { [key in Background]: string } } = {
     secondary: 'rgba(255, 255, 255, 0.1)',
     control: 'rgba(255, 255, 255, 0.25)',
     inverse: 'rgba(255, 255, 255, 1)',
+    backdrop: 'rgba(34, 34, 34, 0.9)',
   },
   light: {
     primary: 'rgba(244, 244, 244, 1)',
     secondary: 'rgba(0, 0, 0, 0.1)',
     control: 'rgba(0, 0, 0, 0.25)',
     inverse: 'rgba(0, 0, 0, 1)',
+    backdrop: 'rgba(221, 221, 221, 0.9)',
   },
 }
 
