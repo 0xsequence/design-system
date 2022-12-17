@@ -52,28 +52,31 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       return (
         <LabelledField
           description={description}
-          label={label}
-          forId={id ?? name}
-          labelLocation={labelLocation}
           disabled={disabled}
+          display="grid"
+          forId={id ?? name}
+          label={label}
+          labelLocation={labelLocation}
         >
-          <Box className={styles.wrap}>
-            {LeftIcon && <LeftIcon size="sm" />}
+          <Box width="full">
+            <Box className={styles.wrap}>
+              {LeftIcon && <LeftIcon size="sm" />}
 
-            <Box
-              as={as}
-              autoComplete={autoComplete}
-              className={styles.input}
-              disabled={disabled || processing}
-              id={id ?? name}
-              name={name}
-              ref={ref}
-              type={type}
-              {...rest}
-            />
+              <Box
+                as={as}
+                autoComplete={autoComplete}
+                className={styles.input}
+                disabled={disabled || processing}
+                id={id ?? name}
+                name={name}
+                ref={ref}
+                type={type}
+                {...rest}
+              />
 
-            {RightIcon && <RightIcon size="sm" />}
-            {controls}
+              {RightIcon && <RightIcon size="sm" />}
+              {controls}
+            </Box>
           </Box>
         </LabelledField>
       )

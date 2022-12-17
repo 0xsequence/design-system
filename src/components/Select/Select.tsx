@@ -62,11 +62,12 @@ export const Select = forwardRef(
     ref: Ref<HTMLButtonElement>
   ) => (
     <LabelledField
+      disabled={disabled}
+      display="grid"
       forId={id ?? name}
       label={label}
       labelLocation={labelLocation}
       whiteSpace="nowrap"
-      disabled={disabled}
     >
       <SelectPrimitive.Root
         disabled={disabled || processing}
