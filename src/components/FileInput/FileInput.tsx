@@ -55,6 +55,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
         labelLocation = 'hidden',
         name,
         onValueChange,
+        placeholder = 'Upload a file',
         processing = false,
         validExtensions,
         ...rest
@@ -66,7 +67,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
       const [fileData, setFileData] = useState<FileData | null>(null)
 
       const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const filelist = e.target.files as FileList
+        const filelist = e.currentTarget.files as FileList
         if (!filelist || !filelist[0]) {
           return
         }
@@ -97,6 +98,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
         >
           <Box width="full">
             <Box
+              justifyContent={fileData ? 'space-between' : 'flex-start'}
               color={fileData ? 'text100' : 'text50'}
               className={styles.wrap}
             >
@@ -108,7 +110,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
                   </Text>
                 </Box>
               ) : (
-                <Text>Upload a file</Text>
+                <Text>{placeholder}</Text>
               )}
 
               <Box

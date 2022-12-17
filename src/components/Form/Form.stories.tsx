@@ -3,6 +3,7 @@ import { ComponentMeta, Story } from '@storybook/react'
 import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { ControlledCheckbox as Checkbox } from '~/components/Checkbox'
+import { ControlledFileInput as FileInput } from '~/components/FileInput'
 import { ControlledRadioGroup as RadioGroup } from '~/components/RadioGroup'
 import { ControlledSelect as Select } from '~/components/Select'
 import { ControlledSwitch as Switch } from '~/components/Switch'
@@ -62,6 +63,20 @@ const Template: Story = ({ onSubmit, ...args }) => (
           />
           {errors.lastName?.message && (
             <Text color="negative">{errors.lastName.message as string}</Text>
+          )}
+
+          <FileInput
+            defaultValue=""
+            control={control}
+            label="File Input"
+            labelLocation="top"
+            name="fileInput"
+            onValueChange={(file: File | null) => setValue('fileInput', file)}
+            rules={{ required: 'A file is required' }}
+            validExtensions={['images']}
+          />
+          {errors.fileInput?.message && (
+            <Text color="negative">{errors.fileInput.message as string}</Text>
           )}
 
           <Select
