@@ -1,11 +1,7 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { forwardRef, Ref } from 'react'
 
-import {
-  HasLabel,
-  HiddenLabel,
-  LabelledField,
-} from '~/components/LabelledField'
+import { HasLabel, HiddenLabel, Field } from '~/components/Field'
 import { CheckmarkIcon } from '~/icons'
 
 import {
@@ -43,7 +39,7 @@ export const Checkbox = forwardRef(
     }: CheckboxProps,
     ref: Ref<HTMLButtonElement>
   ) => (
-    <LabelledField
+    <Field
       disabled={disabled}
       display="flex"
       forId={id ?? name}
@@ -61,6 +57,6 @@ export const Checkbox = forwardRef(
       >
         <Indicator />
       </CheckboxPrimitive.Root>
-    </LabelledField>
+    </Field>
   )
 )

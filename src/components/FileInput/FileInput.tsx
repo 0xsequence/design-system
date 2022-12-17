@@ -6,12 +6,8 @@ import {
   PolymorphicProps,
   PolymorphicRef,
 } from '~/components/Box'
+import { HasLabel, HiddenLabel, Field } from '~/components/Field'
 import { IconButton } from '~/components/IconButton'
-import {
-  HasLabel,
-  HiddenLabel,
-  LabelledField,
-} from '~/components/LabelledField'
 import { Text } from '~/components/Text'
 import { useCombinedRefs } from '~/hooks/useCombinedRefs'
 import { CloseIcon } from '~/icons'
@@ -88,7 +84,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
       const accept = validExtensions.map(ext => MIME_TYPES[ext]).join(',')
 
       return (
-        <LabelledField
+        <Field
           description={description}
           disabled={disabled}
           display="grid"
@@ -146,7 +142,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
               )}
             </Box>
           </Box>
-        </LabelledField>
+        </Field>
       )
     }
   )

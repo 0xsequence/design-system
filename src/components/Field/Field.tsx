@@ -15,8 +15,10 @@ export type HasLabel = {
   labelLocation: 'left' | 'right' | 'top'
 }
 
-type LabelledFieldProps = (HasLabel | HiddenLabel) & {
+type FieldProps = (HasLabel | HiddenLabel) & {
   color?: string
+  label?: string
+  labelLocation?: 'left' | 'right' | 'top' | 'hidden'
   description?: string
   forId?: string
   disabled?: boolean
@@ -25,7 +27,7 @@ type LabelledFieldProps = (HasLabel | HiddenLabel) & {
 // TODO: handle error text and secondary description label
 // TODO: handle isRequired in label?
 
-export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
+export const Field: PolymorphicComponent<FieldProps, 'div'> = <
   T extends ElementType
 >({
   color,
@@ -36,7 +38,7 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
   forId,
   disabled,
   ...boxProps
-}: PolymorphicProps<LabelledFieldProps, T>) => {
+}: PolymorphicProps<FieldProps, T>) => {
   const renderLabel = () => (
     <Box flexDirection="column" gap="0.5">
       {label && (

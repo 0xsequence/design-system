@@ -30,7 +30,7 @@ export {
 export { ControlledFileInput, FileInput } from './FileInput'
 export { Form } from './Form'
 export { IconButton } from './IconButton'
-export { LabelledField } from './LabelledField'
+export { Field } from './Field'
 export { Modal } from './Modal'
 export { ControlledRadioGroup, RadioGroup } from './RadioGroup'
 export { Scroll } from './Scroll'

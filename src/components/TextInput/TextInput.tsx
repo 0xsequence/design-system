@@ -6,11 +6,7 @@ import {
   PolymorphicProps,
   PolymorphicRef,
 } from '~/components/Box'
-import {
-  HasLabel,
-  HiddenLabel,
-  LabelledField,
-} from '~/components/LabelledField'
+import { HasLabel, HiddenLabel, Field } from '~/components/Field'
 import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
@@ -50,7 +46,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       } = props
 
       return (
-        <LabelledField
+        <Field
           description={description}
           disabled={disabled}
           display="grid"
@@ -78,7 +74,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               {controls}
             </Box>
           </Box>
-        </LabelledField>
+        </Field>
       )
     }
   )

@@ -2,7 +2,7 @@ import * as RadioPrimitive from '@radix-ui/react-radio-group'
 import { forwardRef, Ref } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
-import { LabelledField } from '~/components/LabelledField'
+import { Field } from '~/components/Field'
 
 import {
   indicatorVariants,
@@ -40,7 +40,7 @@ const RadioOption = ({
   disabled,
 }: RadioOptionProps) => (
   <Box alignItems="center">
-    <LabelledField
+    <Field
       disabled={disabled}
       display="flex"
       forId={id}
@@ -55,7 +55,7 @@ const RadioOption = ({
       >
         <RadioPrimitive.Indicator className={indicatorVariants({ size })} />
       </RadioPrimitive.Item>
-    </LabelledField>
+    </Field>
   </Box>
 )
 

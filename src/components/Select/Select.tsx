@@ -3,11 +3,7 @@ import { clsx } from 'clsx'
 import { forwardRef, Ref } from 'react'
 
 import { Box } from '~/components/Box'
-import {
-  HasLabel,
-  HiddenLabel,
-  LabelledField,
-} from '~/components/LabelledField'
+import { HasLabel, HiddenLabel, Field } from '~/components/Field'
 import { ChevronDownIcon } from '~/icons'
 
 import { contentStyle, optionStyle, triggerStyle } from './styles.css'
@@ -61,7 +57,7 @@ export const Select = forwardRef(
     }: SelectProps,
     ref: Ref<HTMLButtonElement>
   ) => (
-    <LabelledField
+    <Field
       disabled={disabled}
       display="grid"
       forId={id ?? name}
@@ -104,6 +100,6 @@ export const Select = forwardRef(
           </SelectPrimitive.Viewport>
         </SelectPrimitive.Content>
       </SelectPrimitive.Root>
-    </LabelledField>
+    </Field>
   )
 )
