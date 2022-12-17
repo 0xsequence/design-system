@@ -37,18 +37,19 @@ export const Checkbox = forwardRef(
       id,
       name,
       label = '',
-      labelLocation = 'hidden',
+      labelLocation = 'left',
       size = 'sm',
       ...props
     }: CheckboxProps,
     ref: Ref<HTMLButtonElement>
   ) => (
     <LabelledField
+      disabled={disabled}
+      display="flex"
       forId={id ?? name}
       label={label}
       labelLocation={labelLocation}
       whiteSpace="nowrap"
-      disabled={disabled}
     >
       <CheckboxPrimitive.Root
         className={checkboxVariants({ size })}

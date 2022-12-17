@@ -41,10 +41,11 @@ const RadioOption = ({
 }: RadioOptionProps) => (
   <Box alignItems="center">
     <LabelledField
+      disabled={disabled}
+      display="flex"
+      forId={id}
       label={label}
       labelLocation="right"
-      forId={id}
-      disabled={disabled}
     >
       <RadioPrimitive.Item
         className={radioItemVariants({ size })}

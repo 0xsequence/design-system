@@ -13,6 +13,7 @@ export const wrap = style([
     borderRadius: 'md',
     borderStyle: 'solid',
     borderWidth: 'thin',
+    minWidth: 'full',
     paddingX: '4',
     gap: '2',
   }),

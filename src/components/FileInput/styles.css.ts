@@ -6,23 +6,26 @@ import { atoms } from '~/css'
 export const wrap = style([
   textVariants({ variant: 'normal' }),
   atoms({
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
-    position: 'relative',
     borderColor: 'borderNormal',
     borderRadius: 'md',
     borderStyle: 'dashed',
     borderWidth: 'thin',
-    padding: '4',
+    display: 'inline-flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    minWidth: 'full',
     opacity: {
       base: '100',
       hover: '80',
       disabled: '50',
     },
+    padding: '4',
+    position: 'relative',
   }),
-  { height: 52, minWidth: '100%' },
+  {
+    height: 52,
+  },
 ])
 
 export const input = style([

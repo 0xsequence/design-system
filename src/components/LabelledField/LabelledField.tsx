@@ -3,6 +3,8 @@ import { ElementType } from 'react'
 import { Box, PolymorphicComponent, PolymorphicProps } from '~/components/Box'
 import { Text } from '~/components/Text'
 
+import * as styles from './styles.css'
+
 export type HiddenLabel = {
   label?: string
   labelLocation?: 'hidden'
@@ -60,16 +62,12 @@ export const LabelledField: PolymorphicComponent<LabelledFieldProps, 'div'> = <
     </Box>
   )
 
-  const horizontal = labelLocation === 'left' || labelLocation === 'right'
-
   return (
     <Box
       as="label"
+      className={styles.labelVariants({ labelLocation })}
       color={color ?? 'text100'}
-      alignItems={horizontal ? 'center' : 'stretch'}
-      flexDirection={horizontal ? 'row' : 'column'}
       htmlFor={forId}
-      gap="3"
       {...boxProps}
     >
       {['left', 'top', 'hidden'].includes(labelLocation) && renderLabel()}
