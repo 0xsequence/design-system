@@ -5,23 +5,14 @@ import { Text } from '~/components/Text'
 
 import * as styles from './styles.css'
 
-export type HiddenLabel = {
+export interface FieldProps {
+  id?: string
   label?: string
-  labelLocation?: 'hidden'
-}
-
-export type HasLabel = {
-  label: string
-  labelLocation: 'left' | 'right' | 'top'
-}
-
-type FieldProps = (HasLabel | HiddenLabel) & {
-  color?: string
-  label?: string
-  labelLocation?: 'left' | 'right' | 'top' | 'hidden'
   description?: string
-  forId?: string
+  labelLocation?: 'left' | 'right' | 'top' | 'hidden'
   disabled?: boolean
+  required?: boolean // TODO
+  error?: string // TODO
 }
 
 // TODO: handle error text and secondary description label
@@ -29,23 +20,25 @@ type FieldProps = (HasLabel | HiddenLabel) & {
 
 export const Field: PolymorphicComponent<FieldProps, 'div'> = <
   T extends ElementType
->({
-  color,
-  children,
-  description,
-  label = '',
-  labelLocation = 'top',
-  forId,
-  disabled,
-  ...boxProps
-}: PolymorphicProps<FieldProps, T>) => {
+>(
+  props: PolymorphicProps<FieldProps, T>
+) => {
+  const {
+    id,
+    label,
+    description,
+    labelLocation = 'top',
+    children,
+    ...rest
+  } = props
+
   const renderLabel = () => (
     <Box flexDirection="column" gap="0.5">
       {label && (
         <Text
           variant="small"
+          color="text100"
           hidden={labelLocation === 'hidden'}
-          opacity={disabled ? '50' : '100'}
         >
           {label}
         </Text>
@@ -53,10 +46,9 @@ export const Field: PolymorphicComponent<FieldProps, 'div'> = <
 
       {description && (
         <Text
-          color="text50"
           variant="small"
+          color="text50"
           hidden={labelLocation === 'hidden'}
-          opacity={disabled ? '50' : '100'}
         >
           {description}
         </Text>
@@ -68,9 +60,8 @@ export const Field: PolymorphicComponent<FieldProps, 'div'> = <
     <Box
       as="label"
       className={styles.labelVariants({ labelLocation })}
-      color={color ?? 'text100'}
-      htmlFor={forId}
-      {...boxProps}
+      htmlFor={id}
+      {...rest}
     >
       {['left', 'top', 'hidden'].includes(labelLocation) && renderLabel()}
       {children}

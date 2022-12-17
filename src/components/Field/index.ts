@@ -1,2 +1,2 @@
 export { Field } from './Field'
-export type { HasLabel, HiddenLabel } from './Field'
+export type { FieldProps } from './Field'

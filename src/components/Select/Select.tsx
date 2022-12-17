@@ -3,7 +3,7 @@ import { clsx } from 'clsx'
 import { forwardRef, Ref } from 'react'
 
 import { Box } from '~/components/Box'
-import { HasLabel, HiddenLabel, Field } from '~/components/Field'
+import { Field, FieldProps } from '~/components/Field'
 import { ChevronDownIcon } from '~/icons'
 
 import { contentStyle, optionStyle, triggerStyle } from './styles.css'
@@ -15,7 +15,7 @@ type SelectOption = {
   value: string
 }
 
-export type SelectProps = (HasLabel | HiddenLabel) &
+export type SelectProps = FieldProps &
   SelectPrimitive.SelectProps & {
     disabled?: boolean
     id?: string
@@ -43,8 +43,8 @@ const SelectItem = forwardRef(
 )
 
 export const Select = forwardRef(
-  (
-    {
+  (props: SelectProps, ref: Ref<HTMLButtonElement>) => {
+    const {
       disabled = false,
       id,
       label = '',
@@ -53,53 +53,54 @@ export const Select = forwardRef(
       options,
       placeholder,
       processing = false,
-      ...props
-    }: SelectProps,
-    ref: Ref<HTMLButtonElement>
-  ) => (
-    <Field
-      disabled={disabled}
-      display="grid"
-      forId={id ?? name}
-      label={label}
-      labelLocation={labelLocation}
-      whiteSpace="nowrap"
-    >
-      <SelectPrimitive.Root
-        disabled={disabled || processing}
-        name={name}
-        {...props}
-      >
-        <SelectPrimitive.Trigger
-          id={id ?? name}
-          className={triggerStyle}
-          ref={ref}
-        >
-          <SelectPrimitive.Value placeholder={placeholder} />
-          <Box as={SelectPrimitive.Icon} display="inline-flex">
-            <ChevronDownIcon />
-          </Box>
-        </SelectPrimitive.Trigger>
+      ...rest
+    } = props
 
-        <SelectPrimitive.Content className={contentStyle}>
-          <SelectPrimitive.Viewport>
-            <SelectPrimitive.Group>
-              {/* <SelectPrimitive.Label className={groupLabelStyle}>
+    return (
+      <Field
+        disabled={disabled}
+        display="grid"
+        id={id ?? name}
+        label={label}
+        labelLocation={labelLocation}
+        whiteSpace="nowrap"
+      >
+        <SelectPrimitive.Root
+          disabled={disabled || processing}
+          name={name}
+          {...rest}
+        >
+          <SelectPrimitive.Trigger
+            id={id ?? name}
+            className={triggerStyle}
+            ref={ref}
+          >
+            <SelectPrimitive.Value placeholder={placeholder} />
+            <Box as={SelectPrimitive.Icon} display="inline-flex">
+              <ChevronDownIcon />
+            </Box>
+          </SelectPrimitive.Trigger>
+
+          <SelectPrimitive.Content className={contentStyle}>
+            <SelectPrimitive.Viewport>
+              <SelectPrimitive.Group>
+                {/* <SelectPrimitive.Label className={groupLabelStyle}>
                 <Text>{placeholder}</Text>
                 <Box as={SelectPrimitive.Icon} display="inline-flex">
                   <ChevronDownIcon />
                 </Box>
               </SelectPrimitive.Label> */}
 
-              {options.map(({ value, label, ...rest }) => (
-                <SelectItem key={label} value={value} {...rest}>
-                  {label}
-                </SelectItem>
-              ))}
-            </SelectPrimitive.Group>
-          </SelectPrimitive.Viewport>
-        </SelectPrimitive.Content>
-      </SelectPrimitive.Root>
-    </Field>
-  )
+                {options.map(({ value, label, ...rest }) => (
+                  <SelectItem key={label} value={value} {...rest}>
+                    {label}
+                  </SelectItem>
+                ))}
+              </SelectPrimitive.Group>
+            </SelectPrimitive.Viewport>
+          </SelectPrimitive.Content>
+        </SelectPrimitive.Root>
+      </Field>
+    )
+  }
 )

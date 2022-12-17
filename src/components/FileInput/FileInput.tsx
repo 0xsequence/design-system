@@ -6,7 +6,7 @@ import {
   PolymorphicProps,
   PolymorphicRef,
 } from '~/components/Box'
-import { HasLabel, HiddenLabel, Field } from '~/components/Field'
+import { Field, FieldProps } from '~/components/Field'
 import { IconButton } from '~/components/IconButton'
 import { Text } from '~/components/Text'
 import { useCombinedRefs } from '~/hooks/useCombinedRefs'
@@ -30,8 +30,7 @@ type FileData = {
   extension: string
 }
 
-export type FileInputProps = (HasLabel | HiddenLabel) & {
-  description?: string
+export type FileInputProps = FieldProps & {
   disabled?: boolean
   name: string
   processing?: boolean
@@ -43,7 +42,10 @@ export type FileInputProps = (HasLabel | HiddenLabel) & {
 export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
   forwardRef(
     <T extends ElementType>(
-      {
+      props: PolymorphicProps<FileInputProps, T>,
+      ref: PolymorphicRef<T>
+    ) => {
+      const {
         description,
         disabled = false,
         id,
@@ -55,9 +57,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
         processing = false,
         validExtensions,
         ...rest
-      }: PolymorphicProps<FileInputProps, T>,
-      ref: PolymorphicRef<T>
-    ) => {
+      } = props
       const inputRef = useRef<HTMLInputElement>(null)
       const combinedRef = useCombinedRefs(inputRef, ref)
       const [fileData, setFileData] = useState<FileData | null>(null)
@@ -88,7 +88,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
           description={description}
           disabled={disabled}
           display="grid"
-          forId={id ?? name}
+          id={id ?? name}
           label={label}
           labelLocation={labelLocation}
         >

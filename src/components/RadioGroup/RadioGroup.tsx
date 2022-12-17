@@ -32,59 +32,58 @@ type RadioOptionProps = RadioItemVariants & {
   disabled?: boolean
 }
 
-const RadioOption = ({
-  id,
-  label,
-  size = 'sm',
-  value,
-  disabled,
-}: RadioOptionProps) => (
-  <Box alignItems="center">
-    <Field
-      disabled={disabled}
-      display="flex"
-      forId={id}
-      label={label}
-      labelLocation="right"
-    >
-      <RadioPrimitive.Item
-        className={radioItemVariants({ size })}
-        value={value}
-        id={id}
+const RadioOption = (props: RadioOptionProps) => {
+  const { id, label, size = 'sm', value, disabled } = props
+
+  return (
+    <Box alignItems="center">
+      <Field
         disabled={disabled}
+        display="flex"
+        id={id}
+        label={label}
+        labelLocation="right"
       >
-        <RadioPrimitive.Indicator className={indicatorVariants({ size })} />
-      </RadioPrimitive.Item>
-    </Field>
-  </Box>
-)
+        <RadioPrimitive.Item
+          className={radioItemVariants({ size })}
+          value={value}
+          id={id}
+          disabled={disabled}
+        >
+          <RadioPrimitive.Indicator className={indicatorVariants({ size })} />
+        </RadioPrimitive.Item>
+      </Field>
+    </Box>
+  )
+}
 
 export const RadioGroup = forwardRef(
-  (
-    {
+  (props: RadioGroupProps, ref: Ref<HTMLDivElement>) => {
+    const {
       flexDirection = 'column',
       disabled = false,
       gap = '2',
       name,
       options,
       size = 'sm',
-      ...props
-    }: RadioGroupProps,
-    ref: Ref<HTMLDivElement>
-  ) => (
-    <RadioPrimitive.Root disabled={disabled} name={name} ref={ref} {...props}>
-      <Box flexDirection={flexDirection} gap={gap}>
-        {options.map(({ label, value, disabled }) => (
-          <RadioOption
-            id={`${name}-${value}`}
-            key={value}
-            label={label}
-            size={size}
-            value={value}
-            disabled={disabled}
-          />
-        ))}
-      </Box>
-    </RadioPrimitive.Root>
-  )
+      ...rest
+    } = props
+
+    return (
+      <RadioPrimitive.Root disabled={disabled} name={name} ref={ref} {...rest}>
+        <Box flexDirection={flexDirection} gap={gap}>
+          {options.map(({ label, value, disabled }) => (
+            <RadioOption
+              id={`${name}-${value}`}
+              key={value}
+              label={label}
+              size={size}
+              value={value}
+              disabled={disabled}
+            />
+          ))}
+        </Box>
+      </RadioPrimitive.Root>
+    )
+  }
 )

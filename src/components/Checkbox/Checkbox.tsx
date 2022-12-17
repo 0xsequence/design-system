@@ -1,7 +1,7 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { forwardRef, Ref } from 'react'
 
-import { HasLabel, HiddenLabel, Field } from '~/components/Field'
+import { Field, FieldProps } from '~/components/Field'
 import { CheckmarkIcon } from '~/icons'
 
 import {
@@ -11,7 +11,7 @@ import {
   IndicatorVariants,
 } from './styles.css'
 
-export type CheckboxProps = (HasLabel | HiddenLabel) &
+export type CheckboxProps = FieldProps &
   CheckboxVariants &
   CheckboxPrimitive.CheckboxProps & {
     disabled?: boolean
@@ -27,36 +27,37 @@ const Indicator = ({ size = 'sm' }: IndicatorProps) => (
 )
 
 export const Checkbox = forwardRef(
-  (
-    {
+  (props: CheckboxProps, ref: Ref<HTMLButtonElement>) => {
+    const {
       disabled = false,
       id,
       name,
       label = '',
       labelLocation = 'left',
       size = 'sm',
-      ...props
-    }: CheckboxProps,
-    ref: Ref<HTMLButtonElement>
-  ) => (
-    <Field
-      disabled={disabled}
-      display="flex"
-      forId={id ?? name}
-      label={label}
-      labelLocation={labelLocation}
-      whiteSpace="nowrap"
-    >
-      <CheckboxPrimitive.Root
-        className={checkboxVariants({ size })}
+      ...rest
+    } = props
+
+    return (
+      <Field
         disabled={disabled}
+        display="flex"
         id={id ?? name}
-        name={name}
-        ref={ref}
-        {...props}
+        label={label}
+        labelLocation={labelLocation}
+        whiteSpace="nowrap"
       >
-        <Indicator />
-      </CheckboxPrimitive.Root>
-    </Field>
-  )
+        <CheckboxPrimitive.Root
+          className={checkboxVariants({ size })}
+          disabled={disabled}
+          id={id ?? name}
+          name={name}
+          ref={ref}
+          {...rest}
+        >
+          <Indicator />
+        </CheckboxPrimitive.Root>
+      </Field>
+    )
+  }
 )

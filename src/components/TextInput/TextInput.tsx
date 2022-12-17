@@ -6,12 +6,12 @@ import {
   PolymorphicProps,
   PolymorphicRef,
 } from '~/components/Box'
-import { HasLabel, HiddenLabel, Field } from '~/components/Field'
+import { Field, FieldProps } from '~/components/Field'
 import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
 
-export type TextInputProps = (HasLabel | HiddenLabel) & {
+export type TextInputProps = FieldProps & {
   description?: string
   disabled?: boolean
   leftIcon?: ComponentType<IconProps>
@@ -50,7 +50,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
           description={description}
           disabled={disabled}
           display="grid"
-          forId={id ?? name}
+          id={id ?? name}
           label={label}
           labelLocation={labelLocation}
         >
