@@ -7,6 +7,7 @@ import {
   PolymorphicProps,
   PolymorphicRef,
 } from '~/components/Box'
+import { text } from '~/tokens/typography'
 
 import * as styles from './styles.css'
 
@@ -31,13 +32,15 @@ export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
       ...boxProps
     } = props
 
+    // Merge as variant as prop values so they can be overridden rather than using textVariants recipe
+    const textVariantProps = text[variant]
+
     return (
       <Box
         as={as}
         className={clsx(
           className,
           styles.textVariants({
-            variant,
             hidden,
             ellipsis,
             italic,
@@ -47,6 +50,7 @@ export const Text: PolymorphicComponent<TextProps, 'span'> = forwardRef(
           })
         )}
         ref={ref}
+        {...textVariantProps}
         {...boxProps}
       >
         {children}
