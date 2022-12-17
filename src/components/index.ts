@@ -27,7 +27,7 @@ export {
   DropdownMenuRoot,
   DropdownMenuTrigger,
 } from './DropdownMenu'
-export { FileInput } from './FileInput'
+export { ControlledFileInput, FileInput } from './FileInput'
 export { Form } from './Form'
 export { IconButton } from './IconButton'
 export { LabelledField } from './LabelledField'
