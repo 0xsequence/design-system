@@ -1,66 +1,19 @@
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms } from '~/css'
+import { text } from '~/tokens/typography'
 
 export const textVariants = recipe({
   variants: {
     variant: {
-      inherit: atoms({
-        fontFamily: 'inherit',
-        fontSize: 'inherit',
-        lineHeight: 'inherit',
-        letterSpacing: 'inherit',
-        fontWeight: 'inherit',
-      }),
-      xlarge: atoms({
-        fontFamily: 'body',
-        fontSize: 'xlarge',
-        lineHeight: '9',
-        letterSpacing: 'none',
-        fontWeight: 'bold',
-      }),
-      large: atoms({
-        fontFamily: 'body',
-        fontSize: 'large',
-        lineHeight: '7',
-        letterSpacing: 'normal',
-        fontWeight: 'semibold',
-      }),
-      medium: atoms({
-        fontFamily: 'body',
-        fontSize: 'medium',
-        lineHeight: '6',
-        letterSpacing: 'normal',
-        fontWeight: 'bold',
-      }),
-      normal: atoms({
-        fontFamily: 'body',
-        fontSize: 'normal',
-        lineHeight: '5',
-        letterSpacing: 'wide',
-        fontWeight: 'normal',
-      }),
-      small: atoms({
-        fontFamily: 'body',
-        fontSize: 'small',
-        lineHeight: '4',
-        letterSpacing: 'wide',
-        fontWeight: 'medium',
-      }),
-      xsmall: atoms({
-        fontFamily: 'body',
-        fontSize: 'xsmall',
-        lineHeight: '4',
-        letterSpacing: 'wide',
-        fontWeight: 'bold',
-      }),
-      code: atoms({
-        fontFamily: 'mono',
-        fontSize: 'normal',
-        lineHeight: '5',
-        letterSpacing: 'none',
-        fontWeight: 'normal',
-      }),
+      inherit: atoms(text.inherit),
+      xlarge: atoms(text.xlarge),
+      large: atoms(text.large),
+      medium: atoms(text.medium),
+      normal: atoms(text.normal),
+      small: atoms(text.small),
+      xsmall: atoms(text.xsmall),
+      code: atoms(text.code),
     },
 
     /** prop overrides */
