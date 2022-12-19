@@ -62,14 +62,15 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
           </Box>
 
           <Dialog.Content
+            asChild
             className={styles.contentVariants({ size })}
+            forceMount
             onEscapeKeyDown={() => {
               if (closeOnEscape) {
                 onClose?.()
               }
             }}
-            forceMount
-            asChild
+            onInteractOutside={e => closeOnOverlayClick && e.preventDefault()}
           >
             <motion.div
               key="modal-content"
