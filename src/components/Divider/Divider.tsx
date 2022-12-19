@@ -1,13 +1,22 @@
-import { Box } from '../Box'
+import { Box, BoxProps } from '~/components/Box'
 
-export const Divider = () => {
-  return (
-    <Box
-      as="hr"
-      marginY="4"
-      background="borderNormal"
-      height="px"
-      borderWidth="none"
-    />
-  )
+type DividerProps = {
+  color?: BoxProps['background']
+  marginBottom?: BoxProps['marginBottom']
+  marginTop?: BoxProps['marginTop']
 }
+
+export const Divider = ({
+  color = 'borderNormal',
+  marginBottom = '4',
+  marginTop = '4',
+}: DividerProps) => (
+  <Box
+    as="hr"
+    marginTop={marginTop}
+    marginBottom={marginBottom}
+    background={color}
+    height="px"
+    borderWidth="none"
+  />
+)
