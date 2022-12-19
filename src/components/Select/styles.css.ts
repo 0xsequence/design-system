@@ -14,6 +14,7 @@ export const triggerStyle = style([
     borderWidth: 'thin',
     display: 'inline-flex',
     fontWeight: 'medium',
+    color: 'text100',
     gap: '1',
     justifyContent: 'space-between',
     opacity: {
