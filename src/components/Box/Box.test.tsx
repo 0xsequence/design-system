@@ -53,12 +53,11 @@ describe('Type errors', () => {
       )
     })
 
-    render(<Button<'button'> label="Hello" variant="primary" ref={ref => ref}/>)
-
+    render(<Button label="Hello" variant="primary" onClick={(ev) => ev} ref={ref => ref} />)
     render(<Button as="a" href="/hello" label="Hello" onClick={(ev) => ev} ref={ref => ref} />)
     render(<Button as={Link} to="/hello" label="Hello" ref={(ref: HTMLAnchorElement) => ref} />)
 
-    render(<Box<'div'> ref={ref => ref} />)
+    render(<Box ref={ref => ref} />)
 
     render(<div ref={ref => ref} />)
 
