@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css'
 
 import { textVariants } from '~/components/Text/styles.css'
-import { atoms } from '~/css'
+import { atoms, vars } from '~/css'
 
 export const wrap = style([
   textVariants({ variant: 'normal' }),
@@ -15,16 +15,27 @@ export const wrap = style([
     flexDirection: 'row',
     justifyContent: 'flex-start',
     minWidth: 'full',
-    opacity: {
-      base: '100',
-      hover: '80',
-      disabled: '50',
-    },
     padding: '4',
     position: 'relative',
   }),
   {
     height: 52,
+
+    selectors: {
+      '&:has(:disabled), &:has(:disabled):hover': {
+        cursor: 'default',
+        opacity: 0.5,
+      },
+
+      '&:focus-within': {
+        opacity: '1 !important',
+        outlineColor: vars.colors.borderFocus,
+        outlineStyle: 'solid',
+        outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+        outlineWidth: vars.borderWidths.thick,
+        borderColor: 'transparent',
+      },
+    },
   },
 ])
 
