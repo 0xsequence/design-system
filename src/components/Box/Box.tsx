@@ -14,6 +14,7 @@ import { atoms, Atoms } from '~/css'
 export type BoxProps<T extends ElementType = 'div'> =
   ComponentPropsWithoutRef<T> & {
     as?: T
+    sx?: Atoms
     ref?: ComponentPropsWithRef<T>['ref'] | null
   } & Atoms
 
@@ -39,7 +40,7 @@ const FLEX_PROPS = [
 
 export const Box: PolymorphicComponent<{}, 'div'> = forwardRef(
   <T extends ElementType>(props: BoxProps<T>, ref: Ref<HTMLElement>) => {
-    const { as = 'div', className, ...restProps } = props
+    const { as = 'div', sx = {}, className, ...restProps } = props
     const atomProps: Record<string, unknown> = {}
     const nativeProps: Record<string, unknown> = {}
 
@@ -59,6 +60,7 @@ export const Box: PolymorphicComponent<{}, 'div'> = forwardRef(
 
     const atomicClasses = atoms({
       ...atomProps,
+      ...sx,
     })
 
     return createElement(as, {
