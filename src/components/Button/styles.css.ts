@@ -4,6 +4,13 @@ import { atoms, vars } from '~/css'
 
 import { textVariants } from '../Text/styles.css'
 
+const outlineStyle = {
+  outlineStyle: 'solid',
+  outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+  outlineWidth: vars.borderWidths.thick,
+  borderColor: 'transparent',
+} as const
+
 export const buttonVariants = recipe({
   base: atoms({ overflow: 'hidden', whiteSpace: 'nowrap' }),
 
@@ -70,6 +77,17 @@ export const buttonVariants = recipe({
         atoms({ paddingX: '5', paddingY: '4' }),
         { height: '52px' },
       ],
+    },
+
+    activeOutline: {
+      light: {
+        outlineColor: vars.colors.backgroundSecondary,
+        ...outlineStyle,
+      },
+      bold: {
+        outlineColor: vars.colors.borderNormal,
+        ...outlineStyle,
+      },
     },
   },
 

@@ -27,6 +27,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
   ) => {
     const {
       as = 'button',
+      activeOutline,
       className,
       disabled = false,
       display = 'inline-flex',
@@ -55,6 +56,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
         className={clsx(
           className,
           buttonVariants({
+            activeOutline,
             clickable,
             disabled: disabled || pending,
             hasLeftIcon,

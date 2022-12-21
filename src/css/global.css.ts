@@ -23,7 +23,7 @@ globalStyle('*, *::before, *::after', {
 })
 
 globalStyle('*:focus-visible', {
-  outlineColor: vars.colors.borderFocus,
+  outlineColor: `${vars.colors.borderFocus} !important`,
   outlineStyle: 'solid',
   outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
   outlineWidth: vars.borderWidths.thick,
