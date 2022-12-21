@@ -70,7 +70,13 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 onClose?.()
               }
             }}
-            onInteractOutside={e => closeOnOverlayClick && e.preventDefault()}
+            onInteractOutside={e => {
+              if (closeOnOverlayClick) {
+                onClose?.()
+              } else {
+                e.preventDefault()
+              }
+            }}
           >
             <motion.div
               key="modal-content"
@@ -81,7 +87,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
             >
               {scroll ? <Scroll>{children}</Scroll> : children}
 
-              {closeOnOverlayClick && (
+              {!closeOnOverlayClick && (
                 <Dialog.Close asChild>
                   <IconButton
                     icon={CloseIcon}
