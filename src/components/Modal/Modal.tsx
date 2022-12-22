@@ -13,9 +13,8 @@ import * as styles from './styles.css'
 export type ModalProps = {
   backdropColor?: BoxProps['background']
   className?: string
-  closeOnEscape?: boolean
-  closeOnOverlayClick?: boolean
   disableAnimation?: boolean
+  isDismissible?: boolean
   onClose?: () => void
   scroll?: boolean
 } & styles.ContentVariants
@@ -26,9 +25,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const {
     backdropColor = 'gradientBackdrop',
     children,
-    closeOnEscape = true,
-    closeOnOverlayClick = true,
     disableAnimation = false,
+    isDismissible = true,
     onClose,
     scroll = true,
     size = 'lg',
@@ -54,24 +52,22 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 type: 'tween',
                 ease: 'linear',
               }}
-            >
-              {/* {closeOnOverlayClick && (
-                <IconButton icon={CloseIcon} className={styles.close} />
-              )} */}
-            </motion.div>
+            />
           </Box>
 
           <Dialog.Content
             asChild
             className={styles.contentVariants({ size })}
             forceMount
-            onEscapeKeyDown={() => {
-              if (closeOnEscape) {
+            onEscapeKeyDown={e => {
+              if (isDismissible) {
                 onClose?.()
+              } else {
+                e.preventDefault()
               }
             }}
             onInteractOutside={e => {
-              if (closeOnOverlayClick) {
+              if (isDismissible) {
                 onClose?.()
               } else {
                 e.preventDefault()
@@ -87,7 +83,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
             >
               {scroll ? <Scroll>{children}</Scroll> : children}
 
-              {!closeOnOverlayClick && (
+              {isDismissible && (
                 <Dialog.Close asChild>
                   <IconButton
                     icon={CloseIcon}
