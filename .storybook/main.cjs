@@ -12,21 +12,23 @@ module.exports = {
   },
   staticDirs: ['../public'],
   async viteFinal(config, { configType }) {
-    if (configType === 'PRODUCTION') {
-      config.base = './'
-    }
-    return config
-    // return mergeConfig(config, {
-    //   plugins: [tsconfigPaths(), vanillaExtractPlugin({
-    //     identifiers: 'short'
-    //   })],
-    //   resolve: {
-    //     alias: [{
-    //       find: '~',
-    //       replacement: path.resolve(__dirname, '../src')
-    //     }]
-    //   }
-    // });
+    return mergeConfig(config, {
+      base: configType === 'PRODUCTION' ? './' : config.base,
+      plugins: [
+        tsconfigPaths(),
+        vanillaExtractPlugin({
+          identifiers: 'short',
+        }),
+      ],
+      resolve: {
+        alias: [
+          {
+            find: '~',
+            replacement: path.resolve(__dirname, '../src'),
+          },
+        ],
+      },
+    })
   },
   // docs: {
   //  docsPage: 'automatic'
