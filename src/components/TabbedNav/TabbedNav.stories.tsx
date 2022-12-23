@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { StoryObj, StoryFn, Meta } from '@storybook/react'
 import { useState } from 'react'
 
 import { Badge } from '~/components/Badge'
@@ -13,15 +13,15 @@ export default {
   component: TabbedNav,
 } as Meta<typeof TabbedNav>
 
+type Story = StoryObj<typeof TabbedNav>
+
 const delay = (sec: number) => new Promise(res => setTimeout(res, sec * 1000))
 
-const StoryTemplate: StoryFn<typeof TabbedNav> = ({ ...args }) => {
+const StoryWrapper: StoryFn<typeof TabbedNav> = args => {
   const [value, setValue] = useState<string>('wallet')
-
   const handleTabChange = (value: string) => {
     setValue(value)
   }
-
   return (
     <Box flexDirection="column" gap="4">
       <Box background="backgroundSecondary" padding="4" borderRadius="md">
@@ -37,55 +37,61 @@ const StoryTemplate: StoryFn<typeof TabbedNav> = ({ ...args }) => {
   )
 }
 
-export const Demo = StoryTemplate.bind({})
-Demo.args = {
-  defaultValue: 'wallet',
-  size: 'sm',
-  tabs: [
-    {
-      label: 'Wallet',
-      value: 'wallet',
-      onLoad: () => {
-        return true
+export const Default: Story = {
+  render: StoryWrapper,
+  args: {
+    defaultValue: 'wallet',
+    size: 'sm',
+    tabs: [
+      {
+        label: 'Wallet',
+        value: 'wallet',
+        onLoad: () => {
+          return true
+        },
       },
-    },
-    { label: 'Simple', value: 'simple' }, // no onClick
-    {
-      label: 'Another Tab',
-      value: 'another',
-      onLoad: () => {
-        return true
+      {
+        label: 'Simple',
+        value: 'simple',
       },
-    },
-    {
-      label: (
-        <Box gap="1">
-          History
-          <Badge value="3" />
-        </Box>
-      ),
-      leftIcon: TransactionIcon,
-      value: 'history',
-      onLoad: async () => {
-        console.log('processing...')
-        await delay(1)
-        return true
+      // no onClick
+      {
+        label: 'Another Tab',
+        value: 'another',
+        onLoad: () => {
+          return true
+        },
       },
-    },
-    {
-      label: 'Contacts (Fails to load)',
-      leftIcon: ProfileIcon,
-      value: 'contacts',
-      onLoad: async () => {
-        console.log('expecting fail...')
-        await delay(1)
-        return false
+      {
+        label: (
+          <Box gap="1">
+            History
+            <Badge value="3" />
+          </Box>
+        ),
+        leftIcon: TransactionIcon,
+        value: 'history',
+        onLoad: async () => {
+          console.log('processing...')
+          await delay(1)
+          return true
+        },
       },
-    },
-    {
-      label: 'Disabled',
-      value: 'disabled',
-      disabled: true,
-    },
-  ],
+      {
+        label: 'Contacts (Fails to load)',
+        leftIcon: ProfileIcon,
+        value: 'contacts',
+        onLoad: async () => {
+          console.log('expecting fail...')
+          await delay(1)
+          return false
+        },
+      },
+      {
+        label: 'Disabled',
+        value: 'disabled',
+        disabled: true,
+      },
+    ],
+  },
 }

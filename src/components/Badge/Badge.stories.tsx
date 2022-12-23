@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
 import { CloseIcon } from '~/icons'
 
@@ -9,25 +9,24 @@ export default {
   component: Badge,
 } as Meta<typeof Badge>
 
-const Template: StoryFn<typeof Badge> = args => {
-  return <Badge {...args} />
-}
+type Story = StoryObj<typeof Badge>
 
-export const SingleCharacter = Template.bind({})
-SingleCharacter.args = {
-  value: '3',
-  variant: 'info',
+export const SingleCharacter: Story = {
+  args: {
+    value: '3',
+    variant: 'info',
+  },
 }
-
-export const MultiCharacter = Template.bind({})
-MultiCharacter.args = {
-  value: '2713',
-  variant: 'success',
+export const MultiCharacter: Story = {
+  args: {
+    value: '2713',
+    variant: 'success',
+  },
 }
-
-export const Icon = Template.bind({})
-Icon.args = {
-  value: <CloseIcon />,
-  variant: 'error',
-  size: 'lg',
+export const Icon: Story = {
+  args: {
+    value: <CloseIcon />,
+    variant: 'error',
+    size: 'lg',
+  },
 }

@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
 import { Switch } from './Switch'
 
@@ -7,11 +7,10 @@ export default {
   component: Switch,
 } as Meta<typeof Switch>
 
-const Template: StoryFn<typeof Switch> = args => {
-  return <Switch {...args} />
-}
+type Story = StoryObj<typeof Switch>
 
-export const Default = Template.bind({})
-Default.args = {
-  disabled: false,
+export const Default: Story = {
+  args: {
+    disabled: false,
+  },
 }

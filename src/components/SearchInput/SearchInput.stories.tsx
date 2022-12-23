@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
 
 import { SearchInput } from './SearchInput'
@@ -8,7 +8,9 @@ export default {
   component: SearchInput,
 } as Meta<typeof SearchInput>
 
-const Template: StoryFn<typeof SearchInput> = args => {
+type Story = StoryObj<typeof SearchInput>
+
+const StoryWrapper: StoryFn<typeof SearchInput> = args => {
   const [value, setValue] = useState<string>('')
 
   return (
@@ -21,9 +23,11 @@ const Template: StoryFn<typeof SearchInput> = args => {
   )
 }
 
-export const Demo = Template.bind({})
-Demo.args = {
-  label: 'Search',
-  labelLocation: 'top',
-  placeholder: 'This is the placeholder',
+export const Default: Story = {
+  render: StoryWrapper,
+  args: {
+    label: 'Search',
+    labelLocation: 'top',
+    placeholder: 'This is the placeholder',
+  },
 }

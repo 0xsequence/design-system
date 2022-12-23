@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
 import { SettingsIcon } from '~/icons'
 
@@ -9,14 +9,13 @@ export default {
   component: Tag,
 } as Meta<typeof Tag>
 
-const Template: StoryFn<typeof Tag> = args => {
-  return <Tag {...args} />
-}
+type Story = StoryObj<typeof Tag>
 
-export const Base = Template.bind({})
-Base.args = {
-  background: 'ethereumDark',
-  color: 'white',
-  icon: SettingsIcon,
-  label: 'Static Tag',
+export const Default: Story = {
+  args: {
+    background: 'ethereumDark',
+    color: 'white',
+    icon: SettingsIcon,
+    label: 'Static Tag',
+  },
 }

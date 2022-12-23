@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
 import { Spinner } from './Spinner'
 
@@ -7,21 +7,10 @@ export default {
   component: Spinner,
 } as Meta<typeof Spinner>
 
-const Template: StoryFn<typeof Spinner> = args => {
-  return <Spinner {...args} />
-}
+type Story = StoryObj<typeof Spinner>
 
-export const SmallSpinner = Template.bind({})
-SmallSpinner.args = {
-  size: 'sm',
-}
-
-export const MediumSpinner = Template.bind({})
-MediumSpinner.args = {
-  size: 'md',
-}
-
-export const LargeSpinner = Template.bind({})
-LargeSpinner.args = {
-  size: 'lg',
+export const Default: Story = {
+  args: {
+    size: 'sm',
+  },
 }

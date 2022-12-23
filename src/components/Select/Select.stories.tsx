@@ -1,6 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
-
-import { Box } from '~/components/Box'
+import { StoryObj, Meta } from '@storybook/react'
 
 import { Select } from './Select'
 
@@ -9,32 +7,40 @@ export default {
   component: Select,
 } as Meta<typeof Select>
 
-const Template: StoryFn<typeof Select> = args => {
-  return (
-    <Box padding="3" background="backgroundSecondary" borderRadius="md">
-      <Select {...args} />
-    </Box>
-  )
-}
+type Story = StoryObj<typeof Select>
 
-export const Demo = Template.bind({})
-Demo.args = {
-  onValueChange: value => {
-    console.log('selected: ', value)
-    if (value === 'option-5') {
-      alert('custom action selected')
-    }
+export const Default: Story = {
+  args: {
+    onValueChange: value => {
+      console.log('selected: ', value)
+    },
+    name: 'selectDemo',
+    label: 'Select',
+    labelLocation: 'top',
+    placeholder: 'Select an option',
+    disabled: false,
+    options: [
+      {
+        label: 'Option 1',
+        value: 'option-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'option-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'option-3',
+      },
+      {
+        label: 'Disabled Option',
+        value: 'option-4',
+        disabled: true,
+      },
+      {
+        label: 'Custom Action',
+        value: 'option-5',
+      },
+    ],
   },
-  name: 'selectDemo',
-  label: 'Select',
-  labelLocation: 'top',
-  placeholder: 'Select an option',
-  disabled: false,
-  options: [
-    { label: 'Option 1', value: 'option-1' },
-    { label: 'Option 2', value: 'option-2' },
-    { label: 'Option 3', value: 'option-3' },
-    { label: 'Disabled Option', value: 'option-4', disabled: true },
-    { label: 'Custom Action', value: 'option-5' },
-  ],
 }
