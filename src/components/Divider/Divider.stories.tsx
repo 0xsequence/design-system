@@ -4,7 +4,7 @@ import { Divider } from './Divider'
 
 export default {
   title: 'Components/Divider',
-  component: 'Divider',
+  component: Divider,
 }
 
 type Story = StoryObj<typeof Divider>
