@@ -18,6 +18,9 @@ jobs:
           yarn
           yarn build:storybook
 
+      - name: Add .nojekyll
+        run: touch ./docs/.nojekyll
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
