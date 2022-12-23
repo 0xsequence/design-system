@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Box } from '../Box'
 
@@ -7,9 +7,9 @@ import { GradientAvatar } from './GradientAvatar'
 export default {
   title: 'Components/GradientAvatar',
   component: GradientAvatar,
-} as ComponentMeta<typeof GradientAvatar>
+} as Meta<typeof GradientAvatar>
 
-const Template: ComponentStory<typeof GradientAvatar> = args => (
+const Template: StoryFn<typeof GradientAvatar> = args => (
   <GradientAvatar {...args} />
 )
 

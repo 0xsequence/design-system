@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Text } from '../Text'
 
@@ -7,11 +7,9 @@ import { Collapsible } from './Collapsible'
 export default {
   title: 'Components/Collapsible',
   component: Collapsible,
-} as ComponentMeta<typeof Collapsible>
+} as Meta<typeof Collapsible>
 
-const Template: ComponentStory<typeof Collapsible> = args => (
-  <Collapsible {...args} />
-)
+const Template: StoryFn<typeof Collapsible> = args => <Collapsible {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

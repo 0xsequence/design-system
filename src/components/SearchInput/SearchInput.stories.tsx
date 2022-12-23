@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import { useState } from 'react'
 
 import { SearchInput } from './SearchInput'
@@ -6,9 +6,9 @@ import { SearchInput } from './SearchInput'
 export default {
   title: 'Forms/SearchInput',
   component: SearchInput,
-} as ComponentMeta<typeof SearchInput>
+} as Meta<typeof SearchInput>
 
-const Template: ComponentStory<typeof SearchInput> = args => {
+const Template: StoryFn<typeof SearchInput> = args => {
   const [value, setValue] = useState<string>('')
 
   return (

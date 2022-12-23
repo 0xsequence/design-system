@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 
 import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
@@ -15,7 +15,7 @@ import { Form } from './Form'
 export default {
   title: 'Forms/Form',
   component: Form,
-} as ComponentMeta<typeof Form>
+} as Meta<typeof Form>
 
 const selectOptions = [
   { label: 'Option 1', value: 'option-1' },

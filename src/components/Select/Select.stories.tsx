@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Box } from '~/components/Box'
 
@@ -7,9 +7,9 @@ import { Select } from './Select'
 export default {
   title: 'Forms/Select',
   component: Select,
-} as ComponentMeta<typeof Select>
+} as Meta<typeof Select>
 
-const Template: ComponentStory<typeof Select> = args => {
+const Template: StoryFn<typeof Select> = args => {
   return (
     <Box padding="3" background="backgroundSecondary" borderRadius="md">
       <Select {...args} />
