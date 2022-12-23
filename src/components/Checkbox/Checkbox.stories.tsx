@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
 import { Checkbox } from './Checkbox'
 
@@ -7,14 +7,13 @@ export default {
   component: Checkbox,
 } as Meta<typeof Checkbox>
 
-const Template: StoryFn<typeof Checkbox> = args => {
-  return <Checkbox {...args} />
-}
+type Story = StoryObj<typeof Checkbox>
 
-export const Demo = Template.bind({})
-Demo.args = {
-  label: 'This is the label (CheckmarkIcon is missing)',
-  labelLocation: 'right',
-  size: 'sm',
-  disabled: false,
+export const Default: Story = {
+  args: {
+    label: 'This is the label (CheckmarkIcon is missing)',
+    labelLocation: 'right',
+    size: 'sm',
+    disabled: false,
+  },
 }

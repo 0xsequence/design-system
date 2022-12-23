@@ -1,6 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
-
-import { Box } from '~/components/Box'
+import { StoryObj, Meta } from '@storybook/react'
 
 import { FileInput } from './FileInput'
 
@@ -9,17 +7,14 @@ export default {
   component: FileInput,
 } as Meta<typeof FileInput>
 
-const Template: StoryFn<typeof FileInput> = args => (
-  <Box padding="2">
-    <FileInput {...args} />
-  </Box>
-)
+type Story = StoryObj<typeof FileInput>
 
-export const Demo = Template.bind({})
-Demo.args = {
-  name: 'myFileInput',
-  label: 'File input',
-  labelLocation: 'top',
-  validExtensions: ['images'],
-  onValueChange: file => console.log(file),
+export const Default: Story = {
+  args: {
+    name: 'myFileInput',
+    label: 'File input',
+    labelLocation: 'top',
+    validExtensions: ['images'],
+    onValueChange: file => console.log(file),
+  },
 }

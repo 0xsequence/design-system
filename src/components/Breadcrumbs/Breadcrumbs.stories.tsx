@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
 import { Breadcrumbs } from './Breadcrumbs'
 
@@ -7,16 +7,23 @@ export default {
   component: Breadcrumbs,
 } as Meta<typeof Breadcrumbs>
 
-const Template: StoryFn<typeof Breadcrumbs> = args => {
-  return <Breadcrumbs {...args} />
-}
+type Story = StoryObj<typeof Breadcrumbs>
 
-export const Demo = Template.bind({})
-Demo.args = {
-  excludeDivider: false,
-  paths: [
-    { label: 'Home', url: '/' },
-    { label: 'Components', url: '/components' },
-    { label: 'Breadcrumbs' },
-  ],
+export const Default: Story = {
+  args: {
+    excludeDivider: false,
+    paths: [
+      {
+        label: 'Home',
+        url: '/',
+      },
+      {
+        label: 'Components',
+        url: '/components',
+      },
+      {
+        label: 'Breadcrumbs',
+      },
+    ],
+  },
 }

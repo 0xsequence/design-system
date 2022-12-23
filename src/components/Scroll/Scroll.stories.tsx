@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta, StoryFn } from '@storybook/react'
 
 import { Box } from '../Box'
 import { Text } from '../Text'
@@ -10,9 +10,14 @@ export default {
   component: Scroll,
 } as Meta<typeof Scroll>
 
-const Template: StoryFn<typeof Scroll> = args => (
+type Story = StoryObj<typeof Scroll>
+
+const StoryWrapper: StoryFn<typeof Scroll> = args => (
   <Box
-    style={{ width: 300, height: 200 }}
+    style={{
+      width: 300,
+      height: 200,
+    }}
     overflow="hidden"
     borderRadius="md"
     background="backgroundSecondary"
@@ -21,117 +26,119 @@ const Template: StoryFn<typeof Scroll> = args => (
   </Box>
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  padding: '2',
-  children: (
-    <>
-      <Text as="h1" variant="xlarge" color="text100">
-        Title
-      </Text>
-      <Text as="p" variant="medium" color="text50">
-        Description
-      </Text>
+export const Default: Story = {
+  render: StoryWrapper,
+  args: {
+    padding: '2',
+    children: (
+      <>
+        <Text as="h1" variant="xlarge" color="text100">
+          Title
+        </Text>
+        <Text as="p" variant="medium" color="text50">
+          Description
+        </Text>
 
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-      <Text as="p" variant="normal" color="text100">
-        Paragraph
-      </Text>
-    </>
-  ),
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+        <Text as="p" variant="normal" color="text100">
+          Paragraph
+        </Text>
+      </>
+    ),
+  },
 }

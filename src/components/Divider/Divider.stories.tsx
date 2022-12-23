@@ -1,4 +1,4 @@
-import { Box } from '../Box'
+import { StoryObj } from '@storybook/react'
 
 import { Divider } from './Divider'
 
@@ -7,10 +7,8 @@ export default {
   component: 'Divider',
 }
 
-export const Default = () => {
-  return (
-    <Box>
-      <Divider />
-    </Box>
-  )
+type Story = StoryObj<typeof Divider>
+
+export const Default: Story = {
+  args: {},
 }

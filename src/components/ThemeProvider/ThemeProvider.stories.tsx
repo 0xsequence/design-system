@@ -1,14 +1,16 @@
-import { Button } from '../Button'
+import { Meta } from '@storybook/react'
 
-import { useTheme } from './ThemeProvider'
+import { Button } from '~/components'
+
+import { ThemeProvider, useTheme } from './ThemeProvider'
 
 export default {
   title: 'Components/ThemeProvider',
-}
+  component: ThemeProvider,
+} as Meta<typeof ThemeProvider>
 
-export const ToggleTheme = () => {
+export const Default = () => {
   const { theme, setTheme } = useTheme()
-
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }

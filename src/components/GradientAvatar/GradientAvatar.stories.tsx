@@ -1,6 +1,6 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
-import { Box } from '../Box'
+import { Box } from '~/components'
 
 import { GradientAvatar } from './GradientAvatar'
 
@@ -9,13 +9,12 @@ export default {
   component: GradientAvatar,
 } as Meta<typeof GradientAvatar>
 
-const Template: StoryFn<typeof GradientAvatar> = args => (
-  <GradientAvatar {...args} />
-)
+type Story = StoryObj<typeof GradientAvatar>
 
-export const Default = Template.bind({})
-Default.args = {
-  address: '0x1234567890123456789012345678901234567890',
+export const Default: Story = {
+  args: {
+    address: '0x1234567890123456789012345678901234567890',
+  },
 }
 
 export const Multiple = () => (

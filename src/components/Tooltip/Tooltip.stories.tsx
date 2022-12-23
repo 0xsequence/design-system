@@ -1,7 +1,6 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
-import { Box } from '~/components/Box'
-import { Button } from '~/components/Button'
+import { Button } from '~/components'
 
 import { Tooltip } from './Tooltip'
 
@@ -10,16 +9,11 @@ export default {
   component: Tooltip,
 } as Meta<typeof Tooltip>
 
-const Template: StoryFn<typeof Tooltip> = args => {
-  return (
-    <Box background="backgroundSecondary" padding="4">
-      <Tooltip {...args} />
-    </Box>
-  )
-}
+type Story = StoryObj<typeof Tooltip>
 
-export const Default = Template.bind({})
-Default.args = {
-  message: 'Hello, world!',
-  children: <Button label="Hover me" />,
+export const Default: Story = {
+  args: {
+    message: 'Hello, world!',
+    children: <Button label="Hover me" />,
+  },
 }

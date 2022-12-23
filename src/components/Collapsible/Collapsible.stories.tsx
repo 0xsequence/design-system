@@ -1,6 +1,6 @@
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 
-import { Text } from '../Text'
+import { Text } from '~/components'
 
 import { Collapsible } from './Collapsible'
 
@@ -9,14 +9,15 @@ export default {
   component: Collapsible,
 } as Meta<typeof Collapsible>
 
-const Template: StoryFn<typeof Collapsible> = args => <Collapsible {...args} />
+type Story = StoryObj<typeof Collapsible>
 
-export const Default = Template.bind({})
-Default.args = {
-  label: 'My Heading',
-  children: [1, 2, 3, 4, 5].map(x => (
-    <Text variant="normal" as="p" color="text80" key={x}>
-      Item {x}
-    </Text>
-  )),
+export const Default: Story = {
+  args: {
+    label: 'My Heading',
+    children: [1, 2, 3, 4, 5].map(x => (
+      <Text variant="normal" as="p" color="text80" key={x}>
+        Item {x}
+      </Text>
+    )),
+  },
 }
