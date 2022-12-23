@@ -11,25 +11,25 @@ module.exports = {
     options: {},
   },
   staticDirs: ['../public'],
-  async viteFinal(config, { configType }) {
-    return mergeConfig(config, {
-      base: configType === 'PRODUCTION' ? './' : config.base,
-      plugins: [
-        tsconfigPaths(),
-        vanillaExtractPlugin({
-          identifiers: 'short',
-        }),
-      ],
-      resolve: {
-        alias: [
-          {
-            find: '~',
-            replacement: path.resolve(__dirname, '../src'),
-          },
-        ],
-      },
-    })
-  },
+  // async viteFinal(config, { configType }) {
+  //   return mergeConfig(config, {
+  //     base: configType === 'PRODUCTION' ? './' : config.base,
+  //     plugins: [
+  //       tsconfigPaths(),
+  //       vanillaExtractPlugin({
+  //         identifiers: 'short',
+  //       }),
+  //     ],
+  //     resolve: {
+  //       alias: [
+  //         {
+  //           find: '~',
+  //           replacement: path.resolve(__dirname, '../src'),
+  //         },
+  //       ],
+  //     },
+  //   })
+  // },
   // docs: {
   //  docsPage: 'automatic'
   // }
