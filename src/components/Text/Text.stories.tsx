@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Text } from './Text'
 
 export default {
   title: 'Components/Text',
   component: Text,
-} as ComponentMeta<typeof Text>
+} as Meta<typeof Text>
 
-const Template: ComponentStory<typeof Text> = args => {
+const Template: StoryFn<typeof Text> = args => {
   return <Text color="text100" {...args} />
 }
 

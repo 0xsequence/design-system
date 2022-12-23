@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Badge } from '~/components/Badge'
 import { Box } from '~/components/Box'
@@ -9,9 +9,9 @@ import { Button } from './Button'
 export default {
   title: 'Components/Button',
   component: Button,
-} as ComponentMeta<typeof Button>
+} as Meta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = args => {
+const Template: StoryFn<typeof Button> = args => {
   return (
     <Box padding="3" background="backgroundSecondary" borderRadius="md">
       <Button {...args} />

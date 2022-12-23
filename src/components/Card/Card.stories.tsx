@@ -1,6 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-
-import { tokens } from '~/tokens'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Box } from '../Box'
 import { Text } from '../Text'
@@ -11,10 +9,10 @@ import { Card } from './Card'
 export default {
   title: 'Components/Card',
   component: Card,
-} as ComponentMeta<typeof Card>
+} as Meta<typeof Card>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Card> = args => (
+const Template: StoryFn<typeof Card> = args => (
   <Card {...args}>
     <Box flexDirection="column">
       <Text variant="large" color="text100">

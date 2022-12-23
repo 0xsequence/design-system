@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Box } from '../Box'
 import { Text } from '../Text'
@@ -8,9 +8,9 @@ import { Scroll } from './Scroll'
 export default {
   title: 'Components/Scroll',
   component: Scroll,
-} as ComponentMeta<typeof Scroll>
+} as Meta<typeof Scroll>
 
-const Template: ComponentStory<typeof Scroll> = args => (
+const Template: StoryFn<typeof Scroll> = args => (
   <Box
     style={{ width: 300, height: 200 }}
     overflow="hidden"

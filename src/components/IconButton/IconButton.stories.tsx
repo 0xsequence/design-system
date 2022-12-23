@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Box } from '~/components/Box'
 import { ArrowRightIcon } from '~/icons'
@@ -8,9 +8,9 @@ import { IconButton } from './IconButton'
 export default {
   title: 'Components/IconButton',
   component: IconButton,
-} as ComponentMeta<typeof IconButton>
+} as Meta<typeof IconButton>
 
-const Template: ComponentStory<typeof IconButton> = args => {
+const Template: StoryFn<typeof IconButton> = args => {
   return (
     <Box padding="3" background="backgroundSecondary" borderRadius="md">
       <IconButton {...args} />

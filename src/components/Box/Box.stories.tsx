@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { tokens } from '~/tokens'
 
@@ -12,10 +12,10 @@ export default {
   argTypes: {
     padding: { control: 'select', options: Object.keys(tokens.space) },
   },
-} as ComponentMeta<typeof Box>
+} as Meta<typeof Box>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Box> = args => <Box {...args} />
+const Template: StoryFn<typeof Box> = args => <Box {...args} />
 
 export const Default = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

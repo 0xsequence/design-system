@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { TokenImage } from './TokenImage'
 
 export default {
   title: 'Components/TokenImage',
   component: TokenImage,
-} as ComponentMeta<typeof TokenImage>
+} as Meta<typeof TokenImage>
 
-const Template: ComponentStory<typeof TokenImage> = args => {
+const Template: StoryFn<typeof TokenImage> = args => {
   return <TokenImage {...args} />
 }
 

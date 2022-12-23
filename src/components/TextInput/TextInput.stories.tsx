@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Box, Button, IconButton } from '~/components'
 import { ArrowRightIcon, CloseIcon, ScanIcon, SearchIcon } from '~/icons'
@@ -8,9 +8,9 @@ import { TextInput } from './TextInput'
 export default {
   title: 'Forms/TextInput',
   component: TextInput,
-} as ComponentMeta<typeof TextInput>
+} as Meta<typeof TextInput>
 
-const Template: ComponentStory<typeof TextInput> = args => {
+const Template: StoryFn<typeof TextInput> = args => {
   return <TextInput id="myInput" {...args} />
 }
 

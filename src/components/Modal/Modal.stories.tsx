@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
@@ -11,9 +11,9 @@ import { Modal } from './Modal'
 export default {
   title: 'Components/Modal',
   component: Modal,
-} as ComponentMeta<typeof Modal>
+} as Meta<typeof Modal>
 
-const Template: ComponentStory<typeof Modal> = args => {
+const Template: StoryFn<typeof Modal> = args => {
   const [isOpen, toggleModal] = useState(true)
 
   return (

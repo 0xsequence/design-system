@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
 
 import { Badge } from '~/components/Badge'
@@ -11,11 +11,11 @@ import { TabbedNav } from './TabbedNav'
 export default {
   title: 'Components/TabbedNav',
   component: TabbedNav,
-} as ComponentMeta<typeof TabbedNav>
+} as Meta<typeof TabbedNav>
 
 const delay = (sec: number) => new Promise(res => setTimeout(res, sec * 1000))
 
-const StoryTemplate: ComponentStory<typeof TabbedNav> = ({ ...args }) => {
+const StoryTemplate: StoryFn<typeof TabbedNav> = ({ ...args }) => {
   const [value, setValue] = useState<string>('wallet')
 
   const handleTabChange = (value: string) => {

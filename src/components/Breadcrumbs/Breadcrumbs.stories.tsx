@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Breadcrumbs } from './Breadcrumbs'
 
 export default {
   title: 'Components/Breadcrumbs',
   component: Breadcrumbs,
-} as ComponentMeta<typeof Breadcrumbs>
+} as Meta<typeof Breadcrumbs>
 
-const Template: ComponentStory<typeof Breadcrumbs> = args => {
+const Template: StoryFn<typeof Breadcrumbs> = args => {
   return <Breadcrumbs {...args} />
 }
 

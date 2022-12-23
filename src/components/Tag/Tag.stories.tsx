@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { SettingsIcon } from '~/icons'
 
@@ -7,9 +7,9 @@ import { Tag } from './Tag'
 export default {
   title: 'Components/Tag',
   component: Tag,
-} as ComponentMeta<typeof Tag>
+} as Meta<typeof Tag>
 
-const Template: ComponentStory<typeof Tag> = args => {
+const Template: StoryFn<typeof Tag> = args => {
   return <Tag {...args} />
 }
 

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
@@ -8,9 +8,9 @@ import { Tooltip } from './Tooltip'
 export default {
   title: 'Components/Tooltip',
   component: Tooltip,
-} as ComponentMeta<typeof Tooltip>
+} as Meta<typeof Tooltip>
 
-const Template: ComponentStory<typeof Tooltip> = args => {
+const Template: StoryFn<typeof Tooltip> = args => {
   return (
     <Box background="backgroundSecondary" padding="4">
       <Tooltip {...args} />
