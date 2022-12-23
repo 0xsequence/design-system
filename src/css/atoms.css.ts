@@ -148,10 +148,13 @@ const selectorProperties = defineProperties({
   defaultCondition: 'base',
   properties: {
     background: vars.colors,
+    borderBottomColor: vars.colors,
     borderBottomStyle: borderStyles,
-    borderColor: vars.colors,
+    borderLeftColor: vars.colors,
     borderLeftStyle: borderStyles,
+    borderRightColor: vars.colors,
     borderRightStyle: borderStyles,
+    borderTopColor: vars.colors,
     borderTopStyle: borderStyles,
     color: vars.colors,
     cursor: ['default', 'pointer', 'text'],
@@ -160,6 +163,12 @@ const selectorProperties = defineProperties({
     pointerEvents: ['none', 'auto'],
   },
   shorthands: {
+    borderColor: [
+      'borderTopColor',
+      'borderRightColor',
+      'borderBottomColor',
+      'borderLeftColor',
+    ],
     borderStyle: [
       'borderTopStyle',
       'borderRightStyle',
