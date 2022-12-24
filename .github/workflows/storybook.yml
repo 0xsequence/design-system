@@ -20,7 +20,7 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Build storybook
-        run: build:storybook
+        run: pnpm build:storybook
 
       - name: Add .nojekyll
         run: touch ./docs/.nojekyll
