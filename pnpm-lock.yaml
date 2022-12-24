@@ -31,10 +31,8 @@ specifiers:
   '@types/react': ^18.0.26
   '@types/react-blockies': ^1.4.1
   '@types/react-dom': ^18.0.9
-  '@types/testing-library__jest-dom': ^5.14.5
   '@typescript-eslint/eslint-plugin': ^5.47.0
   '@typescript-eslint/parser': ^5.47.0
-  '@vanilla-extract/babel-plugin': ^1.2.0
   '@vanilla-extract/css': ^1.9.2
   '@vanilla-extract/css-utils': ^0.1.3
   '@vanilla-extract/dynamic': ^2.0.3
@@ -103,10 +101,8 @@ devDependencies:
   '@types/react': 18.0.26
   '@types/react-blockies': 1.4.1
   '@types/react-dom': 18.0.9
-  '@types/testing-library__jest-dom': 5.14.5
   '@typescript-eslint/eslint-plugin': 5.47.0_ncmi6noazr3nzas7jxykisekym
   '@typescript-eslint/parser': 5.47.0_lzzuuodtsqwxnvqeq4g4likcqa
-  '@vanilla-extract/babel-plugin': 1.2.0
   '@vanilla-extract/css': 1.9.2
   '@vanilla-extract/css-utils': 0.1.3
   '@vanilla-extract/dynamic': 2.0.3
@@ -4347,17 +4343,6 @@ packages:
       - supports-color
     dev: true
 
-  /@vanilla-extract/babel-plugin/1.2.0:
-    resolution: {integrity: sha512-4R+hqoyzoyJIrE+NgrYxZuL6GqGH28hiBrPUOxwtvqnJJ5WnUl2/WzItLDDH9YT1Auwl3cIR7pcbrV6HIchORA==}
-    deprecated: The features of this plugin are now built-in to all vanilla-extract bundler integrations — making this plugin no longer required. For more information about test environment integrations, see https://vanilla-extract.style/documentation/test-environments/
-    dependencies:
-      '@babel/core': 7.20.7
-      '@babel/template': 7.20.7
-      '@vanilla-extract/integration': 5.0.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@vanilla-extract/css-utils/0.1.3:
     resolution: {integrity: sha512-PZAcHROlgtCUGI2y0JntdNwvPwCNyeVnkQu6KTYKdmxBbK3w72XJUmLFYapfaFfgami4I9CTLnrJTPdtmS3gpw==}
     dev: true
@@ -4382,18 +4367,6 @@ packages:
     resolution: {integrity: sha512-Rglfw2gXAYiBzAQ4jgUG7rBgE2c88e/zcG27ZVoIqMHVq56wf2C1katGMm1yFMNBgzqM7oBNYzz4YOMzznydkg==}
     dependencies:
       '@vanilla-extract/private': 1.0.3
-    dev: true
-
-  /@vanilla-extract/integration/5.0.1:
-    resolution: {integrity: sha512-HRV/HvC/lihb9wT3x5s7pf5qLjqxSd9nBePJ10juOuMB5cl2ZClEcts076m9BuRKM3wRK2h7KuwkNsaUtjujxQ==}
-    dependencies:
-      '@vanilla-extract/css': 1.9.2
-      esbuild: 0.11.23
-      eval: 0.1.6
-      find-up: 5.0.0
-      javascript-stringify: 2.1.0
-      lodash: 4.17.21
-      outdent: 0.8.0
     dev: true
 
   /@vanilla-extract/integration/6.0.1:
