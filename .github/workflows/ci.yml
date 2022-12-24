@@ -3,8 +3,8 @@ name: CI
 on: [push]
 
 jobs:
-  install:
-    name: Install
+  build:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,11 +13,14 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
 
+      - name: Typecheck
+        run: pnpm typecheck
+
       - name: Lint
         run: pnpm lint
 
-      - name: Build
-        run: pnpm build
-
       - name: Test
         run: pnpm test
+
+      - name: Build
+        run: pnpm build

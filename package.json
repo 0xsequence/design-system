@@ -27,6 +27,7 @@
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build --no-manager-cache -o ./docs",
     "test": "jest",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint -c .eslintrc './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint -c .eslintrc --fix './src/**/*.{ts,tsx}'",
     "format": "prettier --list-different --write src/**/*.{ts,tsx}",
