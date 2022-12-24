@@ -2,7 +2,7 @@ const NEWLINE = '\n'
 
 const comments = `
 // Auto-generated file created by svgr-cli source /src/icons/template.js
-// Run yarn build:icons to update
+// Run pnpm build:icons to update
 `
 
 const template = ({ exports, componentName, jsx }, { tpl }) => {
