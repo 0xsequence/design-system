@@ -1,5 +1,5 @@
 // Auto-generated file created by svgr-cli source /src/icons/template.js
-// Run yarn build:icons to update
+// Run pnpm build:icons to update
 import { SVGProps } from 'react'
 
 import { Box } from '~/components/Box'

@@ -1,10 +1,13 @@
 name: Storybook
+
 on:
   push:
     branches:
       - master
+
 permissions:
   contents: write
+
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
@@ -13,10 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install and Build
-        run: |
-          yarn
-          yarn build:storybook
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Build storybook
+        run: pnpm build:storybook
 
       - name: Add .nojekyll
         run: touch ./docs/.nojekyll
