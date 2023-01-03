@@ -12,7 +12,6 @@ import { IconProps } from '~/icons/types'
 import * as styles from './styles.css'
 
 export type TextInputProps = FieldProps & {
-  description?: string
   disabled?: boolean
   leftIcon?: ComponentType<IconProps>
   rightIcon?: ComponentType<IconProps>

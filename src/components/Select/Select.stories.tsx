@@ -16,6 +16,7 @@ export const Default: Story = {
     },
     name: 'selectDemo',
     label: 'Select',
+    description: 'This is a description',
     labelLocation: 'top',
     placeholder: 'Select an option',
     disabled: false,

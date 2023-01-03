@@ -48,6 +48,7 @@ export const Select = forwardRef(
       disabled = false,
       id,
       label = '',
+      description,
       labelLocation = 'hidden',
       name,
       options,
@@ -63,6 +64,7 @@ export const Select = forwardRef(
         id={id ?? name}
         label={label}
         labelLocation={labelLocation}
+        description={description}
         whiteSpace="nowrap"
       >
         <SelectPrimitive.Root
