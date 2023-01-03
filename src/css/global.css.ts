@@ -29,3 +29,8 @@ globalStyle('*:focus-visible', {
   outlineWidth: vars.borderWidths.thick,
   borderColor: 'transparent',
 })
+
+globalStyle('body', {
+  background: vars.colors.backgroundPrimary,
+  color: vars.colors.text80,
+})
