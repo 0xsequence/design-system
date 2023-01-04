@@ -6,18 +6,12 @@ export const root = style({
   width: '48px',
   height: '28px',
   background: vars.colors.backgroundControl,
-  padding: vars.space['1'],
+  padding: vars.space[1],
   borderRadius: vars.radii.circle,
   position: 'relative',
   cursor: 'pointer',
 
-  transition: 'background 100ms ease-out',
-
   selectors: {
-    '&:hover': {
-      borderColor: vars.colors.borderFocus,
-    },
-
     '&[data-state="checked"]': {
       background: vars.colors.gradientPrimary,
     },
@@ -31,10 +25,10 @@ export const root = style({
 
 export const thumb = style({
   position: 'absolute',
-  top: 3,
-  left: 3,
-  width: 22,
-  height: 22,
+  top: 0,
+  left: 0,
+  width: vars.space[5],
+  height: vars.space[5],
   background: vars.colors.backgroundInverse,
   borderRadius: vars.radii.circle,
   transition: 'transform 100ms ease-out, background 100ms ease-out',
@@ -43,12 +37,9 @@ export const thumb = style({
 
   selectors: {
     '&[data-state="checked"]': {
-      transform: 'translateX(20px)',
-      background: vars.colors.backgroundInverse,
+      transform: `translateX(${vars.space[5]})`,
     },
 
-    [`${root}:hover:not([data-state="checked"]) &`]: {
-      background: vars.colors.backgroundInverse,
-    },
+    [`${root}:hover:not([data-state="checked"]) &`]: {},
   },
 })
