@@ -3,9 +3,10 @@ import {
   createGlobalThemeContract,
 } from '@vanilla-extract/css'
 
+import { capitalize } from '~/helpers'
 import { ColorScheme, colorSchemes, tokens } from '~/tokens'
 
-import { capitalize, mapVarName } from './utils'
+import { mapVarName } from './utils'
 
 type MapTokens<P extends string, T> = {
   [K in keyof T & string as `${P}${Capitalize<K>}`]: string
