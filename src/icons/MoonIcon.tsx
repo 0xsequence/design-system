@@ -22,7 +22,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgFacebookIcon = ({ size = 'sm', ...props }: IconProps) => (
+const SvgMoonIcon = ({ size = 'sm', ...props }: IconProps) => (
   <Box
     as={Svg}
     className={iconVariants({
@@ -32,4 +32,4 @@ const SvgFacebookIcon = ({ size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgFacebookIcon
+export default SvgMoonIcon
