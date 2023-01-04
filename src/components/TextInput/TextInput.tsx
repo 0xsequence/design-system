@@ -16,7 +16,6 @@ export type TextInputProps = FieldProps & {
   leftIcon?: ComponentType<IconProps>
   rightIcon?: ComponentType<IconProps>
   name: string
-  processing?: boolean
   controls?: ReactNode
   value?: string
 }
@@ -38,7 +37,6 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
         leftIcon: LeftIcon,
         rightIcon: RightIcon,
         name,
-        processing = false,
         controls,
         type = 'text',
         ...rest
@@ -60,8 +58,9 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
               <Box
                 as={as}
                 autoComplete={autoComplete}
+                spellCheck="false"
                 className={styles.input}
-                disabled={disabled || processing}
+                disabled={disabled}
                 id={id ?? name}
                 name={name}
                 ref={ref}

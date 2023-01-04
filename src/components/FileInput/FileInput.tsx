@@ -33,7 +33,6 @@ type FileData = {
 export type FileInputProps = FieldProps & {
   disabled?: boolean
   name: string
-  processing?: boolean
   validExtensions: AllowedMimeTypes[]
   value?: File
   onValueChange?: (value: File | null) => void
@@ -54,7 +53,6 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
         name,
         onValueChange,
         placeholder = 'Upload a file',
-        processing = false,
         validExtensions,
         ...rest
       } = props
@@ -114,7 +112,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
                 as="input"
                 className={styles.input}
                 cursor={fileData ? 'text' : 'pointer'}
-                disabled={disabled || processing || !!fileData}
+                disabled={disabled || !!fileData}
                 id={id ?? name}
                 name={name}
                 onChange={handleChange}

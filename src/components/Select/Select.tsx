@@ -21,7 +21,6 @@ export type SelectProps = FieldProps &
     id?: string
     name: string
     placeholder?: string
-    processing?: boolean
     options: SelectOption[]
   }
 
@@ -53,7 +52,6 @@ export const Select = forwardRef(
       name,
       options,
       placeholder,
-      processing = false,
       ...rest
     } = props
 
@@ -67,11 +65,7 @@ export const Select = forwardRef(
         description={description}
         whiteSpace="nowrap"
       >
-        <SelectPrimitive.Root
-          disabled={disabled || processing}
-          name={name}
-          {...rest}
-        >
+        <SelectPrimitive.Root disabled={disabled} name={name} {...rest}>
           <SelectPrimitive.Trigger
             id={id ?? name}
             className={triggerStyle}
@@ -86,13 +80,6 @@ export const Select = forwardRef(
           <SelectPrimitive.Content className={contentStyle}>
             <SelectPrimitive.Viewport>
               <SelectPrimitive.Group>
-                {/* <SelectPrimitive.Label className={groupLabelStyle}>
-                <Text>{placeholder}</Text>
-                <Box as={SelectPrimitive.Icon} display="inline-flex">
-                  <ChevronDownIcon />
-                </Box>
-              </SelectPrimitive.Label> */}
-
                 {options.map(({ value, label, ...rest }) => (
                   <SelectItem key={label} value={value} {...rest}>
                     {label}
