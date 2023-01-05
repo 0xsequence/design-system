@@ -15,5 +15,6 @@ export const Default: Story = {
   args: {
     message: 'Hello, world!',
     children: <Button label="Hover me" />,
+    disabled: false,
   },
 }

@@ -6,26 +6,30 @@ import { Text } from '~/components/Text'
 import * as styles from './styles.css'
 
 interface TooltipProps {
-  message: string | JSX.Element
-  delayDuration?: number
   align?: 'center' | 'end' | 'start'
-  vOffset?: number
+  delayDuration?: number
+  disabled?: boolean
   hOffset?: number
+  message: string | JSX.Element
   side?: 'top' | 'bottom'
+  vOffset?: number
 }
 
 export const Tooltip = (props: PropsWithChildren<TooltipProps>) => {
   const {
-    children,
-    message,
-    delayDuration = 0,
-    side = 'top',
     align = 'center',
-    vOffset = 0,
+    children,
+    delayDuration = 0,
+    disabled = false,
     hOffset = 0,
+    message,
+    side = 'top',
+    vOffset = 0,
   } = props
 
-  return (
+  return disabled ? (
+    <>{children}</>
+  ) : (
     <TooltipPrimitive.Provider>
       <TooltipPrimitive.Root delayDuration={delayDuration}>
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
