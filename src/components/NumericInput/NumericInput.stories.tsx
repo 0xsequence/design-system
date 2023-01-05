@@ -14,7 +14,11 @@ const StoryWrapper: StoryFn<typeof NumericInput> = args => {
   const [value, setValue] = useState('')
   return (
     <>
-      <NumericInput {...args} value={value} onChange={setValue} />
+      <NumericInput
+        value={value}
+        onChange={ev => setValue(ev.target.value)}
+        {...args}
+      />
     </>
   )
 }

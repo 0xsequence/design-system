@@ -1,6 +1,6 @@
 import { ChangeEvent, FocusEvent, forwardRef } from 'react'
 
-import { PolymorphicComponent, PolymorphicProps, PolymorphicRef } from '../Box'
+import { PolymorphicProps, PolymorphicRef } from '../Box'
 import { TextInput } from '../TextInput'
 import { TextInputProps } from '../TextInput/TextInput'
 
@@ -10,15 +10,17 @@ export function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
-export interface NumericInputProps
-  extends Omit<PolymorphicProps<TextInputProps, 'input'>, 'onChange'> {
-  onChange: (value: string) => void
+export type NumericInputProps = TextInputProps & {
+  name?: string
   decimals?: number
 }
 
-export const NumericInput: PolymorphicComponent<NumericInputProps> = forwardRef(
-  (props: NumericInputProps, ref: PolymorphicRef<'input'>) => {
-    const { placeholder, onChange, onBlur, ...rest } = props
+export const NumericInput = forwardRef(
+  (
+    props: PolymorphicProps<NumericInputProps, 'input'>,
+    ref: PolymorphicRef<'input'>
+  ) => {
+    const { name = 'amount', placeholder, onChange, onBlur, ...rest } = props
 
     const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
       let { value } = ev.target
@@ -37,7 +39,7 @@ export const NumericInput: PolymorphicComponent<NumericInputProps> = forwardRef(
       }
 
       if (value === '' || inputRegex.test(escapeRegExp(value))) {
-        onChange?.(value)
+        onChange?.({ ...ev, target: { ...ev.target, value } })
       }
     }
 
@@ -61,12 +63,13 @@ export const NumericInput: PolymorphicComponent<NumericInputProps> = forwardRef(
       onBlur?.(ev)
 
       if (v !== value) {
-        onChange?.(v)
+        onChange?.({ ...ev, target: { ...ev.target, value: v } })
       }
     }
 
     return (
       <TextInput
+        name={name}
         onChange={handleChange}
         onBlur={handleBlur}
         inputMode="decimal"

@@ -1,15 +1,24 @@
-import { ChangeEvent, ComponentProps, ForwardedRef, forwardRef } from 'react'
+import { ChangeEvent, forwardRef } from 'react'
 
-import { IconButton, PolymorphicComponent, TextInput } from '~/components'
+import {
+  IconButton,
+  PolymorphicProps,
+  PolymorphicRef,
+  TextInput,
+} from '~/components'
 import { CloseIcon, SearchIcon } from '~/icons'
 
-type SearchInputProps = ComponentProps<typeof TextInput> & {
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+import { TextInputProps } from '../TextInput/TextInput'
+
+type SearchInputProps = TextInputProps & {
   name?: string
 }
 
-export const SearchInput: PolymorphicComponent<SearchInputProps, 'input'> =
-  forwardRef((props: SearchInputProps, ref: ForwardedRef<HTMLInputElement>) => {
+export const SearchInput = forwardRef(
+  (
+    props: PolymorphicProps<SearchInputProps, 'input'>,
+    ref: PolymorphicRef<'input'>
+  ) => {
     const {
       onChange,
       placeholder = 'Search',
@@ -42,4 +51,5 @@ export const SearchInput: PolymorphicComponent<SearchInputProps, 'input'> =
         {...rest}
       />
     )
-  })
+  }
+)

@@ -15,10 +15,11 @@ const StoryWrapper: StoryFn<typeof SearchInput> = args => {
 
   return (
     <SearchInput
+      as="input"
       id="myInput"
-      {...args}
       value={value}
-      onChange={e => setValue(e.target.value)}
+      onChange={ev => setValue(ev.target.value)}
+      {...args}
     />
   )
 }

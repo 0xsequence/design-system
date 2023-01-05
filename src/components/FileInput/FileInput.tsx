@@ -126,9 +126,9 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
                   cursor="pointer"
                   icon={CloseIcon}
                   size="xs"
-                  onClick={e => {
-                    e.preventDefault()
-                    e.stopPropagation()
+                  onClick={ev => {
+                    ev.preventDefault()
+                    ev.stopPropagation()
 
                     inputRef.current?.value && (inputRef.current.value = '')
 

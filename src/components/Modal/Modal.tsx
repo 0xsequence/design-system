@@ -59,18 +59,18 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
             asChild
             className={styles.contentVariants({ size })}
             forceMount
-            onEscapeKeyDown={e => {
+            onEscapeKeyDown={ev => {
               if (isDismissible) {
                 onClose?.()
               } else {
-                e.preventDefault()
+                ev.preventDefault()
               }
             }}
-            onInteractOutside={e => {
+            onInteractOutside={ev => {
               if (isDismissible) {
                 onClose?.()
               } else {
-                e.preventDefault()
+                ev.preventDefault()
               }
             }}
           >
