@@ -26,10 +26,18 @@ const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
       onClick={() => console.log('Container Clicked!!')}
       padding="4"
     >
-      <Text as="p" fontWeight="medium">
-        The container here has a click action. Clicking on the wrapped
-        IconButton will prevent click propagation.
-      </Text>
+      <Box>
+        <Text as="p" fontWeight="medium">
+          This container here has a click action.
+        </Text>
+        <Text as="p" fontWeight="medium">
+          The button on the right also has a click action.
+        </Text>
+        <Text as="p" fontWeight="medium">
+          Since the button is wrapped in a StopClickPropagation component, the
+          click-through is prevented.
+        </Text>
+      </Box>
 
       <StopClickPropagation>
         <IconButton

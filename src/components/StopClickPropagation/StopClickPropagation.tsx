@@ -19,9 +19,13 @@ export const StopClickPropagation: PolymorphicComponent<
       ref={ref}
       width="fit"
       height="fit"
-      onClick={ev => ev.stopPropagation()}
+      onClick={ev => {
+        ev.preventDefault()
+        ev.stopPropagation()
+      }}
       onKeyDown={ev => {
         if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault()
           ev.stopPropagation()
         }
       }}
