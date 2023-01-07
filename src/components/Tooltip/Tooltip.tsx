@@ -11,7 +11,7 @@ interface TooltipProps {
   disabled?: boolean
   hOffset?: number
   message: string | JSX.Element
-  side?: 'top' | 'bottom'
+  side?: 'top' | 'bottom' | 'left' | 'right'
   vOffset?: number
 }
 
