@@ -1,0 +1,19 @@
+import{j as t}from"./jsx-runtime-a9c13c85.js";import"./Box-00a4654b.js";import"./Avatar-fa993f4c.js";import"./Badge-fca1ee50.js";import"./Breadcrumbs-c0301e62.js";import"./Button-cc66194c.js";import"./atoms.css-1d735476.js";/* empty css                              */import{C as i}from"./Card-8ffb613a.js";import"./Checkbox-2e44e079.js";import"./ControlledSwitch-ad6bdf10.js";import{a as m}from"./Tooltip-866efb70.js";import"./FileInput-52e6ab03.js";import"./IconButton-cf8b4ac6.js";import"./Field-a58cf9e4.js";import"./Modal-4a953a47.js";import"./RadioGroup-75addd04.js";import"./Scroll-8b992507.js";import"./Select-bb16ef89.js";import"./Spinner-73b14e1b.js";import"./StopClickPropagation-ad098631.js";import"./Switch-671e37df.js";import"./TabbedNav-0d9520eb.js";import"./Tag-50268090.js";import{T as p}from"./Text-c4f9bf86.js";import"./ControlledTextInput-9676d3a3.js";import"./TokenImage-55a6521f.js";import"./index-d8ade8ea.js";import"./_commonjsHelpers-042e6b4d.js";import"./index-4d501b15.js";import"./vanilla-extract-recipes-createRuntimeFn.esm-d30eb010.js";import"./Divider-2480e7ea.js";import"./extends-98964cd2.js";import"./index.module-ad4057e5.js";import"./index-ffd4619b.js";import"./index.module-e6a6661a.js";import"./index.module-19695c6a.js";import"./index.module-f4493aef.js";import"./WarningIcon-53818af9.js";import"./index.module-c986f64a.js";import"./index.module-bab4cba0.js";import"./Combination-adb67df6.js";import"./NumericInput-14d23347.js";import"./typography-f274f330.js";const Z={title:"Components/Tabs",component:m},o=({children:n})=>t(i,{marginTop:"4",children:t(p,{variant:"normal",color:"text100",children:n})}),r={args:{defaultValue:"coins",tabs:[{value:"coins",label:"Coins",content:t(o,{children:"Coins"})},{value:"collectibles",label:"Collectibles",content:t(o,{children:"Collectibles"})},{value:"other",label:"Other",content:t(o,{children:"Other"})}]}};var e;r.parameters={...r.parameters,storySource:{source:`{
+  args: {
+    defaultValue: 'coins',
+    tabs: [{
+      value: 'coins',
+      label: 'Coins',
+      content: <Content>Coins</Content>
+    }, {
+      value: 'collectibles',
+      label: 'Collectibles',
+      content: <Content>Collectibles</Content>
+    }, {
+      value: 'other',
+      label: 'Other',
+      content: <Content>Other</Content>
+    }]
+  }
+}`,...(e=r.parameters)==null?void 0:e.storySource}};const $=["Default"];export{r as Default,$ as __namedExportsOrder,Z as default};
+//# sourceMappingURL=Tabs.stories-bd6c438f.js.map
