@@ -128,7 +128,7 @@ const unresponsiveProperties = defineProperties({
     fontFamily: vars.fonts,
     textOverflow: ['ellipsis', 'clip'],
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
-    userSelect: ['none'],
+    userSelect: ['none', 'text', 'all', 'auto'],
     whiteSpace: ['normal', 'nowrap', 'initial', 'inherit'],
     wordBreak: ['break-word'],
     wordWrap: ['normal', 'break-word', 'initial', 'inherit'],
