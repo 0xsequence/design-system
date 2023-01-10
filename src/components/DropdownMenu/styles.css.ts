@@ -4,8 +4,9 @@ import { atoms, vars } from '~/css'
 
 export const content = style([
   atoms({
-    background: 'backgroundSecondary',
-    padding: '6',
+    background: 'buttonGlass',
+    backdropFilter: 'blur',
+    padding: '2',
     borderRadius: 'sm',
   }),
   {
@@ -17,10 +18,44 @@ export const arrow = style({
   fill: vars.colors.backgroundSecondary,
 })
 
-export const item = style({
-  cursor: 'pointer',
-})
+export const item = style([
+  atoms({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: 'xs',
+    paddingX: '2',
+    paddingY: '1',
+    cursor: 'pointer',
+    outline: { focus: 'none' },
+    userSelect: 'none',
+    paddingLeft: '6',
+    position: 'relative',
+    color: 'text50',
+  }),
+  {
+    selectors: {
+      '&[data-disabled]': {
+        opacity: '0.5',
+        cursor: 'default',
+        pointerEvents: 'none',
+      },
+
+      '&[data-highlighted]': {
+        background: vars.colors.gradientPrimary,
+        color: 'white',
+      },
+    },
+  },
+])
 
 export const indicator = style({
-  width: '15px',
+  position: 'absolute',
+  left: 0,
+  width: vars.space[6],
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 })
+
+export const separator = style({})

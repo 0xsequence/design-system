@@ -1,4 +1,5 @@
 export {
+  DropdownMenuPrimitive,
   DropdownMenuArrow,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -9,4 +10,5 @@ export {
   DropdownMenuRadioItem,
   DropdownMenuRoot,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from './DropdownMenu'

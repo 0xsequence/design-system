@@ -20,12 +20,18 @@ export {
 } from './Collapsible'
 export { Divider } from './Divider'
 export {
+  DropdownMenuPrimitive,
   DropdownMenuArrow,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuItemIndicator,
   DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuRoot,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from './DropdownMenu'
 export { ControlledFileInput, FileInput } from './FileInput'
 export { Form } from './Form'
