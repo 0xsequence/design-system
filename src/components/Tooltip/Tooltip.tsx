@@ -5,6 +5,8 @@ import { Text } from '~/components/Text'
 
 import * as styles from './styles.css'
 
+export { TooltipPrimitive }
+
 interface TooltipProps {
   align?: 'center' | 'end' | 'start'
   delayDuration?: number

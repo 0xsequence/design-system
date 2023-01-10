@@ -1,10 +1,8 @@
 export {
   DropdownMenuPrimitive,
-  DropdownMenuArrow,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuItemIndicator,
   DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,

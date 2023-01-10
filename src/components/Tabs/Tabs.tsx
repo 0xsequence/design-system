@@ -6,6 +6,8 @@ import { Text } from '../Text'
 
 import * as styles from './styles.css'
 
+export { TabsPrimitive }
+
 export interface TabsProps
   extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
   tabs: (TabItemProps & { content: ReactNode })[]

@@ -1,4 +1,4 @@
-import * as Dialog from '@radix-ui/react-dialog'
+import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { motion } from 'framer-motion'
 import { PropsWithChildren } from 'react'
 
@@ -9,6 +9,8 @@ import { IconButton } from '../IconButton'
 import { Scroll } from '../Scroll'
 
 import * as styles from './styles.css'
+
+export { ModalPrimitive }
 
 export type ModalProps = {
   backdropColor?: BoxProps['background']
@@ -33,11 +35,11 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   } = props
 
   return (
-    <Dialog.Root defaultOpen onOpenChange={onClose}>
-      <Dialog.Portal forceMount /* container={portalRoot} */>
+    <ModalPrimitive.Root defaultOpen onOpenChange={onClose}>
+      <ModalPrimitive.Portal forceMount /* container={portalRoot} */>
         <Box className={styles.root}>
           <Box
-            as={Dialog.Overlay}
+            as={ModalPrimitive.Overlay}
             asChild
             background={backdropColor}
             className={styles.overlay}
@@ -55,7 +57,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
             />
           </Box>
 
-          <Dialog.Content
+          <ModalPrimitive.Content
             asChild
             className={styles.contentVariants({ size })}
             forceMount
@@ -84,19 +86,19 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               {scroll ? <Scroll>{children}</Scroll> : children}
 
               {isDismissible && (
-                <Dialog.Close asChild>
+                <ModalPrimitive.Close asChild>
                   <IconButton
                     icon={CloseIcon}
                     size="xs"
                     className={styles.close}
                     aria-label="Close"
                   />
-                </Dialog.Close>
+                </ModalPrimitive.Close>
               )}
             </motion.div>
-          </Dialog.Content>
+          </ModalPrimitive.Content>
         </Box>
-      </Dialog.Portal>
-    </Dialog.Root>
+      </ModalPrimitive.Portal>
+    </ModalPrimitive.Root>
   )
 }

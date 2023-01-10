@@ -1,4 +1,5 @@
 export {
+  TabsPrimitive,
   Tabs,
   TabsHeader,
   TabsRoot,

@@ -12,20 +12,13 @@ export { Breadcrumbs } from './Breadcrumbs'
 export { Button } from './Button'
 export { Card } from './Card'
 export { ControlledCheckbox, Checkbox } from './Checkbox'
-export {
-  Collapsible,
-  CollapsibleRoot,
-  CollapsibleTrigger,
-  CollapsibleContent,
-} from './Collapsible'
+export { CollapsiblePrimitive, Collapsible } from './Collapsible'
 export { Divider } from './Divider'
 export {
   DropdownMenuPrimitive,
-  DropdownMenuArrow,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuItemIndicator,
   DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
@@ -38,7 +31,7 @@ export { Form } from './Form'
 export { IconButton } from './IconButton'
 export { Field } from './Field'
 export { GradientAvatar } from './GradientAvatar'
-export { Modal } from './Modal'
+export { ModalPrimitive, Modal } from './Modal'
 export { NumericInput } from './NumericInput'
 export { ControlledRadioGroup, RadioGroup } from './RadioGroup'
 export { Scroll } from './Scroll'
@@ -49,6 +42,7 @@ export { StopClickPropagation } from './StopClickPropagation'
 export { ControlledSwitch, Switch } from './Switch'
 export { TabbedNav } from './TabbedNav'
 export {
+  TabsPrimitive,
   Tabs,
   TabsHeader,
   TabsRoot,
@@ -61,4 +55,4 @@ export { Text, textVariants } from './Text'
 export { ControlledTextInput, TextInput } from './TextInput'
 export { ThemeProvider, useTheme } from './ThemeProvider'
 export { TokenImage } from './TokenImage'
-export { Tooltip } from './Tooltip'
+export { TooltipPrimitive, Tooltip } from './Tooltip'

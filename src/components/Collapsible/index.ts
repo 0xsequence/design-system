@@ -1,6 +1,1 @@
-export {
-  Collapsible,
-  CollapsibleRoot,
-  CollapsibleTrigger,
-  CollapsibleContent,
-} from './Collapsible'
+export { CollapsiblePrimitive, Collapsible } from './Collapsible'

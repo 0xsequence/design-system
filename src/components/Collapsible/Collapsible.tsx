@@ -10,6 +10,8 @@ import { Box } from '../Box'
 
 import * as styles from './styles.css'
 
+export { CollapsiblePrimitive }
+
 export const Collapsible = (
   props: CollapsiblePrimitive.CollapsibleProps & {
     label: string | JSX.Element
@@ -73,9 +75,3 @@ export const Collapsible = (
     </CollapsiblePrimitive.Root>
   )
 }
-
-export const CollapsibleRoot = CollapsiblePrimitive.Root
-
-export const CollapsibleTrigger = CollapsiblePrimitive.Trigger
-
-export const CollapsibleContent = CollapsiblePrimitive.Content

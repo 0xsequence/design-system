@@ -8,8 +8,6 @@ import { Box } from '../Box'
 import { Divider } from '../Divider'
 import { Text } from '../Text'
 
-// import { CheckmarkIcon } from 'icons'
-
 import * as styles from './styles.css'
 
 export { DropdownMenuPrimitive }
@@ -37,7 +35,7 @@ export const DropdownMenuContent = ({
   </DropdownMenuPrimitive.Content>
 )
 
-export const DropdownMenuArrow = () => (
+const DropdownMenuArrow = () => (
   <DropdownMenuPrimitive.Arrow className={styles.arrow} />
 )
 
@@ -57,7 +55,7 @@ export const DropdownMenuItem = ({
   </DropdownMenuPrimitive.Item>
 )
 
-export const DropdownMenuItemIndicator = ({
+const DropdownMenuItemIndicator = ({
   children,
 }: DropdownMenuPrimitive.DropdownMenuItemIndicatorProps) => (
   <DropdownMenuPrimitive.ItemIndicator className={styles.indicator}>
