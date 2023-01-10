@@ -1,0 +1,11 @@
+import{j as e}from"./jsx-runtime-a9c13c85.js";import"./Box-48c74dc7.js";import"./Avatar-51998114.js";import"./Badge-e1afcc96.js";import"./Breadcrumbs-dc3abee0.js";import{B as i}from"./Button-1ee84e56.js";import"./atoms.css-1d735476.js";/* empty css                              */import"./Card-f44f4556.js";import"./Checkbox-6a50f1ed.js";import"./ControlledSwitch-3aaa31fe.js";import{T as p,u as s}from"./Tooltip-baea862f.js";import"./index-3bce9c14.js";import"./DropdownMenu-7bfda06a.js";import"./FileInput-6ed03298.js";import"./IconButton-9168f150.js";import"./Field-a994a343.js";import"./Modal-e529f024.js";import"./RadioGroup-d59b1286.js";import"./Scroll-b1ef0ffb.js";import"./Select-e754cdfb.js";import"./Spinner-52bf4a0c.js";import"./StopClickPropagation-fb4a683d.js";import"./Switch-d62f4e75.js";import"./TabbedNav-0a681274.js";import"./Tag-83f0bc00.js";import"./Text-590e8548.js";import"./ControlledTextInput-8874ec7a.js";import"./TokenImage-638b504e.js";import"./index-d8ade8ea.js";import"./_commonjsHelpers-042e6b4d.js";import"./index-4d501b15.js";import"./vanilla-extract-recipes-createRuntimeFn.esm-d30eb010.js";import"./Divider-f5859848.js";import"./extends-98964cd2.js";import"./index.module-d15610cf.js";import"./index-ffd4619b.js";import"./index.module-e6a6661a.js";import"./index.module-45828978.js";import"./index.module-732cca0e.js";import"./WarningIcon-738acc19.js";import"./index.module-a9b21657.js";import"./NumericInput-eda2a1fe.js";import"./index.module-fa6a82d0.js";import"./index.module-8c7796ea.js";import"./Combination-ae2baabd.js";import"./index.module-f17d4a85.js";import"./typography-f274f330.js";const mt={title:"Components/ThemeProvider",component:p},t=()=>{const{theme:r,setTheme:m}=s();return e(i,{label:"Toggle theme",onClick:()=>{m(r==="light"?"dark":"light")}})};var o;t.parameters={...t.parameters,storySource:{source:`() => {
+  const {
+    theme,
+    setTheme
+  } = useTheme();
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+  return <Button label="Toggle theme" onClick={toggleTheme} />;
+}`,...(o=t.parameters)==null?void 0:o.storySource}};const et=["Default"];export{t as Default,et as __namedExportsOrder,mt as default};
+//# sourceMappingURL=ThemeProvider.stories-5835de9e.js.map
