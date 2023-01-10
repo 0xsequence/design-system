@@ -82,7 +82,7 @@ export const DropdownMenuCheckboxItem = forwardRef<
       ref={forwardedRef}
     >
       <DropdownMenuItemIndicator>
-        <CheckmarkIcon />
+        <CheckmarkIcon size="xs" />
       </DropdownMenuItemIndicator>
       <Text variant="small">{children}</Text>
     </DropdownMenuPrimitive.CheckboxItem>
@@ -102,7 +102,7 @@ export const DropdownMenuRadioItem = forwardRef<
       ref={forwardedRef}
     >
       <DropdownMenuPrimitive.ItemIndicator className={styles.indicator}>
-        <Text color="text100">•</Text>
+        <Text>•</Text>
       </DropdownMenuPrimitive.ItemIndicator>
       <Text variant="small">{children}</Text>
     </DropdownMenuPrimitive.RadioItem>

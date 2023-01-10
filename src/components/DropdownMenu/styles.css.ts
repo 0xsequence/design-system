@@ -15,7 +15,7 @@ export const content = style([
 ])
 
 export const arrow = style({
-  fill: vars.colors.backgroundSecondary,
+  fill: vars.colors.buttonGlass,
 })
 
 export const item = style([
@@ -42,7 +42,7 @@ export const item = style([
       },
 
       '&[data-highlighted]': {
-        background: vars.colors.gradientPrimary,
+        background: vars.colors.backgroundSecondary,
         color: 'white',
       },
     },
