@@ -9,7 +9,7 @@ import { IconProps } from './types'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    viewBox="0 0 20 20"
+    viewBox="0 0 21 21"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
@@ -17,13 +17,13 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M18 16.427 10 2.57 2 16.427h16Zm-7.322-4.333v-5.77H9.216v5.77h1.462Zm-.731 3.087a1.089 1.089 0 1 0 0-2.178 1.089 1.089 0 0 0 0 2.178Z"
+      d="M6.418 3.6h-2.5v2.5h2.5V3.6Zm0-1.5h1.5v5.5h-5.5V2.1h4Zm0 12h-2.5v2.5h2.5v-2.5Zm0-1.5h1.5v5.5h-5.5v-5.5h4Zm8-9h2.5v2.5h-2.5V3.6Zm4-1.5h-5.5v5.5h5.5V2.1Zm-1.5 12h-2.5v2.5h2.5v-2.5Zm0-1.5h1.5v5.5h-5.5v-5.5h4ZM9.668 2.1v7.25h-7.25v1.5h8.75V2.1h-1.5Zm1.5 10.5v5.5h-1.5v-5.5h1.5Zm1.75-1.75h5.5v-1.5h-5.5v1.5Z"
       fill="currentColor"
     />
   </svg>
 )
 
-const SvgWarningIcon = ({ size = 'sm', ...props }: IconProps) => (
+const SvgQrCodeIcon = ({ size = 'sm', ...props }: IconProps) => (
   <Box
     as={Svg}
     className={iconVariants({
@@ -33,4 +33,4 @@ const SvgWarningIcon = ({ size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgWarningIcon
+export default SvgQrCodeIcon

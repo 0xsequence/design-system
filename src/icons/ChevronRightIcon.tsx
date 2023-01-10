@@ -15,11 +15,10 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="m8 15 5-5-5-5"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="m7.949 16.53-1.061-1.06 5.47-5.47-5.47-5.47 1.06-1.06L14.48 10l-6.53 6.53Z"
+      fill="currentColor"
     />
   </svg>
 )

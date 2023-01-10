@@ -15,7 +15,9 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M11.052 4.052a1.051 1.051 0 1 0-2.104 0v4.896H4.052a1.052 1.052 0 0 0 0 2.104h4.896v4.896a1.052 1.052 0 0 0 2.104 0v-4.896h4.896a1.051 1.051 0 1 0 0-2.104h-4.896V4.052Z"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M11.168 9.25V2.929h-1.5V9.25h-6.32v1.5h6.32v6.321h1.5V10.75h6.321v-1.5h-6.32Z"
       fill="currentColor"
     />
   </svg>
