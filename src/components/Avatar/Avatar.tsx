@@ -18,7 +18,6 @@ const scale: Record<AvatarSize, number> = {
 interface AvatarProps extends BoxProps {
   address: string
   size?: AvatarSize
-  className?: string
 }
 
 export const Avatar = memo((props: AvatarProps) => {
