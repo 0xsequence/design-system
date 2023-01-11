@@ -9,12 +9,7 @@ import {
 
 import * as styles from './styles.css'
 
-interface CardProps {
-  clickable?: boolean
-  outlined?: boolean
-  disabled?: boolean
-  blur?: boolean
-}
+type CardProps = styles.CardVariants
 
 export const Card: PolymorphicComponent<CardProps, 'div'> = forwardRef(
   <T extends ElementType>(
