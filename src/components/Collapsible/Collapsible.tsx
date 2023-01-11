@@ -1,37 +1,45 @@
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 
 import { Text } from '~/components/Text'
 import { ChevronLeftIcon } from '~/icons'
 
-import { Box } from '../Box'
+import { Box, BoxProps } from '../Box'
 
 import * as styles from './styles.css'
 
 export { CollapsiblePrimitive }
 
-export const Collapsible = (
-  props: CollapsiblePrimitive.CollapsibleProps & {
-    label: string | JSX.Element
-    className?: string
+type CollapsibleProps = BoxProps &
+  CollapsiblePrimitive.CollapsibleProps & {
+    label: ReactNode
   }
-) => {
-  const { defaultOpen, label, children, className } = props
+
+export const Collapsible = (props: CollapsibleProps) => {
+  const { className, children, defaultOpen, onOpenChange, label, ...rest } =
+    props
   const [expanded, toggleExpanded] = useState(defaultOpen)
+
+  const handleOpenChange = (open: boolean) => {
+    toggleExpanded(open)
+    onOpenChange?.(open)
+  }
 
   return (
     <CollapsiblePrimitive.Root
-      className={clsx(styles.root, className)}
+      className={clsx(className, styles.root)}
       defaultOpen={defaultOpen}
-      onOpenChange={toggleExpanded}
+      onOpenChange={handleOpenChange}
       asChild
     >
-      <motion.div
+      <Box
+        as={motion.div}
         initial={{ height: defaultOpen ? 'auto' : styles.COLLAPSED_HEIGHT }}
         animate={{ height: expanded ? 'auto' : styles.COLLAPSED_HEIGHT }}
         transition={{ ease: 'easeOut', duration: 0.3 }}
+        {...rest}
       >
         <CollapsiblePrimitive.Trigger className={styles.trigger}>
           {typeof label === 'string' ? (
@@ -71,7 +79,7 @@ export const Collapsible = (
             </CollapsiblePrimitive.Content>
           )}
         </AnimatePresence>
-      </motion.div>
+      </Box>
     </CollapsiblePrimitive.Root>
   )
 }
