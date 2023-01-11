@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { Fragment } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
@@ -54,7 +55,7 @@ interface HashState {
 }
 
 export const GradientAvatar = (props: GradientAvatarProps) => {
-  const { address, size = 'md', complexity = 1, ...rest } = props
+  const { className, address, size = 'md', complexity = 1, ...rest } = props
 
   const hashes: HashState[] = []
   for (let i = 0; i < complexity; i++) {
@@ -80,7 +81,7 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
   return (
     <Box
       as="svg"
-      className={styles.avatar({ size })}
+      className={clsx(className, styles.avatar({ size }))}
       viewBox={`0 0 1000 1000`}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
