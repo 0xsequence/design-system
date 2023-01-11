@@ -2,6 +2,7 @@ import { clsx } from 'clsx'
 import { memo } from 'react'
 
 import { Box, BoxProps } from '../Box'
+import { Image } from '../Image'
 import { Text } from '../Text'
 
 import * as styles from './styles.css'
@@ -27,7 +28,7 @@ export const TokenImage = memo((props: TokenIconProps) => {
       {...boxProps}
     >
       {src ? (
-        <img className={styles.img} src={src} />
+        <Image className={styles.img} src={src} />
       ) : (
         <Text
           className={styles.fallback}
