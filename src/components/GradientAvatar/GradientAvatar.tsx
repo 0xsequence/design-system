@@ -84,6 +84,7 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
       className={clsx(className, styles.avatar({ size }))}
       viewBox={`0 0 1000 1000`}
       version="1.1"
+      flexShrink="0"
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
