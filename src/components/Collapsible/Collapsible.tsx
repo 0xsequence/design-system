@@ -42,13 +42,9 @@ export const Collapsible = (props: CollapsibleProps) => {
         {...rest}
       >
         <CollapsiblePrimitive.Trigger className={styles.trigger}>
-          {typeof label === 'string' ? (
-            <Text variant="normal" fontWeight="bold" color="text80">
-              {label}
-            </Text>
-          ) : (
-            label
-          )}
+          <Text as="div" variant="normal" fontWeight="bold" color="text80">
+            {label}
+          </Text>
           <Box
             as={motion.div}
             position="absolute"

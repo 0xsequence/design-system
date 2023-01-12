@@ -10,6 +10,7 @@ export const root = style([
     background: 'backgroundSecondary',
     position: 'relative',
     overflow: 'hidden',
+    width: 'full',
   }),
   {
     minHeight: COLLAPSED_HEIGHT,
