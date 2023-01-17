@@ -86,7 +86,12 @@ const responsiveProperties = defineProperties({
     flexShrink: ['0', '1'],
     flexGrow: ['0', '1'],
     flexWrap: ['nowrap', 'wrap', 'wrap-reverse'],
-    justifyContent: [...flexAlignment, 'space-around', 'space-between'],
+    justifyContent: [
+      ...flexAlignment,
+      'space-around',
+      'space-between',
+      'space-evenly',
+    ],
     justifySelf: flexAlignment,
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
