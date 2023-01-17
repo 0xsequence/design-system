@@ -3,6 +3,10 @@ import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 import { vars } from '~/css'
 
 export const iconVariants = recipe({
+  base: {
+    flexShrink: 0,
+  },
+
   variants: {
     size: {
       xs: {
