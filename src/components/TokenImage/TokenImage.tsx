@@ -11,6 +11,7 @@ type TokenIconSize = 'xs' | 'sm' | 'md' | 'lg'
 
 interface TokenIconProps extends BoxProps {
   className?: string
+  disableAnimation?: boolean
   style?: any
   src?: string
   symbol?: string
@@ -18,7 +19,15 @@ interface TokenIconProps extends BoxProps {
 }
 
 export const TokenImage = memo((props: TokenIconProps) => {
-  const { className, style, src, symbol, size = 'md', ...boxProps } = props
+  const {
+    className,
+    disableAnimation = false,
+    style,
+    src,
+    symbol,
+    size = 'md',
+    ...boxProps
+  } = props
 
   return (
     <Box
@@ -28,7 +37,11 @@ export const TokenImage = memo((props: TokenIconProps) => {
       {...boxProps}
     >
       {src ? (
-        <Image className={styles.img} src={src} />
+        <Image
+          className={styles.img}
+          disableAnimation={disableAnimation}
+          src={src}
+        />
       ) : (
         <Text
           className={styles.fallback}
