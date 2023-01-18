@@ -16,7 +16,7 @@ pnpm add @0xsequence/design-system
 
 Import the styles at the root of your app
 
-`import '@0xsequence/design-system/styles'`
+`import '@0xsequence/design-system/styles.css'`
 
 Then import components you want into your UI
 
