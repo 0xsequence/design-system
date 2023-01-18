@@ -32,6 +32,7 @@ export default defineConfig({
       },
     ],
   },
+  publicDir: false,
   build: {
     lib: {
       name: 'SequenceDesignSystem',
