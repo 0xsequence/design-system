@@ -20,6 +20,7 @@ export const SearchInput = forwardRef(
     ref: PolymorphicRef<'input'>
   ) => {
     const {
+      controls,
       onChange,
       placeholder = 'Search',
       name = 'search',
@@ -33,7 +34,7 @@ export const SearchInput = forwardRef(
         name={name}
         leftIcon={SearchIcon}
         controls={
-          value ? (
+          controls ?? value ? (
             <IconButton
               icon={CloseIcon}
               size="xs"
