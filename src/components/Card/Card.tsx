@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { ElementType, forwardRef } from 'react'
 
 import {
@@ -17,6 +18,7 @@ export const Card: PolymorphicComponent<CardProps, 'div'> = forwardRef(
     ref: PolymorphicRef<T>
   ) => {
     const {
+      className,
       children,
       clickable,
       outlined,
@@ -27,7 +29,10 @@ export const Card: PolymorphicComponent<CardProps, 'div'> = forwardRef(
     } = props
     return (
       <Box
-        className={styles.cardVariants({ clickable, outlined, disabled, blur })}
+        className={clsx(
+          className,
+          styles.cardVariants({ clickable, outlined, disabled, blur })
+        )}
         background={outlined ? 'transparent' : 'backgroundSecondary'}
         borderRadius="md"
         padding="4"
