@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css'
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { textVariants } from '~/components/Text/styles.css'
 import { atoms, vars } from '~/css'
@@ -9,7 +10,6 @@ export const triggerStyle = style([
     alignItems: 'center',
     background: 'transparent',
     borderColor: 'borderNormal',
-    borderRadius: 'md',
     borderStyle: 'solid',
     borderWidth: 'thin',
     display: 'inline-flex',
@@ -41,6 +41,18 @@ export const triggerStyle = style([
     },
   },
 ])
+
+export const triggerVariants = recipe({
+  variants: {
+    borderRadius: {
+      xs: atoms({ borderRadius: 'xs' }),
+      sm: atoms({ borderRadius: 'sm' }),
+      md: atoms({ borderRadius: 'md' }),
+    },
+  },
+})
+
+export type TriggerVariants = RecipeVariants<typeof triggerVariants>
 
 export const contentStyle = style([
   atoms({

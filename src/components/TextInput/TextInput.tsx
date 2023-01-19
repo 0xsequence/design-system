@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { ComponentType, ElementType, forwardRef, ReactNode } from 'react'
 
 import {
@@ -11,14 +12,15 @@ import { IconProps } from '~/icons/types'
 
 import * as styles from './styles.css'
 
-export type TextInputProps = FieldProps & {
-  disabled?: boolean
-  leftIcon?: ComponentType<IconProps>
-  rightIcon?: ComponentType<IconProps>
-  name: string
-  controls?: ReactNode
-  value?: string
-}
+export type TextInputProps = FieldProps &
+  styles.WrapVariants & {
+    disabled?: boolean
+    leftIcon?: ComponentType<IconProps>
+    rightIcon?: ComponentType<IconProps>
+    name: string
+    controls?: ReactNode
+    value?: string
+  }
 
 export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
   forwardRef(
@@ -29,6 +31,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
       const {
         as = 'input',
         autoComplete = 'off',
+        borderRadius = 'md',
         description,
         disabled = false,
         id,
@@ -52,7 +55,12 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
           labelLocation={labelLocation}
         >
           <Box width="full">
-            <Box className={styles.wrap}>
+            <Box
+              className={clsx(
+                styles.wrap,
+                styles.wrapVariants({ borderRadius })
+              )}
+            >
               {LeftIcon && <LeftIcon size="sm" />}
 
               <Box

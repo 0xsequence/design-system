@@ -42,7 +42,7 @@ export const Tooltip = (props: PropsWithChildren<TooltipProps>) => {
           sideOffset={vOffset}
           alignOffset={hOffset}
         >
-          <Text fontSize="xsmall" fontWeight="medium" color="text80">
+          <Text variant="small" fontWeight="medium" color="text80">
             {message}
           </Text>
           <TooltipPrimitive.Arrow offset={12} width={10} height={5} />

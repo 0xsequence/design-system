@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css'
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { textVariants } from '~/components/Text/styles.css'
 import { atoms, vars } from '~/css'
@@ -8,7 +9,6 @@ export const wrap = style([
   atoms({
     alignItems: 'center',
     borderColor: 'borderNormal',
-    borderRadius: 'md',
     borderStyle: 'dashed',
     borderWidth: 'thin',
     display: 'inline-flex',
@@ -38,6 +38,18 @@ export const wrap = style([
     },
   },
 ])
+
+export const wrapVariants = recipe({
+  variants: {
+    borderRadius: {
+      xs: atoms({ borderRadius: 'xs' }),
+      sm: atoms({ borderRadius: 'sm' }),
+      md: atoms({ borderRadius: 'md' }),
+    },
+  },
+})
+
+export type WrapVariants = RecipeVariants<typeof wrapVariants>
 
 export const input = style([
   atoms({

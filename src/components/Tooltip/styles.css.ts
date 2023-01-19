@@ -7,9 +7,9 @@ export const content = style([
     backdropFilter: 'blur',
     background: 'buttonGlass',
     borderRadius: 'sm',
-    paddingX: '3',
-    paddingBottom: '2',
-    paddingTop: '1',
+    paddingX: '4',
+    paddingBottom: '3',
+    paddingTop: '2',
   }),
   {
     fill: vars.colors.buttonGlass,

@@ -11,6 +11,7 @@ type Story = StoryObj<typeof FileInput>
 
 export const Default: Story = {
   args: {
+    borderRadius: 'md',
     name: 'myFileInput',
     label: 'File input',
     labelLocation: 'top',

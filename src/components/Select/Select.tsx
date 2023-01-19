@@ -6,7 +6,13 @@ import { Box } from '~/components/Box'
 import { Field, FieldProps } from '~/components/Field'
 import { ChevronDownIcon } from '~/icons'
 
-import { contentStyle, optionStyle, triggerStyle } from './styles.css'
+import {
+  contentStyle,
+  optionStyle,
+  triggerStyle,
+  TriggerVariants,
+  triggerVariants,
+} from './styles.css'
 
 type SelectOption = {
   className?: string
@@ -16,6 +22,7 @@ type SelectOption = {
 }
 
 export type SelectProps = FieldProps &
+  TriggerVariants &
   SelectPrimitive.SelectProps & {
     disabled?: boolean
     id?: string
@@ -44,6 +51,7 @@ const SelectItem = forwardRef(
 export const Select = forwardRef(
   (props: SelectProps, ref: Ref<HTMLButtonElement>) => {
     const {
+      borderRadius = 'md',
       disabled = false,
       id,
       label = '',
@@ -68,7 +76,7 @@ export const Select = forwardRef(
         <SelectPrimitive.Root disabled={disabled} name={name} {...rest}>
           <SelectPrimitive.Trigger
             id={id ?? name}
-            className={triggerStyle}
+            className={clsx(triggerStyle, triggerVariants({ borderRadius }))}
             ref={ref}
           >
             <SelectPrimitive.Value placeholder={placeholder} />

@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { ChangeEvent, ElementType, forwardRef, useRef, useState } from 'react'
 
 import {
@@ -30,13 +31,14 @@ type FileData = {
   extension: string
 }
 
-export type FileInputProps = FieldProps & {
-  disabled?: boolean
-  name: string
-  validExtensions: AllowedMimeTypes[]
-  value?: File
-  onValueChange?: (value: File | null) => void
-}
+export type FileInputProps = FieldProps &
+  styles.WrapVariants & {
+    disabled?: boolean
+    name: string
+    validExtensions: AllowedMimeTypes[]
+    value?: File
+    onValueChange?: (value: File | null) => void
+  }
 
 export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
   forwardRef(
@@ -45,6 +47,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
       ref: PolymorphicRef<T>
     ) => {
       const {
+        borderRadius = 'md',
         description,
         disabled = false,
         id,
@@ -94,7 +97,10 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
             <Box
               justifyContent={fileData ? 'space-between' : 'flex-start'}
               color={fileData ? 'text100' : 'text50'}
-              className={styles.wrap}
+              className={clsx(
+                styles.wrap,
+                styles.wrapVariants({ borderRadius })
+              )}
             >
               {fileData ? (
                 <Box flexDirection="row" gap="2" alignItems="baseline">

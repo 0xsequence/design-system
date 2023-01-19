@@ -14,6 +14,7 @@ type Story = StoryObj<typeof TextInput>
 
 export const Default: Story = {
   args: {
+    borderRadius: 'md',
     label: 'This the label',
     description: 'This is the description',
     placeholder: 'This is the placeholder',
