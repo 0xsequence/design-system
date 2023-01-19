@@ -28,24 +28,24 @@ export const SearchInput = forwardRef(
       ...rest
     } = props
 
+    const defaultClearButton = value ? (
+      <IconButton
+        icon={CloseIcon}
+        size="xs"
+        onClick={() =>
+          onChange?.({
+            target: { value: '' },
+          } as ChangeEvent<HTMLInputElement>)
+        }
+      />
+    ) : undefined
+
     return (
       <TextInput
         ref={ref}
         name={name}
         leftIcon={SearchIcon}
-        controls={
-          controls ?? value ? (
-            <IconButton
-              icon={CloseIcon}
-              size="xs"
-              onClick={() =>
-                onChange?.({
-                  target: { value: '' },
-                } as ChangeEvent<HTMLInputElement>)
-              }
-            />
-          ) : undefined
-        }
+        controls={controls || defaultClearButton}
         placeholder={placeholder}
         value={value}
         onChange={(ev: ChangeEvent<HTMLInputElement>) => onChange?.(ev)}
