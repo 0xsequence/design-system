@@ -7,19 +7,18 @@ import { Text } from '../Text'
 
 import * as styles from './styles.css'
 
-type TokenIconSize = 'xs' | 'sm' | 'md' | 'lg'
-
-interface TokenIconProps extends BoxProps {
-  className?: string
-  disableAnimation?: boolean
-  style?: any
-  src?: string
-  symbol?: string
-  size?: TokenIconSize
-}
+type TokenIconProps = BoxProps &
+  styles.RootVariants & {
+    className?: string
+    disableAnimation?: boolean
+    style?: any
+    src?: string
+    symbol?: string
+  }
 
 export const TokenImage = memo((props: TokenIconProps) => {
   const {
+    borderRadius = 'circle',
     className,
     disableAnimation = false,
     style,
@@ -31,7 +30,7 @@ export const TokenImage = memo((props: TokenIconProps) => {
 
   return (
     <Box
-      className={clsx(className, styles.root({ size }))}
+      className={clsx(className, styles.root({ borderRadius, size }))}
       style={style}
       flexShrink="0"
       {...boxProps}

@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css'
-import { recipe } from '@vanilla-extract/recipes'
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { atoms, selectorize } from '~/css'
 
@@ -7,7 +7,6 @@ export const root = recipe({
   base: atoms({
     display: 'flex',
     placeItems: 'center',
-    borderRadius: 'circle',
     overflow: 'hidden',
   }),
 
@@ -37,8 +36,17 @@ export const root = recipe({
         fontSize: '11px',
       },
     },
+
+    borderRadius: {
+      circle: atoms({ borderRadius: 'circle' }),
+      lg: atoms({ borderRadius: 'lg' }),
+      md: atoms({ borderRadius: 'md' }),
+      sm: atoms({ borderRadius: 'sm' }),
+    },
   },
 })
+
+export type RootVariants = RecipeVariants<typeof root>
 
 export const img = style({
   maxWidth: '100%',
