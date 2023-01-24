@@ -1,5 +1,5 @@
 import * as ModalPrimitive from '@radix-ui/react-dialog'
-import { motion } from 'framer-motion'
+import { motion, MotionProps } from 'framer-motion'
 import { PropsWithChildren } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
@@ -19,6 +19,8 @@ export type ModalProps = {
   isDismissible?: boolean
   onClose?: () => void
   scroll?: boolean
+  overlayProps?: MotionProps
+  contentProps?: MotionProps
 } & styles.ContentVariants
 
 // const portalRoot = document.getElementById('portal')
@@ -32,6 +34,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     onClose,
     scroll = true,
     size = 'lg',
+    overlayProps,
+    contentProps,
   } = props
 
   return (
@@ -54,6 +58,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 type: 'tween',
                 ease: 'linear',
               }}
+              {...overlayProps}
             />
           </Box>
 
@@ -82,6 +87,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               animate={disableAnimation ? false : { y: 0 }}
               exit={disableAnimation ? undefined : { y: '100%' }}
               transition={{ type: 'tween', ease: 'easeOut' }}
+              {...contentProps}
             >
               {scroll ? <Scroll>{children}</Scroll> : children}
 
