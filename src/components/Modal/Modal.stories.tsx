@@ -54,3 +54,43 @@ export const Default: Story = {
     ),
   },
 }
+
+export const CustomAnimation: Story = {
+  render: args => (
+    <StoryWrapper
+      overlayProps={{}}
+      contentProps={{
+        initial: { scale: 0, rotateZ: 0 },
+        animate: { scale: 1, rotateZ: 360 },
+        exit: { scale: 0, rotateZ: 0 },
+        transition: { type: 'spring' },
+      }}
+      {...args}
+    />
+  ),
+  args: {
+    size: 'lg',
+    children: (
+      <Box
+        flexDirection="column"
+        justifyContent="space-between"
+        height="full"
+        padding="4"
+      >
+        <Box>
+          <Text as="h1" variant="medium" color="text100">
+            New Dapp
+          </Text>
+          <Text as="p" variant="normal" color="text50">
+            Custom Open & Close Animated Modal. You can always change these
+            settings later.
+          </Text>
+        </Box>
+
+        <Box justifyContent="flex-end">
+          <Button variant="primary" shape="square" label="Create" />
+        </Box>
+      </Box>
+    ),
+  },
+}
