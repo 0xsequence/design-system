@@ -13,9 +13,22 @@ type Story = StoryObj<typeof Tag>
 
 export const Default: Story = {
   args: {
+    label: 'ERC1155',
+  },
+}
+
+export const WithIcon: Story = {
+  args: {
+    label: 'ERC1155',
+    icon: SettingsIcon,
+  },
+}
+
+export const NetworkTag: Story = {
+  args: {
     background: 'ethereumDark',
     color: 'white',
     icon: SettingsIcon,
-    label: 'Static Tag',
+    label: 'Ethereum',
   },
 }
