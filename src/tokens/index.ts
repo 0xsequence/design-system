@@ -1,7 +1,6 @@
 import { borderWidths, radii } from './border'
 import { colors } from './color'
 import { blur } from './effect'
-import { networkColors } from './network'
 import { opacity } from './opacity'
 import { space } from './space'
 import {
@@ -21,13 +20,12 @@ export const tokens = {
   fontWeights,
   letterSpacings,
   lineHeights,
-  networkColors,
   opacity,
   radii,
   space,
 }
 
-export { colorSchemes } from './color'
+export { colors } from './color'
 
 export type { ColorScheme } from './color'
 export type Tokens = typeof tokens

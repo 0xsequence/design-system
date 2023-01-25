@@ -4,7 +4,7 @@ import {
 } from '@vanilla-extract/css'
 
 import { capitalize } from '~/helpers'
-import { ColorScheme, colorSchemes, tokens } from '~/tokens'
+import { ColorScheme, tokens } from '~/tokens'
 
 import { mapVarName } from './utils'
 
@@ -21,7 +21,7 @@ const mapTokens = <P extends string, T extends {}>(
   }, {}) as MapTokens<P, T>
 }
 
-type NetworkColors = typeof tokens.networkColors
+type NetworkColors = typeof tokens.colors.network
 
 const mapNetworkColors = <
   T extends NetworkColors,
@@ -41,18 +41,18 @@ export const baseVars = createGlobalThemeContract(baseTokens, mapVarName)
 createGlobalTheme(':root', baseVars, baseTokens)
 
 const makeColorScheme = (mode: ColorScheme = 'light') => {
-  const schemeTokens = colors[mode]
+  const colorSchemeTokens = colors.colorSchemes[mode]
 
   return {
     colors: {
       ...colors.base,
       ...colors.context,
-      ...mapTokens('gradient', colors.gradients),
-      ...mapTokens('background', schemeTokens.background),
-      ...mapTokens('border', schemeTokens.border),
-      ...mapTokens('button', schemeTokens.button),
-      ...mapTokens('text', schemeTokens.text),
-      ...mapNetworkColors(baseTokens.networkColors),
+      ...mapTokens('gradient', colors.gradient),
+      ...mapTokens('background', colorSchemeTokens.background),
+      ...mapTokens('border', colorSchemeTokens.border),
+      ...mapTokens('button', colorSchemeTokens.button),
+      ...mapTokens('text', colorSchemeTokens.text),
+      ...mapNetworkColors(colors.network),
     },
   }
 }
@@ -62,7 +62,7 @@ export const colorSchemeVars = createGlobalThemeContract(
   mapVarName
 )
 
-for (const colorScheme of Object.keys(colorSchemes) as ColorScheme[]) {
+for (const colorScheme of Object.keys(colors.colorSchemes) as ColorScheme[]) {
   createGlobalTheme(
     `[data-theme="${colorScheme}"]`,
     colorSchemeVars,
