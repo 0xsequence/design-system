@@ -28,16 +28,6 @@ export type PolymorphicComponent<P, D extends ElementType = 'div'> = <
 
 export type PolymorphicRef<T extends ElementType = 'div'> = BoxProps<T>['ref']
 
-const FLEX_PROPS = [
-  'alignItems',
-  'alignSelf',
-  'flexDirection',
-  'gap',
-  'justifyContent',
-  'justifySelf',
-  'placeItems',
-]
-
 export const Box: PolymorphicComponent<{}, 'div'> = forwardRef(
   <T extends ElementType>(props: BoxProps<T>, ref: Ref<HTMLElement>) => {
     const { as = 'div', sx = {}, className, ...restProps } = props
@@ -51,12 +41,6 @@ export const Box: PolymorphicComponent<{}, 'div'> = forwardRef(
         nativeProps[key] = restProps[key as keyof typeof restProps]
       }
     }
-
-    atomProps.display ||= Object.keys(atomProps).some(k =>
-      FLEX_PROPS.includes(k)
-    )
-      ? 'flex'
-      : undefined
 
     const atomicClasses = atoms({
       ...atomProps,

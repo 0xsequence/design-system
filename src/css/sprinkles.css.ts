@@ -184,10 +184,8 @@ const selectorProperties = defineProperties({
   },
 })
 
-export const atoms = createSprinkles(
+export const sprinkles = createSprinkles(
   responsiveProperties,
   unresponsiveProperties,
   selectorProperties
 )
-
-export type Atoms = Parameters<typeof atoms>[0]

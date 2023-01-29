@@ -6,7 +6,7 @@ export type { ThemeVars } from './vars.css'
 
 import './global.css'
 
-export { atoms } from './atoms.css'
-export type { Atoms } from './atoms.css'
+export { atoms } from './atoms'
+export type { Atoms } from './atoms'
 
 export { responsiveStyle, selectorize } from './utils'
