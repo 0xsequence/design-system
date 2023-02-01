@@ -29,6 +29,8 @@ export const overlay = style([
 export const contentVariants = recipe({
   base: [
     atoms({
+      display: 'flex',
+      flexDirection: 'column',
       position: 'fixed',
       overflow: 'hidden',
       background: 'backgroundPrimary',
@@ -52,11 +54,12 @@ export const contentVariants = recipe({
       sm: {
         width: '100vw',
         minHeight: 100,
+        maxHeight: 'calc(100vh - 80px)',
 
         '@media': responsiveStyle({
           lg: {
             width: 'fit-content',
-            minWidth: '540px',
+            maxWidth: '540px',
             maxHeight: 'min(800px, calc(100vh - 80px))',
           },
         }),
@@ -74,7 +77,16 @@ export const contentVariants = recipe({
         }),
       },
     },
+
+    autoHeight: { true: {} },
   },
+
+  compoundVariants: [
+    {
+      variants: { autoHeight: true, size: 'lg' },
+      style: { height: 'auto !important' },
+    },
+  ],
 })
 
 export type ContentVariants = RecipeVariants<typeof contentVariants>

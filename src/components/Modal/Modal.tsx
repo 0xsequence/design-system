@@ -27,6 +27,7 @@ export type ModalProps = {
 
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const {
+    autoHeight = false,
     backdropColor = 'gradientBackdrop',
     children,
     disableAnimation = false,
@@ -64,7 +65,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
 
           <ModalPrimitive.Content
             asChild
-            className={styles.contentVariants({ size })}
+            className={styles.contentVariants({ autoHeight, size })}
             forceMount
             onEscapeKeyDown={ev => {
               if (isDismissible) {
