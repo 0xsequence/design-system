@@ -58,8 +58,7 @@ export const contentVariants = recipe({
 
         '@media': responsiveStyle({
           lg: {
-            width: 'fit-content',
-            maxWidth: '540px',
+            width: '540px',
             maxHeight: 'min(800px, calc(100vh - 80px))',
           },
         }),
