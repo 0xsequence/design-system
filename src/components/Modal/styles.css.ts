@@ -40,6 +40,12 @@ export const contentVariants = recipe({
       },
     }),
     {
+      '::-webkit-scrollbar': {
+        display: 'none',
+      },
+      msOverflowStyle: 'none',
+      scrollbarWidth: 'none',
+
       borderRadius: `${vars.radii.lg} ${vars.radii.lg} 0 0`,
       '@media': responsiveStyle({
         lg: {

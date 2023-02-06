@@ -36,6 +36,7 @@ export const indicatorVariants = recipe({
   base: atoms({
     color: 'text100',
     background: 'text50',
+    borderRadius: 'xs',
   }),
 
   variants: {
