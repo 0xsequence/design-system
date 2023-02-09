@@ -1,4 +1,4 @@
-import { useDebugValue, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { breakpoints } from '~/css/breakpoints'
 
@@ -69,11 +69,6 @@ export const useMediaQuery = (
       queryList.removeListener(updateMatch)
     }
   }, [query, supportMatchMedia])
-
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useDebugValue({ query, match })
-  }
 
   return match
 }
