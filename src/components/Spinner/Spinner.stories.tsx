@@ -11,6 +11,13 @@ type Story = StoryObj<typeof Spinner>
 
 export const Default: Story = {
   args: {
-    size: 'sm',
+    size: 'md',
+  },
+}
+
+export const PendingSpinner: Story = {
+  args: {
+    size: 'md',
+    color: 'warning',
   },
 }

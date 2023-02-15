@@ -19,14 +19,17 @@ export const variants = recipe({
       sm: {
         width: '16px',
         height: '16px',
+        strokeWidth: 'calc(24 / 16 * 2px)',
       },
       md: {
         width: '24px',
         height: '24px',
+        strokeWidth: '2px',
       },
       lg: {
         width: '32px',
         height: '32px',
+        strokeWidth: 'calc(24 / 32 * 2px)',
       },
     },
   },
