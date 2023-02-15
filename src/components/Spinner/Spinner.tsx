@@ -19,7 +19,12 @@ export const Spinner: PolymorphicComponent<SpinnerProps> = forwardRef(
     const { size = 'md', ...rest } = props
 
     return (
-      <Box className={styles.variants({ size })} ref={ref} {...rest}>
+      <Box
+        className={styles.variants({ size })}
+        color="text50"
+        ref={ref}
+        {...rest}
+      >
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <clipPath id="outside-clip">
             <circle cx="12" cy="12" r="12" />
