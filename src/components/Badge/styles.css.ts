@@ -5,6 +5,10 @@ import { atoms, vars } from '~/css'
 import { textVariants } from '../Text/styles.css'
 
 export const badgeVariants = recipe({
+  base: {
+    fontWeight: vars.fontWeights.normal,
+  },
+
   variants: {
     variant: {
       info: atoms({ background: 'info' }),
@@ -16,24 +20,27 @@ export const badgeVariants = recipe({
     size: {
       sm: [
         textVariants({ variant: 'small' }),
-        {
-          height: vars.lineHeights[4],
-          minWidth: vars.lineHeights[4],
-        },
+        atoms({
+          height: '4',
+          minWidth: '4',
+          paddingX: '2',
+        }),
       ],
       md: [
         textVariants({ variant: 'normal' }),
-        {
-          height: vars.lineHeights[5],
-          minWidth: vars.lineHeights[5],
-        },
+        atoms({
+          height: '5',
+          minWidth: '5',
+          paddingX: '3',
+        }),
       ],
       lg: [
-        textVariants({ variant: 'large' }),
-        {
-          height: vars.lineHeights[7],
-          minWidth: vars.lineHeights[7],
-        },
+        textVariants({ variant: 'medium' }),
+        atoms({
+          height: '6',
+          minWidth: '6',
+          paddingX: '4',
+        }),
       ],
     },
   },

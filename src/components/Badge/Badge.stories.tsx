@@ -17,16 +17,10 @@ export const SingleCharacter: Story = {
     variant: 'info',
   },
 }
+
 export const MultiCharacter: Story = {
   args: {
     value: '2713',
     variant: 'success',
-  },
-}
-export const Icon: Story = {
-  args: {
-    value: <CloseIcon />,
-    variant: 'error',
-    size: 'lg',
   },
 }
