@@ -1,19 +1,15 @@
-import { keyframes, style } from '@vanilla-extract/css'
+import { keyframes } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { vars } from '~/css'
-
-const rotate = keyframes({
+const rotateAnimation = keyframes({
   '100%': { transform: 'rotate(1turn)' },
 })
 
 export const variants = recipe({
-  base: [
-    style({
-      stroke: vars.colors.text100,
-      animation: `1.4s linear infinite ${rotate}`,
-    }),
-  ],
+  base: {
+    animation: `${rotateAnimation} 2s linear infinite`,
+  },
+
   variants: {
     size: {
       sm: {

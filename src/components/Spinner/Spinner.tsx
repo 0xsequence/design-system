@@ -25,29 +25,26 @@ export const Spinner: PolymorphicComponent<SpinnerProps> = forwardRef(
         ref={ref}
         {...rest}
       >
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <clipPath id="outside-clip">
-            <circle cx="12" cy="12" r="12" />
-          </clipPath>
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          stroke="currentColor"
+        >
           <circle
             cx="12"
             cy="12"
             fill="none"
-            r="11"
+            r="10.5"
             strokeDasharray="42"
             strokeLinecap="round"
-            stroke="currentColor"
-            clipPath="url(#outside-clip)"
           />
           <circle
             cx="12"
             cy="12"
             fill="none"
             opacity="0.25"
-            r="11"
-            stroke="currentColor"
+            r="10.5"
             strokeLinecap="round"
-            clipPath="url(#outside-clip)"
           />
         </svg>
       </Box>
