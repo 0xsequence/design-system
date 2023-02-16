@@ -1,6 +1,7 @@
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
 
 import { Box } from '../Box'
+import { Card } from '../Card'
 import { Text } from '../Text'
 
 import { Scroll } from './Scroll'
@@ -13,132 +14,80 @@ export default {
 type Story = StoryObj<typeof Scroll>
 
 const StoryWrapper: StoryFn<typeof Scroll> = args => (
-  <Box
+  <Card
+    outlined
     style={{
-      width: 300,
+      width: 200,
       height: 200,
     }}
     overflow="hidden"
-    borderRadius="md"
-    background="backgroundSecondary"
+    padding="0"
   >
     <Scroll {...args} />
-  </Box>
+  </Card>
 )
 
-export const Default: Story = {
+const ALPHABET = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+]
+
+export const VerticalScroll: Story = {
   render: StoryWrapper,
   args: {
-    padding: '2',
+    direction: 'vertical',
     children: (
-      <>
-        <Text as="h1" variant="xlarge" color="text100">
-          Title
-        </Text>
-        <Text as="p" variant="medium" color="text50">
-          Description
-        </Text>
+      <Box padding="4" flexDirection="column" gap="4" alignItems="center">
+        {ALPHABET.map(letter => (
+          <Box key={letter}>
+            <Text color="text100" variant="xlarge">
+              {letter}
+            </Text>
+          </Box>
+        ))}
+      </Box>
+    ),
+  },
+}
 
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-        <Text as="p" variant="normal" color="text100">
-          Paragraph
-        </Text>
-      </>
+export const HorizontalScroll: Story = {
+  render: StoryWrapper,
+  args: {
+    direction: 'horizontal',
+    children: (
+      <Box padding="4" gap="4" alignItems="center" height="full" width="max">
+        {ALPHABET.map(letter => (
+          <Box key={letter}>
+            <Text color="text100" variant="xlarge">
+              {letter}
+            </Text>
+          </Box>
+        ))}
+      </Box>
     ),
   },
 }

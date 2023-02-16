@@ -1,23 +1,86 @@
-import { style } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
 
-import { vars } from '~/css'
+import { atoms, vars } from '~/css'
 
-export const scroll = style({
-  position: 'relative',
-  overflowY: 'auto',
-  overscrollBehaviorY: 'contain',
-  height: '100%',
+const SHADOW_WIDTH = vars.space[4]
 
-  '::before': {
-    content: '',
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: vars.space[5],
-    background: `linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)`,
-    opacity: 0.6,
-    zIndex: 10,
-    pointerEvents: 'none',
+export const scroll = recipe({
+  base: atoms({
+    width: 'full',
+    height: 'full',
+  }),
+
+  variants: {
+    direction: {
+      vertical: {
+        height: '100%',
+        overflowY: 'auto',
+        overscrollBehaviorY: 'contain',
+      },
+
+      horizontal: {
+        overflowX: 'auto',
+        overscrollBehaviorX: 'contain',
+        width: '100%',
+      },
+    },
+  },
+})
+
+export const overlay = recipe({
+  base: {
+    '::before': {
+      content: '',
+      position: 'absolute',
+      zIndex: 10,
+      pointerEvents: 'none',
+    },
+
+    '::after': {
+      content: '',
+      position: 'absolute',
+      zIndex: 10,
+      pointerEvents: 'none',
+    },
+  },
+
+  variants: {
+    direction: {
+      vertical: {
+        '::before': {
+          background: `linear-gradient(to top, transparent 0%, ${vars.colors.backgroundPrimary} 100%)`,
+          left: 0,
+          top: 0,
+          width: '100%',
+          height: SHADOW_WIDTH,
+        },
+
+        '::after': {
+          background: `linear-gradient(to bottom, transparent 0%, ${vars.colors.backgroundPrimary} 100%)`,
+          left: 0,
+          bottom: 0,
+          width: '100%',
+          height: SHADOW_WIDTH,
+        },
+      },
+
+      horizontal: {
+        '::before': {
+          background: `linear-gradient(to left, transparent 0%, ${vars.colors.backgroundPrimary} 100%)`,
+          left: 0,
+          top: 0,
+          height: '100%',
+          width: SHADOW_WIDTH,
+        },
+
+        '::after': {
+          background: `linear-gradient(to right, transparent 0%, ${vars.colors.backgroundPrimary} 100%)`,
+          right: 0,
+          top: 0,
+          height: '100%',
+          width: SHADOW_WIDTH,
+        },
+      },
+    },
   },
 })
