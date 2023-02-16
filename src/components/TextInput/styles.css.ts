@@ -52,13 +52,19 @@ export const wrapVariants = recipe({
 
 export type WrapVariants = RecipeVariants<typeof wrapVariants>
 
-export const input = style([
-  textVariants({ variant: 'normal' }),
-  atoms({
+export const input = recipe({
+  base: atoms({
     display: 'block',
     paddingY: '4',
     width: 'full',
     height: 'full',
     outline: 'none',
   }),
-])
+
+  variants: {
+    numeric: {
+      false: textVariants({ variant: 'normal' }),
+      true: textVariants({ variant: 'large' }),
+    },
+  },
+})

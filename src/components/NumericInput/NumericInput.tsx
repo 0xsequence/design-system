@@ -81,6 +81,7 @@ export const NumericInput = forwardRef(
         minLength={1}
         maxLength={79}
         spellCheck="false"
+        numeric={true}
         ref={ref}
         {...rest}
       />

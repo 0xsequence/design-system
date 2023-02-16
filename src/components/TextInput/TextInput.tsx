@@ -20,6 +20,7 @@ export type TextInputProps = FieldProps &
     name: string
     controls?: ReactNode
     value?: string
+    numeric?: boolean
   }
 
 export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
@@ -42,6 +43,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
         name,
         controls,
         type = 'text',
+        numeric = false,
         ...rest
       } = props
 
@@ -67,7 +69,7 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
                 as={as}
                 autoComplete={autoComplete}
                 spellCheck="false"
-                className={styles.input}
+                className={styles.input({ numeric })}
                 disabled={disabled}
                 id={id ?? name}
                 name={name}
