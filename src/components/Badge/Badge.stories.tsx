@@ -1,7 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { CloseIcon } from '~/icons'
-
 import { Badge } from './Badge'
 
 export default {

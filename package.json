@@ -25,7 +25,7 @@
     "build": "tsc && vite build",
     "build:icons": "pnpm svgr -d ./src/icons ./public/static/icons --config-file ./svgr.config.json --template ./src/icons/template.cjs",
     "storybook": "storybook dev -p 6006",
-    "build:storybook": "storybook build --no-manager-cache -o ./docs",
+    "build:storybook": "storybook build -o ./docs",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint -c .eslintrc './src/**/*.{ts,tsx}'",
