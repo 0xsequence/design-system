@@ -1,4 +1,4 @@
-import { ElementType } from 'react'
+import { ElementType, ReactNode } from 'react'
 
 import { Box, PolymorphicComponent, PolymorphicProps } from '~/components/Box'
 import { Text } from '~/components/Text'
@@ -7,8 +7,8 @@ import * as styles from './styles.css'
 
 export interface FieldProps {
   id?: string
-  label?: string
-  description?: string
+  label?: string | ReactNode
+  description?: string | ReactNode
   labelLocation?: 'left' | 'right' | 'top' | 'hidden'
   disabled?: boolean
   required?: boolean // TODO
