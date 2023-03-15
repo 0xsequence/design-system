@@ -18,6 +18,7 @@ type ButtonProps = ButtonVariants & {
   label?: ReactNode
   leftIcon?: ComponentType<IconProps>
   rightIcon?: ComponentType<IconProps>
+  type?: 'button' | 'submit' | 'reset'
 }
 
 export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
@@ -40,6 +41,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
       variant = 'glass',
       width = 'fit',
       shape = 'circle',
+      type = 'button',
       ...restProps
     } = props
 
@@ -71,6 +73,7 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
         display={display}
         fontWeight={fontWeight}
         ref={ref}
+        type={type}
         width={width}
         {...restProps}
       >
