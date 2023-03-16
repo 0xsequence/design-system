@@ -138,7 +138,23 @@ const unresponsiveProperties = defineProperties({
     whiteSpace: ['normal', 'nowrap', 'initial', 'inherit'],
     wordBreak: ['break-word'],
     wordWrap: ['normal', 'break-word', 'initial', 'inherit'],
-    zIndex: { '0': 0, '10': 10, '20': 20, auto: 'auto' },
+    zIndex: {
+      '-1': -1,
+      '0': 0,
+      '10': 10,
+      '20': 20,
+      '30': 30,
+      '40': 40,
+      '50': 50,
+      auto: 'auto',
+    },
+    aspectRatio: {
+      '1/1': '1 / 1',
+      '16/9': '16 / 9',
+      '4/3': '4 / 3',
+      '3/1': '3 / 1',
+      auto: 'auto',
+    },
   },
 })
 
