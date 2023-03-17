@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { Fragment, useId } from 'react'
+import { Fragment } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 
@@ -32,13 +32,13 @@ const cyrb53 = (str: string, seed: number = 0): number => {
   return 4294967296 * (2097151 & h2) + (h1 >>> 0)
 }
 
-const generateGradient = (id: string, a: number, b: number, c: number) => {
+const generateGradient = (a: number, b: number, c: number) => {
   const hueA = a % 360
   const hueB = (a + 120) % 360
   const hueC = c % 360
 
   return {
-    id,
+    id: cyrb53(crypto.randomUUID()),
     a: `hsl(${hueA}deg 100% 40%)`,
     b: `hsl(${hueB}deg 100% 50%)`,
     c: `hsl(${hueC}deg 100% 50%)`,
@@ -55,7 +55,6 @@ interface HashState {
 }
 
 export const GradientAvatar = (props: GradientAvatarProps) => {
-  const id = useId()
   const { className, address, size = 'md', complexity = 1, ...rest } = props
 
   const hashes: HashState[] = []
@@ -73,7 +72,7 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
   }
 
   const gradients = hashes.map((hash, idx) => ({
-    ...generateGradient(id, hash.a, hash.b, hash.c),
+    ...generateGradient(hash.a, hash.b, hash.c),
     x: hash.x % 1000,
     y: hash.y % 1000,
     r: 100 + (hash.r % (1500 / (idx + 1))),
