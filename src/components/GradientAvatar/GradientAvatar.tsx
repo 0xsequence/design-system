@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { Fragment } from 'react'
+import { Fragment, memo } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 
@@ -56,7 +56,7 @@ interface HashState {
   r: number
 }
 
-export const GradientAvatar = (props: GradientAvatarProps) => {
+export const GradientAvatar = memo((props: GradientAvatarProps) => {
   const { className, address, size = 'md', complexity = 1, ...rest } = props
 
   const hashes: HashState[] = []
@@ -186,4 +186,4 @@ export const GradientAvatar = (props: GradientAvatarProps) => {
       </g>
     </Box>
   )
-}
+})
