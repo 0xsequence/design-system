@@ -33,12 +33,14 @@ const cyrb53 = (str: string, seed: number = 0): number => {
 }
 
 const generateGradient = (a: number, b: number, c: number) => {
+  const randID = crypto?.randomUUID() || Math.random().toString(36).slice(2, 12)
+
   const hueA = a % 360
   const hueB = (a + 120) % 360
   const hueC = c % 360
 
   return {
-    id: cyrb53(crypto.randomUUID()),
+    id: cyrb53(randID),
     a: `hsl(${hueA}deg 100% 40%)`,
     b: `hsl(${hueB}deg 100% 50%)`,
     c: `hsl(${hueC}deg 100% 50%)`,
