@@ -135,7 +135,6 @@ const unresponsiveProperties = defineProperties({
     textOverflow: ['ellipsis', 'clip'],
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     userSelect: ['none', 'text', 'all', 'auto'],
-    WebkitBackdropFilter: vars.blur,
     whiteSpace: ['normal', 'nowrap', 'initial', 'inherit'],
     wordBreak: ['break-word'],
     wordWrap: ['normal', 'break-word', 'initial', 'inherit'],
@@ -156,9 +155,6 @@ const unresponsiveProperties = defineProperties({
       '3/1': '3 / 1',
       auto: 'auto',
     },
-  },
-  shorthands: {
-    filterEffect: ['backdropFilter', 'WebkitBackdropFilter'],
   },
 })
 

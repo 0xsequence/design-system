@@ -4,8 +4,8 @@ import { atoms, vars } from '~/css'
 
 export const content = style([
   atoms({
+    backdropFilter: 'blur',
     background: 'buttonGlass',
-    filterEffect: 'blur',
     padding: '2',
     borderRadius: 'sm',
   }),

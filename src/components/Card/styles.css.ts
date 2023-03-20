@@ -27,7 +27,7 @@ export const cardVariants = recipe({
 
     blur: {
       true: atoms({
-        filterEffect: 'blur',
+        backdropFilter: 'blur',
       }),
     },
   },

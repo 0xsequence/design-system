@@ -56,7 +56,7 @@ export type TriggerVariants = RecipeVariants<typeof triggerVariants>
 
 export const contentStyle = style([
   atoms({
-    filterEffect: 'blur',
+    backdropFilter: 'blur',
     background: 'buttonGlass',
     borderColor: 'borderNormal',
     borderRadius: 'sm',
