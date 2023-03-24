@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ReactNode, useState } from 'react'
 
 import { Text } from '~/components/Text'
-import { ChevronLeftIcon } from '~/icons'
+import { ChevronDownIcon } from '~/icons'
 
 import { Box, BoxProps } from '../Box'
 
@@ -50,11 +50,11 @@ export const Collapsible = (props: CollapsibleProps) => {
             position="absolute"
             right="0"
             marginRight="4"
-            initial={{ rotate: defaultOpen ? -90 : 0 }}
-            animate={{ rotate: expanded ? -90 : 0 }}
+            initial={{ rotate: defaultOpen ? 180 : 0 }}
+            animate={{ rotate: expanded ? 180 : 0 }}
             transition={{ ease: 'linear', duration: 0.1 }}
           >
-            <ChevronLeftIcon className={styles.icon} color="text50" />
+            <ChevronDownIcon className={styles.icon} color="text50" />
           </Box>
         </CollapsiblePrimitive.Trigger>
         <AnimatePresence>
