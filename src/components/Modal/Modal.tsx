@@ -96,6 +96,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 <ModalPrimitive.Close asChild>
                   <IconButton
                     icon={CloseIcon}
+                    backdropFilter="blur"
                     size="xs"
                     className={styles.close}
                     aria-label="Close"
