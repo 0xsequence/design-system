@@ -10,7 +10,7 @@ export const mapVarName = (_value: string | null, path: string[]) =>
   path.map(kebabize).join('-').replace('.', '_').replace('/', '__')
 
 export const responsiveStyle = (rules: {
-  [key in keyof typeof breakpoints]?: Record<string, string>
+  [key in keyof typeof breakpoints]?: Record<string, string | string[]>
 }) => {
   return Object.entries(rules).reduce((acc, [key, value]) => {
     return {

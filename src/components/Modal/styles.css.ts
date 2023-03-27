@@ -60,23 +60,29 @@ export const contentVariants = recipe({
       sm: {
         width: '100vw',
         minHeight: 100,
-        maxHeight: 'calc(100vh - 80px)',
+        maxHeight: ['calc(100vh - 80px)', 'calc(100dvh - 80px)'],
 
         '@media': responsiveStyle({
           lg: {
             width: '540px',
-            maxHeight: 'min(800px, calc(100vh - 80px))',
+            maxHeight: [
+              'min(800px, calc(100vh - 80px))',
+              'min(800px, calc(100dvh - 80px))',
+            ],
           },
         }),
       },
       lg: {
         width: '100vw',
-        height: 'calc(100vh - 70px)',
+        height: ['calc(100vh - 70px)', 'calc(100dvh - 70px)'],
 
         '@media': responsiveStyle({
           lg: {
             width: '720px',
-            maxHeight: 'min(800px, calc(100vh - 80px))',
+            maxHeight: [
+              'min(800px, calc(100vh - 80px))',
+              'min(800px, calc(100dvh - 80px))',
+            ],
             height: '800px',
           },
         }),
