@@ -49,7 +49,6 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
     const hasRightIcon = RightIcon !== undefined && label !== undefined
     const iconOnly = LeftIcon !== undefined && label === undefined
 
-    const clickable = !disabled && !pending
     const iconSize = size === 'xs' ? 'xs' : 'sm'
 
     return (
@@ -59,13 +58,12 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
           className,
           buttonVariants({
             activeOutline,
-            clickable,
             disabled: disabled || pending,
             hasLeftIcon,
             hasRightIcon,
             iconOnly,
             size: variant === 'text' ? undefined : size,
-            shape,
+            shape: variant === 'text' ? undefined : shape,
             variant,
           })
         )}
@@ -77,23 +75,28 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
         width={width}
         {...restProps}
       >
-        <Box
-          width="full"
-          justifyContent="space-between"
-          alignItems="center"
-          gap={size === 'xs' ? '1' : '2'}
-        >
+        {iconOnly ? (
+          <LeftIcon size={iconSize} />
+        ) : (
           <Box
-            justifyContent="flex-start"
+            width="full"
+            height="full"
+            justifyContent="space-between"
             alignItems="center"
             gap={size === 'xs' ? '1' : '2'}
           >
-            {LeftIcon && <LeftIcon size={iconSize} />}
-            {!iconOnly && <Text>{label}</Text>}
-          </Box>
+            <Box
+              justifyContent="flex-start"
+              alignItems="center"
+              gap={size === 'xs' ? '1' : '2'}
+            >
+              {LeftIcon && <LeftIcon size={iconSize} />}
+              <Text>{label}</Text>
+            </Box>
 
-          {RightIcon && <RightIcon size={iconSize} />}
-        </Box>
+            {RightIcon && <RightIcon size={iconSize} />}
+          </Box>
+        )}
       </Box>
     )
   }

@@ -12,7 +12,11 @@ const outlineStyle = {
 } as const
 
 export const buttonVariants = recipe({
-  base: atoms({ overflow: 'hidden', whiteSpace: 'nowrap' }),
+  base: atoms({
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    alignItems: 'center',
+  }),
 
   variants: {
     variant: {
@@ -36,13 +40,12 @@ export const buttonVariants = recipe({
         atoms({
           background: 'transparent',
           color: 'text50',
-          padding: '0',
+          borderRadius: 'xs',
         }),
+        {
+          outlineOffset: '1px',
+        },
       ],
-    },
-
-    clickable: {
-      true: atoms({ cursor: 'pointer', opacity: { base: '100', hover: '80' } }),
     },
 
     shape: {
@@ -50,34 +53,47 @@ export const buttonVariants = recipe({
       square: atoms({ borderRadius: 'sm' }),
     },
 
-    disabled: { true: atoms({ cursor: 'default', opacity: '50' }) },
-
-    iconOnly: { true: {} },
-    hasLeftIcon: { true: {} },
-    hasRightIcon: { true: {} },
+    disabled: {
+      true: atoms({ cursor: 'default', opacity: '50' }),
+      false: atoms({
+        cursor: 'pointer',
+        opacity: { base: '100', hover: '80' },
+      }),
+    },
 
     size: {
       xs: [
         textVariants({ variant: 'xsmall' }),
-        atoms({ paddingX: '3', paddingY: '1.5' }),
+        atoms({ paddingX: '3' }),
         { height: '28px' },
       ],
       sm: [
         textVariants({ variant: 'normal' }),
-        atoms({ paddingX: '4', paddingY: '2' }),
+        atoms({ paddingX: '4' }),
         { height: '36px' },
       ],
       md: [
         textVariants({ variant: 'normal' }),
-        atoms({ paddingX: '5', paddingY: '3' }),
+        atoms({ paddingX: '5' }),
         { height: '44px' },
       ],
       lg: [
         textVariants({ variant: 'normal' }),
-        atoms({ paddingX: '5', paddingY: '4' }),
+        atoms({ paddingX: '5' }),
         { height: '52px' },
       ],
     },
+
+    iconOnly: {
+      true: {
+        padding: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    },
+    hasLeftIcon: { true: {} },
+    hasRightIcon: { true: {} },
 
     activeOutline: {
       light: {
@@ -94,38 +110,42 @@ export const buttonVariants = recipe({
   compoundVariants: [
     {
       variants: { iconOnly: true, size: 'xs' },
-      style: { padding: vars.space['1.5'] },
+      style: { width: '28px' },
     },
     {
       variants: { iconOnly: true, size: 'sm' },
-      style: { padding: vars.space['2'] },
+      style: { width: '36px' },
     },
     {
       variants: { iconOnly: true, size: 'md' },
-      style: { padding: vars.space['3'] },
+      style: { width: '44px' },
     },
     {
-      variants: { hasLeftIcon: true, size: 'xs' },
+      variants: { iconOnly: true, size: 'lg' },
+      style: { width: '52px' },
+    },
+    {
+      variants: { iconOnly: false, hasLeftIcon: true, size: 'xs' },
       style: { paddingLeft: vars.space['2'] },
     },
     {
-      variants: { hasLeftIcon: true, size: 'sm' },
+      variants: { iconOnly: false, hasLeftIcon: true, size: 'sm' },
       style: { paddingLeft: vars.space['2'] },
     },
     {
-      variants: { hasLeftIcon: true, size: 'md' },
+      variants: { iconOnly: false, hasLeftIcon: true, size: 'md' },
       style: { paddingLeft: vars.space['4'] },
     },
     {
-      variants: { hasRightIcon: true, size: 'xs' },
+      variants: { iconOnly: false, hasRightIcon: true, size: 'xs' },
       style: { paddingRight: vars.space['2'] },
     },
     {
-      variants: { hasRightIcon: true, size: 'sm' },
+      variants: { iconOnly: false, hasRightIcon: true, size: 'sm' },
       style: { paddingRight: vars.space['2'] },
     },
     {
-      variants: { hasRightIcon: true, size: 'md' },
+      variants: { iconOnly: false, hasRightIcon: true, size: 'md' },
       style: { paddingRight: vars.space['4'] },
     },
   ],
