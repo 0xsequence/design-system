@@ -95,8 +95,8 @@ const responsiveProperties = defineProperties({
     justifySelf: flexAlignment,
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
-    overflowX: ['auto', 'hidden', 'scroll'],
-    overflowY: ['auto', 'hidden', 'scroll'],
+    overflowX: ['auto', 'hidden', 'scroll', 'visible'],
+    overflowY: ['auto', 'hidden', 'scroll', 'visible'],
     visibility: ['hidden', 'visible'],
   },
   shorthands: {
