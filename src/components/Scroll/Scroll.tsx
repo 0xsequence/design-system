@@ -4,14 +4,15 @@ import * as styles from './styles.css'
 
 interface ScrollProps extends BoxProps {
   direction?: 'horizontal' | 'vertical'
+  shadows?: boolean
 }
 
 export const Scroll = (props: ScrollProps) => {
-  const { children, direction = 'vertical', ...rest } = props
+  const { children, shadows = true, direction = 'vertical', ...rest } = props
 
   return (
     <Box
-      className={styles.overlay({ direction })}
+      className={styles.overlay({ direction, shadows })}
       position="relative"
       width="full"
       height="full"

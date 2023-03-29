@@ -28,23 +28,34 @@ export const scroll = recipe({
 })
 
 export const overlay = recipe({
-  base: {
-    '::before': {
-      content: '',
-      position: 'absolute',
-      zIndex: 10,
-      pointerEvents: 'none',
-    },
-
-    '::after': {
-      content: '',
-      position: 'absolute',
-      zIndex: 10,
-      pointerEvents: 'none',
-    },
-  },
-
   variants: {
+    shadows: {
+      true: {
+        '::before': {
+          content: '',
+          position: 'absolute',
+          zIndex: 10,
+          pointerEvents: 'none',
+        },
+
+        '::after': {
+          content: '',
+          position: 'absolute',
+          zIndex: 10,
+          pointerEvents: 'none',
+        },
+      },
+
+      false: {
+        '::before': {
+          display: 'none',
+        },
+        '::after': {
+          display: 'none',
+        },
+      },
+    },
+
     direction: {
       vertical: {
         '::before': {
