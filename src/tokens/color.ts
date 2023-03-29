@@ -29,6 +29,7 @@ interface BaseColors {
 interface BackgroundColors {
   primary: string
   secondary: string
+  muted: string
   control: string
   inverse: string
   backdrop: string
@@ -70,6 +71,7 @@ const backgroundColors: ColorSchemes<BackgroundColors> = {
   dark: {
     primary: 'rgba(0, 0, 0, 1)',
     secondary: 'rgba(255, 255, 255, 0.1)',
+    muted: 'rgba(255, 255, 255, 0.05)',
     control: 'rgba(255, 255, 255, 0.25)',
     inverse: 'rgba(255, 255, 255, 1)',
     backdrop: 'rgba(34, 34, 34, 0.9)',
@@ -78,6 +80,7 @@ const backgroundColors: ColorSchemes<BackgroundColors> = {
   light: {
     primary: 'rgba(244, 244, 244, 1)',
     secondary: 'rgba(0, 0, 0, 0.1)',
+    muted: 'rgba(0, 0, 0, 0.05)',
     control: 'rgba(0, 0, 0, 0.25)',
     inverse: 'rgba(0, 0, 0, 1)',
     backdrop: 'rgba(221, 221, 221, 0.9)',
