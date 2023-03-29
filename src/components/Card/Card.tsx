@@ -34,6 +34,7 @@ export const Card: PolymorphicComponent<CardProps, 'div'> = forwardRef(
           styles.cardVariants({ clickable, outlined, disabled, blur })
         )}
         background={outlined ? 'transparent' : 'backgroundSecondary'}
+        overflow="hidden"
         borderRadius="md"
         padding="4"
         width={width}
