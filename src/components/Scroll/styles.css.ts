@@ -34,14 +34,14 @@ export const overlay = recipe({
         '::before': {
           content: '',
           position: 'absolute',
-          zIndex: 10,
+          zIndex: 1,
           pointerEvents: 'none',
         },
 
         '::after': {
           content: '',
           position: 'absolute',
-          zIndex: 10,
+          zIndex: 1,
           pointerEvents: 'none',
         },
       },

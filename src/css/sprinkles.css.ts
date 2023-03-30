@@ -141,6 +141,7 @@ const unresponsiveProperties = defineProperties({
     zIndex: {
       '-1': -1,
       '0': 0,
+      '1': 1,
       '10': 10,
       '20': 20,
       '30': 30,
