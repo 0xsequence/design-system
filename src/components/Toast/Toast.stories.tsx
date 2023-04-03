@@ -1,6 +1,7 @@
 import { ToastProps } from '@radix-ui/react-toast'
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
+
 import { TransactionIcon } from '~/icons'
 
 import { Button } from '../Button'
