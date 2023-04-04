@@ -2,7 +2,7 @@ import * as ToastPrimitive from '@radix-ui/react-toast'
 import { ToastProps as ToastPrimitiveProps } from '@radix-ui/react-toast'
 import { ComponentType } from 'react'
 
-import { CheckmarkIcon, CloseIcon, WarningIcon } from '~/icons'
+import { CheckmarkIcon, CloseIcon } from '~/icons'
 import { IconProps } from '~/icons/types'
 
 import { Box } from '../Box'
