@@ -1,4 +1,4 @@
-import { ToastProps } from '@radix-ui/react-toast'
+// import { ToastProps } from '@radix-ui/react-toast'
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
 
@@ -17,23 +17,37 @@ export default {
 type Story = StoryObj<typeof Toast>
 
 const StoryWrapper: StoryFn<typeof Toast> = args => {
-  const [toasts, setToasts] = useState<ToastProps[]>([])
+  // const [toasts, setToasts] = useState<ToastProps[]>([])
 
-  const handleAddToast = () => {
-    setToasts([...toasts, args])
-  }
+  // const handleAddToast = () => {
+  //   setToasts([...toasts, args])
+  // }
+
+  const [open, setOpen] = useState(true)
 
   return (
     <ToastProvider swipeDirection="right">
-      <Card>
-        <Button label="Raise a Toast" onClick={() => handleAddToast()} />
+      <Card position="relative">
+        {/* <Button label="Raise a Toast" onClick={() => handleAddToast()} /> */}
+        <Button
+          label="Raise a Toast"
+          onClick={() => {
+            setOpen(false)
+
+            setTimeout(() => {
+              setOpen(true)
+            }, 250)
+          }}
+        />
       </Card>
 
-      {toasts.map((toast, idx) => (
+      {/* {toasts.map((toast, idx) => (
         <Toast {...toast} duration={3000} key={idx} />
-      ))}
+      ))} */}
 
       <ToastViewport />
+
+      <Toast {...args} open={open} onOpenChange={setOpen} />
     </ToastProvider>
   )
 }
@@ -41,8 +55,35 @@ const StoryWrapper: StoryFn<typeof Toast> = args => {
 export const Default: Story = {
   render: StoryWrapper,
   args: {
-    icon: TransactionIcon,
     title: 'Title',
     description: 'Description',
+  },
+}
+
+export const WithIcon: Story = {
+  render: StoryWrapper,
+  args: {
+    icon: TransactionIcon,
+    title: 'Transaction Sent',
+    description: 'Waiting for confirmation',
+  },
+}
+
+export const Success: Story = {
+  render: StoryWrapper,
+  args: {
+    title: 'Success',
+    description: 'Description',
+    variant: 'success',
+  },
+}
+
+export const Error: Story = {
+  render: StoryWrapper,
+  args: {
+    title: 'Error',
+    description:
+      'The transaction failed to send because the relayer encountered an error. "Not enough gas"',
+    variant: 'error',
   },
 }
