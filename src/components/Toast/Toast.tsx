@@ -1,6 +1,6 @@
 import * as ToastPrimitive from '@radix-ui/react-toast'
 import { ToastProps as ToastPrimitiveProps } from '@radix-ui/react-toast'
-import { ComponentType } from 'react'
+import { ComponentType, useState } from 'react'
 
 import { CheckmarkIcon, CloseIcon } from '~/icons'
 import { IconProps } from '~/icons/types'
@@ -133,4 +133,22 @@ export const Toast = (props: ToastProps) => {
       </Card>
     </ToastPrimitive.Root>
   )
+}
+
+export const useToast = (): [
+  ToastProps | null,
+  (props: ToastProps) => void
+] => {
+  const [toast, setToast] = useState<ToastProps | null>(null)
+
+  return [
+    {
+      ...toast,
+      open: !!toast,
+      onOpenChange: (open: boolean) => {
+        open || setToast(null)
+      },
+    },
+    setToast,
+  ]
 }
