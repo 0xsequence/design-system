@@ -82,13 +82,14 @@ export const Toast = (props: ToastProps) => {
     <ToastPrimitive.Root
       className={styles.toast({ variant })}
       asChild
+      duration={variant === 'error' ? Infinity : 5000}
       {...rest}
     >
       <Card
         as="li"
         borderRadius="md"
         background="buttonGlass"
-        // backdropFilter="blur"
+        backdropFilter="blur"
         position="relative"
         width="full"
         // alignItems="center"

@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { atoms, responsiveStyle, vars } from '~/css'
+import { atoms, responsiveStyle } from '~/css'
 
 export const root = style([
   atoms({
@@ -34,7 +34,9 @@ export const contentVariants = recipe({
       position: 'fixed',
       overflow: 'hidden',
       background: 'backgroundPrimary',
-      bottom: '0',
+      bottom: { sm: '0', lg: 'auto' },
+      borderTopRadius: 'lg',
+      borderBottomRadius: { sm: 'none', lg: 'lg' },
       outline: {
         focus: 'none',
       },
@@ -45,14 +47,6 @@ export const contentVariants = recipe({
       },
       msOverflowStyle: 'none',
       scrollbarWidth: 'none',
-
-      borderRadius: `${vars.radii.lg} ${vars.radii.lg} 0 0`,
-      '@media': responsiveStyle({
-        lg: {
-          bottom: 'auto',
-          borderRadius: vars.radii.lg,
-        },
-      }),
     },
   ],
   variants: {

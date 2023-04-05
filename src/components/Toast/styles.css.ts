@@ -1,7 +1,7 @@
 import { keyframes, style } from '@vanilla-extract/css'
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 
-import { breakpoints, responsiveStyle, vars } from '~/css'
+import { vars } from '~/css'
 
 export const viewport = style({
   position: 'fixed',
@@ -14,16 +14,8 @@ export const viewport = style({
   zIndex: '1000',
   outline: 'none',
   listStyle: 'none',
-
-  '@media': responsiveStyle({
-    sm: {
-      width: '100%',
-    },
-
-    md: {
-      width: `${breakpoints.md}px`,
-    },
-  }),
+  width: '100%',
+  maxWidth: '532px',
 })
 
 export const hide = keyframes({
@@ -39,9 +31,11 @@ export const hide = keyframes({
 export const slideIn = keyframes({
   from: {
     transform: `translateX(calc(100% + ${vars.space[4]}))`,
+    // opacity: 0,
   },
   to: {
     transform: 'translateX(0)',
+    // opacity: 1,
   },
 })
 
@@ -56,9 +50,11 @@ export const swipeOut = keyframes({
 
 export const toast = recipe({
   base: {
+    willChange: 'transform, opacity',
+
     selectors: {
       '&[data-state="open"]': {
-        animation: `${slideIn} 150ms ease-out`, // cubic-bezier(0.16, 1, 0.3, 1)
+        animation: `${slideIn} 200ms ease-out`, // cubic-bezier(0.16, 1, 0.3, 1)
       },
 
       '&[data-state="closed"]': {
@@ -70,12 +66,12 @@ export const toast = recipe({
       },
 
       '&[data-swipe="cancel"]': {
-        transform: `translateX(0)`,
         transition: `transform 200ms ease-out`,
+        transform: `translateX(0)`,
       },
 
       '&[data-swipe="end"]': {
-        animation: `${swipeOut} 100ms ease-out`,
+        animation: `${swipeOut} 200ms ease-out`,
       },
     },
   },
