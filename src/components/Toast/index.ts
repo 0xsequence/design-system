@@ -1,1 +1,1 @@
-export { Toast, ToastProvider, ToastViewport, useToast } from './Toast'
+export { Toast, ToastProvider, useToast } from './Toast'

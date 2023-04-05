@@ -77,6 +77,7 @@ export const toast = recipe({
   },
   variants: {
     variant: {
+      normal: {},
       success: {
         color: 'positive',
       },

@@ -1,6 +1,12 @@
 import * as ToastPrimitive from '@radix-ui/react-toast'
-import { ToastProps as ToastPrimitiveProps } from '@radix-ui/react-toast'
-import { ComponentType, useState } from 'react'
+import {
+  ComponentType,
+  createContext,
+  SetStateAction,
+  useContext,
+  useState,
+  Dispatch,
+} from 'react'
 
 import { CheckmarkIcon, CloseIcon } from '~/icons'
 import { IconProps } from '~/icons/types'
@@ -12,19 +18,42 @@ import { Text } from '../Text'
 
 import * as styles from './styles.css'
 
-export const ToastProvider = ToastPrimitive.Provider
-
-export const ToastViewport = () => (
-  <ToastPrimitive.Viewport className={styles.viewport} />
-)
-
-interface ToastProps extends ToastPrimitiveProps {
+export type ToastProps = ToastPrimitive.ToastProps & {
+  id: string
   title?: string
   description?: string
-  variant?: 'success' | 'error'
+  variant?: 'normal' | 'success' | 'error'
   isDismissible?: boolean
   icon?: ComponentType<IconProps>
 }
+
+const ToastQueueContext = createContext<
+  Dispatch<SetStateAction<Set<ToastProps>>>
+>(null as any)
+
+export const ToastProvider = (props: ToastPrimitive.ToastProviderProps) => {
+  const { children, ...rest } = props
+
+  const [toasts, setToasts] = useState<Set<ToastProps>>(new Set())
+
+  return (
+    <ToastPrimitive.Provider {...rest}>
+      <ToastQueueContext.Provider value={setToasts}>
+        {children}
+
+        {Array.from(toasts).map(toast => (
+          <Toast key={toast.id} {...toast} />
+        ))}
+      </ToastQueueContext.Provider>
+
+      <ToastViewport />
+    </ToastPrimitive.Provider>
+  )
+}
+
+const ToastViewport = () => (
+  <ToastPrimitive.Viewport className={styles.viewport} />
+)
 
 export const Toast = (props: ToastProps) => {
   const {
@@ -135,20 +164,25 @@ export const Toast = (props: ToastProps) => {
   )
 }
 
-export const useToast = (): [
-  ToastProps | null,
-  (props: ToastProps) => void
-] => {
-  const [toast, setToast] = useState<ToastProps | null>(null)
+export const useToast = () => {
+  const setToasts = useContext(ToastQueueContext)
 
-  return [
-    {
-      ...toast,
-      open: !!toast,
-      onOpenChange: (open: boolean) => {
-        open || setToast(null)
+  return (props: ToastProps) => {
+    const toast: ToastProps = {
+      ...props,
+      id: crypto.randomUUID(),
+      onOpenChange: open => {
+        if (!open) {
+          setToasts(toasts => {
+            toasts.delete(toast)
+
+            console.log(toasts)
+            return new Set([...toasts])
+          })
+        }
       },
-    },
-    setToast,
-  ]
+    }
+
+    setToasts(toasts => new Set([...toasts, toast]))
+  }
 }

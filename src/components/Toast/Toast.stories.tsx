@@ -1,13 +1,11 @@
-// import { ToastProps } from '@radix-ui/react-toast'
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
-import { useState } from 'react'
 
 import { TransactionIcon } from '~/icons'
 
 import { Button } from '../Button'
 import { Card } from '../Card'
 
-import { Toast, ToastProvider, ToastViewport } from './Toast'
+import { Toast, ToastProps, ToastProvider, useToast } from './Toast'
 
 export default {
   title: 'Components/Toast',
@@ -17,38 +15,28 @@ export default {
 type Story = StoryObj<typeof Toast>
 
 const StoryWrapper: StoryFn<typeof Toast> = args => {
-  // const [toasts, setToasts] = useState<ToastProps[]>([])
-
-  // const handleAddToast = () => {
-  //   setToasts([...toasts, args])
-  // }
-
-  const [open, setOpen] = useState(true)
-
   return (
     <ToastProvider swipeDirection="right">
-      <Card position="relative">
-        {/* <Button label="Raise a Toast" onClick={() => handleAddToast()} /> */}
-        <Button
-          label="Raise a Toast"
-          onClick={() => {
-            setOpen(false)
-
-            setTimeout(() => {
-              setOpen(true)
-            }, 250)
-          }}
-        />
-      </Card>
-
-      {/* {toasts.map((toast, idx) => (
-        <Toast {...toast} duration={3000} key={idx} />
-      ))} */}
-
-      <ToastViewport />
-
-      <Toast {...args} open={open} onOpenChange={setOpen} />
+      <ToastStory {...args} />
     </ToastProvider>
+  )
+}
+
+const ToastStory = (args: ToastProps) => {
+  const toast = useToast()
+
+  return (
+    <Card position="relative">
+      <Button
+        label="Raise a Toast"
+        onClick={() => {
+          toast({
+            ...args,
+            title: args.title + ' ' + new Date().getMilliseconds(),
+          })
+        }}
+      />
+    </Card>
   )
 }
 

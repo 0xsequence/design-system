@@ -55,7 +55,7 @@ export {
 } from './Tabs'
 export { Tag } from './Tag'
 export { Text, textVariants } from './Text'
-export { Toast, ToastProvider, ToastViewport, useToast } from './Toast'
+export { Toast, ToastProvider, useToast } from './Toast'
 export { ControlledTextInput, TextInput } from './TextInput'
 export { ThemeProvider, useTheme } from './ThemeProvider'
 export { TokenImage } from './TokenImage'
