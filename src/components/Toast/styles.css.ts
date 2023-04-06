@@ -8,6 +8,7 @@ export const viewport = style({
   bottom: '0',
   right: '0',
   padding: vars.space[4],
+  paddingTop: 0,
   display: 'flex',
   flexDirection: 'column',
   gap: vars.space[2],
@@ -18,33 +19,12 @@ export const viewport = style({
   maxWidth: '532px',
 })
 
-export const hide = keyframes({
-  from: {
-    opacity: 1,
-  },
-
-  to: {
-    opacity: 0,
-  },
-})
-
-export const slideIn = keyframes({
-  from: {
-    transform: `translateX(calc(100% + ${vars.space[4]}))`,
-    // opacity: 0,
-  },
-  to: {
-    transform: 'translateX(0)',
-    // opacity: 1,
-  },
-})
-
 export const swipeOut = keyframes({
   from: {
     transform: `translateX(var(--radix-toast-swipe-end-x))`,
   },
   to: {
-    transform: `translateX(calc(100% + ${vars.space[4]}))`,
+    transform: `translateX(100%)`,
   },
 })
 
@@ -53,16 +33,14 @@ export const toast = recipe({
     willChange: 'transform, opacity',
 
     selectors: {
-      '&[data-state="open"]': {
-        animation: `${slideIn} 200ms ease-out`, // cubic-bezier(0.16, 1, 0.3, 1)
-      },
+      // '&[data-state="open"]': {
+      // },
 
-      '&[data-state="closed"]': {
-        animation: `${hide} 100ms ease-in`,
-      },
+      // '&[data-state="closed"]': {
+      // },
 
       '&[data-swipe="move"]': {
-        transform: `translateX(var(--radix-toast-swipe-move-x))`,
+        transform: `translateX(var(--radix-toast-swipe-move-x)) !important`,
       },
 
       '&[data-swipe="cancel"]': {

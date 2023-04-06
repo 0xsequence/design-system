@@ -1,4 +1,5 @@
 import * as ToastPrimitive from '@radix-ui/react-toast'
+import { AnimatePresence, motion } from 'framer-motion'
 import {
   ComponentType,
   createContext,
@@ -41,9 +42,11 @@ export const ToastProvider = (props: ToastPrimitive.ToastProviderProps) => {
       <ToastQueueContext.Provider value={setToasts}>
         {children}
 
-        {Array.from(toasts).map(toast => (
-          <Toast key={toast.id} {...toast} />
-        ))}
+        <AnimatePresence>
+          {Array.from(toasts).map(toast => (
+            <Toast key={toast.id} {...toast} />
+          ))}
+        </AnimatePresence>
       </ToastQueueContext.Provider>
 
       <ToastViewport />
@@ -57,6 +60,7 @@ const ToastViewport = () => (
 
 export const Toast = (props: ToastProps) => {
   const {
+    id,
     variant,
     title,
     description,
@@ -110,12 +114,19 @@ export const Toast = (props: ToastProps) => {
   return (
     <ToastPrimitive.Root
       className={styles.toast({ variant })}
+      open
+      forceMount
       asChild
       duration={variant === 'error' ? Infinity : 5000}
       {...rest}
     >
       <Card
-        as="li"
+        as={motion.li}
+        layoutId={id}
+        layout
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ y: '100%', opacity: 0 }}
         borderRadius="md"
         background="buttonGlass"
         backdropFilter="blur"
