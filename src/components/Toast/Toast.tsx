@@ -19,7 +19,7 @@ import { Text } from '../Text'
 import * as styles from './styles.css'
 
 export type ToastProps = ToastPrimitive.ToastProps & {
-  id: string
+  id?: string
   title?: string
   description?: string
   variant?: 'normal' | 'success' | 'error'
