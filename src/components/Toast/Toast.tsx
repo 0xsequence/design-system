@@ -121,7 +121,6 @@ export const Toast = (props: ToastProps) => {
         backdropFilter="blur"
         position="relative"
         width="full"
-        // alignItems="center"
         justifyContent="space-between"
       >
         <Box gap="3" alignItems="center">
@@ -175,8 +174,6 @@ export const useToast = () => {
         if (!open) {
           setToasts(toasts => {
             toasts.delete(toast)
-
-            console.log(toasts)
             return new Set([...toasts])
           })
         }
