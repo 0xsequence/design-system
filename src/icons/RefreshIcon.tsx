@@ -14,17 +14,16 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <circle cx={10} cy={7.361} fill="currentColor" r={3.361} />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M16 16.755H4c.029-2.705 2.704-4.89 6-4.89s5.971 2.185 6 4.89Z"
+      d="M2 10.046 3.975 3l1.864 2.016a7.458 7.458 0 1 1-2.586 7.787l1.762-.354.03.099a5.666 5.666 0 1 0 2.017-6.211l2.117 2.289L2 10.046Z"
       fill="currentColor"
     />
   </svg>
 )
 
-const SvgProfileIcon = ({ size = 'sm', ...props }: IconProps) => (
+const SvgRefreshIcon = ({ size = 'sm', ...props }: IconProps) => (
   <Box
     as={Svg}
     className={iconVariants({
@@ -34,4 +33,4 @@ const SvgProfileIcon = ({ size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgProfileIcon
+export default SvgRefreshIcon

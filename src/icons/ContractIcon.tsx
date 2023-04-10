@@ -14,17 +14,16 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <circle cx={10} cy={7.361} fill="currentColor" r={3.361} />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M16 16.755H4c.029-2.705 2.704-4.89 6-4.89s5.971 2.185 6 4.89Z"
+      d="M6.317 17H7V9.396a1.25 1.25 0 1 1 1 0v5.028l2.733-1.024v-1.012a1.25 1.25 0 1 1 1 .015v1.69L8 15.492V17h8V8.146h-5.545V3H4V17h2.317Zm9.614-9.843-4.42-4.093.055 4.093h4.365Z"
       fill="currentColor"
     />
   </svg>
 )
 
-const SvgProfileIcon = ({ size = 'sm', ...props }: IconProps) => (
+const SvgContractIcon = ({ size = 'sm', ...props }: IconProps) => (
   <Box
     as={Svg}
     className={iconVariants({
@@ -34,4 +33,4 @@ const SvgProfileIcon = ({ size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgProfileIcon
+export default SvgContractIcon

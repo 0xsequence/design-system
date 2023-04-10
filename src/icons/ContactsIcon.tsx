@@ -14,17 +14,18 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
+    <circle cx={6.192} cy={7.733} r={2.883} fill="currentColor" />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M13.645 13.47h-6.35c.39-1.36 1.664-2.358 3.175-2.358 1.51 0 2.783.997 3.175 2.358Z"
+      d="M8.6 12.088a6.03 6.03 0 0 0-2.408-.491c-2.827 0-5.123 1.875-5.147 4.196h5.71v-.01c.016-1.5.736-2.781 1.845-3.695Zm.948.532c1.087.769 1.779 1.904 1.792 3.173H7.755c.004-.345.058-.68.156-1 .263-.859.845-1.613 1.637-2.173Z"
       fill="currentColor"
     />
-    <circle cx={10.47} cy={8.554} r={2.024} fill="currentColor" />
+    <circle cx={12.903} cy={7.733} r={2.883} fill="currentColor" />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M5.918 3.988h9.103v12.024H5.918V3.988Zm-1.5 13.524V2.488h12.103v15.024H4.418ZM16.521 4.706h1.51v1.5h-1.51v-1.5Zm0 3.03h1.51v1.5h-1.51v-1.5Zm1.51 3.029h-1.51v1.5h1.51v-1.5Zm-1.51 3.03h1.51v1.5h-1.51v-1.5Z"
+      d="M18.05 15.793H7.755c.025-2.32 2.32-4.195 5.148-4.195 2.827 0 5.123 1.874 5.147 4.195Z"
       fill="currentColor"
     />
   </svg>

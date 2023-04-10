@@ -15,14 +15,21 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M16 6.5 10 3 4 6.5m12 0v7L10 17m6-10.5L10 10m0 7-6-3.5v-7M10 17v-7M4 6.5l6 3.5"
+      d="M10.906 8.966c1.459 1.316 1.459 3.45 0 4.765l-2.53 2.282c-1.459 1.316-3.824 1.316-5.282 0-1.459-1.315-1.459-3.449 0-4.764l1.265-1.142"
       stroke="currentColor"
       strokeWidth={1.5}
+      strokeLinecap="round"
+    />
+    <path
+      d="M8.094 11c-1.459-1.316-1.459-3.449 0-4.765l2.53-2.282c1.459-1.316 3.823-1.316 5.282 0s1.459 3.449 0 4.765l-1.265 1.14"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
     />
   </svg>
 )
 
-const SvgNodeIcon = ({ size = 'sm', ...props }: IconProps) => (
+const SvgLinkIcon = ({ size = 'sm', ...props }: IconProps) => (
   <Box
     as={Svg}
     className={iconVariants({
@@ -32,4 +39,4 @@ const SvgNodeIcon = ({ size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgNodeIcon
+export default SvgLinkIcon

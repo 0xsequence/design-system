@@ -9,7 +9,7 @@ import { IconProps } from './types'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    viewBox="0 0 21 21"
+    viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
@@ -17,7 +17,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M15.75 5.816V1.783L3.11 4.601v11.813h14.997V5.816H15.75Zm-1.5 0V3.654l-9.64 2.15v.012h9.64Zm-9.64 1.5v7.598h11.997V7.316H4.611ZM15 11.1a1.158 1.158 0 1 1-2.316 0 1.158 1.158 0 0 1 2.316 0Z"
+      d="M17 6.852H5.87c-.48 0-.87-.36-.87-.803 0-.443.39-.802.87-.802h8.63V4H5.495C4.117 4 3 5.03 3 6.302v7.396C3 14.969 4.117 16 5.495 16H17V6.852ZM13.5 10a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"
       fill="currentColor"
     />
   </svg>
