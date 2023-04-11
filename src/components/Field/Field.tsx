@@ -32,29 +32,30 @@ export const Field: PolymorphicComponent<FieldProps, 'div'> = <
     ...rest
   } = props
 
-  const renderLabel = () => (
-    <Box flexDirection="column" gap="0.5">
-      {label && (
-        <Text
-          variant="small"
-          color="text100"
-          hidden={labelLocation === 'hidden'}
-        >
-          {label}
-        </Text>
-      )}
+  const renderLabel = () =>
+    label || description ? (
+      <Box flexDirection="column" gap="0.5">
+        {label && (
+          <Text
+            variant="small"
+            color="text100"
+            hidden={labelLocation === 'hidden'}
+          >
+            {label}
+          </Text>
+        )}
 
-      {description && (
-        <Text
-          variant="small"
-          color="text50"
-          hidden={labelLocation === 'hidden'}
-        >
-          {description}
-        </Text>
-      )}
-    </Box>
-  )
+        {description && (
+          <Text
+            variant="small"
+            color="text50"
+            hidden={labelLocation === 'hidden'}
+          >
+            {description}
+          </Text>
+        )}
+      </Box>
+    ) : null
 
   return (
     <Box
