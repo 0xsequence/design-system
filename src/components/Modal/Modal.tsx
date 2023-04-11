@@ -28,7 +28,7 @@ export type ModalProps = {
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const {
     autoHeight = false,
-    backdropColor = 'gradientBackdrop',
+    backdropColor = 'backgroundBackdrop', // gradientBackdrop for onboarding or special modals
     children,
     disableAnimation = false,
     isDismissible = true,
