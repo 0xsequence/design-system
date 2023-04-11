@@ -9,7 +9,7 @@ import {
 
 const THEMES = ['dark', 'light'] as const
 
-type Theme = typeof THEMES[number]
+export type Theme = (typeof THEMES)[number]
 
 const DEFAULT_THEME = 'dark'
 const THEME_ATTR = 'data-theme'
@@ -47,7 +47,7 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
   // Allow prop theme override
   useEffect(() => {
-    if (props.theme) {
+    if (props.theme && THEMES.includes(props.theme)) {
       setTheme(props.theme)
     }
   }, [props.theme])
@@ -66,11 +66,13 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     return {
       theme,
       setTheme: (mode: Theme) => {
-        // Save to local storage
-        localStorage.setItem(STORAGE_KEY, mode)
+        if (THEMES.includes(mode)) {
+          // Save to local storage
+          localStorage.setItem(STORAGE_KEY, mode)
 
-        // Set the theme state which will cause a re-render
-        setTheme(mode)
+          // Set the theme state which will cause a re-render
+          setTheme(mode)
+        }
       },
     }
   }, [theme])
