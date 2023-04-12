@@ -82,7 +82,9 @@ export const TabsHeader = (props: TabsHeaderProps) => {
           key={tab.value}
           value={tab.value}
         >
-          <Text variant="medium">{tab.label}</Text>
+          <Text variant="normal" fontWeight="bold">
+            {tab.label}
+          </Text>
         </TabsPrimitive.Trigger>
       ))}
     </TabsPrimitive.List>
