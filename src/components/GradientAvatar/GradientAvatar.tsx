@@ -87,6 +87,8 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
       viewBox={`0 0 1000 1000`}
       version="1.1"
       flexShrink="0"
+      borderRadius="circle"
+      overflow="hidden"
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
