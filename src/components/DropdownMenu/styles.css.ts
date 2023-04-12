@@ -27,7 +27,7 @@ export const item = style([
     paddingX: '2',
     paddingY: '1',
     cursor: 'pointer',
-    outline: { focus: 'none' },
+    focusRing: { focus: 'none' },
     userSelect: 'none',
     paddingLeft: '6',
     position: 'relative',

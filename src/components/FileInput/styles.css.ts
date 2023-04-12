@@ -29,10 +29,12 @@ export const wrap = style([
 
       '&:focus-within': {
         opacity: '1 !important',
-        outlineColor: vars.colors.borderFocus,
-        outlineStyle: 'solid',
-        outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
-        outlineWidth: vars.borderWidths.thick,
+        // outlineColor: vars.colors.borderFocus,
+        // outlineStyle: 'solid',
+        // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+        // outlineWidth: vars.borderWidths.thick,
+
+        boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
         borderColor: 'transparent',
       },
     },
@@ -59,5 +61,6 @@ export const input = style([
     left: '0',
     bottom: '0',
     right: '0',
+    focusRing: 'none',
   }),
 ])

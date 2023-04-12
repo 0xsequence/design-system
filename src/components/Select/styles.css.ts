@@ -9,9 +9,9 @@ export const triggerStyle = style([
   atoms({
     alignItems: 'center',
     background: 'transparent',
-    borderColor: 'borderNormal',
-    borderStyle: 'solid',
-    borderWidth: 'thin',
+    // borderColor: 'borderNormal',
+    // borderStyle: 'solid',
+    // borderWidth: 'thin',
     display: 'inline-flex',
     fontWeight: 'medium',
     color: 'text100',
@@ -24,6 +24,8 @@ export const triggerStyle = style([
   {
     height: 52,
 
+    boxShadow: `0 0 0 ${vars.borderWidths.thin} ${vars.colors.borderNormal} inset`,
+
     selectors: {
       '&:has(:disabled), &:has(:disabled):hover': {
         cursor: 'default',
@@ -32,10 +34,12 @@ export const triggerStyle = style([
 
       '&:focus-within': {
         opacity: '1 !important',
-        outlineColor: vars.colors.borderFocus,
-        outlineStyle: 'solid',
-        outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
-        outlineWidth: vars.borderWidths.thick,
+        // outlineColor: vars.colors.borderFocus,
+        // outlineStyle: 'solid',
+        // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+        // outlineWidth: vars.borderWidths.thick,
+
+        boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
         borderColor: 'transparent',
       },
     },
@@ -58,14 +62,18 @@ export const contentStyle = style([
   atoms({
     backdropFilter: 'blur',
     background: 'buttonGlass',
-    borderColor: 'borderNormal',
     borderRadius: 'sm',
-    borderStyle: 'solid',
-    borderWidth: 'thin',
+    // borderColor: 'borderNormal',
+    // borderStyle: 'solid',
+    // borderWidth: 'thin',
     color: 'text100',
     overflow: 'hidden',
     zIndex: '10',
   }),
+
+  {
+    boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
+  },
 ])
 
 export const groupLabelStyle = style([
@@ -90,7 +98,7 @@ export const optionStyle = style([
     },
     paddingX: '4',
     paddingY: '3',
-    outline: {
+    focusRing: {
       focus: 'none',
       hover: 'none',
     },

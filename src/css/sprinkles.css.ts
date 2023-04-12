@@ -182,8 +182,9 @@ const selectorProperties = defineProperties({
     color: vars.colors,
     cursor: ['default', 'pointer', 'text'],
     opacity: vars.opacity,
-    outline: ['none'],
     pointerEvents: ['none', 'auto'],
+    outline: ['none'], // focusRing
+    boxShadow: ['none'], // focusRing
   },
   shorthands: {
     borderColor: [
@@ -198,6 +199,7 @@ const selectorProperties = defineProperties({
       'borderBottomStyle',
       'borderLeftStyle',
     ],
+    focusRing: ['boxShadow', 'outline'],
   },
 })
 

@@ -1,23 +1,26 @@
 import { keyframes, style } from '@vanilla-extract/css'
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 
-import { vars } from '~/css'
+import { atoms, vars } from '~/css'
 
-export const viewport = style({
-  position: 'fixed',
-  bottom: '0',
-  right: '0',
-  padding: vars.space[4],
-  paddingTop: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  gap: vars.space[2],
-  zIndex: '1000',
-  outline: 'none',
-  listStyle: 'none',
-  width: '100%',
-  maxWidth: '532px',
-})
+export const viewport = style([
+  atoms({
+    position: 'fixed',
+    right: '0',
+    bottom: '0',
+    focusRing: 'none',
+    width: 'full',
+    gap: '2',
+    flexDirection: 'column',
+  }),
+  {
+    padding: vars.space[4],
+    paddingTop: 0,
+    zIndex: '1000',
+    listStyle: 'none',
+    maxWidth: '532px',
+  },
+])
 
 export const swipeOut = keyframes({
   from: {

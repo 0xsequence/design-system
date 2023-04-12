@@ -10,10 +10,10 @@ export const wrap = style([
     alignItems: 'center',
     background: 'transparent',
     color: 'text100',
-    borderColor: 'borderNormal',
     borderRadius: 'md',
-    borderStyle: 'solid',
-    borderWidth: 'thin',
+    // borderColor: 'borderNormal',
+    // borderStyle: 'solid',
+    // borderWidth: 'thin',
     minWidth: 'full',
     paddingX: '4',
     gap: '2',
@@ -21,6 +21,8 @@ export const wrap = style([
   {
     cursor: 'text',
     height: '52px',
+
+    boxShadow: `0 0 0 ${vars.borderWidths.thin} ${vars.colors.borderNormal} inset`,
 
     selectors: {
       '&:has(:disabled), &:has(:disabled):hover': {
@@ -30,10 +32,12 @@ export const wrap = style([
 
       '&:focus-within': {
         opacity: '1 !important',
-        outlineColor: vars.colors.borderFocus,
-        outlineStyle: 'solid',
-        outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
-        outlineWidth: vars.borderWidths.thick,
+        // outlineColor: vars.colors.borderFocus,
+        // outlineStyle: 'solid',
+        // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+        // outlineWidth: vars.borderWidths.thick,
+
+        boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
         borderColor: 'transparent',
       },
     },
@@ -58,7 +62,7 @@ export const input = recipe({
     paddingY: '4',
     width: 'full',
     height: 'full',
-    outline: 'none',
+    focusRing: 'none',
   }),
 
   variants: {

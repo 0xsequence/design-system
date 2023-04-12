@@ -37,7 +37,7 @@ export const contentVariants = recipe({
       bottom: { sm: '0', lg: 'auto' },
       borderTopRadius: 'lg',
       borderBottomRadius: { sm: 'none', lg: 'lg' },
-      outline: {
+      focusRing: {
         focus: 'none',
       },
     }),

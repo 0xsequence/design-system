@@ -14,10 +14,11 @@ export const list = style([
   {
     selectors: {
       '&:has(:focus-visible)': {
-        outlineColor: vars.colors.borderFocus,
-        outlineStyle: 'solid',
-        outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
-        outlineWidth: vars.borderWidths.thick,
+        // outlineColor: vars.colors.borderFocus,
+        // outlineStyle: 'solid',
+        // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+        // outlineWidth: vars.borderWidths.thick,
+        boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
       },
     },
   },
@@ -28,12 +29,12 @@ export const trigger = style([
     width: 'full',
     height: 'full',
     borderRadius: 'sm',
-    outline: 'none',
     cursor: 'pointer',
     position: 'relative',
     background: 'transparent',
     userSelect: 'none',
     color: 'text80',
+    focusRing: 'none',
   }),
   {
     appearance: 'none',
@@ -67,6 +68,4 @@ export const selector = style([
   },
 ])
 
-export const content = style({
-  outline: 'none',
-})
+export const content = atoms({ focusRing: 'none' })

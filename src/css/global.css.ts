@@ -22,11 +22,20 @@ globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
 })
 
+globalStyle('*:focus', {
+  outline: 'none',
+})
+
 globalStyle('*:focus-visible', {
-  outlineColor: `${vars.colors.borderFocus} !important`,
-  outlineStyle: 'solid',
-  outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
-  outlineWidth: vars.borderWidths.thick,
+  // outlineColor: `${vars.colors.borderFocus} !important`,
+  // outlineStyle: 'solid',
+  // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
+  // outlineWidth: vars.borderWidths.thick,
+
+  // Safari does not apply a border radius to outlines so we will use a boxShadow instead to acheive that same inset effect
+  boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
+
+  // Because we use a semi transparent focus ring we want to set any border color to transparent so it doesnt show through
   borderColor: 'transparent',
 })
 
