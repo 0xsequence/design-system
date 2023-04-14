@@ -1,6 +1,6 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'
-import { forwardRef, Ref } from 'react'
+import { forwardRef, ReactNode, Ref } from 'react'
 
 import { Box } from '~/components/Box'
 import { Field, FieldProps } from '~/components/Field'
@@ -17,7 +17,7 @@ import {
 type SelectOption = {
   className?: string
   disabled?: boolean
-  label: string
+  label: string | ReactNode
   value: string
 }
 
@@ -89,7 +89,7 @@ export const Select = forwardRef(
             <SelectPrimitive.Viewport>
               <SelectPrimitive.Group>
                 {options.map(({ value, label, ...rest }) => (
-                  <SelectItem key={label} value={value} {...rest}>
+                  <SelectItem key={value} value={value} {...rest}>
                     {label}
                   </SelectItem>
                 ))}

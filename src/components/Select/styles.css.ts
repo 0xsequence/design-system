@@ -68,7 +68,7 @@ export const contentStyle = style([
     // borderWidth: 'thin',
     color: 'text100',
     overflow: 'hidden',
-    zIndex: '10',
+    zIndex: '30',
   }),
 
   {
