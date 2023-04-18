@@ -33,7 +33,7 @@ const cyrb53 = (str: string, seed: number = 0): number => {
 }
 
 const generateGradient = (a: number, b: number, c: number) => {
-  const randID = crypto?.randomUUID() || Math.random().toString(36).slice(2, 12)
+  const randID = Math.random().toString(36).slice(2, 12)
 
   const hueA = a % 360
   const hueB = (a + 120) % 360

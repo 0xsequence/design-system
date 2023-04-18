@@ -180,7 +180,7 @@ export const useToast = () => {
   return (props: ToastProps) => {
     const toast: ToastProps = {
       ...props,
-      id: crypto.randomUUID(),
+      id: Math.random().toString(36).slice(2, 12),
       onOpenChange: open => {
         if (!open) {
           setToasts(toasts => {
