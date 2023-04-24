@@ -42,6 +42,14 @@ Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/
 pnpm install && pnpm storybook
 ```
 
+#### Peer Dependencies
+
+The design system relies on these peer dependencies to be installed in your application:
+
+- `pnpm add react`
+- `pnpm add react-dom`
+- `pnpm add framer-motion`
+
 ### Used by
 
 - [Sequence Wallet](https://sequence.app/)
