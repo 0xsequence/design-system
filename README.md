@@ -12,6 +12,14 @@ Components are written in [React](https://reactjs.org/) with [Vanilla Extract](h
 pnpm add @0xsequence/design-system
 ```
 
+#### Peer Dependencies
+
+The design system relies on these peer dependencies to be installed in your application:
+
+- `pnpm add react`
+- `pnpm add react-dom`
+- `pnpm add framer-motion`
+
 ### Use
 
 Import the styles at the root of your app
@@ -41,14 +49,6 @@ Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/
 ```
 pnpm install && pnpm storybook
 ```
-
-#### Peer Dependencies
-
-The design system relies on these peer dependencies to be installed in your application:
-
-- `pnpm add react`
-- `pnpm add react-dom`
-- `pnpm add framer-motion`
 
 ### Used by
 
