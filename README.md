@@ -22,21 +22,38 @@ The design system relies on these peer dependencies to be installed in your appl
 
 ### Use
 
-Import the styles at the root of your app
+Import the styles at the root of your app:
 
 `import '@0xsequence/design-system/styles.css'`
 
-Then import components you want into your UI
+Then wrap your application root with the ThemeProvider:
 
-`import { Box, Text, Button } from '@0xsequence/design-system'`
+```jsx
+import { ThemeProvider } from '@0xsequence/design-system'
 
-and use them like so
-
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+);
+root.render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>
+);
 ```
-const example = () => (
-  <Box display="flex" gap="1">
+
+Then import components from the design system to build your UI:
+
+```jsx
+import { Box, Text, Button, useTheme } from '@0xsequence/design-system'
+
+const App = () => (
+  const { theme, setTheme } = useTheme()
+
+  <Box gap="1"> // display="flex" is automatically applied when flex properties are added to a Box component
     <Text variant="normal">Hello, World!</Text>
-    <Button variant="primary" label="Click me" onClick={() => 0}/>
+    <Button variant="primary" label="Change theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
   </Box>
 )
 
