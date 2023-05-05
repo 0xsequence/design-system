@@ -22,6 +22,16 @@ export const buttonVariants = recipe({
     variant: {
       base: {},
 
+      feature: [
+        atoms({
+          background: 'gradientSecondary',
+          color: 'white',
+        }),
+        {
+          outline: '2px solid rgba(255, 255, 255, 0.1)',
+          outlineOffset: '-2px',
+        },
+      ],
       primary: atoms({
         background: 'gradientPrimary',
         color: 'white',
