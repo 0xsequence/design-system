@@ -32,6 +32,8 @@ globalStyle('*:focus-visible', {
   // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
   // outlineWidth: vars.borderWidths.thick,
 
+  outline: 'none',
+
   // Safari does not apply a border radius to outlines so we will use a boxShadow instead to acheive that same inset effect
   boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
 
@@ -42,4 +44,18 @@ globalStyle('*:focus-visible', {
 globalStyle('body', {
   background: vars.colors.backgroundPrimary,
   color: vars.colors.text80,
+  fontSize: '1rem',
+})
+
+globalStyle('html:not(.is-apple) *::-webkit-scrollbar', {
+  appearance: 'none',
+  width: '13px',
+  background: 'rgba(0, 0, 0, 0)',
+})
+
+globalStyle('html:not(.is-apple) *::-webkit-scrollbar-thumb', {
+  background: vars.colors.text50,
+  border: '3px solid transparent',
+  backgroundClip: 'content-box',
+  borderRadius: '7px',
 })

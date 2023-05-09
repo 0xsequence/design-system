@@ -60,6 +60,7 @@ export const VerticalScroll: Story = {
   render: StoryWrapper,
   args: {
     direction: 'vertical',
+    shadows: true,
     children: (
       <Box padding="4" flexDirection="column" gap="4" alignItems="center">
         {ALPHABET.map(letter => (
@@ -78,6 +79,7 @@ export const HorizontalScroll: Story = {
   render: StoryWrapper,
   args: {
     direction: 'horizontal',
+    shadows: true,
     children: (
       <Box padding="4" gap="4" alignItems="center" height="full" width="max">
         {ALPHABET.map(letter => (
