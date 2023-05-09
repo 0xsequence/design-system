@@ -7,10 +7,6 @@ import {
   useState,
 } from 'react'
 
-// Add is-apple class
-;/Mac/.test(window.navigator.userAgent) &&
-  window.document.documentElement.classList.add('is-apple')
-
 const THEMES = ['dark', 'light'] as const
 
 export type Theme = (typeof THEMES)[number]
@@ -48,6 +44,12 @@ const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
   const [theme, setTheme] = useState<Theme>(props.theme || getTheme())
+
+  useEffect(() => {
+    // Add is-apple class
+    ;/Mac/.test(window.navigator.userAgent) &&
+      window.document.documentElement.classList.add('is-apple')
+  }, [])
 
   // Allow prop theme override
   useEffect(() => {
