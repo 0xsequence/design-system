@@ -5,10 +5,17 @@ import * as styles from './styles.css'
 interface ScrollProps extends BoxProps {
   direction?: 'horizontal' | 'vertical'
   shadows?: boolean
+  contentProps?: BoxProps
 }
 
 export const Scroll = (props: ScrollProps) => {
-  const { children, shadows = true, direction = 'vertical', ...rest } = props
+  const {
+    children,
+    shadows = true,
+    direction = 'vertical',
+    contentProps,
+    ...rest
+  } = props
 
   return (
     <Box
@@ -18,8 +25,13 @@ export const Scroll = (props: ScrollProps) => {
       height="full"
       {...rest}
     >
-      {/* <Box className={styles.overlay({ direction })} /> */}
-      <Box className={styles.scroll({ direction })}>{children}</Box>
+      <Box
+        className={styles.scroll({ direction })}
+        background="backgroundPrimary"
+        {...contentProps}
+      >
+        {children}
+      </Box>
     </Box>
   )
 }
