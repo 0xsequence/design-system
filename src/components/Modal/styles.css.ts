@@ -54,7 +54,7 @@ export const contentVariants = recipe({
       sm: {
         width: '100vw',
         minHeight: 100,
-        maxHeight: ['calc(100vh - 80px)', 'calc(100dvh - 80px)'],
+        height: ['calc(100vh - 80px)', 'calc(100dvh - 80px)'],
 
         '@media': responsiveStyle({
           lg: {
