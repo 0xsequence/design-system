@@ -42,7 +42,7 @@ export const item = style([
       },
 
       '&[data-highlighted]': {
-        background: vars.colors.backgroundSecondary,
+        background: vars.colors.backgroundContrast,
         color: 'white',
       },
     },
