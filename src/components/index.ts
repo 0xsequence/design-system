@@ -56,6 +56,7 @@ export {
 export { Tag } from './Tag'
 export { Text, textVariants } from './Text'
 export { Toast, ToastProvider, useToast } from './Toast'
+export { ControlledTextArea, TextArea } from './TextArea'
 export { ControlledTextInput, TextInput } from './TextInput'
 export { ThemeProvider, useTheme } from './ThemeProvider'
 export { TokenImage } from './TokenImage'
