@@ -4,18 +4,9 @@ import { atoms } from '~/css'
 
 export const COLLAPSED_HEIGHT = '64px'
 
-export const root = style([
-  atoms({
-    borderRadius: 'md',
-    background: 'backgroundSecondary',
-    position: 'relative',
-    overflow: 'hidden',
-    width: 'full',
-  }),
-  {
-    minHeight: COLLAPSED_HEIGHT,
-  },
-])
+export const root = style({
+  minHeight: COLLAPSED_HEIGHT,
+})
 
 export const trigger = style([
   atoms({

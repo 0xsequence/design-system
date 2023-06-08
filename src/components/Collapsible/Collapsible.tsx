@@ -29,16 +29,21 @@ export const Collapsible = (props: CollapsibleProps) => {
 
   return (
     <CollapsiblePrimitive.Root
-      className={clsx(className, styles.root)}
       defaultOpen={defaultOpen}
       onOpenChange={handleOpenChange}
       asChild
     >
       <Box
         as={motion.div}
+        className={clsx(className, styles.root)}
         initial={{ height: defaultOpen ? 'auto' : styles.COLLAPSED_HEIGHT }}
         animate={{ height: expanded ? 'auto' : styles.COLLAPSED_HEIGHT }}
         transition={{ ease: 'easeOut', duration: 0.3 }}
+        borderRadius="md"
+        background="backgroundSecondary"
+        position="relative"
+        overflow="hidden"
+        width="full"
         {...rest}
       >
         <CollapsiblePrimitive.Trigger className={styles.trigger}>
