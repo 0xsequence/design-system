@@ -6,6 +6,7 @@ import { Box, BoxProps } from '~/components/Box'
 import * as styles from './styles.css'
 
 const SIZE = 1000
+const RADIUS = SIZE / 2
 
 type GradientAvatarProps = {
   address: string
@@ -96,7 +97,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
     >
       <defs>
         <clipPath id="circle-clip">
-          <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2} />
+          <circle cx={RADIUS} cy={RADIUS} r={RADIUS} />
         </clipPath>
 
         <filter
@@ -116,7 +117,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
             result="shape"
           ></feBlend>
           <feGaussianBlur
-            stdDeviation="100"
+            stdDeviation={SIZE / 10}
             result="effect1_foregroundBlur"
           ></feGaussianBlur>
         </filter>
