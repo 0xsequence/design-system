@@ -5,6 +5,8 @@ import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
+const SIZE = 1000
+
 type GradientAvatarProps = {
   address: string
   initials?: string
@@ -75,16 +77,16 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
 
   const gradients = hashes.map((hash, idx) => ({
     ...generateGradient(hash.a, hash.b, hash.c),
-    x: hash.x % 1000,
-    y: hash.y % 1000,
-    r: 100 + (hash.r % (1500 / (idx + 1))),
+    x: hash.x % SIZE,
+    y: hash.y % SIZE,
+    r: SIZE / 10 + (hash.r % ((SIZE * 1.5) / (idx + 1))),
   }))
 
   return (
     <Box
       as="svg"
       className={clsx(className, styles.avatar({ size }))}
-      viewBox={`0 0 1000 1000`}
+      viewBox={`0 0 ${SIZE} ${SIZE}`}
       version="1.1"
       flexShrink="0"
       borderRadius="circle"
@@ -94,7 +96,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
     >
       <defs>
         <clipPath id="circle-clip">
-          <circle cx="500" cy="500" r="500" />
+          <circle cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2} />
         </clipPath>
 
         <filter
@@ -119,6 +121,17 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
           ></feGaussianBlur>
         </filter>
 
+        <linearGradient
+          id={`gradient-background-${gradients[0].id}`}
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1"
+        >
+          <stop offset="0" stopColor={gradients[0].c} />
+          <stop offset="1" stopColor={gradients[0].a} />
+        </linearGradient>
+
         {gradients.map(gradient => (
           <Fragment key={gradient.id}>
             <radialGradient id={`gradient-primary-${gradient.id}`}>
@@ -132,17 +145,6 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
             </radialGradient>
           </Fragment>
         ))}
-
-        <linearGradient
-          id={`gradient-background-${gradients[0].id}`}
-          x1="0"
-          y1="0"
-          x2="1"
-          y2="1"
-        >
-          <stop offset="0" stopColor={gradients[0].c} />
-          <stop offset="1" stopColor={gradients[0].a} />
-        </linearGradient>
       </defs>
 
       <g clipPath="url(#circle-clip)">
