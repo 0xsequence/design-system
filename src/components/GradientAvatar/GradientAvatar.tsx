@@ -5,7 +5,7 @@ import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
-const SIZE = 1000
+const SIZE = 256
 const RADIUS = SIZE / 2
 
 type GradientAvatarProps = {
@@ -14,6 +14,21 @@ type GradientAvatarProps = {
   complexity?: number
 } & styles.AvatarVariants &
   BoxProps
+
+interface HashState {
+  a: number
+  b: number
+  c: number
+  x: number
+  y: number
+  r: number
+}
+
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(Math.max(value, min), max)
+
+const clampGradientPosition = (value: number, offset: number) =>
+  clamp(value, 0 + offset, SIZE - offset)
 
 const cyrb53 = (str: string, seed: number = 0): number => {
   let h1 = 0xdeadbeef ^ seed,
@@ -35,7 +50,7 @@ const cyrb53 = (str: string, seed: number = 0): number => {
   return 4294967296 * (2097151 & h2) + (h1 >>> 0)
 }
 
-const generateGradient = (a: number, b: number, c: number) => {
+const createGradient = (a: number, b: number, c: number) => {
   const randID = Math.random().toString(36).slice(2, 12)
 
   const hueA = a % 360
@@ -50,18 +65,7 @@ const generateGradient = (a: number, b: number, c: number) => {
   }
 }
 
-interface HashState {
-  a: number
-  b: number
-  c: number
-  x: number
-  y: number
-  r: number
-}
-
-export const GradientAvatar = memo((props: GradientAvatarProps) => {
-  const { className, address, size = 'md', complexity = 1, ...rest } = props
-
+const createGradients = (address: string, complexity: number) => {
   const hashes: HashState[] = []
   for (let i = 0; i < complexity; i++) {
     const offset = i * 6
@@ -76,12 +80,20 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
     })
   }
 
-  const gradients = hashes.map((hash, idx) => ({
-    ...generateGradient(hash.a, hash.b, hash.c),
-    x: hash.x % SIZE,
-    y: hash.y % SIZE,
-    r: SIZE / 10 + (hash.r % ((SIZE * 1.5) / (idx + 1))),
-  }))
+  return hashes.map((hash, idx) => {
+    const r = SIZE / 10 + (hash.r % ((SIZE * 1.5) / (idx + 1)))
+
+    return {
+      ...createGradient(hash.a, hash.b, hash.c),
+      x: clampGradientPosition(hash.x % SIZE, -r / 3),
+      y: clampGradientPosition(hash.y % SIZE, -r / 3),
+      r,
+    }
+  })
+}
+export const GradientAvatar = memo((props: GradientAvatarProps) => {
+  const { className, address, size = 'md', complexity = 1, ...rest } = props
+  const gradients = createGradients(address, complexity)
 
   return (
     <Box
