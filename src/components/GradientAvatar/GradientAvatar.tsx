@@ -5,7 +5,7 @@ import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
-const SIZE = 256
+const SIZE = 1000
 const RADIUS = SIZE / 2
 
 type GradientAvatarProps = {
