@@ -17,13 +17,13 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M5 6.05c0 .443.39.802.87.802H17V16H5.495C4.117 16 3 14.97 3 13.698V6.302C3 5.031 4.117 4 5.495 4H14.5v1.247H5.87c-.48 0-.87.36-.87.802Zm7 5.45a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
+      d="M16.899 5.261a1 1 0 0 1 1 1v.729H2.102v2.055h15.797v4.694a1 1 0 0 1-1 1H3.102a1 1 0 0 1-1-1V6.261a1 1 0 0 1 1-1h13.797Zm-7.13 7.284h7v1h-7v-1Z"
       fill="currentColor"
     />
   </svg>
 )
 
-const SvgWalletIcon = ({ size = 'sm', ...props }: IconProps) => (
+const SvgPaymentsIcon = ({ size = 'sm', ...props }: IconProps) => (
   <Box
     as={Svg}
     className={iconVariants({
@@ -33,4 +33,4 @@ const SvgWalletIcon = ({ size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgWalletIcon
+export default SvgPaymentsIcon
