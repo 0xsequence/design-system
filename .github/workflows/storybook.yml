@@ -20,6 +20,8 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Build storybook
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
         run: pnpm build:storybook
 
       - name: Add .nojekyll
