@@ -7,6 +7,9 @@
   "module": "dist/index.cjs.js",
   "types": "dist/types/index.d.ts",
   "homepage": "https://0xsequence.github.io/design-system/",
+  "sideEffects": [
+    "*.css.ts"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
