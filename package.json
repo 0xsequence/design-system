@@ -64,7 +64,7 @@
     "@storybook/react": "^7.0.24",
     "@storybook/react-vite": "^7.0.24",
     "@storybook/theming": "^7.0.24",
-    "@svgr/cli": "^6.5.1",
+    "@svgr/cli": "^8.0.1",
     "@testing-library/dom": "^9.3.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",

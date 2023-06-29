@@ -9,9 +9,9 @@ import { IconProps } from './types'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    viewBox="0 0 20 20"
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 20 20"
     {...props}
   >
     <path stroke="currentColor" d="M2.5 2.5h3.571v3.571H2.5z" />
