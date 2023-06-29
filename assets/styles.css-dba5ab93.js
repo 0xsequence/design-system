@@ -1,2 +1,0 @@
-/* empty css                            *//* empty css                              */import{c as i}from"./vanilla-extract-recipes-createRuntimeFn.esm-bf276de8.js";var t=i({defaultClassName:"_1dizidw0",variantClassNames:{size:{xs:"_1dizidw1",sm:"_1dizidw2",md:"_1dizidw3",lg:"_1dizidw4",xl:"_1dizidw5"}},defaultVariants:{},compoundVariants:[]});export{t as i};
-//# sourceMappingURL=styles.css-dba5ab93.js.map
