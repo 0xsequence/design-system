@@ -5,7 +5,7 @@ import { Box, PolymorphicProps } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { IconProps } from '~/icons/types'
 
-import * as styles from './styles.css'
+import { tabVariants, TabVariants } from './styles.css'
 
 export type TabOption = {
   label: ReactNode
@@ -20,15 +20,16 @@ type TabbedNavProps = {
   size?: 'xs' | 'sm'
   tabs: TabOption[]
   onTabChange?: (value: string) => void
-}
+} & TabVariants
 
 export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
   const {
     className,
     defaultValue,
+    onTabChange,
     size = 'sm',
     tabs,
-    onTabChange,
+    variant = 'pill',
     ...rest
   } = props
 
@@ -66,26 +67,43 @@ export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
   return (
     <Box as="nav" {...rest}>
       <Box as="ul" gap="2">
-        {tabs.map((option, tabIndex) => (
-          <Box as="li" key={tabIndex}>
-            <Button
-              className={clsx(
-                className,
-                styles.tab({ active: option.value === value })
-              )}
-              variant="base"
-              disabled={isLoading || option.disabled}
-              label={option.label}
-              leftIcon={option.leftIcon ?? undefined}
-              onClick={(ev: MouseEvent<HTMLButtonElement>) =>
-                handleTabClick(ev, option, tabIndex)
+        {tabs.map((option, tabIndex) => {
+          const isActive = option.value === value
+
+          return (
+            <Box
+              as="li"
+              key={tabIndex}
+              borderTopColor={
+                variant === 'line'
+                  ? isActive
+                    ? 'text100'
+                    : 'transparent'
+                  : undefined
               }
-              paddingLeft={option.leftIcon ? '1' : '2'}
-              size={size}
-              borderRadius="circle"
-            />
-          </Box>
-        ))}
+              borderTopStyle={variant === 'line' ? 'solid' : undefined}
+              borderTopWidth={variant === 'line' ? 'thick' : undefined}
+            >
+              <Button
+                className={clsx(
+                  className,
+                  tabVariants({ active: isActive, variant })
+                )}
+                variant={variant === 'line' ? 'text' : 'base'}
+                disabled={isLoading || option.disabled}
+                label={option.label}
+                leftIcon={option.leftIcon ?? undefined}
+                onClick={(ev: MouseEvent<HTMLButtonElement>) =>
+                  handleTabClick(ev, option, tabIndex)
+                }
+                padding={variant === 'line' ? '2' : undefined}
+                paddingLeft={option.leftIcon ? '1' : '2'}
+                size={size}
+                borderRadius="circle"
+              />
+            </Box>
+          )
+        })}
       </Box>
     </Box>
   )
