@@ -5,7 +5,8 @@ import { Box, BoxProps } from '~/components/Box'
 
 import * as styles from './styles.css'
 
-const SIZE = 1000
+const MOD = 1000
+const SIZE = 64
 const RADIUS = SIZE / 2
 
 type GradientAvatarProps = {
@@ -24,11 +25,15 @@ interface HashState {
   r: number
 }
 
-const clamp = (value: number, min: number, max: number) =>
-  Math.min(Math.max(value, min), max)
+// const clamp = (value: number, min: number, max: number) =>
+//   Math.min(Math.max(value, min), max)
 
-const clampGradientPosition = (value: number, offset: number) =>
-  clamp(value, 0 + offset, SIZE - offset)
+// const clampGradientPosition = (value: number, offset: number = 0) =>
+//   clamp(value, 0 + offset, SIZE - offset)
+
+const scaledMod = (value: number, mod: number = MOD) => {
+  return (value % mod) / (MOD / SIZE)
+}
 
 const cyrb53 = (str: string, seed: number = 0): number => {
   let h1 = 0xdeadbeef ^ seed,
@@ -81,12 +86,12 @@ const createGradients = (address: string, complexity: number) => {
   }
 
   return hashes.map((hash, idx) => {
-    const r = SIZE / 10 + (hash.r % ((SIZE * 1.5) / (idx + 1)))
+    const r = SIZE / 10 + scaledMod(hash.r, (MOD * 1.5) / (idx + 1))
 
     return {
       ...createGradient(hash.a, hash.b, hash.c),
-      x: clampGradientPosition(hash.x % SIZE, -r / 3),
-      y: clampGradientPosition(hash.y % SIZE, -r / 3),
+      x: scaledMod(hash.x), //clampGradientPosition(hash.x % SIZE, -r / 3),
+      y: scaledMod(hash.y), //clampGradientPosition(hash.y % SIZE, -r / 3),
       r,
     }
   })
