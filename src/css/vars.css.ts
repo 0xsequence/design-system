@@ -25,13 +25,16 @@ type NetworkColors = typeof tokens.colors.network
 
 const mapNetworkColors = <
   T extends NetworkColors,
-  K extends keyof NetworkColors
+  K extends keyof NetworkColors,
 >(
   networkColors: T
 ) => {
-  return Object.entries(networkColors).reduce((acc, [key, value]) => {
-    return { ...acc, ...mapTokens(key.toLowerCase(), value) }
-  }, {} as MapTokens<Lowercase<K>, T[K]>)
+  return Object.entries(networkColors).reduce(
+    (acc, [key, value]) => {
+      return { ...acc, ...mapTokens(key.toLowerCase(), value) }
+    },
+    {} as MapTokens<Lowercase<K>, T[K]>
+  )
 }
 
 const { colors, ...baseTokens } = tokens
