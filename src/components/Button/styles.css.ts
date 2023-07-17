@@ -44,6 +44,10 @@ export const buttonVariants = recipe({
         background: 'buttonEmphasis',
         color: 'text100',
       }),
+      danger: atoms({
+        background: 'negative',
+        color: 'white',
+      }),
 
       text: [
         textVariants({ variant: 'small' }),
