@@ -84,9 +84,21 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
           >
             <motion.div
               key="modal-content"
-              initial={disableAnimation ? false : { y: '100%' }}
-              animate={disableAnimation ? false : { y: 0 }}
-              exit={disableAnimation ? undefined : { y: '100%' }}
+              initial={
+                disableAnimation
+                  ? false
+                  : { y: '100%', opacity: size === 'sm' ? 0 : 1 }
+              }
+              animate={
+                disableAnimation
+                  ? false
+                  : { y: 0, opacity: size === 'sm' ? 1 : 1 }
+              }
+              exit={
+                disableAnimation
+                  ? undefined
+                  : { y: '100%', opacity: size === 'sm' ? 0 : 1 }
+              }
               transition={{ type: 'tween', ease: 'easeOut' }}
               {...contentProps}
             >
