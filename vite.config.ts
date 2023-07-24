@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import path from 'path'
 
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
@@ -45,5 +46,10 @@ export default defineConfig({
       external: Object.keys(peerDependencies),
     },
     minify: false,
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './tests/setup.ts',
   },
 })
