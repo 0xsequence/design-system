@@ -1,5 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { ElementType, forwardRef } from 'react'
+import { vi } from 'vitest'
 
 import {
   Box,
@@ -19,13 +20,13 @@ describe('<Box />', () => {
 
 describe('Type errors', () => {
   beforeAll(() => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
   })
 
   afterEach(cleanup)
 
   afterAll(() => {
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   // prettier-ignore
