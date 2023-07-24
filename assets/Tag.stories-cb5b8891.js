@@ -1,0 +1,18 @@
+import{e as g}from"./WarningIcon-70ed10e0.js";import{T as u}from"./Tag-3fbd2597.js";import"./jsx-runtime-69eee039.js";import"./index-7c191284.js";import"./Box-64e6f390.js";import"./atoms-27ff9aca.js";import"./createRuntimeFn-f8e161c6.esm-526ef7c2.js";import"./Text-23aecd3e.js";import"./typography-f274f330.js";/* empty css                              */const w={title:"Components/Tag",component:u},r={args:{label:"ERC1155"}},e={args:{label:"ERC1155",icon:g}},o={args:{background:"ethereumDark",color:"white",icon:g,label:"Ethereum"}};var a,t,s;r.parameters={...r.parameters,docs:{...(a=r.parameters)==null?void 0:a.docs,source:{originalSource:`{
+  args: {
+    label: 'ERC1155'
+  }
+}`,...(s=(t=r.parameters)==null?void 0:t.docs)==null?void 0:s.source}}};var n,c,m;e.parameters={...e.parameters,docs:{...(n=e.parameters)==null?void 0:n.docs,source:{originalSource:`{
+  args: {
+    label: 'ERC1155',
+    icon: SettingsIcon
+  }
+}`,...(m=(c=e.parameters)==null?void 0:c.docs)==null?void 0:m.source}}};var i,p,l;o.parameters={...o.parameters,docs:{...(i=o.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  args: {
+    background: 'ethereumDark',
+    color: 'white',
+    icon: SettingsIcon,
+    label: 'Ethereum'
+  }
+}`,...(l=(p=o.parameters)==null?void 0:p.docs)==null?void 0:l.source}}};const D=["Default","WithIcon","NetworkTag"];export{r as Default,o as NetworkTag,e as WithIcon,D as __namedExportsOrder,w as default};
+//# sourceMappingURL=Tag.stories-cb5b8891.js.map
