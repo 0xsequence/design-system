@@ -40,7 +40,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   } = props
 
   return (
-    <ModalPrimitive.Root defaultOpen onOpenChange={onClose}>
+    <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount /* container={portalRoot} */>
         <Box className={styles.root}>
           <Box
@@ -75,9 +75,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               }
             }}
             onInteractOutside={ev => {
-              if (isDismissible) {
-                onClose?.()
-              } else {
+              if (!isDismissible) {
                 ev.preventDefault()
               }
             }}
