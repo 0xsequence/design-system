@@ -38,7 +38,8 @@
     "prepack": "pnpm build",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "pnpm build && pnpm test && changeset publish"
+    "changeset:publish": "pnpm build && pnpm test && changeset publish",
+    "codemod": "jscodeshift --transform ./transforms/tailwind-transform.ts --parser tsx"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.0",
