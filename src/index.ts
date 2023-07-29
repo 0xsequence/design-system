@@ -16,3 +16,5 @@ export type { Icon, IconProps } from '~/icons/types'
 
 export * from '~/hooks'
 export * from '~/utils'
+
+import './css/main.css'
