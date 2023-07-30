@@ -345,7 +345,7 @@ const transform = async (file: FileInfo, api: API) => {
       semi: false,
       singleQuote: true,
       arrowParens: 'avoid',
-      trailingComma: 'none',
+      trailingComma: 'es5',
 
       // Override with target project's config
       // ...config,
