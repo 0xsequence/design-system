@@ -15,6 +15,25 @@ interface SprinklesToTailwindMapping {
   [key: string]: string | ((value: LiteralValue) => string)
 }
 
+const borderRadius =
+  (side?: 't' | 'b' | 'l' | 'r' | 'tl' | 'tr' | 'bl' | 'br') =>
+  (value: LiteralValue) => {
+    const radii = {
+      none: 'none',
+      xs: '', // 4px
+      sm: 'lg', // 8px
+      md: 'xl', // 12px
+      lg: '2xl', // 16px
+      circle: 'full', // 9999px
+    }
+
+    const radiiValue = radii[value as string]
+
+    return `rounded${side ? `-${side}` : ''}${
+      radiiValue ? `-${radiiValue}` : ''
+    }`
+  }
+
 const MAPPING: SprinklesToTailwindMapping = {
   position: '', // Empty string means just pass the value prefixless
   margin: 'm',
@@ -64,6 +83,16 @@ const MAPPING: SprinklesToTailwindMapping = {
   uppercase: 'uppercase',
 
   lowercase: 'lowercase',
+
+  borderRadius: borderRadius(),
+  borderTopRadius: borderRadius('t'),
+  borderBottomRadius: borderRadius('b'),
+  borderLeftRadius: borderRadius('l'),
+  borderRightRadius: borderRadius('r'),
+  borderTopLeftRadius: borderRadius('tl'),
+  borderTopRightRadius: borderRadius('tr'),
+  borderBottomLeftRadius: borderRadius('bl'),
+  borderBottomRightRadius: borderRadius('br'),
 
   alignItems: value => {
     switch (value) {
