@@ -1,11 +1,22 @@
-import { JSXAttribute, Transform } from 'jscodeshift'
-// import * as prettier from 'prettier'
+import { API, FileInfo, JSXAttribute } from 'jscodeshift'
+// import { resolveConfig } from 'prettier'
+import * as prettierPluginBabel from 'prettier/plugins/babel'
+// @ts-ignore
+import * as prettierPluginEstree from 'prettier/plugins/estree'
+import * as prettierPluginTypescript from 'prettier/plugins/typescript'
+import { format } from 'prettier/standalone'
+
+// const breakpoints = ['sm', 'md', 'lg', 'xl']
+// const selectors = ['base', 'active', 'focus', 'disabled', 'hover', 'checked']
+
+type LiteralValue = string | number | boolean | null | RegExp
 
 interface SprinklesToTailwindMapping {
-  [key: string]: string | ((value: string) => string)
+  [key: string]: string | ((value: LiteralValue) => string)
 }
 
 const MAPPING: SprinklesToTailwindMapping = {
+  position: '', // Empty string means just pass the value prefixless
   margin: 'm',
   marginTop: 'mt',
   marginBottom: 'mb',
@@ -28,9 +39,6 @@ const MAPPING: SprinklesToTailwindMapping = {
 
   gap: 'gap',
 
-  alignItems: 'items',
-  justifyContent: 'justify',
-
   whiteSpace: 'whitespace',
 
   wordWrap: 'break',
@@ -47,7 +55,64 @@ const MAPPING: SprinklesToTailwindMapping = {
   overflowX: 'overflow-x',
   overflowY: 'overflow-y',
 
-  flexDirection: (value: string) => {
+  zIndex: 'z',
+
+  ellipsis: 'truncate',
+
+  capitalize: 'capitalize',
+
+  uppercase: 'uppercase',
+
+  lowercase: 'lowercase',
+
+  alignItems: value => {
+    switch (value) {
+      case 'flex-start':
+        return 'items-start'
+      case 'flex-end':
+        return 'items-end'
+      case 'center':
+        return 'items-center'
+      case 'baseline':
+        return 'items-baseline'
+      case 'stretch':
+        return 'items-stretch'
+    }
+
+    return ''
+  },
+
+  justifyContent: value => {
+    switch (value) {
+      case 'flex-start':
+        return 'justify-start'
+      case 'flex-end':
+        return 'justify-end'
+      case 'center':
+        return 'justify-center'
+      case 'space-between':
+        return 'justify-between'
+      case 'space-around':
+        return 'justify-around'
+      case 'space-evenly':
+        return 'justify-evenly'
+    }
+
+    return ''
+  },
+
+  backdropFilter: value => {
+    switch (value) {
+      case 'none':
+        return 'backdrop-filter-none'
+      case 'blur':
+        return 'backdrop-filter'
+    }
+
+    return ''
+  },
+
+  flexDirection: value => {
     switch (value) {
       case 'column':
         return 'flex-col'
@@ -62,7 +127,7 @@ const MAPPING: SprinklesToTailwindMapping = {
     }
   },
 
-  visibility: (value: string) => {
+  visibility: value => {
     if (value === 'hidden') {
       return 'invisible'
     }
@@ -70,7 +135,7 @@ const MAPPING: SprinklesToTailwindMapping = {
     return 'visible'
   },
 
-  display: (value: string) => {
+  display: value => {
     switch (value) {
       case 'none':
         return 'hidden'
@@ -96,7 +161,7 @@ const MAPPING: SprinklesToTailwindMapping = {
 
 const ATTRIBUTES = Object.keys(MAPPING)
 
-const transform: Transform = (file, api) => {
+const transform = async (file: FileInfo, api: API) => {
   const j = api.jscodeshift
 
   const root = j(file.source)
@@ -145,20 +210,6 @@ const transform: Transform = (file, api) => {
         }
       }
 
-      let classNameAttr: JSXAttribute = node.openingElement.attributes.find(
-        attribute =>
-          attribute.type === 'JSXAttribute' &&
-          attribute.name.name === 'className'
-      ) as JSXAttribute
-
-      if (!classNameAttr) {
-        classNameAttr = j.jsxAttribute(
-          j.jsxIdentifier('className'),
-          j.literal('')
-        )
-        node.openingElement.attributes.push(classNameAttr)
-      }
-
       // Find all the attributes that we want to transform
       const attrs = node.openingElement.attributes.filter(
         attribute =>
@@ -168,33 +219,110 @@ const transform: Transform = (file, api) => {
       ) as JSXAttribute[]
 
       // Map atomic props  to tailwind classNames
-      const tailwindClassNames: string = attrs
+      const tailwindClassNames: string[] = attrs
         .map(attr => {
           const name = attr.name.name as string
-          const value = (attr.value as any).value || null
-
-          if (!value) {
-            return
-          }
+          const value =
+            attr.value && attr.value.type === 'StringLiteral'
+              ? attr.value.value
+              : null
 
           const mapping = MAPPING[name]
+
+          // const parseAttributeValueNode = (node: JSXAttribute['value']) => {
+          //   if (node) {
+          //     const { type } = node
+
+          //     switch (type) {
+          //       case 'Literal':
+          //       case 'NullLiteral':
+          //       case 'BooleanLiteral':
+          //       case 'NumericLiteral':
+          //       case 'StringLiteral':
+          //         return node.value
+
+          //       case 'JSXExpressionContainer': {
+          //         const { expression } = node
+          //         const { type } = expression
+
+          //         switch (type) {
+          //           case 'Literal':
+          //           case 'StringLiteral':
+          //             return expression.value
+
+          //           // case 'TemplateLiteral':
+          //           //   return expression.quasis
+
+          //           // case 'ConditionalExpression':
+          //         }
+          //       }
+          //     }
+          //   }
+
+          //   return null
+          // }
 
           if (typeof mapping === 'function') {
             return mapping(value)
           }
 
-          return `${mapping}-${value}`
+          return [mapping, value].filter(Boolean).join('-')
         })
         .filter(Boolean)
-        .join(' ')
+
+      // No classnames were found
+      if (!tailwindClassNames.length) {
+        return node
+      }
+
+      // Check if the className attribute exists
+      let classNameAttr: JSXAttribute = node.openingElement.attributes.find(
+        attribute =>
+          attribute.type === 'JSXAttribute' &&
+          attribute.name.name === 'className'
+      ) as JSXAttribute
+
+      // If it doesn't exist, create it
+      if (!classNameAttr) {
+        classNameAttr = j.jsxAttribute(
+          j.jsxIdentifier('className'),
+          j.stringLiteral('')
+        )
+        node.openingElement.attributes.push(classNameAttr)
+      }
 
       // Update the className attribute
-      if (classNameAttr.value?.type === 'Literal') {
-        classNameAttr.value.value =
-          `${classNameAttr.value.value} ${tailwindClassNames}`.trimStart()
+      if (classNameAttr.value?.type === 'StringLiteral') {
+        classNameAttr.value.value = joinClassNames([
+          classNameAttr.value.value,
+          ...tailwindClassNames,
+        ])
       } else if (classNameAttr.value?.type === 'JSXExpressionContainer') {
-        // classNameAttr.value.expression = j.template
-        //   .expression`${classNameAttr.value.expression} ${tailwindClassNames}`.expression
+        const { expression } = classNameAttr.value
+
+        switch (expression.type) {
+          case 'StringLiteral': {
+            expression.value = joinClassNames([
+              expression.value,
+              ...tailwindClassNames,
+            ])
+            break
+          }
+
+          case 'CallExpression': {
+            // Check if the call expression is clsx
+            if (
+              expression.callee.type === 'Identifier' &&
+              expression.callee.name === 'clsx'
+            ) {
+              // Add the tailwind classNames to the clsx arguments
+              expression.arguments.push(
+                j.stringLiteral(joinClassNames(tailwindClassNames))
+              )
+              break
+            }
+          }
+        }
       }
 
       // Filter out attributes that matched
@@ -208,10 +336,35 @@ const transform: Transform = (file, api) => {
     })
 
   if (isMutated) {
-    return root.toSource()
+    // return root.toSource()
+    // const config = await resolveConfig(file.path)
+    return await format(root.toSource(), {
+      // Default config
+      tabWidth: 2,
+      useTabs: false,
+      semi: false,
+      singleQuote: true,
+      arrowParens: 'avoid',
+      trailingComma: 'none',
+
+      // Override with target project's config
+      // ...config,
+
+      // Parser setup
+      parser: 'typescript',
+      plugins: [
+        prettierPluginTypescript,
+        prettierPluginBabel,
+        prettierPluginEstree,
+      ],
+      filepath: file.path,
+    })
   }
 
   return null
 }
 
 export default transform
+
+const joinClassNames = (classNames: string[]) =>
+  classNames.filter(Boolean).join(' ')
