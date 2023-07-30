@@ -6,18 +6,18 @@ import * as prettierPluginEstree from 'prettier/plugins/estree'
 import * as prettierPluginTypescript from 'prettier/plugins/typescript'
 import { format } from 'prettier/standalone'
 
+const COMPONENTS = ['Box', 'Text']
+
 // const breakpoints = ['sm', 'md', 'lg', 'xl']
 // const selectors = ['base', 'active', 'focus', 'disabled', 'hover', 'checked']
 
-type LiteralValue = string | number | boolean | null | RegExp
+//type LiteralValue = string | number | boolean | null | RegExp
 
-interface SprinklesToTailwindMapping {
-  [key: string]: string | ((value: LiteralValue) => string)
-}
+type MapFunc = string | ((value: string) => string | null)
 
 const borderRadius =
-  (side?: 't' | 'b' | 'l' | 'r' | 'tl' | 'tr' | 'bl' | 'br') =>
-  (value: LiteralValue) => {
+  (side?: 't' | 'b' | 'l' | 'r' | 'tl' | 'tr' | 'bl' | 'br'): MapFunc =>
+  (value: string) => {
     const radii = {
       none: 'none',
       xs: '', // 4px
@@ -27,14 +27,14 @@ const borderRadius =
       circle: 'full', // 9999px
     }
 
-    const radiiValue = radii[value as string]
+    const radiiValue = radii[value]
 
     return `rounded${side ? `-${side}` : ''}${
       radiiValue ? `-${radiiValue}` : ''
     }`
   }
 
-const MAPPING: SprinklesToTailwindMapping = {
+const MAPPING = {
   position: '', // Empty string means just pass the value prefixless
   margin: 'm',
   marginTop: 'mt',
@@ -84,6 +84,8 @@ const MAPPING: SprinklesToTailwindMapping = {
 
   lowercase: 'lowercase',
 
+  background: value => `bg-${kebabize(value.replace('background', ''))}`,
+
   borderRadius: borderRadius(),
   borderTopRadius: borderRadius('t'),
   borderBottomRadius: borderRadius('b'),
@@ -93,6 +95,21 @@ const MAPPING: SprinklesToTailwindMapping = {
   borderTopRightRadius: borderRadius('tr'),
   borderBottomLeftRadius: borderRadius('bl'),
   borderBottomRightRadius: borderRadius('br'),
+
+  placeItems: value => {
+    switch (value) {
+      case 'center':
+        return 'place-items-center'
+      case 'start':
+        return 'place-items-start'
+      case 'end':
+        return 'place-items-end'
+      case 'stretch':
+        return 'place-items-stretch'
+    }
+
+    return null
+  },
 
   alignItems: value => {
     switch (value) {
@@ -108,7 +125,7 @@ const MAPPING: SprinklesToTailwindMapping = {
         return 'items-stretch'
     }
 
-    return ''
+    return null
   },
 
   justifyContent: value => {
@@ -127,7 +144,24 @@ const MAPPING: SprinklesToTailwindMapping = {
         return 'justify-evenly'
     }
 
-    return ''
+    return null
+  },
+
+  justifySelf: value => {
+    switch (value) {
+      case 'auto':
+        return 'justify-self-auto'
+      case 'flex-start':
+        return 'justify-self-start'
+      case 'flex-end':
+        return 'justify-self-end'
+      case 'center':
+        return 'justify-self-center'
+      case 'stretch':
+        return 'justify-self-stretch'
+    }
+
+    return null
   },
 
   backdropFilter: value => {
@@ -138,7 +172,7 @@ const MAPPING: SprinklesToTailwindMapping = {
         return 'backdrop-filter'
     }
 
-    return ''
+    return null
   },
 
   flexDirection: value => {
@@ -151,18 +185,47 @@ const MAPPING: SprinklesToTailwindMapping = {
         return 'flex-row'
       case 'row-reverse':
         return 'flex-row-reverse'
-      default:
-        return ''
     }
+
+    return null
   },
+
+  flexShrink: value => {
+    switch (value) {
+      case '0':
+        return 'flex-shrink-0'
+      case '1':
+        return 'flex-shrink'
+    }
+
+    return null
+  },
+
+  flexGrow: value => {
+    switch (value) {
+      case '0':
+        return 'flex-grow-0'
+      case '1':
+        return 'flex-grow'
+    }
+
+    return null
+  },
+
+  flexWrap: value => `flex-${value}`,
 
   visibility: value => {
-    if (value === 'hidden') {
-      return 'invisible'
+    switch (value) {
+      case 'hidden':
+        return 'invisible'
+      case 'visible':
+        return 'visible'
     }
 
-    return 'visible'
+    return null
   },
+
+  textAlign: value => `text-${value}`,
 
   display: value => {
     switch (value) {
@@ -182,13 +245,15 @@ const MAPPING: SprinklesToTailwindMapping = {
         return 'grid'
       case 'contents':
         return 'contents'
-      default:
-        return ''
     }
-  },
-}
 
-const ATTRIBUTES = Object.keys(MAPPING)
+    return null
+  },
+} satisfies { [key: string]: MapFunc }
+
+type AttributeName = keyof typeof MAPPING
+
+const ATTRIBUTES = Object.keys(MAPPING) as any as AttributeName[]
 
 const transform = async (file: FileInfo, api: API) => {
   const j = api.jscodeshift
@@ -196,16 +261,24 @@ const transform = async (file: FileInfo, api: API) => {
   const root = j(file.source)
 
   let isMutated = false
+  const mutatedAttributes: AttributeName[] = []
 
   root
     .findJSXElements()
     .filter(({ node }) => {
+      const { openingElement } = node
+      const { name, attributes } = openingElement
+
       // Check to see if the attribute name is in the list of attributes we want to transform
-      return !!node.openingElement?.attributes?.find(
-        attribute =>
-          attribute.type === 'JSXAttribute' &&
-          attribute.name.type === 'JSXIdentifier' &&
-          ATTRIBUTES.includes(attribute.name.name)
+      return !!(
+        name.type === 'JSXIdentifier' &&
+        COMPONENTS.includes(name.name) &&
+        attributes?.find(
+          attribute =>
+            attribute.type === 'JSXAttribute' &&
+            attribute.name.type === 'JSXIdentifier' &&
+            ATTRIBUTES.includes(attribute.name.name as AttributeName)
+        )
       )
     })
     .replaceWith(({ node }) => {
@@ -244,21 +317,16 @@ const transform = async (file: FileInfo, api: API) => {
         attribute =>
           attribute.type === 'JSXAttribute' &&
           attribute.name.type === 'JSXIdentifier' &&
-          ATTRIBUTES.includes(attribute.name.name)
+          ATTRIBUTES.includes(attribute.name.name as AttributeName)
       ) as JSXAttribute[]
 
       // Map atomic props  to tailwind classNames
       const tailwindClassNames: string[] = attrs
         .map(attr => {
-          const name = attr.name.name as string
-          const value =
-            attr.value && attr.value.type === 'StringLiteral'
-              ? attr.value.value
-              : null
+          const name = attr.name.name as AttributeName
+          const map: MapFunc = MAPPING[name]
 
-          const mapping = MAPPING[name]
-
-          // const parseAttributeValueNode = (node: JSXAttribute['value']) => {
+          // const parseValue = (node: JSXAttribute['value']) => {
           //   if (node) {
           //     const { type } = node
 
@@ -279,6 +347,26 @@ const transform = async (file: FileInfo, api: API) => {
           //           case 'StringLiteral':
           //             return expression.value
 
+          //           case 'ObjectExpression': {
+          //             const { properties } = expression
+
+          //             return properties.reduce((acc, property) => {
+          //               if ( !property || property.type !== 'Property') {
+          //                 return acc
+          //               }
+
+          //               const { key, value } = property
+
+          //               if (key.type === 'Identifier') {
+          //                 return {
+          //                   ...acc,
+          //                   [key.name]: parseValue(value),
+          //                 }
+          //               }
+
+          //               return acc
+          //             }, {})
+          //           }
           //           // case 'TemplateLiteral':
           //           //   return expression.quasis
 
@@ -291,13 +379,26 @@ const transform = async (file: FileInfo, api: API) => {
           //   return null
           // }
 
-          if (typeof mapping === 'function') {
-            return mapping(value)
+          let result: string | null = null
+
+          if (attr.value === null) {
+            // Handle boolean props
+            result = getClassName(map)
+          } else if (attr.value) {
+            switch (attr.value.type) {
+              case 'StringLiteral':
+                result = getClassName(map, attr.value.value)
+                break
+            }
           }
 
-          return [mapping, value].filter(Boolean).join('-')
+          if (result) {
+            mutatedAttributes.push(name)
+          }
+
+          return result
         })
-        .filter(Boolean)
+        .filter(isTruthy)
 
       // No classnames were found
       if (!tailwindClassNames.length) {
@@ -357,8 +458,10 @@ const transform = async (file: FileInfo, api: API) => {
       // Filter out attributes that matched
       node.openingElement.attributes = node.openingElement.attributes.filter(
         attr =>
-          attr.type !== 'JSXAttribute' ||
-          !ATTRIBUTES.includes(attr.name.name as string)
+          !(
+            attr.type === 'JSXAttribute' &&
+            mutatedAttributes.includes(attr.name.name as AttributeName)
+          )
       )
 
       return node
@@ -396,4 +499,20 @@ const transform = async (file: FileInfo, api: API) => {
 export default transform
 
 const joinClassNames = (classNames: string[]) =>
-  classNames.filter(Boolean).join(' ')
+  classNames.filter(isTruthy).join(' ')
+
+const kebabize = (str: string) =>
+  str.replace(
+    /[A-Z]+(?![a-z])|[A-Z]/g,
+    ($, ofs) => (ofs ? '-' : '') + $.toLowerCase()
+  )
+
+const isTruthy = <T>(value: T | undefined | null): value is T => Boolean(value)
+
+const getClassName = (mapFn: MapFunc, value?: string) => {
+  if (typeof mapFn === 'function') {
+    return mapFn(value ? value : '')
+  } else {
+    return [mapFn, value].filter(isTruthy).join('-')
+  }
+}
