@@ -1,6 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Box, Button, IconButton } from '~/components'
+import { Box } from '~/components/Box'
+import { Button } from '~/components/Button'
+import { IconButton } from '~/components/IconButton'
 import { ArrowRightIcon, CloseIcon, ScanIcon, SearchIcon } from '~/icons'
 
 import { TextInput } from './TextInput'

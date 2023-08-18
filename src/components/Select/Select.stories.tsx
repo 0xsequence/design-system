@@ -1,8 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Box } from '../Box'
-import { Text } from '../Text'
-import { TokenImage } from '../TokenImage'
+import { Box } from '~/components/Box'
+import { Text } from '~/components/Text'
+import { TokenImage } from '~/components/TokenImage'
 
 import { Select } from './Select'
 

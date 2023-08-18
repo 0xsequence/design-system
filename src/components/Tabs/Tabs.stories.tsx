@@ -1,6 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Card, Text } from '~/components'
+import { Card } from '~/components/Card'
+import { Text } from '~/components/Text'
 
 import { Tabs } from './Tabs'
 

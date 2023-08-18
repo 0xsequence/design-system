@@ -1,9 +1,8 @@
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
 
+import { Button } from '~/components/Button'
+import { Card } from '~/components/Card'
 import { TransactionIcon } from '~/icons'
-
-import { Button } from '../Button'
-import { Card } from '../Card'
 
 import { Toast, ToastProps, ToastProvider, useToast } from './Toast'
 

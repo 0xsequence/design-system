@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
 
-import { Button } from '~/components'
+import { Button } from '~/components/Button'
 
 import { ThemeProvider, useTheme } from './ThemeProvider'
 

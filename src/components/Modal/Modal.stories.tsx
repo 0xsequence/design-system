@@ -2,9 +2,9 @@ import { StoryObj, Meta, StoryFn } from '@storybook/react'
 import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
-import { Box } from '../Box'
-import { Button } from '../Button'
-import { Text } from '../Text'
+import { Box } from '~/components/Box'
+import { Button } from '~/components/Button'
+import { Text } from '~/components/Text'
 
 import { Modal } from './Modal'
 

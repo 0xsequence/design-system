@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Text } from '~/components'
+import { Text } from '~/components/Text'
 
 import { Collapsible } from './Collapsible'
 

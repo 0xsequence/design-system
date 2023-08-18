@@ -1,7 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react'
 import { ethers } from 'ethers'
 
-import { Box, Text } from '~/components'
+import { Box } from '~/components/Box'
+import { Text } from '~/components/Text'
 
 import { GradientAvatar } from './GradientAvatar'
 

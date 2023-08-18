@@ -1,7 +1,7 @@
-import { DecoratorFn } from '@storybook/react'
+import { Decorator } from '@storybook/react'
 import React from 'react'
 
-import { ThemeProvider } from '../src/components'
+import { ThemeProvider } from '../src/components/ThemeProvider'
 
 import docsTheme from './theme.cjs'
 
@@ -45,7 +45,7 @@ export const globalTypes = {
   },
 }
 
-const withTheme: DecoratorFn = (StoryFn, context) => {
+const withTheme: Decorator = (StoryFn, context) => {
   const { theme } = context.globals
 
   return (

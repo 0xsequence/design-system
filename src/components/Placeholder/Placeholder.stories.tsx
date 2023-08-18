@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Box } from '../Box'
+import { Box } from '~/components/Box'
 
 import { Placeholder } from './Placeholder'
 

@@ -1,10 +1,9 @@
 import { StoryObj, Meta } from '@storybook/react'
 import { useState } from 'react'
 
+import { Box } from '~/components/Box'
+import { IconButton } from '~/components/IconButton'
 import { ContextMenuIcon } from '~/icons'
-
-import { Box } from '../Box'
-import { IconButton } from '../IconButton'
 
 import {
   DropdownMenuCheckboxItem,

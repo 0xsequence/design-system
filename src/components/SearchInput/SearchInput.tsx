@@ -1,14 +1,9 @@
 import { ChangeEvent, forwardRef } from 'react'
 
-import {
-  IconButton,
-  PolymorphicProps,
-  PolymorphicRef,
-  TextInput,
-} from '~/components'
+import { PolymorphicProps, PolymorphicRef } from '~/components/Box'
+import { IconButton } from '~/components/IconButton'
+import { TextInput, TextInputProps } from '~/components/TextInput'
 import { CloseIcon, SearchIcon } from '~/icons'
-
-import { TextInputProps } from '../TextInput/TextInput'
 
 type SearchInputProps = TextInputProps & {
   name?: string

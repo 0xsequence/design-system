@@ -1,8 +1,8 @@
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
 
-import { Box } from '../Box'
-import { Card } from '../Card'
-import { Text } from '../Text'
+import { Box } from '~/components/Box'
+import { Card } from '~/components/Card'
+import { Text } from '~/components/Text'
 
 import { Scroll } from './Scroll'
 

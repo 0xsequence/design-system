@@ -1,7 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Box } from '../Box'
-import { Text } from '../Text'
+import { Box } from '~/components/Box'
+import { Text } from '~/components/Text'
 
 import { Card } from './Card'
 

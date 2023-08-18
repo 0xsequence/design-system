@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Button } from '~/components'
+import { Button } from '~/components/Button'
 
 import { Tooltip } from './Tooltip'
 
