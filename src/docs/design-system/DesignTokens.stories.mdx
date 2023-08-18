@@ -14,7 +14,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 <div>
   {Object.entries(tokens.space).map(([key, value]) => (
-    <li>
+    <li key={key}>
       <b>{key}:</b> {value}
     </li>
   ))}
@@ -26,7 +26,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 <div>
   {Object.entries(tokens.radii).map(([key, value]) => (
-    <li>
+    <li key={key}>
       <b>{key}:</b> {value}
     </li>
   ))}
@@ -36,7 +36,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 <div>
   {Object.entries(tokens.borderWidths).map(([key, value]) => (
-    <li>
+    <li key={key}>
       <b>{key}:</b> {value}
     </li>
   ))}
@@ -48,7 +48,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 <div>
   {Object.entries(tokens.fonts).map(([key, value]) => (
-    <li>
+    <li key={key}>
       <b>{key}:</b> {value}
     </li>
   ))}
@@ -58,7 +58,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 <div>
   {Object.entries(tokens.fontSizes).map(([key, value]) => (
-    <li>
+    <li key={key}>
       <b>{key}:</b> {value}
     </li>
   ))}
@@ -68,7 +68,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 <div>
   {Object.entries(tokens.fontWeights).map(([key, value]) => (
-    <li>
+    <li key={key}>
       <b>{key}:</b> {value}
     </li>
   ))}
@@ -78,7 +78,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 <div>
   {Object.entries(tokens.letterSpacings).map(([key, value]) => (
-    <li>
+    <li key={key}>
       <b>{key}:</b> {value}
     </li>
   ))}
@@ -88,7 +88,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 <div>
   {Object.entries(tokens.lineHeights).map(([key, value]) => (
-    <li>
+    <li key={key}>
       <b>{key}:</b> {value}
     </li>
   ))}
