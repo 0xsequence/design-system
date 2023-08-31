@@ -1,3 +1,5 @@
+import './tailwind.css'
+
 export { tokens } from '~/tokens'
 export {
   vars,
@@ -16,5 +18,3 @@ export type { Icon, IconProps } from '~/icons/types'
 
 export * from '~/hooks'
 export * from '~/utils'
-
-import './css/main.css'
