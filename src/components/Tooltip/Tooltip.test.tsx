@@ -1,4 +1,5 @@
-import { cleanup, render, screen, fireEvent } from '@testing-library/react'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Tooltip } from './Tooltip'
 
@@ -6,19 +7,24 @@ describe('<Tooltip />', () => {
   afterEach(cleanup)
 
   it('renders', async () => {
+    const user = userEvent.setup()
+
     const res = render(
-      <Tooltip message="Tip!">
+      <Tooltip message="Tip">
         <button>Hover me</button>
       </Tooltip>
     )
 
-    expect(screen.getByText(/Hover me/i)).toBeInTheDocument()
-    expect(screen.queryByText(/Tip!/i)).toBeNull()
+    const triggerEl = screen.getByText(/Hover me/)
 
-    fireEvent.mouseOver(res.getByText(/Hover me/i))
+    expect(triggerEl).toBeInTheDocument()
+    expect(triggerEl.getAttribute('data-state')).toBe('closed')
+    expect(screen.queryByText(/Tip/)).toBeNull()
 
-    // await res.findByText(/Tip/i)
+    await user.hover(res.getByText(/Hover me/))
 
-    // expect(screen.getByText(/Tip!/i)).toBeInTheDocument()
+    expect(triggerEl.getAttribute('data-state')).toBe('delayed-open')
+
+    expect(screen.getAllByText(/Tip/i)[0]).toBeInTheDocument()
   })
 })
