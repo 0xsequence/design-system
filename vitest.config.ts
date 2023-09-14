@@ -20,8 +20,9 @@ export default defineConfig({
     ],
   },
   test: {
+    silent: true,
     globals: true,
-    environment: 'jsdom',
+    environment: 'happy-dom',
     setupFiles: './tests/setup.ts',
   },
 })
