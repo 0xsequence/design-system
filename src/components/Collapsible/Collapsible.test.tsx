@@ -8,6 +8,7 @@ describe('<Collapsible />', () => {
   it('renders', () => {
     render(<Collapsible label="Hello">World</Collapsible>)
     expect(screen.getByText(/Hello/)).toBeInTheDocument()
+    expect(screen.queryByText(/World/)).toBeNull()
 
     fireEvent.click(screen.getByRole('button'))
 
