@@ -17,6 +17,6 @@ export const Default: Story = {
     disabled: false,
     size: 'md',
     onClick: () => console.log('ouch!'),
-    variant: 'glass',
+    variant: 'raised',
   },
 }

@@ -8,10 +8,9 @@ import {
 import { Button, ButtonVariants } from '~/components/Button'
 import { IconProps } from '~/icons/types'
 
-type IconButtonProps = Omit<
-  ButtonVariants,
-  'width' | 'label' | 'leftIcon' | 'rightIcon' | 'size'
-> & {
+type IconButtonVariants = { variant?: (ButtonVariants & {})['variant'] }
+
+type IconButtonProps = IconButtonVariants & {
   size?: 'xs' | 'sm' | 'md' | 'lg'
   icon: ComponentType<IconProps>
 }
