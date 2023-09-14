@@ -1,13 +1,19 @@
-import { cleanup, render, screen } from '@testing-library/react'
-
+import { cleanup, render, screen, fireEvent } from '@testing-library/react'
+import { vi } from 'vitest'
 import { Button } from './Button'
 
 describe('<Button />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
-    render(<Button label="Hello, world!" />)
+    const handleClick = vi.fn()
+
+    render(<Button label="Hello, world!" onClick={handleClick} />)
 
     expect(screen.getByText('Hello, world!')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button'))
+
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 })
