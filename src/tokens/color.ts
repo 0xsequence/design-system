@@ -35,6 +35,7 @@ interface BackgroundColors {
   inverse: string
   backdrop: string
   overlay: string
+  raised: string
 }
 
 interface BorderColors {
@@ -78,6 +79,7 @@ const backgroundColors: ColorSchemes<BackgroundColors> = {
     inverse: 'rgba(255, 255, 255, 1)',
     backdrop: 'rgba(34, 34, 34, 0.9)',
     overlay: 'rgba(0, 0, 0, 0.7)',
+    raised: 'rgba(54, 54, 54, 0.7)',
   },
   light: {
     primary: 'rgba(244, 244, 244, 1)',
@@ -88,6 +90,7 @@ const backgroundColors: ColorSchemes<BackgroundColors> = {
     inverse: 'rgba(0, 0, 0, 1)',
     backdrop: 'rgba(221, 221, 221, 0.9)',
     overlay: 'rgba(244, 244, 244, 0.7)',
+    raised: 'rgba(192, 192, 192, 0.7)',
   },
 }
 

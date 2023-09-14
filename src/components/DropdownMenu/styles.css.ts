@@ -5,7 +5,7 @@ import { atoms, vars } from '~/css'
 export const content = style([
   atoms({
     backdropFilter: 'blur',
-    background: 'buttonGlass',
+    background: 'backgroundRaised',
     padding: '2',
     borderRadius: 'sm',
   }),
@@ -15,7 +15,7 @@ export const content = style([
 ])
 
 export const arrow = style({
-  fill: vars.colors.buttonGlass,
+  fill: vars.colors.backgroundRaised,
 })
 
 export const item = style([
@@ -31,19 +31,20 @@ export const item = style([
     userSelect: 'none',
     paddingLeft: '6',
     position: 'relative',
-    color: 'text50',
+    color: 'text80',
   }),
   {
     selectors: {
       '&[data-disabled]': {
-        opacity: '0.5',
+        opacity: '0.8',
         cursor: 'default',
         pointerEvents: 'none',
+        color: vars.colors.text50,
       },
 
       '&[data-highlighted]': {
         background: vars.colors.backgroundContrast,
-        color: 'white',
+        // color: vars.colors.text100,
       },
     },
   },
