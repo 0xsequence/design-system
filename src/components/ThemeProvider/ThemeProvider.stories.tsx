@@ -11,8 +11,9 @@ export default {
 
 export const Default = () => {
   const { theme, setTheme } = useTheme()
+
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
+    setTheme(theme)
   }
 
   return <Button label="Toggle theme" onClick={toggleTheme} />

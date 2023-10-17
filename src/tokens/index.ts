@@ -1,5 +1,6 @@
+import { Theme } from '~/components/ThemeProvider'
 import { borderWidths, radii } from './border'
-import { colors } from './color'
+import { getColors } from './color'
 import { blur } from './effect'
 import { opacity } from './opacity'
 import { space } from './space'
@@ -11,21 +12,23 @@ import {
   lineHeights,
 } from './typography'
 
-export const tokens = {
-  blur,
-  borderWidths,
-  colors,
-  fonts,
-  fontSizes,
-  fontWeights,
-  letterSpacings,
-  lineHeights,
-  opacity,
-  radii,
-  space,
+export const getTokens = (theme: Theme) => {
+  return ({
+    blur,
+    borderWidths,
+    colors: getColors(theme),
+    fonts,
+    fontSizes,
+    fontWeights,
+    letterSpacings,
+    lineHeights,
+    opacity,
+    radii,
+    space,
+  })
 }
 
-export { colors } from './color'
+export { getColors } from './color'
 
-export type { ColorScheme } from './color'
-export type Tokens = typeof tokens
+export type { NetworkColors } from './color' 
+export type Tokens = ReturnType<typeof getTokens>

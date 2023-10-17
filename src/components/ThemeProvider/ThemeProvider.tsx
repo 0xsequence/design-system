@@ -7,12 +7,36 @@ import {
   useState,
 } from 'react'
 
-const THEMES = ['dark', 'light'] as const
+export interface Color {
+  r: number
+  g: number
+  b: number
+}
 
-export type Theme = (typeof THEMES)[number]
+export interface Theme {
+  foreground: Color
+  background: Color
+  backgroundBackdrop: Color,
+  backgroundRaised: Color,
+  statusPositive: Color
+  statusNegative: Color
+  statusWarning: Color
+  statusInfo: Color
+  primaryButton: string
+}
 
-const DEFAULT_THEME = 'dark'
-const THEME_ATTR = 'data-theme'
+const DEFAULT_THEME: Theme = {
+  foreground: { r: 255, g: 255, b: 255 },
+  background: { r: 0, g: 0, b: 0 },
+  backgroundBackdrop: { r: 34, g: 34, b: 34 },
+  backgroundRaised: { r: 54, g: 54, b: 54 },
+  statusPositive: { r: 31, g: 194, b: 102 },
+  statusNegative: { r: 194, g: 80, b: 31 },
+  statusWarning: { r: 244, g: 176, b: 62 },
+  statusInfo: { r: 0, g: 118, b: 204 },
+  primaryButton: 'linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)'
+}
+
 const STORAGE_KEY = '@sequence.theme'
 
 interface ThemeContextValue {
@@ -25,17 +49,12 @@ interface ThemeProviderProps {
 }
 
 const getTheme = (): Theme => {
-  const persistedTheme = localStorage.getItem(STORAGE_KEY) as Theme
+  const persistedThemeRaw = localStorage.getItem(STORAGE_KEY)
 
-  if (THEMES.includes(persistedTheme)) {
+  if (persistedThemeRaw) {
+    const persistedTheme = JSON.parse(persistedThemeRaw) as Theme
     return persistedTheme
   }
-
-  // else if (matchMedia(`(prefers-color-scheme: light)`).matches) {
-  //   return 'light'
-  // } else if (matchMedia(`(prefers-color-scheme: dark)`).matches) {
-  //   return 'dark'
-  // }
 
   return DEFAULT_THEME
 }
@@ -45,6 +64,7 @@ const ThemeContext = createContext<ThemeContextValue | null>(null)
 export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
   const [theme, setTheme] = useState<Theme>(props.theme || getTheme())
 
+  
   useEffect(() => {
     // Add is-apple class
     ;/Mac/.test(window.navigator.userAgent) &&
@@ -53,32 +73,23 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
   // Allow prop theme override
   useEffect(() => {
-    if (props.theme && THEMES.includes(props.theme)) {
+    if (props.theme) {
       setTheme(props.theme)
     }
   }, [props.theme])
 
-  // Set the data-theme attribtute on the document root element
-  useEffect(() => {
-    const root = document.querySelector(':root')
-
-    if (root) {
-      root.setAttribute(THEME_ATTR, theme)
-    }
-  }, [theme])
 
   // Create the context value
   const value: ThemeContextValue = useMemo(() => {
     return {
       theme,
-      setTheme: (mode: Theme) => {
-        if (THEMES.includes(mode)) {
-          // Save to local storage
-          localStorage.setItem(STORAGE_KEY, mode)
+      setTheme: (newTheme: Theme) => {
+        const themeString = JSON.stringify(newTheme)
+        // Save to local storage
+        localStorage.setItem(STORAGE_KEY, themeString)
 
-          // Set the theme state which will cause a re-render
-          setTheme(mode)
-        }
+        // Set the theme state which will cause a re-render
+        setTheme(newTheme)
       },
     }
   }, [theme])

@@ -3,10 +3,12 @@ import {
   createGlobalThemeContract,
 } from '@vanilla-extract/css'
 
+import { Theme } from '~/components/ThemeProvider' 
 import { capitalize } from '~/helpers'
-import { ColorScheme, tokens } from '~/tokens'
+import { getColors, getTokens, NetworkColors } from '~/tokens'
 
 import { mapVarName } from './utils'
+import { getColorSchemes } from '~/tokens/color'
 
 type MapTokens<P extends string, T> = {
   [K in keyof T & string as `${P}${Capitalize<K>}`]: string
@@ -20,8 +22,6 @@ const mapTokens = <P extends string, T extends {}>(
     return { ...acc, [`${prefix}${capitalize(key)}`]: value }
   }, {}) as MapTokens<P, T>
 }
-
-type NetworkColors = typeof tokens.colors.network
 
 const mapNetworkColors = <
   T extends NetworkColors,
@@ -43,8 +43,8 @@ export const baseVars = createGlobalThemeContract(baseTokens, mapVarName)
 
 createGlobalTheme(':root', baseVars, baseTokens)
 
-const makeColorScheme = (mode: ColorScheme = 'light') => {
-  const colorSchemeTokens = colors.colorSchemes[mode]
+const makeColorScheme = (theme: Theme) => {
+  const colorSchemeTokens = getColorSchemes(theme)
 
   return {
     colors: {
