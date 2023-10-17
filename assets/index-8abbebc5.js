@@ -1,2 +1,0 @@
-import{_ as c}from"./extends-98964cd2.js";import{r as a}from"./index-7c191284.js";import{$ as i}from"./index-ecbee218.js";import{a as d}from"./index-147fd682.js";const $=a.forwardRef((e,t)=>{var o;const{container:r=globalThis==null||(o=globalThis.document)===null||o===void 0?void 0:o.body,...l}=e;return r?i.createPortal(a.createElement(d.div,c({},l,{ref:t})),r):null});export{$};
-//# sourceMappingURL=index-8abbebc5.js.map
