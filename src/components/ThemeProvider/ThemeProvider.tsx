@@ -1,3 +1,4 @@
+import { setElementVars } from '@vanilla-extract/dynamic'
 import {
   createContext,
   PropsWithChildren,
@@ -6,6 +7,9 @@ import {
   useMemo,
   useState,
 } from 'react'
+
+import { vars } from '~/css'
+import { ThemePalette, darkThemeColors, lightThemeColors, generateThemeColors } from '~/tokens/color'
 
 const THEMES = ['dark', 'light'] as const
 
@@ -28,6 +32,7 @@ interface ThemeProviderProps {
   theme?: Theme
   root?: string
   scope?: string
+  themeOverride?: ThemePalette
 }
 
 const getTheme = (scope?: string): Theme => {
@@ -68,12 +73,29 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
   // Set the data-theme attribtute on the document root element
   useEffect(() => {
-    const rootEl = document.querySelector(props.root || ':root')
+      const rootEl = document.querySelector(props.root || ':root')
 
-    if (rootEl) {
-      rootEl.setAttribute(THEME_ATTR, theme)
-    }
-  }, [theme, props.root])
+      if (rootEl) {
+        console.log('Found', props.root || ':root')
+        rootEl.setAttribute(THEME_ATTR, theme)
+
+        if (!props.themeOverride) {
+          /* @ts-ignore-next-line */
+          setElementVars(rootEl, vars, {
+            colors: {
+              ...(theme === 'dark' ? darkThemeColors : lightThemeColors)
+            }
+          })
+        } else {
+          /* @ts-ignore-next-line */
+          setElementVars(rootEl, vars, {
+            colors: {
+              ...generateThemeColors(props.themeOverride)
+            }
+          })
+        }
+      }
+  }, [theme, props.themeOverride, props.root])
 
   // Create the context value
   const value: ThemeContextValue = useMemo(() => {

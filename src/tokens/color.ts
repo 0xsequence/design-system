@@ -8,6 +8,84 @@ export interface ColorTokens {
 
 export type ColorScheme = 'dark' | 'light'
 
+export interface ColorBase {
+  r: number
+  g: number
+  b: number
+}
+
+export interface ThemePalette {
+  foreground: ColorBase
+  background: ColorBase
+  backgroundBackdrop: ColorBase,
+  backgroundRaised: ColorBase,
+  statusPositive: ColorBase
+  statusNegative: ColorBase
+  statusWarning: ColorBase
+  statusInfo: ColorBase
+  primaryButton: string
+}
+
+export const makeRGBA = (color: ColorBase, alpha: number) => {
+  return `rgba(${color.r},${color.g},${color.b},${alpha})`
+}
+
+export const darkPalette: ThemePalette = {
+  foreground: { r: 255, g: 255, b: 255 },
+  background: { r: 0, g: 0, b: 0 },
+  backgroundBackdrop: { r: 34, g: 34, b: 34 },
+  backgroundRaised: { r: 54, g: 54, b: 54 },
+  statusPositive: { r: 31, g: 194, b: 102 },
+  statusNegative: { r: 194, g: 80, b: 31 },
+  statusWarning: { r: 244, g: 176, b: 62 },
+  statusInfo: { r: 0, g: 118, b: 204 },
+  primaryButton: 'linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)'
+}
+
+export const lightPalette: ThemePalette = {
+  foreground: { r: 0, g: 0, b: 0 },
+  background: { r: 255, g: 255, b: 255 },
+  backgroundBackdrop: { r: 221, g: 221, b: 221 },
+  backgroundRaised: { r: 192, g: 192, b: 192 },
+  statusPositive: { r: 31, g: 194, b: 102 },
+  statusNegative: { r: 194, g: 80, b: 31 },
+  statusWarning: { r: 244, g: 176, b: 62 },
+  statusInfo: { r: 0, g: 118, b: 204 },
+  primaryButton: 'linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)'
+}
+
+// theme colors that can be overriden via the theme palette
+export const generateThemeColors = (palette: ThemePalette) => {
+  return ({
+    backgroundPrimary: makeRGBA(palette.background, 1),
+    backgroundSecondary: makeRGBA(palette.foreground, 0.1),
+    backgroundContrast: makeRGBA(palette.background, 0.5),
+    backgroundMuted: makeRGBA(palette.foreground, 0.05),
+    backgroundControl: makeRGBA(palette.foreground, 0.25),
+    backgroundInverse: makeRGBA(palette.foreground, 1),
+    backgroundBackdrop: makeRGBA(palette.backgroundBackdrop, 0.9),
+    backgroundOverlay:  makeRGBA(palette.background, 0.7),
+    backgroundRaised: makeRGBA(palette.backgroundRaised, 0.7),
+    gradientPrimary: palette.primaryButton,
+    positive: makeRGBA(palette.statusPositive, 1),
+    negative: makeRGBA(palette.statusNegative, 1),
+    info: makeRGBA(palette.statusInfo, 1),
+    warning: makeRGBA(palette.statusWarning, 1),
+    borderNormal: makeRGBA(palette.foreground, 0.25),
+    borderFocus: makeRGBA(palette.foreground, 0.5),
+    text100: makeRGBA(palette.foreground, 1),
+    text80: makeRGBA(palette.foreground, 0.8),
+    text50: makeRGBA(palette.foreground, 0.5),
+    textInverse100: makeRGBA(palette.background, 1),
+    buttonGlass: makeRGBA(palette.foreground, 0.15),
+    buttonEmphasis: makeRGBA(palette.background, 0.5),
+    buttonInverse: makeRGBA(palette.foreground, 0.8),
+  })
+}
+
+export const darkThemeColors = generateThemeColors(darkPalette)
+export const lightThemeColors = generateThemeColors(lightPalette)
+
 interface ColorSchemeTokens {
   background: BackgroundColors
   border: BorderColors
@@ -71,74 +149,74 @@ interface Gradients {
 
 const backgroundColors: ColorSchemes<BackgroundColors> = {
   dark: {
-    primary: 'rgba(0, 0, 0, 1)',
-    secondary: 'rgba(255, 255, 255, 0.1)',
-    contrast: 'rgba(0, 0, 0, 0.5)',
-    muted: 'rgba(255, 255, 255, 0.05)',
-    control: 'rgba(255, 255, 255, 0.25)',
-    inverse: 'rgba(255, 255, 255, 1)',
-    backdrop: 'rgba(34, 34, 34, 0.9)',
-    overlay: 'rgba(0, 0, 0, 0.7)',
-    raised: 'rgba(54, 54, 54, 0.7)',
+    primary: darkThemeColors.backgroundPrimary,
+    secondary: darkThemeColors.backgroundSecondary,
+    contrast: darkThemeColors.backgroundContrast,
+    muted: darkThemeColors.backgroundMuted,
+    control: darkThemeColors.backgroundControl,
+    inverse: darkThemeColors.backgroundInverse,
+    backdrop: darkThemeColors.backgroundBackdrop,
+    overlay: darkThemeColors.backgroundOverlay,
+    raised: darkThemeColors.backgroundRaised,
   },
   light: {
-    primary: 'rgba(244, 244, 244, 1)',
-    secondary: 'rgba(0, 0, 0, 0.1)',
-    contrast: 'rgba(244, 244, 244, 0.5)',
-    muted: 'rgba(0, 0, 0, 0.05)',
-    control: 'rgba(0, 0, 0, 0.25)',
-    inverse: 'rgba(0, 0, 0, 1)',
-    backdrop: 'rgba(221, 221, 221, 0.9)',
-    overlay: 'rgba(244, 244, 244, 0.7)',
-    raised: 'rgba(192, 192, 192, 0.7)',
+    primary: lightThemeColors.backgroundPrimary,
+    secondary: lightThemeColors.backgroundSecondary,
+    contrast: lightThemeColors.backgroundContrast,
+    muted: lightThemeColors.backgroundMuted,
+    control: lightThemeColors.backgroundControl,
+    inverse: lightThemeColors.backgroundInverse,
+    backdrop: lightThemeColors.backgroundBackdrop,
+    overlay: lightThemeColors.backgroundOverlay,
+    raised: lightThemeColors.backgroundRaised,
   },
 }
 
 const borderColors: ColorSchemes<BorderColors> = {
   dark: {
-    normal: 'rgba(255, 255, 255, 0.25)',
-    focus: 'rgba(255, 255, 255, 0.5)',
+    normal: darkThemeColors.borderNormal,
+    focus: darkThemeColors.borderFocus,
   },
   light: {
-    normal: 'rgba(0, 0, 0, 0.25)',
-    focus: 'rgba(0, 0, 0, 0.5)',
+    normal: lightThemeColors.borderNormal,
+    focus: lightThemeColors.borderFocus,
   },
 }
 
 const buttonColors: ColorSchemes<ButtonColors> = {
   dark: {
-    glass: 'rgba(255, 255, 255, 0.15)',
-    emphasis: 'rgba(0, 0, 0, 0.5)',
-    inverse: 'rgba(255, 255, 255, 0.8)',
+    glass: darkThemeColors.buttonGlass,
+    emphasis: darkThemeColors.buttonEmphasis,
+    inverse: darkThemeColors.buttonInverse,
   },
   light: {
-    glass: 'rgba(0, 0, 0, 0.15)',
-    emphasis: 'rgba(255, 255, 255, 0.5)',
-    inverse: 'rgba(0, 0, 0, 0.8)',
+    glass: lightThemeColors.buttonGlass,
+    emphasis: lightThemeColors.buttonEmphasis,
+    inverse: lightThemeColors.buttonInverse,
   },
 }
 
 const textColors: ColorSchemes<TextColors> = {
   dark: {
-    '100': 'rgba(255, 255, 255, 1)',
-    '80': 'rgba(255, 255, 255, 0.8)',
-    '50': 'rgba(255, 255, 255, 0.5)',
-    inverse100: 'rgba(0, 0, 0, 1)',
+    '100': darkThemeColors.text100,
+    '80': darkThemeColors.text80,
+    '50': darkThemeColors.text50,
+    inverse100: darkThemeColors.textInverse100,
   },
   light: {
-    '100': 'rgba(0, 0, 0, 1)',
-    '80': 'rgba(0, 0, 0, 0.8)',
-    '50': 'rgba(0, 0, 0, 0.5)',
-    inverse100: 'rgba(255, 255, 255, 1)',
+    '100': lightThemeColors.text100,
+    '80': lightThemeColors.text80,
+    '50': lightThemeColors.text50,
+    inverse100: lightThemeColors.textInverse100,
   },
 }
 
 // ContextColors are global and not color scheme specific
 const contextColors: ContextColors = {
-  positive: '#1FC266',
-  negative: '#C2501F',
-  info: '#0076CC',
-  warning: '#F4B03E',
+  positive: darkThemeColors.positive,
+  negative: darkThemeColors.negative,
+  info: darkThemeColors.info,
+  warning: darkThemeColors.warning,
 }
 
 // Gradients are global and not color scheme specific
@@ -149,7 +227,7 @@ const gradients: Gradients = {
     rgba(49, 41, 223, 0.85) 63.54%, 
     rgba(7, 98, 149, 0.85) 100%
   )`,
-  primary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
+  primary: darkThemeColors.gradientPrimary,
   secondary: `linear-gradient(32.51deg, #951990 -15.23%, #3A35B1 48.55%, #20A8B0 100%)`,
 }
 
