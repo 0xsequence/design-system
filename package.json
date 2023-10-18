@@ -23,7 +23,9 @@
   ],
   "scripts": {
     "start": "pnpm storybook",
-    "build": "tsc && vite build",
+    "start:kit": "DESIGN_SYSTEM_SUFFIX=kit pnpm storybook",
+    "build": "pnpm revert-name && pnpm i && tsc && vite build",
+    "build:kit": "DESIGN_SYSTEM_SUFFIX=kit pnpm change-name-kit && pnpm i && tsc && vite build",
     "build:icons": "pnpm svgr -d ./src/icons ./public/static/icons --config-file ./svgr.config.json --template ./src/icons/template.cjs",
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build -o ./docs",
@@ -36,7 +38,10 @@
     "format": "prettier --list-different --write src/**/*.{ts,tsx}",
     "prepare": "husky install",
     "prepack": "pnpm build",
-    "patch": "pnpm version --patch && git push --follow-tags"
+    "patch": "pnpm version --patch && git push --follow-tags",
+    "revert-name": "pnpm pkg set 'name'='@0xsequence/design-system'",
+    "change-name-kit": "pnpm pkg set 'name'='@0xsequence/design-system-kit'",
+    "release": "pnpm build && npm publish && pnpm build:kit && npm publish"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.0.3",

@@ -6,8 +6,12 @@ export const kebabize = (str: string) =>
     ($, ofs) => (ofs ? '-' : '') + $.toLowerCase()
   )
 
-export const mapVarName = (_value: string | null, path: string[]) =>
-  path.map(kebabize).join('-').replace('.', '_').replace('/', '__')
+
+export const mapVarName = (_value: string | null, path: string[]) => {
+  const suffix = process.env.DESIGN_SYSTEM_SUFFIX
+
+  return `${path.map(kebabize).join('-').replace('.', '_').replace('/', '__')}${suffix ? `-${suffix}` : ''}`
+}
 
 export const responsiveStyle = (rules: {
   [key in keyof typeof breakpoints]?: Record<string, string | string[]>
