@@ -58,13 +58,13 @@ export const globalTypes = {
   themeOverride: {
     name: 'Override',
     description: 'Use theme override',
+    defaultValue: false,
     toolbar: {
       title: 'Theme Override',
       icon: 'circleHollow',
-      defaultValue: undefined,
       items: [
-        { value: undefined, icon: 'circlehollow', title: 'No ThemeOverride' },
-        { value: themeOverride, icon: 'circle', title: 'With ThemeOverride' },
+        { value: false, icon: 'circlehollow', title: 'No ThemeOverride' },
+        { value: true, icon: 'circle', title: 'With ThemeOverride' },
       ],
     }
   }
@@ -74,7 +74,7 @@ const withTheme: Decorator = (StoryFn, context) => {
   const { theme, themeOverride } = context.globals
 
   const customTheme = {
-    foreground: { r: 145, g: 157, b: 219 },
+    foreground: { r: 255, g: 127, b: 80 },
     background: { r: 85, g: 38, b: 201 },
     backgroundBackdrop: { r: 221, g: 221, b: 221 },
     backgroundRaised: { r: 192, g: 192, b: 192 },
