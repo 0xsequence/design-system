@@ -41,7 +41,7 @@
     "patch": "pnpm version --patch && git push --follow-tags",
     "revert-name": "pnpm pkg set 'name'='@0xsequence/design-system'",
     "change-name-kit": "pnpm pkg set 'name'='@0xsequence/design-system-kit'",
-    "release": "pnpm build && npm publish && pnpm build:kit && npm publish"
+    "release": "pnpm build && npm publish && pnpm build:kit && npm publish && pnpm revert-name"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.0.3",
