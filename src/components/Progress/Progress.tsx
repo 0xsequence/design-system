@@ -11,7 +11,7 @@ interface ProgressProps {
 
 export const Progress = (props: ProgressProps) => {
   const { value, color = 'positive' } = props
-  const percent = value * 100
+  const percent = Math.min(value * 100, 100)
 
   return (
     <Box
