@@ -15,6 +15,9 @@ const DEFAULT_THEME = 'dark'
 const THEME_ATTR = 'data-theme'
 const STORAGE_KEY = '@sequence.theme'
 
+const getStorageKey = (scope?: string) =>
+  scope ? `${STORAGE_KEY}.${scope}` : STORAGE_KEY
+
 interface ThemeContextValue {
   theme: Theme
   setTheme: (mode: Theme) => void
@@ -22,10 +25,12 @@ interface ThemeContextValue {
 
 interface ThemeProviderProps {
   theme?: Theme
+  root?: string
+  scope?: string
 }
 
-const getTheme = (): Theme => {
-  const persistedTheme = localStorage.getItem(STORAGE_KEY) as Theme
+const getTheme = (scope?: string): Theme => {
+  const persistedTheme = localStorage.getItem(getStorageKey(scope)) as Theme
 
   if (THEMES.includes(persistedTheme)) {
     return persistedTheme
@@ -43,7 +48,9 @@ const getTheme = (): Theme => {
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
-  const [theme, setTheme] = useState<Theme>(props.theme || getTheme())
+  const [theme, setTheme] = useState<Theme>(
+    props.theme || getTheme(props.scope)
+  )
 
   useEffect(() => {
     // Add is-apple class
@@ -60,12 +67,13 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
   // Set the data-theme attribtute on the document root element
   useEffect(() => {
-    const root = document.querySelector(':root')
+    const rootEl = document.querySelector(props.root || ':root')
 
-    if (root) {
-      root.setAttribute(THEME_ATTR, theme)
+    if (rootEl) {
+      console.log('Found', props.root || ':root')
+      rootEl.setAttribute(THEME_ATTR, theme)
     }
-  }, [theme])
+  }, [theme, props.root])
 
   // Create the context value
   const value: ThemeContextValue = useMemo(() => {
@@ -74,14 +82,14 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
       setTheme: (mode: Theme) => {
         if (THEMES.includes(mode)) {
           // Save to local storage
-          localStorage.setItem(STORAGE_KEY, mode)
+          localStorage.setItem(getStorageKey(props.scope), mode)
 
           // Set the theme state which will cause a re-render
           setTheme(mode)
         }
       },
     }
-  }, [theme])
+  }, [theme, props.scope])
 
   return (
     <ThemeContext.Provider value={value}>

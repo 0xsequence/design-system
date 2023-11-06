@@ -2,6 +2,11 @@ import { Meta } from '@storybook/react'
 
 import { Button } from '~/components/Button'
 
+import { Box } from '../Box'
+import { Card } from '../Card'
+import { Collapsible } from '../Collapsible'
+import { Text } from '../Text'
+
 import { ThemeProvider, useTheme } from './ThemeProvider'
 
 export default {
@@ -16,4 +21,72 @@ export const Default = () => {
   }
 
   return <Button label="Toggle theme" onClick={toggleTheme} />
+}
+
+export const Nested = () => {
+  return (
+    <Card>
+      <Text variant="normal" color="text100" fontWeight="bold">
+        Root Application
+      </Text>
+
+      <div id="app1">
+        <ThemeProvider root="#app1" scope="application1" theme="light">
+          <Card background="backgroundPrimary" marginTop="4">
+            <Collapsible label="Nested Application 1">
+              <Text variant="normal" color="text100">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </Text>
+
+              <Box marginTop="4">
+                <SetThemeButton />
+              </Box>
+
+              <div id="app2">
+                <ThemeProvider root="#app2" scope="application2" theme="dark">
+                  <Card background="backgroundPrimary" marginTop="4">
+                    <Collapsible label="Nested Application 2">
+                      <Text variant="normal" color="text100">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                      </Text>
+
+                      <Box marginTop="4">
+                        <SetThemeButton />
+                      </Box>
+                    </Collapsible>
+                  </Card>
+                </ThemeProvider>
+              </div>
+            </Collapsible>
+          </Card>
+        </ThemeProvider>
+      </div>
+    </Card>
+  )
+}
+
+const SetThemeButton = () => {
+  const { theme, setTheme } = useTheme()
+
+  const themeLabel = theme === 'light' ? 'Dark' : 'Light'
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
+
+  return <Button label={`Set ${themeLabel} Mode`} onClick={toggleTheme} />
 }
