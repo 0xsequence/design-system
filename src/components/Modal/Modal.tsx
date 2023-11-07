@@ -7,6 +7,7 @@ import { CloseIcon } from '~/icons'
 
 import { IconButton } from '../IconButton'
 import { Scroll } from '../Scroll'
+import { useTheme } from '../ThemeProvider'
 
 import * as styles from './styles.css'
 
@@ -38,10 +39,12 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     overlayProps,
     contentProps,
   } = props
+  const { root } = useTheme()
+  const container = document.querySelector(root || 'body') as HTMLElement | null
 
   return (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
-      <ModalPrimitive.Portal forceMount /* container={portalRoot} */>
+      <ModalPrimitive.Portal forceMount container={container}>
         <Box className={styles.root}>
           <Box
             as={ModalPrimitive.Overlay}

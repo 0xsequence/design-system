@@ -20,6 +20,7 @@ const getStorageKey = (scope?: string) =>
 
 interface ThemeContextValue {
   theme: Theme
+  root?: string
   setTheme: (mode: Theme) => void
 }
 
@@ -70,7 +71,6 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     const rootEl = document.querySelector(props.root || ':root')
 
     if (rootEl) {
-      console.log('Found', props.root || ':root')
       rootEl.setAttribute(THEME_ATTR, theme)
     }
   }, [theme, props.root])
@@ -79,6 +79,7 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
   const value: ThemeContextValue = useMemo(() => {
     return {
       theme,
+      root: props.root,
       setTheme: (mode: Theme) => {
         if (THEMES.includes(mode)) {
           // Save to local storage
@@ -89,7 +90,7 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
         }
       },
     }
-  }, [theme, props.scope])
+  }, [theme, props.root, props.scope])
 
   return (
     <ThemeContext.Provider value={value}>
