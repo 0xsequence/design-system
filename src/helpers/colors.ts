@@ -29,7 +29,12 @@ export class Color {
   }
 
   toRGB(): RawColor {
-    return [Math.round(this.r * 255), Math.round(this.g * 255), Math.round(this.b * 255), this.a]
+    return [
+      Math.round(this.r * 255),
+      Math.round(this.g * 255),
+      Math.round(this.b * 255),
+      this.a,
+    ]
   }
 
   toHSL(): RawColor {
@@ -75,7 +80,15 @@ export class Color {
 }
 
 const parseCSS = (color: string): RawColor => {
-  const value = parseHex(color) || parseHex(COLORS[color]) || parseRGB(color) || parseHSL(color)
+  if (color === 'transparent') {
+    return [0, 0, 0, 0]
+  }
+
+  const value =
+    parseHex(color) ||
+    parseHex(COLORS[color]) ||
+    parseRGB(color) ||
+    parseHSL(color)
 
   if (!value) {
     throw new Error(`Could not parse color ${color}`)
@@ -99,7 +112,12 @@ const parseHex = (color: string | undefined): RawColor | undefined => {
     }
 
     const hex = Number('0x' + c)
-    return [((hex >> 16) & 255) / 255, ((hex >> 8) & 255) / 255, (hex & 255) / 255, 1]
+    return [
+      ((hex >> 16) & 255) / 255,
+      ((hex >> 8) & 255) / 255,
+      (hex & 255) / 255,
+      1,
+    ]
   }
 
   return
@@ -113,7 +131,7 @@ const parseRGB = (color: string | undefined): RawColor | undefined => {
   const c = color.match(/rgba?\((.*)\)/)
 
   if (c) {
-    const [r, g, b, a] = c[1].split(',').map(parseFloat)
+    const [r, g, b, a] = c[1].split(/[,\s\/]+/).map(parseFloat)
 
     return [r / 255, g / 255, b / 255, a ?? 1]
   }
@@ -129,7 +147,10 @@ const parseHSL = (color: string | undefined): RawColor | undefined => {
   const c = color.match(/hsla?\((.*)\)/)
 
   if (c) {
-    let [h, s, l, a] = c[1].split(',').map(parseFloat)
+    let [h, s, l, a] = c[1]
+      .replace(/deg|%/g, '')
+      .split(/[,\s\/]+/)
+      .map(parseFloat)
     h = h
     s /= 100
     l /= 100
@@ -318,5 +339,5 @@ const COLORS: { [index: string]: string } = {
   white: '#ffffff',
   whitesmoke: '#f5f5f5',
   yellow: '#ffff00',
-  yellowgreen: '#9acd32'
+  yellowgreen: '#9acd32',
 }
