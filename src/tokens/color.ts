@@ -15,42 +15,52 @@ export interface ColorBase {
 }
 
 export interface ThemePalette {
-  foreground: ColorBase
-  background: ColorBase
-  backgroundBackdrop: ColorBase,
-  backgroundRaised: ColorBase,
-  statusPositive: ColorBase
-  statusNegative: ColorBase
-  statusWarning: ColorBase
-  statusInfo: ColorBase
+  foreground: String
+  background: String
+  backgroundBackdrop: String
+  backgroundRaised: String
+  statusPositive: String
+  statusNegative: String
+  statusWarning: String
+  statusInfo: String
   primaryButton: string
 }
 
-export const makeRGBA = (color: ColorBase, alpha: number) => {
-  return `rgba(${color.r},${color.g},${color.b},${alpha})`
+const convertToRgb = (hex: String): ColorBase => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  
+  return { r, g, b };
+}
+
+export const makeRGBA = (color: String, alpha: number) => {
+  const colorRgb = convertToRgb(color)
+
+  return `rgba(${colorRgb.r},${colorRgb.g},${colorRgb.b},${alpha})`
 }
 
 export const darkPalette: ThemePalette = {
-  foreground: { r: 255, g: 255, b: 255 },
-  background: { r: 0, g: 0, b: 0 },
-  backgroundBackdrop: { r: 34, g: 34, b: 34 },
-  backgroundRaised: { r: 54, g: 54, b: 54 },
-  statusPositive: { r: 31, g: 194, b: 102 },
-  statusNegative: { r: 194, g: 80, b: 31 },
-  statusWarning: { r: 244, g: 176, b: 62 },
-  statusInfo: { r: 0, g: 118, b: 204 },
+  foreground: '#FFFFFF',
+  background: '#000000',
+  backgroundBackdrop: '#222222',
+  backgroundRaised: '#363636',
+  statusPositive: '#1FC266',
+  statusNegative: '#C2501F',
+  statusWarning: '#F4B03E',
+  statusInfo: '#0076CC',
   primaryButton: 'linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)'
 }
 
 export const lightPalette: ThemePalette = {
-  foreground: { r: 0, g: 0, b: 0 },
-  background: { r: 255, g: 255, b: 255 },
-  backgroundBackdrop: { r: 221, g: 221, b: 221 },
-  backgroundRaised: { r: 192, g: 192, b: 192 },
-  statusPositive: { r: 31, g: 194, b: 102 },
-  statusNegative: { r: 194, g: 80, b: 31 },
-  statusWarning: { r: 244, g: 176, b: 62 },
-  statusInfo: { r: 0, g: 118, b: 204 },
+  foreground: '#000000',
+  background: '#FFFFFF',
+  backgroundBackdrop: '#DDDDDD',
+  backgroundRaised: '#C0C0C0',
+  statusPositive: '#1FC266',
+  statusNegative: '#C2501F',
+  statusWarning: '#F4B03E',
+  statusInfo: '#0076CC',
   primaryButton: 'linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)'
 }
 

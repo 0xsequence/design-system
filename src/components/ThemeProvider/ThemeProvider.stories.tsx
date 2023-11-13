@@ -25,14 +25,14 @@ export const Default = () => {
 
 export const Nested = () => {
   const customTheme = {
-    foreground: { r: 255, g: 127, b: 80 },
-    background: { r: 85, g: 38, b: 201 },
-    backgroundBackdrop: { r: 221, g: 221, b: 221 },
-    backgroundRaised: { r: 192, g: 192, b: 192 },
-    statusPositive: { r: 31, g: 194, b: 102 },
-    statusNegative: { r: 194, g: 80, b: 31 },
-    statusWarning: { r: 244, g: 176, b: 62 },
-    statusInfo: { r: 0, g: 118, b: 204 },
+    foreground: '#FF7F50',
+    background: '#5526C9',
+    backgroundBackdrop: '#DDDDDD',
+    backgroundRaised: '#C0C0C0',
+    statusPositive: '#1FC266',
+    statusNegative: '#C2501F',
+    statusWarning: '#F4B03E',
+    statusInfo: '#0076CC',
     primaryButton: 'linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)'
   }
   return (
