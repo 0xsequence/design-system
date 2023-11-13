@@ -1,3 +1,5 @@
+import { Color } from '../helpers/colors'
+
 export interface ColorTokens {
   base: BaseColors
   context: ContextColors
@@ -15,29 +17,15 @@ export interface ColorBase {
 }
 
 export interface ThemePalette {
-  foreground: String
-  background: String
-  backgroundBackdrop: String
-  backgroundRaised: String
-  statusPositive: String
-  statusNegative: String
-  statusWarning: String
-  statusInfo: String
+  foreground: string
+  background: string
+  backgroundBackdrop: string
+  backgroundRaised: string
+  statusPositive: string
+  statusNegative: string
+  statusWarning: string
+  statusInfo: string
   primaryButton: string
-}
-
-const convertToRgb = (hex: String): ColorBase => {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  
-  return { r, g, b };
-}
-
-export const makeRGBA = (color: String, alpha: number) => {
-  const colorRgb = convertToRgb(color)
-
-  return `rgba(${colorRgb.r},${colorRgb.g},${colorRgb.b},${alpha})`
 }
 
 export const darkPalette: ThemePalette = {
@@ -67,29 +55,29 @@ export const lightPalette: ThemePalette = {
 // theme colors that can be overriden via the theme palette
 export const generateThemeColors = (palette: ThemePalette) => {
   return ({
-    backgroundPrimary: makeRGBA(palette.background, 1),
-    backgroundSecondary: makeRGBA(palette.foreground, 0.1),
-    backgroundContrast: makeRGBA(palette.background, 0.5),
-    backgroundMuted: makeRGBA(palette.foreground, 0.05),
-    backgroundControl: makeRGBA(palette.foreground, 0.25),
-    backgroundInverse: makeRGBA(palette.foreground, 1),
-    backgroundBackdrop: makeRGBA(palette.backgroundBackdrop, 0.9),
-    backgroundOverlay:  makeRGBA(palette.background, 0.7),
-    backgroundRaised: makeRGBA(palette.backgroundRaised, 0.7),
+    backgroundPrimary: Color.from(palette.background).setAlpha(1).toRGBString(),
+    backgroundSecondary: Color.from(palette.foreground).setAlpha(0.1).toRGBString(),
+    backgroundContrast: Color.from(palette.background).setAlpha(0.5).toRGBString(),
+    backgroundMuted: Color.from(palette.foreground).setAlpha(0.05).toRGBString(),
+    backgroundControl: Color.from(palette.foreground).setAlpha(0.25).toRGBString(),
+    backgroundInverse: Color.from(palette.foreground).setAlpha(1).toRGBString(),
+    backgroundBackdrop: Color.from(palette.backgroundBackdrop).setAlpha(0.9).toRGBString(),
+    backgroundOverlay:  Color.from(palette.background).setAlpha(0.7).toRGBString(),
+    backgroundRaised: Color.from(palette.backgroundRaised).setAlpha(0.7).toRGBString(),
     gradientPrimary: palette.primaryButton,
-    positive: makeRGBA(palette.statusPositive, 1),
-    negative: makeRGBA(palette.statusNegative, 1),
-    info: makeRGBA(palette.statusInfo, 1),
-    warning: makeRGBA(palette.statusWarning, 1),
-    borderNormal: makeRGBA(palette.foreground, 0.25),
-    borderFocus: makeRGBA(palette.foreground, 0.5),
-    text100: makeRGBA(palette.foreground, 1),
-    text80: makeRGBA(palette.foreground, 0.8),
-    text50: makeRGBA(palette.foreground, 0.5),
-    textInverse100: makeRGBA(palette.background, 1),
-    buttonGlass: makeRGBA(palette.foreground, 0.15),
-    buttonEmphasis: makeRGBA(palette.background, 0.5),
-    buttonInverse: makeRGBA(palette.foreground, 0.8),
+    positive: Color.from(palette.statusPositive).setAlpha(1).toRGBString(),
+    negative: Color.from(palette.statusNegative).setAlpha(1).toRGBString(),
+    info: Color.from(palette.statusInfo).setAlpha(1).toRGBString(),
+    warning: Color.from(palette.statusWarning).setAlpha(1).toRGBString(),
+    borderNormal: Color.from(palette.foreground).setAlpha(0.25).toRGBString(),
+    borderFocus: Color.from(palette.foreground).setAlpha(0.5).toRGBString(),
+    text100: Color.from(palette.foreground).setAlpha(1).toRGBString(),
+    text80: Color.from(palette.foreground).setAlpha(0.8).toRGBString(),
+    text50: Color.from(palette.foreground).setAlpha(0.5).toRGBString(),
+    textInverse100: Color.from(palette.background).setAlpha(1).toRGBString(),
+    buttonGlass: Color.from(palette.foreground).setAlpha(0.15).toRGBString(),
+    buttonEmphasis: Color.from(palette.background).setAlpha(0.5).toRGBString(),
+    buttonInverse: Color.from(palette.foreground).setAlpha(0.8).toRGBString(),
   })
 }
 
