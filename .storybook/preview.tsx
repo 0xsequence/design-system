@@ -36,10 +36,10 @@ export const globalTypes = {
     defaultValue: 'dark',
     toolbar: {
       title: 'Theme',
-      icon: 'circlehollow',
+      icon: 'moon',
       items: [
-        { value: 'light', icon: 'circlehollow', title: 'Light' },
-        { value: 'dark', icon: 'circle', title: 'Dark' },
+        { value: 'light', icon: 'sun', title: 'Light' },
+        { value: 'dark', icon: 'moon', title: 'Dark' },
       ],
     },
   },
