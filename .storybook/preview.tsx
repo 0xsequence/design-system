@@ -38,18 +38,27 @@ export const globalTypes = {
       title: 'Theme',
       icon: 'moon',
       items: [
+        { value: 'dark', icon: 'moon', title: 'Dark (default)' },
         { value: 'light', icon: 'sun', title: 'Light' },
-        { value: 'dark', icon: 'moon', title: 'Dark' },
+        { value: 'custom', icon: 'paintbrush', title: 'Custom' },
       ],
     },
   },
+}
+
+const CUSTOM_THEME = {
+  text100: 'rgba(255, 255, 255, 1)',
+  text80: 'rgba(200, 200, 255, 1)',
+  text50: 'rgba(150, 150, 200, 1)',
+  backgroundPrimary: 'pink',
+  backgroundSecondary: 'navy',
 }
 
 const withTheme: Decorator = (StoryFn, context) => {
   const { theme } = context.globals
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === 'custom' ? CUSTOM_THEME : theme}>
       <StoryFn />
     </ThemeProvider>
   )
