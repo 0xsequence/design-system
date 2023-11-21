@@ -1,209 +1,152 @@
-export interface ColorTokens {
-  base: BaseColors
-  context: ContextColors
-  network: typeof networkColors
-  gradient: Gradients
-  colorSchemes: ColorSchemes
-}
-
 export type ColorScheme = 'dark' | 'light'
 
-interface ColorSchemeTokens {
-  background: BackgroundColors
-  border: BorderColors
-  button: ButtonColors
-  text: TextColors
-  // gradients: Gradients // Gradients are global and not color scheme specific
-  // context: ContextColors // ContextColors are global and not color scheme specific
-}
+type ColorSchemes<T = ColorTokens> = { [key in ColorScheme]: T }
 
-type ColorSchemes<T = ColorSchemeTokens> = { [key in ColorScheme]: T }
-
-interface BaseColors {
+export interface ColorTokens {
   black: string
   white: string
-  inherit: 'inherit'
-  transparent: 'transparent'
-}
+  inherit: string
+  transparent: string
 
-interface BackgroundColors {
-  primary: string
-  secondary: string
-  contrast: string
-  muted: string
-  control: string
-  inverse: string
-  backdrop: string
-  overlay: string
-  raised: string
-}
-
-interface BorderColors {
-  normal: string
-  focus: string
-}
-
-interface ButtonColors {
-  glass: string
-  emphasis: string
-  inverse: string
-}
-
-interface TextColors {
-  '100': string
-  '80': string
-  '50': string
-  inverse100: string
-}
-
-export interface ContextColors {
+  // Status colors
   positive: string
   negative: string
   info: string
   warning: string
+
+  // Text colors
+  text100: string
+  text80: string
+  text50: string
+  textInverse100: string
+
+  // Background colors
+  backgroundPrimary: string
+  backgroundSecondary: string
+  backgroundContrast: string
+  backgroundMuted: string
+  backgroundControl: string
+  backgroundInverse: string
+  backgroundBackdrop: string
+  backgroundOverlay: string
+  backgroundRaised: string
+
+  // Border colors
+  borderNormal: string
+  borderFocus: string
+
+  // Button colors
+  buttonGlass: string
+  buttonEmphasis: string
+  buttonInverse: string
+
+  // Gradients
+  gradientBackdrop: string
+  gradientPrimary: string
+  gradientSecondary: string
+
+  // Network colors
+  arbitrumDark: string
+  arbitrumLight: string
+  avalanceDark: string
+  avalanceLight: string
+  bscDark: string
+  bscLight: string
+  ethereumDark: string
+  ethereumLight: string
+  gnosisDark: string
+  gnosisLight: string
+  polygonDark: string
+  polygonLight: string
 }
 
-interface Gradients {
-  backdrop: string
-  primary: string
-  secondary: string
-}
+const defaultColors = {
+  black: '#000000',
+  white: '#ffffff',
+  inherit: 'inherit',
+  transparent: 'transparent',
 
-const backgroundColors: ColorSchemes<BackgroundColors> = {
-  dark: {
-    primary: 'rgba(0, 0, 0, 1)',
-    secondary: 'rgba(255, 255, 255, 0.1)',
-    contrast: 'rgba(0, 0, 0, 0.5)',
-    muted: 'rgba(255, 255, 255, 0.05)',
-    control: 'rgba(255, 255, 255, 0.25)',
-    inverse: 'rgba(255, 255, 255, 1)',
-    backdrop: 'rgba(34, 34, 34, 0.9)',
-    overlay: 'rgba(0, 0, 0, 0.7)',
-    raised: 'rgba(54, 54, 54, 0.7)',
-  },
-  light: {
-    primary: 'rgba(244, 244, 244, 1)',
-    secondary: 'rgba(0, 0, 0, 0.1)',
-    contrast: 'rgba(244, 244, 244, 0.5)',
-    muted: 'rgba(0, 0, 0, 0.05)',
-    control: 'rgba(0, 0, 0, 0.25)',
-    inverse: 'rgba(0, 0, 0, 1)',
-    backdrop: 'rgba(221, 221, 221, 0.9)',
-    overlay: 'rgba(244, 244, 244, 0.7)',
-    raised: 'rgba(192, 192, 192, 0.7)',
-  },
-}
-
-const borderColors: ColorSchemes<BorderColors> = {
-  dark: {
-    normal: 'rgba(255, 255, 255, 0.25)',
-    focus: 'rgba(255, 255, 255, 0.5)',
-  },
-  light: {
-    normal: 'rgba(0, 0, 0, 0.25)',
-    focus: 'rgba(0, 0, 0, 0.5)',
-  },
-}
-
-const buttonColors: ColorSchemes<ButtonColors> = {
-  dark: {
-    glass: 'rgba(255, 255, 255, 0.15)',
-    emphasis: 'rgba(0, 0, 0, 0.5)',
-    inverse: 'rgba(255, 255, 255, 0.8)',
-  },
-  light: {
-    glass: 'rgba(0, 0, 0, 0.15)',
-    emphasis: 'rgba(255, 255, 255, 0.5)',
-    inverse: 'rgba(0, 0, 0, 0.8)',
-  },
-}
-
-const textColors: ColorSchemes<TextColors> = {
-  dark: {
-    '100': 'rgba(255, 255, 255, 1)',
-    '80': 'rgba(255, 255, 255, 0.8)',
-    '50': 'rgba(255, 255, 255, 0.5)',
-    inverse100: 'rgba(0, 0, 0, 1)',
-  },
-  light: {
-    '100': 'rgba(0, 0, 0, 1)',
-    '80': 'rgba(0, 0, 0, 0.8)',
-    '50': 'rgba(0, 0, 0, 0.5)',
-    inverse100: 'rgba(255, 255, 255, 1)',
-  },
-}
-
-// ContextColors are global and not color scheme specific
-const contextColors: ContextColors = {
   positive: '#1FC266',
   negative: '#C2501F',
   info: '#0076CC',
   warning: '#F4B03E',
-}
 
-// Gradients are global and not color scheme specific
-const gradients: Gradients = {
-  backdrop: `linear-gradient(
+  gradientBackdrop: `linear-gradient(
     243.18deg, 
     rgba(86, 52, 189, 0.85) 0%, 
     rgba(49, 41, 223, 0.85) 63.54%, 
     rgba(7, 98, 149, 0.85) 100%
   )`,
-  primary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
-  secondary: `linear-gradient(32.51deg, #951990 -15.23%, #3A35B1 48.55%, #20A8B0 100%)`,
+  gradientPrimary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
+  gradientSecondary: `linear-gradient(32.51deg, #951990 -15.23%, #3A35B1 48.55%, #20A8B0 100%)`,
+
+  arbitrumDark: '#212D44',
+  arbitrumLight: '#93D4FF',
+  avalanceDark: '#810C0C',
+  avalanceLight: '#FF8080',
+  bscDark: '#584508',
+  bscLight: '#FCCF43',
+  ethereumDark: '#132362',
+  ethereumLight: '#AABBFF',
+  gnosisDark: '#084246',
+  gnosisLight: '#8CF6FD',
+  polygonDark: '#350881',
+  polygonLight: '#C7A6FF',
 }
 
-const networkColors = {
-  Arbitrum: {
-    dark: '#212D44',
-    light: '#93D4FF',
-  },
-  Avalance: {
-    dark: '#810C0C',
-    light: '#FF8080',
-  },
-  BSC: {
-    dark: '#584508',
-    light: '#FCCF43',
-  },
-  Ethereum: {
-    dark: '#132362',
-    light: '#AABBFF',
-  },
-  Gnosis: {
-    dark: '#084246',
-    light: '#8CF6FD',
-  },
-  Polygon: {
-    dark: '#350881',
-    light: '#C7A6FF',
-  },
+const dark: ColorTokens = {
+  ...defaultColors,
+
+  text100: 'rgba(255, 255, 255, 1)',
+  text80: 'rgba(255, 255, 255, 0.8)',
+  text50: 'rgba(255, 255, 255, 0.5)',
+  textInverse100: 'rgba(0, 0, 0, 1)',
+
+  backgroundPrimary: 'rgba(0, 0, 0, 1)',
+  backgroundSecondary: 'rgba(255, 255, 255, 0.1)',
+  backgroundContrast: 'rgba(0, 0, 0, 0.5)',
+  backgroundMuted: 'rgba(255, 255, 255, 0.05)',
+  backgroundControl: 'rgba(255, 255, 255, 0.25)',
+  backgroundInverse: 'rgba(255, 255, 255, 1)',
+  backgroundBackdrop: 'rgba(34, 34, 34, 0.9)',
+  backgroundOverlay: 'rgba(0, 0, 0, 0.7)',
+  backgroundRaised: 'rgba(54, 54, 54, 0.7)',
+
+  buttonGlass: 'rgba(255, 255, 255, 0.15)',
+  buttonEmphasis: 'rgba(0, 0, 0, 0.5)',
+  buttonInverse: 'rgba(255, 255, 255, 0.8)',
+
+  borderNormal: 'rgba(255, 255, 255, 0.25)',
+  borderFocus: 'rgba(255, 255, 255, 0.5)',
 }
 
-const colorSchemes: ColorSchemes = {
-  dark: {
-    background: backgroundColors.dark,
-    border: borderColors.dark,
-    button: buttonColors.dark,
-    text: textColors.dark,
-  },
-  light: {
-    background: backgroundColors.light,
-    border: borderColors.light,
-    button: buttonColors.light,
-    text: textColors.light,
-  },
+const light: ColorTokens = {
+  ...defaultColors,
+
+  text100: 'rgba(0, 0, 0, 1)',
+  text80: 'rgba(0, 0, 0, 0.8)',
+  text50: 'rgba(0, 0, 0, 0.5)',
+  textInverse100: 'rgba(255, 255, 255, 1)',
+
+  backgroundPrimary: 'rgba(244, 244, 244, 1)',
+  backgroundSecondary: 'rgba(0, 0, 0, 0.1)',
+  backgroundContrast: 'rgba(244, 244, 244, 0.5)',
+  backgroundMuted: 'rgba(0, 0, 0, 0.05)',
+  backgroundControl: 'rgba(0, 0, 0, 0.25)',
+  backgroundInverse: 'rgba(0, 0, 0, 1)',
+  backgroundBackdrop: 'rgba(221, 221, 221, 0.9)',
+  backgroundOverlay: 'rgba(244, 244, 244, 0.7)',
+  backgroundRaised: 'rgba(192, 192, 192, 0.7)',
+
+  buttonGlass: 'rgba(0, 0, 0, 0.15)',
+  buttonEmphasis: 'rgba(255, 255, 255, 0.5)',
+  buttonInverse: 'rgba(0, 0, 0, 0.8)',
+
+  borderNormal: 'rgba(0, 0, 0, 0.25)',
+  borderFocus: 'rgba(0, 0, 0, 0.5)',
 }
 
-export const colors: ColorTokens = {
-  base: {
-    black: '#000000',
-    white: '#ffffff',
-    inherit: 'inherit',
-    transparent: 'transparent',
-  },
-  context: contextColors,
-  gradient: gradients,
-  network: networkColors,
-  colorSchemes,
+export const colors: ColorSchemes = {
+  dark,
+  light,
 }
