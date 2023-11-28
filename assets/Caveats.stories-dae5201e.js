@@ -1,4 +1,4 @@
-import{M as o}from"./chunk-HLWAVYOI-a046a5c2.js";import{j as e}from"./jsx-runtime-69eee039.js";import{u as t}from"./index-abfde3b8.js";import"./iframe-32369476.js";import"../sb-preview/runtime.js";import"./index-7c191284.js";import"./index-f940c6c3.js";import"./index-ecbee218.js";import"./chunk-E56DBAEL-262b6f7b.js";import"./index-d37d4223.js";import"./index-356e4a49.js";function r(s){const n=Object.assign({h1:"h1",p:"p",a:"a",pre:"pre",code:"code",h3:"h3"},t(),s.components);return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Caveats"}),`
+import{M as o}from"./chunk-HLWAVYOI-08850d26.js";import{j as e}from"./jsx-runtime-69eee039.js";import{u as t}from"./index-abfde3b8.js";import"./iframe-7804826d.js";import"../sb-preview/runtime.js";import"./index-7c191284.js";import"./index-f940c6c3.js";import"./index-ecbee218.js";import"./chunk-E56DBAEL-262b6f7b.js";import"./index-d37d4223.js";import"./index-356e4a49.js";function r(s){const n=Object.assign({h1:"h1",p:"p",a:"a",pre:"pre",code:"code",h3:"h3"},t(),s.components);return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Caveats"}),`
 `,e.jsx(n.h1,{id:"caveats-for-developers",children:"Caveats for Developers"}),`
 `,e.jsxs(n.p,{children:["Sequence Design System uses ",e.jsx(n.a,{href:"https://vanilla-extract.style/documentation/packages/sprinkles/",target:"_blank",rel:"nofollow noopener noreferrer",children:"Vanilla Extract Sprinkles"}),` package to create reusable atomic classes.
 Atomic classes is a paradigm first created by `,e.jsx(n.a,{href:"https://tailwindcss.com/",target:"_blank",rel:"nofollow noopener noreferrer",children:"Tailwindcss"}),` which create a single css rule per class.
@@ -98,4 +98,4 @@ will be included below giving them a higher precedence.`}),`
 )
 
 `})})]})}function l(s={}){const{wrapper:n}=Object.assign({},t(),s.components);return n?e.jsx(n,{...s,children:e.jsx(r,{...s})}):r(s)}const i=()=>{throw new Error("Docs-only story")};i.parameters={docsOnly:!0};const a={title:"Caveats",tags:["stories-mdx"],includeStories:["__page"]};a.parameters=a.parameters||{};a.parameters.docs={...a.parameters.docs||{},page:l};const y=["__page"];export{y as __namedExportsOrder,i as __page,a as default};
-//# sourceMappingURL=Caveats.stories-a710145e.js.map
+//# sourceMappingURL=Caveats.stories-dae5201e.js.map
