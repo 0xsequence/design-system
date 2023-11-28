@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { Box, BoxProps } from '~/components/Box'
 import { Divider } from '~/components/Divider'
 import { Text } from '~/components/Text'
@@ -10,10 +12,11 @@ interface Path {
 type BreadcrumbsProps = BoxProps & {
   excludeDivider?: boolean
   paths: Path[]
+  renderLink?: (path: Path, children: ReactNode) => JSX.Element
 }
 
 export const Breadcrumbs = (props: BreadcrumbsProps) => {
-  const { paths, excludeDivider = false, ...rest } = props
+  const { paths, excludeDivider = false, renderLink, ...rest } = props
 
   return (
     <Box {...rest}>
@@ -22,6 +25,7 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
           key={idx}
           path={path}
           active={idx === paths.length - 1}
+          renderLink={renderLink}
         />
       ))}
 
@@ -33,10 +37,15 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
 interface BreadcrumbSegmentProps {
   path: Path
   active?: boolean
+  renderLink?: (path: Path, children: ReactNode) => JSX.Element
 }
 
+const defaultRenderLink = (path: Path, children: ReactNode) => (
+  <a href={path.url}>{children}</a>
+)
+
 const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
-  const { path, active } = props
+  const { path, active, renderLink = defaultRenderLink } = props
 
   return active ? (
     <Text
@@ -49,17 +58,18 @@ const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
       {path.label}
     </Text>
   ) : (
-    <Text
-      as="a"
-      href={path.url}
-      variant="small"
-      fontWeight="medium"
-      color="text50"
-      whiteSpace="nowrap"
-      capitalize
-    >
-      {path.label}
-      {' / '}
-    </Text>
+    renderLink(
+      path,
+      <Text
+        variant="small"
+        fontWeight="medium"
+        color="text50"
+        whiteSpace="nowrap"
+        capitalize
+      >
+        {path.label}
+        {' / '}
+      </Text>
+    )
   )
 }
