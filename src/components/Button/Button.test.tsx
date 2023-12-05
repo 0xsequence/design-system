@@ -1,7 +1,8 @@
 import { cleanup, render, screen } from '@testing-library/react'
-import { vi } from 'vitest'
-import { Button } from './Button'
 import userEvent from '@testing-library/user-event'
+import { vi } from 'vitest'
+
+import { Button } from './Button'
 
 describe('<Button />', () => {
   afterEach(cleanup)

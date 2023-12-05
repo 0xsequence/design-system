@@ -2,14 +2,11 @@ import { cleanup, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import {
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuRoot,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-  DropdownMenuRadioItem,
-  DropdownMenuRadioGroup,
 } from './DropdownMenu'
 
 describe('<DropdownMenu />', () => {
