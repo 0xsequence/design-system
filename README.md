@@ -67,6 +67,12 @@ Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/
 pnpm install && pnpm storybook
 ```
 
+### Create a snapshot release
+
+1. Bump version in package.json to 0.0.0-YYYYmmddHHMMSS (`echo -n 0.0.0- ; date -u +%Y%m%d%H%M%S`)
+2. `git commit -a -m <version>`
+3. `pnpm publish --tag snapshot`
+
 ### Used by
 
 - [Sequence Wallet](https://sequence.app/)
