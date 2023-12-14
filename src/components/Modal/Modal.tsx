@@ -19,6 +19,7 @@ export type ModalProps = {
   disableAnimation?: boolean
   isDismissible?: boolean
   onClose?: () => void
+  onAttemptClose?: () => void
   scroll?: boolean
   overlayProps?: MotionProps
   contentProps?: MotionProps
@@ -34,6 +35,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     disableAnimation = false,
     isDismissible = true,
     onClose,
+    onAttemptClose,
     scroll = true,
     size = 'lg',
     overlayProps,
@@ -71,6 +73,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
             className={styles.contentVariants({ autoHeight, size })}
             forceMount
             onEscapeKeyDown={ev => {
+              onAttemptClose?.()
+
               if (isDismissible) {
                 onClose?.()
               } else {
@@ -81,6 +85,9 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               if (!isDismissible) {
                 ev.preventDefault()
               }
+            }}
+            onPointerDownOutside={_ => {
+              onAttemptClose?.()
             }}
           >
             <motion.div
@@ -113,6 +120,9 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                     size="xs"
                     className={styles.close}
                     aria-label="Close"
+                    onClick={() => {
+                      onAttemptClose?.()
+                    }}
                   />
                 </ModalPrimitive.Close>
               )}

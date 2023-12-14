@@ -21,7 +21,17 @@ const StoryWrapper: StoryFn<typeof Modal> = args => {
     <>
       <Button label="Open Modal" onClick={() => toggleModal(!isOpen)} />
       <AnimatePresence>
-        {isOpen && <Modal {...args} onClose={() => toggleModal(false)} />}
+        {isOpen && (
+          <Modal
+            {...args}
+            onClose={() => {
+              toggleModal(false)
+            }}
+            onAttemptClose={() => {
+              console.log('onAttemptClose')
+            }}
+          />
+        )}
       </AnimatePresence>
     </>
   )
