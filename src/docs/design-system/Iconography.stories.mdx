@@ -1,5 +1,5 @@
 import { Meta, Title, IconGallery, IconItem } from '@storybook/addon-docs'
-
+import { ThemeProvider } from '../../components/ThemeProvider'
 import * as icons from '../../icons'
 
 <Meta title="Design System/Iconography" />
@@ -8,10 +8,12 @@ import * as icons from '../../icons'
 
 Collection of icons used in the design system.
 
-<IconGallery>
-  {Object.entries(icons).map(([key, Icon]) => (
-    <IconItem name={key} key={key}>
-      <Icon />
-    </IconItem>
-  ))}
-</IconGallery>
+<ThemeProvider theme="light">
+  <IconGallery>
+    {Object.entries(icons).map(([key, Icon]) => (
+      <IconItem name={key} key={key}>
+        <Icon />
+      </IconItem>
+    ))}
+  </IconGallery>
+</ThemeProvider>
