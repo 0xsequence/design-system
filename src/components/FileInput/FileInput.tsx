@@ -93,10 +93,12 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
           label={label}
           labelLocation={labelLocation}
         >
-          <Box width="full">
+          <Box width="full" minWidth="0">
             <Box
+              width="full"
+              minWidth="0"
               justifyContent={fileData ? 'space-between' : 'flex-start'}
-              gap={'1.5'}
+              gap="2"
               color={fileData ? 'text100' : 'text50'}
               className={clsx(
                 styles.wrap,
@@ -104,14 +106,19 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
               )}
             >
               {fileData ? (
-                <Box flexDirection="row" gap="2" alignItems="center">
-                  <Text className={styles.fileName}>{fileData.name}</Text>
-                  <Text color="text50" variant="xsmall">
+                <Box
+                  flexDirection="row"
+                  gap="2"
+                  alignItems="center"
+                  minWidth="0"
+                >
+                  <Text ellipsis>{fileData.name}</Text>
+                  <Text color="text50" variant="xsmall" whiteSpace="nowrap">
                     {fileData.size.toFixed(2)} kb
                   </Text>
                 </Box>
               ) : (
-                <Text>{placeholder}</Text>
+                <Text ellipsis>{placeholder}</Text>
               )}
 
               <Box
