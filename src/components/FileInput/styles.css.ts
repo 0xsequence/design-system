@@ -19,7 +19,7 @@ export const wrap = style([
     position: 'relative',
   }),
   {
-    height: 52,
+    minHeight: 52,
 
     selectors: {
       '&:has(:disabled), &:has(:disabled):hover': {
@@ -64,3 +64,7 @@ export const input = style([
     focusRing: 'none',
   }),
 ])
+
+export const fileName = style({
+  wordBreak: 'break-all',
+})

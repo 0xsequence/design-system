@@ -96,6 +96,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
           <Box width="full">
             <Box
               justifyContent={fileData ? 'space-between' : 'flex-start'}
+              gap={'1.5'}
               color={fileData ? 'text100' : 'text50'}
               className={clsx(
                 styles.wrap,
@@ -103,8 +104,8 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
               )}
             >
               {fileData ? (
-                <Box flexDirection="row" gap="2" alignItems="baseline">
-                  <Text>{fileData.name}</Text>
+                <Box flexDirection="row" gap="2" alignItems="center">
+                  <Text className={styles.fileName}>{fileData.name}</Text>
                   <Text color="text50" variant="xsmall">
                     {fileData.size.toFixed(2)} kb
                   </Text>
