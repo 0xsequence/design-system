@@ -93,58 +93,56 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
           label={label}
           labelLocation={labelLocation}
         >
-          <Box width="full">
+          <Box
+            width="full"
+            minWidth="0"
+            justifyContent={fileData ? 'space-between' : 'flex-start'}
+            gap="2"
+            color={fileData ? 'text100' : 'text50'}
+            className={clsx(styles.wrap, styles.wrapVariants({ borderRadius }))}
+          >
+            {fileData ? (
+              <Box flexDirection="row" gap="2" alignItems="center" minWidth="0">
+                <Text ellipsis>{fileData.name}</Text>
+                <Text color="text50" variant="xsmall" whiteSpace="nowrap">
+                  {fileData.size.toFixed(2)} kb
+                </Text>
+              </Box>
+            ) : (
+              <Text ellipsis>{placeholder}</Text>
+            )}
+
             <Box
-              justifyContent={fileData ? 'space-between' : 'flex-start'}
-              color={fileData ? 'text100' : 'text50'}
-              className={clsx(
-                styles.wrap,
-                styles.wrapVariants({ borderRadius })
-              )}
-            >
-              {fileData ? (
-                <Box flexDirection="row" gap="2" alignItems="baseline">
-                  <Text>{fileData.name}</Text>
-                  <Text color="text50" variant="xsmall">
-                    {fileData.size.toFixed(2)} kb
-                  </Text>
-                </Box>
-              ) : (
-                <Text>{placeholder}</Text>
-              )}
+              accept={accept}
+              as="input"
+              className={styles.input}
+              cursor="pointer"
+              disabled={disabled}
+              id={id ?? name}
+              name={name}
+              onChange={handleChange}
+              ref={combinedRef}
+              type="file"
+              {...rest}
+            />
 
-              <Box
-                accept={accept}
-                as="input"
-                className={styles.input}
+            {fileData && (
+              <IconButton
                 cursor="pointer"
-                disabled={disabled}
-                id={id ?? name}
-                name={name}
-                onChange={handleChange}
-                ref={combinedRef}
-                type="file"
-                {...rest}
+                icon={CloseIcon}
+                size="xs"
+                onClick={ev => {
+                  ev.preventDefault()
+                  ev.stopPropagation()
+
+                  inputRef.current?.value && (inputRef.current.value = '')
+
+                  onValueChange?.(null)
+                  setFileData(null)
+                }}
+                zIndex="10"
               />
-
-              {fileData && (
-                <IconButton
-                  cursor="pointer"
-                  icon={CloseIcon}
-                  size="xs"
-                  onClick={ev => {
-                    ev.preventDefault()
-                    ev.stopPropagation()
-
-                    inputRef.current?.value && (inputRef.current.value = '')
-
-                    onValueChange?.(null)
-                    setFileData(null)
-                  }}
-                  zIndex="10"
-                />
-              )}
-            </Box>
+            )}
           </Box>
         </Field>
       )
