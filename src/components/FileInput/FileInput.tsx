@@ -38,6 +38,11 @@ export type FileInputProps = FieldProps &
     validExtensions: AllowedMimeTypes[]
     value?: File
     onValueChange?: (value: File | null) => void
+    fileNameTruncation?: {
+      showFull: boolean
+      prefix?: number
+      suffix?: number
+    }
   }
 
 export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
@@ -57,6 +62,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
         onValueChange,
         placeholder = 'Upload a file',
         validExtensions,
+        fileNameTruncation,
         ...rest
       } = props
       const inputRef = useRef<HTMLInputElement>(null)
@@ -84,6 +90,23 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
 
       const accept = validExtensions.map(ext => MIME_TYPES[ext]).join(',')
 
+      const getTruncatedFileName = (): string => {
+        if (!fileData?.name) {
+          return ''
+        }
+
+        if (fileNameTruncation && fileNameTruncation.showFull === false) {
+          return `${fileData.name.substring(
+            0,
+            fileNameTruncation.prefix ?? 5
+          )}…${fileData.name.substring(
+            fileData.name.length - (fileNameTruncation.suffix ?? 5)
+          )}`
+        }
+
+        return fileData.name
+      }
+
       return (
         <Field
           description={description}
@@ -104,7 +127,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
             >
               {fileData ? (
                 <Box flexDirection="row" gap="2" alignItems="baseline">
-                  <Text>{fileData.name}</Text>
+                  <Text>{getTruncatedFileName()}</Text>
                   <Text color="text50" variant="xsmall">
                     {fileData.size.toFixed(2)} kb
                   </Text>
