@@ -35,6 +35,12 @@ export const root = recipe({
         height: '40px',
         fontSize: '11px',
       },
+
+      xl: {
+        width: '64px',
+        height: '64px',
+        fontSize: '16px',
+      },
     },
 
     borderRadius: {
@@ -73,6 +79,11 @@ export const img = style({
     [`${selectorize(root({ size: 'lg' }))} &`]: {
       maxWidth: '40px',
       maxHeight: '40px',
+    },
+
+    [`${selectorize(root({ size: 'xl' }))} &`]: {
+      maxWidth: '64px',
+      maxHeight: '64px',
     },
   },
 })
