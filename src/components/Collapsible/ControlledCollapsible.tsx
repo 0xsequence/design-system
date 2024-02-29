@@ -7,7 +7,8 @@ import { Text } from '~/components/Text'
 import { ChevronDownIcon } from '~/icons'
 
 import { Box, BoxProps } from '../Box'
-import * as styles from '../Collapsible/styles.css'
+
+import * as styles from './styles.css'
 
 type ControlledCollapsibleProps = BoxProps &
   Omit<CollapsiblePrimitive.CollapsibleProps, 'open' | 'defaultOpen'> & {
