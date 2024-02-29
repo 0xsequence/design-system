@@ -18,9 +18,17 @@ type CollapsibleProps = BoxProps &
   }
 
 export const Collapsible = (props: CollapsibleProps) => {
-  const { className, children, defaultOpen, onOpenChange, label, ...rest } =
-    props
+  const {
+    className,
+    children,
+    defaultOpen,
+    open,
+    onOpenChange,
+    label,
+    ...rest
+  } = props
   const [expanded, toggleExpanded] = useState(defaultOpen)
+  const isOpen = open ?? expanded
 
   const handleOpenChange = (open: boolean) => {
     toggleExpanded(open)
@@ -29,6 +37,7 @@ export const Collapsible = (props: CollapsibleProps) => {
 
   return (
     <CollapsiblePrimitive.Root
+      open={isOpen}
       defaultOpen={defaultOpen}
       onOpenChange={handleOpenChange}
       asChild
@@ -36,8 +45,8 @@ export const Collapsible = (props: CollapsibleProps) => {
       <Box
         as={motion.div}
         className={clsx(className, styles.root)}
-        initial={{ height: defaultOpen ? 'auto' : styles.COLLAPSED_HEIGHT }}
-        animate={{ height: expanded ? 'auto' : styles.COLLAPSED_HEIGHT }}
+        initial={{ height: isOpen ? 'auto' : styles.COLLAPSED_HEIGHT }}
+        animate={{ height: isOpen ? 'auto' : styles.COLLAPSED_HEIGHT }}
         transition={{ ease: 'easeOut', duration: 0.3 }}
         borderRadius="md"
         background="backgroundSecondary"
@@ -55,22 +64,22 @@ export const Collapsible = (props: CollapsibleProps) => {
             position="absolute"
             right="0"
             marginRight="4"
-            initial={{ rotate: defaultOpen ? 180 : 0 }}
-            animate={{ rotate: expanded ? 180 : 0 }}
+            initial={{ rotate: isOpen ? 180 : 0 }}
+            animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ ease: 'linear', duration: 0.1 }}
           >
             <ChevronDownIcon className={styles.icon} color="text50" />
           </Box>
         </CollapsiblePrimitive.Trigger>
         <AnimatePresence>
-          {expanded && (
+          {isOpen && (
             <CollapsiblePrimitive.Content
               className={styles.content}
               asChild
               forceMount
             >
               <motion.div
-                initial={{ opacity: defaultOpen ? 1 : 0 }}
+                initial={{ opacity: isOpen ? 1 : 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ ease: 'easeOut', duration: 0.3 }}
