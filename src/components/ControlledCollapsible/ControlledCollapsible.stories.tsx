@@ -6,7 +6,7 @@ import { Text } from '~/components/Text'
 import { ControlledCollapsible } from './ControlledCollapsible'
 
 export default {
-  title: 'Components/Collapsible',
+  title: 'Components/ControlledCollapsible',
   component: ControlledCollapsible,
 } as Meta<typeof ControlledCollapsible>
 
