@@ -27,12 +27,22 @@ export const Collapsible = (props: CollapsibleProps) => {
     label,
     ...rest
   } = props
+
   const [expanded, toggleExpanded] = useState(defaultOpen)
   const isOpen = open ?? expanded
 
-  const handleOpenChange = (open: boolean) => {
-    toggleExpanded(open)
-    onOpenChange?.(open)
+  const handleSetExpanded = (isExpanded: boolean) => {
+    if (open !== undefined) {
+      return
+    }
+
+    toggleExpanded(isExpanded)
+  }
+
+  const handleOpenChange = (isOpen: boolean) => {
+    handleSetExpanded(isOpen)
+
+    onOpenChange?.(isOpen)
   }
 
   return (
