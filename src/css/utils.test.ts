@@ -1,4 +1,4 @@
-import { kebabize, mapVarName, selectorize } from './utils'
+import { kebabize, mapVarName, selectorize, VAR_PREFIX } from './utils'
 
 describe('CSS Utils', () => {
   it('kebabize', () => {
@@ -20,11 +20,11 @@ describe('CSS Utils', () => {
 
   it('mapVarName', () => {
     expect(mapVarName(null, ['colors', 'backgroundPrimary'])).toEqual(
-      'colors-background-primary'
+      `${VAR_PREFIX}-colors-background-primary`
     )
-    expect(mapVarName(null, ['space', '10'])).toEqual('space-10')
+    expect(mapVarName(null, ['space', '10'])).toEqual(`${VAR_PREFIX}-space-10`)
     expect(mapVarName(null, ['a', 'B', 'c', 'D', 'eF-g'])).toEqual(
-      'a-b-c-d-e-f-g'
+      `${VAR_PREFIX}-a-b-c-d-e-f-g`
     )
   })
 })

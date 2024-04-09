@@ -1,5 +1,7 @@
 import { breakpoints } from './breakpoints'
 
+export const VAR_PREFIX = 'seq'
+
 export const kebabize = (str: string) =>
   str.replace(
     /[A-Z]+(?![a-z])|[A-Z]/g,
@@ -7,7 +9,7 @@ export const kebabize = (str: string) =>
   )
 
 export const mapVarName = (_value: string | null, path: string[]) =>
-  path.map(kebabize).join('-').replace('.', '_').replace('/', '__')
+  `${VAR_PREFIX}-${path.map(kebabize).join('-').replace('.', '_').replace('/', '__')}`
 
 export const responsiveStyle = (rules: {
   [key in keyof typeof breakpoints]?: Record<string, string | string[]>
