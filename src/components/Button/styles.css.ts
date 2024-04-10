@@ -12,14 +12,13 @@ const outlineStyle = {
 } as const
 
 export const buttonVariants = recipe({
-  base: [
-    atoms({
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-      alignItems: 'center',
-    }),
-    { border: 'none' },
-  ],
+  base: atoms({
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    alignItems: 'center',
+    border: 'none',
+    textDecoration: 'none',
+  }),
 
   variants: {
     variant: {

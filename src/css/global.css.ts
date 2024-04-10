@@ -14,7 +14,6 @@ globalStyle('*', {
   margin: 0,
   outline: 'unset',
   padding: 0,
-  textDecoration: 'unset',
 })
 
 globalStyle('*, *::before, *::after', {
