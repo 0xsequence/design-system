@@ -8,33 +8,8 @@ import { vars } from '../../css'
 
 Color schemes, scales, accents, and gradients.
 
-### Accents
-
 <ColorPalette>
-  <ColorItem 
-  title={'Accents'} 
-  subtitle={'Status Colours'} 
-  colors={{
-    positive: vars.colors.positive,
-    info: vars.colors.info,
-    warning: vars.colors.warning,
-    negative: vars.colors.negative,
-  }} 
-/>
-
-</ColorPalette>
-
-### Gradients
-
-<ColorPalette>
-  <ColorItem
-    title={'Primary Gradient'}
-    subtitle={'vars.colors.gradientPrimary'}
-    colors={{ primary: vars.colors.gradientPrimary }}
-  />
-  <ColorItem
-    title={'Primary Gradient'}
-    subtitle={'vars.colors.gradientBackdrop'}
-    colors={{ primary: vars.colors.gradientBackdrop }}
-  />
+  {Object.entries(vars.colors).map(([key, value]) => (
+    <ColorItem key={key} title={key} colors={{ [key]: value }} />
+  ))}
 </ColorPalette>
