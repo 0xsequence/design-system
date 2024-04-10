@@ -9,6 +9,7 @@ export const root = style([
     padding: '1',
     position: 'relative',
     cursor: 'pointer',
+    border: 'none',
   }),
   {
     width: '48px',
