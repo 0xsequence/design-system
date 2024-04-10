@@ -41,7 +41,6 @@ globalStyle('*:focus-visible', {
 })
 
 globalStyle('body', {
-  background: vars.colors.backgroundPrimary,
   color: vars.colors.text80,
   fontSize: '1rem',
 })
