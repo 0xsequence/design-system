@@ -9,9 +9,6 @@ export const triggerStyle = style([
   atoms({
     alignItems: 'center',
     background: 'transparent',
-    // borderColor: 'borderNormal',
-    // borderStyle: 'solid',
-    // borderWidth: 'thin',
     display: 'inline-flex',
     fontWeight: 'medium',
     color: 'text100',
@@ -20,6 +17,7 @@ export const triggerStyle = style([
     padding: '4',
     userSelect: 'none',
     cursor: 'pointer',
+    border: 'none',
   }),
   {
     height: 52,
