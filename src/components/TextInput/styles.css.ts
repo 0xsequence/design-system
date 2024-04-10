@@ -59,6 +59,9 @@ export type WrapVariants = RecipeVariants<typeof wrapVariants>
 export const input = recipe({
   base: atoms({
     display: 'block',
+    background: 'transparent',
+    border: 'none',
+    paddingX: '0',
     paddingY: '4',
     width: 'full',
     height: 'full',
