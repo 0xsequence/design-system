@@ -5,7 +5,7 @@ import { Box, PolymorphicProps } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { IconProps } from '~/icons/types'
 
-import { tabVariants, TabVariants } from './styles.css'
+import { tabList, tabVariants, TabVariants } from './styles.css'
 
 export type TabOption = {
   label: ReactNode
@@ -66,7 +66,7 @@ export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
 
   return (
     <Box as="nav" {...rest}>
-      <Box as="ul" gap="2">
+      <Box as="ul" gap="2" className={clsx(tabList)}>
         {tabs.map((option, tabIndex) => {
           const isActive = option.value === value
 
