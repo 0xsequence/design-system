@@ -21,8 +21,14 @@ export default defineConfig({
       include: ['**/*.ts', '**/*.tsx'],
     }),
     dts({
-      exclude: ['tests', '**/*.stories.tsx', '**/*.test.tsx'],
-      outputDir: 'dist/types',
+      exclude: [
+        'node_modules',
+        'tests',
+        '**/*.stories.tsx',
+        '**/*.test.tsx',
+        'src/components/ThemeProvider/renderWithTheme.tsx',
+      ],
+      outDir: 'dist/types',
     }),
   ],
   resolve: {
