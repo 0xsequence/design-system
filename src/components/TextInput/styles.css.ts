@@ -60,6 +60,7 @@ export const input = recipe({
   base: atoms({
     display: 'block',
     background: 'transparent',
+    color: 'text100',
     border: 'none',
     paddingX: '0',
     paddingY: '4',
