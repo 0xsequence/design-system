@@ -21,6 +21,7 @@ export default defineConfig({
       include: ['**/*.ts', '**/*.tsx'],
     }),
     dts({
+      exclude: ['tests', '**/*.stories.tsx', '**/*.test.tsx'],
       outputDir: 'dist/types',
     }),
   ],
