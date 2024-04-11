@@ -36,7 +36,15 @@ export const buttonVariants = recipe({
 
   variants: {
     variant: {
-      base: {},
+      base: atoms({
+        background: 'transparent',
+        color: 'text100',
+      }),
+
+      ghost: atoms({
+        background: 'transparent',
+        color: 'text100',
+      }),
 
       feature: [
         atoms({
