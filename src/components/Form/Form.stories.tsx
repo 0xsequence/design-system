@@ -50,13 +50,7 @@ export const Default: Story = {
         {...args}
       >
         {({ control, reset, formState: { errors }, setValue }) => (
-          <Box
-            background="backgroundPrimary"
-            flexDirection="column"
-            gap="5"
-            padding="4"
-            borderRadius="xs"
-          >
+          <Box flexDirection="column" gap="4">
             <TextInput
               control={control}
               label="First Name"
