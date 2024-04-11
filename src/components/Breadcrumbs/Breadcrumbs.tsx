@@ -41,7 +41,9 @@ interface BreadcrumbSegmentProps {
 }
 
 const defaultRenderLink = (path: Path, children: ReactNode) => (
-  <a href={path.url}>{children}</a>
+  <Box as="a" href={path.url} textDecoration="none">
+    {children}
+  </Box>
 )
 
 const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
