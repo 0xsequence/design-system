@@ -15,6 +15,7 @@ export const radioItemVariants = recipe({
       disabled: 'default',
     },
     opacity: {
+      hover: '80',
       disabled: '50',
     },
   }),

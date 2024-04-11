@@ -4,12 +4,7 @@ import { forwardRef, Ref } from 'react'
 import { Field, FieldProps } from '~/components/Field'
 import { CheckmarkIcon } from '~/icons'
 
-import {
-  checkboxVariants,
-  CheckboxVariants,
-  indicatorVariants,
-  IndicatorVariants,
-} from './styles.css'
+import { checkboxVariants, CheckboxVariants, indicator } from './styles.css'
 
 export type CheckboxProps = FieldProps &
   CheckboxVariants &
@@ -18,11 +13,11 @@ export type CheckboxProps = FieldProps &
     id?: string
   }
 
-type IndicatorProps = IndicatorVariants & {}
+type IndicatorProps = CheckboxVariants & {}
 
 const Indicator = ({ size = 'sm' }: IndicatorProps) => (
-  <CheckboxPrimitive.Indicator className={indicatorVariants({ size })}>
-    <CheckmarkIcon size={size} />
+  <CheckboxPrimitive.Indicator className={indicator}>
+    <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xs'} />
   </CheckboxPrimitive.Indicator>
 )
 
@@ -55,7 +50,7 @@ export const Checkbox = forwardRef(
           ref={ref}
           {...rest}
         >
-          <Indicator />
+          <Indicator size={size} />
         </CheckboxPrimitive.Root>
       </Field>
     )

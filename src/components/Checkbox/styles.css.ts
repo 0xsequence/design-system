@@ -11,6 +11,7 @@ export const checkboxVariants = recipe({
     borderWidth: 'thin',
     borderStyle: 'solid',
     borderColor: 'borderFocus',
+    background: 'transparent',
     opacity: {
       base: '100',
       hover: '80',
@@ -32,19 +33,11 @@ export const checkboxVariants = recipe({
 
 export type CheckboxVariants = RecipeVariants<typeof checkboxVariants>
 
-export const indicatorVariants = recipe({
-  base: atoms({
-    color: 'text100',
-    background: 'text50',
-    borderRadius: 'xs',
-  }),
-
-  variants: {
-    size: {
-      sm: [{ height: 20, width: 20 }],
-      lg: [{ height: 28, width: 28 }],
-    },
-  },
+export const indicator = atoms({
+  color: 'text100',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 'full',
+  height: 'full',
 })
-
-export type IndicatorVariants = RecipeVariants<typeof indicatorVariants>
