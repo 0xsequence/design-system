@@ -24,7 +24,13 @@ export const Tag: PolymorphicComponent<TagProps, 'div'> = forwardRef(
     const { icon: Icon, label, ...rest } = props
 
     return (
-      <Box className={tagStyle} ref={ref} background="buttonGlass" {...rest}>
+      <Box
+        className={tagStyle}
+        ref={ref}
+        background="buttonGlass"
+        color="text80"
+        {...rest}
+      >
         {Icon && <Icon size="xs" />}
         <Text>{label}</Text>
       </Box>
