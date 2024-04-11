@@ -30,13 +30,13 @@ export const triggerStyle = style([
         opacity: 0.5,
       },
 
-      '&:focus-within': {
-        opacity: '1 !important',
-        // outlineColor: vars.colors.borderFocus,
-        // outlineStyle: 'solid',
-        // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
-        // outlineWidth: vars.borderWidths.thick,
+      '&:focus': {
+        outline: 'none',
+      },
 
+      '&:focus-within': {
+        outline: 'none',
+        opacity: '1 !important',
         boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
         borderColor: 'transparent',
       },

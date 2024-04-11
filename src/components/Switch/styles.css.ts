@@ -24,6 +24,15 @@ export const root = style([
         cursor: 'default',
         opacity: '0.5',
       },
+
+      '&:focus': {
+        outline: 'none',
+      },
+
+      '&:focus-visible': {
+        outline: 'none',
+        boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
+      },
     },
   },
 ])

@@ -1,27 +1,42 @@
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { atoms } from '~/css'
+import { atoms, vars } from '~/css'
 
 export const checkboxVariants = recipe({
-  base: atoms({
-    borderRadius: 'xs',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 'thin',
-    borderStyle: 'solid',
-    borderColor: 'borderFocus',
-    background: 'transparent',
-    opacity: {
-      base: '100',
-      hover: '80',
-      disabled: '50',
+  base: [
+    atoms({
+      borderRadius: 'xs',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderWidth: 'thin',
+      borderStyle: 'solid',
+      borderColor: 'borderFocus',
+      background: 'transparent',
+      opacity: {
+        base: '100',
+        hover: '80',
+        disabled: '50',
+      },
+      cursor: {
+        base: 'pointer',
+        disabled: 'default',
+      },
+    }),
+    {
+      selectors: {
+        '&:focus': {
+          outline: 'none',
+        },
+
+        '&:focus-visible': {
+          outline: 'none',
+          boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
+          borderColor: 'transparent',
+        },
+      },
     },
-    cursor: {
-      base: 'pointer',
-      disabled: 'default',
-    },
-  }),
+  ],
 
   variants: {
     size: {

@@ -1,24 +1,39 @@
 import { style } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { atoms } from '~/css'
+import { atoms, vars } from '~/css'
 
 export const radioItemVariants = recipe({
-  base: atoms({
-    background: 'transparent',
-    borderRadius: 'circle',
-    borderStyle: 'solid',
-    borderColor: 'borderFocus',
-    padding: '0',
-    cursor: {
-      base: 'pointer',
-      disabled: 'default',
+  base: [
+    atoms({
+      background: 'transparent',
+      borderRadius: 'circle',
+      borderStyle: 'solid',
+      borderColor: 'borderFocus',
+      padding: '0',
+      cursor: {
+        base: 'pointer',
+        disabled: 'default',
+      },
+      opacity: {
+        hover: '80',
+        disabled: '50',
+      },
+    }),
+    {
+      selectors: {
+        '&:focus': {
+          outline: 'none',
+        },
+
+        '&:focus-visible': {
+          outline: 'none',
+          boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
+          borderColor: 'transparent',
+        },
+      },
     },
-    opacity: {
-      hover: '80',
-      disabled: '50',
-    },
-  }),
+  ],
 
   variants: {
     size: {

@@ -9,6 +9,7 @@ import { ControlledSelect as Select } from '~/components/Select'
 import { ControlledSwitch as Switch } from '~/components/Switch'
 import { Text } from '~/components/Text'
 import { ControlledTextInput as TextInput } from '~/components/TextInput'
+import { TextArea } from '../TextArea'
 
 import { Form } from './Form'
 export default {
@@ -95,6 +96,14 @@ export const Default: Story = {
             {errors.fileInput?.message && (
               <Text color="negative">{errors.fileInput.message as string}</Text>
             )}
+
+            <TextArea
+              defaultValue=""
+              label="Message"
+              labelLocation="top"
+              name="message"
+              placeholder="Enter a message"
+            />
 
             <Select
               control={control}

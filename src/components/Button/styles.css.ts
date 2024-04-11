@@ -12,13 +12,27 @@ const outlineStyle = {
 } as const
 
 export const buttonVariants = recipe({
-  base: atoms({
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    alignItems: 'center',
-    border: 'none',
-    textDecoration: 'none',
-  }),
+  base: [
+    atoms({
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      alignItems: 'center',
+      border: 'none',
+      textDecoration: 'none',
+    }),
+    {
+      selectors: {
+        '&:focus': {
+          outline: 'none',
+        },
+
+        '&:focus-visible': {
+          outline: 'none',
+          boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
+        },
+      },
+    },
+  ],
 
   variants: {
     variant: {
