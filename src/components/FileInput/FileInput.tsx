@@ -19,8 +19,9 @@ const MIME_TYPES = {
   png: '.png,image/png',
   jpeg: '.jpeg,image/jpeg',
   jpg: '.jpg,image/jpg',
-  images: 'image/*',
+  images: 'image/*, video/*',
   pdf: '.pdf,application/pdf',
+  mp4: '.mp4,video/mp4',
 }
 
 type AllowedMimeTypes = keyof typeof MIME_TYPES
