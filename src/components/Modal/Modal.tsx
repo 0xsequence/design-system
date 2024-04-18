@@ -1,3 +1,5 @@
+'use client'
+
 import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { motion, MotionProps } from 'framer-motion'
 import { PropsWithChildren } from 'react'
