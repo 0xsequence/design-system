@@ -65,13 +65,20 @@ const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
   const [theme, setTheme] = useState<Theme | ThemeOverrides>(
-    props.theme || getTheme(props.scope)
+    props.theme || DEFAULT_THEME
   )
 
   useEffect(() => {
     // Add is-apple class
     ;/Mac/.test(window.navigator.userAgent) &&
       window.document.documentElement.classList.add('is-apple')
+  }, [])
+
+  // Load theme from local storage
+  useEffect(() => {
+    if (!props.theme) {
+      setTheme(getTheme(props.scope))
+    }
   }, [])
 
   // Allow prop theme override
