@@ -79,7 +79,7 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     if (!props.theme) {
       setTheme(getTheme(props.scope))
     }
-  }, [])
+  }, [props.theme, props.scope])
 
   // Allow prop theme override
   useEffect(() => {
