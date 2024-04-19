@@ -2,7 +2,7 @@
 
 import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { motion, MotionProps } from 'framer-motion'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 import { CloseIcon } from '~/icons'
@@ -42,7 +42,15 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     contentProps,
   } = props
   const { root } = useTheme()
-  const container = document.querySelector(root || 'body') as HTMLElement | null
+  const [container, setContainer] = useState<HTMLElement | null | undefined>(
+    undefined
+  )
+
+  useEffect(() => {
+    setContainer(
+      root ? (document.querySelector(root) as HTMLElement | null) : undefined
+    )
+  }, [root])
 
   return (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
