@@ -42,17 +42,13 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     contentProps,
   } = props
   const { root } = useTheme()
-  const [container, setContainer] = useState<HTMLElement | null | undefined>(
-    undefined
-  )
+  const [container, setContainer] = useState<HTMLElement | null>(null)
 
   useEffect(() => {
-    setContainer(
-      root ? (document.querySelector(root) as HTMLElement | null) : undefined
-    )
+    setContainer(document.querySelector(root || 'body') as HTMLElement | null)
   }, [root])
 
-  return (
+  return container ? (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
         <Box className={styles.root}>
@@ -131,5 +127,5 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
         </Box>
       </ModalPrimitive.Portal>
     </ModalPrimitive.Root>
-  )
+  ) : null
 }
