@@ -119,7 +119,6 @@ export const Toast = (props: ToastProps) => {
       open
       forceMount
       asChild
-      duration={variant === 'error' ? Infinity : 5000}
       {...rest}
     >
       <Card
