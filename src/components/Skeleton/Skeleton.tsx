@@ -6,15 +6,15 @@ import { Box, BoxProps } from '../Box'
 
 import * as styles from './styles.css'
 
-type PlaceholderProps = BoxProps & styles.PlaceholderVariants
+type SkeletonProps = BoxProps & styles.SkeletonVariants
 
-export const Placeholder = (props: PlaceholderProps) => {
+export const Skeleton = (props: SkeletonProps) => {
   const { size, ...rest } = props
 
   return (
     <Box
       as={motion.div}
-      className={styles.placeholder({ size })}
+      className={styles.skeleton({ size })}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       borderRadius="sm"

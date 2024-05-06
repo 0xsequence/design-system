@@ -3,7 +3,7 @@ import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 
 import { vars } from '~/css'
 
-const placeholderBackgroundAnimation = keyframes({
+const skeletonAnimation = keyframes({
   '0%': {
     backgroundPosition: '0% 50%',
   },
@@ -15,12 +15,12 @@ const placeholderBackgroundAnimation = keyframes({
   },
 })
 
-export const placeholder = recipe({
+export const skeleton = recipe({
   base: {
     backgroundImage: `linear-gradient(-45deg, transparent, ${vars.colors.backgroundSecondary}, transparent)`,
     backgroundSize: '400% 400%',
     backgroundRepeat: 'no-repeat',
-    animation: `${placeholderBackgroundAnimation} 1s ease infinite`,
+    animation: `${skeletonAnimation} 1s ease infinite`,
   },
 
   variants: {
@@ -49,4 +49,4 @@ export const placeholder = recipe({
   },
 })
 
-export type PlaceholderVariants = RecipeVariants<typeof placeholder>
+export type SkeletonVariants = RecipeVariants<typeof skeleton>
