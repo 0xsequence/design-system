@@ -4,7 +4,7 @@ import { vars } from '~/css'
 
 import { textVariants } from '../Text'
 
-export const digit = style([
+export const digitText = style([
   textVariants({ variant: 'large' }),
   {
     width: '40px',
