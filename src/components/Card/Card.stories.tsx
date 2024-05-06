@@ -31,6 +31,7 @@ export const Default: Story = {
 export const Clickable: Story = {
   args: {
     clickable: true,
+    onClick: () => console.log('Clicked!'),
     children: (
       <>
         <Box flexDirection="column">

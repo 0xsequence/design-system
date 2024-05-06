@@ -1,16 +1,30 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 
-import { atoms } from '~/css'
+import { atoms, vars } from '~/css'
 
 export const cardVariants = recipe({
   variants: {
     clickable: {
-      true: atoms({
-        opacity: {
-          hover: '80',
+      true: [
+        atoms({
+          opacity: {
+            hover: '80',
+          },
+          cursor: 'pointer',
+        }),
+        {
+          selectors: {
+            '&:focus': {
+              outline: 'none',
+            },
+
+            '&:focus-visible': {
+              outline: 'none',
+              boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
+            },
+          },
         },
-        cursor: 'pointer',
-      }),
+      ],
     },
 
     disabled: {
