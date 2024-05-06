@@ -1,6 +1,6 @@
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { atoms, vars } from '~/css'
+import { atoms, focusRing, vars } from '~/css'
 
 import { textVariants } from '../Text/styles.css'
 
@@ -20,18 +20,7 @@ export const buttonVariants = recipe({
       border: 'none',
       textDecoration: 'none',
     }),
-    {
-      selectors: {
-        '&:focus': {
-          outline: 'none',
-        },
-
-        '&:focus-visible': {
-          outline: 'none',
-          boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
-        },
-      },
-    },
+    focusRing,
   ],
 
   variants: {

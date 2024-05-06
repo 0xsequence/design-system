@@ -1,4 +1,4 @@
-import { globalStyle, style } from '@vanilla-extract/css'
+import { ComplexStyleRule, globalStyle, style } from '@vanilla-extract/css'
 
 import { vars } from './vars.css'
 
@@ -33,8 +33,7 @@ globalStyle(`${reset} *:focus, ${reset} *:focus-visible`, {
   outline: 'none',
 })
 
-// Custom Focus Ring
-globalStyle(`${reset} *:focus-visible`, {
+const focusRingRule: ComplexStyleRule = {
   outline: 'none',
 
   // Safari does not apply a border radius to outlines so we will use a boxShadow instead to acheive that same inset effect
@@ -42,7 +41,20 @@ globalStyle(`${reset} *:focus-visible`, {
 
   // Because we use a semi transparent focus ring we want to set any border color to transparent so it doesnt show through
   borderColor: 'transparent',
+}
+
+export const focusRing = style({
+  selectors: {
+    '&:focus': {
+      outline: 'none',
+    },
+
+    '&:focus-visible': focusRingRule,
+  },
 })
+
+// Custom Focus Ring
+globalStyle(`${reset} *:focus-visible`, focusRingRule)
 
 // Custom scrollbars
 globalStyle(`html:not(.is-apple) ${reset} *::-webkit-scrollbar`, {

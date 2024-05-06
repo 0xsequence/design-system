@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
 
-import { atoms, vars } from '~/css'
+import { atoms, focusRing, vars } from '~/css'
 
 export const root = style([
   atoms({
@@ -24,17 +24,9 @@ export const root = style([
         cursor: 'default',
         opacity: '0.5',
       },
-
-      '&:focus': {
-        outline: 'none',
-      },
-
-      '&:focus-visible': {
-        outline: 'none',
-        boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
-      },
     },
   },
+  focusRing,
 ])
 
 export const thumb = style([

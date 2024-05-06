@@ -30,11 +30,12 @@ export const Default: Story = {
 }
 export const Clickable: Story = {
   args: {
+    as: 'button',
     clickable: true,
     onClick: () => console.log('Clicked!'),
     children: (
       <>
-        <Box flexDirection="column">
+        <Box flexDirection="column" textAlign="left">
           <Text variant="large" color="text100">
             Card
           </Text>
@@ -48,11 +49,12 @@ export const Clickable: Story = {
 }
 export const Disabled: Story = {
   args: {
+    as: 'button',
     clickable: true,
     disabled: true,
     children: (
       <>
-        <Box flexDirection="column">
+        <Box flexDirection="column" textAlign="left">
           <Text variant="large" color="text100">
             Card
           </Text>

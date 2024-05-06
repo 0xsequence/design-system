@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css'
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { atoms, vars } from '~/css'
+import { atoms, focusRing } from '~/css'
 
 export const radioItemVariants = recipe({
   base: [
@@ -20,19 +20,7 @@ export const radioItemVariants = recipe({
         disabled: '50',
       },
     }),
-    {
-      selectors: {
-        '&:focus': {
-          outline: 'none',
-        },
-
-        '&:focus-visible': {
-          outline: 'none',
-          boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
-          borderColor: 'transparent',
-        },
-      },
-    },
+    focusRing,
   ],
 
   variants: {

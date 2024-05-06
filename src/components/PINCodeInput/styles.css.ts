@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
 
-import { vars } from '~/css'
+import { focusRing, vars } from '~/css'
 
 import { textVariants } from '../Text'
 
@@ -50,15 +50,7 @@ export const digitInput = style([
       '&:hover:not(&:disabled)': {
         borderColor: vars.colors.borderFocus,
       },
-
-      '&:focus': {
-        outline: 'none',
-      },
-
-      '&:focus-visible': {
-        outline: 'none',
-        boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
-      },
     },
   },
+  focusRing,
 ])

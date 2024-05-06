@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
 
-import { atoms } from '~/css'
+import { atoms, focusRing } from '~/css'
 
 export const COLLAPSED_HEIGHT = '64px'
 
@@ -24,6 +24,7 @@ export const trigger = style([
     appearance: 'none',
     height: COLLAPSED_HEIGHT,
   },
+  focusRing,
 ])
 
 export const content = style([

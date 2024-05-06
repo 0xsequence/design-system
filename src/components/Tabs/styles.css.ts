@@ -14,10 +14,7 @@ export const list = style([
   {
     selectors: {
       '&:has(:focus-visible)': {
-        // outlineColor: vars.colors.borderFocus,
-        // outlineStyle: 'solid',
-        // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
-        // outlineWidth: vars.borderWidths.thick,
+        outline: 'none',
         boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
       },
     },
