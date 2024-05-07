@@ -60,18 +60,23 @@ const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
       {path.label}
     </Text>
   ) : (
-    renderLink(
-      path,
-      <Text
-        variant="small"
-        fontWeight="medium"
-        color="text50"
-        whiteSpace="nowrap"
-        capitalize
-      >
-        {path.label}
+    <>
+      {renderLink(
+        path,
+        <Text
+          variant="small"
+          fontWeight="medium"
+          color="text50"
+          whiteSpace="nowrap"
+          capitalize
+          opacity={{ hover: '80' }}
+        >
+          {path.label}
+        </Text>
+      )}
+      <Text variant="small" fontWeight="medium" color="text50">
         {' / '}
       </Text>
-    )
+    </>
   )
 }
