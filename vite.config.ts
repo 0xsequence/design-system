@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [
     tsconfigPaths(),
     vanillaExtractPlugin({
-      identifiers: 'short', // 'short' | 'debug'
+      identifiers: 'short', // 'short' | 'debug' | ({ hash }) => `seq-${hash}`
     }),
     react(),
     eslint({
@@ -51,8 +51,8 @@ export default defineConfig({
     rollupOptions: {
       external: Object.keys(peerDependencies),
       output: {
-        banner: "'use client';"
-      }
+        banner: "'use client';",
+      },
     },
     minify: false,
   },

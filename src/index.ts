@@ -4,7 +4,6 @@ export {
   atoms,
   breakpoints,
   layers,
-  reset,
   focusRing,
   responsiveStyle,
   selectorize,
