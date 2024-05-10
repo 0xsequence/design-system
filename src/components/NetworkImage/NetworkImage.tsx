@@ -1,17 +1,46 @@
-import { ComponentProps } from 'react'
+import { clsx } from 'clsx'
+import { memo } from 'react'
 
 import { replaceSize, networkImageUrl } from '~/utils/assets'
 
-import { TokenImage } from '../TokenImage'
+import { Box, BoxProps } from '../Box'
+import { Image } from '../Image'
 
-interface NetworkImageProps extends ComponentProps<typeof TokenImage> {
-  chainId: number
-}
+import * as styles from './styles.css'
 
-export const NetworkImage = (props: NetworkImageProps) => {
-  const { chainId, size, ...rest } = props
+type NetworkImageProps = BoxProps &
+  styles.RootVariants & {
+    chainId: number
+    src?: string
+    disableAnimation?: boolean
+  }
 
-  const logoURI = replaceSize(networkImageUrl(chainId), size) + '?v3'
+export const NetworkImage = memo((props: NetworkImageProps) => {
+  const {
+    chainId,
+    borderRadius = 'circle',
+    className,
+    disableAnimation = false,
+    style,
+    src,
+    size = 'md',
+    ...boxProps
+  } = props
 
-  return <TokenImage src={logoURI} size={size} {...rest} />
-}
+  const logoURI = src || replaceSize(networkImageUrl(chainId), size)
+
+  return (
+    <Box
+      className={clsx(className, styles.root({ borderRadius, size }))}
+      style={style}
+      flexShrink="0"
+      {...boxProps}
+    >
+      <Image
+        className={styles.img}
+        disableAnimation={disableAnimation}
+        src={logoURI}
+      />
+    </Box>
+  )
+})
