@@ -23,3 +23,12 @@ export const WithoutImage: Story = {
     symbol: 'SCAM',
   },
 }
+
+export const WithNetwork: Story = {
+  args: {
+    borderRadius: 'circle',
+    size: 'lg',
+    src: 'https://assets.sequence.info/images/networks/medium/37714555429.webp',
+    withNetwork: 1,
+  },
+}

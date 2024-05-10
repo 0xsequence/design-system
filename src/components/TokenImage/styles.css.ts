@@ -5,9 +5,9 @@ import { atoms, selectorize } from '~/css'
 
 export const root = recipe({
   base: atoms({
+    position: 'relative',
     display: 'flex',
     placeItems: 'center',
-    overflow: 'hidden',
   }),
 
   variants: {
@@ -41,13 +41,6 @@ export const root = recipe({
         height: '64px',
         fontSize: '16px',
       },
-    },
-
-    borderRadius: {
-      circle: atoms({ borderRadius: 'circle' }),
-      lg: atoms({ borderRadius: 'lg' }),
-      md: atoms({ borderRadius: 'md' }),
-      sm: atoms({ borderRadius: 'sm' }),
     },
   },
 })
