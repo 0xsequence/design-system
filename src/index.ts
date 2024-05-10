@@ -15,4 +15,4 @@ export * from '~/icons'
 export type { Icon, IconProps } from '~/icons/types'
 
 export * from '~/hooks'
-export * from '~/helpers'
+export * from '~/utils'

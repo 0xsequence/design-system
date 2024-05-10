@@ -1,16 +1,6 @@
-import { kebabize, mapVarName, selectorize, VAR_PREFIX } from './utils'
+import { mapVarName, selectorize, VAR_PREFIX } from './utils'
 
 describe('CSS Utils', () => {
-  it('kebabize', () => {
-    expect(kebabize('')).toEqual('')
-    expect(kebabize('a')).toEqual('a')
-    expect(kebabize('A')).toEqual('a')
-    expect(kebabize('aA')).toEqual('a-a')
-    expect(kebabize('aAa')).toEqual('a-aa')
-    expect(kebabize('aAA')).toEqual('a-aa')
-    expect(kebabize('aAaA')).toEqual('a-aa-a')
-  })
-
   it('selectorize', () => {
     expect(selectorize('')).toEqual('.')
     expect(selectorize('a')).toEqual('.a')

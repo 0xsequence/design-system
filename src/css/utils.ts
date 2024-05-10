@@ -1,12 +1,8 @@
+import { kebabize } from '../utils'
+
 import { breakpoints } from './breakpoints'
 
 export const VAR_PREFIX = 'seq'
-
-export const kebabize = (str: string) =>
-  str.replace(
-    /[A-Z]+(?![a-z])|[A-Z]/g,
-    ($, ofs) => (ofs ? '-' : '') + $.toLowerCase()
-  )
 
 export const mapVarName = (_value: string | null, path: string[]) =>
   `${VAR_PREFIX}-${path.map(kebabize).join('-').replace('.', '_').replace('/', '__')}`
