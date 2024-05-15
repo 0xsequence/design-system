@@ -56,14 +56,11 @@ const cyrb53 = (str: string, seed: number = 0): number => {
 }
 
 const createGradient = (a: number, b: number, c: number) => {
-  const randID = Math.random().toString(36).slice(2, 12)
-
   const hueA = a % 360
   const hueB = (a + 120) % 360
   const hueC = c % 360
 
   return {
-    id: cyrb53(randID),
     a: `hsl(${hueA}deg 100% 40%)`,
     b: `hsl(${hueB}deg 100% 50%)`,
     c: `hsl(${hueC}deg 100% 50%)`,
@@ -140,7 +137,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
         </filter>
 
         <linearGradient
-          id={`gradient-background-${gradients[0].id}`}
+          id={`gradient-background-${address}`}
           x1="0"
           y1="0"
           x2="1"
@@ -150,14 +147,14 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
           <stop offset="1" stopColor={gradients[0].a} />
         </linearGradient>
 
-        {gradients.map(gradient => (
-          <Fragment key={gradient.id}>
-            <radialGradient id={`gradient-primary-${gradient.id}`}>
+        {gradients.map((gradient, idx) => (
+          <Fragment key={idx}>
+            <radialGradient id={`gradient-primary-${address}-${idx}`}>
               <stop offset="0" stopColor={gradient.a} />
               <stop offset="1" stopColor={gradient.b} />
             </radialGradient>
 
-            <radialGradient id={`gradient-secondary-${gradient.id}`}>
+            <radialGradient id={`gradient-secondary-${address}-${idx}`}>
               <stop offset="0" stopColor={gradient.c} />
               <stop offset="1" stopColor={gradient.b} />
             </radialGradient>
@@ -169,20 +166,20 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
         <rect
           width="100%"
           height="100%"
-          fill={`url(#gradient-background-${gradients[0].id})`}
+          fill={`url(#gradient-background-${address})`}
         />
 
         <g filter="url(#blur)">
-          {gradients.map(gradient => (
-            <Fragment key={gradient.id}>
+          {gradients.map((gradient, idx) => (
+            <Fragment key={idx}>
               <circle
-                fill={`url(#gradient-primary-${gradient.id})`}
+                fill={`url(#gradient-primary-${address}-${idx})`}
                 cx={gradient.x}
                 cy={gradient.y}
                 r={gradient.r}
               />
               <circle
-                fill={`url(#gradient-secondary-${gradient.id})`}
+                fill={`url(#gradient-secondary-${address}-${idx})`}
                 cx={gradient.y}
                 cy={gradient.x}
                 r={gradient.r / 2}
