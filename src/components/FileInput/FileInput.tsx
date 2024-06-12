@@ -22,6 +22,8 @@ const MIME_TYPES = {
   images: 'image/*, video/*',
   pdf: '.pdf,application/pdf',
   mp4: '.mp4,video/mp4',
+  csv: '.csv,text/csv',
+  json: '.json,application/json',
 }
 
 type AllowedMimeTypes = keyof typeof MIME_TYPES
