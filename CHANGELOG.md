@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 1.7.2
+
+### Patch Changes
+
+- Adding json types to FileInput allowed mimetypes
+
 ## 1.7.1
 
 ### Patch Changes
