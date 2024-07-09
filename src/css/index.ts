@@ -1,3 +1,5 @@
+import './reset.css'
+
 export { breakpoints } from './breakpoints'
 export type { Breakpoint } from './breakpoints'
 
