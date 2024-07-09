@@ -1,8 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react'
 
 import { Box } from '~/components/Box'
+import { NetworkImage } from '~/components/NetworkImage'
 import { Text } from '~/components/Text'
-import { TokenImage } from '~/components/TokenImage'
 
 import { Select } from './Select'
 
@@ -66,7 +66,7 @@ export const Custom: Story = {
       {
         label: (
           <Box alignItems="center" gap="2">
-            <TokenImage src="https://sequence.app/static/images/1.cb52a9be955ddf5eacbe.png" />
+            <NetworkImage chainId={1} />
             <Text>Mainnet</Text>
           </Box>
         ),
@@ -75,7 +75,7 @@ export const Custom: Story = {
       {
         label: (
           <Box alignItems="center" gap="2">
-            <TokenImage src="https://sequence.app/static/images/137.1c36e6b6953be3aacff4.png" />
+            <NetworkImage chainId={137} />
             <Text>Polygon</Text>
           </Box>
         ),
@@ -84,7 +84,7 @@ export const Custom: Story = {
       {
         label: (
           <Box alignItems="center" gap="2">
-            <TokenImage src="https://sequence.app/static/images/56.ef53ab0cdafe86027deb.png" />
+            <NetworkImage chainId={56} />
             <Text>BNB Smart Chain</Text>
           </Box>
         ),
@@ -93,7 +93,7 @@ export const Custom: Story = {
       {
         label: (
           <Box alignItems="center" gap="2">
-            <TokenImage src="https://sequence.app/static/images/43114.9b2c1709ab950bf92deb.png" />
+            <NetworkImage chainId={43114} />
             <Text>Avalanche</Text>
           </Box>
         ),
@@ -102,11 +102,11 @@ export const Custom: Story = {
       {
         label: (
           <Box alignItems="center" gap="2">
-            <TokenImage src="https://sequence.app/static/images/42161.a74b6921ab2c28356575.png" />
+            <NetworkImage chainId={42161} />
             <Text>Arbitrum</Text>
           </Box>
         ),
-        value: 'gnosis',
+        value: 'arbitrum',
       },
     ],
   },
