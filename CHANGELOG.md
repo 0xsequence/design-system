@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 1.7.3
+
+### Patch Changes
+
+- Updated deps and Fixed border box sizing issue
+
 ## 1.7.2
 
 ### Patch Changes
