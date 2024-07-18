@@ -4,7 +4,7 @@ const SEQUENCE_ASSETS_URL_PREFIX = 'https://assets.sequence.info/'
 
 // Because the assets on assets.sequence.info are not versioned, we need to occasionally update the version
 // in order to cache bust the assets when an asset with the same name is updated.
-const VERSION = 3
+const VERSION = 4
 
 type Size = 'small' | 'medium' | 'large'
 type SizeAbbreviation = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
