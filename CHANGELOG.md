@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 1.7.5
+
+### Patch Changes
+
+- Updating version again
+
 ## 1.7.4
 
 ### Patch Changes
