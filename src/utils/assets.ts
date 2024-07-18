@@ -4,7 +4,7 @@ const SEQUENCE_ASSETS_URL_PREFIX = 'https://assets.sequence.info/'
 
 // Because the assets on assets.sequence.info are not versioned, we need to occasionally update the version
 // in order to cache bust the assets when an asset with the same name is updated.
-const VERSION = 4
+const VERSION = 5
 
 type Size = 'small' | 'medium' | 'large'
 type SizeAbbreviation = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -34,7 +34,9 @@ export const tokenImageUrl = (
 ) => {
   return (
     SEQUENCE_ASSETS_URL_PREFIX +
-    `images/tokens/${getSize(size)}/${chainId}/${contractAddress.toLowerCase()}.webp?v${VERSION}`
+    `images/tokens/${getSize(
+      size
+    )}/${chainId}/${contractAddress.toLowerCase()}.webp?v${VERSION}`
   )
 }
 
