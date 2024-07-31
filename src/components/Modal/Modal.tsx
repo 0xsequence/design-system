@@ -1,6 +1,7 @@
 'use client'
 
 import * as ModalPrimitive from '@radix-ui/react-dialog'
+import { clsx } from 'clsx'
 import { motion, MotionProps } from 'framer-motion'
 import { PropsWithChildren, useEffect, useState } from 'react'
 
@@ -24,6 +25,7 @@ export type ModalProps = {
   scroll?: boolean
   overlayProps?: MotionProps
   contentProps?: MotionProps
+  rootProps?: BoxProps
 } & styles.ContentVariants
 
 // const portalRoot = document.getElementById('portal')
@@ -40,6 +42,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     size = 'lg',
     overlayProps,
     contentProps,
+    rootProps = {},
   } = props
   const { root } = useTheme()
   const [container, setContainer] = useState<HTMLElement | null>(null)
@@ -51,7 +54,10 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   return container ? (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
-        <Box className={styles.root}>
+        <Box
+          {...rootProps}
+          className={clsx(styles.root, rootProps?.className)}
+        >
           <Box
             as={ModalPrimitive.Overlay}
             asChild
