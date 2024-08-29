@@ -95,7 +95,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "ethers": "5.7.2",
     "framer-motion": "^7.6.7",
-    "happy-dom": "^15.4.2",
+    "happy-dom": "^15.5.0",
     "husky": "^9.1.5",
     "postcss": "^8.4.41",
     "postcss-preset-env": "^10.0.2",
