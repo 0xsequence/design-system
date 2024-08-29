@@ -1,5 +1,3 @@
-'use client'
-
 import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { clsx } from 'clsx'
 import { motion, MotionProps } from 'framer-motion'
@@ -54,10 +52,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   return container ? (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
-        <Box
-          {...rootProps}
-          className={clsx(styles.root, rootProps?.className)}
-        >
+        <Box {...rootProps} className={clsx(styles.root, rootProps?.className)}>
           <Box
             as={ModalPrimitive.Overlay}
             asChild

@@ -1,5 +1,3 @@
-'use client'
-
 import { setElementVars } from '@vanilla-extract/dynamic'
 import {
   createContext,

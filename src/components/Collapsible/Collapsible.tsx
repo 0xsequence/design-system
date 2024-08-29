@@ -1,5 +1,3 @@
-'use client'
-
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
