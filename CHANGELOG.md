@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 1.7.6
+
+### Patch Changes
+
+- Adding .seq-root className to custom root containers and modal roots in order to specify root level styling like border box styling
+
 ## 1.7.5
 
 ### Patch Changes
