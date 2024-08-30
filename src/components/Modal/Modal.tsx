@@ -52,7 +52,10 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   return container ? (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
-        <Box {...rootProps} className={clsx(styles.root, rootProps?.className)}>
+        <Box
+          {...rootProps}
+          className={clsx('seq-root', styles.root, rootProps?.className)}
+        >
           <Box
             as={ModalPrimitive.Overlay}
             asChild
