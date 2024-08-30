@@ -101,6 +101,11 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
           colors: theme as ColorTokens,
         })
       }
+
+      // Add seq-root class to the root element of custom root
+      if (props.root) {
+        rootEl.classList.add('seq-root')
+      }
     }
   }, [theme, props.root])
 
