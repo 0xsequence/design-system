@@ -1,0 +1,11 @@
+import{T as s}from"./TextArea-BImCP6zq.js";import"./jsx-runtime-CexXSJP5.js";import"./index-BP8_t0zE.js";import"./Box-RD3hnnUd.js";import"./helpers.css.ts.vanilla-9D4iT2FY.js";/* empty css                            */import"./Field-DexVnil-.js";import"./Text-BfTC5qtR.js";import"./typography-BClcJN8w.js";/* empty css                              */import"./createRuntimeFn-62c9670f.esm-UsP-ae2O.js";const b={title:"Forms/TextArea",component:s},e={args:{borderRadius:"md",label:"This the label",description:"This is the description",placeholder:"This is the placeholder",labelLocation:"top",rows:3,resize:!0}};var r,o,t;e.parameters={...e.parameters,docs:{...(r=e.parameters)==null?void 0:r.docs,source:{originalSource:`{
+  args: {
+    borderRadius: 'md',
+    label: 'This the label',
+    description: 'This is the description',
+    placeholder: 'This is the placeholder',
+    labelLocation: 'top',
+    rows: 3,
+    resize: true
+  }
+}`,...(t=(o=e.parameters)==null?void 0:o.docs)==null?void 0:t.source}}};const x=["Default"];export{e as Default,x as __namedExportsOrder,b as default};
