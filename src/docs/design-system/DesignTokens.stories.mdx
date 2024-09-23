@@ -7,10 +7,11 @@ import { tokens } from '../../tokens'
 # Design Tokens
 
 Design tokens are the data representaion, the base properties and their values, on which design system is constructed. These tokens define spacing, typography, weights, colors, animation, shadows, etc.
+The tokens map to CSS variables and are used to maintain consistency across the design system.
 
 ### Space
 
-**tokens.space**
+**tokens.space** --seq-space-[value]
 
 <div>
   {Object.entries(tokens.space).map(([key, value]) => (
@@ -22,7 +23,7 @@ Design tokens are the data representaion, the base properties and their values, 
 
 ### Border
 
-**tokens.radii**
+**tokens.radii** --seq-radii-[value]
 
 <div>
   {Object.entries(tokens.radii).map(([key, value]) => (
@@ -32,7 +33,7 @@ Design tokens are the data representaion, the base properties and their values, 
   ))}
 </div>
 
-**tokens.borderWidths**
+**tokens.borderWidths** --seq-border-widths-[value]
 
 <div>
   {Object.entries(tokens.borderWidths).map(([key, value]) => (
@@ -42,9 +43,21 @@ Design tokens are the data representaion, the base properties and their values, 
   ))}
 </div>
 
+### Z-Index
+
+**tokens.zIndex** --seq-z-index-[value]
+
+<div>
+  {Object.entries(tokens.zIndex).map(([key, value]) => (
+    <li key={key}>
+      <b>{key}:</b> {value} (--seq-z-index-{value})
+    </li>
+  ))}
+</div>
+
 ### Typography
 
-**tokens.fonts**
+**tokens.fonts** --seq-fonts-[value]
 
 <div>
   {Object.entries(tokens.fonts).map(([key, value]) => (
@@ -54,7 +67,7 @@ Design tokens are the data representaion, the base properties and their values, 
   ))}
 </div>
 
-**tokens.fontSizes**
+**tokens.fontSizes** --seq-font-sizes-[value]
 
 <div>
   {Object.entries(tokens.fontSizes).map(([key, value]) => (
@@ -64,7 +77,7 @@ Design tokens are the data representaion, the base properties and their values, 
   ))}
 </div>
 
-**tokens.fontWeights**
+**tokens.fontWeights** --seq-font-weights-[value]
 
 <div>
   {Object.entries(tokens.fontWeights).map(([key, value]) => (
@@ -74,7 +87,7 @@ Design tokens are the data representaion, the base properties and their values, 
   ))}
 </div>
 
-**tokens.letterSpacings**
+**tokens.letterSpacings** --seq-letterSpacings-[value]
 
 <div>
   {Object.entries(tokens.letterSpacings).map(([key, value]) => (
@@ -84,7 +97,7 @@ Design tokens are the data representaion, the base properties and their values, 
   ))}
 </div>
 
-**tokens.lineHeights**
+**tokens.lineHeights** --seq-line-heights-[value]
 
 <div>
   {Object.entries(tokens.lineHeights).map(([key, value]) => (

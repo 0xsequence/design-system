@@ -10,6 +10,7 @@ import {
   letterSpacings,
   lineHeights,
 } from './typography'
+import { zIndex } from './z-index'
 
 export const tokens = {
   blur,
@@ -23,6 +24,7 @@ export const tokens = {
   opacity,
   radii,
   space,
+  zIndex,
 }
 
 export { colors } from './color'
