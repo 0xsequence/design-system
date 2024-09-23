@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 1.7.7
+
+### Patch Changes
+
+- Fixed TokenImage withNetwork sizing and background cutout
+
 ## 1.7.6
 
 ### Patch Changes
