@@ -95,3 +95,13 @@ export const fallback = style([
     fontSize: 'inherit',
   },
 ])
+
+// When using `withNetwork` prop we need to cut out the bottom right corner so the network image can be displayed
+// with a cutout effect showing the background behind the token image
+export const cutout = style({
+  maskImage: `radial-gradient(
+    circle at 82% 82%,
+    transparent 22%,
+    black 0
+  )`,
+})

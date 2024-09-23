@@ -26,9 +26,9 @@ export const WithoutImage: Story = {
 
 export const WithNetwork: Story = {
   args: {
-    borderRadius: 'circle',
+    symbol: 'USDC',
     size: 'lg',
-    src: 'https://assets.sequence.info/images/networks/medium/37714555429.webp',
-    withNetwork: 1,
+    src: 'https://assets.sequence.info/images/tokens/medium/137/0x2791bca1f2de4661ed88a30c99a7a9449aa84174.webp',
+    withNetwork: 137,
   },
 }

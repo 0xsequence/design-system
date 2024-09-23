@@ -18,6 +18,9 @@ type TokenImageProps = BoxProps &
     withNetwork?: number
   }
 
+const NETWORK_IMAGE_SIZE = '40%'
+const NETWORK_IMAGE_OFFSET = '-2%'
+
 export const TokenImage = memo((props: TokenImageProps) => {
   const {
     borderRadius = 'circle',
@@ -40,7 +43,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
     >
       {src ? (
         <Image
-          className={styles.img}
+          className={clsx(styles.img, withNetwork && styles.cutout)}
           disableAnimation={disableAnimation}
           borderRadius={borderRadius}
           overflow="hidden"
@@ -48,7 +51,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
         />
       ) : (
         <Text
-          className={styles.fallback}
+          className={clsx(styles.fallback, withNetwork && styles.cutout)}
           variant="normal"
           fontWeight="medium"
           color="text50"
@@ -60,22 +63,17 @@ export const TokenImage = memo((props: TokenImageProps) => {
         </Text>
       )}
       {withNetwork && (
-        <Box
+        <NetworkImage
+          chainId={withNetwork}
           position="absolute"
           zIndex="1"
-          borderRadius="circle"
-          borderWidth="thin"
-          borderStyle="solid"
-          borderColor="backgroundPrimary"
-          background="backgroundPrimary"
-          placeItems="center"
-          style={{ width: 16 + 2, height: 16 + 2, right: -2, bottom: -2 }}
-        >
-          <NetworkImage
-            chainId={withNetwork}
-            style={{ width: 16, height: 16 }}
-          />
-        </Box>
+          style={{
+            width: NETWORK_IMAGE_SIZE,
+            height: NETWORK_IMAGE_SIZE,
+            right: NETWORK_IMAGE_OFFSET,
+            bottom: NETWORK_IMAGE_OFFSET,
+          }}
+        />
       )}
     </Box>
   )
