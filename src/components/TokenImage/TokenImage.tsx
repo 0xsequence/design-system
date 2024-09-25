@@ -67,6 +67,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
           chainId={withNetwork}
           position="absolute"
           zIndex="1"
+          disableAnimation={disableAnimation}
           style={{
             width: NETWORK_IMAGE_SIZE,
             height: NETWORK_IMAGE_SIZE,
