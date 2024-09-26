@@ -1,5 +1,6 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs'
-
+import { tokens } from '../../tokens'
+import { capitalize } from '../../utils/string'
 import { vars } from '../../css'
 
 <Meta title="Design System/Colors" />
@@ -8,8 +9,48 @@ import { vars } from '../../css'
 
 Color schemes, scales, accents, and gradients.
 
+### Base Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Base"
+    subtitle="--seq-color-[name]"
+    colors={{
+      black: '#000000',
+      white: '#ffffff',
+      transparent: 'transparent',
+    }}
+  />
+</ColorPalette>
+
+### Palettes
+
+All colors are defined in palettes. Each palette has a name and a scale. The scale is a number that represents the intensity of the color. For example, `--seq-red-100` is a light shade of the red color, while `--seq-red-900` is a dark shade of the brand color.
+
+<ColorPalette>
+  {Object.entries(tokens.colors.palettes).map(([key, value]) => (
+    <ColorItem
+      key={key}
+      title={capitalize(key)}
+      subtitle={`--seq-${key}-[scale]`}
+      colors={value}
+    />
+  ))}
+</ColorPalette>
+
+### Gradients
+
+### Semantic Colors
+
+Semantic colors point to color palettes and are used to give a name to a color that is used in a specific context. For example, `primary` is a semantic color that points to a color in the `brand` palette. This way, if the brand color changes, the `primary` color will change as well.
+
 <ColorPalette>
   {Object.entries(vars.colors).map(([key, value]) => (
-    <ColorItem key={key} title={key} colors={{ [key]: value }} />
+    <ColorItem
+      key={key}
+      title={key}
+      subtitle={`--seq-colors-${key}`}
+      colors={{ [key]: value }}
+    />
   ))}
 </ColorPalette>
