@@ -13,6 +13,15 @@ export const baseVars = createGlobalThemeContract(baseTokens, mapVarName)
 
 createGlobalTheme(':root', baseVars, baseTokens)
 
+// Color Palettes
+export const colorPaletteVars = createGlobalThemeContract(
+  colors.palettes,
+  mapVarName
+)
+
+createGlobalTheme(':root', colorPaletteVars, colors.palettes)
+
+// Color Schemes (light | dark)
 const makeColorScheme = (mode: ColorScheme = 'dark') => {
   return {
     colors: { ...colors[mode] },
