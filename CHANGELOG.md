@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 1.7.8
+
+### Patch Changes
+
+- Fixing disableAnimation on TokenImage withNetwork
+
 ## 1.7.7
 
 ### Patch Changes
