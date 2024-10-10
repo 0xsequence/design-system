@@ -1,3 +1,5 @@
+import { cva } from 'class-variance-authority'
+
 export const fonts = {
   inherit: 'inherit',
   body: `Inter, system-ui, Roboto, "Helvetica Neue", Arial`,
@@ -115,3 +117,94 @@ export const text: Record<TextVariant, TextVariantAtomProps> = {
     fontWeight: 'normal',
   },
 }
+
+// Tailwind class variants
+export const textVariants = cva(undefined, {
+  variants: {
+    variant: {
+      inherit: ['text-inherit'],
+      xlarge: [
+        'text-3xl',
+        'font-bold',
+        'font-sans',
+        'leading-9',
+        'tracking-none',
+      ],
+      large: [
+        'text-xl',
+        'font-semibold',
+        'font-sans',
+        'leading-7',
+        'tracking-normal',
+      ],
+      medium: [
+        'text-base',
+        'font-bold',
+        'font-sans',
+        'leading-6',
+        'tracking-normal',
+      ],
+      normal: [
+        'text-sm',
+        'font-normal',
+        'font-sans',
+        'leading-5',
+        'tracking-wide',
+      ],
+      small: [
+        'text-xs',
+        'font-medium',
+        'font-sans',
+        'leading-4',
+        'tracking-wide',
+      ],
+      xsmall: [
+        'text-xs',
+        'font-bold',
+        'font-sans',
+        'leading-4',
+        'tracking-wide',
+      ],
+      code: [
+        'text-sm',
+        'font-normal',
+        'font-mono',
+        'leading-5',
+        'tracking-normal',
+      ],
+    },
+
+    ellipsis: {
+      true: ['overflow-hidden', 'whitespace-nowrap', 'overflow-ellipsis'],
+    },
+
+    italic: {
+      true: ['italic'],
+    },
+
+    underline: {
+      true: ['underline'],
+    },
+
+    uppercase: {
+      true: ['uppercase'],
+    },
+
+    capitalize: {
+      true: ['capitalize'],
+    },
+
+    hidden: {
+      true: [
+        'border-0',
+        'clip',
+        'h-1',
+        'm-[-1px]',
+        'overflow-hidden',
+        'p-0',
+        'absolute',
+        'w-[1px]',
+      ],
+    },
+  },
+})
