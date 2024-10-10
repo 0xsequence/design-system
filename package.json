@@ -99,7 +99,7 @@
     "framer-motion": "^7.6.7",
     "happy-dom": "^15.5.0",
     "husky": "^9.1.5",
-    "jscodeshift": "^0.15.0",
+    "jscodeshift": "^17.0.0",
     "jsdom": "^22.1.0",
     "postcss": "^8.4.41",
     "postcss-preset-env": "^10.0.2",
