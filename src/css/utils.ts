@@ -22,6 +22,3 @@ export const responsiveStyle = (rules: {
 
 export const selectorize = (classNames: string) =>
   '.' + classNames.split(' ').join('.')
-
-export const isTruthy = <T>(value: T | undefined | null): value is T =>
-  Boolean(value)

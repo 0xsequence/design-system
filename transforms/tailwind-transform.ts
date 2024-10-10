@@ -11,7 +11,7 @@ import {
   TailwindMapName,
   TAILWIND_MAP_NAMES,
 } from '../src/css/tailwind'
-import { isTruthy } from '../src/css/utils'
+import { isTruthy } from '../src/utils'
 
 const COMPONENTS = ['Box', 'Text']
 

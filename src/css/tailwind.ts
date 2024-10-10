@@ -1,5 +1,6 @@
+import { isTruthy, kebabize } from '../utils'
+
 import { Atoms } from './atoms'
-import { isTruthy, kebabize } from './utils'
 
 type TextVariant = 'ellipsis' | 'capitalize' | 'lowercase' | 'uppercase'
 
@@ -190,6 +191,17 @@ const tailwindMap: {
         return 'self-stretch'
       case 'baseline':
         return 'self-baseline'
+    }
+
+    return null
+  },
+
+  textDecoration: value => {
+    switch (value) {
+      case 'none':
+        return 'no-underline'
+      case 'underline':
+        return 'underline'
     }
 
     return null
