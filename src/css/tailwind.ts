@@ -6,13 +6,16 @@ type TextVariant = 'ellipsis' | 'capitalize' | 'lowercase' | 'uppercase'
 
 export type TailwindMapName = keyof Required<Atoms> | TextVariant
 
-export type TailwindMapValue = string | ((value: string) => string | null)
+type TailwindAtomMap = {
+  [K in keyof Required<Atoms>]: string | ((value: Atoms[K]) => string | null)
+} & { [K in TextVariant]: string }
+
+type Side = 't' | 'b' | 'l' | 'r'
+type Corner = 'tl' | 'tr' | 'bl' | 'br'
 
 const borderRadius =
-  (
-    side?: 't' | 'b' | 'l' | 'r' | 'tl' | 'tr' | 'bl' | 'br'
-  ): TailwindMapValue =>
-  (value: string) => {
+  (side?: Side | Corner): TailwindAtomMap['borderRadius'] =>
+  value => {
     const radii = {
       none: 'none',
       xs: '', // 4px
@@ -30,8 +33,8 @@ const borderRadius =
   }
 
 const borderWidth =
-  (side?: 't' | 'b' | 'l' | 'r'): TailwindMapValue =>
-  (value: string) => {
+  (side?: Side): TailwindAtomMap['borderWidth'] =>
+  value => {
     const widths = {
       none: '0',
       thin: '', // '0.075rem', no suffix for 1px border in tailwind
@@ -40,14 +43,12 @@ const borderWidth =
 
     const widthValue = widths[value as keyof typeof widths]
 
-    return `border${side ? `-${side}` : ''}${
-      widthValue ? `-${widthValue}` : ''
-    }`
+    return `border${side ? `-${side}` : ''}${widthValue ? `-${widthValue}` : ''}`
   }
 
 const borderColor =
-  (side?: 't' | 'b' | 'l' | 'r'): TailwindMapValue =>
-  (value: string) => {
+  (side?: Side): TailwindAtomMap['borderColor'] =>
+  value => {
     const colors = {
       normal: 'normal',
       focus: 'focus',
@@ -55,14 +56,10 @@ const borderColor =
 
     const colorValue = colors[value as keyof typeof colors]
 
-    return `border${side ? `-${side}` : ''}${
-      colorValue ? `-${colorValue}` : ''
-    }`
+    return `border${side ? `-${side}` : ''}${colorValue ? `-${colorValue}` : ''}`
   }
 
-const tailwindMap: {
-  [key in TailwindMapName]: TailwindMapValue
-} = {
+const tailwindMap: TailwindAtomMap = {
   position: '', // Empty string means just pass the value prefixless
   margin: 'm',
   marginTop: 'mt',
@@ -151,6 +148,15 @@ const tailwindMap: {
   borderBottomColor: borderColor('b'),
   borderLeftColor: borderColor('l'),
   borderRightColor: borderColor('r'),
+
+  border: value => {
+    switch (value) {
+      case 'none':
+        return 'border-none'
+    }
+
+    return null
+  },
 
   // tailwind only supports a single border style at a time so we can't specify a side here - just map all to border
   borderStyle: 'border',
@@ -290,8 +296,9 @@ const tailwindMap: {
     return null
   },
 
-  color: value => `text-${kebabize(value)}`,
-  background: value => `bg-${kebabize(value.replace('background', ''))}`,
+  color: value => `text-${kebabize(value as string)}`,
+  background: value =>
+    `bg-${kebabize((value as string).replace('background', ''))}`,
 
   placeItems: value => {
     switch (value) {
@@ -451,10 +458,10 @@ const tailwindMap: {
 export const TAILWIND_MAP_NAMES = Object.keys(tailwindMap) // as any as TailwindMapName[]
 
 export const getTailwindClassName = (
-  key: string,
+  key: TailwindMapName,
   value?: string
 ): string | null => {
-  const mapValue = tailwindMap[key as TailwindMapName]
+  const mapValue = tailwindMap[key] as any
 
   if (!mapValue) {
     return null
