@@ -33,7 +33,7 @@ export const Progress = (props: ProgressProps) => {
         }}
         height="full"
         borderRadius="circle"
-        background={color}
+        // background={color}
       />
     </Box>
   )

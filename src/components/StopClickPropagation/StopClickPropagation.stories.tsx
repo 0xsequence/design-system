@@ -18,7 +18,7 @@ const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
   return (
     <Box
       alignItems="center"
-      background={{ base: 'backgroundSecondary', hover: 'backgroundBackdrop' }}
+      // background={{ base: 'backgroundSecondary', hover: 'backgroundBackdrop' }}
       borderRadius="md"
       cursor="pointer"
       flexDirection="row"

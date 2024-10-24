@@ -101,12 +101,12 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
     <Box
       as="svg"
       className={clsx(className, styles.avatar({ size }))}
-      viewBox={`0 0 ${SIZE} ${SIZE}`}
-      version="1.1"
+      // viewBox={`0 0 ${SIZE} ${SIZE}`}
+      // version="1.1"
+      // xmlns="http://www.w3.org/2000/svg"
       flexShrink="0"
       borderRadius="circle"
       overflow="hidden"
-      xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
       <defs>

@@ -1,4 +1,4 @@
-import { clsx } from 'clsx'
+import { VariantProps } from 'class-variance-authority'
 import {
   createElement,
   ElementType,
@@ -10,18 +10,19 @@ import {
 } from 'react'
 
 import { atoms, Atoms } from '~/css'
+import { boxVariants } from '~/css/variants'
 
 export type BoxProps<T extends ElementType = 'div'> =
   ComponentPropsWithoutRef<T> & {
     as?: T
-    sx?: Atoms
+    sx?: VariantProps<typeof boxVariants>
     ref?: ComponentPropsWithRef<T>['ref'] | null
-  } & Atoms
+  } & VariantProps<typeof boxVariants>
 
 export type PolymorphicProps<P, T extends ElementType> = P & BoxProps<T>
 
 export type PolymorphicComponent<P, D extends ElementType = 'div'> = <
-  T extends ElementType = D
+  T extends ElementType = D,
 >(
   props: PolymorphicProps<P, T>
 ) => ReactElement | null
@@ -42,13 +43,12 @@ export const Box: PolymorphicComponent<{}, 'div'> = forwardRef(
       }
     }
 
-    const atomicClasses = atoms({
-      ...atomProps,
-      ...sx,
-    })
-
     return createElement(as, {
-      className: clsx(atomicClasses, className),
+      className: boxVariants({
+        ...atomProps,
+        ...sx,
+        className,
+      }),
       ...nativeProps,
       ref,
     })
