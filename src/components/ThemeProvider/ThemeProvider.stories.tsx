@@ -51,7 +51,7 @@ export const Nested = () => {
               <div id="app2">
                 <ThemeProvider root="#app2" scope="application2" theme="dark">
                   <Card background="backgroundPrimary" marginTop="4">
-                    <Collapsible label="Nested Application 2">
+                    <Collapsible label="Nested Application 2 (Dark)">
                       <Text variant="normal" color="text100">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
@@ -85,7 +85,31 @@ export const Nested = () => {
                   }}
                 >
                   <Card background="backgroundPrimary" marginTop="4">
-                    <Collapsible label="Nested Application 3">
+                    <Collapsible label="Nested Application 3 (Custom Theme)">
+                      <Text variant="normal" color="text100">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                      </Text>
+                    </Collapsible>
+                  </Card>
+                </ThemeProvider>
+              </div>
+
+              <div id="app4">
+                <ThemeProvider
+                  root="#app4"
+                  scope="application4"
+                  prefersColorScheme
+                >
+                  <Card background="backgroundPrimary" marginTop="4">
+                    <Collapsible label="Nested Application 4 (Prefers Color Scheme)">
                       <Text variant="normal" color="text100">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
