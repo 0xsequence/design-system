@@ -39,9 +39,10 @@ interface ThemeProviderProps {
   theme?: Theme | ThemeOverrides
   root?: string
   scope?: string
+  prefersColorScheme?: boolean
 }
 
-const getTheme = (scope?: string): Theme => {
+const getPersistedTheme = (scope?: string) => {
   const persistedTheme = localStorage.getItem(
     getStorageKey(scope)
   ) as Theme | null
@@ -50,13 +51,17 @@ const getTheme = (scope?: string): Theme => {
     return persistedTheme
   }
 
-  // else if (matchMedia(`(prefers-color-scheme: light)`).matches) {
-  //   return 'light'
-  // } else if (matchMedia(`(prefers-color-scheme: dark)`).matches) {
-  //   return 'dark'
-  // }
+  return null
+}
 
-  return DEFAULT_THEME
+const getPreferredColorScheme = () => {
+  if (matchMedia(`(prefers-color-scheme: light)`).matches) {
+    return 'light'
+  } else if (matchMedia(`(prefers-color-scheme: dark)`).matches) {
+    return 'dark'
+  }
+
+  return null
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null)
@@ -72,19 +77,19 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
       window.document.documentElement.classList.add('is-apple')
   }, [])
 
-  // Load theme from local storage
   useEffect(() => {
-    if (!props.theme) {
-      setTheme(getTheme(props.scope))
-    }
-  }, [props.theme, props.scope])
+    const theme =
+      // Use the theme prop if it exists
+      props.theme ||
+      // or use the persisted theme from local store if it exists
+      getPersistedTheme(props.scope) ||
+      // or use the browser's preferred color scheme if enabled
+      (props.prefersColorScheme && getPreferredColorScheme()) ||
+      // or use the default theme
+      DEFAULT_THEME
 
-  // Allow prop theme override
-  useEffect(() => {
-    if (props.theme) {
-      setTheme(props.theme)
-    }
-  }, [props.theme])
+    setTheme(theme)
+  }, [props.theme, props.scope, props.prefersColorScheme])
 
   // Set the data-theme attribtute on the document root element
   useEffect(() => {
