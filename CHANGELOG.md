@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 1.8.0
+
+### Minor Changes
+
+- Added color palettes
+
 ## 1.7.8
 
 ### Patch Changes
