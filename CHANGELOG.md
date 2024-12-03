@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 1.8.1
+
+### Patch Changes
+
+- Fixing PINCodeInput paste in firefox
+
 ## 1.8.0
 
 ### Minor Changes
