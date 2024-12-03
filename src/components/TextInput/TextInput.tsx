@@ -63,22 +63,25 @@ export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
                 styles.wrapVariants({ borderRadius })
               )}
             >
-              {LeftIcon && <LeftIcon size="sm" />}
+              <Box className={styles.inputContainer}>
+                {LeftIcon && <LeftIcon size="sm" />}
 
-              <Box
-                as={as}
-                autoComplete={autoComplete}
-                spellCheck="false"
-                className={styles.input({ numeric })}
-                disabled={disabled}
-                id={id ?? name}
-                name={name}
-                ref={ref}
-                type={type}
-                {...rest}
-              />
+                <Box
+                  as={as}
+                  autoComplete={autoComplete}
+                  spellCheck="false"
+                  className={styles.input({ numeric })}
+                  disabled={disabled}
+                  id={id ?? name}
+                  name={name}
+                  ref={ref}
+                  type={type}
+                  {...rest}
+                />
 
-              {RightIcon && <RightIcon size="sm" />}
+                {RightIcon && <RightIcon size="sm" />}
+              </Box>
+
               {controls}
             </Box>
           </Box>
