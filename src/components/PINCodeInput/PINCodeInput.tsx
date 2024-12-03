@@ -39,6 +39,7 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
     const curr = [...value]
     curr[idx] = character
 
+    // Don't advance the cursor if the character is empty
     if (character !== '') {
       inputRefs[idx + 1]?.current?.focus()
     }
@@ -98,6 +99,8 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
     idx: number,
     ev: React.ClipboardEvent<HTMLInputElement>
   ) => {
+    ev.preventDefault()
+
     const pasted = ev.clipboardData.getData('text/plain')
     const filtered = pasted.replace(/\D/g, '')
     const re = new RegExp(`^\\d{${digits}}$`)
