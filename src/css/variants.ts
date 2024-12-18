@@ -1,6 +1,8 @@
 /**
  * boxVariants are variants that convert between the old vanilla-extract
- * atomic sprinkle properties and values to tailwind classes
+ * atomic sprinkle properties and values to tailwind classes.
+ *
+ * ie. { borderRadius: 'circle' } => 'rounded-full'
  */
 
 import { cva } from 'class-variance-authority'
@@ -84,107 +86,64 @@ const borderRadius = (side?: Side | Corner) => {
   }
 }
 
-const margins = (side?: Side | 'x' | 'y') => {
-  const margin = (value: number | string, side?: Side | 'x' | 'y') => {
-    let className = 'm'
+const spaces = (prefix: string, optionalSpace?: { [key: string]: string }) => {
+  return Object.keys({ ...vars.space, ...optionalSpace }).reduce<{
+    [key: string]: string
+  }>((acc, key) => {
+    acc[key] = `${prefix}-${key}`
 
-    if (side) {
-      className += `${side}`
-    }
-
-    return `${className}-${value}`
-  }
-
-  return Object.entries(vars.space).reduce<{ [key: string]: string }>(
-    (acc, [key, value]) => {
-      acc[key] = margin(value, side)
-
-      return acc
-    },
-    {}
-  )
-}
-
-const paddings = (side?: Side | 'x' | 'y') => {
-  const padding = (value: number | string, side?: Side | 'x' | 'y') => {
-    let className = 'p'
-
-    if (side) {
-      className += `${side}`
-    }
-
-    return `${className}-${value}`
-  }
-
-  return Object.entries(vars.space).reduce<{ [key: string]: string }>(
-    (acc, [key, value]) => {
-      acc[key] = padding(value, side)
-
-      return acc
-    },
-    {}
-  )
-}
-
-const insets = () => {
-  return Object.entries(vars.space).reduce<{ [key: string]: string }>(
-    (acc, [key, value]) => {
-      acc[key] = `inset-${value}`
-
-      return acc
-    },
-    {}
-  )
+    return acc
+  }, {})
 }
 
 const extraSpace = {
   none: '0',
   px: '1px',
   auto: 'auto',
-  full: '100%',
-  '1/2': '50%',
-  '1/3': '33.33333%',
-  '2/3': '66.66667%',
-  '1/4': '25%',
-  '3/4': '75%',
+  full: 'full',
+  '1/2': '1/2',
+  '1/3': '1/3',
+  '2/3': '2/3',
+  '1/4': '1/4',
+  '3/4': '3/4',
   fit: 'fit-content',
   max: 'max-content',
   min: 'min-content',
-  vw: '100vw',
-  vh: '100vh',
+  vw: 'screen',
+  vh: 'screen',
 }
 
 export const boxVariants = cva(undefined, {
   variants: {
-    width: { ...vars.space, ...extraSpace },
-    height: { ...vars.space, ...extraSpace },
-    maxWidth: { ...vars.space, ...extraSpace },
-    maxHeight: { ...vars.space, ...extraSpace },
-    minWidth: { ...vars.space, ...extraSpace },
-    minHeight: { ...vars.space, ...extraSpace },
+    width: spaces('w', extraSpace),
+    height: spaces('h', extraSpace),
+    maxWidth: spaces('max-w', extraSpace),
+    maxHeight: spaces('max-h', extraSpace),
+    minWidth: spaces('min-w', extraSpace),
+    minHeight: spaces('min-h', extraSpace),
 
     // space
-    top: { ...vars.space, auto: 'auto' },
-    bottom: { ...vars.space, auto: 'auto' },
-    left: { ...vars.space, auto: 'auto' },
-    right: { ...vars.space, auto: 'auto' },
+    top: spaces('t', { auto: 'auto' }),
+    bottom: spaces('b', { auto: 'auto' }),
+    left: spaces('l', { auto: 'auto' }),
+    right: spaces('r', { auto: 'auto' }),
 
-    padding: paddings(),
-    paddingTop: paddings('t'),
-    paddingBottom: paddings('b'),
-    paddingLeft: paddings('l'),
-    paddingRight: paddings('r'),
-    paddingX: paddings('x'),
-    paddingY: paddings('y'),
+    padding: spaces('p'),
+    paddingTop: spaces('pt'),
+    paddingBottom: spaces('pb'),
+    paddingLeft: spaces('pl'),
+    paddingRight: spaces('pr'),
+    paddingX: spaces('px'),
+    paddingY: spaces('py'),
 
-    margin: margins(),
-    marginTop: margins('t'),
-    marginBottom: margins('b'),
-    marginLeft: margins('l'),
-    marginRight: margins('r'),
-    marginX: margins('x'),
-    marginY: margins('y'),
-    gap: vars.space,
+    margin: spaces('m'),
+    marginTop: spaces('mt'),
+    marginBottom: spaces('mb'),
+    marginLeft: spaces('ml'),
+    marginRight: spaces('mr'),
+    marginX: spaces('mx'),
+    marginY: spaces('my'),
+    gap: spaces('gap'),
 
     border: {
       none: 'border-none',
@@ -331,7 +290,7 @@ export const boxVariants = cva(undefined, {
       stretch: 'place-items-stretch',
     },
 
-    inset: insets(),
+    inset: spaces('inset'),
 
     textOverflow: {
       ellipsis: 'overflow-ellipsis',
