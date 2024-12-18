@@ -69,7 +69,7 @@ const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
           color="text50"
           whiteSpace="nowrap"
           capitalize
-          opacity={{ hover: '80' }}
+          // opacity={{ hover: '80' }}
         >
           {path.label}
         </Text>

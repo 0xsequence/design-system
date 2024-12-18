@@ -1,3 +1,5 @@
+import './tailwind.css'
+
 export { tokens } from '~/tokens'
 export {
   vars,

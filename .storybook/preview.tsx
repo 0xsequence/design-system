@@ -1,6 +1,8 @@
 import { Decorator } from '@storybook/react'
 import React from 'react'
 
+import '../src/tailwind.css'
+
 import { ThemeProvider } from '../src/components/ThemeProvider'
 
 import docsTheme from './theme'

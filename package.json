@@ -38,7 +38,8 @@
     "prepack": "pnpm build",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "pnpm build && pnpm test && changeset publish"
+    "changeset:publish": "pnpm build && pnpm test && changeset publish",
+    "codemod": "jscodeshift --transform ./transforms/tailwind-transform.ts --parser tsx"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -54,6 +55,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@radix-ui/react-visually-hidden": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
     "react-hook-form": "^7.53.0"
   },
   "devDependencies": {
@@ -98,12 +100,15 @@
     "framer-motion": "^7.6.7",
     "happy-dom": "^15.5.0",
     "husky": "^9.1.5",
+    "jscodeshift": "^17.0.0",
+    "jsdom": "^22.1.0",
     "postcss": "^8.4.41",
     "postcss-preset-env": "^10.0.2",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^7.6.17",
+    "tailwindcss": "^3.3.3",
     "typescript": "^4.9.5",
     "vite": "^5.4.2",
     "vite-plugin-dts": "^4.0.3",
