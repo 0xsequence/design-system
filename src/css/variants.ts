@@ -86,17 +86,45 @@ const borderRadius = (side?: Side | Corner) => {
   }
 }
 
-const spaces = (prefix: string, optionalSpace?: { [key: string]: string }) => {
-  return Object.keys({ ...vars.space, ...optionalSpace }).reduce<{
+type PrefixKeysResult<T> = { [K in keyof T]: string }
+
+const prefixKeys = <T extends { [key: string]: string }>(
+  prefix: string,
+  obj: T
+): PrefixKeysResult<T> => {
+  return Object.keys(obj).reduce<{
     [key: string]: string
   }>((acc, key) => {
     acc[key] = `${prefix}-${key}`
 
     return acc
-  }, {})
+  }, {}) as PrefixKeysResult<T>
 }
 
-const extraSpace = {
+const prefixValues = <T extends { [key: string]: string }>(
+  prefix: string,
+  obj: T
+): T => {
+  return Object.entries(obj).reduce<{
+    [key: string]: string
+  }>((acc, [key, value]) => {
+    acc[key] = `${prefix}-${value}`
+
+    return acc
+  }, {}) as T
+}
+
+const spaces = <T extends { [key: string]: string }>(
+  prefix: string,
+  optionalSpace?: T
+) => {
+  return {
+    ...prefixKeys(prefix, vars.space),
+    ...prefixValues(prefix, optionalSpace || ({} as T)),
+  }
+}
+
+const extraSpaces = {
   none: '0',
   px: '1px',
   auto: 'auto',
@@ -115,12 +143,12 @@ const extraSpace = {
 
 export const boxVariants = cva(undefined, {
   variants: {
-    width: spaces('w', extraSpace),
-    height: spaces('h', extraSpace),
-    maxWidth: spaces('max-w', extraSpace),
-    maxHeight: spaces('max-h', extraSpace),
-    minWidth: spaces('min-w', extraSpace),
-    minHeight: spaces('min-h', extraSpace),
+    width: spaces('w', extraSpaces),
+    height: spaces('h', extraSpaces),
+    maxWidth: spaces('max-w', extraSpaces),
+    maxHeight: spaces('max-h', extraSpaces),
+    minWidth: spaces('min-w', extraSpaces),
+    minHeight: spaces('min-h', extraSpaces),
 
     // space
     top: spaces('t', { auto: 'auto' }),
@@ -372,3 +400,6 @@ export const boxVariants = cva(undefined, {
     },
   },
 })
+
+boxVariants({ width: '1' })
+boxVariants({ width: 'auto' })

@@ -31,6 +31,12 @@ export default {
         positive: '#10b981',
         negative: '#ef4444',
       },
+
+      widtn: {
+        'fit-content': 'fit-content',
+        'min-content': 'min-content',
+        'max-content': 'max-content',
+      },
     },
   },
   plugins: [],
