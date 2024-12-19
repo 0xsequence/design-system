@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuRoot,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from './DropdownMenu'
 
 /**
@@ -28,22 +29,36 @@ figma.connect(
         default: 'bottom',
         inverted: 'top',
       }),
+      children: figma.children(['atoms/dropdown-menu-item-wallet', 'Divider']),
     },
     example: props => (
       <DropdownMenuRoot>
-        <DropdownMenuRoot>
-          <DropdownMenuTrigger asChild>
-            <IconButton icon={ContextMenuIcon} />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent side={props.side}>
-            <DropdownMenuItem>Item 1</DropdownMenuItem>
-            <DropdownMenuItem>Item 2</DropdownMenuItem>
-            <DropdownMenuItem>Item 3</DropdownMenuItem>
-            <DropdownMenuItem>Item 4</DropdownMenuItem>
-            <DropdownMenuItem>Item 5</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenuRoot>
+        <DropdownMenuTrigger asChild>
+          <IconButton icon={ContextMenuIcon} />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent side={props.side}>
+          {props.children}
+        </DropdownMenuContent>
       </DropdownMenuRoot>
     ),
   }
 )
+
+figma.connect(
+  DropdownMenuItem,
+  'https://www.figma.com/design/0OB1JVXSqaxmJDrP7qAMJr?node-id=10606-387',
+  {
+    props: {
+      label: figma.textContent('Menu item'),
+    },
+    example: props => <DropdownMenuItem>{props.label}</DropdownMenuItem>,
+  }
+)
+
+// figma.connect(
+//   DropdownMenuSeparator,
+//   'https://www.figma.com/design/0OB1JVXSqaxmJDrP7qAMJr?node-id=10606-387',
+//   {
+//     example: () => <DropdownMenuSeparator />,
+//   }
+// )
