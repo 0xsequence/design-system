@@ -25,6 +25,7 @@ export default defineConfig({
         'node_modules',
         'tests',
         '**/*.stories.tsx',
+        '**/*.figma.tsx',
         '**/*.test.tsx',
         'src/components/ThemeProvider/renderWithTheme.tsx',
       ],

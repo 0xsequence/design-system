@@ -1,0 +1,8 @@
+{
+  "codeConnect": {
+    "include": ["src/components/**/*.{tsx,jsx}"],
+    "importPaths": {
+      "src/components/*": "@0xsequence/design-system"
+    }
+  }
+}

@@ -38,7 +38,9 @@
     "prepack": "pnpm build",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "pnpm build && pnpm test && changeset publish"
+    "changeset:publish": "pnpm build && pnpm test && changeset publish",
+    "figma:connect": "figma connect",
+    "figma:publish": "figma connect publish"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -60,6 +62,7 @@
     "@babel/core": "^7.25.2",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.7",
+    "@figma/code-connect": "^1.2.4",
     "@storybook/addon-actions": "^7.6.17",
     "@storybook/addon-docs": "^7.6.17",
     "@storybook/addon-essentials": "^7.6.17",
