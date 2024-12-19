@@ -24,12 +24,10 @@ figma.connect(
   'https://www.figma.com/design/0OB1JVXSqaxmJDrP7qAMJr?node-id=11510%3A28005',
   {
     props: {
-      // No matching props could be found for these Figma properties:
-      // "showButton": figma.boolean('Show button'),
-      // "ponting": figma.enum('ponting', {
-      //   "default": "default",
-      //   "inverted": "inverted"
-      // })
+      side: figma.enum('ponting', {
+        default: 'bottom',
+        inverted: 'top',
+      }),
     },
     example: props => (
       <DropdownMenuRoot>
@@ -37,7 +35,7 @@ figma.connect(
           <DropdownMenuTrigger asChild>
             <IconButton icon={ContextMenuIcon} />
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent side={props.side}>
             <DropdownMenuItem>Item 1</DropdownMenuItem>
             <DropdownMenuItem>Item 2</DropdownMenuItem>
             <DropdownMenuItem>Item 3</DropdownMenuItem>
