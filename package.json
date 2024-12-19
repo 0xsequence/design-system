@@ -40,7 +40,8 @@
     "changeset:version": "changeset version",
     "changeset:publish": "pnpm build && pnpm test && changeset publish",
     "figma:connect": "figma connect",
-    "figma:publish": "figma connect publish"
+    "figma:publish": "figma connect publish",
+    "figma:generate:icons": "node ./scripts/generate-figma-icons.js"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.0",

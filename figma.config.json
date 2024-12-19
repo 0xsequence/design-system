@@ -1,9 +1,13 @@
 {
   "codeConnect": {
     "parser": "react",
-    "include": ["src/components/**/*.{tsx,jsx}"],
+    "include": [
+      "src/components/**/*.tsx",
+      "src/icons/*.tsx"
+    ],
     "importPaths": {
-      "src/components/*": "@0xsequence/design-system"
+      "src/components/*": "@0xsequence/design-system",
+      "src/icons/*": "@0xsequence/design-system"
     }
   }
 }
