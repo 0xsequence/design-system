@@ -31,12 +31,12 @@ figma.connect(
         xsmall: 'xs',
       }),
       label: figma.string('label'),
+      leftIcon: figma.instance('leftIcon'),
       // hasLeftIcon: figma.boolean("hasLeftIcon"),
       // hasRightIcon: figma.boolean("hasRightIcon")
       // No matching props could be found for these Figma properties:
-      // "righIcon": figma.instance('righIcon'),
+      // rightIcon: figma.instance('rightIcon'),
       // "hasRightIcon": figma.boolean('hasRightIcon'),
-      // "leftIcon": figma.instance('leftIcon'),
       // "hasLeftIcon": figma.boolean('hasLeftIcon')
     },
     example: props => (
@@ -46,6 +46,7 @@ figma.connect(
         disabled={props.disabled}
         size={props.size}
         label={props.label}
+        leftIcon={props.leftIcon}
       />
     ),
   }
