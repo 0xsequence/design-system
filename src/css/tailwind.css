@@ -1,3 +1,93 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root,
+  [data-theme='dark'] {
+    /* Base colors */
+    --seq-colors-black: #000000;
+    --seq-colors-white: #ffffff;
+    --seq-colors-transparent: transparent;
+    --seq-colors-inherit: inherit;
+
+    /* Status colors */
+    --seq-colors-positive: #1db954;
+    --seq-colors-negative: #ff4444;
+    --seq-colors-info: #0088cc;
+    --seq-colors-warning: #ffa500;
+
+    /* Text colors */
+    --seq-colors-text100: rgba(255, 255, 255, 1);
+    --seq-colors-text80: rgba(255, 255, 255, 0.8);
+    --seq-colors-text50: rgba(255, 255, 255, 0.5);
+    --seq-colors-text-inverse100: rgba(0, 0, 0, 0.9);
+
+    /* Background colors */
+    --seq-colors-background-primary: #000000;
+    --seq-colors-background-secondary: rgba(255, 255, 255, 0.1);
+    --seq-colors-background-contrast: rgba(255, 255, 255, 0.05);
+    --seq-colors-background-muted: rgba(255, 255, 255, 0.03);
+    --seq-colors-background-control: rgba(255, 255, 255, 0.1);
+    --seq-colors-background-inverse: #ffffff;
+    --seq-colors-background-backdrop: rgba(0, 0, 0, 0.5);
+    --seq-colors-background-overlay: rgba(0, 0, 0, 0.7);
+    --seq-colors-background-raised: #1a1a1a;
+
+    /* Border colors */
+    --seq-colors-border-normal: rgba(255, 255, 255, 0.1);
+    --seq-colors-border-focus: rgba(255, 255, 255, 0.2);
+
+    /* Button colors */
+    --seq-colors-button-glass: rgba(255, 255, 255, 0.1);
+    --seq-colors-button-emphasis: rgba(255, 255, 255, 0.1);
+    --seq-colors-button-inverse: #000000;
+
+    /* Gradients */
+    --seq-colors-gradient-backdrop: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    --seq-colors-gradient-primary: linear-gradient(
+      92.88deg,
+      rgb(69, 94, 181) 9.16%,
+      rgb(86, 67, 204) 43.89%,
+      rgb(103, 63, 215) 64.72%
+    );
+    --seq-colors-gradient-secondary: linear-gradient(
+      92.88deg,
+      rgb(56, 56, 56) 9.16%,
+      rgb(80, 80, 80) 43.89%,
+      rgb(100, 100, 100) 64.72%
+    );
+  }
+
+  [data-theme='light'] {
+    /* Text colors */
+    --seq-colors-text100: rgba(0, 0, 0, 0.9);
+    --seq-colors-text80: rgba(0, 0, 0, 0.7);
+    --seq-colors-text50: rgba(0, 0, 0, 0.5);
+    --seq-colors-text-inverse100: rgba(255, 255, 255, 1);
+
+    /* Background colors */
+    --seq-colors-background-primary: #ffffff;
+    --seq-colors-background-secondary: rgba(0, 0, 0, 0.05);
+    --seq-colors-background-contrast: rgba(0, 0, 0, 0.03);
+    --seq-colors-background-muted: rgba(0, 0, 0, 0.02);
+    --seq-colors-background-control: rgba(0, 0, 0, 0.05);
+    --seq-colors-background-inverse: #000000;
+    --seq-colors-background-backdrop: rgba(255, 255, 255, 0.5);
+    --seq-colors-background-overlay: rgba(255, 255, 255, 0.7);
+    --seq-colors-background-raised: #f5f5f5;
+
+    /* Border colors */
+    --seq-colors-border-normal: rgba(0, 0, 0, 0.1);
+    --seq-colors-border-focus: rgba(0, 0, 0, 0.2);
+
+    /* Button colors */
+    --seq-colors-button-glass: rgba(0, 0, 0, 0.05);
+    --seq-colors-button-emphasis: rgba(0, 0, 0, 0.1);
+    --seq-colors-button-inverse: #ffffff;
+  }
+}
