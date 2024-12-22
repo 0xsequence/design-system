@@ -1,30 +1,53 @@
+import { VariantProps, cva } from 'class-variance-authority'
 import { clsx } from 'clsx'
-import { ReactElement } from 'react'
+import { ReactNode, HTMLAttributes } from 'react'
 
-import { Box, BoxProps } from '~/components/Box'
-
-import * as styles from './styles.css'
-
-type BadgeProps = BoxProps &
-  styles.BadgeVariants & {
-    value: ReactElement | string | number
+export const badgeVariants = cva(
+  [
+    'inline-flex',
+    'flex-shrink-0',
+    'items-center',
+    'rounded-full',
+    'text-white',
+    'whitespace-nowrap',
+    'font-normal',
+  ],
+  {
+    variants: {
+      variant: {
+        info: 'bg-info',
+        warning: 'bg-warning',
+        success: 'bg-positive',
+        error: 'bg-negative',
+      },
+      size: {
+        sm: ['text-xs', 'h-4', 'min-w-4', 'px-2'],
+        md: ['text-sm', 'h-5', 'min-w-5', 'px-3'],
+        lg: ['text-base', 'h-6', 'min-w-6', 'px-4'],
+      },
+    },
+    defaultVariants: {
+      variant: 'info',
+      size: 'md',
+    },
   }
+)
+
+interface BadgeProps
+  extends HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {
+  value: ReactNode
+}
 
 export const Badge = (props: BadgeProps) => {
-  const { className, value, variant = 'info', size = 'md', ...rest } = props
+  const { className, value, variant, size, ...rest } = props
 
   return (
-    <Box
-      className={clsx(className, styles.badgeVariants({ variant, size }))}
-      display="inline-flex"
-      flexShrink="0"
-      placeItems="center"
-      borderRadius="circle"
-      color="white"
-      whiteSpace="nowrap"
+    <div
+      className={clsx(badgeVariants({ variant, size }), className)}
       {...rest}
     >
       {value}
-    </Box>
+    </div>
   )
 }
