@@ -14,3 +14,5 @@ export type { Atoms } from './atoms'
 export { focusRing } from './helpers.css'
 
 export { responsiveStyle, selectorize } from './utils'
+
+import './tailwind.css'
