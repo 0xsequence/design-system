@@ -5,6 +5,8 @@ import { ThemeProvider } from '../src/components/ThemeProvider'
 
 import docsTheme from './theme'
 
+import '../src/css/tailwind.css'
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
