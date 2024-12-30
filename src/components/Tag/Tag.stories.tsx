@@ -23,12 +23,3 @@ export const WithIcon: Story = {
     icon: SettingsIcon,
   },
 }
-
-export const NetworkTag: Story = {
-  args: {
-    background: 'ethereumDark',
-    color: 'white',
-    icon: SettingsIcon,
-    label: 'Ethereum',
-  },
-}

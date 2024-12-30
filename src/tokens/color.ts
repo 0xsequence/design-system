@@ -44,20 +44,6 @@ export interface ColorTokens {
   gradientBackdrop: string
   gradientPrimary: string
   gradientSecondary: string
-
-  // Network colors
-  arbitrumDark: string
-  arbitrumLight: string
-  avalanceDark: string
-  avalanceLight: string
-  bscDark: string
-  bscLight: string
-  ethereumDark: string
-  ethereumLight: string
-  gnosisDark: string
-  gnosisLight: string
-  polygonDark: string
-  polygonLight: string
 }
 
 const defaultColors = {
@@ -79,19 +65,6 @@ const defaultColors = {
   )`,
   gradientPrimary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
   gradientSecondary: `linear-gradient(32.51deg, #951990 -15.23%, #3A35B1 48.55%, #20A8B0 100%)`,
-
-  arbitrumDark: '#212D44',
-  arbitrumLight: '#93D4FF',
-  avalanceDark: '#810C0C',
-  avalanceLight: '#FF8080',
-  bscDark: '#584508',
-  bscLight: '#FCCF43',
-  ethereumDark: '#132362',
-  ethereumLight: '#AABBFF',
-  gnosisDark: '#084246',
-  gnosisLight: '#8CF6FD',
-  polygonDark: '#350881',
-  polygonLight: '#C7A6FF',
 }
 
 const dark: ColorTokens = {
