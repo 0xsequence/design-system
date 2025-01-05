@@ -1,22 +1,97 @@
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
-import { atoms } from '~/css'
-import { text } from '~/tokens/typography'
+import { Atoms, atoms } from '~/css'
+
+type TextVariant =
+  | 'inherit'
+  | 'xlarge'
+  | 'large'
+  | 'medium'
+  | 'normal'
+  | 'small'
+  | 'xsmall'
+  | 'code'
+
+interface TextVariantAtoms {
+  fontFamily: Atoms['fontFamily']
+  fontSize: Atoms['fontSize']
+  lineHeight: Atoms['lineHeight']
+  letterSpacing: Atoms['letterSpacing']
+  fontWeight: Atoms['fontWeight']
+}
+
+export const rawTextVariants: Record<TextVariant, TextVariantAtoms> = {
+  inherit: {
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
+    lineHeight: 'inherit',
+    letterSpacing: 'inherit',
+    fontWeight: 'inherit',
+  },
+
+  // Size variants
+  xlarge: {
+    fontFamily: 'body',
+    fontSize: 'xlarge',
+    lineHeight: '9',
+    letterSpacing: 'none',
+    fontWeight: 'bold',
+  },
+  large: {
+    fontFamily: 'body',
+    fontSize: 'large',
+    lineHeight: '7',
+    letterSpacing: 'normal',
+    fontWeight: 'semibold',
+  },
+  medium: {
+    fontFamily: 'body',
+    fontSize: 'medium',
+    lineHeight: '6',
+    letterSpacing: 'normal',
+    fontWeight: 'bold',
+  },
+  normal: {
+    fontFamily: 'body',
+    fontSize: 'normal',
+    lineHeight: '5',
+    letterSpacing: 'wide',
+    fontWeight: 'normal',
+  },
+  small: {
+    fontFamily: 'body',
+    fontSize: 'small',
+    lineHeight: '4',
+    letterSpacing: 'wide',
+    fontWeight: 'medium',
+  },
+  xsmall: {
+    fontFamily: 'body',
+    fontSize: 'xsmall',
+    lineHeight: '4',
+    letterSpacing: 'wide',
+    fontWeight: 'bold',
+  },
+
+  // Semantic variants
+  code: {
+    fontFamily: 'mono',
+    fontSize: 'normal',
+    lineHeight: '5',
+    letterSpacing: 'none',
+    fontWeight: 'normal',
+  },
+}
+
+const toAtoms = <T extends object>(obj: T) =>
+  Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [key, atoms(value)])
+  ) as { [K in keyof T]: string }
 
 export const textVariants = recipe({
   variants: {
-    variant: {
-      inherit: atoms(text.inherit),
-      xlarge: atoms(text.xlarge),
-      large: atoms(text.large),
-      medium: atoms(text.medium),
-      normal: atoms(text.normal),
-      small: atoms(text.small),
-      xsmall: atoms(text.xsmall),
-      code: atoms(text.code),
-    },
+    variant: toAtoms(rawTextVariants),
 
-    /** prop overrides */
     ellipsis: {
       true: atoms({
         overflow: 'hidden',
@@ -49,7 +124,6 @@ export const textVariants = recipe({
       },
     },
 
-    // hidden text for screen readers
     hidden: {
       true: {
         border: 0,
