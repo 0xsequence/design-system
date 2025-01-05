@@ -51,6 +51,8 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
 
     const iconSize = size === 'xs' ? 'xs' : 'sm'
 
+    const gap = size === 'xs' ? '1' : '2'
+
     return (
       <Box
         as={as}
@@ -83,13 +85,9 @@ export const Button: PolymorphicComponent<ButtonProps, 'button'> = forwardRef(
             height="full"
             justifyContent="space-between"
             alignItems="center"
-            gap={size === 'xs' ? '1' : '2'}
+            gap={gap}
           >
-            <Box
-              justifyContent="flex-start"
-              alignItems="center"
-              gap={size === 'xs' ? '1' : '2'}
-            >
+            <Box justifyContent="flex-start" alignItems="center" gap={gap}>
               {LeftIcon && <LeftIcon size={iconSize} />}
               <Text>{label}</Text>
             </Box>
