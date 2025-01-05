@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Tabs>
 
 const Content = ({ children }: any) => (
   <Card marginTop="4">
-    <Text variant="normal" color="text100">
+    <Text variant="normal" color="text80">
       {children}
     </Text>
   </Card>
@@ -27,17 +27,17 @@ export const Default: Story = {
       {
         value: 'coins',
         label: 'Coins',
-        content: <Content>Coins</Content>,
+        content: <Content>Coins content</Content>,
       },
       {
         value: 'collectibles',
         label: 'Collectibles',
-        content: <Content>Collectibles</Content>,
+        content: <Content>Collectibles content</Content>,
       },
       {
         value: 'other',
         label: 'Other',
-        content: <Content>Other</Content>,
+        content: <Content>Other content</Content>,
       },
     ],
   },

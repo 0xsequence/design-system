@@ -27,15 +27,10 @@ const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
       padding="4"
     >
       <Box>
-        <Text as="p" fontWeight="medium">
-          This container here has a click action.
-        </Text>
-        <Text as="p" fontWeight="medium">
-          The button on the right also has a click action.
-        </Text>
-        <Text as="p" fontWeight="medium">
-          Since the button is wrapped in a StopClickPropagation component, the
-          click-through is prevented.
+        <Text variant="normal" color="text80">
+          This container here has a click action. The button on the right also
+          has a click action. Since the button is wrapped in a
+          StopClickPropagation component, the click-through is prevented.
         </Text>
       </Box>
 

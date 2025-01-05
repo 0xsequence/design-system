@@ -81,8 +81,8 @@ const StoryWrapper: StoryFn<typeof TabbedNav> = args => {
       </Box>
 
       <Box background="backgroundSecondary" padding="4" borderRadius="md">
-        <Text variant="normal" color="text100">
-          {value}
+        <Text variant="normal" color="text80">
+          {value} content
         </Text>
       </Box>
     </Box>
