@@ -1,21 +1,62 @@
 import * as ModalPrimitive from '@radix-ui/react-dialog'
+import { cva, VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { motion, MotionProps } from 'framer-motion'
 import { PropsWithChildren, useEffect, useState } from 'react'
 
-import { Box, BoxProps } from '~/components/Box'
 import { CloseIcon } from '~/icons'
 
 import { IconButton } from '../IconButton'
 import { Scroll } from '../Scroll'
 import { useTheme } from '../ThemeProvider'
 
-import * as styles from './styles.css'
+const modalContentVariants = cva(
+  [
+    'flex',
+    'flex-col',
+    'fixed',
+    'overflow-hidden',
+    'bg-background-primary',
+    'focus:outline-none',
+    'scrollbar-none',
+  ],
+  {
+    variants: {
+      size: {
+        sm: [
+          'w-screen',
+          'min-h-[100px]',
+          'max-h-[calc(100dvh-80px)]',
+          'sm:bottom-0',
+          'lg:w-[540px]',
+          'lg:max-h-[min(800px,calc(100dvh-80px))]',
+          'rounded-t-lg',
+          'sm:rounded-b-none',
+          'lg:rounded-b-lg',
+        ],
+        lg: [
+          'w-screen',
+          'h-[calc(100dvh-70px)]',
+          'lg:w-[720px]',
+          'lg:max-h-[min(800px,calc(100dvh-80px))]',
+          'lg:h-[800px]',
+          'rounded-t-lg',
+          'sm:rounded-b-none',
+          'lg:rounded-b-lg',
+        ],
+      },
+      autoHeight: {
+        true: 'lg:!h-auto',
+      },
+    },
+    defaultVariants: {
+      size: 'lg',
+    },
+  }
+)
 
-export { ModalPrimitive }
-
-export type ModalProps = {
-  backdropColor?: BoxProps['background']
+export interface ModalProps extends VariantProps<typeof modalContentVariants> {
+  backdropColor?: string
   className?: string
   disableAnimation?: boolean
   isDismissible?: boolean
@@ -23,15 +64,16 @@ export type ModalProps = {
   scroll?: boolean
   overlayProps?: MotionProps
   contentProps?: MotionProps
-  rootProps?: BoxProps
-} & styles.ContentVariants
-
-// const portalRoot = document.getElementById('portal')
+  rootProps?: {
+    className?: string
+    [key: string]: unknown
+  }
+}
 
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const {
     autoHeight = false,
-    backdropColor = 'backgroundBackdrop', // gradientBackdrop for onboarding or special modals
+    backdropColor = 'bg-background-backdrop',
     children,
     disableAnimation = false,
     isDismissible = true,
@@ -42,6 +84,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     contentProps,
     rootProps = {},
   } = props
+
   const { root } = useTheme()
   const [container, setContainer] = useState<HTMLElement | null>(null)
 
@@ -52,18 +95,17 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   return container ? (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
-        <Box
+        <div
+          className={clsx(
+            'seq-root',
+            'fixed inset-0 z-20 flex items-center justify-center',
+            rootProps?.className
+          )}
           {...rootProps}
-          className={clsx('seq-root', styles.root, rootProps?.className)}
         >
-          <Box
-            as={ModalPrimitive.Overlay}
-            asChild
-            background={backdropColor}
-            className={styles.overlay}
-            forceMount
-          >
+          <ModalPrimitive.Overlay asChild forceMount>
             <motion.div
+              className={clsx('fixed inset-0', backdropColor)}
               key="modal-overlay"
               initial={disableAnimation ? false : { opacity: 0 }}
               animate={disableAnimation ? false : { opacity: 1 }}
@@ -74,11 +116,11 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               }}
               {...overlayProps}
             />
-          </Box>
+          </ModalPrimitive.Overlay>
 
           <ModalPrimitive.Content
             asChild
-            className={styles.contentVariants({ autoHeight, size })}
+            className={modalContentVariants({ size, autoHeight })}
             forceMount
             onEscapeKeyDown={ev => {
               if (isDismissible) {
@@ -121,15 +163,17 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                     icon={CloseIcon}
                     backdropFilter="blur"
                     size="xs"
-                    className={styles.close}
+                    className="absolute right-4 top-4 z-20"
                     aria-label="Close"
                   />
                 </ModalPrimitive.Close>
               )}
             </motion.div>
           </ModalPrimitive.Content>
-        </Box>
+        </div>
       </ModalPrimitive.Portal>
     </ModalPrimitive.Root>
   ) : null
 }
+
+export { ModalPrimitive }
