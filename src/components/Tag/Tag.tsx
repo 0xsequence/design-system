@@ -1,42 +1,40 @@
-import { ComponentType, ElementType, forwardRef } from 'react'
+import { cva, VariantProps } from 'class-variance-authority'
+import { ComponentType } from 'react'
 
-import {
-  Box,
-  PolymorphicComponent,
-  PolymorphicProps,
-  PolymorphicRef,
-} from '~/components/Box'
 import { Text } from '~/components/Text'
 import { IconProps } from '~/icons/types'
 
-type TagProps = {
-  label: string
-  icon?: ComponentType<IconProps>
-}
-
-export const Tag: PolymorphicComponent<TagProps, 'div'> = forwardRef(
-  <T extends ElementType>(
-    props: PolymorphicProps<TagProps, T>,
-    ref: PolymorphicRef<T>
-  ) => {
-    const { icon: Icon, label, ...rest } = props
-
-    return (
-      <Box
-        ref={ref}
-        background="buttonGlass"
-        borderRadius="xs"
-        display="inline-flex"
-        gap="1"
-        paddingX="2"
-        paddingY="1"
-        whiteSpace="nowrap"
-        color="text80"
-        {...rest}
-      >
-        {Icon && <Icon size="xs" />}
-        <Text variant="xsmall">{label}</Text>
-      </Box>
-    )
+const tagVariants = cva(
+  [
+    'inline-flex',
+    'gap-1',
+    'px-2',
+    'py-1',
+    'whitespace-nowrap',
+    'bg-button-glass',
+    'text-text-80',
+    'rounded-xs',
+  ],
+  {
+    variants: {
+      // Add any variants here if needed in the future
+    },
   }
 )
+
+interface TagProps extends VariantProps<typeof tagVariants> {
+  label: string
+  icon?: ComponentType<IconProps>
+  className?: string
+}
+
+export const Tag = (props: TagProps) => {
+  const { icon: Icon, label, className, ...rest } = props
+
+  return (
+    <div className={tagVariants({ className })} {...rest}>
+      {Icon && <Icon size="xs" />}
+      <Text variant="xsmall">{label}</Text>
+    </div>
+  )
+}
