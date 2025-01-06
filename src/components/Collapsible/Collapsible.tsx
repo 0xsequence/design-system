@@ -6,16 +6,11 @@ import { ReactNode, useState } from 'react'
 import { Text } from '~/components/Text'
 import { ChevronDownIcon } from '~/icons'
 
-import { Box, BoxProps } from '../Box'
+const COLLAPSED_HEIGHT = '64px'
 
-import * as styles from './styles.css'
-
-export { CollapsiblePrimitive }
-
-type CollapsibleProps = BoxProps &
-  CollapsiblePrimitive.CollapsibleProps & {
-    label: ReactNode
-  }
+interface CollapsibleProps extends CollapsiblePrimitive.CollapsibleProps {
+  label: ReactNode
+}
 
 export const Collapsible = (props: CollapsibleProps) => {
   const {
@@ -41,7 +36,6 @@ export const Collapsible = (props: CollapsibleProps) => {
 
   const handleOpenChange = (isOpen: boolean) => {
     handleSetExpanded(isOpen)
-
     onOpenChange?.(isOpen)
   }
 
@@ -51,40 +45,34 @@ export const Collapsible = (props: CollapsibleProps) => {
       defaultOpen={defaultOpen}
       onOpenChange={handleOpenChange}
       asChild
+      {...rest}
     >
-      <Box
-        as={motion.div}
-        className={clsx(className, styles.root)}
-        initial={{ height: isOpen ? 'auto' : styles.COLLAPSED_HEIGHT }}
-        animate={{ height: isOpen ? 'auto' : styles.COLLAPSED_HEIGHT }}
+      <motion.div
+        className={clsx(
+          'min-h-[64px] rounded-md bg-background-secondary relative overflow-hidden w-full focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-inset focus-within:ring-focus focus-within:ring-offset-0 focus-within:outline-none',
+          className
+        )}
+        initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
+        animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
         transition={{ ease: 'easeOut', duration: 0.3 }}
-        borderRadius="md"
-        background="backgroundSecondary"
-        position="relative"
-        overflow="hidden"
-        width="full"
-        {...rest}
       >
-        <CollapsiblePrimitive.Trigger className={styles.trigger}>
+        <CollapsiblePrimitive.Trigger className="flex items-center bg-transparent p-4 w-full cursor-pointer select-none rounded-md border-none appearance-none h-[64px] focus:outline-none">
           <Text as="div" variant="normal" fontWeight="bold" color="text80">
             {label}
           </Text>
-          <Box
-            as={motion.div}
-            position="absolute"
-            right="0"
-            marginRight="4"
+          <motion.div
+            className="absolute right-0 mr-4"
             initial={{ rotate: isOpen ? 180 : 0 }}
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ ease: 'linear', duration: 0.1 }}
           >
-            <ChevronDownIcon className={styles.icon} color="text50" />
-          </Box>
+            <ChevronDownIcon className="h-5 w-5 block text-text-50" />
+          </motion.div>
         </CollapsiblePrimitive.Trigger>
         <AnimatePresence>
           {isOpen && (
             <CollapsiblePrimitive.Content
-              className={styles.content}
+              className="pt-0 px-4 pb-4 w-full origin-top"
               asChild
               forceMount
             >
@@ -99,7 +87,9 @@ export const Collapsible = (props: CollapsibleProps) => {
             </CollapsiblePrimitive.Content>
           )}
         </AnimatePresence>
-      </Box>
+      </motion.div>
     </CollapsiblePrimitive.Root>
   )
 }
+
+export { CollapsiblePrimitive }
