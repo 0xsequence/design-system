@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{ts,tsx}'],
+  future: {
+    respectDefaultRingColorOpacity: true,
+  },
   theme: {
     extend: {
       colors: {
@@ -64,6 +67,9 @@ export default {
       animation: {
         swipeOut: 'swipeOut 200ms ease-out',
       },
+    },
+    ringColor: {
+      DEFAULT: 'var(--seq-colors-border-focus)',
     },
   },
   plugins: [],
