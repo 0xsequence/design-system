@@ -1,48 +1,60 @@
-import { clsx } from 'clsx'
-import { ElementType, forwardRef } from 'react'
+import { Slot } from '@radix-ui/react-slot'
+import { cva, VariantProps } from 'class-variance-authority'
+import { HTMLAttributes } from 'react'
 
-import {
-  Box,
-  PolymorphicComponent,
-  PolymorphicProps,
-  PolymorphicRef,
-} from '../Box'
+const cardVariants = cva(['overflow-hidden', 'rounded-md', 'p-4', 'w-full'], {
+  variants: {
+    clickable: {
+      true: 'hover:opacity-80 cursor-pointer focus:ring-2 focus:ring-focus focus:outline-none',
+    },
+    disabled: {
+      true: 'opacity-50 cursor-default pointer-events-none',
+    },
+    outlined: {
+      true: 'border border-border-normal bg-transparent',
+      false: 'bg-background-secondary',
+    },
+    blur: {
+      true: 'backdrop-blur',
+    },
+  },
+  defaultVariants: {
+    outlined: false,
+  },
+})
 
-import * as styles from './styles.css'
+interface CardProps
+  extends HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardVariants> {
+  asChild?: boolean
+}
 
-type CardProps = styles.CardVariants
+export const Card = (props: CardProps) => {
+  const {
+    className,
+    children,
+    clickable,
+    outlined,
+    disabled,
+    blur,
+    asChild,
+    ...rest
+  } = props
 
-export const Card: PolymorphicComponent<CardProps, 'div'> = forwardRef(
-  <T extends ElementType>(
-    props: PolymorphicProps<CardProps, T>,
-    ref: PolymorphicRef<T>
-  ) => {
-    const {
-      className,
-      children,
-      clickable,
-      outlined,
-      disabled,
-      blur,
-      width = 'full',
-      ...rest
-    } = props
-    return (
-      <Box
-        className={clsx(
-          className,
-          styles.cardVariants({ clickable, outlined, disabled, blur })
-        )}
-        background={outlined ? 'transparent' : 'backgroundSecondary'}
-        overflow="hidden"
-        borderRadius="md"
-        padding="4"
-        width={width}
-        ref={ref}
-        {...rest}
-      >
-        {children}
-      </Box>
-    )
-  }
-)
+  const Comp = asChild ? Slot : 'div'
+
+  return (
+    <Comp
+      className={cardVariants({
+        clickable,
+        outlined,
+        disabled,
+        blur,
+        className,
+      })}
+      {...rest}
+    >
+      {children}
+    </Comp>
+  )
+}
