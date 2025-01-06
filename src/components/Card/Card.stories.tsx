@@ -30,7 +30,6 @@ export const Default: Story = {
 }
 export const Clickable: Story = {
   args: {
-    as: 'button',
     clickable: true,
     onClick: () => console.log('Clicked!'),
     children: (
@@ -49,7 +48,6 @@ export const Clickable: Story = {
 }
 export const Disabled: Story = {
   args: {
-    as: 'button',
     clickable: true,
     disabled: true,
     children: (

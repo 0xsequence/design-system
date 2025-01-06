@@ -16,12 +16,11 @@ type Story = StoryObj<typeof Scroll>
 const StoryWrapper: StoryFn<typeof Scroll> = args => (
   <Card
     outlined
+    className="overflow-hidden p-0"
     style={{
       width: 200,
       height: 200,
     }}
-    overflow="hidden"
-    padding="0"
   >
     <Scroll {...args} />
   </Card>

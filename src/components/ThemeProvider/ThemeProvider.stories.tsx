@@ -32,7 +32,7 @@ export const Nested = () => {
 
       <div id="app1">
         <ThemeProvider root="#app1" scope="application1" theme="light">
-          <Card background="backgroundPrimary" marginTop="4">
+          <Card className="bg-background-primary mt-4">
             <Collapsible label="Nested Application 1">
               <Text variant="normal" color="text100">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -50,7 +50,7 @@ export const Nested = () => {
 
               <div id="app2">
                 <ThemeProvider root="#app2" scope="application2" theme="dark">
-                  <Card background="backgroundPrimary" marginTop="4">
+                  <Card className="bg-background-primary mt-4">
                     <Collapsible label="Nested Application 2 (Dark)">
                       <Text variant="normal" color="text100">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -84,7 +84,7 @@ export const Nested = () => {
                     backgroundSecondary: 'navy',
                   }}
                 >
-                  <Card background="backgroundPrimary" marginTop="4">
+                  <Card className="bg-background-primary mt-4">
                     <Collapsible label="Nested Application 3 (Custom Theme)">
                       <Text variant="normal" color="text100">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -108,7 +108,7 @@ export const Nested = () => {
                   scope="application4"
                   prefersColorScheme
                 >
-                  <Card background="backgroundPrimary" marginTop="4">
+                  <Card className="bg-background-primary mt-4">
                     <Collapsible label="Nested Application 4 (Prefers Color Scheme)">
                       <Text variant="normal" color="text100">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,

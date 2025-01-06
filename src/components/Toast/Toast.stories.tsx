@@ -25,7 +25,7 @@ const ToastStory = (args: ToastProps) => {
   const toast = useToast()
 
   return (
-    <Card position="relative">
+    <Card>
       <Button
         label="Raise a Toast"
         onClick={() => {

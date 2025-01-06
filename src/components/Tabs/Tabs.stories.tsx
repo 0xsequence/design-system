@@ -13,7 +13,7 @@ export default {
 type Story = StoryObj<typeof Tabs>
 
 const Content = ({ children }: any) => (
-  <Card marginTop="4">
+  <Card className="mt-4">
     <Text variant="normal" color="text80">
       {children}
     </Text>

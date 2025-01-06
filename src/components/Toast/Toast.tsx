@@ -120,54 +120,52 @@ export const Toast = (props: ToastProps) => {
       {...rest}
     >
       <Card
-        as={motion.li}
-        layoutId={id}
-        layout
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ y: '100%', opacity: 0 }}
-        borderRadius="md"
-        background="buttonGlass"
-        backdropFilter="blur"
-        position="relative"
-        width="full"
-        justifyContent="space-between"
+        className="rounder-md bg-button-glass backdrop-blur relative justify-between w-full"
+        asChild
       >
-        <Box gap="3" alignItems="center">
-          {renderIcon()}
+        <motion.li
+          layoutId={id}
+          layout
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ y: '100%', opacity: 0 }}
+        >
+          <Box gap="3" alignItems="center">
+            {renderIcon()}
 
-          <Box flexDirection="column" gap="1">
-            {title && (
-              <ToastPrimitive.Title>
+            <Box flexDirection="column" gap="1">
+              {title && (
+                <ToastPrimitive.Title>
+                  <Text
+                    as="div"
+                    variant="normal"
+                    fontWeight="bold"
+                    color="text80"
+                  >
+                    {title}
+                  </Text>
+                </ToastPrimitive.Title>
+              )}
+
+              <ToastPrimitive.Description>
                 <Text
                   as="div"
                   variant="normal"
-                  fontWeight="bold"
-                  color="text80"
+                  fontWeight="medium"
+                  color="text50"
                 >
-                  {title}
+                  {description}
                 </Text>
-              </ToastPrimitive.Title>
-            )}
-
-            <ToastPrimitive.Description>
-              <Text
-                as="div"
-                variant="normal"
-                fontWeight="medium"
-                color="text50"
-              >
-                {description}
-              </Text>
-            </ToastPrimitive.Description>
+              </ToastPrimitive.Description>
+            </Box>
           </Box>
-        </Box>
 
-        {isDismissible && (
-          <ToastPrimitive.Close aria-label="Close" asChild>
-            <IconButton icon={CloseIcon} size="xs" />
-          </ToastPrimitive.Close>
-        )}
+          {isDismissible && (
+            <ToastPrimitive.Close aria-label="Close" asChild>
+              <IconButton icon={CloseIcon} size="xs" />
+            </ToastPrimitive.Close>
+          )}
+        </motion.li>
       </Card>
     </ToastPrimitive.Root>
   )
