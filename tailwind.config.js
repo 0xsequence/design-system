@@ -59,12 +59,16 @@ export default {
         'gradient-secondary': 'var(--seq-colors-gradient-secondary)',
       },
       keyframes: {
+        spin: {
+          '100%': { transform: 'rotate(1turn)' },
+        },
         swipeOut: {
           from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
           to: { transform: 'translateX(100%)' },
         },
       },
       animation: {
+        spin: 'spin 2s linear infinite',
         swipeOut: 'swipeOut 200ms ease-out',
       },
     },

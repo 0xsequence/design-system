@@ -18,6 +18,6 @@ export const Default: Story = {
 export const PendingSpinner: Story = {
   args: {
     size: 'md',
-    color: 'warning',
+    className: 'text-warning',
   },
 }
