@@ -1,4 +1,5 @@
 import * as ToastPrimitive from '@radix-ui/react-toast'
+import { cva } from 'class-variance-authority'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   ComponentType,
@@ -12,12 +13,30 @@ import {
 import { CheckmarkIcon, CloseIcon } from '~/icons'
 import { IconProps } from '~/icons/types'
 
-import { Box } from '../Box'
 import { Card } from '../Card'
 import { IconButton } from '../IconButton'
 import { Text } from '../Text'
 
-import * as styles from './styles.css'
+const toastVariants = cva(
+  [
+    'will-change-transform will-change-opacity',
+    'data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)]',
+    'data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-transform data-[swipe=cancel]:duration-200 data-[swipe=cancel]:ease-out',
+    'data-[swipe=end]:animate-swipeOut',
+  ],
+  {
+    variants: {
+      variant: {
+        normal: '',
+        success: 'text-positive',
+        error: 'text-negative',
+      },
+    },
+    defaultVariants: {
+      variant: 'normal',
+    },
+  }
+)
 
 export type ToastProps = ToastPrimitive.ToastProps & {
   id?: string
@@ -34,7 +53,6 @@ const ToastQueueContext = createContext<
 
 export const ToastProvider = (props: ToastPrimitive.ToastProviderProps) => {
   const { children, ...rest } = props
-
   const [toasts, setToasts] = useState<Set<ToastProps>>(new Set())
 
   return (
@@ -55,7 +73,7 @@ export const ToastProvider = (props: ToastPrimitive.ToastProviderProps) => {
 }
 
 const ToastViewport = () => (
-  <ToastPrimitive.Viewport className={styles.viewport} />
+  <ToastPrimitive.Viewport className="fixed right-0 bottom-0 focus:outline-none w-full flex flex-col gap-2 p-4 pt-0 z-[1000] list-none max-w-[532px]" />
 )
 
 export const Toast = (props: ToastProps) => {
@@ -77,35 +95,16 @@ export const Toast = (props: ToastProps) => {
     switch (variant) {
       case 'success':
         return (
-          <Box
-            background="positive"
-            color="black"
-            borderRadius="circle"
-            width="8"
-            height="8"
-            placeItems="center"
-            minWidth="0"
-            flexShrink="0"
-          >
+          <div className="bg-positive text-black rounded-full w-8 h-8 place-items-center min-w-0 flex-shrink-0 flex items-center justify-center">
             <CheckmarkIcon />
-          </Box>
+          </div>
         )
       case 'error':
         return (
-          <Box
-            background="negative"
-            color="black"
-            borderRadius="circle"
-            width="8"
-            height="8"
-            placeItems="center"
-            minWidth="0"
-            flexShrink="0"
-          >
+          <div className="bg-negative text-black rounded-full w-8 h-8 place-items-center min-w-0 flex-shrink-0 flex items-center justify-center">
             <CloseIcon />
-          </Box>
+          </div>
         )
-
       default:
         return null
     }
@@ -113,14 +112,14 @@ export const Toast = (props: ToastProps) => {
 
   return (
     <ToastPrimitive.Root
-      className={styles.toast({ variant })}
+      className={toastVariants({ variant })}
       open
       forceMount
       asChild
       {...rest}
     >
       <Card
-        className="rounder-md bg-button-glass backdrop-blur relative justify-between w-full"
+        className="rounded-md bg-button-glass backdrop-blur relative flex justify-between w-full"
         asChild
       >
         <motion.li
@@ -130,10 +129,10 @@ export const Toast = (props: ToastProps) => {
           animate={{ x: 0 }}
           exit={{ y: '100%', opacity: 0 }}
         >
-          <Box gap="3" alignItems="center">
+          <div className="flex gap-3 items-center">
             {renderIcon()}
 
-            <Box flexDirection="column" gap="1">
+            <div className="flex flex-col gap-1">
               {title && (
                 <ToastPrimitive.Title>
                   <Text
@@ -157,8 +156,8 @@ export const Toast = (props: ToastProps) => {
                   {description}
                 </Text>
               </ToastPrimitive.Description>
-            </Box>
-          </Box>
+            </div>
+          </div>
 
           {isDismissible && (
             <ToastPrimitive.Close aria-label="Close" asChild>

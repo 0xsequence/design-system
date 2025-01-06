@@ -55,6 +55,15 @@ export default {
         'gradient-primary': 'var(--seq-colors-gradient-primary)',
         'gradient-secondary': 'var(--seq-colors-gradient-secondary)',
       },
+      keyframes: {
+        swipeOut: {
+          from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
+          to: { transform: 'translateX(100%)' },
+        },
+      },
+      animation: {
+        swipeOut: 'swipeOut 200ms ease-out',
+      },
     },
   },
   plugins: [],
