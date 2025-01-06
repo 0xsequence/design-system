@@ -1,40 +1,41 @@
 import * as ProgressPrimitive from '@radix-ui/react-progress'
+import { cva, VariantProps } from 'class-variance-authority'
 
-import { Atoms } from '~/css'
+const progressIndicatorVariants = cva('h-full rounded-full', {
+  variants: {
+    color: {
+      positive: 'bg-positive',
+      info: 'bg-info',
+      warning: 'bg-warning',
+      negative: 'bg-negative',
+    },
+  },
+  defaultVariants: {
+    color: 'positive',
+  },
+})
 
-import { Box } from '../Box'
-
-interface ProgressProps {
+interface ProgressProps extends VariantProps<typeof progressIndicatorVariants> {
   value: number // Ratio between 0 and 1
-  color?: Atoms['color']
 }
 
 export const Progress = (props: ProgressProps) => {
-  const { value, color = 'positive' } = props
+  const { value, color } = props
   const percent = Math.min(value * 100, 100)
 
   return (
-    <Box
-      as={ProgressPrimitive.Root}
+    <ProgressPrimitive.Root
       value={percent}
-      borderRadius="circle"
-      background="backgroundPrimary"
-      width="full"
-      height="1"
-      overflow="hidden"
-      position="relative"
+      className="h-1 w-full rounded-full bg-background-primary overflow-hidden relative"
     >
-      <Box
-        as={ProgressPrimitive.ProgressIndicator}
+      <ProgressPrimitive.ProgressIndicator
+        className={progressIndicatorVariants({ color })}
         style={{
           width: `${percent}%`,
           transition: 'width 660ms cubic-bezier(0.65, 0, 0.35, 1)',
           backgroundSize: '300% 100%',
         }}
-        height="full"
-        borderRadius="circle"
-        background={color}
       />
-    </Box>
+    </ProgressPrimitive.Root>
   )
 }
