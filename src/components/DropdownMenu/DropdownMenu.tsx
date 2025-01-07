@@ -4,7 +4,6 @@ import { forwardRef } from 'react'
 
 import { CheckmarkIcon } from '~/icons'
 
-import { Box } from '../Box'
 import { Divider } from '../Divider'
 import { Text } from '../Text'
 
@@ -46,12 +45,9 @@ export const DropdownMenuItem = ({
 }: DropdownMenuPrimitive.DropdownMenuItemProps) => (
   <DropdownMenuPrimitive.Item
     className={clsx(styles.item, className)}
-    asChild
     {...rest}
   >
-    <Box>
-      <Text variant="small">{children}</Text>
-    </Box>
+    <Text variant="small">{children}</Text>
   </DropdownMenuPrimitive.Item>
 )
 
