@@ -1,17 +1,17 @@
-import { Box, BoxProps } from '~/components/Box'
+import { HTMLAttributes } from 'react'
 
-type DividerProps = BoxProps
+import { cn } from '~/utils'
+
+interface DividerProps extends HTMLAttributes<HTMLHRElement> {
+  className?: string
+}
 
 export const Divider = (props: DividerProps) => {
-  const { color = 'borderNormal', marginY = '4', ...rest } = props
+  const { className, ...rest } = props
 
   return (
-    <Box
-      as="hr"
-      marginY={marginY}
-      background={color}
-      height="px"
-      borderWidth="none"
+    <hr
+      className={cn('my-4 h-px bg-border-normal border-none', className)}
       {...rest}
     />
   )
