@@ -1,29 +1,47 @@
-import { clsx } from 'clsx'
+import { cva, VariantProps } from 'class-variance-authority'
 import { memo } from 'react'
 
-import { Box, BoxProps } from '../Box'
+import { cn } from '~/utils'
+
 import { Image } from '../Image'
 import { NetworkImage } from '../NetworkImage'
 import { Text } from '../Text'
 
-import * as styles from './styles.css'
-
-type TokenImageProps = BoxProps &
-  styles.RootVariants & {
-    className?: string
-    disableAnimation?: boolean
-    style?: any
-    src?: string
-    symbol?: string
-    withNetwork?: number
-  }
-
 const NETWORK_IMAGE_SIZE = '40%'
 const NETWORK_IMAGE_OFFSET = '-2%'
 
+const tokenImageVariants = cva(
+  ['relative', 'flex', 'items-center', 'justify-center', 'flex-shrink-0'],
+  {
+    variants: {
+      size: {
+        xs: 'w-3 h-3 text-[4px]',
+        sm: 'w-5 h-5 text-[6px]',
+        md: 'w-8 h-8 text-[9px]',
+        lg: 'w-10 h-10 text-[11px]',
+        xl: 'w-16 h-16 text-[16px]',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  }
+)
+
+const maskClass =
+  '[mask-image:radial-gradient(circle_at_82%_82%,transparent_22%,black_0)]'
+
+interface TokenImageProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof tokenImageVariants> {
+  disableAnimation?: boolean
+  src?: string
+  symbol?: string
+  withNetwork?: number
+}
+
 export const TokenImage = memo((props: TokenImageProps) => {
   const {
-    borderRadius = 'circle',
     className,
     disableAnimation = false,
     style,
@@ -31,32 +49,33 @@ export const TokenImage = memo((props: TokenImageProps) => {
     symbol,
     size = 'md',
     withNetwork,
-    ...boxProps
+    ...rest
   } = props
 
   return (
-    <Box
-      className={clsx(className, styles.root({ size }))}
+    <div
+      className={cn(tokenImageVariants({ size }), className)}
       style={style}
-      flexShrink="0"
-      {...boxProps}
+      {...rest}
     >
       {src ? (
         <Image
-          className={clsx(styles.img, withNetwork && styles.cutout)}
+          className={cn(
+            'rounded-full max-w-full max-h-full object-cover w-full overflow-hidden',
+            withNetwork && maskClass
+          )}
           disableAnimation={disableAnimation}
-          borderRadius={borderRadius}
-          overflow="hidden"
           src={src}
         />
       ) : (
         <Text
-          className={clsx(styles.fallback, withNetwork && styles.cutout)}
-          variant="normal"
+          className={cn(
+            'bg-background-secondary rounded-full w-full h-full flex items-center justify-center overflow-hidden text-inherit',
+            withNetwork && maskClass
+          )}
+          variant="inherit"
           fontWeight="medium"
           color="text50"
-          borderRadius={borderRadius}
-          overflow="hidden"
           uppercase
         >
           {symbol?.replace(/\s/, '').slice(0, 4)}
@@ -65,8 +84,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
       {withNetwork && (
         <NetworkImage
           chainId={withNetwork}
-          position="absolute"
-          zIndex="1"
+          className="absolute z-[1]"
           disableAnimation={disableAnimation}
           style={{
             width: NETWORK_IMAGE_SIZE,
@@ -76,6 +94,6 @@ export const TokenImage = memo((props: TokenImageProps) => {
           }}
         />
       )}
-    </Box>
+    </div>
   )
 })

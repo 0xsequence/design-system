@@ -11,7 +11,6 @@ type Story = StoryObj<typeof TokenImage>
 
 export const WithImage: Story = {
   args: {
-    borderRadius: 'circle',
     size: 'lg',
     src: 'https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912',
   },
