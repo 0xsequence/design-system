@@ -65,7 +65,7 @@ const DropdownMenuItemIndicator = ({
 
 export const DropdownMenuSeparator = () => (
   <DropdownMenuPrimitive.Separator className={styles.separator} asChild>
-    <Divider marginTop="1" marginBottom="1" />
+    <Divider className="my-1" />
   </DropdownMenuPrimitive.Separator>
 )
 
