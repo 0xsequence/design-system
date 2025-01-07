@@ -2,9 +2,7 @@ import { HTMLAttributes } from 'react'
 
 import { cn } from '~/utils'
 
-interface DividerProps extends HTMLAttributes<HTMLHRElement> {
-  className?: string
-}
+interface DividerProps extends HTMLAttributes<HTMLHRElement> {}
 
 export const Divider = (props: DividerProps) => {
   const { className, ...rest } = props
