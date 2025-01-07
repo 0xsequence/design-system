@@ -1,6 +1,5 @@
-import { ReactNode } from 'react'
+import { HTMLAttributes, ReactNode } from 'react'
 
-import { Box, BoxProps } from '~/components/Box'
 import { Divider } from '~/components/Divider'
 import { Text } from '~/components/Text'
 
@@ -9,17 +8,23 @@ interface Path {
   url?: string
 }
 
-type BreadcrumbsProps = BoxProps & {
+interface BreadcrumbsProps extends HTMLAttributes<HTMLDivElement> {
   excludeDivider?: boolean
   paths: Path[]
   renderLink?: (path: Path, children: ReactNode) => JSX.Element
 }
 
 export const Breadcrumbs = (props: BreadcrumbsProps) => {
-  const { paths, excludeDivider = false, renderLink, ...rest } = props
+  const {
+    className,
+    paths,
+    excludeDivider = false,
+    renderLink,
+    ...rest
+  } = props
 
   return (
-    <Box {...rest}>
+    <div className={className} {...rest}>
       {paths.map((path, idx) => (
         <BreadcrumbSegment
           key={idx}
@@ -30,7 +35,7 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
       ))}
 
       {!excludeDivider && <Divider />}
-    </Box>
+    </div>
   )
 }
 
@@ -41,9 +46,9 @@ interface BreadcrumbSegmentProps {
 }
 
 const defaultRenderLink = (path: Path, children: ReactNode) => (
-  <Box as="a" href={path.url} textDecoration="none">
+  <a href={path.url} className="no-underline">
     {children}
-  </Box>
+  </a>
 )
 
 const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
