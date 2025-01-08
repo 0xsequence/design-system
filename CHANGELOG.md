@@ -1,5 +1,13 @@
 # @0xsequence/design-system
 
+## 1.9.0
+
+### Minor Changes
+
+- Fixing GradientAvatar unique ids
+- Remove old outdated network colors
+- Cleanup Text variants
+
 ## 1.8.2
 
 ### Patch Changes
