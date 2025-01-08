@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { Fragment, memo } from 'react'
+import { Fragment, memo, useId } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
 
@@ -8,6 +8,8 @@ import * as styles from './styles.css'
 const MOD = 1000
 const SIZE = 64
 const RADIUS = SIZE / 2
+
+const prefix = 'gradient-avatar-'
 
 type GradientAvatarProps = {
   address: string
@@ -93,9 +95,12 @@ const createGradients = (address: string, complexity: number) => {
     }
   })
 }
+
 export const GradientAvatar = memo((props: GradientAvatarProps) => {
   const { className, address, size = 'md', complexity = 1, ...rest } = props
   const gradients = createGradients(address, complexity)
+
+  const id = useId()
 
   return (
     <Box
@@ -110,12 +115,12 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
       {...rest}
     >
       <defs>
-        <clipPath id="circle-clip">
+        <clipPath id={`${prefix}circle-clip${id}`}>
           <circle cx={RADIUS} cy={RADIUS} r={RADIUS} />
         </clipPath>
 
         <filter
-          id="blur"
+          id={`${prefix}blur${id}`}
           x="-10%"
           y="-10%"
           width="120%"
@@ -137,7 +142,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
         </filter>
 
         <linearGradient
-          id={`gradient-background-${address}`}
+          id={`${prefix}background${id}`}
           x1="0"
           y1="0"
           x2="1"
@@ -149,12 +154,12 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
 
         {gradients.map((gradient, idx) => (
           <Fragment key={idx}>
-            <radialGradient id={`gradient-primary-${address}-${idx}`}>
+            <radialGradient id={`${prefix}primary${id}${idx}`}>
               <stop offset="0" stopColor={gradient.a} />
               <stop offset="1" stopColor={gradient.b} />
             </radialGradient>
 
-            <radialGradient id={`gradient-secondary-${address}-${idx}`}>
+            <radialGradient id={`${prefix}secondary${id}${idx}`}>
               <stop offset="0" stopColor={gradient.c} />
               <stop offset="1" stopColor={gradient.b} />
             </radialGradient>
@@ -162,24 +167,24 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
         ))}
       </defs>
 
-      <g clipPath="url(#circle-clip)">
+      <g clipPath={`url(#${prefix}circle-clip${id})`}>
         <rect
           width="100%"
           height="100%"
-          fill={`url(#gradient-background-${address})`}
+          fill={`url(#${prefix}background${id})`}
         />
 
-        <g filter="url(#blur)">
+        <g filter={`url(#${prefix}blur${id})`}>
           {gradients.map((gradient, idx) => (
             <Fragment key={idx}>
               <circle
-                fill={`url(#gradient-primary-${address}-${idx})`}
+                fill={`url(#${prefix}primary${id}${idx})`}
                 cx={gradient.x}
                 cy={gradient.y}
                 r={gradient.r}
               />
               <circle
-                fill={`url(#gradient-secondary-${address}-${idx})`}
+                fill={`url(#${prefix}secondary${id}${idx})`}
                 cx={gradient.y}
                 cy={gradient.x}
                 r={gradient.r / 2}
