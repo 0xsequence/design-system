@@ -2,9 +2,7 @@
 // Run pnpm build:icons to update
 import { SVGProps } from 'react'
 
-import { Box } from '~/components/Box'
-
-import { iconVariants } from './styles.css'
+import { iconVariants } from './iconVariants'
 import { IconProps } from './types'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
@@ -19,8 +17,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
 )
 
 const SvgDotIcon = ({ size = 'sm', ...props }: IconProps) => (
-  <Box
-    as={Svg}
+  <Svg
     className={iconVariants({
       size,
     })}
