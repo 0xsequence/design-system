@@ -1,21 +1,41 @@
-import { motion } from 'framer-motion'
+import { cva, VariantProps } from 'class-variance-authority'
+import { HTMLMotionProps, motion } from 'framer-motion'
 
-import { Box, BoxProps } from '../Box'
+import { cn } from '~/utils'
 
-import * as styles from './styles.css'
+const skeletonVariants = cva(
+  [
+    'rounded',
+    'bg-gradient-skeleton',
+    'bg-[length:400%_400%]',
+    'bg-no-repeat',
+    'animate-skeleton',
+  ],
+  {
+    variants: {
+      size: {
+        sm: 'w-24 h-4',
+        normal: 'w-[100px] h-5',
+        md: 'w-[124px] h-6',
+        lg: 'w-[124px] h-7',
+        xl: 'w-[148px] h-9',
+      },
+    },
+  }
+)
 
-type SkeletonProps = BoxProps & styles.SkeletonVariants
+interface SkeletonProps
+  extends HTMLMotionProps<'div'>,
+    VariantProps<typeof skeletonVariants> {}
 
 export const Skeleton = (props: SkeletonProps) => {
-  const { size, ...rest } = props
+  const { className, size, ...rest } = props
 
   return (
-    <Box
-      as={motion.div}
-      className={styles.skeleton({ size })}
+    <motion.div
+      className={cn(skeletonVariants({ size }), className)}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      borderRadius="sm"
       {...rest}
     />
   )

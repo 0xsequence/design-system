@@ -57,6 +57,7 @@ export default {
         'gradient-backdrop': 'var(--seq-colors-gradient-backdrop)',
         'gradient-primary': 'var(--seq-colors-gradient-primary)',
         'gradient-secondary': 'var(--seq-colors-gradient-secondary)',
+        'gradient-skeleton': 'var(--seq-colors-gradient-skeleton)',
       },
       keyframes: {
         spin: {
@@ -66,10 +67,16 @@ export default {
           from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
           to: { transform: 'translateX(100%)' },
         },
+        skeleton: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
       },
       animation: {
         spin: 'spin 2s linear infinite',
         swipeOut: 'swipeOut 200ms ease-out',
+        skeleton: 'skeleton 1s ease infinite',
       },
     },
     ringColor: {
