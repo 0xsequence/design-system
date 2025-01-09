@@ -10,9 +10,7 @@ const template = ({ exports, componentName, jsx }, { tpl }) => {
   ${comments}
   import { SVGProps } from 'react'
   ${NEWLINE}
-  import { Box } from '~/components/Box'
-  ${NEWLINE}
-  import { iconVariants } from './styles.css'
+  import { iconVariants } from './iconVariants'
   import { IconProps } from './types'
   ${NEWLINE}
   const Svg = (props: SVGProps<SVGSVGElement>) => (
@@ -20,7 +18,7 @@ const template = ({ exports, componentName, jsx }, { tpl }) => {
   )
   ${NEWLINE}
   const ${componentName} = ({ size = 'sm', ...props }: IconProps) => (
-    <Box as={Svg} className={iconVariants({ size })} {...props} />
+    <Svg className={iconVariants({ size })} {...props} />
   );
   ${NEWLINE}
   ${exports};

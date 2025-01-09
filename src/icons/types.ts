@@ -1,9 +1,10 @@
-import { ComponentType } from 'react'
+import { VariantProps } from 'class-variance-authority'
+import { ComponentType, SVGProps } from 'react'
 
-import { BoxProps } from '~/components/Box'
+import { iconVariants } from './iconVariants'
 
-import { IconVariants } from './styles.css'
-
-export type IconProps = IconVariants & BoxProps
+export interface IconProps
+  extends SVGProps<SVGSVGElement>,
+    VariantProps<typeof iconVariants> {}
 
 export type Icon = ComponentType<IconProps>
