@@ -61,6 +61,13 @@
       rgb(80, 80, 80) 43.89%,
       rgb(100, 100, 100) 64.72%
     );
+
+    --seq-colors-gradient-skeleton: linear-gradient(
+      -45deg,
+      transparent,
+      var(--seq-colors-background-secondary),
+      transparent
+    );
   }
 
   [data-theme='light'] {
