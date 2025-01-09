@@ -2,6 +2,8 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
 import { HTMLAttributes } from 'react'
 
+import { cn } from '~/utils'
+
 const cardVariants = cva(['overflow-hidden', 'rounded-md', 'p-4', 'w-full'], {
   variants: {
     clickable: {
@@ -45,13 +47,15 @@ export const Card = (props: CardProps) => {
 
   return (
     <Comp
-      className={cardVariants({
-        clickable,
-        outlined,
-        disabled,
-        blur,
-        className,
-      })}
+      className={cn(
+        cardVariants({
+          clickable,
+          outlined,
+          disabled,
+          blur,
+        }),
+        className
+      )}
       {...rest}
     >
       {children}

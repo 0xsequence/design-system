@@ -1,11 +1,51 @@
-import { Box, BoxProps } from '../Box'
+import { cva, VariantProps } from 'class-variance-authority'
+import { HTMLAttributes } from 'react'
 
-import * as styles from './styles.css'
+import { cn } from '~/utils'
 
-interface ScrollProps extends BoxProps {
-  direction?: 'horizontal' | 'vertical'
-  shadows?: boolean
-  contentProps?: BoxProps
+const scrollVariants = cva(['w-full h-full bg-background-primary'], {
+  variants: {
+    direction: {
+      vertical: ['h-full overflow-y-auto overscroll-y-contain'],
+      horizontal: ['overflow-x-auto overscroll-x-contain w-full'],
+    },
+  },
+  defaultVariants: {
+    direction: 'vertical',
+  },
+})
+
+const overlayVariants = cva(['relative w-full h-full'], {
+  variants: {
+    direction: {
+      vertical: [
+        'before:absolute before:z-10 before:pointer-events-none before:left-0 before:top-0 before:w-full before:h-4',
+        'before:bg-gradient-to-t before:from-transparent before:to-background-primary',
+        'after:absolute after:z-10 after:pointer-events-none after:left-0 after:bottom-0 after:w-full after:h-4',
+        'after:bg-gradient-to-b after:from-transparent after:to-background-primary',
+      ],
+      horizontal: [
+        'before:absolute before:z-10 before:pointer-events-none before:left-0 before:top-0 before:h-full before:w-4',
+        'before:bg-gradient-to-l before:from-transparent before:to-background-primary',
+        'after:absolute after:z-10 after:pointer-events-none after:right-0 after:top-0 after:h-full after:w-4',
+        'after:bg-gradient-to-r after:from-transparent after:to-background-primary',
+      ],
+    },
+    shadows: {
+      true: '',
+      false: 'before:hidden after:hidden',
+    },
+  },
+  defaultVariants: {
+    direction: 'vertical',
+    shadows: true,
+  },
+})
+
+interface ScrollProps
+  extends HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof overlayVariants> {
+  contentProps?: HTMLAttributes<HTMLDivElement>
 }
 
 export const Scroll = (props: ScrollProps) => {
@@ -14,24 +54,18 @@ export const Scroll = (props: ScrollProps) => {
     shadows = true,
     direction = 'vertical',
     contentProps,
+    className,
     ...rest
   } = props
 
   return (
-    <Box
-      className={styles.overlay({ direction, shadows })}
-      position="relative"
-      width="full"
-      height="full"
+    <div
+      className={cn(overlayVariants({ direction, shadows }), className)}
       {...rest}
     >
-      <Box
-        className={styles.scroll({ direction })}
-        background="backgroundPrimary"
-        {...contentProps}
-      >
+      <div className={cn(scrollVariants({ direction }))} {...contentProps}>
         {children}
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
