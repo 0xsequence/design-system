@@ -1,9 +1,8 @@
-import { clsx } from 'clsx'
+import { cva, VariantProps } from 'class-variance-authority'
 import { Fragment, memo, useId } from 'react'
 
 import { Box, BoxProps } from '~/components/Box'
-
-import * as styles from './styles.css'
+import { cn } from '~/utils'
 
 const MOD = 1000
 const SIZE = 64
@@ -11,11 +10,26 @@ const RADIUS = SIZE / 2
 
 const prefix = 'gradient-avatar-'
 
+const avatarVariants = cva(['flex-shrink-0 rounded-full overflow-hidden'], {
+  variants: {
+    size: {
+      xs: 'w-3 h-3',
+      sm: 'w-5 h-5',
+      md: 'w-8 h-8',
+      lg: 'w-10 h-10',
+      xl: 'w-[52px] h-[52px]',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+})
+
 type GradientAvatarProps = {
   address: string
   initials?: string
   complexity?: number
-} & styles.AvatarVariants &
+} & VariantProps<typeof avatarVariants> &
   BoxProps
 
 interface HashState {
@@ -105,12 +119,9 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
   return (
     <Box
       as="svg"
-      className={clsx(className, styles.avatar({ size }))}
+      className={cn(avatarVariants({ size }), className)}
       viewBox={`0 0 ${SIZE} ${SIZE}`}
       version="1.1"
-      flexShrink="0"
-      borderRadius="circle"
-      overflow="hidden"
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
