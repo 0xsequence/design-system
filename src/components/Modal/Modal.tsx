@@ -19,30 +19,19 @@ const modalContentVariants = cva(
     'bg-background-primary',
     'focus:outline-none',
     'scrollbar-none',
+    'bottom-0 md:bottom-auto',
+    'rounded-t-2xl rounded-b-none md:rounded-b-2xl',
   ],
   {
     variants: {
       size: {
         sm: [
-          'w-screen',
-          'min-h-[100px]',
-          'max-h-[calc(100dvh-80px)]',
-          'sm:bottom-0',
-          'lg:w-[540px]',
-          'lg:max-h-[min(800px,calc(100dvh-80px))]',
-          'rounded-t-lg',
-          'sm:rounded-b-none',
-          'lg:rounded-b-lg',
+          'w-screen md:w-[540px]',
+          'min-h-[100px] max-h-[calc(100dvh-80px)] md:max-h-[min(800px,calc(100dvh-80px))]',
         ],
         lg: [
-          'w-screen',
-          'h-[calc(100dvh-70px)]',
-          'lg:w-[720px]',
-          'lg:max-h-[min(800px,calc(100dvh-80px))]',
-          'lg:h-[800px]',
-          'rounded-t-lg',
-          'sm:rounded-b-none',
-          'lg:rounded-b-lg',
+          'w-screen md:w-[720px]',
+          'h-[calc(100dvh-70px)] md:h-[800px] md:max-h-[min(800px,calc(100dvh-80px))]',
         ],
       },
       autoHeight: {
