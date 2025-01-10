@@ -1,12 +1,7 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { ReactNode, useState, ComponentPropsWithoutRef } from 'react'
 
-import { Box } from '../Box'
 import { Text } from '../Text'
-
-import * as styles from './styles.css'
-
-export { TabsPrimitive }
 
 export interface TabsProps
   extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
@@ -19,7 +14,7 @@ export interface TabItemProps {
 }
 
 export const Tabs = (props: TabsProps) => {
-  const { tabs, onValueChange, ...rest } = props
+  const { tabs, onValueChange, className, ...rest } = props
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
     rest.defaultValue
   )
@@ -33,12 +28,16 @@ export const Tabs = (props: TabsProps) => {
   }
 
   return (
-    <TabsPrimitive.Root onValueChange={handleValueChange} {...rest}>
+    <TabsPrimitive.Root
+      onValueChange={handleValueChange}
+      className={className}
+      {...rest}
+    >
       <TabsHeader tabs={tabs} value={selectedValue} />
 
       {tabs.map(tab => (
         <TabsPrimitive.Content
-          className={styles.content}
+          className="outline-none"
           key={tab.value}
           value={tab.value}
         >
@@ -65,24 +64,27 @@ export const TabsHeader = (props: TabsHeaderProps) => {
   const selectedIdx = tabs.findIndex(tab => tab.value === value)
 
   return (
-    <TabsPrimitive.List className={styles.list} style={{ outline: undefined }}>
-      <Box display="flex" position="absolute" inset="2" height="8">
+    <TabsPrimitive.List
+      className="px-2 flex relative w-full rounded-xl bg-background-secondary h-12 outline-none focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-inset"
+      style={{ outline: undefined }}
+    >
+      <div className="flex absolute inset-2 h-8">
         <div
-          className={styles.selector}
+          className="absolute rounded-lg top-0 left-0 h-8 bg-button-glass pointer-events-none transition-transform duration-200 ease-out"
           style={{
             width: `${selectorWidth}%`,
             transform: `translateX(${selectedIdx * 100}%)`,
           }}
         />
-      </Box>
+      </div>
 
       {tabs.map(tab => (
         <TabsPrimitive.Trigger
-          className={styles.trigger}
+          className="w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-text-80 outline-none appearance-none border-none z-[2] data-[state=active]:text-text-100 disabled:opacity-50"
           key={tab.value}
           value={tab.value}
         >
-          <Text variant="normal" fontWeight="bold">
+          <Text variant="normal" fontWeight="bold" className="block">
             {tab.label}
           </Text>
         </TabsPrimitive.Trigger>
@@ -90,6 +92,8 @@ export const TabsHeader = (props: TabsHeaderProps) => {
     </TabsPrimitive.List>
   )
 }
+
+export { TabsPrimitive }
 
 export const TabsRoot = TabsPrimitive.Root
 
