@@ -1,11 +1,50 @@
-import { clsx } from 'clsx'
+import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentType, MouseEvent, ReactNode, useState } from 'react'
 
-import { Box, PolymorphicProps } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { IconProps } from '~/icons/types'
+import { cn } from '~/utils'
 
-import { tabList, tabVariants, TabVariants } from './styles.css'
+const tabVariants = cva([''], {
+  variants: {
+    variant: {
+      pill: '',
+      line: 'leading-5 text-[0.625rem] tracking-[0.8px]',
+    },
+    active: {
+      true: 'hover:opacity-100',
+      false: '',
+    },
+    disabled: {
+      true: 'opacity-50',
+    },
+  },
+  compoundVariants: [
+    {
+      variant: 'pill',
+      active: true,
+      className: 'bg-button-inverse text-text-inverse-100',
+    },
+    {
+      variant: 'pill',
+      active: false,
+      className: 'bg-transparent text-text-80',
+    },
+    {
+      variant: 'line',
+      active: true,
+      className: 'text-text-100',
+    },
+    {
+      variant: 'line',
+      active: false,
+      className: 'text-text-80',
+    },
+  ],
+  defaultVariants: {
+    variant: 'pill',
+  },
+})
 
 export type TabOption = {
   label: ReactNode
@@ -15,14 +54,16 @@ export type TabOption = {
   onLoad?: () => boolean | Promise<boolean>
 }
 
-type TabbedNavProps = {
+interface TabbedNavProps
+  extends React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof tabVariants> {
   defaultValue?: string
   size?: 'xs' | 'sm'
   tabs: TabOption[]
   onTabChange?: (value: string) => void
-} & TabVariants
+}
 
-export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
+export const TabbedNav = (props: TabbedNavProps) => {
   const {
     className,
     defaultValue,
@@ -65,29 +106,26 @@ export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
   }
 
   return (
-    <Box as="nav" {...rest}>
-      <Box as="ul" gap="2" className={clsx(tabList)}>
+    <nav {...rest}>
+      <ul className="flex gap-2 list-none">
         {tabs.map((option, tabIndex) => {
           const isActive = option.value === value
 
           return (
-            <Box
-              as="li"
+            <li
               key={tabIndex}
-              borderTopColor={
+              className={cn(
                 variant === 'line'
                   ? isActive
-                    ? 'text100'
-                    : 'transparent'
+                    ? 'border-t-2 border-t-text-100'
+                    : 'border-t-2 border-t-transparent'
                   : undefined
-              }
-              borderTopStyle={variant === 'line' ? 'solid' : undefined}
-              borderTopWidth={variant === 'line' ? 'thick' : undefined}
+              )}
             >
               <Button
-                className={clsx(
-                  className,
-                  tabVariants({ active: isActive, variant })
+                className={cn(
+                  tabVariants({ active: isActive, variant }),
+                  className
                 )}
                 variant={variant === 'line' ? 'text' : 'base'}
                 disabled={isLoading || option.disabled}
@@ -101,10 +139,10 @@ export const TabbedNav = (props: PolymorphicProps<TabbedNavProps, 'div'>) => {
                 size={size}
                 borderRadius="circle"
               />
-            </Box>
+            </li>
           )
         })}
-      </Box>
-    </Box>
+      </ul>
+    </nav>
   )
 }
