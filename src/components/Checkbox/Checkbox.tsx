@@ -1,22 +1,41 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
+import { cva, VariantProps } from 'class-variance-authority'
 import { forwardRef, Ref } from 'react'
 
 import { Field, FieldProps } from '~/components/Field'
 import { CheckmarkIcon } from '~/icons'
+import { cn } from '~/utils'
 
-import { checkboxVariants, CheckboxVariants, indicator } from './styles.css'
+const checkboxVariants = cva(
+  [
+    'flex items-center justify-center border border-solid border-border-focus bg-transparent',
+    'rounded cursor-pointer opacity-100 hover:opacity-80 disabled:opacity-50 disabled:cursor-default',
+    'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-offset-0 ring-inset',
+  ],
+  {
+    variants: {
+      size: {
+        sm: 'h-5 w-5',
+        lg: 'h-7 w-7',
+      },
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  }
+)
 
 export type CheckboxProps = FieldProps &
-  CheckboxVariants &
+  VariantProps<typeof checkboxVariants> &
   CheckboxPrimitive.CheckboxProps & {
     disabled?: boolean
     id?: string
   }
 
-type IndicatorProps = CheckboxVariants & {}
+type IndicatorProps = VariantProps<typeof checkboxVariants>
 
 const Indicator = ({ size = 'sm' }: IndicatorProps) => (
-  <CheckboxPrimitive.Indicator className={indicator}>
+  <CheckboxPrimitive.Indicator className="flex items-center justify-center w-full h-full text-text-100">
     <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xs'} />
   </CheckboxPrimitive.Indicator>
 )
@@ -30,6 +49,7 @@ export const Checkbox = forwardRef(
       label = '',
       labelLocation = 'left',
       size = 'sm',
+      className,
       ...rest
     } = props
 
@@ -43,7 +63,7 @@ export const Checkbox = forwardRef(
         whiteSpace="nowrap"
       >
         <CheckboxPrimitive.Root
-          className={checkboxVariants({ size })}
+          className={cn(checkboxVariants({ size }), className)}
           disabled={disabled}
           id={id ?? name}
           name={name}
