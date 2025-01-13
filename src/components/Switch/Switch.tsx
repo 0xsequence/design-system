@@ -1,9 +1,6 @@
 import * as SwitchPrimitive from '@radix-ui/react-switch'
 
-import { Box } from '../Box'
 import { Field, FieldProps } from '../Field'
-
-import * as styles from './styles.css'
 
 type SwitchProps = FieldProps & SwitchPrimitive.SwitchProps
 
@@ -21,21 +18,20 @@ export const Switch = (props: SwitchProps) => {
   return (
     <Field
       disabled={disabled}
-      display="flex"
       id={id ?? name}
       label={label}
       labelLocation={labelLocation}
       description={description}
-      whiteSpace="nowrap"
+      className="flex whitespace-nowrap"
     >
       <SwitchPrimitive.Root
-        className={styles.root}
+        className="relative w-12 h-7 p-1 rounded-full bg-background-control cursor-pointer border-none disabled:cursor-default disabled:opacity-50 data-[state=checked]:bg-gradient-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 ring-inset"
         disabled={disabled}
         {...rest}
       >
-        <Box position="relative" width="full" height="full">
-          <SwitchPrimitive.Thumb className={styles.thumb} />
-        </Box>
+        <div className="relative w-full h-full">
+          <SwitchPrimitive.Thumb className="absolute top-0 left-0 w-5 h-5 bg-white rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:translate-x-5" />
+        </div>
       </SwitchPrimitive.Root>
     </Field>
   )
