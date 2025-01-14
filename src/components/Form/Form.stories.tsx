@@ -149,11 +149,10 @@ export const Default: Story = {
             <RadioGroup
               control={control}
               defaultValue={selectOptions[0].value}
-              flexDirection="row"
-              gap="4"
               onValueChange={(value: string) => setValue('radioOption', value)}
               options={selectOptions}
               name="radioOption"
+              className="flex-row gap-4"
             />
 
             <Box flexDirection="row-reverse" marginTop="2" gap="2">

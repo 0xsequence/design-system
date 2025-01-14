@@ -12,8 +12,6 @@ type Story = StoryObj<typeof RadioGroup>
 export const Default: Story = {
   args: {
     size: 'sm',
-    flexDirection: 'column',
-    gap: '4',
     options: [
       {
         label: 'Option 1',
