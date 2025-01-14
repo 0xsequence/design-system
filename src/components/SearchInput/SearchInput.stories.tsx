@@ -15,7 +15,6 @@ const StoryWrapper: StoryFn<typeof SearchInput> = args => {
 
   return (
     <SearchInput
-      as="input"
       id="myInput"
       value={value}
       onChange={ev => setValue(ev.target.value)}
