@@ -25,7 +25,7 @@ export const Switch = (props: SwitchProps) => {
       className="flex whitespace-nowrap"
     >
       <SwitchPrimitive.Root
-        className="relative w-12 h-7 p-1 rounded-full bg-background-control cursor-pointer border-none disabled:cursor-default disabled:opacity-50 data-[state=checked]:bg-gradient-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 ring-inset"
+        className="relative w-12 h-7 p-1 rounded-full bg-background-control cursor-pointer border-none disabled:cursor-default disabled:opacity-50 data-[state=checked]:bg-gradient-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus ring-inset"
         disabled={disabled}
         {...rest}
       >
