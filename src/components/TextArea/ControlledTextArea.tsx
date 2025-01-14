@@ -1,10 +1,8 @@
 import { Control, Controller } from 'react-hook-form'
 
-import { PolymorphicProps } from '~/components/Box'
-
 import { TextArea, TextAreaProps } from './TextArea'
 
-type ControlledTextAreaProps = PolymorphicProps<TextAreaProps, 'input'> & {
+type ControlledTextAreaProps = TextAreaProps & {
   control: Control
   defaultValue?: string
   name: string
