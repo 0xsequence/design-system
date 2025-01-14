@@ -1,8 +1,25 @@
+import { cva } from 'class-variance-authority'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
-import { Box } from '../Box'
+import { cn } from '~/utils'
 
-import * as styles from './styles.css'
+import { textVariants } from '../Text'
+
+const digitInputVariants = cva(
+  [
+    textVariants({ variant: 'large' }),
+    'flex justify-center items-center h-12 w-10 p-[10px]',
+    'border-none rounded-lg text-text-100 bg-transparent text-center',
+    'caret-transparent selection:bg-transparent',
+    'ring-inset ring-1 ring-border-normal hover:ring-border-focus',
+    'disabled:cursor-default disabled:opacity-50',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus',
+  ],
+  {
+    variants: {},
+    defaultVariants: {},
+  }
+)
 
 interface PINCodeInputProps {
   digits: number
@@ -117,13 +134,12 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
   }
 
   return (
-    <Box gap="2">
+    <div className="flex gap-2">
       {range(0, digits).map(idx => (
         <Fragment key={idx}>
           {!!group && idx > 0 && idx % group === 0 && <span />}
-          <Box
-            as="input"
-            className={styles.digitInput}
+          <input
+            className={cn(digitInputVariants())}
             value={value[idx] || ''}
             ref={inputRefs[idx]}
             type="text"
@@ -139,7 +155,7 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
           />
         </Fragment>
       ))}
-    </Box>
+    </div>
   )
 }
 
