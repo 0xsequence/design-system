@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { ElementType, ReactNode } from 'react'
 
 import { Box, PolymorphicComponent, PolymorphicProps } from '~/components/Box'
@@ -19,7 +20,7 @@ export interface FieldProps {
 // TODO: handle isRequired in label?
 
 export const Field: PolymorphicComponent<FieldProps, 'div'> = <
-  T extends ElementType
+  T extends ElementType,
 >(
   props: PolymorphicProps<FieldProps, T>
 ) => {
@@ -29,6 +30,7 @@ export const Field: PolymorphicComponent<FieldProps, 'div'> = <
     description,
     labelLocation = 'top',
     children,
+    className,
     ...rest
   } = props
 
@@ -60,7 +62,7 @@ export const Field: PolymorphicComponent<FieldProps, 'div'> = <
   return (
     <Box
       as="label"
-      className={styles.labelVariants({ labelLocation })}
+      className={clsx(styles.labelVariants({ labelLocation }), className)}
       htmlFor={id}
       {...rest}
     >
