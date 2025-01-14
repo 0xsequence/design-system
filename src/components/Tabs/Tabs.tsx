@@ -65,7 +65,7 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 
   return (
     <TabsPrimitive.List
-      className="px-2 flex relative w-full rounded-xl bg-background-secondary h-12 outline-none focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-inset"
+      className="px-2 flex relative w-full rounded-xl bg-background-secondary h-12 outline-none ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-border-focus"
       style={{ outline: undefined }}
     >
       <div className="flex absolute inset-2 h-8">

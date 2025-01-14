@@ -79,9 +79,6 @@ export default {
         skeleton: 'skeleton 1s ease infinite',
       },
     },
-    ringColor: {
-      DEFAULT: 'var(--seq-colors-border-focus)',
-    },
   },
   plugins: [],
 }
