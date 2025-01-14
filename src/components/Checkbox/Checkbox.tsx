@@ -8,9 +8,9 @@ import { cn } from '~/utils'
 
 const checkboxVariants = cva(
   [
-    'flex items-center justify-center border border-solid border-border-focus bg-transparent',
+    'flex items-center justify-center bg-transparent',
     'rounded cursor-pointer opacity-100 hover:opacity-80 disabled:opacity-50 disabled:cursor-default',
-    'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-offset-0 ring-inset',
+    'outline-none ring-inset ring-1 ring-border-focus focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
   {
     variants: {

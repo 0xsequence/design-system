@@ -49,7 +49,7 @@ export const Collapsible = (props: CollapsibleProps) => {
     >
       <motion.div
         className={clsx(
-          'min-h-[64px] rounded-md bg-background-secondary relative overflow-hidden w-full focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-inset focus-within:ring-focus focus-within:ring-offset-0 focus-within:outline-none',
+          'min-h-[64px] rounded-md bg-background-secondary relative overflow-hidden w-full ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-border-focus',
           className
         )}
         initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
