@@ -1,88 +1,113 @@
-import { clsx } from 'clsx'
-import { ComponentType, ElementType, forwardRef, ReactNode } from 'react'
+import { cva, VariantProps } from 'class-variance-authority'
+import { ComponentType, forwardRef, ReactNode } from 'react'
 
-import {
-  Box,
-  PolymorphicComponent,
-  PolymorphicProps,
-  PolymorphicRef,
-} from '~/components/Box'
 import { Field, FieldProps } from '~/components/Field'
 import { IconProps } from '~/icons/types'
+import { cn } from '~/utils'
 
-import * as styles from './styles.css'
+import { textVariants } from '../Text'
 
-export type TextInputProps = FieldProps &
-  styles.WrapVariants & {
-    disabled?: boolean
-    leftIcon?: ComponentType<IconProps>
-    rightIcon?: ComponentType<IconProps>
-    name: string
-    controls?: ReactNode
-    value?: string
-    numeric?: boolean
+const wrapperVariants = cva(
+  [
+    'inline-flex items-center bg-transparent text-text-100 min-w-full px-4 gap-2',
+    'h-[52px] cursor-text',
+    '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
+    '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
+    'ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
+  ],
+  {
+    variants: {
+      borderRadius: {
+        xs: 'rounded',
+        sm: 'rounded-lg',
+        md: 'rounded-xl',
+      },
+    },
+    defaultVariants: {
+      borderRadius: 'md',
+    },
   }
+)
 
-export const TextInput: PolymorphicComponent<TextInputProps, 'input'> =
-  forwardRef(
-    <T extends ElementType>(
-      props: PolymorphicProps<TextInputProps, T>,
-      ref: PolymorphicRef<T>
-    ) => {
-      const {
-        as = 'input',
-        autoComplete = 'off',
-        borderRadius = 'md',
-        description,
-        disabled = false,
-        id,
-        label = '',
-        labelLocation = 'hidden',
-        leftIcon: LeftIcon,
-        rightIcon: RightIcon,
-        name,
-        controls,
-        type = 'text',
-        numeric = false,
-        ...rest
-      } = props
+const inputVariants = cva(
+  [
+    'block bg-transparent text-text-100 border-none px-0 py-4 w-full h-full placeholder-text-50',
+    'focus:outline-none focus:ring-0',
+  ],
+  {
+    variants: {
+      numeric: {
+        false: textVariants({ variant: 'normal' }),
+        true: textVariants({ variant: 'large' }),
+      },
+    },
+    defaultVariants: {
+      numeric: false,
+    },
+  }
+)
 
-      return (
-        <Field
-          description={description}
-          disabled={disabled}
-          display="grid"
-          id={id ?? name}
-          label={label}
-          labelLocation={labelLocation}
-        >
-          <Box width="full">
-            <Box
-              className={clsx(
-                styles.wrap,
-                styles.wrapVariants({ borderRadius })
-              )}
-            >
-              {LeftIcon && <LeftIcon size="sm" />}
+export interface TextInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
+    FieldProps,
+    VariantProps<typeof wrapperVariants> {
+  leftIcon?: ComponentType<IconProps>
+  rightIcon?: ComponentType<IconProps>
+  name: string
+  numeric?: boolean
+  controls?: ReactNode
+}
 
-              <Box
-                as={as}
-                autoComplete={autoComplete}
-                spellCheck="false"
-                className={styles.input({ numeric })}
-                disabled={disabled}
-                id={id ?? name}
-                name={name}
-                ref={ref}
-                type={type}
-                {...rest}
-              />
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  (props, ref) => {
+    const {
+      autoComplete = 'off',
+      borderRadius = 'md',
+      description,
+      disabled = false,
+      id,
+      label = '',
+      labelLocation = 'hidden',
+      leftIcon: LeftIcon,
+      rightIcon: RightIcon,
+      name,
+      controls,
+      type = 'text',
+      numeric = false,
+      className,
+      ...rest
+    } = props
 
-              {RightIcon && <RightIcon size="sm" />}
-              {controls}
-            </Box>
-          </Box>
-        </Field>
-      )
-    }
-  )
+    return (
+      <Field
+        description={description}
+        disabled={disabled}
+        id={id ?? name}
+        label={label}
+        labelLocation={labelLocation}
+        className="grid"
+      >
+        <div className="w-full">
+          <div className={cn(wrapperVariants({ borderRadius }))}>
+            {LeftIcon && <LeftIcon size="sm" />}
+
+            <input
+              autoComplete={autoComplete}
+              spellCheck="false"
+              className={cn(inputVariants({ numeric }), className)}
+              disabled={disabled}
+              id={id ?? name}
+              name={name}
+              ref={ref}
+              type={type}
+              {...rest}
+            />
+
+            {RightIcon && <RightIcon size="sm" />}
+            {controls}
+          </div>
+        </div>
+      </Field>
+    )
+  }
+)
