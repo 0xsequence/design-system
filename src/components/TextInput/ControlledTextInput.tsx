@@ -1,10 +1,8 @@
 import { Control, Controller } from 'react-hook-form'
 
-import { PolymorphicProps } from '~/components/Box'
-
 import { TextInput, TextInputProps } from './TextInput'
 
-type ControlledTextInputProps = PolymorphicProps<TextInputProps, 'input'> & {
+type ControlledTextInputProps = TextInputProps & {
   control: Control
   defaultValue?: string
   name: string
