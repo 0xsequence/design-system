@@ -1,8 +1,6 @@
 import { ChangeEvent, FocusEvent, forwardRef } from 'react'
 
-import { PolymorphicProps, PolymorphicRef } from '../Box'
-import { TextInput } from '../TextInput'
-import { TextInputProps } from '../TextInput/TextInput'
+import { TextInput, TextInputProps } from '../TextInput'
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`)
 
@@ -10,16 +8,13 @@ export function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
-export type NumericInputProps = TextInputProps & {
-  name?: string
+export interface NumericInputProps
+  extends Omit<TextInputProps, 'numeric' | 'type' | 'inputMode' | 'pattern'> {
   decimals?: number
 }
 
-export const NumericInput = forwardRef(
-  (
-    props: PolymorphicProps<NumericInputProps, 'input'>,
-    ref: PolymorphicRef<'input'>
-  ) => {
+export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
+  (props, ref) => {
     const { name = 'amount', placeholder, onChange, onBlur, ...rest } = props
 
     const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
