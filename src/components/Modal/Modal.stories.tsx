@@ -33,11 +33,11 @@ export const Default: Story = {
     children: (
       <div className="flex flex-col justify-between h-full p-4">
         <div>
-          <Text as="h1" variant="medium" color="text100">
-            New Dapp
+          <Text variant="medium" color="text100" asChild>
+            <h1>New Dapp</h1>
           </Text>
-          <Text as="p" variant="normal" color="text50">
-            You can always change these settings later.
+          <Text variant="normal" color="text50" asChild>
+            <p>You can always change these settings later.</p>
           </Text>
         </div>
 
@@ -67,12 +67,14 @@ export const CustomAnimation: Story = {
     children: (
       <div className="flex flex-col justify-between h-full p-4">
         <div>
-          <Text as="h1" variant="medium" color="text100">
-            New Dapp
+          <Text variant="medium" color="text100" asChild>
+            <h1>New Dapp</h1>
           </Text>
-          <Text as="p" variant="normal" color="text50">
-            Custom Open & Close Animated Modal. You can always change these
-            settings later.
+          <Text variant="normal" color="text50" asChild>
+            <p>
+              Custom Open & Close Animated Modal. You can always change these
+              settings later.
+            </p>
           </Text>
         </div>
 

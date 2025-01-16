@@ -136,24 +136,24 @@ export const Toast = (props: ToastProps) => {
               {title && (
                 <ToastPrimitive.Title>
                   <Text
-                    as="div"
                     variant="normal"
                     fontWeight="bold"
                     color="text80"
+                    asChild
                   >
-                    {title}
+                    <div>{title}</div>
                   </Text>
                 </ToastPrimitive.Title>
               )}
 
               <ToastPrimitive.Description>
                 <Text
-                  as="div"
                   variant="normal"
                   fontWeight="medium"
                   color="text50"
+                  asChild
                 >
-                  {description}
+                  <div>{description}</div>
                 </Text>
               </ToastPrimitive.Description>
             </div>
