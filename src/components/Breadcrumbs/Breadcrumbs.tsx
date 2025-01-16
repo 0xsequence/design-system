@@ -58,13 +58,7 @@ const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
   const { path, active, renderLink = defaultRenderLink } = props
 
   return active ? (
-    <Text
-      variant="small"
-      fontWeight="medium"
-      color="text100"
-      whiteSpace="nowrap"
-      capitalize
-    >
+    <Text variant="small" fontWeight="medium" color="text100" nowrap capitalize>
       {path.label}
     </Text>
   ) : (
@@ -75,9 +69,9 @@ const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
           variant="small"
           fontWeight="medium"
           color="text50"
-          whiteSpace="nowrap"
+          nowrap
           capitalize
-          opacity={{ hover: '80' }}
+          className="hover:opacity-80"
         >
           {path.label}
         </Text>

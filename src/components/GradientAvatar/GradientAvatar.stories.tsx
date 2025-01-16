@@ -61,14 +61,8 @@ for (let row = 0; row < ROWS; row++) {
 export const Multiple = () => {
   return (
     <>
-      <Text
-        as="div"
-        variant="normal"
-        color="text100"
-        fontWeight="bold"
-        marginBottom="4"
-      >
-        SVG
+      <Text variant="normal" color="text100" fontWeight="bold" asChild>
+        <div>SVG</div>
       </Text>
 
       <div className="flex flex-col gap-4">

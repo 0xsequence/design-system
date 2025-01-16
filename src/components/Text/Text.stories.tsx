@@ -42,7 +42,6 @@ export const BodyLarge: Story = {
   args: {
     variant: 'large',
     color: 'text100',
-    as: 'p',
     children: 'Hello, world!',
   },
 }
@@ -57,7 +56,6 @@ export const TextAsChild: Story = {
   args: {
     variant: 'normal',
     color: 'text100',
-    as: 'p',
     children: (
       <>
         <Text fontWeight="bold" color="positive">

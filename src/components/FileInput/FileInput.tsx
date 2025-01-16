@@ -105,7 +105,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             {fileData ? (
               <div className="flex flex-row gap-2 items-center min-w-0">
                 <Text ellipsis>{fileData.name}</Text>
-                <Text color="text50" variant="xsmall" whiteSpace="nowrap">
+                <Text color="text50" variant="xsmall" nowrap>
                   {fileData.size.toFixed(2)} kb
                 </Text>
               </div>
