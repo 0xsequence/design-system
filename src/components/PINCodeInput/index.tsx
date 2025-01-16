@@ -1,2 +1,1 @@
-export { PINCodeInput } from './PINCodeInput'
-export { digitText } from './styles.css'
+export { PINCodeInput, digitText } from './PINCodeInput'

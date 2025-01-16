@@ -1,9 +1,15 @@
 import { cva } from 'class-variance-authority'
+import { clsx } from 'clsx'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
 import { cn } from '~/utils'
 
 import { textVariants } from '../Text'
+
+export const digitText = clsx(
+  textVariants({ variant: 'large' }),
+  'w-10 h-12 flex justify-center items-center p-[10px] bg-background-secondary rounded-lg text-text-100'
+)
 
 const digitInputVariants = cva(
   [
