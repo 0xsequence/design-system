@@ -1,7 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 import { useState } from 'react'
 
-import { Box } from '~/components/Box'
 import { IconButton } from '~/components/IconButton'
 import { ContextMenuIcon } from '~/icons'
 
@@ -28,7 +27,7 @@ const StoryWrapper = () => {
   const [mode, setMode] = useState<'list' | 'grid'>('list')
 
   return (
-    <Box justifyContent="center">
+    <div className="flex justify-center">
       <DropdownMenuRoot>
         <DropdownMenuTrigger asChild>
           <IconButton icon={ContextMenuIcon} />
@@ -66,7 +65,7 @@ const StoryWrapper = () => {
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenuRoot>
-    </Box>
+    </div>
   )
 }
 

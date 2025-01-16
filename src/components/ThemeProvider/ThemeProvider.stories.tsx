@@ -2,7 +2,6 @@ import { Meta } from '@storybook/react'
 
 import { Button } from '~/components/Button'
 
-import { Box } from '../Box'
 import { Card } from '../Card'
 import { Collapsible } from '../Collapsible'
 import { Text } from '../Text'
@@ -44,9 +43,9 @@ export const Nested = () => {
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Text>
 
-              <Box marginTop="4">
+              <div className="mt-4">
                 <SetThemeButton />
-              </Box>
+              </div>
 
               <div id="app2">
                 <ThemeProvider root="#app2" scope="application2" theme="dark">
@@ -64,9 +63,9 @@ export const Nested = () => {
                         anim id est laborum.
                       </Text>
 
-                      <Box marginTop="4">
+                      <div className="mt-4">
                         <SetThemeButton />
-                      </Box>
+                      </div>
                     </Collapsible>
                   </Card>
                 </ThemeProvider>

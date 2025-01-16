@@ -1,6 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Box } from '~/components/Box'
 import { Text } from '~/components/Text'
 
 import { Card } from './Card'
@@ -16,14 +15,14 @@ export const Default: Story = {
   args: {
     children: (
       <>
-        <Box flexDirection="column">
+        <div className="flex flex-col">
           <Text variant="large" color="text100">
             Card
           </Text>
           <Text variant="normal" color="text50">
             Description
           </Text>
-        </Box>
+        </div>
       </>
     ),
   },
@@ -34,14 +33,14 @@ export const Clickable: Story = {
     onClick: () => console.log('Clicked!'),
     children: (
       <>
-        <Box flexDirection="column" textAlign="left">
+        <div className="flex flex-col text-left">
           <Text variant="large" color="text100">
             Card
           </Text>
           <Text variant="normal" color="text50">
             Description
           </Text>
-        </Box>
+        </div>
       </>
     ),
   },
@@ -52,14 +51,14 @@ export const Disabled: Story = {
     disabled: true,
     children: (
       <>
-        <Box flexDirection="column" textAlign="left">
+        <div className="flex flex-col text-left">
           <Text variant="large" color="text100">
             Card
           </Text>
           <Text variant="normal" color="text50">
             Description
           </Text>
-        </Box>
+        </div>
       </>
     ),
   },
@@ -69,14 +68,14 @@ export const Outlined: Story = {
     outlined: true,
     children: (
       <>
-        <Box flexDirection="column">
+        <div className="flex flex-col">
           <Text variant="large" color="text100">
             Card
           </Text>
           <Text variant="normal" color="text50">
             Description
           </Text>
-        </Box>
+        </div>
       </>
     ),
   },

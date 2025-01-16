@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { ControlledCheckbox as Checkbox } from '~/components/Checkbox'
 import { ControlledFileInput as FileInput } from '~/components/FileInput'
@@ -38,13 +37,7 @@ type Story = StoryObj<typeof Form>
 
 export const Default: Story = {
   render: ({ onSubmit, ...args }) => (
-    <Box
-      background="backgroundSecondary"
-      borderRadius="md"
-      flexDirection="column"
-      gap="4"
-      padding="4"
-    >
+    <div className="bg-background-secondary rounded-xl flex flex-col gap-4 p-4">
       <Form
         defaultValues={{
           firstName: '',
@@ -53,7 +46,7 @@ export const Default: Story = {
         {...args}
       >
         {({ control, reset, formState: { errors }, setValue }) => (
-          <Box flexDirection="column" gap="4">
+          <div className="flex flex-col gap-4">
             <TextInput
               control={control}
               label="First Name"
@@ -155,14 +148,14 @@ export const Default: Story = {
               className="flex-row gap-4"
             />
 
-            <Box flexDirection="row-reverse" marginTop="2" gap="2">
+            <div className="flex flex-row-reverse gap-2">
               <Button type="submit" label="Submit" variant="primary" />
               <Button type="reset" label="Reset" onClick={() => reset()} />
-            </Box>
-          </Box>
+            </div>
+          </div>
         )}
       </Form>
-    </Box>
+    </div>
   ),
   args: {
     onSubmit: (data: {}) => console.log(data),

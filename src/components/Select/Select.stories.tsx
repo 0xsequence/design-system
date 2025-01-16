@@ -1,6 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Box } from '~/components/Box'
 import { NetworkImage } from '~/components/NetworkImage'
 import { Text } from '~/components/Text'
 
@@ -65,46 +64,46 @@ export const Custom: Story = {
     options: [
       {
         label: (
-          <Box alignItems="center" gap="2">
+          <div className="flex items-center gap-2">
             <NetworkImage chainId={1} />
             <Text>Mainnet</Text>
-          </Box>
+          </div>
         ),
         value: 'mainnet',
       },
       {
         label: (
-          <Box alignItems="center" gap="2">
+          <div className="flex items-center gap-2">
             <NetworkImage chainId={137} />
             <Text>Polygon</Text>
-          </Box>
+          </div>
         ),
         value: 'polygon',
       },
       {
         label: (
-          <Box alignItems="center" gap="2">
+          <div className="flex items-center gap-2">
             <NetworkImage chainId={56} />
             <Text>BNB Smart Chain</Text>
-          </Box>
+          </div>
         ),
         value: 'bsc',
       },
       {
         label: (
-          <Box alignItems="center" gap="2">
+          <div className="flex items-center gap-2">
             <NetworkImage chainId={43114} />
             <Text>Avalanche</Text>
-          </Box>
+          </div>
         ),
         value: 'avalanche',
       },
       {
         label: (
-          <Box alignItems="center" gap="2">
+          <div className="flex items-center gap-2">
             <NetworkImage chainId={42161} />
             <Text>Arbitrum</Text>
-          </Box>
+          </div>
         ),
         value: 'arbitrum',
       },

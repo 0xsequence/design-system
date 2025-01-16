@@ -2,7 +2,6 @@ import { StoryObj, StoryFn, Meta } from '@storybook/react'
 import { useState } from 'react'
 
 import { Badge } from '~/components/Badge'
-import { Box } from '~/components/Box'
 import { Text } from '~/components/Text'
 import { ProfileIcon, TransactionIcon } from '~/icons'
 
@@ -39,10 +38,10 @@ const tabs = [
   },
   {
     label: (
-      <Box gap="1" alignItems="center">
+      <div className="flex gap-1 items-center">
         History
         <Badge value="3" />
-      </Box>
+      </div>
     ),
     leftIcon: TransactionIcon,
     value: 'history',
@@ -75,17 +74,17 @@ const StoryWrapper: StoryFn<typeof TabbedNav> = args => {
     setValue(value)
   }
   return (
-    <Box flexDirection="column" gap="4">
-      <Box background="backgroundSecondary" padding="4" borderRadius="md">
+    <div className="flex flex-col gap-4">
+      <div className="bg-background-secondary p-4 rounded-xl">
         <TabbedNav {...args} onTabChange={value => handleTabChange(value)} />
-      </Box>
+      </div>
 
-      <Box background="backgroundSecondary" padding="4" borderRadius="md">
+      <div className="bg-background-secondary p-4 rounded-xl">
         <Text variant="normal" color="text80">
           {value} content
         </Text>
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 
