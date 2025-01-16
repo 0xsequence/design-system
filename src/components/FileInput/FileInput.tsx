@@ -1,19 +1,13 @@
-import { clsx } from 'clsx'
-import { ChangeEvent, ElementType, forwardRef, useRef, useState } from 'react'
+import { ChangeEvent, forwardRef, useRef, useState } from 'react'
 
-import {
-  Box,
-  PolymorphicComponent,
-  PolymorphicProps,
-  PolymorphicRef,
-} from '~/components/Box'
 import { Field, FieldProps } from '~/components/Field'
 import { IconButton } from '~/components/IconButton'
 import { Text } from '~/components/Text'
 import { useCombinedRefs } from '~/hooks/useCombinedRefs'
 import { CloseIcon } from '~/icons'
+import { cn } from '~/utils'
 
-import * as styles from './styles.css'
+import { textVariants } from '../Text'
 
 const MIME_TYPES = {
   png: '.png,image/png',
@@ -34,92 +28,94 @@ type FileData = {
   extension: string
 }
 
-export type FileInputProps = FieldProps &
-  styles.WrapVariants & {
-    disabled?: boolean
-    name: string
-    validExtensions: AllowedMimeTypes[]
-    value?: File
-    onValueChange?: (value: File | null) => void
-  }
+export interface FileInputProps
+  extends Omit<
+      React.InputHTMLAttributes<HTMLInputElement>,
+      'type' | 'onChange'
+    >,
+    FieldProps {
+  name: string
+  validExtensions: AllowedMimeTypes[]
+  onValueChange?: (value: File | null) => void
+}
 
-export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
-  forwardRef(
-    <T extends ElementType>(
-      props: PolymorphicProps<FileInputProps, T>,
-      ref: PolymorphicRef<T>
-    ) => {
-      const {
-        borderRadius = 'md',
-        description,
-        disabled = false,
-        id,
-        label = '',
-        labelLocation = 'hidden',
-        name,
-        onValueChange,
-        placeholder = 'Upload a file',
-        validExtensions,
-        ...rest
-      } = props
-      const inputRef = useRef<HTMLInputElement>(null)
-      const combinedRef = useCombinedRefs(inputRef, ref)
-      const [fileData, setFileData] = useState<FileData | null>(null)
+export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
+  (props, ref) => {
+    const {
+      description,
+      disabled = false,
+      id,
+      label = '',
+      labelLocation = 'hidden',
+      name,
+      onValueChange,
+      placeholder = 'Upload a file',
+      validExtensions,
+      className,
+      ...rest
+    } = props
 
-      const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const filelist = e.currentTarget.files as FileList
-        if (!filelist || !filelist[0]) {
-          return
-        }
+    const inputRef = useRef<HTMLInputElement>(null)
+    const combinedRef = useCombinedRefs(inputRef, ref)
+    const [fileData, setFileData] = useState<FileData | null>(null)
 
-        const file = filelist[0]
-        const filename = file.name
-        const filesize = file.size / 1000
-
-        setFileData({
-          name: filename,
-          size: filesize,
-          extension: filename.split('.').pop() ?? '',
-        })
-
-        onValueChange?.(file)
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const filelist = e.currentTarget.files as FileList
+      if (!filelist || !filelist[0]) {
+        return
       }
 
-      const accept = validExtensions.map(ext => MIME_TYPES[ext]).join(',')
+      const file = filelist[0]
+      const filename = file.name
+      const filesize = file.size / 1000
 
-      return (
-        <Field
-          description={description}
-          disabled={disabled}
-          display="grid"
-          id={id ?? name}
-          label={label}
-          labelLocation={labelLocation}
-        >
-          <Box
-            width="full"
-            minWidth="0"
-            justifyContent={fileData ? 'space-between' : 'flex-start'}
-            gap="2"
-            color={fileData ? 'text100' : 'text50'}
-            className={clsx(styles.wrap, styles.wrapVariants({ borderRadius }))}
+      setFileData({
+        name: filename,
+        size: filesize,
+        extension: filename.split('.').pop() ?? '',
+      })
+
+      onValueChange?.(file)
+    }
+
+    const accept = validExtensions.map(ext => MIME_TYPES[ext]).join(',')
+
+    return (
+      <Field
+        description={description}
+        disabled={disabled}
+        id={id ?? name}
+        label={label}
+        labelLocation={labelLocation}
+        className="grid"
+      >
+        <div className="w-full min-w-0">
+          <div
+            className={cn(
+              textVariants({ variant: 'normal' }),
+              'inline-flex items-center flex-row justify-start min-w-full p-4 relative h-[52px]',
+              'border border-dashed border-border-normal rounded-xl',
+              '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
+              'focus-within:opacity-100 focus-within:ring-2 focus-within:ring-border-focus focus-within:ring-inset focus-within:border-transparent',
+              fileData ? 'justify-between' : 'justify-start',
+              fileData ? 'text-text-100' : 'text-text-50',
+              className
+            )}
           >
             {fileData ? (
-              <Box flexDirection="row" gap="2" alignItems="center" minWidth="0">
+              <div className="flex flex-row gap-2 items-center min-w-0">
                 <Text ellipsis>{fileData.name}</Text>
                 <Text color="text50" variant="xsmall" whiteSpace="nowrap">
                   {fileData.size.toFixed(2)} kb
                 </Text>
-              </Box>
+              </div>
             ) : (
               <Text ellipsis>{placeholder}</Text>
             )}
 
-            <Box
+            <input
               accept={accept}
-              as="input"
-              className={styles.input}
-              cursor="pointer"
+              className="absolute inset-0 opacity-0 cursor-pointer focus:outline-none"
               disabled={disabled}
               id={id ?? name}
               name={name}
@@ -131,7 +127,7 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
 
             {fileData && (
               <IconButton
-                cursor="pointer"
+                className="cursor-pointer z-10"
                 icon={CloseIcon}
                 size="xs"
                 onClick={ev => {
@@ -143,11 +139,11 @@ export const FileInput: PolymorphicComponent<FileInputProps, 'input'> =
                   onValueChange?.(null)
                   setFileData(null)
                 }}
-                zIndex="10"
               />
             )}
-          </Box>
-        </Field>
-      )
-    }
-  )
+          </div>
+        </div>
+      </Field>
+    )
+  }
+)
