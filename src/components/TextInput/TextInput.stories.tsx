@@ -1,6 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { IconButton } from '~/components/IconButton'
 import { ArrowRightIcon, CloseIcon, ScanIcon, SearchIcon } from '~/icons'
@@ -57,10 +56,10 @@ export const WithComplexControls: Story = {
     label: 'This the label',
     placeholder: 'This is the placeholder',
     controls: (
-      <Box gap="2">
+      <div className="flex gap-2">
         <Button label="Max" size="xs" shape="square" />
         <Button label="Paste" size="xs" shape="square" />
-      </Box>
+      </div>
     ),
   },
 }

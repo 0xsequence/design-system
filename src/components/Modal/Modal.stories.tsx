@@ -2,7 +2,6 @@ import { StoryObj, Meta, StoryFn } from '@storybook/react'
 import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
-import { Box } from '~/components/Box'
 import { Button } from '~/components/Button'
 import { Text } from '~/components/Text'
 
@@ -32,25 +31,20 @@ export const Default: Story = {
   args: {
     size: 'lg',
     children: (
-      <Box
-        flexDirection="column"
-        justifyContent="space-between"
-        height="full"
-        padding="4"
-      >
-        <Box>
+      <div className="flex flex-col justify-between h-full p-4">
+        <div>
           <Text as="h1" variant="medium" color="text100">
             New Dapp
           </Text>
           <Text as="p" variant="normal" color="text50">
             You can always change these settings later.
           </Text>
-        </Box>
+        </div>
 
-        <Box justifyContent="flex-end">
+        <div className="flex justify-end">
           <Button variant="primary" shape="square" label="Create" />
-        </Box>
-      </Box>
+        </div>
+      </div>
     ),
   },
 }
@@ -71,13 +65,8 @@ export const CustomAnimation: Story = {
   args: {
     size: 'lg',
     children: (
-      <Box
-        flexDirection="column"
-        justifyContent="space-between"
-        height="full"
-        padding="4"
-      >
-        <Box>
+      <div className="flex flex-col justify-between h-full p-4">
+        <div>
           <Text as="h1" variant="medium" color="text100">
             New Dapp
           </Text>
@@ -85,12 +74,12 @@ export const CustomAnimation: Story = {
             Custom Open & Close Animated Modal. You can always change these
             settings later.
           </Text>
-        </Box>
+        </div>
 
-        <Box justifyContent="flex-end">
+        <div className="flex justify-end">
           <Button variant="primary" shape="square" label="Create" />
-        </Box>
-      </Box>
+        </div>
+      </div>
     ),
   },
 }

@@ -31,30 +31,28 @@ Then wrap your application root with the ThemeProvider:
 ```jsx
 import { ThemeProvider } from '@0xsequence/design-system'
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <ThemeProvider>
       <App />
     </ThemeProvider>
   </React.StrictMode>
-);
+)
 ```
 
 Then import components from the design system to build your UI:
 
 ```jsx
-import { Box, Text, Button, useTheme } from '@0xsequence/design-system'
+import { Text, Button, useTheme } from '@0xsequence/design-system'
 
 const App = () => (
   const { theme, setTheme } = useTheme()
 
-  <Box gap="1"> // display="flex" is automatically applied when flex properties are added to a Box component
+  <div>
     <Text variant="normal">Hello, World!</Text>
     <Button variant="primary" label="Change theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
-  </Box>
+  </div>
 )
 
 ```

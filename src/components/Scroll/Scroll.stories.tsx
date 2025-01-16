@@ -1,6 +1,5 @@
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
 
-import { Box } from '~/components/Box'
 import { Card } from '~/components/Card'
 import { Text } from '~/components/Text'
 
@@ -61,15 +60,15 @@ export const VerticalScroll: Story = {
     direction: 'vertical',
     shadows: true,
     children: (
-      <Box padding="4" flexDirection="column" gap="4" alignItems="center">
+      <div className="p-4 flex flex-col gap-4 items-center">
         {ALPHABET.map(letter => (
-          <Box key={letter}>
+          <div key={letter}>
             <Text color="text100" variant="xlarge">
               {letter}
             </Text>
-          </Box>
+          </div>
         ))}
-      </Box>
+      </div>
     ),
   },
 }
@@ -80,15 +79,15 @@ export const HorizontalScroll: Story = {
     direction: 'horizontal',
     shadows: true,
     children: (
-      <Box padding="4" gap="4" alignItems="center" height="full" width="max">
+      <div className="p-4 gap-4 items-center h-full w-max">
         {ALPHABET.map(letter => (
-          <Box key={letter}>
+          <div key={letter}>
             <Text color="text100" variant="xlarge">
               {letter}
             </Text>
-          </Box>
+          </div>
         ))}
-      </Box>
+      </div>
     ),
   },
 }

@@ -1,7 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
 import { Badge } from '~/components/Badge'
-import { Box } from '~/components/Box'
 import { ArrowRightIcon, ScanIcon } from '~/icons'
 
 import { Button } from './Button'
@@ -71,10 +70,10 @@ export const WithCountIcon: Story = {
   args: {
     disabled: false,
     label: (
-      <Box gap="1">
+      <div className="flex items-center gap-1">
         Click me
         <Badge value="3" />
-      </Box>
+      </div>
     ),
     onClick: () => console.log('Clicked!'),
     leftIcon: ScanIcon,

@@ -1,7 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 import { ethers } from 'ethers'
 
-import { Box } from '~/components/Box'
 import { Text } from '~/components/Text'
 
 import { GradientAvatar } from './GradientAvatar'
@@ -72,15 +71,15 @@ export const Multiple = () => {
         SVG
       </Text>
 
-      <Box flexDirection="column" gap="4">
+      <div className="flex flex-col gap-4">
         {rows.map((cols, idx) => (
-          <Box gap="4" key={idx}>
+          <div className="flex gap-4" key={idx}>
             {cols.map(address => (
               <GradientAvatar key={address} address={address} size="xl" />
             ))}
-          </Box>
+          </div>
         ))}
-      </Box>
+      </div>
     </>
   )
 }
