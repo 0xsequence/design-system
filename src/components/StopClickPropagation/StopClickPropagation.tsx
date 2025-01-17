@@ -1,24 +1,22 @@
-import { ElementType, forwardRef, PropsWithChildren } from 'react'
+import { forwardRef } from 'react'
 
-import {
-  Box,
-  PolymorphicComponent,
-  PolymorphicProps,
-  PolymorphicRef,
-} from '~/components/Box'
+import { cn } from '~/utils'
 
-export const StopClickPropagation: PolymorphicComponent<
-  PropsWithChildren,
-  'div'
-> = forwardRef(
-  <T extends ElementType>(
-    { children }: PolymorphicProps<PropsWithChildren, T>,
-    ref: PolymorphicRef<T>
-  ) => (
-    <Box
+interface StopClickPropagationProps {
+  children?: React.ReactNode
+  className?: string
+}
+
+export const StopClickPropagation = forwardRef<
+  HTMLDivElement,
+  StopClickPropagationProps
+>((props, ref) => {
+  const { children, className } = props
+
+  return (
+    <div
       ref={ref}
-      width="fit"
-      height="fit"
+      className={cn('w-fit h-fit', className)}
       onClick={ev => {
         ev.preventDefault()
         ev.stopPropagation()
@@ -31,6 +29,6 @@ export const StopClickPropagation: PolymorphicComponent<
       }}
     >
       {children}
-    </Box>
+    </div>
   )
-)
+})
