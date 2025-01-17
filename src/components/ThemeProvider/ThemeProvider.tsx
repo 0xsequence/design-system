@@ -27,6 +27,19 @@ const isThemeOverrides = (theme: any): theme is ThemeOverrides =>
 const getStorageKey = (scope?: string) =>
   scope ? `${STORAGE_KEY}.${scope}` : STORAGE_KEY
 
+const toKebabCase = (str: string) =>
+  str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+
+const setThemeVars = (element: HTMLElement, vars: ThemeOverrides) => {
+  // Set each color token as a CSS variable
+  Object.entries(vars).forEach(([key, value]) => {
+    if (value) {
+      const kebabKey = toKebabCase(key)
+      element.style.setProperty(`--seq-colors-${kebabKey}`, value)
+    }
+  })
+}
+
 interface ThemeContextValue {
   theme: Theme | ThemeOverrides
   root?: string
@@ -89,22 +102,15 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     setTheme(theme)
   }, [props.theme, props.scope, props.prefersColorScheme])
 
-  // Set the data-theme attribtute on the document root element
+  // Set the data-theme attribute and CSS variables on the document root element
   useEffect(() => {
     const rootEl = document.querySelector(props.root || ':root') as HTMLElement
 
     if (rootEl) {
       if (isTheme(theme)) {
         rootEl.setAttribute(THEME_ATTR, theme)
-        // TODO: Implement this
-        // setElementVars(rootEl, colorSchemeVars, {
-        //   colors: colors[theme],
-        // })
       } else if (isThemeOverrides(theme)) {
-        // TODO: Implement this
-        // setElementVars(rootEl, colorSchemeVars, {
-        //   colors: theme as ColorTokens,
-        // })
+        setThemeVars(rootEl, theme)
       }
 
       // Add seq-root class to the root element of custom root
