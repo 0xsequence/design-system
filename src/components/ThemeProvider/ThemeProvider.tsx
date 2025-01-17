@@ -1,4 +1,3 @@
-import { setElementVars } from '@vanilla-extract/dynamic'
 import {
   createContext,
   PropsWithChildren,
@@ -8,8 +7,7 @@ import {
   useState,
 } from 'react'
 
-import { colorSchemeVars } from '~/css/vars.css'
-import { colors, ColorTokens } from '~/tokens/color'
+import { ColorTokens } from '~/tokens/color'
 
 const THEMES = ['dark', 'light'] as const
 
@@ -98,13 +96,15 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     if (rootEl) {
       if (isTheme(theme)) {
         rootEl.setAttribute(THEME_ATTR, theme)
-        setElementVars(rootEl, colorSchemeVars, {
-          colors: colors[theme],
-        })
+        // TODO: Implement this
+        // setElementVars(rootEl, colorSchemeVars, {
+        //   colors: colors[theme],
+        // })
       } else if (isThemeOverrides(theme)) {
-        setElementVars(rootEl, colorSchemeVars, {
-          colors: theme as ColorTokens,
-        })
+        // TODO: Implement this
+        // setElementVars(rootEl, colorSchemeVars, {
+        //   colors: theme as ColorTokens,
+        // })
       }
 
       // Add seq-root class to the root element of custom root

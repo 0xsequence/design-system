@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { breakpoints } from '~/css/breakpoints'
+import { breakpoints } from '~/tokens/breakpoints'
 
 // Inspired by Material-UIs useMediaQuery hook:
 // https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/useMediaQuery/useMediaQuery.js
