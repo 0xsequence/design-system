@@ -1,10 +1,9 @@
 import { Control, Controller } from 'react-hook-form'
 
-import { PolymorphicProps } from '~/components/Box'
-
 import { FileInput, FileInputProps } from './FileInput'
 
-type ControlledFileInputProps = PolymorphicProps<FileInputProps, 'input'> & {
+interface ControlledFileInputProps
+  extends Omit<FileInputProps, 'value' | 'onChange'> {
   control: Control
   defaultValue?: string
   name: string
