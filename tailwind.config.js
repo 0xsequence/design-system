@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{ts,tsx}'],
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@0xsequence/design-system/src/**/*.{js,ts,jsx,tsx}',
+  ],
   future: {
     respectDefaultRingColorOpacity: true,
   },
