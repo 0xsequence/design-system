@@ -1,6 +1,5 @@
 import path from 'path'
 
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
@@ -13,9 +12,6 @@ import { peerDependencies } from './package.json'
 export default defineConfig({
   plugins: [
     tsconfigPaths(),
-    vanillaExtractPlugin({
-      identifiers: 'short', // 'short' | 'debug' | ({ hash }) => `seq-${hash}`
-    }),
     react(),
     eslint({
       include: ['**/*.ts', '**/*.tsx'],
