@@ -20,3 +20,12 @@ export const Default: Story = {
     variant: 'raised',
   },
 }
+
+export const AnchorButton: Story = {
+  args: {
+    icon: ArrowRightIcon,
+    size: 'md',
+    asChild: true,
+    children: <a href="/wallet" />,
+  },
+}
