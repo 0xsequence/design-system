@@ -9,7 +9,7 @@ import { cn } from '~/utils'
 export const buttonVariants = cva(
   [
     'inline-flex items-center whitespace-nowrap overflow-hidden border-none text-decoration-none',
-    'focus-visible:ring-2 focus-visible:ring-border-focus outline-none',
+    'outline-none ring-inset focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
   {
     variants: {
