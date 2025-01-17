@@ -1,11 +1,3 @@
-export { Box } from './Box'
-export type {
-  BoxProps,
-  PolymorphicComponent,
-  PolymorphicProps,
-  PolymorphicRef,
-} from './Box'
-
 export { Badge } from './Badge'
 export { Breadcrumbs } from './Breadcrumbs'
 export { Button } from './Button'
