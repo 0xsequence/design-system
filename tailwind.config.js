@@ -7,12 +7,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Base colors
-        black: 'var(--seq-colors-black)',
-        white: 'var(--seq-colors-white)',
-        transparent: 'var(--seq-colors-transparent)',
-        inherit: 'var(--seq-colors-inherit)',
-
         // Status colors
         positive: 'var(--seq-colors-positive)',
         negative: 'var(--seq-colors-negative)',

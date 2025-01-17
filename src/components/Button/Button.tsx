@@ -18,7 +18,7 @@ export const buttonVariants = cva(
         ghost: 'bg-transparent text-text-100',
         feature: [
           'bg-gradient-secondary text-white',
-          'outline outline-2 outline-white/10 -outline-offset-2',
+          'ring-inset ring-2 ring-white/10',
         ],
         primary: 'bg-gradient-primary text-white',
         glass: 'bg-button-glass text-text-100',
