@@ -1,7 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { Fragment, memo, useId } from 'react'
 
-import { Box, BoxProps } from '~/components/Box'
 import { cn } from '~/utils'
 
 const MOD = 1000
@@ -25,12 +24,12 @@ const avatarVariants = cva(['flex-shrink-0 rounded-full overflow-hidden'], {
   },
 })
 
-type GradientAvatarProps = {
+interface GradientAvatarProps extends VariantProps<typeof avatarVariants> {
   address: string
   initials?: string
   complexity?: number
-} & VariantProps<typeof avatarVariants> &
-  BoxProps
+  className?: string
+}
 
 interface HashState {
   a: number
@@ -117,8 +116,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
   const id = useId()
 
   return (
-    <Box
-      as="svg"
+    <svg
       className={cn(avatarVariants({ size }), className)}
       viewBox={`0 0 ${SIZE} ${SIZE}`}
       version="1.1"
@@ -219,6 +217,6 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
           </text>
         )} */}
       </g>
-    </Box>
+    </svg>
   )
 })
