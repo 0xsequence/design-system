@@ -125,19 +125,19 @@ export const TabbedNav = (props: TabbedNavProps) => {
               <Button
                 className={cn(
                   tabVariants({ active: isActive, variant }),
-                  className
+                  className,
+                  variant === 'line' ? 'px-2' : undefined,
+                  option.leftIcon ? 'pl-1' : 'pl-2',
+                  'rounded-full'
                 )}
                 variant={variant === 'line' ? 'text' : 'base'}
                 disabled={isLoading || option.disabled}
                 label={option.label}
                 leftIcon={option.leftIcon ?? undefined}
+                size={size}
                 onClick={(ev: MouseEvent<HTMLButtonElement>) =>
                   handleTabClick(ev, option, tabIndex)
                 }
-                padding={variant === 'line' ? '2' : undefined}
-                paddingLeft={option.leftIcon ? '1' : '2'}
-                size={size}
-                borderRadius="circle"
               />
             </li>
           )

@@ -1,36 +1,23 @@
-import { ComponentType, ElementType, forwardRef } from 'react'
+import type { VariantProps } from 'class-variance-authority'
+import { ComponentType, forwardRef } from 'react'
 
-import {
-  PolymorphicComponent,
-  PolymorphicProps,
-  PolymorphicRef,
-} from '~/components/Box'
-import { Button, ButtonVariants } from '~/components/Button'
+import { Button, buttonVariants } from '~/components/Button'
 import { IconProps } from '~/icons/types'
 
-type IconButtonVariants = { variant?: (ButtonVariants & {})['variant'] }
-
-type IconButtonProps = IconButtonVariants & {
+export interface IconButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> {
+  asChild?: boolean
+  disabled?: boolean
+  pending?: boolean
   size?: 'xs' | 'sm' | 'md' | 'lg'
+  variant?: VariantProps<typeof buttonVariants>['variant']
   icon: ComponentType<IconProps>
 }
 
-export const IconButton: PolymorphicComponent<IconButtonProps, 'button'> =
-  forwardRef(
-    <T extends ElementType>(
-      props: PolymorphicProps<IconButtonProps, T>,
-      ref: PolymorphicRef<T>
-    ) => {
-      const { icon, size = 'md', ...rest } = props
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
+  (props, ref) => {
+    const { icon, size = 'md', ...rest } = props
 
-      return (
-        <Button
-          leftIcon={icon}
-          size={size}
-          flexShrink="0"
-          ref={ref}
-          {...rest}
-        />
-      )
-    }
-  )
+    return <Button leftIcon={icon} size={size} ref={ref} {...rest} />
+  }
+)

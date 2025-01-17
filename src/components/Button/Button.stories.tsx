@@ -14,9 +14,7 @@ type Story = StoryObj<typeof Button>
 
 export const LabelOnly: Story = {
   args: {
-    as: 'a',
     disabled: false,
-    href: '#',
     label: 'Click me',
     size: 'md',
     variant: 'glass',
@@ -24,9 +22,7 @@ export const LabelOnly: Story = {
 }
 export const Disabled: Story = {
   args: {
-    as: 'a',
     disabled: true,
-    href: '#',
     label: 'Click me',
     size: 'md',
     variant: 'glass',
@@ -84,10 +80,10 @@ export const WithCountIcon: Story = {
 
 export const AnchorButton: Story = {
   args: {
-    as: 'a',
-    href: '/wallet',
     label: 'Click me',
     leftIcon: ScanIcon,
     size: 'md',
+    asChild: true,
+    children: <a href="/wallet" />,
   },
 }

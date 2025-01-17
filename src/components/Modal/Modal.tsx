@@ -150,9 +150,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 <ModalPrimitive.Close asChild>
                   <IconButton
                     icon={CloseIcon}
-                    backdropFilter="blur"
                     size="xs"
-                    className="absolute right-4 top-4 z-20"
+                    className="absolute right-4 top-4 z-20 backdrop-blur"
                     aria-label="Close"
                   />
                 </ModalPrimitive.Close>
