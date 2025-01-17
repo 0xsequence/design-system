@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  .seq-root *,
+  .seq-root *::before,
+  .seq-root *::after {
+    box-sizing: border-box;
+  }
+
   :root,
   [data-theme='dark'] {
     /* Base colors */

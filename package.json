@@ -16,10 +16,12 @@
     "./styles.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
-    }
+    },
+    "./preset": "./tailwind.config.js"
   },
   "files": [
-    "dist/**"
+    "dist/**",
+    "tailwind.config.js"
   ],
   "scripts": {
     "start": "pnpm storybook",
