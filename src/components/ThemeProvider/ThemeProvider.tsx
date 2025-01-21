@@ -17,9 +17,22 @@ const DEFAULT_THEME = 'dark'
 const THEME_ATTR = 'data-theme'
 const STORAGE_KEY = '@sequence.theme'
 
-const isTheme = (theme: any): theme is Theme => THEMES.includes(theme as any)
-
 type ThemeOverrides = Partial<ColorTokens>
+
+interface ThemeContextValue {
+  theme: Theme | ThemeOverrides
+  root?: string
+  setTheme: (mode: Theme) => void
+}
+
+interface ThemeProviderProps {
+  theme?: Theme | ThemeOverrides
+  root?: string
+  scope?: string
+  prefersColorScheme?: boolean
+}
+
+const isTheme = (theme: any): theme is Theme => THEMES.includes(theme as any)
 
 const isThemeOverrides = (theme: any): theme is ThemeOverrides =>
   typeof theme === 'object' && theme !== null && !Array.isArray(theme)
@@ -38,19 +51,6 @@ const setThemeVars = (element: HTMLElement, vars: ThemeOverrides) => {
       element.style.setProperty(`--seq-colors-${kebabKey}`, value)
     }
   })
-}
-
-interface ThemeContextValue {
-  theme: Theme | ThemeOverrides
-  root?: string
-  setTheme: (mode: Theme) => void
-}
-
-interface ThemeProviderProps {
-  theme?: Theme | ThemeOverrides
-  root?: string
-  scope?: string
-  prefersColorScheme?: boolean
 }
 
 const getPersistedTheme = (scope?: string) => {
@@ -84,8 +84,9 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
   useEffect(() => {
     // Add is-apple class
-    ;/Mac/.test(window.navigator.userAgent) &&
+    if (/Mac/.test(window.navigator.userAgent)) {
       window.document.documentElement.classList.add('is-apple')
+    }
   }, [])
 
   useEffect(() => {
