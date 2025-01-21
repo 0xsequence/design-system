@@ -134,7 +134,9 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                   ev.preventDefault()
                   ev.stopPropagation()
 
-                  inputRef.current?.value && (inputRef.current.value = '')
+                  if (inputRef.current?.value) {
+                    inputRef.current.value = ''
+                  }
 
                   onValueChange?.(null)
                   setFileData(null)
