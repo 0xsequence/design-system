@@ -20,15 +20,15 @@ const overlayVariants = cva(['relative w-full h-full'], {
     direction: {
       vertical: [
         'before:absolute before:z-10 before:pointer-events-none before:left-0 before:top-0 before:w-full before:h-4',
-        'before:bg-gradient-to-t before:from-transparent before:to-background-primary',
+        'before:bg-linear-to-t before:from-transparent before:to-background-primary',
         'after:absolute after:z-10 after:pointer-events-none after:left-0 after:bottom-0 after:w-full after:h-4',
-        'after:bg-gradient-to-b after:from-transparent after:to-background-primary',
+        'after:bg-linear-to-b after:from-transparent after:to-background-primary',
       ],
       horizontal: [
         'before:absolute before:z-10 before:pointer-events-none before:left-0 before:top-0 before:h-full before:w-4',
-        'before:bg-gradient-to-l before:from-transparent before:to-background-primary',
+        'before:bg-linear-to-l before:from-transparent before:to-background-primary',
         'after:absolute after:z-10 after:pointer-events-none after:right-0 after:top-0 after:h-full after:w-4',
-        'after:bg-gradient-to-r after:from-transparent after:to-background-primary',
+        'after:bg-linear-to-r after:from-transparent after:to-background-primary',
       ],
     },
     shadows: {

@@ -13,14 +13,14 @@ const triggerVariants = cva(
     textVariants({ variant: 'normal' }),
     'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-transparent',
     'text-base font-medium text-text-100 select-none cursor-pointer border-none',
-    'outline-none ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
+    'outline-hidden ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
     '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
     '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
   ],
   {
     variants: {
       borderRadius: {
-        xs: 'rounded',
+        xs: 'rounded-sm',
         sm: 'rounded-lg',
         md: 'rounded-xl',
       },
@@ -59,8 +59,8 @@ const SelectItem = forwardRef(
         className={cn(
           textVariants({ variant: 'normal' }),
           'flex justify-between items-center px-4 py-3 h-[52px] cursor-pointer',
-          'text-base text-text-100 opacity-100 data-[disabled]:cursor-default data-[disabled]:opacity-50',
-          'data-[highlighted]:bg-background-secondary data-[state=checked]:bg-background-control outline-none',
+          'text-base text-text-100 opacity-100 data-disabled:cursor-default data-disabled:opacity-50',
+          'data-highlighted:bg-background-secondary data-[state=checked]:bg-background-control outline-hidden',
           className
         )}
         {...props}
@@ -109,7 +109,7 @@ export const Select = forwardRef(
             </SelectPrimitive.Icon>
           </SelectPrimitive.Trigger>
 
-          <SelectPrimitive.Content className="backdrop-blur bg-button-glass rounded-lg overflow-hidden z-30 outline-none ring-inset focus-within:ring-2 focus-within:ring-border-focus">
+          <SelectPrimitive.Content className="backdrop-blur-sm bg-button-glass rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus">
             <SelectPrimitive.Viewport>
               <SelectPrimitive.Group>
                 {options.map(({ value, label, ...rest }) => (

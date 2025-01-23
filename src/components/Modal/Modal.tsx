@@ -17,7 +17,7 @@ const modalContentVariants = cva(
     'fixed',
     'overflow-hidden',
     'bg-background-primary',
-    'focus:outline-none',
+    'focus:outline-hidden',
     'scrollbar-none',
     'bottom-0 md:bottom-auto',
     'rounded-t-2xl rounded-b-none md:rounded-b-2xl',
@@ -35,7 +35,7 @@ const modalContentVariants = cva(
         ],
       },
       autoHeight: {
-        true: 'lg:!h-auto',
+        true: 'lg:h-auto!',
       },
     },
     defaultVariants: {
@@ -151,7 +151,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                   <IconButton
                     icon={CloseIcon}
                     size="xs"
-                    className="absolute right-4 top-4 z-20 backdrop-blur"
+                    className="absolute right-4 top-4 z-20 backdrop-blur-sm"
                     aria-label="Close"
                   />
                 </ModalPrimitive.Close>

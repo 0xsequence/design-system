@@ -9,7 +9,7 @@ const RADIUS = SIZE / 2
 
 const prefix = 'gradient-avatar-'
 
-const avatarVariants = cva(['flex-shrink-0 rounded-full overflow-hidden'], {
+const avatarVariants = cva(['shrink-0 rounded-full overflow-hidden'], {
   variants: {
     size: {
       xs: 'w-3 h-3',
@@ -129,7 +129,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
         </clipPath>
 
         <filter
-          id={`${prefix}blur${id}`}
+          id={`${prefix}blur-sm${id}`}
           x="-10%"
           y="-10%"
           width="120%"
@@ -183,7 +183,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
           fill={`url(#${prefix}background${id})`}
         />
 
-        <g filter={`url(#${prefix}blur${id})`}>
+        <g filter={`url(#${prefix}blur-sm${id})`}>
           {gradients.map((gradient, idx) => (
             <Fragment key={idx}>
               <circle

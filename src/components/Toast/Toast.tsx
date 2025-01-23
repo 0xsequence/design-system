@@ -73,7 +73,7 @@ export const ToastProvider = (props: ToastPrimitive.ToastProviderProps) => {
 }
 
 const ToastViewport = () => (
-  <ToastPrimitive.Viewport className="fixed right-0 bottom-0 focus:outline-none w-full flex flex-col gap-2 p-4 pt-0 z-[1000] list-none max-w-[532px]" />
+  <ToastPrimitive.Viewport className="fixed right-0 bottom-0 focus:outline-hidden w-full flex flex-col gap-2 p-4 pt-0 z-1000 list-none max-w-[532px]" />
 )
 
 export const Toast = (props: ToastProps) => {
@@ -95,13 +95,13 @@ export const Toast = (props: ToastProps) => {
     switch (variant) {
       case 'success':
         return (
-          <div className="bg-positive text-black rounded-full w-8 h-8 place-items-center min-w-0 flex-shrink-0 flex items-center justify-center">
+          <div className="bg-positive text-black rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
             <CheckmarkIcon />
           </div>
         )
       case 'error':
         return (
-          <div className="bg-negative text-black rounded-full w-8 h-8 place-items-center min-w-0 flex-shrink-0 flex items-center justify-center">
+          <div className="bg-negative text-black rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
             <CloseIcon />
           </div>
         )
@@ -119,7 +119,7 @@ export const Toast = (props: ToastProps) => {
       {...rest}
     >
       <Card
-        className="rounded-md bg-button-glass backdrop-blur relative flex justify-between w-full"
+        className="rounded-md bg-button-glass backdrop-blur-sm relative flex justify-between w-full"
         asChild
       >
         <motion.li

@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 
-export const iconVariants = cva('block flex-shrink-0', {
+export const iconVariants = cva('block shrink-0', {
   variants: {
     size: {
       xs: 'w-4 h-4',

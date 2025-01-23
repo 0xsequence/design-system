@@ -19,7 +19,7 @@ const digitInputVariants = cva(
     'caret-transparent selection:bg-transparent',
     'ring-inset ring-1 ring-border-normal hover:ring-border-focus',
     'disabled:cursor-default disabled:opacity-50',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus',
+    'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
   {
     variants: {},

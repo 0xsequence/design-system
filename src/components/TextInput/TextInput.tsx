@@ -18,7 +18,7 @@ const wrapperVariants = cva(
   {
     variants: {
       borderRadius: {
-        xs: 'rounded',
+        xs: 'rounded-sm',
         sm: 'rounded-lg',
         md: 'rounded-xl',
       },
@@ -32,7 +32,7 @@ const wrapperVariants = cva(
 const inputVariants = cva(
   [
     'block bg-transparent text-text-100 border-none px-0 py-4 w-full h-full placeholder-text-50',
-    'focus:outline-none focus:ring-0',
+    'focus:outline-hidden focus:ring-0',
   ],
   {
     variants: {
