@@ -2,6 +2,8 @@
 // Run pnpm build:icons to update
 import { SVGProps } from 'react'
 
+import { cn } from '~/utils'
+
 import { iconVariants } from './iconVariants'
 import { IconProps } from './types'
 
@@ -21,11 +23,14 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgHelpIcon = ({ size = 'sm', ...props }: IconProps) => (
+const SvgHelpIcon = ({ className, size = 'sm', ...props }: IconProps) => (
   <Svg
-    className={iconVariants({
-      size,
-    })}
+    className={cn(
+      iconVariants({
+        size,
+      }),
+      className
+    )}
     {...props}
   />
 )
