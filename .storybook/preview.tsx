@@ -20,7 +20,9 @@ const withTheme: Decorator = (StoryFn, context) => {
 
   return (
     <ThemeProvider theme={theme === 'custom' ? CUSTOM_THEME : theme}>
-      <StoryFn />
+      <div className="bg-background-primary p-4">
+        <StoryFn />
+      </div>
     </ThemeProvider>
   )
 }
@@ -46,6 +48,7 @@ const preview: Preview = {
     docs: {
       theme: docsTheme,
     },
+    layout: 'fullscreen',
   },
 
   globalTypes: {
@@ -66,8 +69,7 @@ const preview: Preview = {
     },
   },
 
-  // XXX:Autodocs do not currently work with our theming setup - investigate later
-  // tags: ['autodocs'],
+  tags: ['autodocs'],
 
   decorators: [withTheme],
 }
