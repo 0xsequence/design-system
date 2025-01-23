@@ -9,7 +9,7 @@ const radioOptionVariants = cva(
   [
     'bg-transparent rounded-full p-0',
     'cursor-pointer hover:opacity-80 disabled:cursor-default disabled:opacity-50',
-    'outline-none ring-inset ring-1 ring-border-focus focus-visible:ring-2 focus-visible:ring-border-focus',
+    'outline-hidden ring-inset ring-1 ring-border-focus focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
   {
     variants: {

@@ -12,7 +12,7 @@ const networkImageVariants = cva(
     'items-center',
     'justify-center',
     'overflow-hidden',
-    'flex-shrink-0',
+    'shrink-0',
   ],
   {
     variants: {
@@ -27,7 +27,7 @@ const networkImageVariants = cva(
         circle: 'rounded-full',
         lg: 'rounded-lg',
         md: 'rounded-md',
-        sm: 'rounded-sm',
+        sm: 'rounded-xs',
       },
     },
     defaultVariants: {

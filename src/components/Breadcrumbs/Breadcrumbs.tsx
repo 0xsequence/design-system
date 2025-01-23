@@ -48,7 +48,7 @@ interface BreadcrumbSegmentProps {
 const defaultRenderLink = (path: Path, children: ReactNode) => (
   <a
     href={path.url}
-    className="no-underline outline-none focus:ring-2 focus:ring-border-focus"
+    className="no-underline outline-hidden focus:ring-2 focus:ring-border-focus"
   >
     {children}
   </a>

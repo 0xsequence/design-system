@@ -37,7 +37,7 @@ export const Tabs = (props: TabsProps) => {
 
       {tabs.map(tab => (
         <TabsPrimitive.Content
-          className="outline-none"
+          className="outline-hidden"
           key={tab.value}
           value={tab.value}
         >
@@ -65,7 +65,7 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 
   return (
     <TabsPrimitive.List
-      className="px-2 flex relative w-full rounded-xl bg-background-secondary h-12 outline-none ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-border-focus"
+      className="px-2 flex relative w-full rounded-xl bg-background-secondary h-12 outline-hidden ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-border-focus"
       style={{ outline: undefined }}
     >
       <div className="flex absolute inset-2 h-8">
@@ -80,7 +80,7 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 
       {tabs.map(tab => (
         <TabsPrimitive.Trigger
-          className="w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-text-80 outline-none appearance-none border-none z-[2] data-[state=active]:text-text-100 disabled:opacity-50"
+          className="w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-text-80 outline-hidden appearance-none border-none z-2 data-[state=active]:text-text-100 disabled:opacity-50"
           key={tab.value}
           value={tab.value}
         >

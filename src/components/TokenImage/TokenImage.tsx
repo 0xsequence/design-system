@@ -11,7 +11,7 @@ const NETWORK_IMAGE_SIZE = '40%'
 const NETWORK_IMAGE_OFFSET = '-2%'
 
 const tokenImageVariants = cva(
-  ['relative', 'flex', 'items-center', 'justify-center', 'flex-shrink-0'],
+  ['relative', 'flex', 'items-center', 'justify-center', 'shrink-0'],
   {
     variants: {
       size: {
@@ -84,7 +84,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
       {withNetwork && (
         <NetworkImage
           chainId={withNetwork}
-          className="absolute z-[1]"
+          className="absolute z-1"
           disableAnimation={disableAnimation}
           style={{
             width: NETWORK_IMAGE_SIZE,

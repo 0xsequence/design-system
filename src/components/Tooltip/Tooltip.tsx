@@ -32,7 +32,7 @@ export const Tooltip = (props: PropsWithChildren<TooltipProps>) => {
       <TooltipPrimitive.Root delayDuration={delayDuration}>
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
         <TooltipPrimitive.Content
-          className="backdrop-blur bg-background-raised rounded-lg px-4 pb-3 pt-2 shadow-[0_0_10px_0_rgba(0,0,0,0.5)] fill-background-raised"
+          className="backdrop-blur-sm bg-background-raised rounded-lg px-4 pb-3 pt-2 shadow-[0_0_10px_0_rgba(0,0,0,0.5)] fill-background-raised"
           side={side}
           align={align}
           sideOffset={vOffset}

@@ -9,7 +9,7 @@ import { cn } from '~/utils'
 export const buttonVariants = cva(
   [
     'inline-flex items-center whitespace-nowrap overflow-hidden border-none text-decoration-none',
-    'outline-none ring-inset focus-visible:ring-2 focus-visible:ring-border-focus',
+    'outline-hidden ring-inset focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
   {
     variants: {
@@ -33,7 +33,7 @@ export const buttonVariants = cva(
       },
       shape: {
         circle: 'rounded-full',
-        square: 'rounded-sm',
+        square: 'rounded-xs',
       },
       size: {
         xs: [textVariants({ variant: 'xsmall' }), 'h-7 px-3 font-bold'],
@@ -46,7 +46,7 @@ export const buttonVariants = cva(
         false: 'cursor-pointer hover:opacity-80',
       },
       iconOnly: {
-        true: 'p-0 flex flex-shrink-0 items-center justify-center',
+        true: 'p-0 flex shrink-0 items-center justify-center',
       },
       hasLeftIcon: {
         true: '',

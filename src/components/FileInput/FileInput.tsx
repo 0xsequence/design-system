@@ -115,7 +115,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 
             <input
               accept={accept}
-              className="absolute inset-0 opacity-0 cursor-pointer focus:outline-none"
+              className="absolute inset-0 opacity-0 cursor-pointer focus:outline-hidden"
               disabled={disabled}
               id={id ?? name}
               name={name}

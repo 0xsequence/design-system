@@ -22,7 +22,7 @@ export const DropdownMenuContent = ({
 }: DropdownMenuPrimitive.DropdownMenuContentProps) => (
   <DropdownMenuPrimitive.Content
     className={cn(
-      'w-40 backdrop-blur bg-background-raised p-2 rounded-md',
+      'w-40 backdrop-blur-sm bg-background-raised p-2 rounded-md',
       className
     )}
     side="bottom"
@@ -46,9 +46,9 @@ export const DropdownMenuItem = ({
 }: DropdownMenuPrimitive.DropdownMenuItemProps) => (
   <DropdownMenuPrimitive.Item
     className={cn(
-      'flex items-center justify-between rounded px-2 py-1 cursor-pointer select-none pl-6 relative text-text-80 outline-none',
-      'data-[disabled]:opacity-80 data-[disabled]:cursor-default data-[disabled]:pointer-events-none data-[disabled]:text-text-50',
-      'data-[highlighted]:bg-background-contrast',
+      'flex items-center justify-between rounded-sm px-2 py-1 cursor-pointer select-none pl-6 relative text-text-80 outline-hidden',
+      'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-text-50',
+      'data-highlighted:bg-background-contrast',
       className
     )}
     {...rest}
@@ -77,9 +77,9 @@ export const DropdownMenuCheckboxItem = forwardRef<
 >(({ className, children, ...rest }, forwardedRef) => (
   <DropdownMenuPrimitive.CheckboxItem
     className={cn(
-      'flex items-center justify-between rounded px-2 py-1 cursor-pointer select-none pl-6 relative text-text-80 outline-none',
-      'data-[disabled]:opacity-80 data-[disabled]:cursor-default data-[disabled]:pointer-events-none data-[disabled]:text-text-50',
-      'data-[highlighted]:bg-background-contrast',
+      'flex items-center justify-between rounded-sm px-2 py-1 cursor-pointer select-none pl-6 relative text-text-80 outline-hidden',
+      'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-text-50',
+      'data-highlighted:bg-background-contrast',
       className
     )}
     {...rest}
@@ -100,9 +100,9 @@ export const DropdownMenuRadioItem = forwardRef<
 >(({ className, children, ...rest }, forwardedRef) => (
   <DropdownMenuPrimitive.RadioItem
     className={cn(
-      'flex items-center justify-between rounded px-2 py-1 cursor-pointer select-none pl-6 relative text-text-80 outline-none',
-      'data-[disabled]:opacity-80 data-[disabled]:cursor-default data-[disabled]:pointer-events-none data-[disabled]:text-text-50',
-      'data-[highlighted]:bg-background-contrast',
+      'flex items-center justify-between rounded-sm px-2 py-1 cursor-pointer select-none pl-6 relative text-text-80 outline-hidden',
+      'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-text-50',
+      'data-highlighted:bg-background-contrast',
       className
     )}
     {...rest}

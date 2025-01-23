@@ -56,7 +56,7 @@ export const Collapsible = (props: CollapsibleProps) => {
         animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
         transition={{ ease: 'easeOut', duration: 0.3 }}
       >
-        <CollapsiblePrimitive.Trigger className="flex items-center bg-transparent p-4 w-full cursor-pointer select-none rounded-md border-none appearance-none h-[64px] focus:outline-none">
+        <CollapsiblePrimitive.Trigger className="flex items-center bg-transparent p-4 w-full cursor-pointer select-none rounded-md border-none appearance-none h-[64px] focus:outline-hidden">
           <Text variant="normal" fontWeight="bold" color="text80" asChild>
             <div>{label}</div>
           </Text>

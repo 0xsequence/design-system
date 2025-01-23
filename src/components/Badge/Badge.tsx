@@ -5,7 +5,7 @@ import { ReactNode, HTMLAttributes } from 'react'
 export const badgeVariants = cva(
   [
     'inline-flex',
-    'flex-shrink-0',
+    'shrink-0',
     'items-center',
     'rounded-full',
     'text-white',
