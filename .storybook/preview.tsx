@@ -1,4 +1,4 @@
-import { Decorator } from '@storybook/react'
+import { Preview, Decorator } from '@storybook/react'
 import React from 'react'
 
 import { ThemeProvider } from '../src/components/ThemeProvider'
@@ -6,47 +6,6 @@ import { ThemeProvider } from '../src/components/ThemeProvider'
 import docsTheme from './theme'
 
 import '../src/tailwind.css'
-
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: {
-    matchers: {
-      date: /Date$/,
-    },
-  },
-  options: {
-    storySort: {
-      order: [
-        'Introduction',
-        'Design System',
-        ['Design Tokens', 'Colors', 'Typography', 'Iconography'],
-        'Components',
-        ['Atoms', 'Molecules', 'Organisms'],
-      ],
-    },
-  },
-  docs: {
-    theme: docsTheme,
-  },
-}
-
-export const globalTypes = {
-  // Theme select toggle
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    defaultValue: 'dark',
-    toolbar: {
-      title: 'Theme',
-      icon: 'moon',
-      items: [
-        { value: 'dark', icon: 'moon', title: 'Dark (default)' },
-        { value: 'light', icon: 'sun', title: 'Light' },
-        { value: 'custom', icon: 'paintbrush', title: 'Custom' },
-      ],
-    },
-  },
-}
 
 const CUSTOM_THEME = {
   text100: 'rgba(255, 255, 255, 1)',
@@ -66,5 +25,51 @@ const withTheme: Decorator = (StoryFn, context) => {
   )
 }
 
-// export all decorators that should be globally applied in an array
-export const decorators = [withTheme]
+const preview: Preview = {
+  parameters: {
+    controls: {
+      matchers: {
+        date: /Date$/,
+      },
+    },
+    options: {
+      storySort: {
+        order: [
+          'Introduction',
+          'Design System',
+          ['Design Tokens', 'Colors', 'Typography', 'Iconography'],
+          'Components',
+          ['Atoms', 'Molecules', 'Organisms'],
+        ],
+      },
+    },
+    docs: {
+      theme: docsTheme,
+    },
+  },
+
+  globalTypes: {
+    // Theme select toggle
+    theme: {
+      name: 'Theme',
+      description: 'Global theme for components',
+      defaultValue: 'dark',
+      toolbar: {
+        title: 'Theme',
+        icon: 'moon',
+        items: [
+          { value: 'dark', icon: 'moon', title: 'Dark (default)' },
+          { value: 'light', icon: 'sun', title: 'Light' },
+          { value: 'custom', icon: 'paintbrush', title: 'Custom' },
+        ],
+      },
+    },
+  },
+
+  // XXX:Autodocs do not currently work with our theming setup - investigate later
+  // tags: ['autodocs'],
+
+  decorators: [withTheme],
+}
+
+export default preview
