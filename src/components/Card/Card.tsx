@@ -17,7 +17,7 @@ const cardVariants = cva(['overflow-hidden', 'rounded-xl', 'p-4', 'w-full'], {
       false: 'bg-background-secondary',
     },
     blur: {
-      true: 'backdrop-blur-sm',
+      true: 'backdrop-blur-xs',
     },
   },
   defaultVariants: {

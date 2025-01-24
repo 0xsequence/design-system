@@ -5,7 +5,7 @@ import { ThemeProvider } from '../src/components/ThemeProvider'
 
 import docsTheme from './theme'
 
-import '../src/tailwind.css'
+import './tailwind.css'
 
 const CUSTOM_THEME = {
   text100: 'rgba(255, 255, 255, 1)',

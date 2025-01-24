@@ -5,7 +5,7 @@ import { cn } from '~/utils'
 
 const skeletonVariants = cva(
   [
-    'rounded-sm',
+    'rounded-xs',
     'bg-gradient-skeleton',
     'bg-[length:400%_400%]',
     'bg-no-repeat',

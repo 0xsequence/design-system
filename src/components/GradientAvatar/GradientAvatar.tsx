@@ -129,7 +129,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
         </clipPath>
 
         <filter
-          id={`${prefix}blur-sm${id}`}
+          id={`${prefix}blur-xs${id}`}
           x="-10%"
           y="-10%"
           width="120%"
@@ -183,7 +183,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
           fill={`url(#${prefix}background${id})`}
         />
 
-        <g filter={`url(#${prefix}blur-sm${id})`}>
+        <g filter={`url(#${prefix}blur-xs${id})`}>
           {gradients.map((gradient, idx) => (
             <Fragment key={idx}>
               <circle
