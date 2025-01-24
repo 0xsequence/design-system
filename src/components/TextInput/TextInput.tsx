@@ -18,7 +18,7 @@ const wrapperVariants = cva(
   {
     variants: {
       borderRadius: {
-        xs: 'rounded-sm',
+        xs: 'rounded-xs',
         sm: 'rounded-lg',
         md: 'rounded-xl',
       },

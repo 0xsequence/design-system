@@ -14,8 +14,8 @@
       "require": "./dist/index.cjs.js"
     },
     "./styles.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
+      "import": "./dist/design-system.css",
+      "require": "./dist/design-system.css"
     },
     "./preset": "./tailwind.config.js"
   },

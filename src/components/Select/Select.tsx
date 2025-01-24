@@ -20,7 +20,7 @@ const triggerVariants = cva(
   {
     variants: {
       borderRadius: {
-        xs: 'rounded-sm',
+        xs: 'rounded-xs',
         sm: 'rounded-lg',
         md: 'rounded-xl',
       },
@@ -109,7 +109,7 @@ export const Select = forwardRef(
             </SelectPrimitive.Icon>
           </SelectPrimitive.Trigger>
 
-          <SelectPrimitive.Content className="backdrop-blur-sm bg-button-glass rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus">
+          <SelectPrimitive.Content className="backdrop-blur-xs bg-button-glass rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus">
             <SelectPrimitive.Viewport>
               <SelectPrimitive.Group>
                 {options.map(({ value, label, ...rest }) => (

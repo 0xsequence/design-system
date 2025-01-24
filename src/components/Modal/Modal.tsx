@@ -151,7 +151,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                   <IconButton
                     icon={CloseIcon}
                     size="xs"
-                    className="absolute right-4 top-4 z-20 backdrop-blur-sm"
+                    className="absolute right-4 top-4 z-20 backdrop-blur-xs"
                     aria-label="Close"
                   />
                 </ModalPrimitive.Close>
