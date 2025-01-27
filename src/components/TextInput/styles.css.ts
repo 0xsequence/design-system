@@ -56,6 +56,15 @@ export const wrapVariants = recipe({
 
 export type WrapVariants = RecipeVariants<typeof wrapVariants>
 
+export const inputContainer = style([
+  atoms({
+    display: 'inline-flex',
+    alignItems: 'center',
+    flexGrow: '1',
+    gap: '2',
+  }),
+])
+
 export const input = recipe({
   base: atoms({
     display: 'block',
@@ -64,7 +73,7 @@ export const input = recipe({
     border: 'none',
     paddingX: '0',
     paddingY: '4',
-    width: 'full',
+    flexGrow: '1',
     height: 'full',
     focusRing: 'none',
   }),
