@@ -19,6 +19,132 @@ const IMPORTS_TO_REMOVE = [
   'vars',
 ]
 
+const COMPONENTS_TO_TRANSFORM = ['Text', 'Card', 'Button', 'IconButton']
+
+const COMPONENT_SPECIFIC_PROPS = {
+  Text: [
+    'variant',
+    'color',
+    'fontWeight',
+    'hidden',
+    'italic',
+    'underline',
+    'ellipsis',
+    'uppercase',
+    'capitalize',
+    'nowrap',
+  ],
+  Card: ['clickable', 'outlined', 'disabled', 'blur'],
+  Button: [
+    'variant',
+    'shape',
+    'size',
+    'disabled',
+    'pending',
+    'label',
+    'leftIcon',
+    'rightIcon',
+    'iconOnly',
+    'activeOutline',
+  ],
+  IconButton: ['disabled', 'pending', 'size', 'variant', 'icon'],
+}
+
+const ALWAYS_PARENT_PROPS = ['className', 'style']
+
+function transformAsChildComponents(j: API['jscodeshift'], root: Collection) {
+  root
+    .find(j.JSXElement, {
+      openingElement: {
+        name: {
+          type: 'JSXIdentifier',
+          name: name => COMPONENTS_TO_TRANSFORM.includes(name),
+        },
+      },
+    })
+    .forEach(path => {
+      const { node } = path
+      const { openingElement, closingElement, children } = node
+      const componentName = openingElement.name
+        .name as keyof typeof COMPONENT_SPECIFIC_PROPS
+
+      // Find the "as" prop
+      const asProp = openingElement.attributes.find(
+        attr =>
+          attr.type === 'JSXAttribute' &&
+          attr.name.type === 'JSXIdentifier' &&
+          attr.name.name === 'as'
+      )
+
+      if (!asProp?.value) {
+        return
+      }
+
+      // Separate component-specific props from passthrough props
+      const componentProps: JSXAttribute[] = []
+      const passthroughProps: JSXAttribute[] = []
+
+      openingElement.attributes.forEach(attr => {
+        if (attr === asProp) return // Skip the "as" prop
+
+        if (
+          attr.type === 'JSXAttribute' &&
+          attr.name.type === 'JSXIdentifier' &&
+          (COMPONENT_SPECIFIC_PROPS[componentName].includes(attr.name.name) ||
+            ALWAYS_PARENT_PROPS.includes(attr.name.name))
+        ) {
+          componentProps.push(attr)
+        } else {
+          passthroughProps.push(attr)
+        }
+      })
+
+      // Add asChild prop to component props
+      componentProps.push(j.jsxAttribute(j.jsxIdentifier('asChild')))
+
+      // Create the "as" component
+      let asComponent
+      if (asProp.value.type === 'StringLiteral') {
+        asComponent = j.jsxIdentifier(asProp.value.value)
+      } else if (
+        asProp.value.type === 'JSXExpressionContainer' &&
+        asProp.value.expression.type === 'Identifier'
+      ) {
+        asComponent = j.jsxIdentifier(asProp.value.expression.name)
+      } else if (
+        asProp.value.type === 'JSXExpressionContainer' &&
+        asProp.value.expression.type === 'MemberExpression'
+      ) {
+        const expr = asProp.value.expression
+        asComponent = j.jsxMemberExpression(
+          j.jsxIdentifier(expr.object.name),
+          j.jsxIdentifier(expr.property.name)
+        )
+      } else {
+        return
+      }
+
+      // Update the original component with its specific props
+      openingElement.attributes = componentProps
+      openingElement.selfClosing = false
+
+      // Create the inner "as" component with passthrough props
+      const asElement = j.jsxElement(
+        j.jsxOpeningElement(asComponent, passthroughProps, !children?.length),
+        children?.length ? j.jsxClosingElement(asComponent) : null,
+        children || []
+      )
+
+      // Set the transformed children
+      node.children = [asElement]
+
+      // Ensure the original component has a closing tag
+      if (!closingElement) {
+        node.closingElement = j.jsxClosingElement(openingElement.name)
+      }
+    })
+}
+
 function transformBoxComponents(j: API['jscodeshift'], root: Collection) {
   root
     .find(j.JSXElement, {
@@ -130,7 +256,10 @@ const transform = (file: FileInfo, api: API) => {
   removeOldImports(j, root)
 
   // Transform Box components to their target elements
-  transformBoxComponents(j, root)
+  // transformBoxComponents(j, root)
+
+  // Transform components that use asChild pattern
+  transformAsChildComponents(j, root)
 
   return root.toSource()
 }
