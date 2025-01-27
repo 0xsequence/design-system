@@ -60,6 +60,18 @@ const COMPONENT_SPECIFIC_PROPS = {
 
 const ALWAYS_PARENT_PROPS = ['className', 'style']
 
+const TEXT_SPECIFIC_PROPS = [
+  'variant',
+  'color',
+  'fontWeight',
+  'hidden',
+  'italic',
+  'underline',
+  'ellipsis',
+  'uppercase',
+  'capitalize',
+]
+
 function transformAsChildComponents(j: API['jscodeshift'], root: Collection) {
   root
     .find(j.JSXElement, {
@@ -261,13 +273,9 @@ function transformAtomPropsToTailwind(j: API['jscodeshift'], root: Collection) {
     const { node } = path
     const { openingElement } = node
 
-    // Skip Text components
-    if (
+    const isTextComponent =
       openingElement.name.type === 'JSXIdentifier' &&
       openingElement.name.name === 'Text'
-    ) {
-      return
-    }
 
     // Convert JSXAttributes to a Record<string, string>
     const props: Record<string, string> = {}
@@ -279,6 +287,11 @@ function transformAtomPropsToTailwind(j: API['jscodeshift'], root: Collection) {
         // Store className attribute separately
         if (attr.name.name === 'className') {
           existingClassNameAttr = attr
+          return
+        }
+
+        // For Text components, skip Text-specific props
+        if (isTextComponent && TEXT_SPECIFIC_PROPS.includes(attr.name.name)) {
           return
         }
 
@@ -379,16 +392,16 @@ const transform = (file: FileInfo, api: API) => {
   const root = j(file.source)
 
   // Remove old imports from @0xsequence/design-system Box, BoxProps, PolymorphicComponent, etc.
-  //removeOldImports(j, root)
+  removeOldImports(j, root)
 
   // Transform Box components to their target elements
-  //transformBoxComponents(j, root)
+  transformBoxComponents(j, root)
 
   // Transform atom props to Tailwind classes
   transformAtomPropsToTailwind(j, root)
 
   // Transform components that use asChild pattern
-  //transformAsChildComponents(j, root)
+  transformAsChildComponents(j, root)
 
   return root.toSource()
 }
