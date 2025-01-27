@@ -2,6 +2,16 @@ import { isTruthy, kebabize } from '../src/utils'
 
 // type TextVariant = 'ellipsis' | 'capitalize' | 'lowercase' | 'uppercase'
 
+const FLEX_PROPS = [
+  'alignItems',
+  'alignSelf',
+  'flexDirection',
+  'gap',
+  'justifyContent',
+  'justifySelf',
+  'placeItems',
+]
+
 type Side = 't' | 'b' | 'l' | 'r'
 type Corner = 'tl' | 'tr' | 'bl' | 'br'
 
@@ -47,6 +57,24 @@ const borderColor = (side?: Side) => (value: 'normal' | 'focus') => {
   return `border${side ? `-${side}` : ''}${colorValue ? `-${colorValue}` : ''}`
 }
 
+const width = (prefix: string) => (value: any) => {
+  switch (value) {
+    case 'vw':
+      return `${prefix}-screen`
+  }
+
+  return `${prefix}-${value}`
+}
+
+const height = (prefix: string) => (value: any) => {
+  switch (value) {
+    case 'vh':
+      return `${prefix}-screen`
+  }
+
+  return `${prefix}-${value}`
+}
+
 const atomMap = {
   position: '', // Empty string means just pass the value prefixless
   margin: 'm',
@@ -65,13 +93,13 @@ const atomMap = {
   paddingX: 'px',
   paddingY: 'py',
 
-  width: 'w',
-  minWidth: 'min-w',
-  maxWidth: 'max-w',
+  width: width('w'),
+  minWidth: width('min-w'),
+  maxWidth: width('max-w'),
 
-  height: 'h',
-  minHeight: 'min-h',
-  maxHeight: 'max-h',
+  height: height('h'),
+  minHeight: height('min-h'),
+  maxHeight: height('max-h'),
 
   gap: 'gap',
 
@@ -514,4 +542,19 @@ export const getTailwindClassName = (
 
 export const hasAtomProps = (props: Record<string, string>) => {
   return Object.keys(props).some(key => ATOM_KEYS.includes(key as any))
+}
+
+export const getAtomProps = (props: Record<string, string>) => {
+  const atomEntries = Object.entries(props).filter(([key]) =>
+    ATOM_KEYS.includes(key as any)
+  )
+
+  // If any flex props are present we need to ensure that display: flex is set if it is missing
+  if (
+    atomEntries.some(([key]) => key !== 'display' && FLEX_PROPS.includes(key))
+  ) {
+    atomEntries.unshift(['display', 'flex'])
+  }
+
+  return Object.fromEntries(atomEntries)
 }
