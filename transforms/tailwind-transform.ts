@@ -8,6 +8,14 @@ import {
   JSXExpressionContainer,
 } from 'jscodeshift'
 
+import {
+  hasAtomProps,
+  getTailwindClassName,
+  ATOM_KEYS,
+  AtomKey,
+  getAtomProps,
+} from './atom-helpers'
+
 const IMPORTS_TO_REMOVE = [
   'Box',
   'BoxProps',
@@ -248,18 +256,139 @@ function removeOldImports(j: API['jscodeshift'], root: Collection) {
     })
 }
 
+function transformAtomPropsToTailwind(j: API['jscodeshift'], root: Collection) {
+  root.find(j.JSXElement).forEach(path => {
+    const { node } = path
+    const { openingElement } = node
+
+    // Skip Text components
+    if (
+      openingElement.name.type === 'JSXIdentifier' &&
+      openingElement.name.name === 'Text'
+    ) {
+      return
+    }
+
+    // Convert JSXAttributes to a Record<string, string>
+    const props: Record<string, string> = {}
+    const atomAttributes: JSXAttribute[] = []
+    let existingClassNameAttr: JSXAttribute | undefined
+
+    openingElement.attributes.forEach(attr => {
+      if (attr.type === 'JSXAttribute' && attr.name.type === 'JSXIdentifier') {
+        // Store className attribute separately
+        if (attr.name.name === 'className') {
+          existingClassNameAttr = attr
+          return
+        }
+
+        // Store atom props for later removal
+        if (ATOM_KEYS.includes(attr.name.name as any)) {
+          atomAttributes.push(attr)
+        }
+
+        // Convert attribute value to string
+        if (attr.value?.type === 'StringLiteral') {
+          props[attr.name.name] = attr.value.value
+        } else if (
+          attr.value?.type === 'JSXExpressionContainer' &&
+          attr.value.expression.type === 'StringLiteral'
+        ) {
+          props[attr.name.name] = attr.value.expression.value
+        }
+      }
+    })
+
+    // Check if we have any atom props to transform
+    if (!hasAtomProps(props)) {
+      return
+    }
+
+    // Get atom props and generate Tailwind classes
+    const atomProps = getAtomProps(props)
+    const tailwindClasses = Object.entries(atomProps)
+      .map(([key, value]) => getTailwindClassName(key as AtomKey, value))
+      .filter(Boolean)
+      .join(' ')
+
+    // Create or update className prop
+    let classNameProp
+    if (existingClassNameAttr?.value) {
+      if (existingClassNameAttr.value.type === 'StringLiteral') {
+        // For string literals, combine with space
+        classNameProp = j.jsxAttribute(
+          j.jsxIdentifier('className'),
+          j.stringLiteral(
+            `${existingClassNameAttr.value.value} ${tailwindClasses}`
+          )
+        )
+      } else if (
+        existingClassNameAttr.value.type === 'JSXExpressionContainer'
+      ) {
+        const expr = existingClassNameAttr.value.expression
+        if (
+          expr.type === 'CallExpression' &&
+          expr.callee.type === 'Identifier' &&
+          (expr.callee.name === 'clsx' || expr.callee.name === 'cn')
+        ) {
+          // For clsx/cn calls, add tailwindClasses as the first argument
+          expr.arguments.unshift(j.stringLiteral(tailwindClasses))
+          classNameProp = existingClassNameAttr
+        } else {
+          // For other expressions, use template literal with direct string for tailwind classes
+          classNameProp = j.jsxAttribute(
+            j.jsxIdentifier('className'),
+            j.jsxExpressionContainer(
+              j.templateLiteral(
+                [
+                  j.templateElement({ raw: '', cooked: '' }, false),
+                  j.templateElement(
+                    {
+                      raw: ' ' + tailwindClasses,
+                      cooked: ' ' + tailwindClasses,
+                    },
+                    true
+                  ),
+                ],
+                [expr]
+              )
+            )
+          )
+        }
+      }
+    } else {
+      // Create new className prop
+      classNameProp = j.jsxAttribute(
+        j.jsxIdentifier('className'),
+        j.stringLiteral(tailwindClasses)
+      )
+    }
+
+    // Remove atom props and update className
+    openingElement.attributes = [
+      classNameProp,
+      ...openingElement.attributes.filter(
+        attr => !atomAttributes.includes(attr) && attr !== existingClassNameAttr
+      ),
+    ]
+  })
+}
+
 const transform = (file: FileInfo, api: API) => {
   const j = api.jscodeshift
   const root = j(file.source)
 
   // Remove old imports from @0xsequence/design-system Box, BoxProps, PolymorphicComponent, etc.
-  removeOldImports(j, root)
+  //removeOldImports(j, root)
 
   // Transform Box components to their target elements
-  // transformBoxComponents(j, root)
+  //transformBoxComponents(j, root)
+
+  // Transform atom props to Tailwind classes
+  transformAtomPropsToTailwind(j, root)
 
   // Transform components that use asChild pattern
-  transformAsChildComponents(j, root)
+  //transformAsChildComponents(j, root)
 
   return root.toSource()
 }
