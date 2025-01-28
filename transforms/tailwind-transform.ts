@@ -387,6 +387,51 @@ function transformAtomPropsToTailwind(j: API['jscodeshift'], root: Collection) {
   })
 }
 
+function transformAtomsFn(j: API['jscodeshift'], root: Collection) {
+  root
+    .find(j.CallExpression, {
+      callee: {
+        type: 'Identifier',
+        name: 'atoms',
+      },
+    })
+    .forEach(path => {
+      const { node } = path
+      const firstArg = node.arguments[0]
+
+      // Only handle object literal arguments
+      if (firstArg.type !== 'ObjectExpression') {
+        return
+      }
+
+      // Convert object properties to Record<string, string>
+      const props: Record<string, string> = {}
+      firstArg.properties.forEach(prop => {
+        if (
+          prop.type === 'ObjectProperty' &&
+          prop.key.type === 'Identifier' &&
+          (prop.value.type === 'StringLiteral' ||
+            prop.value.type === 'NumericLiteral')
+        ) {
+          props[prop.key.name] =
+            prop.value.type === 'StringLiteral'
+              ? prop.value.value
+              : prop.value.value.toString()
+        }
+      })
+
+      // Get atom props and generate Tailwind classes
+      const atomProps = getAtomProps(props)
+      const tailwindClasses = Object.entries(atomProps)
+        .map(([key, value]) => getTailwindClassName(key as AtomKey, value))
+        .filter(Boolean)
+        .join(' ')
+
+      // Replace atoms() call with string literal
+      path.replace(j.stringLiteral(tailwindClasses))
+    })
+}
+
 const transform = (file: FileInfo, api: API) => {
   const j = api.jscodeshift
   const root = j(file.source)
@@ -399,6 +444,9 @@ const transform = (file: FileInfo, api: API) => {
 
   // Transform atom props to Tailwind classes
   transformAtomPropsToTailwind(j, root)
+
+  // Transform atoms() function calls to Tailwind classes
+  transformAtomsFn(j, root)
 
   // Transform components that use asChild pattern
   transformAsChildComponents(j, root)
