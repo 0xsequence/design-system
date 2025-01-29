@@ -23,7 +23,11 @@ export const wrap = style([
     height: '52px',
 
     boxShadow: `0 0 0 ${vars.borderWidths.thin} ${vars.colors.borderNormal} inset`,
-
+    
+    '::placeholder': {
+      color: vars.colors.text80,
+    },
+    
     selectors: {
       '&:has(:disabled), &:has(:disabled):hover': {
         cursor: 'default',
@@ -37,7 +41,8 @@ export const wrap = style([
         // outlineOffset: `calc(${vars.borderWidths.thick} * -1)`,
         // outlineWidth: vars.borderWidths.thick,
 
-        boxShadow: `0 0 0 ${vars.borderWidths.thick} ${vars.colors.borderFocus} inset`,
+        
+        boxShadow: `0 0 0 ${vars.borderWidths.thin} ${vars.colors.borderFocus} inset`,
         borderColor: 'transparent',
       },
     },
