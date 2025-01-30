@@ -25,7 +25,7 @@ export const Default = () => {
 export const Nested = () => {
   return (
     <Card>
-      <Text variant="normal" color="text100" fontWeight="bold">
+      <Text variant="normal" color="primary" fontWeight="bold">
         Root Application
       </Text>
 
@@ -33,7 +33,7 @@ export const Nested = () => {
         <ThemeProvider root="#app1" scope="application1" theme="light">
           <Card className="bg-background-primary mt-4">
             <Collapsible label="Nested Application 1">
-              <Text variant="normal" color="text100">
+              <Text variant="normal" color="primary">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -51,7 +51,7 @@ export const Nested = () => {
                 <ThemeProvider root="#app2" scope="application2" theme="dark">
                   <Card className="bg-background-primary mt-4">
                     <Collapsible label="Nested Application 2 (Dark)">
-                      <Text variant="normal" color="text100">
+                      <Text variant="normal" color="primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -76,16 +76,16 @@ export const Nested = () => {
                   root="#app3"
                   scope="application3"
                   theme={{
-                    text100: 'rgba(255, 255, 255, 1)',
-                    text80: 'rgba(200, 200, 255, 1)',
-                    text50: 'rgba(150, 150, 200, 1)',
+                    textPrimary: 'rgba(255, 255, 255, 1)',
+                    textSecondary: 'rgba(200, 200, 255, 1)',
+                    textMuted: 'rgba(150, 150, 200, 1)',
                     backgroundPrimary: 'pink',
                     backgroundSecondary: 'navy',
                   }}
                 >
                   <Card className="bg-background-primary mt-4">
                     <Collapsible label="Nested Application 3 (Custom Theme)">
-                      <Text variant="normal" color="text100">
+                      <Text variant="normal" color="primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -109,7 +109,7 @@ export const Nested = () => {
                 >
                   <Card className="bg-background-primary mt-4">
                     <Collapsible label="Nested Application 4 (Prefers Color Scheme)">
-                      <Text variant="normal" color="text100">
+                      <Text variant="normal" color="primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud

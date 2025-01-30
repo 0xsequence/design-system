@@ -46,7 +46,7 @@ export const Field = (props: FieldProps) => {
         {label && (
           <Text
             variant="small"
-            color="text100"
+            color="primary"
             hidden={labelLocation === 'hidden'}
           >
             {label}
@@ -56,7 +56,7 @@ export const Field = (props: FieldProps) => {
         {description && (
           <Text
             variant="small"
-            color="text50"
+            color="muted"
             hidden={labelLocation === 'hidden'}
           >
             {description}

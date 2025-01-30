@@ -12,28 +12,28 @@ type Story = StoryObj<typeof Text>
 export const Heading1: Story = {
   args: {
     variant: 'xlarge',
-    color: 'text100',
+    color: 'primary',
     children: 'Hello, world!',
   },
 }
 export const Heading2: Story = {
   args: {
     variant: 'large',
-    color: 'text100',
+    color: 'primary',
     children: 'Hello, world!',
   },
 }
 export const Heading3: Story = {
   args: {
     variant: 'medium',
-    color: 'text100',
+    color: 'primary',
     children: 'Hello, world!',
   },
 }
 export const Bold: Story = {
   args: {
     variant: 'normal',
-    color: 'text100',
+    color: 'primary',
     fontWeight: 'bold',
     children: 'Hello, world!',
   },
@@ -41,21 +41,21 @@ export const Bold: Story = {
 export const BodyLarge: Story = {
   args: {
     variant: 'large',
-    color: 'text100',
+    color: 'primary',
     children: 'Hello, world!',
   },
 }
 export const Body: Story = {
   args: {
     variant: 'normal',
-    color: 'text100',
+    color: 'primary',
     children: 'Hello, world!',
   },
 }
 export const TextAsChild: Story = {
   args: {
     variant: 'normal',
-    color: 'text100',
+    color: 'primary',
     children: (
       <>
         <Text fontWeight="bold" color="positive">
@@ -69,7 +69,7 @@ export const TextAsChild: Story = {
 export const Code: Story = {
   args: {
     variant: 'code',
-    color: 'text100',
+    color: 'primary',
     children: 'Hello, world!',
   },
 }

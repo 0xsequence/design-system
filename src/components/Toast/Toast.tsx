@@ -138,7 +138,7 @@ export const Toast = (props: ToastProps) => {
                   <Text
                     variant="normal"
                     fontWeight="bold"
-                    color="text80"
+                    color="secondary"
                     asChild
                   >
                     <div>{title}</div>
@@ -150,7 +150,7 @@ export const Toast = (props: ToastProps) => {
                 <Text
                   variant="normal"
                   fontWeight="medium"
-                  color="text50"
+                  color="muted"
                   asChild
                 >
                   <div>{description}</div>
