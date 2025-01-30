@@ -12,6 +12,7 @@ export interface IconButtonProps
   size?: 'xs' | 'sm' | 'md' | 'lg'
   variant?: VariantProps<typeof buttonVariants>['variant']
   icon: ComponentType<IconProps>
+  children?: React.ReactNode
 }
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
