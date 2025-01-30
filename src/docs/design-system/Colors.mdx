@@ -1,5 +1,5 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs'
-import { tokens } from '../../tokens'
+import { colors } from '../../tokens/color'
 import { capitalize } from '../../utils/string'
 
 <Meta title="Design System/Colors" />
@@ -27,7 +27,7 @@ Color schemes, scales, accents, and gradients.
 All colors are defined in palettes. Each palette has a name and a scale. The scale is a number that represents the intensity of the color. For example, `--seq-red-100` is a light shade of the red color, while `--seq-red-900` is a dark shade of the brand color.
 
 <ColorPalette>
-  {Object.entries(tokens.colors.palettes).map(([key, value]) => (
+  {Object.entries(colors.palettes).map(([key, value]) => (
     <ColorItem
       key={key}
       title={capitalize(key)}
@@ -44,7 +44,7 @@ All colors are defined in palettes. Each palette has a name and a scale. The sca
 Semantic colors point to color palettes and are used to give a name to a color that is used in a specific context. For example, `primary` is a semantic color that points to a color in the `brand` palette. This way, if the brand color changes, the `primary` color will change as well.
 
 <ColorPalette>
-  {Object.entries(tokens.colors.dark).map(([key, value]) => (
+  {Object.entries(colors.dark).map(([key, value]) => (
     <ColorItem
       key={key}
       title={key}
