@@ -144,6 +144,7 @@ export const Text = (props: TextProps) => {
     ellipsis,
     uppercase,
     capitalize,
+    nowrap,
     ...rest
   } = props
 
@@ -162,6 +163,7 @@ export const Text = (props: TextProps) => {
           ellipsis,
           uppercase,
           capitalize,
+          nowrap,
         }),
         className
       )}
