@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react'
 
-import { ColorTokens } from '~/tokens/color'
+import { colors, ColorTokens } from '~/tokens/color'
 
 const THEMES = ['dark', 'light'] as const
 
@@ -110,7 +110,9 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     if (rootEl) {
       if (isTheme(theme)) {
         rootEl.setAttribute(THEME_ATTR, theme)
+        setThemeVars(rootEl, colors[theme])
       } else if (isThemeOverrides(theme)) {
+        rootEl.setAttribute(THEME_ATTR, 'custom')
         setThemeVars(rootEl, theme)
       }
 
