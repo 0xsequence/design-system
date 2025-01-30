@@ -417,9 +417,9 @@ const atomMap = {
   backdropFilter: (value: 'none' | 'blur') => {
     switch (value) {
       case 'none':
-        return 'backdrop-filter-none'
+        return 'backdrop-blur-none'
       case 'blur':
-        return 'backdrop-filter'
+        return 'backdrop-blur-md'
     }
 
     return null
