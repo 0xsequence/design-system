@@ -11,12 +11,6 @@
 
   :root,
   [data-theme='dark'] {
-    /* Base colors */
-    --seq-colors-black: #000000;
-    --seq-colors-white: #ffffff;
-    --seq-colors-transparent: transparent;
-    --seq-colors-inherit: inherit;
-
     /* Status colors */
     --seq-colors-positive: #1fc266;
     --seq-colors-negative: #c2501f;

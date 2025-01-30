@@ -3,11 +3,6 @@ export type ColorScheme = 'dark' | 'light'
 type ColorSchemes<T = ColorTokens> = { [key in ColorScheme]: T }
 
 export interface ColorTokens {
-  black: string
-  white: string
-  inherit: string
-  transparent: string
-
   // Status colors
   positive: string
   negative: string
@@ -47,11 +42,6 @@ export interface ColorTokens {
 }
 
 const defaultColors = {
-  black: '#000000',
-  white: '#ffffff',
-  inherit: 'inherit',
-  transparent: 'transparent',
-
   positive: '#1FC266',
   negative: '#C2501F',
   info: '#0076CC',
