@@ -11,48 +11,48 @@ export default {
     extend: {
       colors: {
         // Status colors
-        positive: 'var(--seq-colors-positive)',
-        negative: 'var(--seq-colors-negative)',
-        info: 'var(--seq-colors-info)',
-        warning: 'var(--seq-colors-warning)',
+        positive: 'var(--seq-color-positive)',
+        negative: 'var(--seq-color-negative)',
+        info: 'var(--seq-color-info)',
+        warning: 'var(--seq-color-warning)',
 
         // Text colors
-        primary: 'var(--seq-colors-primary)',
-        secondary: 'var(--seq-colors-secondary)',
-        muted: 'var(--seq-colors-muted)',
-        inverse: 'var(--seq-colors-inverse)',
+        primary: 'var(--seq-color-primary)',
+        secondary: 'var(--seq-color-secondary)',
+        muted: 'var(--seq-color-muted)',
+        inverse: 'var(--seq-color-inverse)',
 
         // Background colors
         background: {
-          primary: 'var(--seq-colors-background-primary)',
-          secondary: 'var(--seq-colors-background-secondary)',
-          contrast: 'var(--seq-colors-background-contrast)',
-          muted: 'var(--seq-colors-background-muted)',
-          control: 'var(--seq-colors-background-control)',
-          inverse: 'var(--seq-colors-background-inverse)',
-          backdrop: 'var(--seq-colors-background-backdrop)',
-          overlay: 'var(--seq-colors-background-overlay)',
-          raised: 'var(--seq-colors-background-raised)',
+          primary: 'var(--seq-color-background-primary)',
+          secondary: 'var(--seq-color-background-secondary)',
+          contrast: 'var(--seq-color-background-contrast)',
+          muted: 'var(--seq-color-background-muted)',
+          control: 'var(--seq-color-background-control)',
+          inverse: 'var(--seq-color-background-inverse)',
+          backdrop: 'var(--seq-color-background-backdrop)',
+          overlay: 'var(--seq-color-background-overlay)',
+          raised: 'var(--seq-color-background-raised)',
         },
 
         // Border colors
         border: {
-          normal: 'var(--seq-colors-border-normal)',
-          focus: 'var(--seq-colors-border-focus)',
+          normal: 'var(--seq-color-border-normal)',
+          focus: 'var(--seq-color-border-focus)',
         },
 
         // Button colors
         button: {
-          glass: 'var(--seq-colors-button-glass)',
-          emphasis: 'var(--seq-colors-button-emphasis)',
-          inverse: 'var(--seq-colors-button-inverse)',
+          glass: 'var(--seq-color-button-glass)',
+          emphasis: 'var(--seq-color-button-emphasis)',
+          inverse: 'var(--seq-color-button-inverse)',
         },
       },
       backgroundImage: {
-        'gradient-backdrop': 'var(--seq-colors-gradient-backdrop)',
-        'gradient-primary': 'var(--seq-colors-gradient-primary)',
-        'gradient-secondary': 'var(--seq-colors-gradient-secondary)',
-        'gradient-skeleton': 'var(--seq-colors-gradient-skeleton)',
+        'gradient-backdrop': 'var(--seq-color-gradient-backdrop)',
+        'gradient-primary': 'var(--seq-color-gradient-primary)',
+        'gradient-secondary': 'var(--seq-color-gradient-secondary)',
+        'gradient-skeleton': 'var(--seq-color-gradient-skeleton)',
       },
       keyframes: {
         spin: {

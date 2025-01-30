@@ -48,7 +48,7 @@ const setThemeVars = (element: HTMLElement, vars: ThemeOverrides) => {
   Object.entries(vars).forEach(([key, value]) => {
     if (value) {
       const kebabKey = toKebabCase(key)
-      element.style.setProperty(`--seq-colors-${kebabKey}`, value)
+      element.style.setProperty(`--seq-color-${kebabKey}`, value)
     }
   })
 }
