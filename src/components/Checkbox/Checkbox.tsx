@@ -35,7 +35,7 @@ export type CheckboxProps = FieldProps &
 type IndicatorProps = VariantProps<typeof checkboxVariants>
 
 const Indicator = ({ size = 'sm' }: IndicatorProps) => (
-  <CheckboxPrimitive.Indicator className="flex items-center justify-center w-full h-full text-text-100">
+  <CheckboxPrimitive.Indicator className="flex items-center justify-center w-full h-full text-primary">
     <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xs'} />
   </CheckboxPrimitive.Indicator>
 )

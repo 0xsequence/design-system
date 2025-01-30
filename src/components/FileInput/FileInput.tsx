@@ -98,7 +98,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
               'focus-within:opacity-100 focus-within:ring-2 focus-within:ring-border-focus focus-within:ring-inset focus-within:border-transparent',
               fileData ? 'justify-between' : 'justify-start',
-              fileData ? 'text-text-100' : 'text-text-50',
+              fileData ? 'text-primary' : 'text-muted',
               className
             )}
           >

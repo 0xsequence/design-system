@@ -12,7 +12,7 @@ const triggerVariants = cva(
   [
     textVariants({ variant: 'normal' }),
     'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-transparent',
-    'text-base font-medium text-text-100 select-none cursor-pointer border-none',
+    'text-base font-medium text-primary select-none cursor-pointer border-none',
     'outline-hidden ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
     '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
     '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
@@ -59,7 +59,7 @@ const SelectItem = forwardRef(
         className={cn(
           textVariants({ variant: 'normal' }),
           'flex justify-between items-center px-4 py-3 h-[52px] cursor-pointer',
-          'text-base text-text-100 opacity-100 data-disabled:cursor-default data-disabled:opacity-50',
+          'text-base text-primary opacity-100 data-disabled:cursor-default data-disabled:opacity-50',
           'data-highlighted:bg-background-secondary data-[state=checked]:bg-background-control outline-hidden',
           className
         )}

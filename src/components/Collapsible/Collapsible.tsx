@@ -66,7 +66,7 @@ export const Collapsible = (props: CollapsibleProps) => {
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ ease: 'linear', duration: 0.1 }}
           >
-            <ChevronDownIcon className="h-5 w-5 block text-text-50" />
+            <ChevronDownIcon className="h-5 w-5 block text-muted" />
           </motion.div>
         </CollapsiblePrimitive.Trigger>
         <AnimatePresence>

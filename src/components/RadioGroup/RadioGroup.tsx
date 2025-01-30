@@ -26,7 +26,7 @@ const radioOptionVariants = cva(
 
 const indicatorVariants = cva(
   [
-    'flex items-center justify-center relative w-full h-full text-text-100',
+    'flex items-center justify-center relative w-full h-full text-primary',
     'after:content-[""] after:block after:rounded-full after:bg-current',
   ],
   {
