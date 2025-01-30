@@ -9,6 +9,10 @@ export default {
   },
   theme: {
     extend: {
+      fontFamily: {
+        body: `Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
+      },
+
       colors: {
         // Status colors
         positive: 'var(--seq-color-positive)',

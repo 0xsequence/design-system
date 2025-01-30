@@ -5,7 +5,7 @@ import { ThemeProvider } from '../src/components/ThemeProvider'
 
 import docsTheme from './theme'
 
-import './tailwind.css'
+import './index.css'
 
 const CUSTOM_THEME = {
   primary: 'rgba(255, 255, 255, 1)',
