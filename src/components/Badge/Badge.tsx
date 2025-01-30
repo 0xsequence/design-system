@@ -2,6 +2,8 @@ import { VariantProps, cva } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { ReactNode, HTMLAttributes } from 'react'
 
+import { Text, textVariants } from '~/components/Text'
+
 export const badgeVariants = cva(
   [
     'inline-flex',
@@ -21,9 +23,9 @@ export const badgeVariants = cva(
         error: 'bg-negative',
       },
       size: {
-        sm: ['text-xs', 'h-4', 'min-w-4', 'px-2'],
-        md: ['text-sm', 'h-5', 'min-w-5', 'px-3'],
-        lg: ['text-base', 'h-6', 'min-w-6', 'px-4'],
+        sm: [textVariants({ variant: 'small' }), 'h-4', 'min-w-4', 'px-2'],
+        md: [textVariants({ variant: 'normal' }), 'h-5', 'min-w-5', 'px-3'],
+        lg: [textVariants({ variant: 'medium' }), 'h-6', 'min-w-6', 'px-4'],
       },
     },
     defaultVariants: {
@@ -47,7 +49,7 @@ export const Badge = (props: BadgeProps) => {
       className={clsx(badgeVariants({ variant, size }), className)}
       {...rest}
     >
-      {value}
+      <Text>{value}</Text>
     </div>
   )
 }
