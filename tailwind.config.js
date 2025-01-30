@@ -17,10 +17,10 @@ export default {
         warning: 'var(--seq-colors-warning)',
 
         // Text colors
-        primary: 'var(--seq-colors-text-primary)',
-        secondary: 'var(--seq-colors-text-secondary)',
-        muted: 'var(--seq-colors-text-muted)',
-        inverse: 'var(--seq-colors-text-inverse)',
+        primary: 'var(--seq-colors-primary)',
+        secondary: 'var(--seq-colors-secondary)',
+        muted: 'var(--seq-colors-muted)',
+        inverse: 'var(--seq-colors-inverse)',
 
         // Background colors
         background: {

@@ -31,7 +31,7 @@ const wrapperVariants = cva(
 
 const inputVariants = cva(
   [
-    'block bg-transparent text-primary border-none px-0 py-4 w-full h-full placeholder-text-50',
+    'block bg-transparent text-primary border-none px-0 py-4 w-full h-full placeholder-muted',
     'focus:outline-hidden focus:ring-0',
   ],
   {

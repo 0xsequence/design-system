@@ -24,10 +24,10 @@
     --seq-colors-warning: #f4b03e;
 
     /* Text colors */
-    --seq-colors-text-primary: rgba(255, 255, 255, 1);
-    --seq-colors-text-secondary: rgba(255, 255, 255, 0.8);
-    --seq-colors-text-muted: rgba(255, 255, 255, 0.5);
-    --seq-colors-text-inverse: rgba(0, 0, 0, 1);
+    --seq-colors-primary: rgba(255, 255, 255, 1);
+    --seq-colors-secondary: rgba(255, 255, 255, 0.8);
+    --seq-colors-muted: rgba(255, 255, 255, 0.5);
+    --seq-colors-inverse: rgba(0, 0, 0, 1);
 
     /* Background colors */
     --seq-colors-background-primary: rgba(0, 0, 0, 1);
@@ -79,10 +79,10 @@
 
   [data-theme='light'] {
     /* Text colors */
-    --seq-colors-text-primary: rgba(0, 0, 0, 1);
-    --seq-colors-text-secondary: rgba(0, 0, 0, 0.8);
-    --seq-colors-text-muted: rgba(0, 0, 0, 0.5);
-    --seq-colors-text-inverse: rgba(255, 255, 255, 1);
+    --seq-colors-primary: rgba(0, 0, 0, 1);
+    --seq-colors-secondary: rgba(0, 0, 0, 0.8);
+    --seq-colors-muted: rgba(0, 0, 0, 0.5);
+    --seq-colors-inverse: rgba(255, 255, 255, 1);
 
     /* Background colors */
     --seq-colors-background-primary: rgba(244, 244, 244, 1);

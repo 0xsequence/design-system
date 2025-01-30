@@ -13,7 +13,7 @@ const textareaVariants = cva(
     'outline-hidden ring-inset ring-1 ring-border-normal',
     'cursor-text disabled:cursor-default disabled:opacity-50',
     'focus:opacity-100 focus:ring-2 focus:ring-border-focus',
-    'placeholder-text-50',
+    'placeholder-muted',
     'resize-none',
   ],
   {
