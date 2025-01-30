@@ -80,7 +80,7 @@ const StoryWrapper: StoryFn<typeof TabbedNav> = args => {
       </div>
 
       <div className="bg-background-secondary p-4 rounded-xl">
-        <Text variant="normal" color="text80">
+        <Text variant="normal" color="secondary">
           {value} content
         </Text>
       </div>

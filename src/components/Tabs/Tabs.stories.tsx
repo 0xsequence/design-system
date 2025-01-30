@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Tabs>
 
 const Content = ({ children }: any) => (
   <Card className="mt-4">
-    <Text variant="normal" color="text80">
+    <Text variant="normal" color="secondary">
       {children}
     </Text>
   </Card>

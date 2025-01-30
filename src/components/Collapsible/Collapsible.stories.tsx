@@ -26,7 +26,7 @@ const CollapsibleStory = () => {
       onOpenChange={open => setIsOpen(open)}
     >
       {[1, 2, 3, 4, 5].map(x => (
-        <Text variant="normal" color="text80" key={x} asChild>
+        <Text variant="normal" color="secondary" key={x} asChild>
           <p>Item {x}</p>
         </Text>
       ))}
@@ -38,7 +38,7 @@ export const Default: Story = {
   args: {
     label: 'My Heading',
     children: [1, 2, 3, 4, 5].map(x => (
-      <Text variant="normal" color="text80" key={x} asChild>
+      <Text variant="normal" color="secondary" key={x} asChild>
         <p>Item {x}</p>
       </Text>
     )),

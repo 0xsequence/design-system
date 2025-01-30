@@ -16,10 +16,10 @@ export const Default: Story = {
     children: (
       <>
         <div className="flex flex-col">
-          <Text variant="large" color="text100">
+          <Text variant="large" color="primary">
             Card
           </Text>
-          <Text variant="normal" color="text50">
+          <Text variant="normal" color="muted">
             Description
           </Text>
         </div>
@@ -34,10 +34,10 @@ export const Clickable: Story = {
     children: (
       <>
         <div className="flex flex-col text-left">
-          <Text variant="large" color="text100">
+          <Text variant="large" color="primary">
             Card
           </Text>
-          <Text variant="normal" color="text50">
+          <Text variant="normal" color="muted">
             Description
           </Text>
         </div>
@@ -52,10 +52,10 @@ export const Disabled: Story = {
     children: (
       <>
         <div className="flex flex-col text-left">
-          <Text variant="large" color="text100">
+          <Text variant="large" color="primary">
             Card
           </Text>
-          <Text variant="normal" color="text50">
+          <Text variant="normal" color="muted">
             Description
           </Text>
         </div>
@@ -69,10 +69,10 @@ export const Outlined: Story = {
     children: (
       <>
         <div className="flex flex-col">
-          <Text variant="large" color="text100">
+          <Text variant="large" color="primary">
             Card
           </Text>
-          <Text variant="normal" color="text50">
+          <Text variant="normal" color="muted">
             Description
           </Text>
         </div>

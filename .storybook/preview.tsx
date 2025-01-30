@@ -8,9 +8,9 @@ import docsTheme from './theme'
 import './tailwind.css'
 
 const CUSTOM_THEME = {
-  text100: 'rgba(255, 255, 255, 1)',
-  text80: 'rgba(200, 200, 255, 1)',
-  text50: 'rgba(150, 150, 200, 1)',
+  textPrimary: 'rgba(255, 255, 255, 1)',
+  textSecondary: 'rgba(200, 200, 255, 1)',
+  textMuted: 'rgba(150, 150, 200, 1)',
   backgroundPrimary: 'pink',
   backgroundSecondary: 'navy',
 }

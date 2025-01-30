@@ -75,7 +75,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
           )}
           variant="inherit"
           fontWeight="medium"
-          color="text50"
+          color="muted"
           uppercase
         >
           {symbol?.replace(/\s/, '').slice(0, 4)}

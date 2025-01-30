@@ -15,10 +15,10 @@ export interface ColorTokens {
   warning: string
 
   // Text colors
-  text100: string
-  text80: string
-  text50: string
-  textInverse100: string
+  textPrimary: string
+  textSecondary: string
+  textMuted: string
+  textInverse: string
 
   // Background colors
   backgroundPrimary: string
@@ -70,10 +70,10 @@ const defaultColors = {
 const dark: ColorTokens = {
   ...defaultColors,
 
-  text100: 'rgba(255, 255, 255, 1)',
-  text80: 'rgba(255, 255, 255, 0.8)',
-  text50: 'rgba(255, 255, 255, 0.5)',
-  textInverse100: 'rgba(0, 0, 0, 1)',
+  textPrimary: 'rgba(255, 255, 255, 1)',
+  textSecondary: 'rgba(255, 255, 255, 0.8)',
+  textMuted: 'rgba(255, 255, 255, 0.5)',
+  textInverse: 'rgba(0, 0, 0, 1)',
 
   backgroundPrimary: 'rgba(0, 0, 0, 1)',
   backgroundSecondary: 'rgba(255, 255, 255, 0.1)',
@@ -96,10 +96,10 @@ const dark: ColorTokens = {
 const light: ColorTokens = {
   ...defaultColors,
 
-  text100: 'rgba(0, 0, 0, 1)',
-  text80: 'rgba(0, 0, 0, 0.8)',
-  text50: 'rgba(0, 0, 0, 0.5)',
-  textInverse100: 'rgba(255, 255, 255, 1)',
+  textPrimary: 'rgba(0, 0, 0, 1)',
+  textSecondary: 'rgba(0, 0, 0, 0.8)',
+  textMuted: 'rgba(0, 0, 0, 0.5)',
+  textInverse: 'rgba(255, 255, 255, 1)',
 
   backgroundPrimary: 'rgba(244, 244, 244, 1)',
   backgroundSecondary: 'rgba(0, 0, 0, 0.1)',

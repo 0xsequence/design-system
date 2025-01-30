@@ -61,7 +61,7 @@ for (let row = 0; row < ROWS; row++) {
 export const Multiple = () => {
   return (
     <>
-      <Text variant="normal" color="text100" fontWeight="bold" asChild>
+      <Text variant="normal" color="primary" fontWeight="bold" asChild>
         <div>SVG</div>
       </Text>
 

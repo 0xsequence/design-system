@@ -63,7 +63,7 @@ export const VerticalScroll: Story = {
       <div className="p-4 flex flex-col gap-4 items-center">
         {ALPHABET.map(letter => (
           <div key={letter}>
-            <Text color="text100" variant="xlarge">
+            <Text color="primary" variant="xlarge">
               {letter}
             </Text>
           </div>
@@ -82,7 +82,7 @@ export const HorizontalScroll: Story = {
       <div className="p-4 gap-4 items-center h-full w-max">
         {ALPHABET.map(letter => (
           <div key={letter}>
-            <Text color="text100" variant="xlarge">
+            <Text color="primary" variant="xlarge">
               {letter}
             </Text>
           </div>
