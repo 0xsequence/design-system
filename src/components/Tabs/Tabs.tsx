@@ -80,7 +80,7 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 
       {tabs.map(tab => (
         <TabsPrimitive.Trigger
-          className="w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-text-80 outline-hidden appearance-none border-none z-2 data-[state=active]:text-text-100 disabled:opacity-50"
+          className="w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-secondary outline-hidden appearance-none border-none z-2 data-[state=active]:text-primary disabled:opacity-50"
           key={tab.value}
           value={tab.value}
         >

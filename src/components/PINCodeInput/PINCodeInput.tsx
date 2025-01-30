@@ -8,14 +8,14 @@ import { textVariants } from '../Text'
 
 export const digitText = clsx(
   textVariants({ variant: 'large' }),
-  'w-10 h-12 flex justify-center items-center p-[10px] bg-background-secondary rounded-lg text-text-100'
+  'w-10 h-12 flex justify-center items-center p-[10px] bg-background-secondary rounded-lg text-primary'
 )
 
 const digitInputVariants = cva(
   [
     textVariants({ variant: 'large' }),
     'flex justify-center items-center h-12 w-10 p-[10px]',
-    'border-none rounded-lg text-text-100 bg-transparent text-center',
+    'border-none rounded-lg text-primary bg-transparent text-center',
     'caret-transparent selection:bg-transparent',
     'ring-inset ring-1 ring-border-normal hover:ring-border-focus',
     'disabled:cursor-default disabled:opacity-50',

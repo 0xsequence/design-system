@@ -18,10 +18,10 @@ export default {
 
         // Text colors
         text: {
-          100: 'var(--seq-colors-text100)',
-          80: 'var(--seq-colors-text80)',
-          50: 'var(--seq-colors-text50)',
-          inverse: 'var(--seq-colors-text-inverse100)',
+          primary: 'var(--seq-colors-text-primary)',
+          secondary: 'var(--seq-colors-text-secondary)',
+          muted: 'var(--seq-colors-text-muted)',
+          inverse: 'var(--seq-colors-text-inverse)',
         },
 
         // Background colors

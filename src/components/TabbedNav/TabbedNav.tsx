@@ -23,22 +23,22 @@ const tabVariants = cva([''], {
     {
       variant: 'pill',
       active: true,
-      className: 'bg-button-inverse text-text-inverse-100',
+      className: 'bg-button-inverse text-inverse',
     },
     {
       variant: 'pill',
       active: false,
-      className: 'bg-transparent text-text-80',
+      className: 'bg-transparent text-secondary',
     },
     {
       variant: 'line',
       active: true,
-      className: 'text-text-100',
+      className: 'text-primary',
     },
     {
       variant: 'line',
       active: false,
-      className: 'text-text-80',
+      className: 'text-secondary',
     },
   ],
   defaultVariants: {

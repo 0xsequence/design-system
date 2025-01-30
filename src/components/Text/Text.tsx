@@ -72,15 +72,22 @@ export const textVariants = cva('', {
     },
 
     color: {
-      text100: 'text-text-100',
-      text80: 'text-text-80',
-      text50: 'text-text-50',
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      muted: 'text-muted',
+      inverse: 'text-inverse',
       white: 'text-white',
       black: 'text-black',
       negative: 'text-negative',
       positive: 'text-positive',
       warning: 'text-warning',
       info: 'text-info',
+
+      // backwards compatibility
+      text100: 'text-primary',
+      text80: 'text-secondary',
+      text50: 'text-muted',
+      inverse100: 'text-inverse',
     },
 
     ellipsis: {

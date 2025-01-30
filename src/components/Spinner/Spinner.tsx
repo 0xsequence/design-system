@@ -1,6 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority'
 
-const spinnerVariants = cva(['text-text-50 animate-spin'], {
+const spinnerVariants = cva(['text-muted animate-spin'], {
   variants: {
     size: {
       sm: 'w-4 h-4 [&>svg]:stroke-[calc(24/16*2px)]',

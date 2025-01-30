@@ -14,19 +14,19 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        base: 'bg-transparent text-text-100',
-        ghost: 'bg-transparent text-text-100',
+        base: 'bg-transparent text-primary',
+        ghost: 'bg-transparent text-primary',
         feature: [
           'bg-gradient-secondary text-white',
           'ring-inset ring-2 ring-white/10',
         ],
         primary: 'bg-gradient-primary text-white',
-        glass: 'bg-button-glass text-text-100',
-        emphasis: 'bg-button-emphasis text-text-100',
-        raised: 'bg-background-raised text-text-100',
+        glass: 'bg-button-glass text-primary',
+        emphasis: 'bg-button-emphasis text-primary',
+        raised: 'bg-background-raised text-primary',
         danger: 'bg-negative text-white',
         text: [
-          'bg-transparent text-text-50 rounded-xs outline-offset-1',
+          'bg-transparent text-muted rounded-xs outline-offset-1',
           textVariants({ variant: 'small' }),
           'font-bold',
         ],

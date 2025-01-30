@@ -11,7 +11,7 @@ type Story = StoryObj<typeof SettingsIcon>
 
 export const Default: Story = {
   args: {
-    className: 'text-text-100',
+    className: 'text-primary',
     size: 'md',
   },
 }

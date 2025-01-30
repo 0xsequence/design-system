@@ -9,7 +9,7 @@ import { textVariants } from '../Text'
 
 const wrapperVariants = cva(
   [
-    'inline-flex items-center bg-transparent text-text-100 min-w-full px-4 gap-2',
+    'inline-flex items-center bg-transparent text-primary min-w-full px-4 gap-2',
     'h-[52px] cursor-text',
     '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
     '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
@@ -31,7 +31,7 @@ const wrapperVariants = cva(
 
 const inputVariants = cva(
   [
-    'block bg-transparent text-text-100 border-none px-0 py-4 w-full h-full placeholder-text-50',
+    'block bg-transparent text-primary border-none px-0 py-4 w-full h-full placeholder-text-50',
     'focus:outline-hidden focus:ring-0',
   ],
   {
