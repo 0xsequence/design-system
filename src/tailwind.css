@@ -1,3 +1,5 @@
+@source './';
+
 @layer base {
   .seq-root *,
   .seq-root *::before,
