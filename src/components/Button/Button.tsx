@@ -33,7 +33,7 @@ export const buttonVariants = cva(
       },
       shape: {
         circle: 'rounded-full',
-        square: 'rounded-xs',
+        square: 'rounded-lg',
       },
       size: {
         xs: [textVariants({ variant: 'xsmall' }), 'h-7 px-3 font-bold'],
@@ -53,11 +53,6 @@ export const buttonVariants = cva(
       },
       hasRightIcon: {
         true: '',
-      },
-      activeOutline: {
-        light:
-          'outline outline-2 outline-background-secondary -outline-offset-2',
-        bold: 'outline outline-2 outline-border-normal -outline-offset-2',
       },
     },
     compoundVariants: [
@@ -128,7 +123,10 @@ export const buttonVariants = cva(
 
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'>,
-    VariantProps<typeof buttonVariants> {
+    Omit<
+      VariantProps<typeof buttonVariants>,
+      'iconOnly' | 'hasLeftIcon' | 'hasRightIcon'
+    > {
   asChild?: boolean
   disabled?: boolean
   pending?: boolean
@@ -150,7 +148,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'md',
       variant = 'glass',
       shape = 'circle',
-      activeOutline,
       type = 'button',
       children,
       ...rest
@@ -170,7 +167,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={cn(
           buttonVariants({
-            activeOutline,
             disabled: disabled || pending,
             hasLeftIcon,
             hasRightIcon,

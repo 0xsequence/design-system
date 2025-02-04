@@ -14,7 +14,6 @@ type Story = StoryObj<typeof Select>
 
 export const Default: Story = {
   args: {
-    borderRadius: 'md',
     onValueChange: value => {
       console.log('selected: ', value)
     },
@@ -52,7 +51,6 @@ export const Default: Story = {
 
 export const Custom: Story = {
   args: {
-    borderRadius: 'md',
     onValueChange: value => {
       console.log('selected: ', value)
     },

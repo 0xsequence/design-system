@@ -1,12 +1,4 @@
-import {
-  API,
-  FileInfo,
-  JSXAttribute,
-  JSXElement,
-  JSXIdentifier,
-  Collection,
-  JSXExpressionContainer,
-} from 'jscodeshift'
+import { API, FileInfo, JSXAttribute, Collection } from 'jscodeshift'
 
 import {
   hasAtomProps,
@@ -53,7 +45,6 @@ const COMPONENT_SPECIFIC_PROPS = {
     'leftIcon',
     'rightIcon',
     'iconOnly',
-    'activeOutline',
   ],
   IconButton: ['disabled', 'pending', 'size', 'variant', 'icon'],
 }
@@ -105,7 +96,10 @@ function transformAsChildComponents(j: API['jscodeshift'], root: Collection) {
       const passthroughProps: JSXAttribute[] = []
 
       openingElement.attributes.forEach(attr => {
-        if (attr === asProp) return // Skip the "as" prop
+        // Skip the "as" prop
+        if (attr === asProp) {
+          return
+        }
 
         if (
           attr.type === 'JSXAttribute' &&

@@ -1,5 +1,4 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { cva, VariantProps } from 'class-variance-authority'
 import { forwardRef, ReactNode, Ref } from 'react'
 
 import { Field, FieldProps } from '~/components/Field'
@@ -7,29 +6,6 @@ import { ChevronDownIcon } from '~/icons'
 import { cn } from '~/utils'
 
 import { textVariants } from '../Text'
-
-const triggerVariants = cva(
-  [
-    textVariants({ variant: 'normal' }),
-    'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-transparent',
-    'text-base font-medium text-primary select-none cursor-pointer border-none',
-    'outline-hidden ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
-    '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
-    '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
-  ],
-  {
-    variants: {
-      borderRadius: {
-        xs: 'rounded-xs',
-        sm: 'rounded-lg',
-        md: 'rounded-xl',
-      },
-    },
-    defaultVariants: {
-      borderRadius: 'md',
-    },
-  }
-)
 
 type SelectOption = {
   className?: string
@@ -39,7 +15,6 @@ type SelectOption = {
 }
 
 export type SelectProps = FieldProps &
-  VariantProps<typeof triggerVariants> &
   SelectPrimitive.SelectProps & {
     disabled?: boolean
     id?: string
@@ -75,7 +50,6 @@ const SelectItem = forwardRef(
 export const Select = forwardRef(
   (props: SelectProps, ref: Ref<HTMLButtonElement>) => {
     const {
-      borderRadius = 'md',
       disabled = false,
       id,
       label = '',
@@ -100,7 +74,15 @@ export const Select = forwardRef(
         <SelectPrimitive.Root disabled={disabled} name={name} {...rest}>
           <SelectPrimitive.Trigger
             id={id ?? name}
-            className={cn(triggerVariants({ borderRadius }), className)}
+            className={cn(
+              textVariants({ variant: 'normal' }),
+              'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-transparent rounded-xl',
+              'text-base font-medium text-primary select-none cursor-pointer border-none',
+              'outline-hidden ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
+              '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
+              '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
+              className
+            )}
             ref={ref}
           >
             <SelectPrimitive.Value placeholder={placeholder} />
