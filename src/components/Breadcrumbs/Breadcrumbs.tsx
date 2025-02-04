@@ -25,14 +25,18 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
 
   return (
     <div className={className} {...rest}>
-      {paths.map((path, idx) => (
-        <BreadcrumbSegment
-          key={idx}
-          path={path}
-          active={idx === paths.length - 1}
-          renderLink={renderLink}
-        />
-      ))}
+      <Text variant="small" fontWeight="medium" asChild>
+        <div>
+          {paths.map((path, idx) => (
+            <BreadcrumbSegment
+              key={idx}
+              path={path}
+              active={idx === paths.length - 1}
+              renderLink={renderLink}
+            />
+          ))}
+        </div>
+      </Text>
 
       {!excludeDivider && <Divider />}
     </div>
@@ -46,39 +50,28 @@ interface BreadcrumbSegmentProps {
 }
 
 const defaultRenderLink = (path: Path, children: ReactNode) => (
-  <a
-    href={path.url}
-    className="no-underline outline-hidden focus:ring-2 focus:ring-border-focus"
-  >
-    {children}
-  </a>
+  <a href={path.url}>{children}</a>
 )
 
 const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
   const { path, active, renderLink = defaultRenderLink } = props
 
   return active ? (
-    <Text variant="small" fontWeight="medium" color="primary" nowrap capitalize>
+    <Text color="primary" nowrap capitalize>
       {path.label}
     </Text>
   ) : (
     <>
-      {renderLink(
-        path,
-        <Text
-          variant="small"
-          fontWeight="medium"
-          color="muted"
-          nowrap
-          capitalize
-          className="hover:opacity-80"
-        >
-          {path.label}
-        </Text>
-      )}
-      <Text variant="small" fontWeight="medium" color="muted">
-        {' / '}
+      <Text
+        color="muted"
+        nowrap
+        capitalize
+        className="no-underline outline-hidden focus:ring-2 focus:ring-border-focus hover:opacity-80"
+        asChild
+      >
+        {renderLink(path, path.label)}
       </Text>
+      <Text color="muted">{' / '}</Text>
     </>
   )
 }
