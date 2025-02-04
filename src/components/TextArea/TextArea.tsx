@@ -9,7 +9,7 @@ import { textVariants } from '../Text'
 const textareaVariants = cva(
   [
     textVariants({ variant: 'normal' }),
-    'block bg-transparent text-primary w-full p-4',
+    'block bg-transparent text-primary w-full p-4 rounded-xl',
     'outline-hidden ring-inset ring-1 ring-border-normal',
     'cursor-text disabled:cursor-default disabled:opacity-50',
     'focus:opacity-100 focus:ring-2 focus:ring-border-focus',
@@ -18,18 +18,12 @@ const textareaVariants = cva(
   ],
   {
     variants: {
-      borderRadius: {
-        xs: 'rounded-xs',
-        sm: 'rounded-lg',
-        md: 'rounded-xl',
-      },
       resize: {
         true: 'resize-y',
         false: 'resize-none',
       },
     },
     defaultVariants: {
-      borderRadius: 'md',
       resize: false,
     },
   }
@@ -50,7 +44,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (props, ref) => {
     const {
       autoComplete = 'off',
-      borderRadius = 'md',
       description,
       disabled = false,
       id,
@@ -75,7 +68,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <textarea
           autoComplete={autoComplete}
           spellCheck="false"
-          className={cn(textareaVariants({ borderRadius, resize }), className)}
+          className={cn(textareaVariants({ resize }), className)}
           disabled={disabled}
           id={id ?? name}
           name={name}

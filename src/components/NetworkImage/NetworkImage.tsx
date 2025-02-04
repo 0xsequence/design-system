@@ -13,6 +13,7 @@ const networkImageVariants = cva(
     'justify-center',
     'overflow-hidden',
     'shrink-0',
+    'rounded-full',
   ],
   {
     variants: {
@@ -23,15 +24,6 @@ const networkImageVariants = cva(
         lg: 'w-10 h-10',
         xl: 'w-16 h-16',
       },
-      borderRadius: {
-        circle: 'rounded-full',
-        lg: 'rounded-lg',
-        md: 'rounded-md',
-        sm: 'rounded-xs',
-      },
-    },
-    defaultVariants: {
-      borderRadius: 'circle',
     },
   }
 )
@@ -47,7 +39,6 @@ interface NetworkImageProps
 export const NetworkImage = memo((props: NetworkImageProps) => {
   const {
     chainId,
-    borderRadius,
     className,
     disableAnimation = false,
     style,
@@ -60,7 +51,7 @@ export const NetworkImage = memo((props: NetworkImageProps) => {
 
   return (
     <div
-      className={cn(networkImageVariants({ size, borderRadius }), className)}
+      className={cn(networkImageVariants({ size }), className)}
       style={style}
       {...rest}
     >

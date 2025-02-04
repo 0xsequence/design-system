@@ -9,7 +9,7 @@ import { cn } from '~/utils'
 const checkboxVariants = cva(
   [
     'flex items-center justify-center bg-transparent',
-    'rounded-xs cursor-pointer opacity-100 hover:opacity-80 disabled:opacity-50 disabled:cursor-default',
+    'rounded-sm cursor-pointer opacity-100 hover:opacity-80 disabled:opacity-50 disabled:cursor-default',
     'outline-hidden ring-inset ring-1 ring-border-focus focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
   {
