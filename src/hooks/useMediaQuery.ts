@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { breakpoints } from '~/tokens/breakpoints'
-
 // Inspired by Material-UIs useMediaQuery hook:
 // https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/useMediaQuery/useMediaQuery.js
 
@@ -19,8 +17,8 @@ export const useMediaQuery = (
   options: Options = {}
 ) => {
   const bp = new Map<BreakpointType, string>()
-    .set('isMobile', `@media screen and (max-width: ${breakpoints.lg - 1}px)`)
-    .set('isDesktop', `@media screen and (min-width: ${breakpoints.lg}px)`)
+    .set('isMobile', `@media screen and (max-width: 767px)`)
+    .set('isDesktop', `@media screen and (min-width: 768px)`)
 
   if (!queryInput.startsWith('@media')) {
     const bpQuery = bp.get(queryInput as any)
