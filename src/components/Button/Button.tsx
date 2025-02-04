@@ -15,7 +15,7 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         base: 'bg-transparent text-primary',
-        ghost: 'bg-transparent text-primary',
+        ghost: 'bg-transparent hover:bg-button-glass text-primary',
         feature: [
           'bg-gradient-secondary text-white',
           'ring-inset ring-2 ring-white/10',
@@ -36,10 +36,22 @@ export const buttonVariants = cva(
         square: 'rounded-lg',
       },
       size: {
-        xs: [textVariants({ variant: 'xsmall' }), 'h-7 px-3 font-bold'],
-        sm: [textVariants({ variant: 'normal' }), 'h-9 px-4 font-bold'],
-        md: [textVariants({ variant: 'normal' }), 'h-11 px-5 font-bold'],
-        lg: [textVariants({ variant: 'normal' }), 'h-[52px] px-5 font-bold'],
+        xs: [
+          textVariants({ variant: 'xsmall', fontWeight: 'bold' }),
+          'h-7 px-3',
+        ],
+        sm: [
+          textVariants({ variant: 'normal', fontWeight: 'bold' }),
+          'h-9 px-4',
+        ],
+        md: [
+          textVariants({ variant: 'normal', fontWeight: 'bold' }),
+          'h-11 px-5',
+        ],
+        lg: [
+          textVariants({ variant: 'normal', fontWeight: 'bold' }),
+          'h-[52px] px-5',
+        ],
       },
       disabled: {
         true: 'cursor-default opacity-50',
@@ -115,7 +127,6 @@ export const buttonVariants = cva(
     ],
     defaultVariants: {
       variant: 'glass',
-      size: 'md',
       shape: 'circle',
     },
   }
@@ -182,6 +193,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         <Slottable>{children}</Slottable>
+
         {iconOnly ? (
           <LeftIcon size={iconSize} />
         ) : (
