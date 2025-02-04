@@ -114,6 +114,10 @@ export const textVariants = cva('', {
       true: 'whitespace-nowrap',
     },
 
+    block: {
+      true: 'block',
+    },
+
     hidden: {
       true: [
         'border-0',
@@ -152,6 +156,7 @@ export const Text = (props: TextProps) => {
     uppercase,
     capitalize,
     nowrap,
+    block,
     ...rest
   } = props
 
@@ -171,6 +176,7 @@ export const Text = (props: TextProps) => {
           uppercase,
           capitalize,
           nowrap,
+          block,
         }),
         className
       )}
