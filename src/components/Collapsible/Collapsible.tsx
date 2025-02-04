@@ -49,14 +49,14 @@ export const Collapsible = (props: CollapsibleProps) => {
     >
       <motion.div
         className={clsx(
-          'min-h-[64px] rounded-md bg-background-secondary relative overflow-hidden w-full ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-border-focus',
+          'min-h-[64px] rounded-xl bg-background-secondary relative overflow-hidden w-full ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-border-focus',
           className
         )}
         initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
         animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
         transition={{ ease: 'easeOut', duration: 0.3 }}
       >
-        <CollapsiblePrimitive.Trigger className="flex items-center bg-transparent p-4 w-full cursor-pointer select-none rounded-md border-none appearance-none h-[64px] focus:outline-hidden">
+        <CollapsiblePrimitive.Trigger className="flex items-center bg-transparent p-4 w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden">
           <Text variant="normal" fontWeight="bold" color="secondary" asChild>
             <div>{label}</div>
           </Text>
