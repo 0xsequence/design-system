@@ -1,7 +1,7 @@
 import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { cva, VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
-import { motion, MotionProps } from 'framer-motion'
+import { motion, MotionProps } from 'motion/react'
 import { PropsWithChildren, useEffect, useState } from 'react'
 
 import { CloseIcon } from '~/icons'

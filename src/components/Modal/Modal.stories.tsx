@@ -1,5 +1,5 @@
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 
 import { Button } from '~/components/Button'
