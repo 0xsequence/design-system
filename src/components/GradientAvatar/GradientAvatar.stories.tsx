@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react'
-import { ethers } from 'ethers'
+import { Mnemonic, Address } from 'ox'
 
 import { Text } from '~/components/Text'
 
@@ -48,12 +48,20 @@ const rows: string[][] = [
   ],
 ]
 
+const getAddressFromMnemonic = (mnemonic: string, row: number, col: number) => {
+  //return ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/${row}'/${col}/0`).address
+  const { publicKey } = Mnemonic.toHdKey(mnemonic).derive(
+    Mnemonic.path({ account: row, change: col })
+  )
+  const address = Address.fromPublicKey(publicKey)
+
+  return Address.checksum(address)
+}
+
 for (let row = 0; row < ROWS; row++) {
   const cols = []
   for (let col = 0; col < COLS; col++) {
-    cols.push(
-      ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/${row}'/${col}/0`).address
-    )
+    cols.push(getAddressFromMnemonic(mnemonic, row, col))
   }
   rows.push(cols)
 }
