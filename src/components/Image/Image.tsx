@@ -1,4 +1,4 @@
-import { motion, HTMLMotionProps } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'motion/react'
 import { SyntheticEvent, useState } from 'react'
 
 interface ImageProps extends HTMLMotionProps<'img'> {

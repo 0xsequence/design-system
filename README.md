@@ -16,9 +16,7 @@ pnpm add @0xsequence/design-system
 
 The design system relies on these peer dependencies to be installed in your application:
 
-- `pnpm add react`
-- `pnpm add react-dom`
-- `pnpm add framer-motion`
+- `pnpm add react react-dom motion`
 
 ### Use
 
@@ -74,7 +72,6 @@ Give the relative path to your application, ie.
 `pnpm codemod ../wallet-webapp/src/**/*.{ts,tsx}`
 
 And the codemod will convert atom props to tailwind classnames and handle `as` props, amonst other things. Give it a try and save yourself some time.
-
 
 ### Create a snapshot release
 
