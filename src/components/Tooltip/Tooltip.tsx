@@ -1,5 +1,5 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
 
 import { Text } from '~/components/Text'
 
@@ -8,7 +8,7 @@ interface TooltipProps {
   delayDuration?: number
   disabled?: boolean
   hOffset?: number
-  message: string | JSX.Element
+  message: ReactNode
   side?: 'top' | 'bottom' | 'left' | 'right'
   vOffset?: number
 }

@@ -50,18 +50,7 @@ export const Default: Story = {
 }
 
 export const CustomAnimation: Story = {
-  render: args => (
-    <StoryWrapper
-      overlayProps={{}}
-      contentProps={{
-        initial: { scale: 0, rotateZ: 0 },
-        animate: { scale: 1, rotateZ: 360 },
-        exit: { scale: 0, rotateZ: 0 },
-        transition: { type: 'spring' },
-      }}
-      {...args}
-    />
-  ),
+  render: StoryWrapper,
   args: {
     size: 'lg',
     children: (
@@ -83,5 +72,12 @@ export const CustomAnimation: Story = {
         </div>
       </div>
     ),
+    overlayProps: {},
+    contentProps: {
+      initial: { scale: 0, rotateZ: 0 },
+      animate: { scale: 1, rotateZ: 360 },
+      exit: { scale: 0, rotateZ: 0 },
+      transition: { type: 'spring' },
+    },
   },
 }
