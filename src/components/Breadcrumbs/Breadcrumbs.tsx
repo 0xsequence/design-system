@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react'
+import { HTMLAttributes, JSX, ReactNode } from 'react'
 
 import { Divider } from '~/components/Divider'
 import { Text } from '~/components/Text'
