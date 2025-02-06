@@ -12,6 +12,7 @@ import { useTheme } from '../ThemeProvider'
 
 const modalContentVariants = cva(
   [
+    'relative',
     'flex',
     'flex-col',
     'fixed',
@@ -142,6 +143,9 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                   : { y: '100%', opacity: size === 'sm' ? 0 : 1 }
               }
               transition={{ type: 'tween', ease: 'easeOut' }}
+              transformTemplate={(_latest, generated) => {
+                return `${generated} translateZ(0)`
+              }}
               {...contentProps}
             >
               {scroll ? <Scroll>{children}</Scroll> : children}
