@@ -5,9 +5,11 @@ import { motion, MotionProps } from 'motion/react'
 import { PropsWithChildren, useEffect, useState } from 'react'
 
 import { CloseIcon } from '~/icons'
+import { cn } from '~/utils'
 
 import { IconButton } from '../IconButton'
 import { Scroll } from '../Scroll'
+import { Text } from '../Text'
 import { useTheme } from '../ThemeProvider'
 
 const modalContentVariants = cva(
@@ -46,12 +48,15 @@ const modalContentVariants = cva(
 )
 
 export interface ModalProps extends VariantProps<typeof modalContentVariants> {
-  backdropColor?: string
   className?: string
-  disableAnimation?: boolean
+  header?: React.ReactNode
+  footer?: React.ReactNode
+  scroll?: boolean
   isDismissible?: boolean
   onClose?: () => void
-  scroll?: boolean
+
+  backdropColor?: string
+  disableAnimation?: boolean
   overlayProps?: MotionProps
   contentProps?: MotionProps
   rootProps?: {
@@ -62,6 +67,8 @@ export interface ModalProps extends VariantProps<typeof modalContentVariants> {
 
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const {
+    header,
+    footer,
     autoHeight = false,
     backdropColor = 'bg-background-backdrop',
     children,
@@ -86,7 +93,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
         <div
-          className={clsx(
+          className={cn(
             'seq-root',
             'fixed inset-0 z-20 flex items-center justify-center',
             rootProps?.className
@@ -148,8 +155,14 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               }}
               {...contentProps}
             >
+              {header && (
+                <>
+                  <ModalHeader>{header}</ModalHeader>
+                  <div className="pt-[60px]" />
+                </>
+              )}
               {scroll ? <Scroll>{children}</Scroll> : children}
-
+              {footer && <ModalFooter>{footer}</ModalFooter>}
               {isDismissible && (
                 <ModalPrimitive.Close asChild>
                   <IconButton
@@ -166,6 +179,48 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
       </ModalPrimitive.Portal>
     </ModalPrimitive.Root>
   ) : null
+}
+
+const ModalHeader = (props: PropsWithChildren) => {
+  const { children } = props
+
+  return (
+    <div
+      className={clsx(
+        'absolute top-0 left-0 right-0 h-[60px] p-4 z-10',
+        'before:absolute before:left-0 before:-bottom-4 before:w-full before:h-4 before:z-[11] before:pointer-events-none before:bg-gradient-to-t before:from-transparent before:to-background-overlay'
+      )}
+    >
+      <div className="backdrop-blur-md bg-background-overlay absolute w-full h-full top-0 left-0" />
+      <div className="relative h-full w-full z-10 flex items-center justify-center">
+        {typeof children === 'string' ? (
+          <Text variant="normal" fontWeight="bold" color="primary" block>
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </div>
+    </div>
+  )
+}
+
+const ModalFooter = (props: PropsWithChildren) => {
+  const { children } = props
+
+  return (
+    <div
+      className={clsx(
+        'absolute bottom-0 left-0 right-0 p-4',
+        'before:absolute before:left-0 before:-top-4 before:w-full before:h-4 before:z-[11] before:pointer-events-none before:bg-gradient-to-b before:from-transparent before:to-background-overlay'
+      )}
+    >
+      <div className="backdrop-blur-md bg-background-overlay absolute w-full h-full top-0 left-0" />
+      <div className="relative w-full z-10 pb-[calc(env(safe-area-inset-bottom))]">
+        {children}
+      </div>
+    </div>
+  )
 }
 
 export { ModalPrimitive }

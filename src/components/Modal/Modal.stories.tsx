@@ -4,6 +4,9 @@ import { useState } from 'react'
 
 import { Button } from '~/components/Button'
 import { Text } from '~/components/Text'
+import { CheckmarkIcon } from '~/icons'
+
+import { Card } from '../Card'
 
 import { Modal } from './Modal'
 
@@ -44,6 +47,43 @@ export const Default: Story = {
         <div className="flex justify-end">
           <Button variant="primary" shape="square" label="Create" />
         </div>
+      </div>
+    ),
+  },
+}
+
+export const WithHeaderAndFooter: Story = {
+  render: StoryWrapper,
+  args: {
+    header: 'Task list',
+    footer: (
+      <div className="flex gap-2">
+        <Button className="w-full" shape="square" label="Cancel" />
+        <Button
+          className="w-full"
+          variant="primary"
+          shape="square"
+          label="Confirm"
+        />
+      </div>
+    ),
+    children: (
+      <div className="flex flex-col gap-2 p-4">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(idx => (
+          <Card className="flex gap-2 items-center">
+            <div className="flex items-center justify-center rounded-full bg-positive w-8 h-8 text-white">
+              <CheckmarkIcon />
+            </div>
+            <div className="flex flex-col">
+              <Text variant="normal" fontWeight="bold" color="primary" block>
+                Item {idx}
+              </Text>
+              <Text variant="small" color="muted">
+                Description
+              </Text>
+            </div>
+          </Card>
+        ))}
       </div>
     ),
   },
