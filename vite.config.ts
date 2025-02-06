@@ -39,7 +39,7 @@ export default defineConfig({
       name: 'SequenceDesignSystem',
       entry: path.resolve(__dirname, 'src/index.ts'),
       formats: ['es', 'cjs'],
-      fileName: format => `index.${format}.js`,
+      fileName: 'index',
     },
     outDir: path.resolve(__dirname, 'dist'),
     rollupOptions: {
