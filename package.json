@@ -3,25 +3,20 @@
   "version": "1.9.0",
   "license": "Apache-2.0",
   "type": "module",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.js",
+  "style": "dist/index.css",
   "types": "dist/types/index.d.ts",
   "homepage": "https://0xsequence.github.io/design-system/",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
-    "./styles.css": {
-      "import": "./dist/design-system.css",
-      "require": "./dist/design-system.css"
-    },
-    "./preset": "./tailwind.config.js"
+    "./index.css": "./dist/index.css"
   },
   "files": [
-    "dist/**",
-    "tailwind.config.js"
+    "dist/**"
   ],
   "scripts": {
     "start": "pnpm storybook",
