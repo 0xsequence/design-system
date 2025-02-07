@@ -18,7 +18,7 @@ export default {
 type Story = StoryObj<typeof Modal>
 
 const StoryWrapper: StoryFn<typeof Modal> = args => {
-  const [isOpen, toggleModal] = useState(true)
+  const [isOpen, toggleModal] = useState(false)
   return (
     <>
       <Button label="Open Modal" onClick={() => toggleModal(!isOpen)} />
