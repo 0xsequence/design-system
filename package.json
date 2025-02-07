@@ -19,7 +19,6 @@
   ],
   "scripts": {
     "start": "pnpm storybook",
-    "build:vite": "tsc && vite build",
     "build": "tsup",
     "build:icons": "pnpm svgr -d ./src/icons ./public/static/icons --config-file ./svgr.config.json --template ./src/icons/template.cjs",
     "storybook": "storybook dev -p 6006",
