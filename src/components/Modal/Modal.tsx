@@ -14,7 +14,6 @@ import { useTheme } from '../ThemeProvider'
 
 const modalContentVariants = cva(
   [
-    'relative',
     'flex',
     'flex-col',
     'fixed',
