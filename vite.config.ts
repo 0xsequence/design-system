@@ -33,21 +33,5 @@ export default defineConfig({
       },
     ],
   },
-  publicDir: false,
-  build: {
-    lib: {
-      name: 'SequenceDesignSystem',
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      formats: ['es', 'cjs'],
-      fileName: 'index',
-    },
-    outDir: path.resolve(__dirname, 'dist'),
-    rollupOptions: {
-      external: ['react', 'react-dom', 'motion/react'],
-      output: {
-        banner: "'use client';",
-      },
-    },
-    minify: false,
-  },
+  publicDir: false
 })
