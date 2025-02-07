@@ -2,7 +2,7 @@ import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { cva, VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { motion, MotionProps } from 'motion/react'
-import { PropsWithChildren, useEffect, useState } from 'react'
+import { PropsWithChildren, useEffect, useState, Fragment } from 'react'
 
 import { CloseIcon } from '~/icons'
 import { cn } from '~/utils'
@@ -88,6 +88,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     setContainer(document.querySelector(root || 'body') as HTMLElement | null)
   }, [root])
 
+  const ContentWrapper = scroll ? Scroll : Fragment
+
   return container ? (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
@@ -154,13 +156,11 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               }}
               {...contentProps}
             >
-              {header && (
-                <>
-                  <ModalHeader>{header}</ModalHeader>
-                  <div className="pt-[60px]" />
-                </>
-              )}
-              {scroll ? <Scroll>{children}</Scroll> : children}
+              {header && <ModalHeader>{header}</ModalHeader>}
+              <ContentWrapper>
+                {header && <ModalHeaderSpacer />}
+                {children}
+              </ContentWrapper>
               {footer && <ModalFooter>{footer}</ModalFooter>}
               {isDismissible && (
                 <ModalPrimitive.Close asChild>
@@ -203,6 +203,8 @@ const ModalHeader = (props: PropsWithChildren) => {
     </div>
   )
 }
+
+const ModalHeaderSpacer = () => <div className="pt-[60px]" />
 
 const ModalFooter = (props: PropsWithChildren) => {
   const { children } = props
