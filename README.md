@@ -20,13 +20,23 @@ The design system relies on these peer dependencies to be installed in your appl
 
 ### Use
 
+The design system requires to be used within an existing tailwind configured application. Your application should import the design system preset within your main css file. Check out the [Tailwind Docs](https://tailwindcss.com/docs/installation) for more information on setting up your application
+
 Import the styles at the root of your app:
 
-`import '@0xsequence/design-system/styles.css'`
+#### index.css
+
+```css
+@import 'tailwindcss';
+@import '@0xsequence/design-system/preset';
+
+/* Your app styles */
+```
 
 Then wrap your application root with the ThemeProvider:
 
 ```jsx
+import './index.css'
 import { ThemeProvider } from '@0xsequence/design-system'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -73,12 +83,6 @@ Give the relative path to your application, ie.
 
 And the codemod will convert atom props to tailwind classnames and handle `as` props, amonst other things. Give it a try and save yourself some time.
 
-### Create a snapshot release
-
-1. Bump version in package.json to 0.0.0-YYYYmmddHHMMSS (`echo -n 0.0.0- ; date -u +%Y%m%d%H%M%S`)
-2. `git commit -a -m <version>`
-3. `pnpm publish --tag snapshot`
-
 ### Used by
 
 - [Sequence Wallet](https://sequence.app/)
@@ -92,3 +96,4 @@ Note: this package is not used in Storybook's UI, but the visual design is ident
 
 - [Storybook Documentation](https://storybook.js.org/docs/react/get-started/introduction)
 - [GitHub Repository](https://github.com/0xsequence/design-system)
+- [Tailwind](https://tailwindcss.com)
