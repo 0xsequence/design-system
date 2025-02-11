@@ -1,0 +1,1 @@
+import{j as a}from"./jsx-runtime-z8MfsBtr.js";import{c as t}from"./classnames-D6E8UiG_.js";const e=r=>{const{className:o,...s}=r;return a.jsx("hr",{className:t("my-4 h-px bg-border-normal border-none",o),...s})};try{e.displayName="Divider",e.__docgenInfo={description:"",displayName:"Divider",props:{}}}catch{}export{e as D};
