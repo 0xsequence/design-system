@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.1
+
+### Patch Changes
+
+- Fixing cva and clsx dependencies
+
 ## 2.0.0
 
 ### Major Changes
