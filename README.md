@@ -75,13 +75,57 @@ pnpm install && pnpm storybook
 
 ### Migration from 1.x to 2.x
 
+
+#### Codemod
+
 To make migrating from the vanilla-extract polymorphic box model styling system used in v1.x to the simplified tailwind classes version in 2.x you can use the supplied codemod to do most of the work for you.
 
-Give the relative path to your application, ie.
+clone the 0xsequence/design-system repo to your local machine and run pnpm install to install dependencies.
 
-`pnpm codemod ../wallet-webapp/src/**/*.{ts,tsx}`
+Run `codemod` from the design-system directory (eg ~/0xsequence/design-system), giving a relative path to your application, ie.
+
+`
+cd  ~/0xsequence/design-system
+pnpm codemod ../wallet-webapp/src/**/*.{ts,tsx}`
+`
 
 And the codemod will convert atom props to tailwind classnames and handle `as` props, amonst other things. Give it a try and save yourself some time.
+
+
+#### Manual project updates
+
+##### 1. Upgrade the design system to the latest version
+
+`pnpm install 0xsequence/design-system@latest`
+
+##### 2. Find and remove any import of the v1 design system stylesheet
+
+`import '@0xsequence/design-system/styles.css'`
+
+##### 3. If Tailwind is not installed in your project, install it and the vite plugin
+
+`pnpm install tailwindcss @tailwindcss/vite`
+
+##### 4. In your main css file (eg index.css or styles.css), import Tailwind and the design system preset
+
+```css
+@import 'tailwindcss';
+@import '@0xsequence/design-system/preset';
+```
+
+##### 5. Update vite.config.ts to include Tailwind
+
+```ts
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    /* ... other plugins like react() */
+    tailwindcss(),
+  ],
+})
+```
 
 ### Used by
 
