@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.2
+
+### Patch Changes
+
+- Fixing use client directive
+
 ## 2.0.1
 
 ### Patch Changes
