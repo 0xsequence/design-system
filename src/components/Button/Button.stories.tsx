@@ -12,6 +12,19 @@ export default {
 
 type Story = StoryObj<typeof Button>
 
+export const Primary: Story = {
+  args: {
+    label: 'Click me',
+    variant: 'primary',
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/0OB1JVXSqaxmJDrP7qAMJr/Sequence-Design-System-1.1?node-id=9958-2592&t=JhRreiaffZLZbXKy-4',
+    },
+  },
+}
+
 export const LabelOnly: Story = {
   args: {
     disabled: false,
