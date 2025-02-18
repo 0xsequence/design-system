@@ -6,4 +6,7 @@ export default defineConfig({
   outDir: 'dist',
   dts: true,
   clean: true,
+  banner: {
+    js: '"use client";',
+  },
 })
