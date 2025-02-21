@@ -1,1 +1,6 @@
-export { ThemeProvider, useTheme } from './ThemeProvider'
+export {
+  ThemeProvider,
+  useTheme,
+  type Theme,
+  type ThemeOverrides,
+} from './ThemeProvider'

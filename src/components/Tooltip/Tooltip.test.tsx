@@ -1,5 +1,7 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+
+import { renderWithTheme } from '../ThemeProvider/renderWithTheme'
 
 import { Tooltip } from './Tooltip'
 
@@ -9,7 +11,7 @@ describe('<Tooltip />', () => {
   it('renders', async () => {
     const user = userEvent.setup()
 
-    const res = render(
+    const res = renderWithTheme(
       <Tooltip message="Tip">
         <button>Hover me</button>
       </Tooltip>

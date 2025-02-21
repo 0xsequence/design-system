@@ -1,8 +1,8 @@
 import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { cva, VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
-import { motion, MotionProps } from 'motion/react'
-import { PropsWithChildren, useEffect, useState, Fragment } from 'react'
+import { HTMLMotionProps, motion } from 'motion/react'
+import { PropsWithChildren, Fragment } from 'react'
 
 import { CloseIcon } from '~/icons'
 import { cn } from '~/utils'
@@ -47,7 +47,6 @@ const modalContentVariants = cva(
 )
 
 export interface ModalProps extends VariantProps<typeof modalContentVariants> {
-  className?: string
   header?: React.ReactNode
   footer?: React.ReactNode
   scroll?: boolean
@@ -56,8 +55,8 @@ export interface ModalProps extends VariantProps<typeof modalContentVariants> {
 
   backdropColor?: string
   disableAnimation?: boolean
-  overlayProps?: MotionProps
-  contentProps?: MotionProps
+  overlayProps?: HTMLMotionProps<'div'>
+  contentProps?: HTMLMotionProps<'div'>
   rootProps?: {
     className?: string
     [key: string]: unknown
@@ -81,12 +80,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     rootProps = {},
   } = props
 
-  const { root } = useTheme()
-  const [container, setContainer] = useState<HTMLElement | null>(null)
-
-  useEffect(() => {
-    setContainer(document.querySelector(root || 'body') as HTMLElement | null)
-  }, [root])
+  const { container } = useTheme()
 
   const ContentWrapper = scroll ? Scroll : Fragment
 
@@ -94,12 +88,12 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
         <div
+          {...rootProps}
           className={cn(
             'seq-root',
             'fixed inset-0 z-20 flex items-center justify-center',
             rootProps?.className
           )}
-          {...rootProps}
         >
           <ModalPrimitive.Overlay asChild forceMount>
             <motion.div
@@ -118,7 +112,6 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
 
           <ModalPrimitive.Content
             asChild
-            className={modalContentVariants({ size, autoHeight })}
             forceMount
             onEscapeKeyDown={ev => {
               if (isDismissible) {
@@ -155,6 +148,10 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 return `${generated} translateZ(0)`
               }}
               {...contentProps}
+              className={cn(
+                modalContentVariants({ size, autoHeight }),
+                contentProps?.className
+              )}
             >
               {header && <ModalHeader>{header}</ModalHeader>}
               <ContentWrapper>

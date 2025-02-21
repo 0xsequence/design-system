@@ -13,31 +13,13 @@ Color schemes, scales, accents, and gradients.
 <ColorPalette>
   <ColorItem
     title="Base"
-    subtitle="--seq-color-[name]"
+    subtitle="--color-[name]"
     colors={{
       black: '#000000',
       white: '#ffffff',
-      transparent: 'transparent',
     }}
   />
 </ColorPalette>
-
-### Palettes
-
-All colors are defined in palettes. Each palette has a name and a scale. The scale is a number that represents the intensity of the color. For example, `--seq-red-100` is a light shade of the red color, while `--seq-red-900` is a dark shade of the brand color.
-
-<ColorPalette>
-  {Object.entries(colors.palettes).map(([key, value]) => (
-    <ColorItem
-      key={key}
-      title={capitalize(key)}
-      subtitle={`--seq-${key}-[scale]`}
-      colors={value}
-    />
-  ))}
-</ColorPalette>
-
-### Gradients
 
 ### Semantic Colors
 
@@ -48,7 +30,7 @@ Semantic colors point to color palettes and are used to give a name to a color t
     <ColorItem
       key={key}
       title={key}
-      subtitle={`--seq-color-${key}`}
+      subtitle={`--color-${key}`}
       colors={{ [key]: value }}
     />
   ))}

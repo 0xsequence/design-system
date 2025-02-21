@@ -11,23 +11,23 @@ import { colors, ColorTokens } from '~/tokens/color'
 
 const THEMES = ['dark', 'light'] as const
 
+export type ThemeOverrides = Partial<ColorTokens>
+
 export type Theme = (typeof THEMES)[number]
 
 const DEFAULT_THEME = 'dark'
 const THEME_ATTR = 'data-theme'
 const STORAGE_KEY = '@sequence.theme'
 
-type ThemeOverrides = Partial<ColorTokens>
-
 interface ThemeContextValue {
   theme: Theme | ThemeOverrides
-  root?: string
+  container?: HTMLElement
   setTheme: (mode: Theme) => void
 }
 
 interface ThemeProviderProps {
   theme?: Theme | ThemeOverrides
-  root?: string
+  root?: string | HTMLElement
   scope?: string
   prefersColorScheme?: boolean
 }
@@ -48,7 +48,7 @@ const setThemeVars = (element: HTMLElement, vars: ThemeOverrides) => {
   Object.entries(vars).forEach(([key, value]) => {
     if (value) {
       const kebabKey = toKebabCase(key)
-      element.style.setProperty(`--seq-color-${kebabKey}`, value)
+      element.style.setProperty(`--color-${kebabKey}`, value)
     }
   })
 }
@@ -81,6 +81,7 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
   const [theme, setTheme] = useState<Theme | ThemeOverrides>(
     props.theme || DEFAULT_THEME
   )
+  const [container, setContainer] = useState<HTMLElement | undefined>(undefined)
 
   useEffect(() => {
     // Add is-apple class
@@ -105,21 +106,29 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
   // Set the data-theme attribute and CSS variables on the document root element
   useEffect(() => {
-    const rootEl = document.querySelector(props.root || ':root') as HTMLElement
+    console.log('Updating...')
 
-    if (rootEl) {
+    const rootElement =
+      typeof props.root === 'object'
+        ? props.root
+        : (document.querySelector(props.root || ':root') as HTMLElement)
+
+    if (rootElement) {
+      console.log('has container')
       if (isTheme(theme)) {
-        rootEl.setAttribute(THEME_ATTR, theme)
-        setThemeVars(rootEl, colors[theme])
+        rootElement.setAttribute(THEME_ATTR, theme)
+        setThemeVars(rootElement, colors[theme])
       } else if (isThemeOverrides(theme)) {
-        rootEl.setAttribute(THEME_ATTR, 'custom')
-        setThemeVars(rootEl, theme)
+        rootElement.setAttribute(THEME_ATTR, 'custom')
+        setThemeVars(rootElement, theme)
       }
 
       // Add seq-root class to the root element of custom root
       if (props.root) {
-        rootEl.classList.add('seq-root')
+        rootElement.classList.add('seq-root')
       }
+
+      setContainer(props.root ? rootElement : document.body)
     }
   }, [theme, props.root])
 
@@ -127,18 +136,18 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
   const value: ThemeContextValue = useMemo(() => {
     return {
       theme,
-      root: props.root,
-      setTheme: (mode: Theme) => {
-        if (THEMES.includes(mode)) {
+      container,
+      setTheme: (theme: Theme | ThemeOverrides) => {
+        if (typeof theme === 'string' && THEMES.includes(theme)) {
           // Save to local storage
-          localStorage.setItem(getStorageKey(props.scope), mode)
-
-          // Set the theme state which will cause a re-render
-          setTheme(mode)
+          localStorage.setItem(getStorageKey(props.scope), theme)
         }
+
+        // Set the theme state which will cause a re-render
+        setTheme(theme)
       },
     }
-  }, [theme, props.root, props.scope])
+  }, [theme, container, props.scope])
 
   return (
     <ThemeContext.Provider value={value}>
