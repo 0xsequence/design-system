@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.4
+
+### Patch Changes
+
+- Fixing forwardRef on Card
+
 ## 2.0.3
 
 ### Patch Changes
