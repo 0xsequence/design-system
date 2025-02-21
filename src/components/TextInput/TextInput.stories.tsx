@@ -19,6 +19,7 @@ export const Default: Story = {
     description: 'This is the description',
     placeholder: 'This is the placeholder',
     labelLocation: 'top',
+    disabled: false,
   },
 }
 export const WithLeftIcon: Story = {
@@ -56,7 +57,7 @@ export const WithComplexControls: Story = {
     placeholder: 'This is the placeholder',
     controls: (
       <div className="flex gap-2">
-        <Button label="Max" size="xs" shape="square" />
+        <Button label="Max" size="xs" shape="square" disabled />
         <Button label="Paste" size="xs" shape="square" />
       </div>
     ),

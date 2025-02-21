@@ -68,9 +68,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             className={cn(
               'inline-flex items-center bg-transparent text-primary min-w-full px-4 gap-2 rounded-xl',
               'h-[52px] cursor-text',
-              '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
-              '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
-              'ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100'
+              'ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
+              {
+                'cursor-default opacity-50': disabled,
+              }
             )}
           >
             {LeftIcon && <LeftIcon size="sm" />}
