@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.3
+
+### Patch Changes
+
+- Fixing portaling of Modal and Tooltips
+
 ## 2.0.2
 
 ### Patch Changes
