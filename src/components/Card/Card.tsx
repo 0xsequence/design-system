@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
-import { HTMLAttributes } from 'react'
+import { forwardRef, HTMLAttributes } from 'react'
 
 import { cn } from '~/utils'
 
@@ -34,7 +34,7 @@ interface CardProps
   asChild?: boolean
 }
 
-export const Card = (props: CardProps) => {
+export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const {
     className,
     children,
@@ -50,6 +50,7 @@ export const Card = (props: CardProps) => {
 
   return (
     <Comp
+      ref={ref}
       className={cn(
         cardVariants({
           clickable,
@@ -64,4 +65,4 @@ export const Card = (props: CardProps) => {
       {children}
     </Comp>
   )
-}
+})
