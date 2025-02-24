@@ -1,4 +1,5 @@
 import * as ModalPrimitive from '@radix-ui/react-dialog'
+import type { DialogContentProps } from '@radix-ui/react-dialog'
 import { cva, VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { HTMLMotionProps, motion } from 'motion/react'
@@ -61,6 +62,7 @@ export interface ModalProps extends VariantProps<typeof modalContentVariants> {
     className?: string
     [key: string]: unknown
   }
+  dialogContentProps?: DialogContentProps
 }
 
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
@@ -78,6 +80,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     overlayProps,
     contentProps,
     rootProps = {},
+    dialogContentProps = {},
   } = props
 
   const { container } = useTheme()
@@ -125,6 +128,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 ev.preventDefault()
               }
             }}
+            {...dialogContentProps}
           >
             <motion.div
               key="modal-content"
