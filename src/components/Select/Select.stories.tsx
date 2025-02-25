@@ -3,8 +3,9 @@ import { StoryObj, Meta } from '@storybook/react'
 import { NetworkImage } from '~/components/NetworkImage'
 import { Text } from '~/components/Text'
 
-import { Select } from './Select'
 import { Modal } from '../Modal'
+
+import { Select } from './Select'
 
 export default {
   title: 'Forms/Select',
