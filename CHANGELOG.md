@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.5
+
+### Patch Changes
+
+- Fixing Select portaling behavior
+
 ## 2.0.4
 
 ### Patch Changes
