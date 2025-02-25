@@ -4,6 +4,7 @@ import { NetworkImage } from '~/components/NetworkImage'
 import { Text } from '~/components/Text'
 
 import { Select } from './Select'
+import { Modal } from '../Modal'
 
 export default {
   title: 'Forms/Select',
@@ -107,4 +108,18 @@ export const Custom: Story = {
       },
     ],
   },
+}
+
+export const WithinModal: Story = {
+  tags: ['!autodocs'],
+  render: args => {
+    return (
+      <Modal>
+        <div className="flex p-4 gap-2">
+          <Select {...args} />
+        </div>
+      </Modal>
+    )
+  },
+  args: Default.args,
 }

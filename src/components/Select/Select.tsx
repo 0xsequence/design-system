@@ -6,6 +6,7 @@ import { ChevronDownIcon } from '~/icons'
 import { cn } from '~/utils'
 
 import { textVariants } from '../Text'
+import { useTheme } from '../ThemeProvider'
 
 type SelectOption = {
   className?: string
@@ -62,6 +63,8 @@ export const Select = forwardRef(
       ...rest
     } = props
 
+    const { container } = useTheme()
+
     return (
       <Field
         disabled={disabled}
@@ -91,17 +94,19 @@ export const Select = forwardRef(
             </SelectPrimitive.Icon>
           </SelectPrimitive.Trigger>
 
-          <SelectPrimitive.Content className="backdrop-blur-xs bg-button-glass rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus">
-            <SelectPrimitive.Viewport>
-              <SelectPrimitive.Group>
-                {options.map(({ value, label, ...rest }) => (
-                  <SelectItem key={value} value={value} {...rest}>
-                    {label}
-                  </SelectItem>
-                ))}
-              </SelectPrimitive.Group>
-            </SelectPrimitive.Viewport>
-          </SelectPrimitive.Content>
+          <SelectPrimitive.Portal container={container}>
+            <SelectPrimitive.Content className="backdrop-blur-xs bg-button-glass rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus">
+              <SelectPrimitive.Viewport>
+                <SelectPrimitive.Group>
+                  {options.map(({ value, label, ...rest }) => (
+                    <SelectItem key={value} value={value} {...rest}>
+                      {label}
+                    </SelectItem>
+                  ))}
+                </SelectPrimitive.Group>
+              </SelectPrimitive.Viewport>
+            </SelectPrimitive.Content>
+          </SelectPrimitive.Portal>
         </SelectPrimitive.Root>
       </Field>
     )
