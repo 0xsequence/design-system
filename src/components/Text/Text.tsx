@@ -146,7 +146,7 @@ export const Text = (props: TextProps) => {
   const {
     asChild,
     variant = 'inherit',
-    color,
+    color = 'primary',
     fontWeight,
     className,
     hidden,
