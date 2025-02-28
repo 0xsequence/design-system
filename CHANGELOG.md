@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.6
+
+### Patch Changes
+
+- Fixing @storybook/addon-designs dependency
+
 ## 2.0.5
 
 ### Patch Changes
