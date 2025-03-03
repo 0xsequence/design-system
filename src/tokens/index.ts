@@ -1,3 +1,3 @@
-export { colors } from './color'
+export { colorSchemes, colors } from './color'
 
-export type { ColorScheme } from './color'
+export type { ColorScheme, ColorTokens } from './color'

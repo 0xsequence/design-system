@@ -1,4 +1,6 @@
-export type ColorScheme = 'dark' | 'light'
+export const colorSchemes = ['dark', 'light'] as const
+
+export type ColorScheme = (typeof colorSchemes)[number]
 
 type ColorSchemes<T = ColorTokens> = { [key in ColorScheme]: T }
 

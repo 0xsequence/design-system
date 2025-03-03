@@ -7,32 +7,36 @@ import {
   useState,
 } from 'react'
 
-import { colors, ColorTokens } from '~/tokens/color'
-
-const THEMES = ['dark', 'light'] as const
+import {
+  colors,
+  colorSchemes,
+  type ColorScheme,
+  type ColorTokens,
+} from '~/tokens/color'
 
 export type ThemeOverrides = Partial<ColorTokens>
 
-export type Theme = (typeof THEMES)[number]
+export type Theme = ColorScheme | ThemeOverrides
 
 const DEFAULT_THEME = 'dark'
 const THEME_ATTR = 'data-theme'
 const STORAGE_KEY = '@sequence.theme'
 
 interface ThemeContextValue {
-  theme: Theme | ThemeOverrides
+  theme: Theme
   container?: HTMLElement
   setTheme: (mode: Theme) => void
 }
 
 interface ThemeProviderProps {
-  theme?: Theme | ThemeOverrides
+  theme?: Theme
   root?: string | HTMLElement
   scope?: string
   prefersColorScheme?: boolean
 }
 
-const isTheme = (theme: any): theme is Theme => THEMES.includes(theme as any)
+const isColorScheme = (theme: any): theme is ColorScheme =>
+  typeof theme === 'string' && colorSchemes.includes(theme as any)
 
 const isThemeOverrides = (theme: any): theme is ThemeOverrides =>
   typeof theme === 'object' && theme !== null && !Array.isArray(theme)
@@ -58,7 +62,7 @@ const getPersistedTheme = (scope?: string) => {
     getStorageKey(scope)
   ) as Theme | null
 
-  if (persistedTheme && THEMES.includes(persistedTheme)) {
+  if (persistedTheme && isColorScheme(persistedTheme)) {
     return persistedTheme
   }
 
@@ -78,9 +82,7 @@ const getPreferredColorScheme = () => {
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
-  const [theme, setTheme] = useState<Theme | ThemeOverrides>(
-    props.theme || DEFAULT_THEME
-  )
+  const [theme, setTheme] = useState<Theme>(props.theme || DEFAULT_THEME)
   const [container, setContainer] = useState<HTMLElement | undefined>(undefined)
 
   useEffect(() => {
@@ -106,16 +108,13 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
   // Set the data-theme attribute and CSS variables on the document root element
   useEffect(() => {
-    console.log('Updating...')
-
     const rootElement =
       typeof props.root === 'object'
         ? props.root
         : (document.querySelector(props.root || ':root') as HTMLElement)
 
     if (rootElement) {
-      console.log('has container')
-      if (isTheme(theme)) {
+      if (isColorScheme(theme)) {
         rootElement.setAttribute(THEME_ATTR, theme)
         setThemeVars(rootElement, colors[theme])
       } else if (isThemeOverrides(theme)) {
@@ -137,8 +136,8 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     return {
       theme,
       container,
-      setTheme: (theme: Theme | ThemeOverrides) => {
-        if (typeof theme === 'string' && THEMES.includes(theme)) {
+      setTheme: (theme: Theme) => {
+        if (isColorScheme(theme)) {
           // Save to local storage
           localStorage.setItem(getStorageKey(props.scope), theme)
         }
