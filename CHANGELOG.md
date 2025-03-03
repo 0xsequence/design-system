@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.7
+
+### Patch Changes
+
+- Fixing ThemeProvider types and FileInput accepted gif type
+
 ## 2.0.6
 
 ### Patch Changes
