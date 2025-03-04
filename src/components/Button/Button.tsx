@@ -192,24 +192,28 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         {...rest}
       >
-        <Slottable>{children}</Slottable>
-
-        {iconOnly ? (
-          <LeftIcon size={iconSize} />
+        {children ? (
+          <Slottable>{children}</Slottable>
         ) : (
-          <div
-            className={cn(
-              'w-full h-full flex items-center justify-between',
-              gap
-            )}
-          >
-            <div className={cn('flex items-center justify-start', gap)}>
-              {LeftIcon && <LeftIcon size={iconSize} />}
-              <Text>{label}</Text>
-            </div>
+          <>
+            {iconOnly ? (
+              <LeftIcon size={iconSize} />
+            ) : (
+              <div
+                className={cn(
+                  'w-full h-full flex items-center justify-between',
+                  gap
+                )}
+              >
+                <div className={cn('flex items-center justify-start', gap)}>
+                  {LeftIcon && <LeftIcon size={iconSize} />}
+                  <Text>{label}</Text>
+                </div>
 
-            {RightIcon && <RightIcon size={iconSize} />}
-          </div>
+                {RightIcon && <RightIcon size={iconSize} />}
+              </div>
+            )}
+          </>
         )}
       </Component>
     )
