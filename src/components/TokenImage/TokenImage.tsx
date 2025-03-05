@@ -70,7 +70,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
       ) : (
         <Text
           className={cn(
-            'bg-background-secondary rounded-full w-full h-full flex items-center justify-center overflow-hidden text-inherit',
+            'bg-background-secondary rounded-full w-full h-full flex items-center justify-center overflow-hidden',
             withNetwork && maskClass
           )}
           variant="inherit"
