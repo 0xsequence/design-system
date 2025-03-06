@@ -35,11 +35,11 @@ const tabVariants = cva([''], {
       active: true,
       className: 'text-primary',
     },
-    {
-      variant: 'line',
-      active: false,
-      className: 'text-secondary',
-    },
+    // {
+    //   variant: 'line',
+    //   active: false,
+    //   className: 'text-secondary',
+    // },
   ],
   defaultVariants: {
     variant: 'pill',
