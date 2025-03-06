@@ -127,7 +127,6 @@ export const buttonVariants = cva(
     ],
     defaultVariants: {
       variant: 'glass',
-      shape: 'circle',
     },
   }
 )

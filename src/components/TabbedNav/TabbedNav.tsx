@@ -5,11 +5,16 @@ import { Button } from '~/components/Button'
 import { IconProps } from '~/icons/types'
 import { cn } from '~/utils'
 
-const tabVariants = cva([''], {
+import { textVariants } from '../Text'
+
+const tabVariants = cva(['select-none'], {
   variants: {
     variant: {
       pill: '',
-      line: 'leading-5 text-[0.625rem] tracking-[0.8px]',
+      line: cn(
+        textVariants({ variant: 'xsmall', fontWeight: 'bold' }),
+        'leading-8 tracking-[0.8px] px-2'
+      ),
     },
     active: {
       true: 'hover:opacity-100',
@@ -35,11 +40,6 @@ const tabVariants = cva([''], {
       active: true,
       className: 'text-primary',
     },
-    // {
-    //   variant: 'line',
-    //   active: false,
-    //   className: 'text-secondary',
-    // },
   ],
   defaultVariants: {
     variant: 'pill',
@@ -107,34 +107,33 @@ export const TabbedNav = (props: TabbedNavProps) => {
 
   return (
     <nav {...rest}>
-      <ul className="flex gap-2 list-none">
+      <ul className="flex gap-2 list-none leading-0">
         {tabs.map((option, tabIndex) => {
           const isActive = option.value === value
 
           return (
             <li
               key={tabIndex}
-              className={cn(
+              className={
                 variant === 'line'
                   ? isActive
                     ? 'border-t-2 border-t-primary'
                     : 'border-t-2 border-t-transparent'
                   : undefined
-              )}
+              }
             >
               <Button
                 className={cn(
                   tabVariants({ active: isActive, variant }),
-                  className,
-                  variant === 'line' ? 'px-2' : undefined,
-                  option.leftIcon ? 'pl-1' : 'pl-2',
-                  'rounded-full'
+                  variant === 'line' && option.leftIcon ? 'pl-1' : undefined,
+                  className
                 )}
                 variant={variant === 'line' ? 'text' : 'base'}
                 disabled={isLoading || option.disabled}
                 label={option.label}
                 leftIcon={option.leftIcon ?? undefined}
-                size={size}
+                size={variant === 'line' ? 'xs' : size}
+                shape="circle"
                 onClick={(ev: MouseEvent<HTMLButtonElement>) =>
                   handleTabClick(ev, option, tabIndex)
                 }

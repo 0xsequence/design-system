@@ -1,7 +1,6 @@
 import { StoryObj, StoryFn, Meta } from '@storybook/react'
 import { useState } from 'react'
 
-import { Badge } from '~/components/Badge'
 import { Text } from '~/components/Text'
 import { ProfileIcon, TransactionIcon } from '~/icons'
 
@@ -37,12 +36,7 @@ const tabs = [
     },
   },
   {
-    label: (
-      <div className="flex gap-1 items-center">
-        History
-        <Badge value="3" />
-      </div>
-    ),
+    label: 'History',
     leftIcon: TransactionIcon,
     value: 'history',
     onLoad: async () => {
