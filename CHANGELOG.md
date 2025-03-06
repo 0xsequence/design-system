@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.8
+
+### Patch Changes
+
+- Fixing TokenImage fallback color and TabbedNav line variant
+
 ## 2.0.7
 
 ### Patch Changes
