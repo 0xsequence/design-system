@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.9
+
+### Patch Changes
+
+- Fixing RemoveScroll behavior in Modals
+
 ## 2.0.8
 
 ### Patch Changes
