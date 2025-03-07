@@ -87,28 +87,27 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   return container ? (
     <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
       <ModalPrimitive.Portal forceMount container={container}>
-        <div
+        <ModalPrimitive.Overlay
           {...rootProps}
           className={cn(
             'seq-root',
-            'fixed inset-0 z-20 flex items-center justify-center',
+            'fixed inset-0 flex items-center justify-center z-20',
             rootProps?.className
           )}
+          forceMount
         >
-          <ModalPrimitive.Overlay asChild forceMount>
-            <motion.div
-              className={clsx('fixed inset-0', backdropColor)}
-              key="modal-overlay"
-              initial={disableAnimation ? false : { opacity: 0 }}
-              animate={disableAnimation ? false : { opacity: 1 }}
-              exit={disableAnimation ? undefined : { opacity: 0 }}
-              transition={{
-                type: 'tween',
-                ease: 'linear',
-              }}
-              {...overlayProps}
-            />
-          </ModalPrimitive.Overlay>
+          <motion.div
+            className={clsx('absolute inset-0', backdropColor)}
+            key="modal-overlay"
+            initial={disableAnimation ? false : { opacity: 0 }}
+            animate={disableAnimation ? false : { opacity: 1 }}
+            exit={disableAnimation ? undefined : { opacity: 0 }}
+            transition={{
+              type: 'tween',
+              ease: 'linear',
+            }}
+            {...overlayProps}
+          />
 
           <ModalPrimitive.Content
             asChild
@@ -171,7 +170,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               )}
             </motion.div>
           </ModalPrimitive.Content>
-        </div>
+        </ModalPrimitive.Overlay>
       </ModalPrimitive.Portal>
     </ModalPrimitive.Root>
   ) : null
