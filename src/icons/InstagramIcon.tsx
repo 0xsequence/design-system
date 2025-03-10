@@ -25,7 +25,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgInstagram = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgInstagramIcon = ({ className, size = 'sm', ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({
@@ -37,4 +37,4 @@ const SvgInstagram = ({ className, size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgInstagram
+export default SvgInstagramIcon

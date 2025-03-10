@@ -33,7 +33,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgBroom = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgBroomIcon = ({ className, size = 'sm', ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({
@@ -45,4 +45,4 @@ const SvgBroom = ({ className, size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgBroom
+export default SvgBroomIcon

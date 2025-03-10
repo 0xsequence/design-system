@@ -21,7 +21,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgCalendar = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgCalendarIcon = ({ className, size = 'sm', ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({
@@ -33,4 +33,4 @@ const SvgCalendar = ({ className, size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgCalendar
+export default SvgCalendarIcon
