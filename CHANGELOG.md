@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.10
+
+### Patch Changes
+
+- Updating to react 19
+
 ## 2.0.9
 
 ### Patch Changes
