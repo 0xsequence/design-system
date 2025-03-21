@@ -1,105 +1,127 @@
 @source './';
 
-@layer base {
-  .seq-root *,
-  .seq-root *::before,
-  .seq-root *::after {
-    box-sizing: border-box;
-  }
+:root,
+[data-theme='dark'] {
+  /* Status colors */
+  --seq-color-positive: #1fc266;
+  --seq-color-negative: #c2501f;
+  --seq-color-info: #0076cc;
+  --seq-color-warning: #f4b03e;
 
-  :root,
-  [data-theme='dark'] {
-    /* Status colors */
-    --seq-color-positive: #1fc266;
-    --seq-color-negative: #c2501f;
-    --seq-color-info: #0076cc;
-    --seq-color-warning: #f4b03e;
+  /* Text colors */
+  --seq-color-primary: rgba(255, 255, 255, 1);
+  --seq-color-secondary: rgba(255, 255, 255, 0.8);
+  --seq-color-muted: rgba(255, 255, 255, 0.5);
+  --seq-color-inverse: rgba(0, 0, 0, 1);
 
-    /* Text colors */
-    --seq-color-primary: rgba(255, 255, 255, 1);
-    --seq-color-secondary: rgba(255, 255, 255, 0.8);
-    --seq-color-muted: rgba(255, 255, 255, 0.5);
-    --seq-color-inverse: rgba(0, 0, 0, 1);
+  /* Background colors */
+  --seq-color-background-primary: rgba(0, 0, 0, 1);
+  --seq-color-background-secondary: rgba(255, 255, 255, 0.1);
+  --seq-color-background-contrast: rgba(255, 255, 255, 0.5);
+  --seq-color-background-muted: rgba(255, 255, 255, 0.05);
+  --seq-color-background-control: rgba(255, 255, 255, 0.25);
+  --seq-color-background-inverse: rgba(255, 255, 255, 1);
+  --seq-color-background-backdrop: rgba(34, 34, 34, 0.9);
+  --seq-color-background-overlay: rgba(0, 0, 0, 0.7);
+  --seq-color-background-raised: rgba(54, 54, 54, 0.7);
 
-    /* Background colors */
-    --seq-color-background-primary: rgba(0, 0, 0, 1);
-    --seq-color-background-secondary: rgba(255, 255, 255, 0.1);
-    --seq-color-background-contrast: rgba(255, 255, 255, 0.5);
-    --seq-color-background-muted: rgba(255, 255, 255, 0.05);
-    --seq-color-background-control: rgba(255, 255, 255, 0.25);
-    --seq-color-background-inverse: rgba(255, 255, 255, 1);
-    --seq-color-background-backdrop: rgba(34, 34, 34, 0.9);
-    --seq-color-background-overlay: rgba(0, 0, 0, 0.7);
-    --seq-color-background-raised: rgba(54, 54, 54, 0.7);
+  /* Border colors */
+  --seq-color-border-normal: rgba(255, 255, 255, 0.25);
+  --seq-color-border-focus: rgba(255, 255, 255, 0.5);
 
-    /* Border colors */
-    --seq-color-border-normal: rgba(255, 255, 255, 0.25);
-    --seq-color-border-focus: rgba(255, 255, 255, 0.5);
+  /* Button colors */
+  --seq-color-button-glass: rgba(255, 255, 255, 0.15);
+  --seq-color-button-emphasis: rgba(0, 0, 0, 0.5);
+  --seq-color-button-inverse: rgba(255, 255, 255, 0.8);
 
-    /* Button colors */
-    --seq-color-button-glass: rgba(255, 255, 255, 0.15);
-    --seq-color-button-emphasis: rgba(0, 0, 0, 0.5);
-    --seq-color-button-inverse: rgba(255, 255, 255, 0.8);
-
-    /* Gradients */
-    --seq-color-gradient-backdrop: linear-gradient(
-      243.18deg,
-      rgba(86, 52, 189, 0.85) 0%,
-      rgba(49, 41, 223, 0.85) 63.54%,
-      rgba(7, 98, 149, 0.85) 100%
-    );
-    --seq-color-gradient-primary: linear-gradient(
-      89.69deg,
-      #4411e1 0.27%,
-      #7537f9 99.73%
-    );
-
-    --seq-color-gradient-secondary: linear-gradient(
-      32.51deg,
-      #951990 -15.23%,
-      #3a35b1 48.55%,
-      #20a8b0 100%
-    );
-
-    --seq-color-gradient-skeleton: linear-gradient(
-      -45deg,
-      transparent,
-      var(--seq-color-background-secondary),
-      transparent
-    );
-  }
-
-  [data-theme='light'] {
-    /* Text colors */
-    --seq-color-primary: rgba(0, 0, 0, 1);
-    --seq-color-secondary: rgba(0, 0, 0, 0.8);
-    --seq-color-muted: rgba(0, 0, 0, 0.5);
-    --seq-color-inverse: rgba(255, 255, 255, 1);
-
-    /* Background colors */
-    --seq-color-background-primary: rgba(244, 244, 244, 1);
-    --seq-color-background-secondary: rgba(0, 0, 0, 0.1);
-    --seq-color-background-contrast: rgba(244, 244, 244, 0.5);
-    --seq-color-background-muted: rgba(0, 0, 0, 0.05);
-    --seq-color-background-control: rgba(0, 0, 0, 0.25);
-    --seq-color-background-inverse: #rgba(0, 0, 0, 1);
-    --seq-color-background-backdrop: rgba(221, 221, 221, 0.9);
-    --seq-color-background-overlay: rgba(244, 244, 244, 0.7);
-    --seq-color-background-raised: rgba(192, 192, 192, 0.7);
-
-    /* Border colors */
-    --seq-color-border-normal: rgba(0, 0, 0, 0.25);
-    --seq-color-border-focus: rgba(0, 0, 0, 0.5);
-
-    /* Button colors */
-    --seq-color-button-glass: rgba(0, 0, 0, 0.15);
-    --seq-color-button-emphasis: rgba(255, 255, 255, 0.5);
-    --seq-color-button-inverse: rgba(0, 0, 0, 0.8);
-  }
+  /* Gradients */
+  --seq-color-gradient-backdrop: linear-gradient(
+    243.18deg,
+    rgba(86, 52, 189, 0.85) 0%,
+    rgba(49, 41, 223, 0.85) 63.54%,
+    rgba(7, 98, 149, 0.85) 100%
+  );
+  --seq-color-gradient-primary: linear-gradient(
+    89.69deg,
+    #4411e1 0.27%,
+    #7537f9 99.73%
+  );
+  --seq-color-gradient-secondary: linear-gradient(
+    32.51deg,
+    #951990 -15.23%,
+    #3a35b1 48.55%,
+    #20a8b0 100%
+  );
+  --seq-color-gradient-skeleton: linear-gradient(
+    -45deg,
+    transparent,
+    var(--seq-color-background-secondary),
+    transparent
+  );
 }
 
-@theme {
-  --font-body: Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+[data-theme='light'] {
+  /* Status colors */
+  --seq-color-positive: #1fc266;
+  --seq-color-negative: #c2501f;
+  --seq-color-info: #0076cc;
+  --seq-color-warning: #f4b03e;
+
+  /* Text colors */
+  --seq-color-primary: rgba(0, 0, 0, 1);
+  --seq-color-secondary: rgba(0, 0, 0, 0.8);
+  --seq-color-muted: rgba(0, 0, 0, 0.5);
+  --seq-color-inverse: rgba(255, 255, 255, 1);
+
+  /* Background colors */
+  --seq-color-background-primary: rgba(244, 244, 244, 1);
+  --seq-color-background-secondary: rgba(0, 0, 0, 0.1);
+  --seq-color-background-contrast: rgba(244, 244, 244, 0.5);
+  --seq-color-background-muted: rgba(0, 0, 0, 0.05);
+  --seq-color-background-control: rgba(0, 0, 0, 0.25);
+  --seq-color-background-inverse: #rgba(0, 0, 0, 1);
+  --seq-color-background-backdrop: rgba(221, 221, 221, 0.9);
+  --seq-color-background-overlay: rgba(244, 244, 244, 0.7);
+  --seq-color-background-raised: rgba(192, 192, 192, 0.7);
+
+  /* Border colors */
+  --seq-color-border-normal: rgba(0, 0, 0, 0.25);
+  --seq-color-border-focus: rgba(0, 0, 0, 0.5);
+
+  /* Button colors */
+  --seq-color-button-glass: rgba(0, 0, 0, 0.15);
+  --seq-color-button-emphasis: rgba(255, 255, 255, 0.5);
+  --seq-color-button-inverse: rgba(0, 0, 0, 0.8);
+
+  /* Gradients */
+  --seq-color-gradient-backdrop: linear-gradient(
+    243.18deg,
+    rgba(86, 52, 189, 0.85) 0%,
+    rgba(49, 41, 223, 0.85) 63.54%,
+    rgba(7, 98, 149, 0.85) 100%
+  );
+  --seq-color-gradient-primary: linear-gradient(
+    89.69deg,
+    #4411e1 0.27%,
+    #7537f9 99.73%
+  );
+  --seq-color-gradient-secondary: linear-gradient(
+    32.51deg,
+    #951990 -15.23%,
+    #3a35b1 48.55%,
+    #20a8b0 100%
+  );
+  --seq-color-gradient-skeleton: linear-gradient(
+    -45deg,
+    transparent,
+    var(--seq-color-background-secondary),
+    transparent
+  );
+}
+
+@theme inline {
+  --font-body:
+    Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   --color-primary: var(--seq-color-primary);
