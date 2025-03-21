@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.11
+
+### Patch Changes
+
+- Fixing theme varible referencing with @theme inline
+
 ## 2.0.10
 
 ### Patch Changes
