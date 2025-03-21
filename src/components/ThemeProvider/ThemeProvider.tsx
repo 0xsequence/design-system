@@ -47,12 +47,24 @@ const getStorageKey = (scope?: string) =>
 const toKebabCase = (str: string) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 
+const toCSSVar = (key: string) => `--seq-color-${toKebabCase(key)}`
+
+const colorVars = (Object.keys(colors.dark) as string[]).map(key =>
+  toCSSVar(key)
+)
+
+const clearThemeVars = (element: HTMLElement) => {
+  // Clear each color token CSS variable
+  colorVars.forEach(colorVar => {
+    element.style.removeProperty(colorVar)
+  })
+}
+
 const setThemeVars = (element: HTMLElement, vars: ThemeOverrides) => {
   // Set each color token as a CSS variable
   Object.entries(vars).forEach(([key, value]) => {
     if (value) {
-      const kebabKey = toKebabCase(key)
-      element.style.setProperty(`--seq-color-${kebabKey}`, value)
+      element.style.setProperty(toCSSVar(key), value)
     }
   })
 }
@@ -114,9 +126,12 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
         : (document.querySelector(props.root || ':root') as HTMLElement)
 
     if (rootElement) {
+      clearThemeVars(rootElement)
+
       if (isColorScheme(theme)) {
         rootElement.setAttribute(THEME_ATTR, theme)
-        setThemeVars(rootElement, colors[theme])
+        // XXX: We don't need to set the theme vars here because its already defined in the CSS
+        // setThemeVars(rootElement, colors[theme])
       } else if (isThemeOverrides(theme)) {
         rootElement.setAttribute(THEME_ATTR, 'custom')
         setThemeVars(rootElement, theme)

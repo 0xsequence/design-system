@@ -137,10 +137,6 @@ export const Nested = () => {
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
                       </Text>
-
-                      <div className="mt-4">
-                        <Button variant="primary" label="Click me" />
-                      </div>
                     </Collapsible>
                   </Card>
                 </ThemeProvider>
