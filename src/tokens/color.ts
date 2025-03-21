@@ -41,6 +41,7 @@ export interface ColorTokens {
   gradientBackdrop: string
   gradientPrimary: string
   gradientSecondary: string
+  gradientSkeleton: string
 }
 
 const defaultColors = {
@@ -57,6 +58,7 @@ const defaultColors = {
   )`,
   gradientPrimary: `linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)`,
   gradientSecondary: `linear-gradient(32.51deg, #951990 -15.23%, #3A35B1 48.55%, #20A8B0 100%)`,
+  gradientSkeleton: `linear-gradient(-45deg, transparent, var(--seq-color-background-secondary), transparent)`,
 }
 
 const dark: ColorTokens = {
