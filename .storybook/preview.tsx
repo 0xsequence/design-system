@@ -8,11 +8,12 @@ import docsTheme from './theme'
 import './index.css'
 
 const CUSTOM_THEME = {
-  primary: 'rgba(255, 255, 255, 1)',
-  secondary: 'rgba(200, 200, 255, 1)',
-  muted: 'rgba(150, 150, 200, 1)',
-  backgroundPrimary: 'pink',
-  backgroundSecondary: 'navy',
+  primary: '#002C54',
+  secondary: '#396E97',
+  muted: '#71A6B2',
+  backgroundPrimary: '#F1F1F2',
+  backgroundSecondary: '#A1D6E2',
+  gradientPrimary: 'linear-gradient(45deg, #1995AD 0%, #002C54 100%)',
 }
 
 const withTheme: Decorator = (StoryFn, context) => {

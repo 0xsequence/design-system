@@ -22,6 +22,15 @@ export const Default = () => {
   return <Button label="Toggle theme" onClick={toggleTheme} />
 }
 
+const customTheme = {
+  primary: '#002C54',
+  secondary: '#396E97',
+  muted: '#71A6B2',
+  backgroundPrimary: '#F1F1F2',
+  backgroundSecondary: '#A1D6E2',
+  gradientPrimary: 'linear-gradient(45deg, #1995AD 0%, #002C54 100%)',
+}
+
 export const Nested = () => {
   return (
     <Card>
@@ -32,7 +41,7 @@ export const Nested = () => {
       <div id="app1">
         <ThemeProvider root="#app1" scope="application1" theme="light">
           <Card className="bg-background-primary mt-4">
-            <Collapsible label="Nested Application 1">
+            <Collapsible label="Nested Application 1" defaultOpen>
               <Text variant="normal" color="primary">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -50,7 +59,10 @@ export const Nested = () => {
               <div id="app2">
                 <ThemeProvider root="#app2" scope="application2" theme="dark">
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible label="Nested Application 2 (Dark)">
+                    <Collapsible
+                      label="Nested Application 2 (Dark)"
+                      defaultOpen
+                    >
                       <Text variant="normal" color="primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
@@ -75,16 +87,13 @@ export const Nested = () => {
                 <ThemeProvider
                   root="#app3"
                   scope="application3"
-                  theme={{
-                    primary: 'rgba(255, 255, 255, 1)',
-                    secondary: 'rgba(200, 200, 255, 1)',
-                    muted: 'rgba(150, 150, 200, 1)',
-                    backgroundPrimary: 'pink',
-                    backgroundSecondary: 'navy',
-                  }}
+                  theme={customTheme}
                 >
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible label="Nested Application 3 (Custom Theme)">
+                    <Collapsible
+                      label="Nested Application 3 (Custom Theme)"
+                      defaultOpen
+                    >
                       <Text variant="normal" color="primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
@@ -96,6 +105,11 @@ export const Nested = () => {
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
                       </Text>
+
+                      <div className="mt-4 flex gap-2">
+                        <SetThemeButton />
+                        <SetCustomThemeButton />
+                      </div>
                     </Collapsible>
                   </Card>
                 </ThemeProvider>
@@ -108,7 +122,10 @@ export const Nested = () => {
                   prefersColorScheme
                 >
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible label="Nested Application 4 (Prefers Color Scheme)">
+                    <Collapsible
+                      label="Nested Application 4 (Prefers Color Scheme)"
+                      defaultOpen
+                    >
                       <Text variant="normal" color="primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
@@ -120,6 +137,10 @@ export const Nested = () => {
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
                       </Text>
+
+                      <div className="mt-4">
+                        <Button variant="primary" label="Click me" />
+                      </div>
                     </Collapsible>
                   </Card>
                 </ThemeProvider>
@@ -141,5 +162,21 @@ const SetThemeButton = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
-  return <Button label={`Set ${themeLabel} Mode`} onClick={toggleTheme} />
+  return (
+    <Button
+      variant="primary"
+      label={`Set ${themeLabel} Mode`}
+      onClick={toggleTheme}
+    />
+  )
+}
+
+const SetCustomThemeButton = () => {
+  const { setTheme } = useTheme()
+
+  const toggleTheme = () => {
+    setTheme(customTheme)
+  }
+
+  return <Button label="Set Custom Mode" onClick={toggleTheme} />
 }
