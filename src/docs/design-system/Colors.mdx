@@ -13,7 +13,7 @@ Color schemes, scales, accents, and gradients.
 <ColorPalette>
   <ColorItem
     title="Base"
-    subtitle="--color-[name]"
+    subtitle="--seq-color-[name]"
     colors={{
       black: '#000000',
       white: '#ffffff',
@@ -30,7 +30,7 @@ Semantic colors point to color palettes and are used to give a name to a color t
     <ColorItem
       key={key}
       title={key}
-      subtitle={`--color-${key}`}
+      subtitle={`--seq-color-${key}`}
       colors={{ [key]: value }}
     />
   ))}
