@@ -11,7 +11,7 @@ describe('Icons', () => {
     const { container } = render(<ScanIcon />)
     const el = container.querySelector('svg')
 
-    expect(el?.getAttribute('viewBox')).toBe('0 0 20 20')
+    expect(el?.getAttribute('viewBox')).toBe('0 0 24 24')
   })
 
   it('have a 20x20 viewBox', () => {
@@ -21,8 +21,8 @@ describe('Icons', () => {
 
       expect(
         el?.getAttribute('viewBox'),
-        `${key} does not have a 20x20 viewBox`
-      ).toBe('0 0 20 20')
+        `${key} does not have a 24x24 viewBox`
+      ).toBe('0 0 24 24')
     }
   })
 })
