@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.0.12
+
+### Patch Changes
+
+- Adding new file types to accepted types
+
 ## 2.0.11
 
 ### Patch Changes
