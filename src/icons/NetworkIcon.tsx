@@ -11,15 +11,32 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 20 20"
+    viewBox="0 0 24 24"
     {...props}
   >
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M13.283 6.175a4.643 4.643 0 1 0-6.566 6.567l-.708.707a5.644 5.644 0 1 1 7.982 0l-.708-.707a4.644 4.644 0 0 0 0-6.567Zm-5.097 1.47a2.565 2.565 0 0 1 3.628 3.627l.707.707a3.565 3.565 0 1 0-5.042 0l.707-.707a2.565 2.565 0 0 1 0-3.627ZM10 10.959a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm0 .667-1.5 6h3l-1.5-6Z"
+      d="M10 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0"
       clipRule="evenodd"
     />
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M12 8a4 4 0 0 0-2.8 6.857 1 1 0 0 1-1.4 1.428 6 6 0 1 1 8.4 0 1 1 0 0 1-1.4-1.428A4 4 0 0 0 12 8"
+      clipRule="evenodd"
+    />
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M12 4a8 8 0 0 0-5.533 13.778 1 1 0 1 1-1.384 1.444A9.97 9.97 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10a9.97 9.97 0 0 1-3.083 7.222 1 1 0 1 1-1.384-1.444A8 8 0 0 0 12 4"
+      clipRule="evenodd"
+    />
+    <path
+      fill="currentColor"
+      d="M9 21a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1"
+    />
+    <path fill="currentColor" d="M11 14a1 1 0 1 1 2 0v7a1 1 0 1 1-2 0z" />
   </svg>
 )
 

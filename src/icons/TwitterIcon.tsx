@@ -11,12 +11,12 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 20 20"
+    viewBox="0 0 24 24"
     {...props}
   >
     <path
       fill="currentColor"
-      d="M11.523 8.776 17.482 2H16.07l-5.174 5.883L6.766 2H2l6.247 8.896L2 18h1.411l5.461-6.214L13.234 18H18M3.92 3.04h2.169l9.979 13.971H13.9"
+      d="M13.904 10.47 21.352 2h-1.764L13.12 9.354 7.957 2H2l7.81 11.12L2 22h1.764l6.827-7.767L16.043 22H22M4.4 3.301h2.71l12.475 17.463h-2.709"
     />
   </svg>
 )

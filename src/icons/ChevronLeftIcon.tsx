@@ -11,13 +11,13 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 20 20"
+    viewBox="0 0 24 24"
     {...props}
   >
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="m12.888 3.47 1.06 1.06L8.48 10l5.47 5.47-1.061 1.06L6.358 10l6.53-6.53Z"
+      d="M16.186 19.707a1 1 0 0 0 0-1.414L9.893 12l6.293-6.293a1 1 0 0 0-1.414-1.414l-6.93 6.93a1.1 1.1 0 0 0 0 1.555l6.93 6.93a1 1 0 0 0 1.414 0"
       clipRule="evenodd"
     />
   </svg>

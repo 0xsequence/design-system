@@ -11,10 +11,15 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 20 20"
+    viewBox="0 0 24 24"
     {...props}
   >
-    <circle cx={10.418} cy={10} r={4} fill="currentColor" />
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10"
+      clipRule="evenodd"
+    />
   </svg>
 )
 
