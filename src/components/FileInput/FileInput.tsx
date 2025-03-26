@@ -19,6 +19,8 @@ const MIME_TYPES = {
   csv: '.csv,text/csv',
   json: '.json,application/json',
   gif: '.gif,image/gif',
+  webp: '.webp,image/webp',
+  svg: '.svg,image/svg+xml',
 }
 
 type AllowedMimeTypes = keyof typeof MIME_TYPES
