@@ -12,37 +12,227 @@ export const sampleText = 'The quick brown fox jumps over the lazy dog'
 The defined set of typefaces and used in the design system.
 
 <ThemeProvider theme="light">
-**xlarge**
-`font-size: 30px, line-height: 36px, font-weight: 700`
 
-<Text variant="xlarge">{sampleText}</Text>
+## Text Variants
 
-**large**
-`font-size: 20px, line-height: 28px, font-weight: 600`
+<div className="flex flex-col space-y-24">
 
-<Text variant="large">{sampleText}</Text>
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **xxxlarge**
 
-**medium**
-`font-size: 16px, line-height: 24px, font-weight: 700`
+    - `font-body` - `1rem (16px)`
+    - `font-bold` - `700`
+    - `text-6xl` - `3.75rem (60px)`
+    - `tracking-normal` - `0`
+    - `leading-15` - `3.75rem (60px)`
 
-<Text variant="medium">{sampleText}</Text>
+  </div>
+  <div>
+    <Text variant="xxxlarge" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
 
-**normal**
-`font-size: 14px, line-height: 20px, font-weight: 400`
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **xxlarge**
 
-<Text variant="normal">{sampleText}</Text>
+    - `font-body` - `1rem (16px)`
+    - `font-bold` - `700`
+    - `text-4xl` - `2.25rem (36px)`
+    - `tracking-widest` - `0.05em`
+    - `leading-10` - `2.5rem (40px)`
 
-**small**
-`font-size: 12px, line-height: 16px, font-weight: 500`
+  </div>
+  <div>
+    <Text variant="xxlarge" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
 
-<Text variant="small">{sampleText}</Text>
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **xlarge**
 
-**xsmall**
-`font-size: 10px, line-height: 16px, font-weight: 700`
+    - `font-body` - `1rem (16px)`
+    - `font-bold` - `700`
+    - `text-2xl` - `1.5rem (24px)`
+    - `tracking-normal` - `0`
+    - `leading-8` - `2rem (32px)`
 
-<Text variant="xsmall">{sampleText}</Text>
+  </div>
+  <div>
+    <Text variant="xlarge" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
 
-**code**
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **large**
 
-<Text variant="code">{sampleText}</Text>
+    - `font-body` - `1rem (16px)`
+    - `font-semibold` - `600`
+    - `text-xl` - `1.25rem (20px)`
+    - `tracking-normal` - `0`
+    - `leading-7` - `1.75rem (28px)`
+
+  </div>
+  <div>
+    <Text variant="large" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **medium**
+
+    - `font-body` - `1rem (16px)`
+    - `font-bold` - `700`
+    - `text-base` - `1rem (16px)`
+    - `tracking-normal` - `0`
+    - `leading-6` - `1.5rem (24px)`
+
+  </div>
+  <div>
+    <Text variant="medium" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **normal-bold**
+
+    - `font-body` - `1rem (16px)`
+    - `font-bold` - `700`
+    - `text-sm` - `0.875rem (14px)`
+    - `tracking-wide` - `0.025em`
+    - `leading-5` - `1.25rem (20px)`
+
+  </div>
+  <div>
+    <Text variant="normal-bold" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **normal**
+
+    - `font-body` - `1rem (16px)`
+    - `font-medium` - `500`
+    - `text-sm` - `0.875rem (14px)`
+    - `tracking-wide` - `0.025em`
+    - `leading-5` - `1.25rem (20px)`
+
+  </div>
+  <div>
+    <Text variant="normal" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **small-bold**
+
+    - `font-body` - `1rem (16px)`
+    - `font-bold` - `700`
+    - `text-xs` - `0.75rem (12px)`
+    - `tracking-normal` - `0`
+    - `leading-4` - `1rem (16px)`
+
+  </div>
+  <div>
+    <Text variant="small-bold" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **small**
+
+    - `font-body` - `1rem (16px)`
+    - `font-medium` - `500`
+    - `text-xs` - `0.75rem (12px)`
+    - `tracking-wide` - `0.025em`
+    - `leading-4` - `1rem (16px)`
+
+  </div>
+  <div>
+    <Text variant="small" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **xsmall-bold**
+
+    - `font-body` - `1rem (16px)`
+    - `font-bold` - `700`
+    - `text-[0.625rem]` - `0.625rem (10px)`
+    - `tracking-wide` - `0.025em`
+    - `leading-4` - `1rem (16px)`
+
+  </div>
+  <div>
+    <Text variant="xsmall-bold" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **xsmall**
+
+    - `font-body` - `1rem (16px)`
+    - `font-bold` - `700`
+    - `text-[0.625rem]` - `0.625rem (10px)`
+    - `tracking-wide` - `0.025em`
+    - `leading-4` - `1rem (16px)`
+
+  </div>
+  <div>
+    <Text variant="xsmall" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+<div className="grid grid-cols-2 gap-8 items-center">
+  <div>
+    **code**
+
+    - `font-mono` - `monospace`
+    - `font-normal` - `400`
+    - `text-sm` - `0.875rem (14px)`
+    - `tracking-normal` - `0`
+    - `leading-5` - `1.25rem (20px)`
+
+  </div>
+  <div>
+    <Text variant="code" color="muted" className="sb-unstyled">
+      {sampleText}
+    </Text>
+  </div>
+</div>
+
+</div>
+
 </ThemeProvider>
