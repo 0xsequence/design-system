@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.3
+
+### Patch Changes
+
+- Fixing contrast background color
+
 ## 2.1.2
 
 ### Patch Changes
