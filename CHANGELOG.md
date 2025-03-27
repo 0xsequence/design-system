@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.0
+
+### Minor Changes
+
+- Updated typography and iconography set.
+
 ## 2.0.12
 
 ### Patch Changes
