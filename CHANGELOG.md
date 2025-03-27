@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.1
+
+### Patch Changes
+
+- Adding icon aliases
+
 ## 2.1.0
 
 ### Minor Changes
