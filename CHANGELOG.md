@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.2
+
+### Patch Changes
+
+- Adding FavoriteIcon and StarIcon
+
 ## 2.1.1
 
 ### Patch Changes
