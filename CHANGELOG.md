@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.4
+
+### Patch Changes
+
+- Fixing transparency issues with icons
+
 ## 2.1.3
 
 ### Patch Changes
