@@ -17,21 +17,23 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M3 7a1 1 0 0 1 1-1h3V5a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1h3a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m7-3a1 1 0 0 0-1 1v1h6V5a1 1 0 0 0-1-1z"
+      d="M8.5 13a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9m0 2a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13"
       clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      d="M10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1M14 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1"
+      d="m6.526 8.244 1.667-2a.4.4 0 0 1 .614 0l1.667 2a.4.4 0 0 1 0 .512l-1.667 2a.4.4 0 0 1-.614 0l-1.667-2a.4.4 0 0 1 0-.512"
     />
     <path
       fill="currentColor"
-      d="M17 22a2 2 0 0 0 2-2V9h-2v11H7V9H5v11a2 2 0 0 0 2 2z"
+      fillRule="evenodd"
+      d="M14.826 10a6.5 6.5 0 0 0 .155-2H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3.914C2.132 22 1.24 19.846 2.5 18.586l3.924-3.924a6.5 6.5 0 0 0 2.504.324L3.914 20h4.172l10-10zm-3.912 10L20 10.914V20z"
+      clipRule="evenodd"
     />
   </svg>
 )
 
-const SvgTrashIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgOnRampIcon = ({ className, size = 'sm', ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({
@@ -43,4 +45,4 @@ const SvgTrashIcon = ({ className, size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgTrashIcon
+export default SvgOnRampIcon

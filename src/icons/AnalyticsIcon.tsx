@@ -17,19 +17,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M2 17a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm6 0H4v3h4z"
-      clipRule="evenodd"
-    />
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M8 11a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v11H8zm6 0h-4v9h4z"
-      clipRule="evenodd"
-    />
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M14 4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-6zm6 0h-4v16h4z"
+      d="M16 2a2 2 0 0 0-2 2v5h-4a2 2 0 0 0-2 2v4H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm4 2h-4v16h4zm-6 16v-9h-4v9zm-6-3v3H4v-3z"
       clipRule="evenodd"
     />
   </svg>

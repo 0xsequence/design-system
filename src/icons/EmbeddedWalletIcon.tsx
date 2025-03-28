@@ -14,24 +14,27 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
     viewBox="0 0 24 24"
     {...props}
   >
+    <path fill="currentColor" d="M14 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M3 7a1 1 0 0 1 1-1h3V5a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1h3a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m7-3a1 1 0 0 0-1 1v1h6V5a1 1 0 0 0-1-1z"
+      d="M8 6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H8.5a.5.5 0 0 1 0-1H16a1 1 0 1 0 0-2zm1 5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"
       clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      d="M10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1M14 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1"
-    />
-    <path
-      fill="currentColor"
-      d="M17 22a2 2 0 0 0 2-2V9h-2v11H7V9H5v11a2 2 0 0 0 2 2z"
+      fillRule="evenodd"
+      d="M20 2a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm-1 2a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"
+      clipRule="evenodd"
     />
   </svg>
 )
 
-const SvgTrashIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgEmbeddedWalletIcon = ({
+  className,
+  size = 'sm',
+  ...props
+}: IconProps) => (
   <Svg
     className={cn(
       iconVariants({
@@ -43,4 +46,4 @@ const SvgTrashIcon = ({ className, size = 'sm', ...props }: IconProps) => (
   />
 )
 
-export default SvgTrashIcon
+export default SvgEmbeddedWalletIcon
