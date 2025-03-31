@@ -117,8 +117,8 @@ export const TabbedNav = (props: TabbedNavProps) => {
               className={
                 variant === 'line'
                   ? isActive
-                    ? 'border-t-2 border-t-primary'
-                    : 'border-t-2 border-t-transparent'
+                    ? 'border-b-2 border-b-primary'
+                    : 'border-b-2 border-b-transparent'
                   : undefined
               }
             >

@@ -111,5 +111,6 @@
     "motion": ">= 12",
     "react": ">= 17",
     "react-dom": ">= 17"
-  }
+  },
+  "packageManager": "pnpm@10.6.4"
 }
