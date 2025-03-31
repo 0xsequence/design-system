@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.5
+
+### Patch Changes
+
+- Changing TabbedNav active border hilight from top to bottom
+
 ## 2.1.4
 
 ### Patch Changes
