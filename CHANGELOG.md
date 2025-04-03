@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.6
+
+### Patch Changes
+
+- Fixing light mode background inverse color
+
 ## 2.1.5
 
 ### Patch Changes
