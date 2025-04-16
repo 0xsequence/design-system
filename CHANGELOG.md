@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.7
+
+### Patch Changes
+
+- Fixing animations
+
 ## 2.1.6
 
 ### Patch Changes
