@@ -158,4 +158,28 @@
   --background-image-gradient-primary: var(--seq-color-gradient-primary);
   --background-image-gradient-secondary: var(--seq-color-gradient-secondary);
   --background-image-gradient-skeleton: var(--seq-color-gradient-skeleton);
+
+  --animate-skeleton: skeleton 1s ease infinite;
+  --animate-swipe-out: swipe-out 200ms ease-out;
+
+  @keyframes skeleton {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes swipe-out {
+    from {
+      transform: translateX(var(--radix-toast-swipe-end-x));
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
 }
