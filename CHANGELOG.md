@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.8
+
+### Patch Changes
+
+- Fixing modal dialog title
+
 ## 2.1.7
 
 ### Patch Changes
