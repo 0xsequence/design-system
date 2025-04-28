@@ -1,4 +1,5 @@
 import * as ModalPrimitive from '@radix-ui/react-dialog'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { cva, VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { HTMLMotionProps, motion } from 'motion/react'
@@ -61,6 +62,7 @@ export interface ModalProps extends VariantProps<typeof modalContentVariants> {
     className?: string
     [key: string]: unknown
   }
+  title?: string
 }
 
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
@@ -78,6 +80,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     overlayProps,
     contentProps,
     rootProps = {},
+    title = 'dialog',
   } = props
 
   const { container } = useTheme()
@@ -125,50 +128,55 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               }
             }}
           >
-            <motion.div
-              key="modal-content"
-              initial={
-                disableAnimation
-                  ? false
-                  : { y: '100%', opacity: size === 'sm' ? 0 : 1 }
-              }
-              animate={
-                disableAnimation
-                  ? false
-                  : { y: 0, opacity: size === 'sm' ? 1 : 1 }
-              }
-              exit={
-                disableAnimation
-                  ? undefined
-                  : { y: '100%', opacity: size === 'sm' ? 0 : 1 }
-              }
-              transition={{ type: 'tween', ease: 'easeOut' }}
-              transformTemplate={(_latest, generated) => {
-                return `${generated} translateZ(0)`
-              }}
-              {...contentProps}
-              className={cn(
-                modalContentVariants({ size, autoHeight }),
-                contentProps?.className
-              )}
-            >
-              {header && <ModalHeader>{header}</ModalHeader>}
-              <ContentWrapper>
-                {header && <ModalHeaderSpacer />}
-                {children}
-              </ContentWrapper>
-              {footer && <ModalFooter>{footer}</ModalFooter>}
-              {isDismissible && (
-                <ModalPrimitive.Close asChild>
-                  <IconButton
-                    icon={CloseIcon}
-                    size="xs"
-                    className="absolute right-4 top-4 z-20 backdrop-blur-xs"
-                    aria-label="Close"
-                  />
-                </ModalPrimitive.Close>
-              )}
-            </motion.div>
+            <>
+              <VisuallyHidden asChild>
+                <ModalPrimitive.Title asChild>{title}</ModalPrimitive.Title>
+              </VisuallyHidden>
+              <motion.div
+                key="modal-content"
+                initial={
+                  disableAnimation
+                    ? false
+                    : { y: '100%', opacity: size === 'sm' ? 0 : 1 }
+                }
+                animate={
+                  disableAnimation
+                    ? false
+                    : { y: 0, opacity: size === 'sm' ? 1 : 1 }
+                }
+                exit={
+                  disableAnimation
+                    ? undefined
+                    : { y: '100%', opacity: size === 'sm' ? 0 : 1 }
+                }
+                transition={{ type: 'tween', ease: 'easeOut' }}
+                transformTemplate={(_latest, generated) => {
+                  return `${generated} translateZ(0)`
+                }}
+                {...contentProps}
+                className={cn(
+                  modalContentVariants({ size, autoHeight }),
+                  contentProps?.className
+                )}
+              >
+                {header && <ModalHeader>{header}</ModalHeader>}
+                <ContentWrapper>
+                  {header && <ModalHeaderSpacer />}
+                  {children}
+                </ContentWrapper>
+                {footer && <ModalFooter>{footer}</ModalFooter>}
+                {isDismissible && (
+                  <ModalPrimitive.Close asChild>
+                    <IconButton
+                      icon={CloseIcon}
+                      size="xs"
+                      className="absolute right-4 top-4 z-20 backdrop-blur-xs"
+                      aria-label="Close"
+                    />
+                  </ModalPrimitive.Close>
+                )}
+              </motion.div>
+            </>
           </ModalPrimitive.Content>
         </ModalPrimitive.Overlay>
       </ModalPrimitive.Portal>
