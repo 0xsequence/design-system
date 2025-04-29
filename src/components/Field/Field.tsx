@@ -82,10 +82,12 @@ export const Field = (props: FieldProps) => {
       {...rest}
     >
       {['left', 'top', 'hidden'].includes(labelLocation!) && renderLabel()}
-      <div className="flex flex-col gap-1 w-full">
+
+      <div className="flex flex-col gap-1">
         {children}
         {renderTrailText()}
       </div>
+
       {labelLocation === 'right' && renderLabel()}
     </label>
   )
