@@ -6,7 +6,6 @@ import { ControlledFileInput as FileInput } from '~/components/FileInput'
 import { ControlledRadioGroup as RadioGroup } from '~/components/RadioGroup'
 import { ControlledSelect as Select } from '~/components/Select'
 import { ControlledSwitch as Switch } from '~/components/Switch'
-import { Text } from '~/components/Text'
 import { ControlledTextInput as TextInput } from '~/components/TextInput'
 
 import { TextArea } from '../TextArea'
@@ -37,7 +36,7 @@ type Story = StoryObj<typeof Form>
 
 export const Default: Story = {
   render: ({ onSubmit, ...args }) => (
-    <div className="bg-background-secondary rounded-xl flex flex-col gap-4 p-4">
+    <div className="bg-background-secondary rounded-xl flex flex-col gap-3 p-4">
       <Form
         defaultValues={{
           firstName: '',
@@ -56,10 +55,12 @@ export const Default: Story = {
               rules={{
                 required: 'First name is required',
               }}
+              error={
+                errors.firstName?.message
+                  ? (errors.firstName.message as string)
+                  : undefined
+              }
             />
-            {errors.firstName?.message && (
-              <Text color="negative">{errors.firstName.message as string}</Text>
-            )}
 
             <TextInput
               control={control}
@@ -71,10 +72,12 @@ export const Default: Story = {
               rules={{
                 required: 'Last name is required',
               }}
+              error={
+                errors.lastName?.message
+                  ? (errors.lastName.message as string)
+                  : undefined
+              }
             />
-            {errors.lastName?.message && (
-              <Text color="negative">{errors.lastName.message as string}</Text>
-            )}
 
             <FileInput
               defaultValue=""
@@ -87,10 +90,12 @@ export const Default: Story = {
                 required: 'A file is required',
               }}
               validExtensions={['images']}
+              error={
+                errors.fileInput?.message
+                  ? (errors.fileInput.message as string)
+                  : undefined
+              }
             />
-            {errors.fileInput?.message && (
-              <Text color="negative">{errors.fileInput.message as string}</Text>
-            )}
 
             <TextArea
               defaultValue=""
@@ -98,11 +103,11 @@ export const Default: Story = {
               labelLocation="top"
               name="message"
               placeholder="Enter a message"
+              trailDescription="This is the trail description"
             />
 
             <Select
               control={control}
-              defaultValue={selectOptions[0].value}
               label="Select Option"
               labelLocation="top"
               name="selectOption"
@@ -112,12 +117,12 @@ export const Default: Story = {
               rules={{
                 required: 'A selection is required',
               }}
+              error={
+                errors.selectOption?.message
+                  ? (errors.selectOption.message as string)
+                  : undefined
+              }
             />
-            {errors.selectOption?.message && (
-              <Text color="negative">
-                {errors.selectOption.message as string}
-              </Text>
-            )}
 
             <Switch
               control={control}

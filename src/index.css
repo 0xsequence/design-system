@@ -28,6 +28,7 @@
   /* Border colors */
   --seq-color-border-normal: rgba(255, 255, 255, 0.25);
   --seq-color-border-focus: rgba(255, 255, 255, 0.5);
+  --seq-color-border-error: rgba(255, 69, 0, 1);
 
   /* Button colors */
   --seq-color-button-glass: rgba(255, 255, 255, 0.15);
@@ -87,6 +88,7 @@
   /* Border colors */
   --seq-color-border-normal: rgba(0, 0, 0, 0.25);
   --seq-color-border-focus: rgba(0, 0, 0, 0.5);
+  --seq-color-border-error: rgba(255, 69, 0, 1);
 
   /* Button colors */
   --seq-color-button-glass: rgba(0, 0, 0, 0.15);
@@ -149,6 +151,7 @@
 
   --color-border-normal: var(--seq-color-border-normal);
   --color-border-focus: var(--seq-color-border-focus);
+  --color-border-error: var(--seq-color-border-error);
 
   --color-button-glass: var(--seq-color-button-glass);
   --color-button-emphasis: var(--seq-color-button-emphasis);

@@ -55,6 +55,8 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       placeholder = 'Upload a file',
       validExtensions,
       className,
+      error,
+      trailDescription,
       ...rest
     } = props
 
@@ -91,17 +93,22 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         label={label}
         labelLocation={labelLocation}
         className="grid"
+        error={error}
+        trailDescription={trailDescription}
       >
         <div className="w-full min-w-0">
           <div
             className={cn(
               textVariants({ variant: 'normal' }),
               'inline-flex items-center flex-row justify-start min-w-full p-4 relative h-[52px]',
-              'border border-dashed border-border-normal rounded-xl',
+              'border border-dashed rounded-xl',
               '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
-              'focus-within:opacity-100 focus-within:ring-2 focus-within:ring-border-focus focus-within:ring-inset focus-within:border-transparent',
+              'focus-within:opacity-100 focus-within:ring-2 focus-within:ring-inset focus-within:border-transparent',
               fileData ? 'justify-between' : 'justify-start',
               fileData ? 'text-primary' : 'text-muted',
+              error && !disabled
+                ? 'border-border-error focus-within:ring-border-error'
+                : 'border-border-normal focus-within:ring-border-focus',
               className
             )}
           >

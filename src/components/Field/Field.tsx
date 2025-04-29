@@ -7,7 +7,7 @@ import { cn } from '~/utils'
 const fieldVariants = cva('flex', {
   variants: {
     labelLocation: {
-      top: ['flex-col', 'items-stretch', 'gap-3'],
+      top: ['flex-col', 'items-stretch', 'gap-1'],
       left: ['flex-row', 'items-center', 'gap-3', 'grid-cols-[1fr_2fr]'],
       right: ['flex-row', 'items-center', 'gap-3', 'grid-cols-[2fr_1fr]'],
       hidden: ['gap-0'],
@@ -19,6 +19,7 @@ export interface FieldProps extends VariantProps<typeof fieldVariants> {
   id?: string
   label?: string | ReactNode
   description?: string | ReactNode
+  trailDescription?: string | ReactNode
   disabled?: boolean
   required?: boolean // TODO
   error?: string // TODO
@@ -34,7 +35,9 @@ export const Field = (props: FieldProps) => {
     id,
     label,
     description,
+    trailDescription,
     labelLocation = 'top',
+    error,
     children,
     className,
     ...rest
@@ -65,6 +68,13 @@ export const Field = (props: FieldProps) => {
       </div>
     ) : null
 
+  const renderTrailText = () =>
+    error || trailDescription ? (
+      <Text variant="small" color={error ? 'negative' : 'muted'}>
+        {error ? error : trailDescription}
+      </Text>
+    ) : null
+
   return (
     <label
       className={cn(fieldVariants({ labelLocation }), className)}
@@ -72,7 +82,10 @@ export const Field = (props: FieldProps) => {
       {...rest}
     >
       {['left', 'top', 'hidden'].includes(labelLocation!) && renderLabel()}
-      {children}
+      <div className="flex flex-col gap-1 w-full">
+        {children}
+        {renderTrailText()}
+      </div>
       {labelLocation === 'right' && renderLabel()}
     </label>
   )
