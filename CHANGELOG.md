@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.9
+
+### Patch Changes
+
+- Fixes for SwitchProps on controlled switch, new Select styling and popper mode, and trailing description and errors on fields
+
 ## 2.1.8
 
 ### Patch Changes
