@@ -34,7 +34,7 @@ const SelectItem = forwardRef(
       <SelectPrimitive.Item
         className={cn(
           textVariants({ variant: 'normal' }),
-          'flex justify-between items-center px-4 py-3 h-[52px] cursor-pointer',
+          'flex justify-between items-center px-4 py-3 h-[52px] cursor-pointer rounded-sm',
           'text-base text-primary opacity-100 data-disabled:cursor-default data-disabled:opacity-50',
           'data-highlighted:bg-background-secondary data-[state=checked]:bg-background-control outline-hidden',
           className
@@ -100,9 +100,14 @@ export const Select = forwardRef(
           </SelectPrimitive.Trigger>
 
           <SelectPrimitive.Portal container={container}>
-            <SelectPrimitive.Content className="backdrop-blur-xs bg-button-glass rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus">
+            <SelectPrimitive.Content
+              position="popper"
+              side="bottom"
+              align="start"
+              className="mt-2 p-1 bg-background-backdrop backdrop-blur-md min-w-[var(--radix-select-trigger-width)] rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus"
+            >
               <SelectPrimitive.Viewport>
-                <SelectPrimitive.Group>
+                <SelectPrimitive.Group className="flex flex-col gap-0.5">
                   {options.map(({ value, label, ...rest }) => (
                     <SelectItem key={value} value={value} {...rest}>
                       {label}
