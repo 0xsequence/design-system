@@ -1,0 +1,6 @@
+const g=["dark","light"],r={positive:"#1FC266",negative:"#C2501F",info:"#0076CC",warning:"#F4B03E",gradientBackdrop:`linear-gradient(
+    243.18deg, 
+    rgba(86, 52, 189, 0.85) 0%, 
+    rgba(49, 41, 223, 0.85) 63.54%, 
+    rgba(7, 98, 149, 0.85) 100%
+  )`,gradientPrimary:"linear-gradient(89.69deg, #4411E1 0.27%, #7537F9 99.73%)",gradientSecondary:"linear-gradient(32.51deg, #951990 -15.23%, #3A35B1 48.55%, #20A8B0 100%)",gradientSkeleton:"linear-gradient(-45deg, transparent, var(--seq-color-background-secondary), transparent)"},a={...r,primary:"rgba(255, 255, 255, 1)",secondary:"rgba(255, 255, 255, 0.8)",muted:"rgba(255, 255, 255, 0.5)",inverse:"rgba(0, 0, 0, 1)",backgroundPrimary:"rgba(0, 0, 0, 1)",backgroundSecondary:"rgba(255, 255, 255, 0.1)",backgroundContrast:"rgba(0, 0, 0, 0.5)",backgroundMuted:"rgba(255, 255, 255, 0.05)",backgroundControl:"rgba(255, 255, 255, 0.25)",backgroundInverse:"rgba(255, 255, 255, 1)",backgroundBackdrop:"rgba(34, 34, 34, 0.9)",backgroundOverlay:"rgba(0, 0, 0, 0.7)",backgroundRaised:"rgba(54, 54, 54, 0.7)",buttonGlass:"rgba(255, 255, 255, 0.15)",buttonEmphasis:"rgba(0, 0, 0, 0.5)",buttonInverse:"rgba(255, 255, 255, 0.8)",borderNormal:"rgba(255, 255, 255, 0.25)",borderFocus:"rgba(255, 255, 255, 0.5)",borderError:"rgba(194, 80, 31, 1)"},n={dark:a};export{n as a,g as c};
