@@ -127,6 +127,9 @@ export const Default: Story = {
             <Switch
               control={control}
               name="switchOption"
+              label="Switch Option"
+              labelLocation="right"
+              description="This is the switch description"
               onCheckedChange={(value: boolean) =>
                 setValue('switchOption', value)
               }

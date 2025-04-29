@@ -1,7 +1,6 @@
-import { SwitchProps } from '@radix-ui/react-switch'
 import { Control, Controller } from 'react-hook-form'
 
-import { Switch } from './Switch'
+import { Switch, SwitchProps } from './Switch'
 
 type ControlledSwitchProps = SwitchProps & {
   control: Control

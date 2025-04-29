@@ -8,8 +8,8 @@ const fieldVariants = cva('flex', {
   variants: {
     labelLocation: {
       top: ['flex-col', 'items-stretch', 'gap-1'],
-      left: ['flex-row', 'items-center', 'gap-3', 'grid-cols-[1fr_2fr]'],
-      right: ['flex-row', 'items-center', 'gap-3', 'grid-cols-[2fr_1fr]'],
+      left: ['flex-row', 'items-center', 'gap-2', 'grid-cols-[1fr_2fr]'],
+      right: ['flex-row', 'items-center', 'gap-2', 'grid-cols-[2fr_1fr]'],
       hidden: ['gap-0'],
     },
   },
