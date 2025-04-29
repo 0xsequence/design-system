@@ -19,3 +19,14 @@ export const Default: Story = {
     resize: true,
   },
 }
+
+export const Error: Story = {
+  args: {
+    name: 'myTextArea',
+    label: 'Text area',
+    labelLocation: 'top',
+    rows: 3,
+    resize: true,
+    error: 'This is the error',
+  },
+}

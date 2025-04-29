@@ -31,6 +31,7 @@ export interface ColorTokens {
   // Border colors
   borderNormal: string
   borderFocus: string
+  borderError: string
 
   // Button colors
   buttonGlass: string
@@ -85,6 +86,7 @@ const dark: ColorTokens = {
 
   borderNormal: 'rgba(255, 255, 255, 0.25)',
   borderFocus: 'rgba(255, 255, 255, 0.5)',
+  borderError: 'rgba(194, 80, 31, 1)',
 }
 
 const light: ColorTokens = {
@@ -111,6 +113,7 @@ const light: ColorTokens = {
 
   borderNormal: 'rgba(0, 0, 0, 0.25)',
   borderFocus: 'rgba(0, 0, 0, 0.5)',
+  borderError: 'rgba(194, 80, 31, 1)',
 }
 
 type ColorPaletteKey =

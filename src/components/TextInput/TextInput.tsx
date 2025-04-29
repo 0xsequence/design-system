@@ -51,6 +51,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       type = 'text',
       numeric = false,
       className,
+      error,
       ...rest
     } = props
 
@@ -69,6 +70,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               'inline-flex items-center bg-transparent text-primary min-w-full px-4 gap-2 rounded-xl',
               'h-[52px] cursor-text',
               'ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
+              error
+                ? 'ring-border-error focus-within:ring-border-error'
+                : 'ring-border-normal focus-within:ring-border-focus',
               {
                 'cursor-default opacity-50': disabled,
               }

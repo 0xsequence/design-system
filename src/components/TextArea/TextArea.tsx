@@ -53,6 +53,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       rows,
       resize = false,
       className,
+      error,
       ...rest
     } = props
 
@@ -68,7 +69,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <textarea
           autoComplete={autoComplete}
           spellCheck="false"
-          className={cn(textareaVariants({ resize }), className)}
+          className={cn(
+            textareaVariants({ resize }),
+            className,
+            error && 'ring-border-error focus:ring-border-error'
+          )}
           disabled={disabled}
           id={id ?? name}
           name={name}

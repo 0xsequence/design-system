@@ -51,6 +51,14 @@ export const SearchInput: Story = {
     controls: <IconButton icon={CloseIcon} size="xs" />,
   },
 }
+export const Error: Story = {
+  args: {
+    label: 'This the label',
+    placeholder: 'This is the placeholder',
+    error: 'This is the error',
+  },
+}
+
 export const WithComplexControls: Story = {
   args: {
     label: 'This the label',
