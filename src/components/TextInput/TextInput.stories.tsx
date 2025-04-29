@@ -59,6 +59,23 @@ export const Error: Story = {
   },
 }
 
+export const WithTrailDescription: Story = {
+  args: {
+    label: 'This the label',
+    placeholder: 'This is the placeholder',
+    trailDescription: 'This is the trail description',
+  },
+}
+
+export const WithTrailDescriptionAndError: Story = {
+  args: {
+    label: 'This the label',
+    placeholder: 'This is the placeholder',
+    trailDescription: 'This is the trail description',
+    error: 'This is the error',
+  },
+}
+
 export const WithComplexControls: Story = {
   args: {
     label: 'This the label',

@@ -56,6 +56,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       validExtensions,
       className,
       error,
+      trailDescription,
       ...rest
     } = props
 
@@ -92,6 +93,8 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         label={label}
         labelLocation={labelLocation}
         className="grid"
+        error={error}
+        trailDescription={trailDescription}
       >
         <div className="w-full min-w-0">
           <div

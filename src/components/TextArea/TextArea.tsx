@@ -54,6 +54,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       resize = false,
       className,
       error,
+      trailDescription,
       ...rest
     } = props
 
@@ -65,6 +66,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         label={label}
         labelLocation={labelLocation}
         className="grid"
+        trailDescription={trailDescription}
+        error={error}
       >
         <textarea
           autoComplete={autoComplete}

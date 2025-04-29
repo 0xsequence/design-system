@@ -60,6 +60,8 @@ export const Select = forwardRef(
       options,
       placeholder,
       className,
+      error,
+      trailDescription,
       ...rest
     } = props
 
@@ -73,6 +75,8 @@ export const Select = forwardRef(
         labelLocation={labelLocation}
         description={description}
         className="grid whitespace-nowrap"
+        error={error}
+        trailDescription={trailDescription}
       >
         <SelectPrimitive.Root disabled={disabled} name={name} {...rest}>
           <SelectPrimitive.Trigger
@@ -84,6 +88,7 @@ export const Select = forwardRef(
               'outline-hidden ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
               '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
               '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
+              error && 'ring-border-error focus-within:ring-border-error',
               className
             )}
             ref={ref}

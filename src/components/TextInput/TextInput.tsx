@@ -51,6 +51,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       type = 'text',
       numeric = false,
       className,
+      trailDescription,
       error,
       ...rest
     } = props
@@ -63,6 +64,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         label={label}
         labelLocation={labelLocation}
         className="grid"
+        trailDescription={trailDescription}
+        error={error}
       >
         <div className="w-full">
           <div
