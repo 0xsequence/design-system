@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.9
+
+### Patch Changes
+
+- Fixing Select scroll
+
 ## 2.1.8
 
 ### Patch Changes
