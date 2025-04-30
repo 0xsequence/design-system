@@ -111,16 +111,41 @@ export const Custom: Story = {
   },
 }
 
+export const TooManyOptions: Story = {
+  args: {
+    ...Default.args,
+    options: Array.from({ length: 100 }, (_, i) => ({
+      label: `Option ${i + 1}`,
+      value: `option-${i + 1}`,
+    })),
+  },
+}
+
 export const WithinModal: Story = {
   tags: ['!autodocs'],
   render: args => {
     return (
       <Modal>
-        <div className="flex p-4 gap-2">
-          <Select {...args} />
+        <div className="p-4">
+          <Select className="w-full" {...args} />
         </div>
       </Modal>
     )
   },
   args: Default.args,
+}
+
+export const TooManyOptionsWithModal: Story = {
+  args: {
+    ...TooManyOptions.args,
+  },
+  render: args => {
+    return (
+      <Modal>
+        <div className="p-4">
+          <Select {...args} />
+        </div>
+      </Modal>
+    )
+  },
 }
