@@ -104,7 +104,7 @@ export const Select = forwardRef(
               position="popper"
               side="bottom"
               align="start"
-              className="mt-2 p-1 bg-background-backdrop backdrop-blur-md min-w-[var(--radix-select-trigger-width)] rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus"
+              className="mt-2 p-1 bg-background-backdrop backdrop-blur-md min-w-[var(--radix-select-trigger-width)] rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus max-h-[360px] overflow-y-auto"
             >
               <SelectPrimitive.Viewport>
                 <SelectPrimitive.Group className="flex flex-col gap-0.5">
