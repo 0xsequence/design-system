@@ -1,4 +1,8 @@
-import { render, type RenderOptions } from '@testing-library/react'
+import {
+  render,
+  type RenderOptions,
+  type RenderResult,
+} from '@testing-library/react'
 import type { ReactElement, ReactNode } from 'react'
 
 import { ThemeProvider } from './ThemeProvider.js'
@@ -14,4 +18,4 @@ const Wrapper = (props: WrapperProps) => {
 export const renderWithTheme = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) => render(ui, { wrapper: Wrapper, ...options })
+): RenderResult => render(ui, { wrapper: Wrapper, ...options })
