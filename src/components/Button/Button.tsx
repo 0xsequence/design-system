@@ -1,10 +1,10 @@
 import { Slot, Slottable } from '@radix-ui/react-slot'
-import { cva, VariantProps } from 'class-variance-authority'
-import { ComponentType, forwardRef, ReactNode } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { forwardRef, type ComponentType, type ReactNode } from 'react'
 
-import { Text, textVariants } from '~/components/Text'
-import { IconProps } from '~/icons/types'
-import { cn } from '~/utils'
+import { Text, textVariants } from '~/components/Text/index.js'
+import type { IconProps } from '~/icons/types.js'
+import { cn } from '~/utils/classnames.js'
 
 export const buttonVariants = cva(
   [

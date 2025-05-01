@@ -1,6 +1,6 @@
-import { ChangeEvent, FocusEvent, forwardRef } from 'react'
+import { forwardRef, type ChangeEvent, type FocusEvent } from 'react'
 
-import { TextInput, TextInputProps } from '../TextInput'
+import { TextInput, type TextInputProps } from '~/components/TextInput/index.js'
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`)
 

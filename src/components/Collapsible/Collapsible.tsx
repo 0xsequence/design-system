@@ -1,10 +1,10 @@
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'motion/react'
-import { ReactNode, useState } from 'react'
+import { useState, type ReactNode } from 'react'
 
-import { Text } from '~/components/Text'
-import { ChevronDownIcon } from '~/icons'
+import { Text } from '~/components/Text/index.js'
+import { ChevronDownIcon } from '~/icons/index.js'
 
 const COLLAPSED_HEIGHT = '64px'
 

@@ -1,8 +1,8 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { ArrowRightIcon } from '~/icons'
+import { ArrowRightIcon } from '~/icons/index.js'
 
-import { IconButton } from './IconButton'
+import { IconButton } from './IconButton.js'
 
 export default {
   title: 'Components/IconButton',

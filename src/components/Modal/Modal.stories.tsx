@@ -1,14 +1,13 @@
-import { StoryObj, Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 
-import { Button } from '~/components/Button'
-import { Text } from '~/components/Text'
-import { CheckmarkIcon } from '~/icons'
+import { Button } from '~/components/Button/index.js'
+import { Card } from '~/components/Card/index.js'
+import { Text } from '~/components/Text/index.js'
+import { CheckmarkIcon } from '~/icons/index.js'
 
-import { Card } from '../Card'
-
-import { Modal } from './Modal'
+import { Modal } from './Modal.js'
 
 export default {
   title: 'Components/Modal',

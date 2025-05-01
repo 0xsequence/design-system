@@ -1,11 +1,11 @@
 // Auto-generated file created by svgr-cli source /src/icons/template.js
 // Run pnpm build:icons to update
-import { SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
-import { cn } from '~/utils'
+import { cn } from '~/utils/classnames.js'
 
-import { iconVariants } from './iconVariants'
-import { IconProps } from './types'
+import { iconVariants } from './iconVariants.js'
+import type { IconProps } from './types.js'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg

@@ -1,7 +1,11 @@
-import { render, RenderOptions } from '@testing-library/react'
-import { ReactElement, ReactNode } from 'react'
+import {
+  render,
+  type RenderOptions,
+  type RenderResult,
+} from '@testing-library/react'
+import type { ReactElement, ReactNode } from 'react'
 
-import { ThemeProvider } from './ThemeProvider'
+import { ThemeProvider } from './ThemeProvider.js'
 
 interface WrapperProps {
   children: ReactNode
@@ -14,4 +18,4 @@ const Wrapper = (props: WrapperProps) => {
 export const renderWithTheme = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) => render(ui, { wrapper: Wrapper, ...options })
+): RenderResult => render(ui, { wrapper: Wrapper, ...options })

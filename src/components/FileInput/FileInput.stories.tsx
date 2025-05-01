@@ -1,6 +1,6 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { FileInput } from './FileInput'
+import { FileInput } from './FileInput.js'
 
 export default {
   title: 'Forms/FileInput',

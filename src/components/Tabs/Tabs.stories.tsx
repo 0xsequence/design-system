@@ -1,9 +1,9 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Card } from '~/components/Card'
-import { Text } from '~/components/Text'
+import { Card } from '~/components/Card/index.js'
+import { Text } from '~/components/Text/index.js'
 
-import { Tabs } from './Tabs'
+import { Tabs } from './Tabs.js'
 
 export default {
   title: 'Components/Tabs',

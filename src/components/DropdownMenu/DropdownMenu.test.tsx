@@ -1,13 +1,13 @@
 import { cleanup, render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuRoot,
-  DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from './DropdownMenu'
+  DropdownMenuTrigger,
+} from './DropdownMenu.js'
 
 describe('<DropdownMenu />', () => {
   afterEach(cleanup)

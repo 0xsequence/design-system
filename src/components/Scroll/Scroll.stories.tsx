@@ -1,9 +1,9 @@
-import { StoryObj, Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react'
 
-import { Card } from '~/components/Card'
-import { Text } from '~/components/Text'
+import { Card } from '~/components/Card/index.js'
+import { Text } from '~/components/Text/index.js'
 
-import { Scroll } from './Scroll'
+import { Scroll } from './Scroll.js'
 
 export default {
   title: 'Components/Scroll',

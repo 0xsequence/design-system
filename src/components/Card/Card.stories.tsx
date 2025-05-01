@@ -1,8 +1,8 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Text } from '~/components/Text'
+import { Text } from '~/components/Text/index.js'
 
-import { Card } from './Card'
+import { Card } from './Card.js'
 
 export default {
   title: 'Components/Card',

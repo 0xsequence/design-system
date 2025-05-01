@@ -1,6 +1,6 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { SettingsIcon } from '~/icons'
+import { SettingsIcon } from '~/icons/index.js'
 
 export default {
   title: 'Components/Icons',

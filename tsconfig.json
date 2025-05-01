@@ -1,22 +1,27 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "target": "es2022",
+    "allowJs": true,
     "resolveJsonModule": true,
+    "moduleDetection": "force",
     "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    "strict": true,
+    // "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    "module": "NodeNext",
     "noEmit": true,
-    "jsx": "react-jsx",
+
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vitest/globals", "@testing-library/jest-dom"],
+    "jsx": "react-jsx",
+
     "baseUrl": ".",
+
     "paths": {
       "~/*": ["src/*"]
     }

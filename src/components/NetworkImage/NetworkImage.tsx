@@ -1,10 +1,9 @@
-import { cva, VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { memo } from 'react'
 
-import { cn } from '~/utils'
-import { replaceSize, networkImageUrl } from '~/utils/assets'
-
-import { Image } from '../Image'
+import { Image } from '~/components/Image/index.js'
+import { networkImageUrl, replaceSize } from '~/utils/assets.js'
+import { cn } from '~/utils/classnames.js'
 
 const networkImageVariants = cva(
   [

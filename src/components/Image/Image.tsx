@@ -1,5 +1,5 @@
-import { motion, HTMLMotionProps } from 'motion/react'
-import { SyntheticEvent, useState } from 'react'
+import { motion, type HTMLMotionProps } from 'motion/react'
+import { useState, type SyntheticEvent } from 'react'
 
 interface ImageProps extends HTMLMotionProps<'img'> {
   disableAnimation?: boolean

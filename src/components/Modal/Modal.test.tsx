@@ -1,8 +1,8 @@
 import { cleanup, screen } from '@testing-library/react'
 
-import { renderWithTheme } from '../ThemeProvider/renderWithTheme'
+import { renderWithTheme } from '~/components/ThemeProvider/renderWithTheme.js'
 
-import { Modal } from './Modal'
+import { Modal } from './Modal.js'
 
 describe('<Modal />', () => {
   afterEach(cleanup)

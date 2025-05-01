@@ -1,2 +1,2 @@
-export { TextArea } from './TextArea'
-export { ControlledTextArea } from './ControlledTextArea'
+export { TextArea } from './TextArea.js'
+export { ControlledTextArea } from './ControlledTextArea.js'

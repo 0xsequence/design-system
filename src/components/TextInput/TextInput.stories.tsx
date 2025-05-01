@@ -1,10 +1,15 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '~/components/Button'
-import { IconButton } from '~/components/IconButton'
-import { ArrowRightIcon, CloseIcon, ScanIcon, SearchIcon } from '~/icons'
+import { Button } from '~/components/Button/index.js'
+import { IconButton } from '~/components/IconButton/index.js'
+import {
+  ArrowRightIcon,
+  CloseIcon,
+  ScanIcon,
+  SearchIcon,
+} from '~/icons/index.js'
 
-import { TextInput } from './TextInput'
+import { TextInput } from './TextInput.js'
 
 export default {
   title: 'Forms/TextInput',

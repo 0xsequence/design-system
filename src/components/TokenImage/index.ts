@@ -1,1 +1,1 @@
-export { TokenImage } from './TokenImage'
+export { TokenImage } from './TokenImage.js'

@@ -1,4 +1,4 @@
-import { capitalize, kebabize } from './string'
+import { capitalize, kebabize } from './string.js'
 
 describe('Utils / String', () => {
   it('should capitalize', () => {

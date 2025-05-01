@@ -1,2 +1,2 @@
-export { Checkbox } from './Checkbox'
-export { ControlledCheckbox } from './ControlledCheckbox'
+export { Checkbox } from './Checkbox.js'
+export { ControlledCheckbox } from './ControlledCheckbox.js'

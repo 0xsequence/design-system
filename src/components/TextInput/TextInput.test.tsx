@@ -1,6 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
-import { TextInput } from './TextInput'
+import { TextInput } from './TextInput.js'
 
 describe('<TextInput />', () => {
   it('renders', () => {

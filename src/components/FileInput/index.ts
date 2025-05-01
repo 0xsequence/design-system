@@ -1,2 +1,2 @@
-export { FileInput } from './FileInput'
-export { ControlledFileInput } from './ControlledFileInput'
+export { FileInput } from './FileInput.js'
+export { ControlledFileInput } from './ControlledFileInput.js'

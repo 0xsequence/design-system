@@ -2,20 +2,19 @@ import * as ToastPrimitive from '@radix-ui/react-toast'
 import { cva } from 'class-variance-authority'
 import { AnimatePresence, motion } from 'motion/react'
 import {
-  ComponentType,
   createContext,
-  SetStateAction,
   useContext,
   useState,
-  Dispatch,
+  type ComponentType,
+  type Dispatch,
+  type SetStateAction,
 } from 'react'
 
-import { CheckmarkIcon, CloseIcon } from '~/icons'
-import { IconProps } from '~/icons/types'
-
-import { Card } from '../Card'
-import { IconButton } from '../IconButton'
-import { Text } from '../Text'
+import { Card } from '~/components/Card/index.js'
+import { IconButton } from '~/components/IconButton/index.js'
+import { Text } from '~/components/Text/index.js'
+import { CheckmarkIcon, CloseIcon } from '~/icons/index.js'
+import { type IconProps } from '~/icons/types.js'
 
 const toastVariants = cva(
   [

@@ -1,1 +1,1 @@
-export { TabbedNav } from './TabbedNav'
+export { TabbedNav } from './TabbedNav.js'

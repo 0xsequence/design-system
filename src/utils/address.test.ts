@@ -1,4 +1,4 @@
-import { compareAddress, truncateAddress } from './address'
+import { compareAddress, truncateAddress } from './address.js'
 
 describe('Utils / Address', () => {
   it('should compare two addresses', () => {

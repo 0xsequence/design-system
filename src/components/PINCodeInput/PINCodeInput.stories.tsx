@@ -1,7 +1,7 @@
-import { StoryObj, Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { PINCodeInput } from './PINCodeInput'
+import { PINCodeInput } from './PINCodeInput.js'
 
 export default {
   title: 'Forms/PINCodeInput',

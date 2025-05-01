@@ -1,8 +1,8 @@
 import { Slot } from '@radix-ui/react-slot'
-import { cva, VariantProps } from 'class-variance-authority'
-import { forwardRef, HTMLAttributes } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { forwardRef, type HTMLAttributes } from 'react'
 
-import { cn } from '~/utils'
+import { cn } from '~/utils/classnames.js'
 
 export const cardVariants = cva(
   ['overflow-hidden', 'rounded-xl', 'p-4', 'w-full'],

@@ -1,16 +1,16 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '~/components/Button'
-import { ControlledCheckbox as Checkbox } from '~/components/Checkbox'
-import { ControlledFileInput as FileInput } from '~/components/FileInput'
-import { ControlledRadioGroup as RadioGroup } from '~/components/RadioGroup'
-import { ControlledSelect as Select } from '~/components/Select'
-import { ControlledSwitch as Switch } from '~/components/Switch'
-import { ControlledTextInput as TextInput } from '~/components/TextInput'
+import { Button } from '~/components/Button/index.js'
+import { ControlledCheckbox as Checkbox } from '~/components/Checkbox/index.js'
+import { ControlledFileInput as FileInput } from '~/components/FileInput/index.js'
+import { ControlledRadioGroup as RadioGroup } from '~/components/RadioGroup/index.js'
+import { ControlledSelect as Select } from '~/components/Select/index.js'
+import { ControlledSwitch as Switch } from '~/components/Switch/index.js'
+import { ControlledTextInput as TextInput } from '~/components/TextInput/index.js'
 
-import { TextArea } from '../TextArea'
+import { TextArea } from '../TextArea/index.js'
 
-import { Form } from './Form'
+import { Form } from './Form.js'
 
 export default {
   title: 'Forms/Form',

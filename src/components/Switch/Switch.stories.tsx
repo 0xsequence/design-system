@@ -1,6 +1,6 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Switch } from './Switch'
+import { Switch } from './Switch.js'
 
 export default {
   title: 'Forms/Switch',

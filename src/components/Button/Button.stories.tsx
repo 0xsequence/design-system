@@ -1,9 +1,9 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Badge } from '~/components/Badge'
-import { ArrowRightIcon, ScanIcon } from '~/icons'
+import { Badge } from '~/components/Badge/index.js'
+import { ArrowRightIcon, ScanIcon } from '~/icons/index.js'
 
-import { Button } from './Button'
+import { Button } from './Button.js'
 
 export default {
   title: 'Components/Button',

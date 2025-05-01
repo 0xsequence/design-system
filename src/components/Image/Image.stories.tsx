@@ -1,6 +1,6 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Image } from './Image'
+import { Image } from './Image.js'
 
 export default {
   title: 'Components/Image',

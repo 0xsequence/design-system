@@ -1,1 +1,1 @@
-export { ModalPrimitive, Modal } from './Modal'
+export { Modal, ModalPrimitive } from './Modal.js'

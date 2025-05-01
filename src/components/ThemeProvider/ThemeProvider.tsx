@@ -1,10 +1,10 @@
 import {
   createContext,
-  PropsWithChildren,
   useContext,
   useEffect,
   useMemo,
   useState,
+  type PropsWithChildren,
 } from 'react'
 
 import {
@@ -12,7 +12,7 @@ import {
   colorSchemes,
   type ColorScheme,
   type ColorTokens,
-} from '~/tokens/color'
+} from '~/tokens/color.js'
 
 export type ThemeOverrides = Partial<ColorTokens>
 

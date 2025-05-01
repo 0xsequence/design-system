@@ -1,1 +1,1 @@
-export { NumericInput } from './NumericInput'
+export { NumericInput } from './NumericInput.js'

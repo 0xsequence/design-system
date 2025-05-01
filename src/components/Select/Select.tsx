@@ -1,12 +1,11 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { forwardRef, ReactNode, Ref } from 'react'
+import { forwardRef, type ReactNode, type Ref } from 'react'
 
-import { Field, FieldProps } from '~/components/Field'
-import { ChevronDownIcon } from '~/icons'
-import { cn } from '~/utils'
-
-import { textVariants } from '../Text'
-import { useTheme } from '../ThemeProvider'
+import { Field, type FieldProps } from '~/components/Field/index.js'
+import { textVariants } from '~/components/Text/index.js'
+import { useTheme } from '~/components/ThemeProvider/index.js'
+import { ChevronDownIcon } from '~/icons/index.js'
+import { cn } from '~/utils/classnames.js'
 
 type SelectOption = {
   className?: string

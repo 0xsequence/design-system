@@ -1,17 +1,16 @@
 import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
-import { cva, VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
-import { HTMLMotionProps, motion } from 'motion/react'
-import { PropsWithChildren, Fragment } from 'react'
+import { motion, type HTMLMotionProps } from 'motion/react'
+import { Fragment, type PropsWithChildren } from 'react'
 
-import { CloseIcon } from '~/icons'
-import { cn } from '~/utils'
-
-import { IconButton } from '../IconButton'
-import { Scroll } from '../Scroll'
-import { Text } from '../Text'
-import { useTheme } from '../ThemeProvider'
+import { IconButton } from '~/components/IconButton/index.js'
+import { Scroll } from '~/components/Scroll/index.js'
+import { Text } from '~/components/Text/index.js'
+import { useTheme } from '~/components/ThemeProvider/index.js'
+import { CloseIcon } from '~/icons/index.js'
+import { cn } from '~/utils/classnames.js'
 
 const modalContentVariants = cva(
   [

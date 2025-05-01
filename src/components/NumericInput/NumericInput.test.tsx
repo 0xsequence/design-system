@@ -1,6 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
-import { NumericInput } from './NumericInput'
+import { NumericInput } from './NumericInput.js'
 
 describe('<NumericInput />', () => {
   it('renders', () => {

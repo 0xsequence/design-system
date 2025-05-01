@@ -1,11 +1,15 @@
-import { cva, VariantProps } from 'class-variance-authority'
-import { ComponentType, MouseEvent, ReactNode, useState } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import {
+  useState,
+  type ComponentType,
+  type MouseEvent,
+  type ReactNode,
+} from 'react'
 
-import { Button } from '~/components/Button'
-import { IconProps } from '~/icons/types'
-import { cn } from '~/utils'
-
-import { textVariants } from '../Text'
+import { Button } from '~/components/Button/index.js'
+import { textVariants } from '~/components/Text/index.js'
+import type { IconProps } from '~/icons/types.js'
+import { cn } from '~/utils/classnames.js'
 
 const tabVariants = cva(['select-none'], {
   variants: {

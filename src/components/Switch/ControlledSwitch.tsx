@@ -1,6 +1,6 @@
-import { Control, Controller } from 'react-hook-form'
+import { Controller, type Control } from 'react-hook-form'
 
-import { Switch, SwitchProps } from './Switch'
+import { Switch, type SwitchProps } from './Switch.js'
 
 type ControlledSwitchProps = SwitchProps & {
   control: Control

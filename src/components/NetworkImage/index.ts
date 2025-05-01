@@ -1,1 +1,1 @@
-export { NetworkImage } from './NetworkImage'
+export { NetworkImage } from './NetworkImage.js'

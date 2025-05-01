@@ -1,9 +1,9 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import {
-  FieldValues,
-  SubmitHandler,
   useForm,
-  UseFormReturn,
+  type FieldValues,
+  type SubmitHandler,
+  type UseFormReturn,
 } from 'react-hook-form'
 
 type FormProps = {

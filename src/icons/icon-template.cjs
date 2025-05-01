@@ -8,12 +8,12 @@ const comments = `
 const template = ({ exports, componentName, jsx }, { tpl }) => {
   return tpl`
   ${comments}
-  import { SVGProps } from 'react'
+  import type { SVGProps } from 'react'
   ${NEWLINE}
-  import { cn } from '~/utils'
+  import { cn } from '~/utils/classnames.js'
   ${NEWLINE}
-  import { iconVariants } from './iconVariants'
-  import { IconProps } from './types'
+  import { iconVariants } from './iconVariants.js'
+  import type { IconProps } from './types.js'
   ${NEWLINE}
   const Svg = (props: SVGProps<SVGSVGElement>) => (
     ${jsx}

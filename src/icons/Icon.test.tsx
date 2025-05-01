@@ -1,8 +1,8 @@
 import { cleanup, render } from '@testing-library/react'
 
-import ScanIcon from './ScanIcon'
+import ScanIcon from './ScanIcon.js'
 
-import * as icons from './index'
+import * as icons from './index.js'
 
 describe('Icons', () => {
   afterEach(cleanup)

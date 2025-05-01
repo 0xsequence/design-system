@@ -1,19 +1,19 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { IconButton } from '~/components/IconButton'
-import { ContextMenuIcon } from '~/icons'
+import { IconButton } from '~/components/IconButton/index.js'
+import { ContextMenuIcon } from '~/icons/index.js'
 
 import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-  DropdownMenuRadioItem,
   DropdownMenuRadioGroup,
-} from './DropdownMenu'
+  DropdownMenuRadioItem,
+  DropdownMenuRoot,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './DropdownMenu.js'
 
 export default {
   title: 'Components/DropdownMenu',

@@ -1,11 +1,11 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { forwardRef } from 'react'
 
-import { CheckmarkIcon } from '~/icons'
-import { cn } from '~/utils'
+import { CheckmarkIcon } from '~/icons/index.js'
+import { cn } from '~/utils/classnames.js'
 
-import { Divider } from '../Divider'
-import { Text } from '../Text'
+import { Divider } from '../Divider/index.js'
+import { Text } from '../Text/index.js'
 
 export { DropdownMenuPrimitive }
 

@@ -2,9 +2,8 @@ import { cva } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
-import { cn } from '~/utils'
-
-import { textVariants } from '../Text'
+import { textVariants } from '~/components/Text/index.js'
+import { cn } from '~/utils/classnames.js'
 
 export const digitText = clsx(
   textVariants({ variant: 'large' }),

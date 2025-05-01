@@ -1,6 +1,6 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Skeleton } from './Skeleton'
+import { Skeleton } from './Skeleton.js'
 
 export default {
   title: 'Components/Skeleton',
