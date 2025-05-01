@@ -1,1 +1,1 @@
-export { GradientAvatar } from './GradientAvatar'
+export { GradientAvatar } from './GradientAvatar.js'

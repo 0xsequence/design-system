@@ -1,1 +1,1 @@
-export * from './StopClickPropagation'
+export { StopClickPropagation } from './StopClickPropagation.js'

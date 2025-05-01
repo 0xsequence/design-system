@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react'
 
-import { Text } from './Text'
+import { Text } from './Text.js'
 
 describe('<Text />', () => {
   afterEach(cleanup)

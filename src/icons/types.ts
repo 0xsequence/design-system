@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority'
 import { ComponentType, SVGProps } from 'react'
 
-import { iconVariants } from './iconVariants'
+import { iconVariants } from './iconVariants.js'
 
 export interface IconProps
   extends SVGProps<SVGSVGElement>,

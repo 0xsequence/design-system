@@ -1,6 +1,6 @@
 import * as SwitchPrimitive from '@radix-ui/react-switch'
 
-import { Field, FieldProps } from '../Field'
+import { Field, type FieldProps } from '~/components/Field/index.js'
 
 export type SwitchProps = FieldProps & SwitchPrimitive.SwitchProps
 

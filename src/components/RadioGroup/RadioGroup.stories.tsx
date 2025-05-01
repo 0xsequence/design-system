@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { RadioGroup } from './RadioGroup'
+import { RadioGroup } from './RadioGroup.js'
 
 export default {
   title: 'Forms/RadioGroup',

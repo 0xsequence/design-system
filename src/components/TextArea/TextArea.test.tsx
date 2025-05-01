@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 
-import { TextArea } from './TextArea'
+import { TextArea } from './TextArea.js'
 
 describe('<TextInput />', () => {
   it('renders', () => {

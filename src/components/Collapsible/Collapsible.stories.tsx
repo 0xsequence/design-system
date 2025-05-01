@@ -1,9 +1,9 @@
 import { StoryObj, Meta } from '@storybook/react'
 import { useEffect, useState } from 'react'
 
-import { Text } from '~/components/Text'
+import { Text } from '~/components/Text/index.js'
 
-import { Collapsible } from './Collapsible'
+import { Collapsible } from './Collapsible.js'
 
 export default {
   title: 'Components/Collapsible',

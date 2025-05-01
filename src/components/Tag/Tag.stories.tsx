@@ -1,8 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { SettingsIcon } from '~/icons'
+import { SettingsIcon } from '~/icons/index.js'
 
-import { Tag } from './Tag'
+import { Tag } from './Tag.js'
 
 export default {
   title: 'Components/Tag',

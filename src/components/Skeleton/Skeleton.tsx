@@ -1,7 +1,7 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { HTMLMotionProps, motion } from 'motion/react'
 
-import { cn } from '~/utils'
+import { cn } from '~/utils/classnames.js'
 
 const skeletonVariants = cva(
   [

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { Tag } from './Tag'
+import { Tag } from './Tag.js'
 
 describe('<Tag />', () => {
   it('renders', () => {

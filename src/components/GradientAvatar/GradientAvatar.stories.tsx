@@ -1,9 +1,9 @@
 import { StoryObj, Meta } from '@storybook/react'
 import { Mnemonic, Address } from 'ox'
 
-import { Text } from '~/components/Text'
+import { Text } from '~/components/Text/index.js'
 
-import { GradientAvatar } from './GradientAvatar'
+import { GradientAvatar } from './GradientAvatar.js'
 
 const mnemonic =
   'bulb cute board file buddy subway memory exercise busy repair foam item'

@@ -1,11 +1,10 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { memo } from 'react'
 
-import { cn } from '~/utils'
-
-import { Image } from '../Image'
-import { NetworkImage } from '../NetworkImage'
-import { Text } from '../Text'
+import { Image } from '~/components/Image/index.js'
+import { NetworkImage } from '~/components/NetworkImage/index.js'
+import { Text } from '~/components/Text/index.js'
+import { cn } from '~/utils/classnames.js'
 
 const NETWORK_IMAGE_SIZE = '40%'
 const NETWORK_IMAGE_OFFSET = '-2%'

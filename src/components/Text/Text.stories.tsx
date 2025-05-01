@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Text } from './Text'
+import { Text } from './Text.js'
 
 export default {
   title: 'Components/Text',

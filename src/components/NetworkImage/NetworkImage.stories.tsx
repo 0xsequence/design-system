@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { NetworkImage } from './NetworkImage'
+import { NetworkImage } from './NetworkImage.js'
 
 export default {
   title: 'Components/NetworkImage',

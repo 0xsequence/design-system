@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react'
 
-import { TokenImage } from './TokenImage'
+import { TokenImage } from './TokenImage.js'
 
 describe('<TokenImage />', () => {
   afterEach(cleanup)

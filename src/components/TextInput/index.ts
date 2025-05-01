@@ -1,3 +1,3 @@
-export type { TextInputProps } from './TextInput'
-export { TextInput } from './TextInput'
-export { ControlledTextInput } from './ControlledTextInput'
+export type { TextInputProps } from './TextInput.js'
+export { TextInput } from './TextInput.js'
+export { ControlledTextInput } from './ControlledTextInput.js'

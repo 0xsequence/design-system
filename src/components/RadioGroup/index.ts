@@ -1,2 +1,2 @@
-export { RadioGroup } from './RadioGroup'
-export { ControlledRadioGroup } from './ControlledRadioGroup'
+export { RadioGroup } from './RadioGroup.js'
+export { ControlledRadioGroup } from './ControlledRadioGroup.js'

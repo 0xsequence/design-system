@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
 
-import { cn } from '~/utils'
+import { cn } from '~/utils/classnames.js'
 
 export const textVariants = cva('', {
   variants: {

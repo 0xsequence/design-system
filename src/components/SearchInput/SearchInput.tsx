@@ -1,8 +1,8 @@
 import { ChangeEvent, forwardRef } from 'react'
 
-import { IconButton } from '~/components/IconButton'
-import { TextInput, TextInputProps } from '~/components/TextInput'
-import { CloseIcon, SearchIcon } from '~/icons'
+import { IconButton } from '~/components/IconButton/index.js'
+import { TextInput, type TextInputProps } from '~/components/TextInput/index.js'
+import { CloseIcon, SearchIcon } from '~/icons/index.js'
 
 export const SearchInput = forwardRef<HTMLInputElement, TextInputProps>(
   (props, ref) => {

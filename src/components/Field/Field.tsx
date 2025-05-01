@@ -1,8 +1,8 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { ReactNode } from 'react'
 
-import { Text } from '~/components/Text'
-import { cn } from '~/utils'
+import { Text } from '~/components/Text/index.js'
+import { cn } from '~/utils/classnames.js'
 
 const fieldVariants = cva('flex', {
   variants: {

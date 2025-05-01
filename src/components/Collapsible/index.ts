@@ -1,1 +1,1 @@
-export { CollapsiblePrimitive, Collapsible } from './Collapsible'
+export { CollapsiblePrimitive, Collapsible } from './Collapsible.js'

@@ -7,7 +7,7 @@ import {
   DropdownMenuRoot,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from './DropdownMenu'
+} from './DropdownMenu.js'
 
 describe('<DropdownMenu />', () => {
   afterEach(cleanup)

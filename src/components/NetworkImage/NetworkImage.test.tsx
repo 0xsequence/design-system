@@ -1,8 +1,8 @@
 import { cleanup, render } from '@testing-library/react'
 
-import { networkImageUrl } from '~/utils'
+import { networkImageUrl } from '~/utils/assets.js'
 
-import { NetworkImage } from './NetworkImage'
+import { NetworkImage } from './NetworkImage.js'
 
 describe('<NetworkImage />', () => {
   afterEach(cleanup)

@@ -1,11 +1,10 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { NetworkImage } from '~/components/NetworkImage'
-import { Text } from '~/components/Text'
+import { Modal } from '~/components/Modal/index.js'
+import { NetworkImage } from '~/components/NetworkImage/index.js'
+import { Text } from '~/components/Text/index.js'
 
-import { Modal } from '../Modal'
-
-import { Select } from './Select'
+import { Select } from './Select.js'
 
 export default {
   title: 'Forms/Select',

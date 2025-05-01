@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { Scroll } from './Scroll'
+import { Scroll } from './Scroll.js'
 
 describe('<Scroll />', () => {
   it('renders', () => {

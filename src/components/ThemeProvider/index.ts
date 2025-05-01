@@ -3,4 +3,4 @@ export {
   useTheme,
   type Theme,
   type ThemeOverrides,
-} from './ThemeProvider'
+} from './ThemeProvider.js'

@@ -1,7 +1,7 @@
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
 
-import { SearchInput } from './SearchInput'
+import { SearchInput } from './SearchInput.js'
 
 export default {
   title: 'Forms/SearchInput',

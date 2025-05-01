@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { TokenImage } from './TokenImage'
+import { TokenImage } from './TokenImage.js'
 
 export default {
   title: 'Components/TokenImage',

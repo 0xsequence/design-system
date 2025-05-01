@@ -1,13 +1,13 @@
 import { ChangeEvent, forwardRef, useRef, useState } from 'react'
 
-import { Field, FieldProps } from '~/components/Field'
-import { IconButton } from '~/components/IconButton'
-import { Text } from '~/components/Text'
-import { useCombinedRefs } from '~/hooks/useCombinedRefs'
-import { CloseIcon } from '~/icons'
-import { cn } from '~/utils'
+import { Field, FieldProps } from '~/components/Field/index.js'
+import { IconButton } from '~/components/IconButton/index.js'
+import { Text } from '~/components/Text/index.js'
+import { useCombinedRefs } from '~/hooks/useCombinedRefs.js'
+import { CloseIcon } from '~/icons/index.js'
+import { cn } from '~/utils/classnames.js'
 
-import { textVariants } from '../Text'
+import { textVariants } from '../Text/index.js'
 
 const MIME_TYPES = {
   png: '.png,image/png',

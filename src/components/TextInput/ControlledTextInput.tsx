@@ -1,6 +1,6 @@
 import { Control, Controller } from 'react-hook-form'
 
-import { TextInput, TextInputProps } from './TextInput'
+import { TextInput, type TextInputProps } from './TextInput.js'
 
 type ControlledTextInputProps = TextInputProps & {
   control: Control

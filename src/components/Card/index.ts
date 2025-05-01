@@ -1,1 +1,1 @@
-export { Card, cardVariants } from './Card'
+export { Card, cardVariants } from './Card.js'

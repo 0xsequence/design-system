@@ -2,9 +2,9 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { cva, VariantProps } from 'class-variance-authority'
 import { forwardRef, Ref } from 'react'
 
-import { Field, FieldProps } from '~/components/Field'
-import { CheckmarkIcon } from '~/icons'
-import { cn } from '~/utils'
+import { Field, FieldProps } from '~/components/Field/index.js'
+import { CheckmarkIcon } from '~/icons/index.js'
+import { cn } from '~/utils/classnames.js'
 
 const checkboxVariants = cva(
   [

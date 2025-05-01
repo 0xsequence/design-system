@@ -1,2 +1,2 @@
-export { Text } from './Text'
-export { textVariants } from './Text'
+export { Text } from './Text.js'
+export { textVariants } from './Text.js'

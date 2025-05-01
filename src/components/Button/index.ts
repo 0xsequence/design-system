@@ -1,1 +1,1 @@
-export { Button, buttonVariants, type ButtonProps } from './Button'
+export { Button, buttonVariants, type ButtonProps } from './Button.js'

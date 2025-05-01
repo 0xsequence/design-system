@@ -12,7 +12,7 @@ import {
   colorSchemes,
   type ColorScheme,
   type ColorTokens,
-} from '~/tokens/color'
+} from '~/tokens/color.js'
 
 export type ThemeOverrides = Partial<ColorTokens>
 

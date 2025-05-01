@@ -9,4 +9,4 @@ export {
   DropdownMenuRoot,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from './DropdownMenu'
+} from './DropdownMenu.js'

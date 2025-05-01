@@ -1,7 +1,7 @@
 import { cleanup, render, screen, fireEvent } from '@testing-library/react'
 import { useState } from 'react'
 
-import { Collapsible } from './Collapsible'
+import { Collapsible } from './Collapsible.js'
 
 const TestComponent = () => {
   const [isOpen, setIsOpen] = useState(false)

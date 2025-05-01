@@ -1,10 +1,10 @@
 import { StoryObj, Meta, StoryFn } from '@storybook/react'
 
-import { IconButton } from '~/components/IconButton'
-import { Text } from '~/components/Text'
-import { ArrowRightIcon } from '~/icons'
+import { IconButton } from '~/components/IconButton/index.js'
+import { Text } from '~/components/Text/index.js'
+import { ArrowRightIcon } from '~/icons/index.js'
 
-import { StopClickPropagation } from './StopClickPropagation'
+import { StopClickPropagation } from './StopClickPropagation.js'
 
 export default {
   title: 'Components/StopClickPropagation',

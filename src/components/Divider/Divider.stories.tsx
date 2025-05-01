@@ -1,6 +1,6 @@
 import { StoryObj } from '@storybook/react'
 
-import { Divider } from './Divider'
+import { Divider } from './Divider.js'
 
 export default {
   title: 'Components/Divider',

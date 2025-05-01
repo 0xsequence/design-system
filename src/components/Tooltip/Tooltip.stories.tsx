@@ -1,10 +1,9 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Button } from '~/components/Button'
+import { Button } from '~/components/Button/index.js'
+import { Modal } from '~/components/Modal/index.js'
 
-import { Modal } from '../Modal'
-
-import { Tooltip } from './Tooltip'
+import { Tooltip } from './Tooltip.js'
 
 export default {
   title: 'Components/Tooltip',

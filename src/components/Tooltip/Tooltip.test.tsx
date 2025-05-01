@@ -1,9 +1,9 @@
 import { cleanup, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { renderWithTheme } from '../ThemeProvider/renderWithTheme'
+import { renderWithTheme } from '~/components/ThemeProvider/renderWithTheme.js'
 
-import { Tooltip } from './Tooltip'
+import { Tooltip } from './Tooltip.js'
 
 describe('<Tooltip />', () => {
   afterEach(cleanup)

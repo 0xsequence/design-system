@@ -1,1 +1,1 @@
-export { Scroll } from './Scroll'
+export { Scroll } from './Scroll.js'

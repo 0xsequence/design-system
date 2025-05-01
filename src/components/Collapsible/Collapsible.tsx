@@ -3,8 +3,8 @@ import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'motion/react'
 import { ReactNode, useState } from 'react'
 
-import { Text } from '~/components/Text'
-import { ChevronDownIcon } from '~/icons'
+import { Text } from '~/components/Text/index.js'
+import { ChevronDownIcon } from '~/icons/index.js'
 
 const COLLAPSED_HEIGHT = '64px'
 

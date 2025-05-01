@@ -1,10 +1,10 @@
 import { StoryObj, StoryFn, Meta } from '@storybook/react'
 import { useState } from 'react'
 
-import { Text } from '~/components/Text'
-import { ProfileIcon, TransactionIcon } from '~/icons'
+import { Text } from '~/components/Text/index.js'
+import { ProfileIcon, TransactionIcon } from '~/icons/index.js'
 
-import { TabbedNav } from './TabbedNav'
+import { TabbedNav } from './TabbedNav.js'
 
 export default {
   title: 'Components/TabbedNav',

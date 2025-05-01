@@ -1,6 +1,6 @@
 import { Control, Controller } from 'react-hook-form'
 
-import { TextArea, TextAreaProps } from './TextArea'
+import { TextArea, type TextAreaProps } from './TextArea.js'
 
 type ControlledTextAreaProps = TextAreaProps & {
   control: Control

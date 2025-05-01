@@ -6,5 +6,5 @@ export {
   TabsContent,
   TabsTrigger,
   TabsList,
-} from './Tabs'
-export type { TabsProps, TabItemProps, TabsHeaderProps } from './Tabs'
+} from './Tabs.js'
+export type { TabsProps, TabItemProps, TabsHeaderProps } from './Tabs.js'

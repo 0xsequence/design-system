@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { cn } from '~/utils'
+import { cn } from '~/utils/classnames.js'
 
 interface StopClickPropagationProps {
   children?: React.ReactNode

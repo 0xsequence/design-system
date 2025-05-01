@@ -1,12 +1,11 @@
 import { Meta } from '@storybook/react'
 
-import { Button } from '~/components/Button'
+import { Button } from '~/components/Button/index.js'
+import { Card } from '~/components/Card/index.js'
+import { Collapsible } from '~/components/Collapsible/index.js'
+import { Text } from '~/components/Text/index.js'
 
-import { Card } from '../Card'
-import { Collapsible } from '../Collapsible'
-import { Text } from '../Text'
-
-import { ThemeProvider, useTheme } from './ThemeProvider'
+import { ThemeProvider, useTheme } from './ThemeProvider.js'
 
 export default {
   title: 'Components/ThemeProvider',
