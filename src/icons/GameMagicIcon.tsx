@@ -4,8 +4,8 @@ import { SVGProps } from 'react'
 
 import { cn } from '~/utils'
 
-import { iconVariants } from './iconVariants'
-import { IconProps } from './types'
+import { iconVariants } from './iconVariants.js'
+import type { IconProps } from './types.js'
 
 const Svg = (props: SVGProps<SVGSVGElement>) => (
   <svg

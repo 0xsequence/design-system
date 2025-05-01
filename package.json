@@ -21,7 +21,7 @@
   "scripts": {
     "start": "pnpm storybook",
     "build": "tsup",
-    "build:icons": "pnpm svgr -d ./src/icons ./public/static/icons --config-file ./svgr.config.json --template ./src/icons/template.cjs",
+    "build:icons": "pnpm svgr --out-dir ./src/icons ./public/static/icons --config-file ./svgr.config.json --template ./src/icons/icon-template.cjs --index-template ./src/icons/index-template.cjs",
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build -o ./docs",
     "test": "vitest run",

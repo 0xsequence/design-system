@@ -12,8 +12,8 @@ const template = ({ exports, componentName, jsx }, { tpl }) => {
   ${NEWLINE}
   import { cn } from '~/utils'
   ${NEWLINE}
-  import { iconVariants } from './iconVariants'
-  import { IconProps } from './types'
+  import { iconVariants } from './iconVariants.js'
+  import type { IconProps } from './types.js'
   ${NEWLINE}
   const Svg = (props: SVGProps<SVGSVGElement>) => (
     ${jsx}
