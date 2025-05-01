@@ -1,4 +1,4 @@
-import { Preview, Decorator } from '@storybook/react'
+import type { Decorator, Preview } from '@storybook/react'
 import React from 'react'
 
 import { ThemeProvider } from '../src/components/ThemeProvider'
