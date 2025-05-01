@@ -2,7 +2,7 @@
 // Run pnpm build:icons to update
 import { SVGProps } from 'react'
 
-import { cn } from '~/utils'
+import { cn } from '~/utils/classnames.js'
 
 import { iconVariants } from './iconVariants.js'
 import type { IconProps } from './types.js'

@@ -10,7 +10,7 @@ const template = ({ exports, componentName, jsx }, { tpl }) => {
   ${comments}
   import { SVGProps } from 'react'
   ${NEWLINE}
-  import { cn } from '~/utils'
+  import { cn } from '~/utils/classnames.js'
   ${NEWLINE}
   import { iconVariants } from './iconVariants.js'
   import type { IconProps } from './types.js'
