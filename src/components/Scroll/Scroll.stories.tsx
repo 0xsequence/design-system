@@ -1,4 +1,4 @@
-import { StoryObj, Meta, StoryFn } from '@storybook/react'
+import type { StoryObj, Meta, StoryFn } from '@storybook/react'
 
 import { Card } from '~/components/Card/index.js'
 import { Text } from '~/components/Text/index.js'

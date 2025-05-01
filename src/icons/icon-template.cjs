@@ -8,7 +8,7 @@ const comments = `
 const template = ({ exports, componentName, jsx }, { tpl }) => {
   return tpl`
   ${comments}
-  import { SVGProps } from 'react'
+  import type { SVGProps } from 'react'
   ${NEWLINE}
   import { cn } from '~/utils/classnames.js'
   ${NEWLINE}

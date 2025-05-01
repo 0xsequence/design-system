@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { StoryObj, Meta } from '@storybook/react'
 import { Mnemonic, Address } from 'ox'
 
 import { Text } from '~/components/Text/index.js'

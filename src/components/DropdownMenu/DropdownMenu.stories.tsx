@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { StoryObj, Meta } from '@storybook/react'
 import { useState } from 'react'
 
 import { IconButton } from '~/components/IconButton/index.js'

@@ -1,5 +1,5 @@
-import { VariantProps } from 'class-variance-authority'
-import { ComponentType, SVGProps } from 'react'
+import type { VariantProps } from 'class-variance-authority'
+import type { ComponentType, SVGProps } from 'react'
 
 import { iconVariants } from './iconVariants.js'
 

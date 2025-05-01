@@ -1,6 +1,6 @@
-import { Control, Controller } from 'react-hook-form'
+import { type Control, Controller } from 'react-hook-form'
 
-import { FileInput, FileInputProps } from './FileInput.js'
+import { FileInput, type FileInputProps } from './FileInput.js'
 
 interface ControlledFileInputProps
   extends Omit<FileInputProps, 'value' | 'onChange'> {

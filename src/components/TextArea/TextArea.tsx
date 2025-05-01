@@ -1,5 +1,5 @@
-import { cva, VariantProps } from 'class-variance-authority'
-import { forwardRef, ReactNode } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { forwardRef, type ReactNode } from 'react'
 
 import { Field, type FieldProps } from '~/components/Field/index.js'
 import { textVariants } from '~/components/Text/index.js'

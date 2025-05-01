@@ -1,4 +1,4 @@
-import { Control, Controller } from 'react-hook-form'
+import { type Control, Controller } from 'react-hook-form'
 
 import { RadioGroup, type RadioGroupProps } from './RadioGroup.js'
 

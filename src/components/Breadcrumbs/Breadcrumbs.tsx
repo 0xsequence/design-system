@@ -1,4 +1,4 @@
-import { HTMLAttributes, JSX, ReactNode } from 'react'
+import type { HTMLAttributes, JSX, ReactNode } from 'react'
 
 import { Divider } from '~/components/Divider/index.js'
 import { Text } from '~/components/Text/index.js'

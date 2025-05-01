@@ -1,4 +1,4 @@
-import { cva, VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { Fragment, memo, useId } from 'react'
 
 import { cn } from '~/utils/classnames.js'

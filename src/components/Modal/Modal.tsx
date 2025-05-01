@@ -1,9 +1,9 @@
 import * as ModalPrimitive from '@radix-ui/react-dialog'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
-import { cva, VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
-import { HTMLMotionProps, motion } from 'motion/react'
-import { PropsWithChildren, Fragment } from 'react'
+import { type HTMLMotionProps, motion } from 'motion/react'
+import { type PropsWithChildren, Fragment } from 'react'
 
 import { IconButton } from '~/components/IconButton/index.js'
 import { Scroll } from '~/components/Scroll/index.js'

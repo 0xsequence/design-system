@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import { Button } from '~/components/Button/index.js'
 import { Card } from '~/components/Card/index.js'

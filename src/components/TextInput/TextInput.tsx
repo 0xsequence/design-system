@@ -1,9 +1,9 @@
 import { cva } from 'class-variance-authority'
-import { ComponentType, forwardRef, ReactNode } from 'react'
+import { forwardRef, type ComponentType, type ReactNode } from 'react'
 
 import { Field, type FieldProps } from '~/components/Field/index.js'
 import { textVariants } from '~/components/Text/index.js'
-import { IconProps } from '~/icons/types.js'
+import type { IconProps } from '~/icons/types.js'
 import { cn } from '~/utils/classnames.js'
 
 const inputVariants = cva(

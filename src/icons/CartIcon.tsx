@@ -1,6 +1,6 @@
 // Auto-generated file created by svgr-cli source /src/icons/template.js
 // Run pnpm build:icons to update
-import { SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
 import { cn } from '~/utils/classnames.js'
 

@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { StoryObj, Meta } from '@storybook/react'
 
 import { SettingsIcon } from '~/icons/index.js'
 

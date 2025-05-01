@@ -1,6 +1,6 @@
-import { Control, Controller } from 'react-hook-form'
+import { type Control, Controller } from 'react-hook-form'
 
-import { Checkbox, CheckboxProps } from './Checkbox.js'
+import { Checkbox, type CheckboxProps } from './Checkbox.js'
 
 type ControlledCheckboxProps = CheckboxProps & {
   control: Control

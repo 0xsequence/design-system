@@ -2,12 +2,12 @@ import * as ToastPrimitive from '@radix-ui/react-toast'
 import { cva } from 'class-variance-authority'
 import { AnimatePresence, motion } from 'motion/react'
 import {
-  ComponentType,
   createContext,
-  SetStateAction,
   useContext,
   useState,
-  Dispatch,
+  type Dispatch,
+  type ComponentType,
+  type SetStateAction,
 } from 'react'
 
 import { Card } from '~/components/Card/index.js'

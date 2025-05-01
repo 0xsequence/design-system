@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/react'
+import type { StoryObj, Meta } from '@storybook/react'
 
 import { Badge } from '~/components/Badge/index.js'
 import { ArrowRightIcon, ScanIcon } from '~/icons/index.js'

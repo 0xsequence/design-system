@@ -1,4 +1,4 @@
-import { Control, Controller } from 'react-hook-form'
+import { type Control, Controller } from 'react-hook-form'
 
 import { TextArea, type TextAreaProps } from './TextArea.js'
 

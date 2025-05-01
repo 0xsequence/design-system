@@ -1,5 +1,5 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { forwardRef, ReactNode, Ref } from 'react'
+import { forwardRef, type ReactNode, type Ref } from 'react'
 
 import { Field, type FieldProps } from '~/components/Field/index.js'
 import { textVariants } from '~/components/Text/index.js'

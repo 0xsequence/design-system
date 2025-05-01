@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/react'
+import type { StoryObj } from '@storybook/react'
 
 import { Divider } from './Divider.js'
 

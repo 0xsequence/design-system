@@ -1,6 +1,6 @@
-import { ChangeEvent, forwardRef, useRef, useState } from 'react'
+import { type ChangeEvent, forwardRef, useRef, useState } from 'react'
 
-import { Field, FieldProps } from '~/components/Field/index.js'
+import { Field, type FieldProps } from '~/components/Field/index.js'
 import { IconButton } from '~/components/IconButton/index.js'
 import { Text } from '~/components/Text/index.js'
 import { useCombinedRefs } from '~/hooks/useCombinedRefs.js'

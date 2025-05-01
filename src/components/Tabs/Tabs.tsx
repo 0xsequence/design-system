@@ -1,5 +1,5 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
-import { ReactNode, useState, ComponentPropsWithoutRef } from 'react'
+import { useState, type ReactNode, type ComponentPropsWithoutRef } from 'react'
 
 import { Text } from '~/components/Text/index.js'
 

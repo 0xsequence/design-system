@@ -1,5 +1,5 @@
-import { cva, VariantProps } from 'class-variance-authority'
-import { HTMLMotionProps, motion } from 'motion/react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { type HTMLMotionProps, motion } from 'motion/react'
 
 import { cn } from '~/utils/classnames.js'
 

@@ -1,5 +1,5 @@
-import { render, RenderOptions } from '@testing-library/react'
-import { ReactElement, ReactNode } from 'react'
+import { render, type RenderOptions } from '@testing-library/react'
+import type { ReactElement, ReactNode } from 'react'
 
 import { ThemeProvider } from './ThemeProvider.js'
 

@@ -1,5 +1,5 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
-import { PropsWithChildren, ReactNode } from 'react'
+import type { PropsWithChildren, ReactNode } from 'react'
 
 import { Text } from '~/components/Text/index.js'
 import { useTheme } from '~/components/ThemeProvider/index.js'

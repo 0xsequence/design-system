@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from '~/components/Button/index.js'
 import { ControlledCheckbox as Checkbox } from '~/components/Checkbox/index.js'

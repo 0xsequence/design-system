@@ -1,4 +1,4 @@
-import { StoryObj, StoryFn, Meta } from '@storybook/react'
+import type { StoryObj, StoryFn, Meta } from '@storybook/react'
 import { useState } from 'react'
 
 import { Text } from '~/components/Text/index.js'

@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef } from 'react'
+import { type ChangeEvent, forwardRef } from 'react'
 
 import { IconButton } from '~/components/IconButton/index.js'
 import { TextInput, type TextInputProps } from '~/components/TextInput/index.js'
