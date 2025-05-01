@@ -1,4 +1,4 @@
-import { type Control, Controller } from 'react-hook-form'
+import { Controller, type Control } from 'react-hook-form'
 
 import { Select, type SelectProps } from './Select.js'
 

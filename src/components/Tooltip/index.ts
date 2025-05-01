@@ -1,1 +1,1 @@
-export { TooltipPrimitive, Tooltip } from './Tooltip.js'
+export { Tooltip, TooltipPrimitive } from './Tooltip.js'

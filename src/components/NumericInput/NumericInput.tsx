@@ -1,4 +1,4 @@
-import { type ChangeEvent, type FocusEvent, forwardRef } from 'react'
+import { forwardRef, type ChangeEvent, type FocusEvent } from 'react'
 
 import { TextInput, type TextInputProps } from '~/components/TextInput/index.js'
 

@@ -1,7 +1,7 @@
 // Tokens
 export {
-  colorSchemes,
   colors,
+  colorSchemes,
   type ColorScheme,
   type ColorTokens,
 } from './tokens/color.js'
@@ -11,23 +11,23 @@ export { Badge } from './components/Badge/index.js'
 export { Breadcrumbs } from './components/Breadcrumbs/index.js'
 export { Button, buttonVariants } from './components/Button/index.js'
 export { Card, cardVariants } from './components/Card/index.js'
-export { ControlledCheckbox, Checkbox } from './components/Checkbox/index.js'
+export { Checkbox, ControlledCheckbox } from './components/Checkbox/index.js'
 export {
-  CollapsiblePrimitive,
   Collapsible,
+  CollapsiblePrimitive,
 } from './components/Collapsible/index.js'
 export { Divider } from './components/Divider/index.js'
 export {
-  DropdownMenuPrimitive,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuPortal,
+  DropdownMenuPrimitive,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuRoot,
-  DropdownMenuTrigger,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from './components/DropdownMenu/index.js'
 export { ControlledFileInput, FileInput } from './components/FileInput/index.js'
 export { Form } from './components/Form/index.js'
@@ -35,12 +35,12 @@ export { Field } from './components/Field/index.js'
 export { GradientAvatar } from './components/GradientAvatar/index.js'
 export { IconButton } from './components/IconButton/index.js'
 export { Image } from './components/Image/index.js'
-export { ModalPrimitive, Modal } from './components/Modal/index.js'
+export { Modal, ModalPrimitive } from './components/Modal/index.js'
 export { NumericInput } from './components/NumericInput/index.js'
 export { PINCodeInput } from './components/PINCodeInput/index.js'
 export {
+  Placeholder, /* deprecated */
   Skeleton,
-  Placeholder /* deprecated */,
 } from './components/Skeleton/index.js'
 export { Progress } from './components/Progress/index.js'
 export {
@@ -55,13 +55,13 @@ export { StopClickPropagation } from './components/StopClickPropagation/index.js
 export { ControlledSwitch, Switch } from './components/Switch/index.js'
 export { TabbedNav } from './components/TabbedNav/index.js'
 export {
-  TabsPrimitive,
   Tabs,
-  TabsHeader,
-  TabsRoot,
-  TabsList,
-  TabsTrigger,
   TabsContent,
+  TabsHeader,
+  TabsList,
+  TabsPrimitive,
+  TabsRoot,
+  TabsTrigger,
 } from './components/Tabs/index.js'
 export { Tag } from './components/Tag/index.js'
 export { Text, textVariants } from './components/Text/index.js'
@@ -76,20 +76,20 @@ export {
 } from './components/ThemeProvider/index.js'
 export { NetworkImage } from './components/NetworkImage/index.js'
 export { TokenImage } from './components/TokenImage/index.js'
-export { TooltipPrimitive, Tooltip } from './components/Tooltip/index.js'
+export { Tooltip, TooltipPrimitive } from './components/Tooltip/index.js'
 export { VisuallyHidden } from './components/VisuallyHidden/index.js'
 
 // Utils
 export { compareAddress, truncateAddress } from './utils/address.js'
 export {
-  replaceSize,
-  tokenImageUrl,
   nativeTokenImageUrl,
   networkImageUrl,
+  replaceSize,
+  tokenImageUrl,
 } from './utils/assets.js'
 export { cn } from './utils/classnames.js'
 export { isTruthy } from './utils/filter.js'
-export { pluralize, capitalize, kebabize } from './utils/string.js'
+export { capitalize, kebabize, pluralize } from './utils/string.js'
 
 // Hooks
 export { useMediaQuery, type BreakpointType } from './hooks/useMediaQuery.js'

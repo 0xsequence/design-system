@@ -1,4 +1,4 @@
-import type { StoryObj, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from '~/components/Button/index.js'
 import { Modal } from '~/components/Modal/index.js'

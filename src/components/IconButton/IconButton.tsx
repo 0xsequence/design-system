@@ -1,5 +1,5 @@
 import type { VariantProps } from 'class-variance-authority'
-import { type ComponentType, forwardRef } from 'react'
+import { forwardRef, type ComponentType } from 'react'
 
 import { Button, buttonVariants } from '~/components/Button/index.js'
 import type { IconProps } from '~/icons/types.js'

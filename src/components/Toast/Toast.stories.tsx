@@ -1,10 +1,10 @@
-import type { StoryObj, Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react'
 
 import { Button } from '~/components/Button/index.js'
 import { Card } from '~/components/Card/index.js'
 import { TransactionIcon } from '~/icons/index.js'
 
-import { Toast, type ToastProps, ToastProvider, useToast } from './Toast.js'
+import { Toast, ToastProvider, useToast, type ToastProps } from './Toast.js'
 
 export default {
   title: 'Components/Toast',

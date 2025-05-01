@@ -1,1 +1,1 @@
-export { PINCodeInput, digitText } from './PINCodeInput.js'
+export { digitText, PINCodeInput } from './PINCodeInput.js'

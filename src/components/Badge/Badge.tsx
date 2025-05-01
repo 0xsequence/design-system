@@ -1,6 +1,6 @@
-import { type VariantProps, cva } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
-import type { ReactNode, HTMLAttributes } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
 import { Text, textVariants } from '~/components/Text/index.js'
 

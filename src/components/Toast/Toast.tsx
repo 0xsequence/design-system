@@ -5,8 +5,8 @@ import {
   createContext,
   useContext,
   useState,
-  type Dispatch,
   type ComponentType,
+  type Dispatch,
   type SetStateAction,
 } from 'react'
 

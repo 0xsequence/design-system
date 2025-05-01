@@ -1,10 +1,10 @@
 export {
-  TabsPrimitive,
   Tabs,
-  TabsHeader,
-  TabsRoot,
   TabsContent,
-  TabsTrigger,
+  TabsHeader,
   TabsList,
+  TabsPrimitive,
+  TabsRoot,
+  TabsTrigger,
 } from './Tabs.js'
-export type { TabsProps, TabItemProps, TabsHeaderProps } from './Tabs.js'
+export type { TabItemProps, TabsHeaderProps, TabsProps } from './Tabs.js'

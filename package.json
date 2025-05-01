@@ -8,6 +8,7 @@
   "types": "dist/index.d.ts",
   "homepage": "https://0xsequence.github.io/design-system/",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"

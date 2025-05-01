@@ -1,4 +1,4 @@
-import type { StoryObj, Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 
