@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.11
+
+### Patch Changes
+
+- Stricter tsconfig rules including NodeNext moduleResolution and verbatimModuleSyntax
+
 ## 2.1.9
 
 ### Patch Changes
