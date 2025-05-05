@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.12
+
+### Patch Changes
+
+- Adding controlled tabbed nav
+
 ## 2.1.11
 
 ### Patch Changes
