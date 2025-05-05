@@ -58,19 +58,33 @@ export type TabOption = {
   onLoad?: () => boolean | Promise<boolean>
 }
 
-interface TabbedNavProps
+interface TabbedNavBaseProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof tabVariants> {
-  defaultValue?: string
   size?: 'xs' | 'sm'
   tabs: TabOption[]
   onTabChange?: (value: string) => void
 }
 
+type TabbedNavProps = TabbedNavBaseProps &
+  (
+    | {
+        /** The controlled value of the tabbed nav. Cannot be used with defaultValue. */
+        value: string
+        defaultValue?: never // Ensure defaultValue is not allowed when value is present
+      }
+    | {
+        /** The initial value of the tabbed nav when uncontrolled. Cannot be used with value. */
+        defaultValue?: string
+        value?: never // Ensure value is not allowed when defaultValue is present
+      }
+  )
+
 export const TabbedNav = (props: TabbedNavProps) => {
   const {
     className,
     defaultValue,
+    value: controlledValue,
     onTabChange,
     size = 'sm',
     tabs,
@@ -79,33 +93,33 @@ export const TabbedNav = (props: TabbedNavProps) => {
   } = props
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [value, setValue] = useState<string>(defaultValue ?? tabs[0].value)
+  const [internalValue, setInternalValue] = useState<string>(
+    defaultValue ?? tabs[0].value
+  )
+
+  const isControlled = controlledValue !== undefined
+  const currentValue = isControlled ? controlledValue : internalValue
 
   const handleTabClick = async (
     event: MouseEvent<HTMLButtonElement>,
-    option: TabOption,
-    tabIndex: number
+    option: TabOption
   ) => {
     event.preventDefault()
 
-    const prevValue = value
-
-    if (value === option.value) {
+    if (currentValue === option.value || isLoading || option.disabled) {
       return
     }
 
-    setValue(tabs[tabIndex].value)
-
     setIsLoading(true)
-
     const loadSucceeded = option.onLoad ? await option.onLoad?.() : true
-
     setIsLoading(false)
 
     if (loadSucceeded) {
       onTabChange?.(option.value)
-    } else {
-      setValue(prevValue)
+
+      if (!isControlled) {
+        setInternalValue(option.value)
+      }
     }
   }
 
@@ -113,7 +127,7 @@ export const TabbedNav = (props: TabbedNavProps) => {
     <nav {...rest}>
       <ul className="flex gap-2 list-none leading-0">
         {tabs.map((option, tabIndex) => {
-          const isActive = option.value === value
+          const isActive = option.value === currentValue
 
           return (
             <li
@@ -139,7 +153,7 @@ export const TabbedNav = (props: TabbedNavProps) => {
                 size={variant === 'line' ? 'xs' : size}
                 shape="circle"
                 onClick={(ev: MouseEvent<HTMLButtonElement>) =>
-                  handleTabClick(ev, option, tabIndex)
+                  handleTabClick(ev, option)
                 }
               />
             </li>

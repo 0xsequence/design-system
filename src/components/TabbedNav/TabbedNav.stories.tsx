@@ -82,20 +82,58 @@ const StoryWrapper: StoryFn<typeof TabbedNav> = args => {
   )
 }
 
-export const Pill: Story = {
+const ControlledStoryWrapper: StoryFn<typeof TabbedNav> = args => {
+  const [value, setValue] = useState<string>(
+    args.value ?? args.defaultValue ?? tabs[0].value
+  )
+
+  const handleTabChange = (newValue: string) => {
+    setValue(newValue)
+  }
+
+  const argsWithoutValue = { ...args, defaultValue: undefined }
+
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="bg-background-secondary p-4 rounded-xl">
+        <TabbedNav
+          {...argsWithoutValue}
+          onTabChange={handleTabChange}
+          value={value}
+        />
+      </div>
+
+      <div className="bg-background-secondary p-4 rounded-xl">
+        <Text variant="normal" color="secondary">
+          {value} content
+        </Text>
+      </div>
+    </div>
+  )
+}
+
+export const PillUncontrolled: Story = {
   render: StoryWrapper,
   args: {
-    defaultValue: 'wallet',
+    defaultValue: 'wallet', // Component manages state initially
     size: 'sm',
     tabs,
   },
 }
 
-export const LineTabs: Story = {
+export const LineUncontrolled: Story = {
   render: StoryWrapper,
   args: {
-    defaultValue: 'wallet',
+    defaultValue: 'history', // Component manages state initially
     variant: 'line',
+    tabs,
+  },
+}
+
+export const Controlled: Story = {
+  render: ControlledStoryWrapper,
+  args: {
+    value: 'simple',
     tabs,
   },
 }
