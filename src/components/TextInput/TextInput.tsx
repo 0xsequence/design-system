@@ -32,6 +32,12 @@ export interface TextInputProps
   name: string
   numeric?: boolean
   controls?: ReactNode
+
+  wrapperClassName?: string
+  iconClassName?: {
+    left?: string
+    right?: string
+  }
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -50,6 +56,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       type = 'text',
       numeric = false,
       className,
+      wrapperClassName,
+      iconClassName,
       trailDescription,
       error,
       ...rest
@@ -77,10 +85,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 : 'ring-border-normal focus-within:ring-border-focus',
               {
                 'cursor-default opacity-50': disabled,
-              }
+              },
+              wrapperClassName
             )}
           >
-            {LeftIcon && <LeftIcon size="sm" />}
+            {LeftIcon && (
+              <LeftIcon size="sm" className={iconClassName?.left} />
+            )}
 
             <input
               autoComplete={autoComplete}
@@ -94,7 +105,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               {...rest}
             />
 
-            {RightIcon && <RightIcon size="sm" />}
+            {RightIcon && (
+              <RightIcon size="sm" className={iconClassName?.right} />
+            )}
             {controls}
           </div>
         </div>

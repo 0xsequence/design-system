@@ -4,7 +4,11 @@ import { IconButton } from '~/components/IconButton/index.js'
 import { TextInput, type TextInputProps } from '~/components/TextInput/index.js'
 import { CloseIcon, SearchIcon } from '~/icons/index.js'
 
-export const SearchInput = forwardRef<HTMLInputElement, TextInputProps>(
+interface SearchInputProps extends TextInputProps {
+  clearButtonClassName?: string
+}
+
+export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
   (props, ref) => {
     const {
       onChange,
@@ -12,6 +16,7 @@ export const SearchInput = forwardRef<HTMLInputElement, TextInputProps>(
       name = 'search',
       value,
       controls,
+      clearButtonClassName,
       ...rest
     } = props
 
@@ -19,6 +24,7 @@ export const SearchInput = forwardRef<HTMLInputElement, TextInputProps>(
       <IconButton
         icon={CloseIcon}
         size="xs"
+        className={clearButtonClassName}
         onClick={() =>
           onChange?.({
             target: { value: '' },
