@@ -62,6 +62,7 @@ export interface ModalProps extends VariantProps<typeof modalContentVariants> {
     [key: string]: unknown
   }
   title?: string
+  closeButtonSize?: 'lg' | 'md' | 'sm' | 'xs'
 }
 
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
@@ -80,6 +81,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     contentProps,
     rootProps = {},
     title = 'Modal dialog',
+    closeButtonSize = 'xs',
   } = props
 
   const { container } = useTheme()
@@ -167,7 +169,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 <ModalPrimitive.Close asChild>
                   <IconButton
                     icon={CloseIcon}
-                    size="xs"
+                    size={closeButtonSize}
                     className="absolute right-4 top-4 z-20 backdrop-blur-xs"
                     aria-label="Close"
                   />
