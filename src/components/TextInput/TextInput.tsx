@@ -32,6 +32,7 @@ export interface TextInputProps
   name: string
   numeric?: boolean
   controls?: ReactNode
+  height?: string
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -47,6 +48,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       rightIcon: RightIcon,
       name,
       controls,
+      height = '52px',
       type = 'text',
       numeric = false,
       className,
@@ -69,8 +71,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className="w-full">
           <div
             className={cn(
-              'inline-flex items-center bg-transparent text-primary min-w-full px-4 gap-2 rounded-xl',
-              'h-[52px] cursor-text',
+              'inline-flex items-center bg-transparent text-primary min-w-full px-4 gap-2 rounded-xl cursor-text',
               'ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
               error
                 ? 'ring-border-error focus-within:ring-border-error'
@@ -79,6 +80,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 'cursor-default opacity-50': disabled,
               }
             )}
+            style={{ height }}
           >
             {LeftIcon && <LeftIcon size="sm" />}
 
