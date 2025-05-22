@@ -51,6 +51,7 @@ export interface ModalProps extends VariantProps<typeof modalContentVariants> {
   footer?: React.ReactNode
   scroll?: boolean
   isDismissible?: boolean
+  showCloseButton?: boolean
   onClose?: () => void
 
   backdropColor?: string
@@ -74,6 +75,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     children,
     disableAnimation = false,
     isDismissible = true,
+    showCloseButton = true,
     onClose,
     scroll = true,
     size = 'lg',
@@ -165,7 +167,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 {children}
               </ContentWrapper>
               {footer && <ModalFooter>{footer}</ModalFooter>}
-              {isDismissible && (
+              {isDismissible && showCloseButton && (
                 <ModalPrimitive.Close asChild>
                   <IconButton
                     icon={CloseIcon}
