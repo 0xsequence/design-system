@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.13
+
+### Patch Changes
+
+- Fixing Fileinput ellipsis
+
 ## 2.1.12
 
 ### Patch Changes
