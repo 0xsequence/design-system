@@ -1,4 +1,4 @@
-import type { Decorator, Preview } from '@storybook/react'
+import type { Decorator, Preview } from '@storybook/react-vite'
 import React from 'react'
 
 import { ThemeProvider } from '../src/components/ThemeProvider'

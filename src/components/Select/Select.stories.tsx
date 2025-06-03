@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Modal } from '~/components/Modal/index.js'
 import { NetworkImage } from '~/components/NetworkImage/index.js'
