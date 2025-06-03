@@ -1,8 +1,0 @@
-import{j as o}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as c}from"./index-DR1jFbPG.js";import"./index-Bz2bjhbK.js";import{a as l}from"./color-BQU-ub23.js";import{M as m,C as s,a as n}from"./DocsRenderer-CFRXHY34-3IYVAMVF.js";import"./index-CFahbR6w.js";import"./preview-DJRmSktV.js";import"./iframe-DjLbw_mc.js";import"./index-X7hctYO5.js";import"./index-CHC4nfYS.js";import"./index-chp1rBSu.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./react-18-B59ZJtO7.js";function i(t){const e={code:"code",h1:"h1",h3:"h3",p:"p",...c(),...t.components};return o.jsxs(o.Fragment,{children:[o.jsx(m,{title:"Design System/Colors"}),`
-`,o.jsx(e.h1,{id:"colors",children:"Colors"}),`
-`,o.jsx(e.p,{children:"Color schemes, scales, accents, and gradients."}),`
-`,o.jsx(e.h3,{id:"base-colors",children:"Base Colors"}),`
-`,o.jsx(s,{children:o.jsx(n,{title:"Base",subtitle:"--seq-color-[name]",colors:{black:"#000000",white:"#ffffff"}})}),`
-`,o.jsx(e.h3,{id:"semantic-colors",children:"Semantic Colors"}),`
-`,o.jsxs(e.p,{children:["Semantic colors point to color palettes and are used to give a name to a color that is used in a specific context. For example, ",o.jsx(e.code,{children:"primary"})," is a semantic color that points to a color in the ",o.jsx(e.code,{children:"brand"})," palette. This way, if the brand color changes, the ",o.jsx(e.code,{children:"primary"})," color will change as well."]}),`
-`,o.jsx(s,{children:Object.entries(l.dark).map(([r,a])=>o.jsx(n,{title:r,subtitle:`--seq-color-${r}`,colors:{[r]:a}},r))})]})}function X(t={}){const{wrapper:e}={...c(),...t.components};return e?o.jsx(e,{...t,children:o.jsx(i,{...t})}):i(t)}export{X as default};
