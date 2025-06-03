@@ -100,7 +100,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
           <div
             className={cn(
               textVariants({ variant: 'normal' }),
-              'inline-flex items-center flex-row justify-start min-w-full p-4 relative h-[52px]',
+              'inline-flex items-center flex-row justify-start w-[200px] min-w-full p-4 relative h-[52px]',
               'border border-dashed rounded-xl',
               '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
               'focus-within:opacity-100 focus-within:ring-2 focus-within:ring-inset focus-within:border-transparent',
@@ -114,13 +114,17 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
           >
             {fileData ? (
               <div className="flex flex-row gap-2 items-center min-w-0">
-                <Text ellipsis>{fileData.name}</Text>
+                <Text ellipsis asChild>
+                  <p>{fileData.name}</p>
+                </Text>
                 <Text color="muted" variant="xsmall" nowrap>
                   {fileData.size.toFixed(2)} kb
                 </Text>
               </div>
             ) : (
-              <Text ellipsis>{placeholder}</Text>
+              <Text ellipsis asChild>
+                <p>{placeholder}</p>
+              </Text>
             )}
 
             <input
@@ -137,7 +141,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 
             {fileData && (
               <IconButton
-                className="cursor-pointer z-10"
+                className="cursor-pointer z-10 ml-1"
                 icon={CloseIcon}
                 size="xs"
                 onClick={ev => {
