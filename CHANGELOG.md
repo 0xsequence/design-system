@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.14
+
+### Patch Changes
+
+- Updating asset version
+
 ## 2.1.13
 
 ### Patch Changes
