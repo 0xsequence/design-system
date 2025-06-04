@@ -1,7 +1,11 @@
 import type { VariantProps } from 'class-variance-authority'
 import { forwardRef, type ComponentType } from 'react'
 
-import { Button, buttonVariants } from '~/components/Button/index.js'
+import {
+  Button,
+  type ButtonProps,
+  buttonVariants,
+} from '~/components/Button/index.js'
 import type { IconProps } from '~/icons/types.js'
 
 export interface IconButtonProps
@@ -9,7 +13,8 @@ export interface IconButtonProps
   asChild?: boolean
   disabled?: boolean
   pending?: boolean
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  shape?: ButtonProps['shape']
+  size?: ButtonProps['size']
   variant?: VariantProps<typeof buttonVariants>['variant']
   icon: ComponentType<IconProps>
   children?: React.ReactNode
