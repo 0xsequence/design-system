@@ -39,7 +39,7 @@ export { Modal, ModalPrimitive } from './components/Modal/index.js'
 export { NumericInput } from './components/NumericInput/index.js'
 export { PINCodeInput } from './components/PINCodeInput/index.js'
 export {
-  Placeholder, /* deprecated */
+  Placeholder /* deprecated */,
   Skeleton,
 } from './components/Skeleton/index.js'
 export { Progress } from './components/Progress/index.js'
@@ -64,7 +64,7 @@ export {
   TabsTrigger,
 } from './components/Tabs/index.js'
 export { Tag } from './components/Tag/index.js'
-export { Text, textVariants } from './components/Text/index.js'
+export { Text, textVariants, type TextProps } from './components/Text/index.js'
 export { Toast, ToastProvider, useToast } from './components/Toast/index.js'
 export { ControlledTextArea, TextArea } from './components/TextArea/index.js'
 export { ControlledTextInput, TextInput } from './components/TextInput/index.js'
