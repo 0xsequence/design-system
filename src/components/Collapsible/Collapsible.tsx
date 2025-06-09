@@ -1,4 +1,5 @@
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState, type ReactNode } from 'react'
@@ -8,13 +9,33 @@ import { ChevronDownIcon } from '~/icons/index.js'
 
 const COLLAPSED_HEIGHT = '64px'
 
-interface CollapsibleProps extends CollapsiblePrimitive.CollapsibleProps {
+const collapsibleVariants = cva(
+  [
+    'min-h-[64px] rounded-xl relative overflow-hidden w-full ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:[&:has(:focus-visible)]:ring-border-focus',
+  ],
+  {
+    variants: {
+      variant: {
+        default: 'bg-background-secondary',
+        outlined: 'bg-transparent ring-1 ring-border-normal ',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+)
+
+interface CollapsibleProps
+  extends CollapsiblePrimitive.CollapsibleProps,
+    VariantProps<typeof collapsibleVariants> {
   label: ReactNode
 }
 
 export const Collapsible = (props: CollapsibleProps) => {
   const {
     className,
+    variant,
     children,
     defaultOpen,
     open,
@@ -49,15 +70,26 @@ export const Collapsible = (props: CollapsibleProps) => {
     >
       <motion.div
         className={clsx(
-          'min-h-[64px] rounded-xl bg-background-secondary relative overflow-hidden w-full ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-border-focus',
+          collapsibleVariants({ variant }),
+
           className
         )}
         initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
         animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
         transition={{ ease: 'easeOut', duration: 0.3 }}
       >
-        <CollapsiblePrimitive.Trigger className="flex items-center bg-transparent p-4 w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden">
-          <Text variant="normal" fontWeight="bold" color="secondary" asChild>
+        <CollapsiblePrimitive.Trigger
+          className={clsx(
+            'flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden'
+          )}
+        >
+          <Text
+            variant="normal"
+            fontWeight="bold"
+            color="secondary"
+            asChild
+            ellipsis
+          >
             <div>{label}</div>
           </Text>
           <motion.div
