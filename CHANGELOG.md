@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.15
+
+### Patch Changes
+
+- Added outlined variant to Collapsible
+
 ## 2.1.14
 
 ### Patch Changes
