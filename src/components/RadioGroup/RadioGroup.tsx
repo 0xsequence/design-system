@@ -7,7 +7,7 @@ import { cn } from '~/utils/classnames.js'
 
 const radioOptionVariants = cva(
   [
-    'bg-transparent rounded-full p-0',
+    'bg-background-primary rounded-full p-0',
     'cursor-pointer hover:opacity-80 disabled:cursor-default disabled:opacity-50',
     'outline-hidden ring-inset ring-1 ring-border-focus focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
