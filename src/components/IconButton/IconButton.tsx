@@ -3,8 +3,8 @@ import { forwardRef, type ComponentType } from 'react'
 
 import {
   Button,
-  type ButtonProps,
   buttonVariants,
+  type ButtonProps,
 } from '~/components/Button/index.js'
 import type { IconProps } from '~/icons/types.js'
 

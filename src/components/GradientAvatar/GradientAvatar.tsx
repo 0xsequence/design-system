@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { Fragment, memo, useId } from 'react'
+import { memo, useId } from 'react'
 
 import { cn } from '~/utils/classnames.js'
 
@@ -26,18 +26,31 @@ const avatarVariants = cva(['shrink-0 rounded-full overflow-hidden'], {
 
 interface GradientAvatarProps extends VariantProps<typeof avatarVariants> {
   address: string
-  initials?: string
-  complexity?: number
   className?: string
 }
 
 interface HashState {
-  a: number
-  b: number
-  c: number
-  x: number
-  y: number
+  a: number // color stop a
+  b: number // color stop b
+  c: number // color stop c
+  x: number // x position
+  y: number // y position
+  r: number // radius
+}
+
+interface Gradient {
+  id: string
+  stopColor0: string
+  stopColor1: string
+  cx: number
+  cy: number
   r: number
+}
+
+interface Gradients {
+  background: Gradient
+  primary: Gradient
+  secondary: Gradient
 }
 
 // const clamp = (value: number, min: number, max: number) =>
@@ -70,7 +83,9 @@ const cyrb53 = (str: string, seed: number = 0): number => {
   return 4294967296 * (2097151 & h2) + (h1 >>> 0)
 }
 
-const createGradient = (a: number, b: number, c: number) => {
+const createId = (name: string, id: string) => `${prefix}${name}${id}`
+
+const createColors = (a: number, b: number, c: number) => {
   const hueA = a % 360
   const hueB = (a + 120) % 360
   const hueC = c % 360
@@ -82,38 +97,58 @@ const createGradient = (a: number, b: number, c: number) => {
   }
 }
 
-const createGradients = (address: string, complexity: number) => {
-  const hashes: HashState[] = []
-  for (let i = 0; i < complexity; i++) {
-    const offset = i * 6
-
-    hashes.push({
-      a: cyrb53(address + 'a', offset),
-      b: cyrb53(address + 'b', offset + 1),
-      c: cyrb53(address + 'c', offset + 2),
-      x: cyrb53(address + 'd', offset + 3),
-      y: cyrb53(address + 'e', offset + 4),
-      r: cyrb53(address + 'f', offset + 5),
-    })
+const createGradients = (id: string, address: string): Gradients => {
+  const hash: HashState = {
+    a: cyrb53(address + 'a', 0),
+    b: cyrb53(address + 'b', 1),
+    c: cyrb53(address + 'c', 2),
+    x: cyrb53(address + 'd', 3),
+    y: cyrb53(address + 'e', 4),
+    r: cyrb53(address + 'f', 5),
   }
 
-  return hashes.map((hash, idx) => {
-    const r = SIZE / 10 + scaledMod(hash.r, (MOD * 1.5) / (idx + 1))
+  const colors = createColors(hash.a, hash.b, hash.c)
 
-    return {
-      ...createGradient(hash.a, hash.b, hash.c),
-      x: scaledMod(hash.x), //clampGradientPosition(hash.x % SIZE, -r / 3),
-      y: scaledMod(hash.y), //clampGradientPosition(hash.y % SIZE, -r / 3),
+  const cx = scaledMod(hash.x)
+  const cy = scaledMod(hash.y)
+  const r = SIZE / 10 + scaledMod(hash.r, MOD * 1.5)
+
+  return {
+    background: {
+      id: createId('background', id),
+      stopColor0: colors.c,
+      stopColor1: colors.a,
+      cx,
+      cy,
       r,
-    }
-  })
+    },
+
+    primary: {
+      id: createId('primary', id),
+      stopColor0: colors.a,
+      stopColor1: colors.b,
+      cx,
+      cy,
+      r,
+    },
+
+    secondary: {
+      id: createId('secondary', id),
+      stopColor0: colors.c,
+      stopColor1: colors.b,
+      cx: cy,
+      cy: cx,
+      r: r / 2,
+    },
+  }
 }
 
 export const GradientAvatar = memo((props: GradientAvatarProps) => {
-  const { className, address, size = 'md', complexity = 1, ...rest } = props
-  const gradients = createGradients(address, complexity)
-
+  const { className, address, size = 'md', ...rest } = props
   const id = useId()
+  const gradients = createGradients(id, address)
+
+  const getId = (name: string) => createId(name, id)
 
   return (
     <svg
@@ -124,12 +159,12 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
       {...rest}
     >
       <defs>
-        <clipPath id={`${prefix}circle-clip${id}`}>
+        <clipPath id={getId('circle-clip')}>
           <circle cx={RADIUS} cy={RADIUS} r={RADIUS} />
         </clipPath>
 
         <filter
-          id={`${prefix}blur-xs${id}`}
+          id={getId('blur-xs')}
           x="-10%"
           y="-10%"
           width="120%"
@@ -151,71 +186,49 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
         </filter>
 
         <linearGradient
-          id={`${prefix}background${id}`}
+          id={gradients.background.id}
           x1="0"
           y1="0"
           x2="1"
           y2="1"
         >
-          <stop offset="0" stopColor={gradients[0].c} />
-          <stop offset="1" stopColor={gradients[0].a} />
+          <stop offset="0" stopColor={gradients.background.stopColor0} />
+          <stop offset="1" stopColor={gradients.background.stopColor1} />
         </linearGradient>
 
-        {gradients.map((gradient, idx) => (
-          <Fragment key={idx}>
-            <radialGradient id={`${prefix}primary${id}${idx}`}>
-              <stop offset="0" stopColor={gradient.a} />
-              <stop offset="1" stopColor={gradient.b} />
-            </radialGradient>
+        <radialGradient id={gradients.primary.id}>
+          <stop offset="0" stopColor={gradients.primary.stopColor0} />
+          <stop offset="1" stopColor={gradients.primary.stopColor1} />
+        </radialGradient>
 
-            <radialGradient id={`${prefix}secondary${id}${idx}`}>
-              <stop offset="0" stopColor={gradient.c} />
-              <stop offset="1" stopColor={gradient.b} />
-            </radialGradient>
-          </Fragment>
-        ))}
+        <radialGradient id={gradients.secondary.id}>
+          <stop offset="0" stopColor={gradients.secondary.stopColor0} />
+          <stop offset="1" stopColor={gradients.secondary.stopColor1} />
+        </radialGradient>
       </defs>
 
-      <g clipPath={`url(#${prefix}circle-clip${id})`}>
+      <g clipPath={`url(#${getId('circle-clip')})`}>
+        {/* Background */}
         <rect
           width="100%"
           height="100%"
-          fill={`url(#${prefix}background${id})`}
+          fill={`url(#${gradients.background.id})`}
         />
 
-        <g filter={`url(#${prefix}blur-xs${id})`}>
-          {gradients.map((gradient, idx) => (
-            <Fragment key={idx}>
-              <circle
-                fill={`url(#${prefix}primary${id}${idx})`}
-                cx={gradient.x}
-                cy={gradient.y}
-                r={gradient.r}
-              />
-              <circle
-                fill={`url(#${prefix}secondary${id}${idx})`}
-                cx={gradient.y}
-                cy={gradient.x}
-                r={gradient.r / 2}
-              />
-            </Fragment>
-          ))}
+        <g filter={`url(#${getId('blur-xs')})`}>
+          <circle
+            fill={`url(#${gradients.primary.id})`}
+            cx={gradients.primary.cx}
+            cy={gradients.primary.cy}
+            r={gradients.primary.r}
+          />
+          <circle
+            fill={`url(#${gradients.secondary.id})`}
+            cx={gradients.secondary.cx}
+            cy={gradients.secondary.cy}
+            r={gradients.secondary.r}
+          />
         </g>
-
-        {/* {initials && (
-          <text
-            x="50%"
-            y="50%"
-            alignmentBaseline="central"
-            dominantBaseline="central"
-            textAnchor="middle"
-            fill="#fff"
-            fontFamily="sans-serif"
-            fontSize={(size * 0.9) / text.length}
-          >
-            {initials}
-          </text>
-        )} */}
       </g>
     </svg>
   )
