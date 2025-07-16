@@ -85,15 +85,15 @@ const cyrb53 = (str: string, seed: number = 0): number => {
 
 const createId = (name: string, id: string) => `${prefix}${name}${id}`
 
-const createColors = (a: number, b: number, c: number) => {
+const createHues = (a: number, b: number, c: number) => {
   const hueA = a % 360
   const hueB = (a + 120) % 360
   const hueC = c % 360
 
   return {
-    a: `hsl(${hueA}deg 100% 40%)`,
-    b: `hsl(${hueB}deg 100% 50%)`,
-    c: `hsl(${hueC}deg 100% 50%)`,
+    hueA,
+    hueB,
+    hueC,
   }
 }
 
@@ -107,7 +107,7 @@ const createGradients = (id: string, address: string): Gradients => {
     r: cyrb53(address + 'f', 5),
   }
 
-  const colors = createColors(hash.a, hash.b, hash.c)
+  const { hueA, hueB, hueC } = createHues(hash.a, hash.b, hash.c)
 
   const cx = scaledMod(hash.x)
   const cy = scaledMod(hash.y)
@@ -116,8 +116,8 @@ const createGradients = (id: string, address: string): Gradients => {
   return {
     background: {
       id: createId('background', id),
-      stopColor0: colors.c,
-      stopColor1: colors.a,
+      stopColor0: `hsl(${hueC}deg 100% 50% / 1)`,
+      stopColor1: `hsl(${hueA}deg 100% 50% / 1)`,
       cx,
       cy,
       r,
@@ -125,8 +125,8 @@ const createGradients = (id: string, address: string): Gradients => {
 
     primary: {
       id: createId('primary', id),
-      stopColor0: colors.a,
-      stopColor1: colors.b,
+      stopColor0: `hsl(${hueA}deg 100% 50% / 1)`,
+      stopColor1: `hsl(${hueB}deg 100% 50% / 1)`,
       cx,
       cy,
       r,
@@ -134,8 +134,8 @@ const createGradients = (id: string, address: string): Gradients => {
 
     secondary: {
       id: createId('secondary', id),
-      stopColor0: colors.c,
-      stopColor1: colors.b,
+      stopColor0: `hsl(${hueC}deg 100% 50% / 1)`,
+      stopColor1: `hsl(${hueB}deg 100% 50% / 1)`,
       cx: cy,
       cy: cx,
       r: r / 2,
@@ -208,7 +208,6 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
       </defs>
 
       <g clipPath={`url(#${getId('circle-clip')})`}>
-        {/* Background */}
         <rect
           width="100%"
           height="100%"
