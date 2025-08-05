@@ -146,7 +146,7 @@ const createGradients = (id: string, address: string): Gradients => {
 export const GradientAvatar = memo((props: GradientAvatarProps) => {
   const { className, address, size = 'md', ...rest } = props
   const id = useId()
-  const gradients = createGradients(id, address)
+  const gradients = createGradients(id, address.toLowerCase())
 
   const getId = (name: string) => createId(name, id)
 
