@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.16
+
+### Patch Changes
+
+- Fixing GradiantAvatar normalization and Image fade in
+
 ## 2.1.15
 
 ### Patch Changes
