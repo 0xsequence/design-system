@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.1.17
+
+### Patch Changes
+
+- Removing deprecated disableAnimation on Image components
+
 ## 2.1.16
 
 ### Patch Changes
