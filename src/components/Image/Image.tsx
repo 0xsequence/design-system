@@ -2,7 +2,6 @@ import { motion, type HTMLMotionProps } from 'motion/react'
 import { useState, type SyntheticEvent } from 'react'
 
 interface ImageProps extends HTMLMotionProps<'img'> {
-  disableAnimation?: boolean /* @deprcated: Use fadeIn instead */
   fadeIn?: boolean
 }
 

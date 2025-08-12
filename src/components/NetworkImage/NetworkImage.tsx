@@ -32,19 +32,11 @@ interface NetworkImageProps
     VariantProps<typeof networkImageVariants> {
   chainId: number
   src?: string
-  disableAnimation?: boolean
+  fadeIn?: boolean
 }
 
 export const NetworkImage = memo((props: NetworkImageProps) => {
-  const {
-    chainId,
-    className,
-    disableAnimation = false,
-    style,
-    src,
-    size = 'md',
-    ...rest
-  } = props
+  const { chainId, className, fadeIn, style, src, size = 'md', ...rest } = props
 
   const logoURI = src || replaceSize(networkImageUrl(chainId), size!)
 
@@ -56,7 +48,7 @@ export const NetworkImage = memo((props: NetworkImageProps) => {
     >
       <Image
         className="max-w-full max-h-full object-cover w-full"
-        disableAnimation={disableAnimation}
+        fadeIn={fadeIn}
         src={logoURI}
       />
     </div>

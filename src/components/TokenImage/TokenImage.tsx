@@ -33,21 +33,21 @@ const maskClass =
 interface TokenImageProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof tokenImageVariants> {
-  disableAnimation?: boolean
   src?: string
   symbol?: string
   withNetwork?: number
+  fadeIn?: boolean
 }
 
 export const TokenImage = memo((props: TokenImageProps) => {
   const {
     className,
-    disableAnimation = false,
     style,
     src,
     symbol,
     size = 'md',
     withNetwork,
+    fadeIn,
     ...rest
   } = props
 
@@ -63,7 +63,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
             'rounded-full max-w-full max-h-full object-cover w-full overflow-hidden',
             withNetwork && maskClass
           )}
-          disableAnimation={disableAnimation}
+          fadeIn={fadeIn}
           src={src}
         />
       ) : (
@@ -84,7 +84,7 @@ export const TokenImage = memo((props: TokenImageProps) => {
         <NetworkImage
           chainId={withNetwork}
           className="absolute z-1"
-          disableAnimation={disableAnimation}
+          fadeIn={fadeIn}
           style={{
             width: NETWORK_IMAGE_SIZE,
             height: NETWORK_IMAGE_SIZE,
