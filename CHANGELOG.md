@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.2.0
+
+### Minor Changes
+
+- Updating ThemeProvider to accept light ahd dark mode theme color overrides
+
 ## 2.1.17
 
 ### Patch Changes
