@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.2.1
+
+### Patch Changes
+
+- Fix
+
 ## 2.2.0
 
 ### Minor Changes
