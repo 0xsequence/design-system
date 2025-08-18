@@ -2,5 +2,5 @@ export {
   ThemeProvider,
   useTheme,
   type Theme,
-  type ThemeOverrides,
+  type ThemeColors,
 } from './ThemeProvider.js'

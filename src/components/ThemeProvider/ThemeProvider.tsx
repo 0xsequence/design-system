@@ -14,9 +14,14 @@ import {
   type ColorTokens,
 } from '~/tokens/color.js'
 
-export type ThemeOverrides = Partial<ColorTokens>
+export type Theme = ColorScheme
+export type ThemeColors = ColorTokens
 
-export type Theme = ColorScheme | ThemeOverrides
+type CustomThemes = {
+  defaults?: Partial<ThemeColors>
+  light?: Partial<ThemeColors>
+  dark?: Partial<ThemeColors>
+}
 
 const DEFAULT_THEME = 'dark'
 const THEME_ATTR = 'data-theme'
@@ -24,22 +29,21 @@ const STORAGE_KEY = '@sequence.theme'
 
 interface ThemeContextValue {
   theme: Theme
+  colors: ThemeColors
   container?: HTMLElement
   setTheme: (mode: Theme) => void
 }
 
 interface ThemeProviderProps {
   theme?: Theme
+  customThemes?: CustomThemes
   root?: string | HTMLElement
   scope?: string
   prefersColorScheme?: boolean
 }
 
-const isColorScheme = (theme: any): theme is ColorScheme =>
+const isTheme = (theme: any): theme is Theme =>
   typeof theme === 'string' && colorSchemes.includes(theme as any)
-
-const isThemeOverrides = (theme: any): theme is ThemeOverrides =>
-  typeof theme === 'object' && theme !== null && !Array.isArray(theme)
 
 const getStorageKey = (scope?: string) =>
   scope ? `${STORAGE_KEY}.${scope}` : STORAGE_KEY
@@ -49,20 +53,20 @@ const toKebabCase = (str: string) =>
 
 const toCSSVar = (key: string) => `--seq-color-${toKebabCase(key)}`
 
-const colorVars = (Object.keys(colors.dark) as string[]).map(key =>
+const themeVarNames = (Object.keys(colors.dark) as string[]).map(key =>
   toCSSVar(key)
 )
 
 const clearThemeVars = (element: HTMLElement) => {
   // Clear each color token CSS variable
-  colorVars.forEach(colorVar => {
-    element.style.removeProperty(colorVar)
+  themeVarNames.forEach(name => {
+    element.style.removeProperty(name)
   })
 }
 
-const setThemeVars = (element: HTMLElement, vars: ThemeOverrides) => {
+const setThemeVars = (element: HTMLElement, props: Partial<ColorTokens>) => {
   // Set each color token as a CSS variable
-  Object.entries(vars).forEach(([key, value]) => {
+  Object.entries(props).forEach(([key, value]) => {
     if (value) {
       element.style.setProperty(toCSSVar(key), value)
     }
@@ -74,7 +78,7 @@ const getPersistedTheme = (scope?: string) => {
     getStorageKey(scope)
   ) as Theme | null
 
-  if (persistedTheme && isColorScheme(persistedTheme)) {
+  if (persistedTheme && isTheme(persistedTheme)) {
     return persistedTheme
   }
 
@@ -128,14 +132,14 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     if (rootElement) {
       clearThemeVars(rootElement)
 
-      if (isColorScheme(theme)) {
-        rootElement.setAttribute(THEME_ATTR, theme)
-        // XXX: We don't need to set the theme vars here because its already defined in the CSS
-        // setThemeVars(rootElement, colors[theme])
-      } else if (isThemeOverrides(theme)) {
-        rootElement.setAttribute(THEME_ATTR, 'custom')
-        setThemeVars(rootElement, theme)
+      rootElement.setAttribute(THEME_ATTR, theme)
+
+      // Apply per-scheme overrides as CSS vars
+      const overrides = {
+        ...props.customThemes?.defaults,
+        ...props.customThemes?.[theme],
       }
+      setThemeVars(rootElement, overrides)
 
       // Add seq-root class to the root element of custom root
       if (props.root) {
@@ -144,24 +148,27 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
       setContainer(props.root ? rootElement : document.body)
     }
-  }, [theme, props.root])
+  }, [theme, props.root, props.customThemes])
 
   // Create the context value
   const value: ThemeContextValue = useMemo(() => {
     return {
       theme,
+      colors: {
+        ...colors[theme],
+        ...props.customThemes?.defaults,
+        ...props.customThemes?.[theme],
+      },
       container,
       setTheme: (theme: Theme) => {
-        if (isColorScheme(theme)) {
-          // Save to local storage
-          localStorage.setItem(getStorageKey(props.scope), theme)
-        }
+        // Save to local storage
+        localStorage.setItem(getStorageKey(props.scope), theme)
 
         // Set the theme state which will cause a re-render
         setTheme(theme)
       },
     }
-  }, [theme, container, props.scope])
+  }, [theme, container, props.scope, props.customThemes])
 
   return (
     <ThemeContext.Provider value={value}>

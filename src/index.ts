@@ -72,7 +72,7 @@ export {
   ThemeProvider,
   useTheme,
   type Theme,
-  type ThemeOverrides,
+  type ThemeColors,
 } from './components/ThemeProvider/index.js'
 export { NetworkImage } from './components/NetworkImage/index.js'
 export { TokenImage } from './components/TokenImage/index.js'
