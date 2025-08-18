@@ -7,20 +7,36 @@ import docsTheme from './theme'
 
 import './index.css'
 
-const CUSTOM_THEME = {
-  primary: '#002C54',
-  secondary: '#396E97',
-  muted: '#71A6B2',
-  backgroundPrimary: '#F1F1F2',
-  backgroundSecondary: '#A1D6E2',
-  gradientPrimary: 'linear-gradient(45deg, #1995AD 0%, #002C54 100%)',
+const customThemes = {
+  light: {
+    primary: 'black',
+    secondary: '#006',
+    muted: '#009',
+    backgroundPrimary: 'white',
+    backgroundSecondary: '#EEF',
+    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
+  },
+  dark: {
+    primary: 'white',
+    secondary: '#CCC',
+    muted: '#888',
+    backgroundPrimary: 'black',
+    backgroundSecondary: '#004',
+    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
+  },
 }
 
 const withTheme: Decorator = (StoryFn, context) => {
   const { theme } = context.globals
 
+  const isCustom = theme === 'custom'
+  const appliedTheme = isCustom ? 'dark' : theme
+
   return (
-    <ThemeProvider theme={theme === 'custom' ? CUSTOM_THEME : theme}>
+    <ThemeProvider
+      theme={appliedTheme as 'light' | 'dark'}
+      customThemes={isCustom ? customThemes : undefined}
+    >
       <div className="bg-background-primary p-4">
         <StoryFn />
       </div>
