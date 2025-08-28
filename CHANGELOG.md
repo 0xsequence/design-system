@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.2.2
+
+### Patch Changes
+
+- Fixing input background colors
+
 ## 2.2.1
 
 ### Patch Changes
