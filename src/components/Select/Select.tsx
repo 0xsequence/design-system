@@ -82,7 +82,7 @@ export const Select = forwardRef(
             id={id ?? name}
             className={cn(
               textVariants({ variant: 'normal' }),
-              'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-background-primary rounded-xl',
+              'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-background-primary/25 rounded-xl',
               'text-base font-medium text-primary select-none cursor-pointer border-none',
               'outline-hidden ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
               '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
