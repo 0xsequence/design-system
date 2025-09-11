@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.2.3
+
+### Patch Changes
+
+- Fixing Image onLoad
+
 ## 2.2.2
 
 ### Patch Changes
