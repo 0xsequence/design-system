@@ -20,7 +20,7 @@ export const Image = (props: ImageProps) => {
       initial={fadeIn ? { opacity: 0 } : undefined}
       animate={fadeIn ? { opacity: isImageLoaded ? 1 : 0 } : undefined}
       transition={{ duration: 0.2 }}
-      onLoad={fadeIn ? handleLoad : undefined}
+      onLoad={handleLoad}
       {...rest}
     />
   )
