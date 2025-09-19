@@ -21,10 +21,7 @@ export const DropdownMenuContent = ({
   ...rest
 }: DropdownMenuPrimitive.DropdownMenuContentProps) => (
   <DropdownMenuPrimitive.Content
-    className={cn(
-      'w-40 backdrop-blur-xs bg-background-raised p-2 rounded-md',
-      className
-    )}
+    className={cn('w-40 bg-background-raised p-2 rounded-md', className)}
     side="bottom"
     sideOffset={4}
     align="center"

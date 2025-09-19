@@ -8,9 +8,9 @@ import { cn } from '~/utils/classnames.js'
 
 const checkboxVariants = cva(
   [
-    'flex items-center justify-center bg-background-primary/25',
+    'flex items-center justify-center bg-background-input',
     'rounded-sm cursor-pointer opacity-100 hover:opacity-80 disabled:opacity-50 disabled:cursor-default',
-    'outline-hidden ring-inset ring-1 ring-border-focus focus-visible:ring-2 focus-visible:ring-border-focus',
+    'outline-hidden ring-inset ring-1 ring-border-normal focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
   {
     variants: {
@@ -36,7 +36,7 @@ type IndicatorProps = VariantProps<typeof checkboxVariants>
 
 const Indicator = ({ size = 'sm' }: IndicatorProps) => (
   <CheckboxPrimitive.Indicator className="flex items-center justify-center w-full h-full text-primary">
-    <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xs'} />
+    <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xxs'} />
   </CheckboxPrimitive.Indicator>
 )
 

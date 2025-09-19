@@ -8,7 +8,7 @@ import { cn } from '~/utils/classnames.js'
 
 export const buttonVariants = cva(
   [
-    'inline-flex items-center whitespace-nowrap overflow-hidden border-none text-decoration-none',
+    'inline-flex items-center whitespace-nowrap overflow-hidden text-decoration-none',
     'outline-hidden ring-inset focus-visible:ring-2 focus-visible:ring-border-focus',
   ],
   {
@@ -21,7 +21,7 @@ export const buttonVariants = cva(
           'ring-inset ring-2 ring-white/10',
         ],
         primary: 'bg-gradient-primary text-white',
-        glass: 'bg-button-glass text-primary',
+        glass: 'bg-button-glass text-primary border border-border-card',
         emphasis: 'bg-button-emphasis text-primary',
         raised: 'bg-background-raised text-primary',
         danger: 'bg-negative text-white',

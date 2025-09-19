@@ -5,7 +5,14 @@ import { forwardRef, type HTMLAttributes } from 'react'
 import { cn } from '~/utils/classnames.js'
 
 export const cardVariants = cva(
-  ['overflow-hidden', 'rounded-xl', 'p-4', 'w-full'],
+  [
+    'overflow-hidden',
+    'rounded-xl',
+    'p-4',
+    'w-full',
+    'border',
+    'border-border-card',
+  ],
   {
     variants: {
       clickable: {

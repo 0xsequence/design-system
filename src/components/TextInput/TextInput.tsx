@@ -69,7 +69,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className="w-full">
           <div
             className={cn(
-              'inline-flex items-center bg-background-primary/25 text-primary min-w-full px-4 gap-2 rounded-xl',
+              'inline-flex items-center bg-background-input text-primary min-w-full px-4 gap-2 rounded-xl',
               'h-[52px] cursor-text',
               'ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
               className,

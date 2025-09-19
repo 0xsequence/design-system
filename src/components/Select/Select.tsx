@@ -35,7 +35,8 @@ const SelectItem = forwardRef(
           textVariants({ variant: 'normal' }),
           'flex justify-between items-center px-4 py-3 h-[52px] cursor-pointer rounded-sm',
           'text-base text-primary opacity-100 data-disabled:cursor-default data-disabled:opacity-50',
-          'data-highlighted:bg-background-secondary data-[state=checked]:bg-background-control outline-hidden',
+          'data-highlighted:bg-background-active/33 data-[state=checked]:bg-background-active outline-hidden',
+          // 'outline-hidden ring-inset focus-visible:ring-2 focus-visible:ring-border-focus',
           className
         )}
         {...props}
@@ -82,7 +83,7 @@ export const Select = forwardRef(
             id={id ?? name}
             className={cn(
               textVariants({ variant: 'normal' }),
-              'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-background-primary/25 rounded-xl',
+              'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-background-input rounded-xl',
               'text-base font-medium text-primary select-none cursor-pointer border-none',
               'outline-hidden ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
               '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
@@ -103,7 +104,12 @@ export const Select = forwardRef(
               position="popper"
               side="bottom"
               align="start"
-              className="mt-2 p-1 bg-background-backdrop backdrop-blur-md min-w-[var(--radix-select-trigger-width)] rounded-lg overflow-hidden z-30 outline-hidden ring-inset focus-within:ring-2 focus-within:ring-border-focus max-h-[360px] overflow-y-auto"
+              className={cn(
+                'mt-2 p-1 bg-background-raised shadow-primary',
+                'min-w-[var(--radix-select-trigger-width)] rounded-lg',
+                'overflow-hidden z-30 outline-hidden max-h-[360px] overflow-y-auto',
+                'border-border-normal border-1'
+              )}
             >
               <SelectPrimitive.Viewport>
                 <SelectPrimitive.Group className="flex flex-col gap-0.5">
