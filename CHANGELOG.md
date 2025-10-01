@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.2.5
+
+### Patch Changes
+
+- Adding decimals property to NumericInput to truncate input.
+
 ## 2.2.4
 
 ### Patch Changes
