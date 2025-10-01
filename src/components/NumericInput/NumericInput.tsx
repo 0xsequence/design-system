@@ -1,4 +1,4 @@
-import { forwardRef, type ChangeEvent, type FocusEvent } from 'react'
+import { forwardRef, useEffect, type ChangeEvent, type FocusEvent } from 'react'
 
 import { TextInput, type TextInputProps } from '~/components/TextInput/index.js'
 
@@ -13,9 +13,52 @@ export interface NumericInputProps
   decimals?: number
 }
 
+function truncateDecimals(value: string, decimals?: number): string {
+  if (decimals === undefined || !value.includes('.')) {
+    return value
+  }
+
+  const [integerPart, decimalPart] = value.split('.')
+
+  if (decimals === 0) {
+    return integerPart
+  }
+
+  if (decimalPart && decimalPart.length > decimals) {
+    return `${integerPart}.${decimalPart.slice(0, decimals)}`
+  }
+
+  return value
+}
+
 export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
   (props, ref) => {
-    const { name = 'amount', placeholder, onChange, onBlur, ...rest } = props
+    const {
+      name = 'amount',
+      placeholder,
+      onChange,
+      onBlur,
+      decimals,
+      value,
+      ...rest
+    } = props
+
+    // Watch for changes in decimals prop and truncate value if needed
+    useEffect(() => {
+      if (value && typeof value === 'string' && decimals !== undefined) {
+        const truncatedValue = truncateDecimals(value, decimals)
+
+        if (truncatedValue !== value) {
+          // Create a synthetic event to match the expected onChange signature
+          const syntheticEvent = {
+            target: { value: truncatedValue },
+            currentTarget: { value: truncatedValue },
+          } as ChangeEvent<HTMLInputElement>
+
+          onChange?.(syntheticEvent)
+        }
+      }
+    }, [decimals, value])
 
     const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
       let { value } = ev.target
@@ -34,6 +77,9 @@ export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
       }
 
       if (value === '' || inputRegex.test(escapeRegExp(value))) {
+        // Apply decimal precision truncation if needed
+        value = truncateDecimals(value, decimals)
+
         onChange?.({ ...ev, target: { ...ev.target, value } })
       }
     }
@@ -77,6 +123,7 @@ export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
         maxLength={79}
         spellCheck="false"
         numeric={true}
+        value={value}
         ref={ref}
         {...rest}
       />
