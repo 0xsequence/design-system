@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 2.2.4
+
+### Patch Changes
+
+- Updating Sequence Logo
+
 ## 2.2.3
 
 ### Patch Changes
