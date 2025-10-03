@@ -9,29 +9,36 @@
   --seq-color-warning: #f4b03e;
 
   /* Text colors */
-  --seq-color-primary: rgba(255, 255, 255, 1);
-  --seq-color-secondary: rgba(255, 255, 255, 0.8);
-  --seq-color-muted: rgba(255, 255, 255, 0.5);
-  --seq-color-inverse: rgba(0, 0, 0, 1);
+  --seq-color-primary: white;
+  --seq-color-secondary: white;
+  --seq-color-muted: var(--color-zinc-500);
+  --seq-color-inverse: black;
 
   /* Background colors */
-  --seq-color-background-primary: rgba(0, 0, 0, 1);
-  --seq-color-background-secondary: rgba(255, 255, 255, 0.1);
+  --seq-color-background-primary: black;
+  --seq-color-background-secondary: var(--color-zinc-900);
   --seq-color-background-contrast: rgba(0, 0, 0, 0.5);
   --seq-color-background-muted: rgba(255, 255, 255, 0.05);
   --seq-color-background-control: rgba(255, 255, 255, 0.25);
   --seq-color-background-inverse: rgba(255, 255, 255, 1);
   --seq-color-background-backdrop: rgba(34, 34, 34, 0.9);
   --seq-color-background-overlay: rgba(0, 0, 0, 0.7);
-  --seq-color-background-raised: rgba(54, 54, 54, 0.7);
+  --seq-color-background-raised: var(--color-zinc-800);
+  --seq-color-background-input: var(--color-zinc-950);
+  --seq-color-background-hover: var(--color-zinc-900);
+  --seq-color-background-active: var(--color-zinc-700);
 
   /* Border colors */
-  --seq-color-border-normal: rgba(255, 255, 255, 0.25);
-  --seq-color-border-focus: rgba(255, 255, 255, 0.5);
+  --seq-color-border-normal: var(--color-zinc-700);
+  --seq-color-border-focus: var(--color-violet-500);
   --seq-color-border-error: rgba(255, 69, 0, 1);
+  --seq-color-border-card: var(--color-zinc-700);
+
+  /* Drop shadow */
+  --seq-color-drop-shadow: var(--color-zinc-950);
 
   /* Button colors */
-  --seq-color-button-glass: rgba(255, 255, 255, 0.15);
+  --seq-color-button-glass: var(--color-zinc-800);
   --seq-color-button-emphasis: rgba(0, 0, 0, 0.5);
   --seq-color-button-inverse: rgba(255, 255, 255, 0.8);
 
@@ -69,29 +76,36 @@
   --seq-color-warning: #f4b03e;
 
   /* Text colors */
-  --seq-color-primary: rgba(0, 0, 0, 1);
-  --seq-color-secondary: rgba(0, 0, 0, 0.8);
-  --seq-color-muted: rgba(0, 0, 0, 0.5);
-  --seq-color-inverse: rgba(255, 255, 255, 1);
+  --seq-color-primary: var(--color-slate-800);
+  --seq-color-secondary: var(--color-slate-800);
+  --seq-color-muted: var(--color-slate-500);
+  --seq-color-inverse: var(--color-slate-50);
 
   /* Background colors */
-  --seq-color-background-primary: rgba(244, 244, 244, 1);
-  --seq-color-background-secondary: rgba(0, 0, 0, 0.1);
+  --seq-color-background-primary: var(--color-slate-50);
+  --seq-color-background-secondary: white;
   --seq-color-background-contrast: rgba(244, 244, 244, 0.5);
   --seq-color-background-muted: rgba(0, 0, 0, 0.05);
   --seq-color-background-control: rgba(0, 0, 0, 0.25);
   --seq-color-background-inverse: rgba(0, 0, 0, 1);
   --seq-color-background-backdrop: rgba(221, 221, 221, 0.9);
   --seq-color-background-overlay: rgba(244, 244, 244, 0.7);
-  --seq-color-background-raised: rgba(192, 192, 192, 0.7);
+  --seq-color-background-raised: white;
+  --seq-color-background-input: var(--color-slate-50);
+  --seq-color-background-hover: var(--color-slate-100);
+  --seq-color-background-active: var(--color-slate-200);
 
   /* Border colors */
-  --seq-color-border-normal: rgba(0, 0, 0, 0.25);
-  --seq-color-border-focus: rgba(0, 0, 0, 0.5);
+  --seq-color-border-normal: var(--color-slate-300);
+  --seq-color-border-focus: var(--color-violet-600);
   --seq-color-border-error: rgba(255, 69, 0, 1);
+  --seq-color-border-card: var(--color-slate-300);
+
+  /* Drop shadow */
+  --seq-color-drop-shadow: var(--color-slate-500);
 
   /* Button colors */
-  --seq-color-button-glass: rgba(0, 0, 0, 0.15);
+  --seq-color-button-glass: white;
   --seq-color-button-emphasis: rgba(255, 255, 255, 0.5);
   --seq-color-button-inverse: rgba(0, 0, 0, 0.8);
 
@@ -148,14 +162,20 @@
   --color-background-backdrop: var(--seq-color-background-backdrop);
   --color-background-overlay: var(--seq-color-background-overlay);
   --color-background-raised: var(--seq-color-background-raised);
+  --color-background-input: var(--seq-color-background-input);
+  --color-background-hover: var(--seq-color-background-hover);
+  --color-background-active: var(--seq-color-background-active);
 
   --color-border-normal: var(--seq-color-border-normal);
   --color-border-focus: var(--seq-color-border-focus);
   --color-border-error: var(--seq-color-border-error);
+  --color-border-card: var(--seq-color-border-card);
 
   --color-button-glass: var(--seq-color-button-glass);
   --color-button-emphasis: var(--seq-color-button-emphasis);
   --color-button-inverse: var(--seq-color-button-inverse);
+
+  --color-drop-shadow: var(--seq-color-drop-shadow);
 
   --background-image-gradient-backdrop: var(--seq-color-gradient-backdrop);
   --background-image-gradient-primary: var(--seq-color-gradient-primary);
@@ -164,6 +184,9 @@
 
   --animate-skeleton: skeleton 1s ease infinite;
   --animate-swipe-out: swipe-out 200ms ease-out;
+
+  --shadow-primary: 0 0 16px 0
+    color-mix(in oklab, var(--color-drop-shadow), transparent 70%);
 
   @keyframes skeleton {
     0% {
