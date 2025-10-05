@@ -30,9 +30,11 @@
 
   /* Border colors */
   --seq-color-border-normal: var(--color-zinc-700);
+  --seq-color-border-hover: var(--color-zinc-600);
   --seq-color-border-focus: var(--color-violet-500);
   --seq-color-border-error: rgba(255, 69, 0, 1);
-  --seq-color-border-card: var(--color-zinc-700);
+  --seq-color-border-card: var(--color-zinc-800);
+  --seq-color-border-button: var(--color-zinc-700);
 
   /* Drop shadow */
   --seq-color-drop-shadow: var(--color-zinc-950);
@@ -97,9 +99,11 @@
 
   /* Border colors */
   --seq-color-border-normal: var(--color-slate-300);
+  --seq-color-border-hover: var(--color-slate-400);
   --seq-color-border-focus: var(--color-violet-600);
   --seq-color-border-error: rgba(255, 69, 0, 1);
-  --seq-color-border-card: var(--color-slate-300);
+  --seq-color-border-card: var(--color-slate-200);
+  --seq-color-border-button: var(--color-slate-300);
 
   /* Drop shadow */
   --seq-color-drop-shadow: var(--color-slate-500);
@@ -167,9 +171,11 @@
   --color-background-active: var(--seq-color-background-active);
 
   --color-border-normal: var(--seq-color-border-normal);
+  --color-border-hover: var(--seq-color-border-hover);
   --color-border-focus: var(--seq-color-border-focus);
   --color-border-error: var(--seq-color-border-error);
   --color-border-card: var(--seq-color-border-card);
+  --color-border-button: var(--seq-color-border-button);
 
   --color-button-glass: var(--seq-color-button-glass);
   --color-button-emphasis: var(--seq-color-button-emphasis);

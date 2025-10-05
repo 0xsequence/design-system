@@ -39,6 +39,14 @@ export { Modal, ModalPrimitive } from './components/Modal/index.js'
 export { NumericInput } from './components/NumericInput/index.js'
 export { PINCodeInput } from './components/PINCodeInput/index.js'
 export {
+  PopoverClose,
+  PopoverContent,
+  PopoverPortal,
+  PopoverPrimitive,
+  PopoverRoot,
+  PopoverTrigger,
+} from './components/Popover/index.js'
+export {
   Placeholder /* deprecated */,
   Skeleton,
 } from './components/Skeleton/index.js'
