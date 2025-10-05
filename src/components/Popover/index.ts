@@ -1,7 +1,7 @@
 export {
+  PopoverAnchor,
   PopoverClose,
   PopoverContent,
-  PopoverPortal,
   PopoverPrimitive,
   PopoverRoot,
   PopoverTrigger,

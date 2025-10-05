@@ -39,9 +39,9 @@ export { Modal, ModalPrimitive } from './components/Modal/index.js'
 export { NumericInput } from './components/NumericInput/index.js'
 export { PINCodeInput } from './components/PINCodeInput/index.js'
 export {
+  PopoverAnchor,
   PopoverClose,
   PopoverContent,
-  PopoverPortal,
   PopoverPrimitive,
   PopoverRoot,
   PopoverTrigger,
