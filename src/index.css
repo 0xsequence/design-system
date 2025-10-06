@@ -5,10 +5,10 @@
 :root,
 [data-theme='dark'] {
   /* Status colors */
-  --seq-color-positive: #1fc266;
-  --seq-color-negative: #c2501f;
-  --seq-color-info: #0076cc;
-  --seq-color-warning: #f4b03e;
+  --seq-color-positive: var(--color-green-500);
+  --seq-color-negative: var(--color-red-500);
+  --seq-color-info: var(--color-blue-500);
+  --seq-color-warning: var(--color-yellow-500);
 
   /* Text colors */
   --seq-color-primary: white;
@@ -74,10 +74,10 @@
 
 [data-theme='light'] {
   /* Status colors */
-  --seq-color-positive: #1fc266;
-  --seq-color-negative: #c2501f;
-  --seq-color-info: #0076cc;
-  --seq-color-warning: #f4b03e;
+  --seq-color-positive: var(--color-green-500);
+  --seq-color-negative: var(--color-red-500);
+  --seq-color-info: var(--color-blue-500);
+  --seq-color-warning: var(--color-yellow-500);
 
   /* Text colors */
   --seq-color-primary: var(--color-slate-800);
