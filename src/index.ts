@@ -83,6 +83,9 @@ export { TokenImage } from './components/TokenImage/index.js'
 export { Tooltip, TooltipPrimitive } from './components/Tooltip/index.js'
 export { VisuallyHidden } from './components/VisuallyHidden/index.js'
 
+// Styles
+export { disabledStyle, focusRingVariants, inputBorderStyle } from './styles.js'
+
 // Utils
 export { compareAddress, truncateAddress } from './utils/address.js'
 export {
