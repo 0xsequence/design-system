@@ -1,10 +1,5 @@
 // Tokens
-export {
-  colors,
-  colorSchemes,
-  type ColorScheme,
-  type ColorTokens,
-} from './tokens/color.js'
+export { colorNames, type ColorName, type ColorTokens } from './tokens/color.js'
 
 // Components
 export { Badge } from './components/Badge/index.js'
@@ -78,6 +73,7 @@ export { ControlledTextArea, TextArea } from './components/TextArea/index.js'
 export { ControlledTextInput, TextInput } from './components/TextInput/index.js'
 export {
   ThemeProvider,
+  themes,
   useTheme,
   type Theme,
   type ThemeColors,
@@ -98,6 +94,7 @@ export {
 export { cn } from './utils/classnames.js'
 export { isTruthy } from './utils/filter.js'
 export { capitalize, kebabize, pluralize } from './utils/string.js'
+export { getCssVar } from './utils/css.js'
 
 // Hooks
 export { useMediaQuery, type BreakpointType } from './hooks/useMediaQuery.js'
