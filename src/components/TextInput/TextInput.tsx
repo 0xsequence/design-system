@@ -4,6 +4,7 @@ import { forwardRef, type ComponentType, type ReactNode } from 'react'
 import { Field, type FieldProps } from '~/components/Field/index.js'
 import { textVariants } from '~/components/Text/index.js'
 import type { IconProps } from '~/icons/types.js'
+import { focusRingVariants, inputBorderStyle } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 const inputVariants = cva(
@@ -69,16 +70,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className="w-full">
           <div
             className={cn(
-              'inline-flex items-center bg-background-input text-primary min-w-full px-4 gap-2 rounded-xl',
-              'h-[52px] cursor-text',
-              'ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
-              className,
-              error
-                ? 'ring-border-error focus-within:ring-border-error'
-                : 'ring-border-normal focus-within:ring-border-focus',
+              'inline-flex items-center bg-background-input text-primary min-w-full px-4 gap-2 rounded-xl h-[52px] cursor-text',
+              focusRingVariants({ variant: 'within', error: !!error }),
+              inputBorderStyle,
               {
-                'cursor-default opacity-50': disabled,
-              }
+                'cursor-default opacity-50 hover:ring-border-normal!': disabled,
+              },
+              className
             )}
           >
             {LeftIcon && <LeftIcon size="sm" />}

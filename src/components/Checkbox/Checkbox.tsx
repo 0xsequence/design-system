@@ -4,13 +4,15 @@ import { forwardRef, type Ref } from 'react'
 
 import { Field, type FieldProps } from '~/components/Field/index.js'
 import { CheckmarkIcon } from '~/icons/index.js'
+import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 const checkboxVariants = cva(
   [
-    'flex items-center justify-center bg-background-input',
-    'rounded-sm cursor-pointer opacity-100 hover:opacity-80 disabled:opacity-50 disabled:cursor-default',
-    'outline-hidden ring-inset ring-1 ring-border-normal focus-visible:ring-2 focus-visible:ring-border-focus',
+    'flex items-center justify-center bg-background-input rounded-sm cursor-pointer',
+    focusRingVariants(),
+    inputBorderStyle,
+    disabledStyle,
   ],
   {
     variants: {

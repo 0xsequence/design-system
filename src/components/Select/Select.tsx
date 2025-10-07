@@ -5,6 +5,7 @@ import { Field, type FieldProps } from '~/components/Field/index.js'
 import { textVariants } from '~/components/Text/index.js'
 import { useTheme } from '~/components/ThemeProvider/index.js'
 import { ChevronDownIcon } from '~/icons/index.js'
+import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 type SelectOption = {
@@ -23,30 +24,6 @@ export type SelectProps = FieldProps &
     options: SelectOption[]
     className?: string
   }
-
-const SelectItem = forwardRef(
-  (
-    { children, className, ...props }: SelectPrimitive.SelectItemProps,
-    ref: Ref<HTMLDivElement>
-  ) => {
-    return (
-      <SelectPrimitive.Item
-        className={cn(
-          textVariants({ variant: 'normal' }),
-          'flex justify-between items-center px-4 py-3 h-[52px] cursor-pointer rounded-sm',
-          'text-base text-primary opacity-100 data-disabled:cursor-default data-disabled:opacity-50',
-          'data-highlighted:bg-background-active/33 data-[state=checked]:bg-background-active outline-hidden',
-          // 'outline-hidden ring-inset focus-visible:ring-2 focus-visible:ring-border-focus',
-          className
-        )}
-        {...props}
-        ref={ref}
-      >
-        <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-      </SelectPrimitive.Item>
-    )
-  }
-)
 
 export const Select = forwardRef(
   (props: SelectProps, ref: Ref<HTMLButtonElement>) => {
@@ -84,11 +61,10 @@ export const Select = forwardRef(
             className={cn(
               textVariants({ variant: 'normal' }),
               'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-background-input rounded-xl',
-              'text-base font-medium text-primary select-none cursor-pointer border-none',
-              'outline-hidden ring-inset ring-1 ring-border-normal focus-within:ring-2 focus-within:ring-border-focus focus-within:opacity-100',
-              '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
-              '[&:has(:disabled):hover]:cursor-default [&:has(:disabled):hover]:opacity-50',
-              error && 'ring-border-error focus-within:ring-border-error',
+              'text-base font-medium text-primary select-none cursor-pointer',
+              focusRingVariants({ error: !!error }),
+              inputBorderStyle,
+              disabledStyle,
               className
             )}
             ref={ref}
@@ -105,14 +81,14 @@ export const Select = forwardRef(
               side="bottom"
               align="start"
               className={cn(
-                'mt-2 p-1 bg-background-raised shadow-primary',
+                'mt-2 bg-background-raised shadow-primary',
                 'min-w-[var(--radix-select-trigger-width)] rounded-lg',
                 'overflow-hidden z-30 outline-hidden max-h-[360px] overflow-y-auto',
                 'border-border-normal border-1'
               )}
             >
               <SelectPrimitive.Viewport>
-                <SelectPrimitive.Group className="flex flex-col gap-0.5">
+                <SelectPrimitive.Group className="flex flex-col gap-0.5 p-1">
                   {options.map(({ value, label, ...rest }) => (
                     <SelectItem key={value} value={value} {...rest}>
                       {label}
@@ -124,6 +100,29 @@ export const Select = forwardRef(
           </SelectPrimitive.Portal>
         </SelectPrimitive.Root>
       </Field>
+    )
+  }
+)
+
+const SelectItem = forwardRef(
+  (
+    { children, className, ...props }: SelectPrimitive.SelectItemProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    return (
+      <SelectPrimitive.Item
+        className={cn(
+          textVariants({ variant: 'normal' }),
+          'flex justify-between items-center px-4 py-3 h-[52px] cursor-pointer rounded-sm',
+          'text-base text-primary opacity-100 data-disabled:cursor-default data-disabled:opacity-50',
+          'data-highlighted:bg-background-active/33 data-[state=checked]:bg-background-active outline-hidden',
+          className
+        )}
+        {...props}
+        ref={ref}
+      >
+        <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+      </SelectPrimitive.Item>
     )
   }
 )

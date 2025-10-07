@@ -1,6 +1,7 @@
 import * as SwitchPrimitive from '@radix-ui/react-switch'
 
 import { Field, type FieldProps } from '~/components/Field/index.js'
+import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 export type SwitchProps = FieldProps & SwitchPrimitive.SwitchProps
@@ -27,8 +28,11 @@ export const Switch = (props: SwitchProps) => {
     >
       <SwitchPrimitive.Root
         className={cn(
-          'relative w-12 h-7 p-1 rounded-full bg-background-input cursor-pointer border-none disabled:cursor-default disabled:opacity-50 data-[state=checked]:bg-gradient-primary',
-          'outline-hidden ring-inset ring-1 ring-border-normal data-[state=checked]:ring-transparent focus-visible:ring-2 focus-visible:ring-border-focus!'
+          'relative w-12 h-7 p-1 rounded-full bg-background-input cursor-pointer data-[state=checked]:bg-gradient-primary',
+          'data-[state=checked]:not-focus-visible:ring-transparent!',
+          focusRingVariants(),
+          inputBorderStyle,
+          disabledStyle
         )}
         disabled={disabled}
         {...rest}

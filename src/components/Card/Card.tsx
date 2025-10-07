@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type HTMLAttributes } from 'react'
 
+import { focusRingVariants } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 export const cardVariants = cva(
@@ -16,7 +17,7 @@ export const cardVariants = cva(
   {
     variants: {
       clickable: {
-        true: 'hover:opacity-80 cursor-pointer focus:ring-2 focus:ring-focus focus:outline-hidden',
+        true: ['hover:brightness-110 cursor-pointer', focusRingVariants()],
       },
       disabled: {
         true: 'opacity-50 cursor-default pointer-events-none',

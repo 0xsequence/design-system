@@ -6,18 +6,20 @@ import { useState, type ReactNode } from 'react'
 
 import { Text } from '~/components/Text/index.js'
 import { ChevronDownIcon } from '~/icons/index.js'
+import { focusRingVariants } from '~/styles.js'
 
 const COLLAPSED_HEIGHT = '64px'
 
 const collapsibleVariants = cva(
   [
-    'min-h-[64px] rounded-xl relative overflow-hidden w-full ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:[&:has(:focus-visible)]:ring-border-focus',
+    'min-h-[64px] rounded-xl relative overflow-hidden w-full',
+    focusRingVariants({ variant: 'within' }),
   ],
   {
     variants: {
       variant: {
         default: 'bg-background-secondary',
-        outlined: 'bg-transparent ring-1 ring-border-normal ',
+        outlined: 'bg-transparent ring-inset ring-1 ring-border-normal',
       },
     },
     defaultVariants: {

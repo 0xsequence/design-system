@@ -30,7 +30,7 @@ export const LabelOnly: Story = {
     disabled: false,
     label: 'Click me',
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 export const Disabled: Story = {
@@ -38,7 +38,7 @@ export const Disabled: Story = {
     disabled: true,
     label: 'Click me',
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 
@@ -49,7 +49,7 @@ export const WithLeftIcon: Story = {
     onClick: () => console.log('Clicked!'),
     leftIcon: ScanIcon,
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 
@@ -60,7 +60,7 @@ export const WithRightIcon: Story = {
     onClick: () => console.log('Clicked!'),
     rightIcon: ArrowRightIcon,
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 
@@ -72,7 +72,7 @@ export const WithBothIcon: Story = {
     onClick: () => console.log('Clicked!'),
     rightIcon: ArrowRightIcon,
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 export const WithCountIcon: Story = {
@@ -87,7 +87,7 @@ export const WithCountIcon: Story = {
     onClick: () => console.log('Clicked!'),
     leftIcon: ScanIcon,
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 

@@ -3,17 +3,16 @@ import { forwardRef, type ReactNode } from 'react'
 
 import { Field, type FieldProps } from '~/components/Field/index.js'
 import { textVariants } from '~/components/Text/index.js'
+import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 const textareaVariants = cva(
   [
     textVariants({ variant: 'normal' }),
-    'block bg-background-input text-primary w-full p-4 rounded-xl',
-    'outline-hidden ring-inset ring-1 ring-border-normal',
-    'cursor-text disabled:cursor-default disabled:opacity-50',
-    'focus:opacity-100 focus:ring-2 focus:ring-border-focus',
-    'placeholder-muted',
-    'resize-none',
+    'block bg-background-input text-primary w-full p-4 rounded-xl cursor-text placeholder-muted resize-none',
+    focusRingVariants(),
+    inputBorderStyle,
+    disabledStyle,
   ],
   {
     variants: {

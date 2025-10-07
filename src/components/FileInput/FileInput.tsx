@@ -5,6 +5,7 @@ import { IconButton } from '~/components/IconButton/index.js'
 import { Text } from '~/components/Text/index.js'
 import { useCombinedRefs } from '~/hooks/useCombinedRefs.js'
 import { CloseIcon } from '~/icons/index.js'
+import { focusRingVariants } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 import { textVariants } from '../Text/index.js'
@@ -101,14 +102,14 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             className={cn(
               textVariants({ variant: 'normal' }),
               'inline-flex items-center flex-row justify-start w-[200px] min-w-full p-4 relative h-[52px]',
-              'border border-dashed rounded-xl bg-background-input',
+              'rounded-xl bg-background-input',
               '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
-              'focus-within:opacity-100 focus-within:ring-2 focus-within:ring-inset focus-within:border-transparent',
-              fileData ? 'justify-between' : 'justify-start',
-              fileData ? 'text-primary' : 'text-muted',
-              error && !disabled
-                ? 'border-border-error focus-within:ring-border-error'
-                : 'border-border-normal focus-within:ring-border-focus',
+              fileData
+                ? 'justify-between text-primary'
+                : 'justify-start text-muted',
+              focusRingVariants({ variant: 'within', error: !!error }),
+              // inputBorderStyle,
+              'border border-dashed border-border-normal hover:not-disabled:not-focus-within:border-border-hover focus-within:[&:has(:focus-visible)]:border-none',
               className
             )}
           >

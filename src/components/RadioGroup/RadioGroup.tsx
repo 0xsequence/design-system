@@ -3,13 +3,15 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type Ref } from 'react'
 
 import { Field } from '~/components/Field/index.js'
+import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 const radioOptionVariants = cva(
   [
-    'bg-background-input rounded-full p-0',
-    'cursor-pointer hover:opacity-80 disabled:cursor-default disabled:opacity-50',
-    'outline-hidden ring-inset ring-1 ring-border-normal focus-visible:ring-2 focus-visible:ring-border-focus',
+    'bg-background-input rounded-full p-0 cursor-pointer',
+    focusRingVariants(),
+    inputBorderStyle,
+    disabledStyle,
   ],
   {
     variants: {

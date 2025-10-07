@@ -4,12 +4,13 @@ import { forwardRef, type ComponentType, type ReactNode } from 'react'
 
 import { Text, textVariants } from '~/components/Text/index.js'
 import type { IconProps } from '~/icons/types.js'
+import { focusRingVariants } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
 export const buttonVariants = cva(
   [
     'inline-flex items-center whitespace-nowrap overflow-hidden text-decoration-none',
-    'outline-hidden ring-inset focus-visible:ring-2 focus-visible:ring-border-focus',
+    focusRingVariants(),
   ],
   {
     variants: {
@@ -20,8 +21,11 @@ export const buttonVariants = cva(
           'bg-gradient-secondary text-white',
           'ring-inset ring-2 ring-white/10',
         ],
-        primary: 'bg-gradient-primary text-white',
-        glass: 'bg-button-glass text-primary border border-border-card',
+        primary: 'bg-gradient-primary text-white hover:opacity-80',
+        secondary:
+          'bg-background-secondary text-primary ring-inset ring-1 ring-border-button hover:ring-border-hover hover:bg-background-hover',
+        glass:
+          'bg-button-glass text-primary ring-inset ring-1 ring-border-button hover:ring-border-hover hover:bg-background-hover',
         emphasis: 'bg-button-emphasis text-primary',
         raised: 'bg-background-raised text-primary',
         danger: 'bg-negative text-white',
@@ -55,7 +59,7 @@ export const buttonVariants = cva(
       },
       disabled: {
         true: 'cursor-default opacity-50',
-        false: 'cursor-pointer hover:opacity-80',
+        false: 'cursor-pointer',
       },
       iconOnly: {
         true: 'p-0 flex shrink-0 items-center justify-center',
@@ -126,7 +130,7 @@ export const buttonVariants = cva(
       },
     ],
     defaultVariants: {
-      variant: 'glass',
+      variant: 'secondary',
     },
   }
 )
@@ -156,7 +160,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       leftIcon: LeftIcon,
       rightIcon: RightIcon,
       size = 'md',
-      variant = 'glass',
+      variant = 'secondary',
       shape = 'circle',
       type = 'button',
       children,
