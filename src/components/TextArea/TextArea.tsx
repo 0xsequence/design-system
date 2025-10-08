@@ -10,9 +10,6 @@ const textareaVariants = cva(
   [
     textVariants({ variant: 'normal' }),
     'block bg-background-input text-primary w-full p-4 rounded-xl cursor-text placeholder-muted resize-none',
-    focusRingVariants(),
-    inputBorderStyle,
-    disabledStyle,
   ],
   {
     variants: {
@@ -72,8 +69,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           spellCheck="false"
           className={cn(
             textareaVariants({ resize }),
-            className,
-            error && 'ring-border-error focus:ring-border-error'
+            focusRingVariants({ error: !!error }),
+            inputBorderStyle,
+            disabledStyle,
+            className
           )}
           disabled={disabled}
           id={id ?? name}
