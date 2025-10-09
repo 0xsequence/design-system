@@ -9,11 +9,10 @@ export const focusRingVariants = cva('outline-hidden', {
   variants: {
     variant: {
       visible: `focus-visible:ring-2 focus-visible:ring-border-focus!`,
-      // within: `focus-within:ring-2 focus-within:ring-border-focus!`,
       within: `focus-within:[&:has(:focus-visible)]:ring-2 focus-within:[&:has(:focus-visible)]:ring-border-focus!`,
     },
     error: {
-      true: `ring-border-error focus-within:ring-border-error`,
+      true: `ring-border-error!`,
     },
     inner: {
       true: 'ring-inset',
