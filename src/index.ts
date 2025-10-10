@@ -1,10 +1,5 @@
 // Tokens
-export {
-  colors,
-  colorSchemes,
-  type ColorScheme,
-  type ColorTokens,
-} from './tokens/color.js'
+export { colorNames, type ColorName, type ColorTokens } from './tokens/color.js'
 
 // Components
 export { Badge } from './components/Badge/index.js'
@@ -35,9 +30,18 @@ export { Field } from './components/Field/index.js'
 export { GradientAvatar } from './components/GradientAvatar/index.js'
 export { IconButton } from './components/IconButton/index.js'
 export { Image } from './components/Image/index.js'
+export { Kbd, KbdGroup } from './components/Kbd/index.js'
 export { Modal, ModalPrimitive } from './components/Modal/index.js'
 export { NumericInput } from './components/NumericInput/index.js'
 export { PINCodeInput } from './components/PINCodeInput/index.js'
+export {
+  PopoverAnchor,
+  PopoverClose,
+  PopoverContent,
+  PopoverPrimitive,
+  PopoverRoot,
+  PopoverTrigger,
+} from './components/Popover/index.js'
 export {
   Placeholder /* deprecated */,
   Skeleton,
@@ -70,6 +74,7 @@ export { ControlledTextArea, TextArea } from './components/TextArea/index.js'
 export { ControlledTextInput, TextInput } from './components/TextInput/index.js'
 export {
   ThemeProvider,
+  themes,
   useTheme,
   type Theme,
   type ThemeColors,
@@ -78,6 +83,9 @@ export { NetworkImage } from './components/NetworkImage/index.js'
 export { TokenImage } from './components/TokenImage/index.js'
 export { Tooltip, TooltipPrimitive } from './components/Tooltip/index.js'
 export { VisuallyHidden } from './components/VisuallyHidden/index.js'
+
+// Styles
+export { disabledStyle, focusRingVariants, inputBorderStyle } from './styles.js'
 
 // Utils
 export { compareAddress, truncateAddress } from './utils/address.js'
@@ -90,6 +98,7 @@ export {
 export { cn } from './utils/classnames.js'
 export { isTruthy } from './utils/filter.js'
 export { capitalize, kebabize, pluralize } from './utils/string.js'
+export { getCssVar } from './utils/css.js'
 
 // Hooks
 export { useMediaQuery, type BreakpointType } from './hooks/useMediaQuery.js'

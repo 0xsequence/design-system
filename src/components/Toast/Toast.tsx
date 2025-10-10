@@ -118,7 +118,7 @@ export const Toast = (props: ToastProps) => {
       {...rest}
     >
       <Card
-        className="rounded-md bg-button-glass backdrop-blur-xs relative flex justify-between w-full"
+        className="rounded-md bg-background-raised relative flex justify-between w-full"
         asChild
       >
         <motion.li

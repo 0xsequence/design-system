@@ -8,6 +8,7 @@ import { ControlledSelect as Select } from '~/components/Select/index.js'
 import { ControlledSwitch as Switch } from '~/components/Switch/index.js'
 import { ControlledTextInput as TextInput } from '~/components/TextInput/index.js'
 
+import { Card } from '../Card/Card.js'
 import { TextArea } from '../TextArea/index.js'
 
 import { Form } from './Form.js'
@@ -36,7 +37,7 @@ type Story = StoryObj<typeof Form>
 
 export const Default: Story = {
   render: ({ onSubmit, ...args }) => (
-    <div className="bg-background-secondary rounded-xl flex flex-col gap-3 p-4">
+    <Card>
       <Form
         defaultValues={{
           firstName: '',
@@ -163,7 +164,7 @@ export const Default: Story = {
           </div>
         )}
       </Form>
-    </div>
+    </Card>
   ),
   args: {
     onSubmit: (data: {}) => console.log(data),
