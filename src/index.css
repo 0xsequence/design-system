@@ -158,6 +158,8 @@
   --color-negative: var(--seq-color-negative);
   --color-info: var(--seq-color-info);
   --color-warning: var(--seq-color-warning);
+  --color-error: var(--seq-color-negative);
+  --color-success: var(--seq-color-positive);
 
   --color-background-primary: var(--seq-color-background-primary);
   --color-background-secondary: var(--seq-color-background-secondary);
