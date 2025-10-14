@@ -17,13 +17,13 @@ export const cardVariants = cva(
   {
     variants: {
       clickable: {
-        true: ['hover:brightness-110 cursor-pointer', focusRingVariants()],
+        true: ['cursor-pointer hover:opacity-80', focusRingVariants()],
       },
       disabled: {
-        true: 'opacity-50 cursor-default pointer-events-none',
+        true: 'opacity-50 cursor-default pointer-events-none hover:border-border-card',
       },
       outlined: {
-        true: 'border border-border-normal bg-transparent',
+        true: 'bg-transparent',
         false: 'bg-background-secondary',
       },
       blur: {

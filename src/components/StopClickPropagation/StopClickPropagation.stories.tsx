@@ -16,7 +16,7 @@ type Story = StoryObj<typeof StopClickPropagation>
 const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
   return (
     <div
-      className="flex items-center bg-background-secondary hover:bg-background-backdrop rounded-xl cursor-pointer justify-between p-4"
+      className="flex items-center bg-background-secondary hover:opacity-80 rounded-xl cursor-pointer justify-between p-4"
       onClick={() => console.log('Container Clicked!!')}
     >
       <div>

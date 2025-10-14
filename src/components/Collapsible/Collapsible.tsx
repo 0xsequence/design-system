@@ -18,7 +18,7 @@ const collapsibleVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-background-secondary',
+        default: 'bg-background-muted ring-inset ring-1 ring-border-card',
         outlined: 'bg-transparent ring-inset ring-1 ring-border-normal',
       },
     },

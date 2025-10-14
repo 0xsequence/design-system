@@ -51,7 +51,7 @@ export const DropdownMenuItem = ({
     className={cn(
       'flex items-center justify-between rounded-xs px-2 py-1 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
       'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-      'data-highlighted:bg-background-contrast',
+      'data-highlighted:bg-background-primary',
       className
     )}
     {...rest}
@@ -82,7 +82,7 @@ export const DropdownMenuCheckboxItem = forwardRef<
     className={cn(
       'flex items-center justify-between rounded-xs px-2 py-1 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
       'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-      'data-highlighted:bg-background-contrast',
+      'data-highlighted:bg-background-primary',
       className
     )}
     {...rest}
@@ -105,7 +105,7 @@ export const DropdownMenuRadioItem = forwardRef<
     className={cn(
       'flex items-center justify-between rounded-xs px-2 py-1 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
       'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-      'data-highlighted:bg-background-contrast',
+      'data-highlighted:bg-background-primary',
       className
     )}
     {...rest}

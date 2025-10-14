@@ -3,17 +3,20 @@ import type { HTMLAttributes } from 'react'
 
 import { cn } from '~/utils/classnames.js'
 
-const scrollVariants = cva(['w-full h-full bg-background-primary'], {
-  variants: {
-    direction: {
-      vertical: ['h-full overflow-y-auto overscroll-y-contain'],
-      horizontal: ['overflow-x-auto overscroll-x-contain w-full'],
+const scrollVariants = cva(
+  ['w-full h-full bg-background-primary focus:outline-hidden'],
+  {
+    variants: {
+      direction: {
+        vertical: ['h-full overflow-y-auto overscroll-y-contain'],
+        horizontal: ['overflow-x-auto overscroll-x-contain w-full'],
+      },
     },
-  },
-  defaultVariants: {
-    direction: 'vertical',
-  },
-})
+    defaultVariants: {
+      direction: 'vertical',
+    },
+  }
+)
 
 const overlayVariants = cva(['relative w-full h-full'], {
   variants: {

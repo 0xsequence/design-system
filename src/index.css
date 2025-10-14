@@ -19,12 +19,9 @@
   /* Background colors */
   --seq-color-background-primary: black;
   --seq-color-background-secondary: var(--color-zinc-900);
-  --seq-color-background-contrast: rgba(0, 0, 0, 0.5);
-  --seq-color-background-muted: rgba(255, 255, 255, 0.05);
-  --seq-color-background-control: rgba(255, 255, 255, 0.25);
-  --seq-color-background-inverse: rgba(255, 255, 255, 1);
-  --seq-color-background-backdrop: rgba(34, 34, 34, 0.9);
-  --seq-color-background-overlay: rgba(0, 0, 0, 0.7);
+  --seq-color-background-muted: var(--color-zinc-950);
+  --seq-color-background-inverse: white;
+  --seq-color-background-overlay: var(--color-zinc-800);
   --seq-color-background-raised: var(--color-zinc-800);
   --seq-color-background-input: var(--color-zinc-950);
   --seq-color-background-hover: var(--color-zinc-900);
@@ -34,7 +31,7 @@
   --seq-color-border-normal: var(--color-zinc-700);
   --seq-color-border-hover: var(--color-zinc-600);
   --seq-color-border-focus: var(--color-violet-500);
-  --seq-color-border-error: rgba(255, 69, 0, 1);
+  --seq-color-border-error: var(--color-red-500);
   --seq-color-border-card: var(--color-zinc-800);
   --seq-color-border-button: var(--color-zinc-700);
 
@@ -43,8 +40,8 @@
 
   /* Button colors */
   --seq-color-button-glass: var(--color-zinc-800);
-  --seq-color-button-emphasis: rgba(0, 0, 0, 0.5);
-  --seq-color-button-inverse: rgba(255, 255, 255, 0.8);
+  --seq-color-button-emphasis: black;
+  --seq-color-button-inverse: white;
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
@@ -88,12 +85,9 @@
   /* Background colors */
   --seq-color-background-primary: var(--color-slate-50);
   --seq-color-background-secondary: white;
-  --seq-color-background-contrast: rgba(244, 244, 244, 0.5);
-  --seq-color-background-muted: rgba(0, 0, 0, 0.05);
-  --seq-color-background-control: rgba(0, 0, 0, 0.25);
-  --seq-color-background-inverse: rgba(0, 0, 0, 1);
-  --seq-color-background-backdrop: rgba(221, 221, 221, 0.9);
-  --seq-color-background-overlay: rgba(244, 244, 244, 0.7);
+  --seq-color-background-muted: var(--color-slate-100);
+  --seq-color-background-inverse: black;
+  --seq-color-background-overlay: var(--color-slate-300);
   --seq-color-background-raised: white;
   --seq-color-background-input: var(--color-slate-50);
   --seq-color-background-hover: var(--color-slate-100);
@@ -103,7 +97,7 @@
   --seq-color-border-normal: var(--color-slate-300);
   --seq-color-border-hover: var(--color-slate-400);
   --seq-color-border-focus: var(--color-violet-600);
-  --seq-color-border-error: rgba(255, 69, 0, 1);
+  --seq-color-border-error: var(--color-red-500);
   --seq-color-border-card: var(--color-slate-200);
   --seq-color-border-button: var(--color-slate-300);
 
@@ -112,8 +106,8 @@
 
   /* Button colors */
   --seq-color-button-glass: white;
-  --seq-color-button-emphasis: rgba(255, 255, 255, 0.5);
-  --seq-color-button-inverse: rgba(0, 0, 0, 0.8);
+  --seq-color-button-emphasis: white;
+  --seq-color-button-inverse: black;
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
@@ -163,11 +157,8 @@
 
   --color-background-primary: var(--seq-color-background-primary);
   --color-background-secondary: var(--seq-color-background-secondary);
-  --color-background-contrast: var(--seq-color-background-contrast);
   --color-background-muted: var(--seq-color-background-muted);
-  --color-background-control: var(--seq-color-background-control);
   --color-background-inverse: var(--seq-color-background-inverse);
-  --color-background-backdrop: var(--seq-color-background-backdrop);
   --color-background-overlay: var(--seq-color-background-overlay);
   --color-background-raised: var(--seq-color-background-raised);
   --color-background-input: var(--seq-color-background-input);
@@ -196,7 +187,7 @@
   --animate-swipe-out: swipe-out 200ms ease-out;
 
   --shadow-primary: 0 0 16px 0
-    color-mix(in oklab, var(--color-drop-shadow), transparent 70%);
+    color-mix(in oklab, var(--color-drop-shadow) 30%, transparent);
 
   @keyframes skeleton {
     0% {
