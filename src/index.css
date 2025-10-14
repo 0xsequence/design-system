@@ -219,3 +219,52 @@
     }
   }
 }
+
+/* Typography utility classes */
+@utility text-xxxlarge {
+  @apply font-body font-bold text-6xl tracking-normal leading-15;
+}
+
+@utility text-xxlarge {
+  @apply font-body font-bold text-4xl tracking-widest leading-10;
+}
+
+@utility text-xlarge {
+  @apply font-body font-bold text-2xl tracking-normal leading-8;
+}
+
+@utility text-large {
+  @apply font-body font-semibold text-xl tracking-normal leading-7;
+}
+
+@utility text-medium {
+  @apply font-body font-bold text-base tracking-normal leading-6;
+}
+
+@utility text-normal-bold {
+  @apply font-body font-bold text-sm tracking-wide leading-5;
+}
+
+@utility text-normal {
+  @apply font-body font-medium text-sm tracking-wide leading-5;
+}
+
+@utility text-small-bold {
+  @apply font-body font-bold text-xs tracking-normal leading-4;
+}
+
+@utility text-small {
+  @apply font-body font-medium text-xs tracking-wide leading-4;
+}
+
+@utility text-xsmall-bold {
+  @apply font-body font-bold text-[0.625rem] tracking-wide leading-4;
+}
+
+@utility text-xsmall {
+  @apply font-body font-bold text-[0.625rem] tracking-wide leading-4;
+}
+
+@utility text-code {
+  @apply font-mono font-normal text-sm tracking-normal leading-5;
+}
