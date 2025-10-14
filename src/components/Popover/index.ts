@@ -1,8 +1,8 @@
 export {
+  Popover,
   PopoverAnchor,
   PopoverClose,
   PopoverContent,
   PopoverPrimitive,
-  PopoverRoot,
   PopoverTrigger,
 } from './Popover.js'

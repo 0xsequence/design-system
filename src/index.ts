@@ -35,17 +35,14 @@ export { Modal, ModalPrimitive } from './components/Modal/index.js'
 export { NumericInput } from './components/NumericInput/index.js'
 export { PINCodeInput } from './components/PINCodeInput/index.js'
 export {
+  Popover,
   PopoverAnchor,
   PopoverClose,
   PopoverContent,
   PopoverPrimitive,
-  PopoverRoot,
   PopoverTrigger,
 } from './components/Popover/index.js'
-export {
-  Placeholder /* deprecated */,
-  Skeleton,
-} from './components/Skeleton/index.js'
+export { Skeleton } from './components/Skeleton/index.js'
 export { Progress } from './components/Progress/index.js'
 export {
   ControlledRadioGroup,

@@ -2,9 +2,9 @@ import { cleanup, render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 import {
+  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './DropdownMenu.js'
@@ -16,7 +16,7 @@ describe('<DropdownMenu />', () => {
     const user = userEvent.setup()
 
     render(
-      <DropdownMenuRoot>
+      <DropdownMenu>
         <DropdownMenuTrigger>Menu</DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>New Tab</DropdownMenuItem>
@@ -50,7 +50,7 @@ describe('<DropdownMenu />', () => {
             <DropdownMenuRadioItem value="grid">Grid</DropdownMenuRadioItem>
           </DropdownMenuRadioGroup> */}
         </DropdownMenuContent>
-      </DropdownMenuRoot>
+      </DropdownMenu>
     )
 
     expect(screen.getByText(/Menu/)).toBeInTheDocument()

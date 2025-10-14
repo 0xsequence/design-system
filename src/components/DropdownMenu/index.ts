@@ -1,4 +1,5 @@
 export {
+  DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -6,7 +7,6 @@ export {
   DropdownMenuPrimitive,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './DropdownMenu.js'

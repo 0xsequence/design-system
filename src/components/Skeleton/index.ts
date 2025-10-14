@@ -1,4 +1,1 @@
-export {
-  Skeleton,
-  Skeleton as Placeholder /* deprecated */,
-} from './Skeleton.js'
+export { Skeleton } from './Skeleton.js'

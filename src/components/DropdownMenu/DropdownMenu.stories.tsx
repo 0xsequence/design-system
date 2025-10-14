@@ -5,12 +5,12 @@ import { IconButton } from '~/components/IconButton/index.js'
 import { ContextMenuIcon } from '~/icons/index.js'
 
 import {
+  DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './DropdownMenu.js'
@@ -28,7 +28,7 @@ const StoryWrapper = () => {
 
   return (
     <div className="flex justify-center">
-      <DropdownMenuRoot>
+      <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <IconButton icon={ContextMenuIcon} />
         </DropdownMenuTrigger>
@@ -64,7 +64,7 @@ const StoryWrapper = () => {
             <DropdownMenuRadioItem value="grid">Grid</DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
-      </DropdownMenuRoot>
+      </DropdownMenu>
     </div>
   )
 }
