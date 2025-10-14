@@ -4,7 +4,7 @@ import { Button } from '../Button/index.js'
 import { Card } from '../Card/index.js'
 import { Text } from '../Text/index.js'
 
-import { PopoverContent, PopoverRoot, PopoverTrigger } from './Popover.js'
+import { Popover, PopoverContent, PopoverTrigger } from './Popover.js'
 
 export default {
   title: 'Components/Popover',
@@ -16,14 +16,14 @@ const StoryWrapper = (props: React.ComponentProps<typeof PopoverContent>) => {
   const { children, ...rest } = props
   return (
     <div className="flex justify-center">
-      <PopoverRoot>
+      <Popover>
         <PopoverTrigger asChild>
           <Button label="Open Popover" />
         </PopoverTrigger>
         <PopoverContent className="p-4 w-[480px]" {...rest}>
           {children}
         </PopoverContent>
-      </PopoverRoot>
+      </Popover>
     </div>
   )
 }

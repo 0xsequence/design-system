@@ -13,6 +13,7 @@ export {
 } from './components/Collapsible/index.js'
 export { Divider } from './components/Divider/index.js'
 export {
+  DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -20,7 +21,6 @@ export {
   DropdownMenuPrimitive,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './components/DropdownMenu/index.js'
@@ -61,7 +61,6 @@ export {
   TabsHeader,
   TabsList,
   TabsPrimitive,
-  TabsRoot,
   TabsTrigger,
 } from './components/Tabs/index.js'
 export { Tag } from './components/Tag/index.js'

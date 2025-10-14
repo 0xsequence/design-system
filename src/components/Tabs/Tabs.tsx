@@ -100,8 +100,6 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 
 export { TabsPrimitive }
 
-export const TabsRoot = TabsPrimitive.Root
-
 export const TabsList = TabsPrimitive.TabsList
 
 export const TabsTrigger = TabsPrimitive.TabsTrigger
