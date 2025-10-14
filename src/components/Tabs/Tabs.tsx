@@ -75,7 +75,7 @@ export const TabsHeader = (props: TabsHeaderProps) => {
     >
       <div className="flex absolute inset-2 h-8">
         <div
-          className="absolute rounded-lg top-0 left-0 h-8 bg-button-glass pointer-events-none transition-transform duration-200 ease-out"
+          className="absolute rounded-lg top-0 left-0 h-8 bg-background-active pointer-events-none transition-transform duration-200 ease-out"
           style={{
             width: `${selectorWidth}%`,
             transform: `translateX(${selectedIdx * 100}%)`,
