@@ -51,6 +51,16 @@ export {
 export { Scroll } from './components/Scroll/index.js'
 export { ControlledSelect, Select } from './components/Select/index.js'
 export { SearchInput } from './components/SearchInput/index.js'
+export {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from './components/Sheet/index.js'
 export { Spinner } from './components/Spinner/index.js'
 export { StopClickPropagation } from './components/StopClickPropagation/index.js'
 export { ControlledSwitch, Switch } from './components/Switch/index.js'
