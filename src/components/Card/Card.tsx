@@ -2,8 +2,8 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type HTMLAttributes } from 'react'
 
-import { focusRingVariants } from '~/styles.js'
-import { cn } from '~/utils/classnames.js'
+import { focusRingVariants } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 export const cardVariants = cva(
   [

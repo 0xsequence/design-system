@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { HTMLAttributes } from 'react'
 
-import { cn } from '~/utils/classnames.js'
+import { cn } from '../../utils/classnames.js'
 
 const scrollVariants = cva(
   ['w-full h-full bg-background-primary focus:outline-hidden'],

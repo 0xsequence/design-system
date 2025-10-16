@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { ArrowRightIcon } from '~/icons/index.js'
+import { ArrowRightIcon } from '../../icons/index.js'
 
 import { IconButton } from './IconButton.js'
 

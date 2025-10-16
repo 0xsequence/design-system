@@ -5,12 +5,12 @@ import { clsx } from 'clsx'
 import { motion, type HTMLMotionProps } from 'motion/react'
 import { Fragment, type PropsWithChildren } from 'react'
 
-import { IconButton } from '~/components/IconButton/IconButton.js'
-import { Scroll } from '~/components/Scroll/Scroll.js'
-import { Text } from '~/components/Text/Text.js'
-import { useTheme } from '~/components/ThemeProvider/ThemeProvider.js'
-import { CloseIcon } from '~/icons/index.js'
-import { cn } from '~/utils/classnames.js'
+import { IconButton } from '../IconButton/IconButton.js'
+import { Scroll } from '../Scroll/Scroll.js'
+import { Text } from '../Text/Text.js'
+import { useTheme } from '../ThemeProvider/ThemeProvider.js'
+import { CloseIcon } from '../../icons/index.js'
+import { cn } from '../../utils/classnames.js'
 
 const modalContentVariants = cva(
   [

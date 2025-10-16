@@ -1,7 +1,7 @@
 import * as SheetPrimitive from '@radix-ui/react-dialog'
 
-import { CloseIcon } from '~/icons/index.js'
-import { cn } from '~/utils/classnames.js'
+import { CloseIcon } from '../../icons/index.js'
+import { cn } from '../../utils/classnames.js'
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
-import { IconButton } from '~/components/IconButton/IconButton.js'
-import { ContextMenuIcon } from '~/icons/index.js'
+import { IconButton } from '../IconButton/IconButton.js'
+import { ContextMenuIcon } from '../../icons/index.js'
 
 import {
   DropdownMenu,

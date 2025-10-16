@@ -1,8 +1,8 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import type { PropsWithChildren, ReactNode } from 'react'
 
-import { Text } from '~/components/Text/Text.js'
-import { useTheme } from '~/components/ThemeProvider/ThemeProvider.js'
+import { Text } from '../Text/Text.js'
+import { useTheme } from '../ThemeProvider/ThemeProvider.js'
 
 interface TooltipProps {
   align?: 'center' | 'end' | 'start'

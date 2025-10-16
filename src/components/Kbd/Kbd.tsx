@@ -1,4 +1,4 @@
-import { cn } from '~/utils/classnames.js'
+import { cn } from '../../utils/classnames.js'
 
 import { textVariants } from '../Text/Text.js'
 

@@ -1,8 +1,8 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
-import { IconButton } from '~/components/IconButton/IconButton.js'
-import { Text } from '~/components/Text/Text.js'
-import { ArrowRightIcon } from '~/icons/index.js'
+import { IconButton } from '../IconButton/IconButton.js'
+import { Text } from '../Text/Text.js'
+import { ArrowRightIcon } from '../../icons/index.js'
 
 import { StopClickPropagation } from './StopClickPropagation.js'
 

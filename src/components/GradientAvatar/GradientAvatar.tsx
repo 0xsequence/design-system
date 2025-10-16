@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { memo, useId } from 'react'
 
-import { cn } from '~/utils/classnames.js'
+import { cn } from '../../utils/classnames.js'
 
 const MOD = 1000
 const SIZE = 64

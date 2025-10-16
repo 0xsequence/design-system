@@ -1,11 +1,11 @@
 import { cva } from 'class-variance-authority'
 import { forwardRef, type ComponentType, type ReactNode } from 'react'
 
-import { Field, type FieldProps } from '~/components/Field/Field.js'
-import { textVariants } from '~/components/Text/Text.js'
-import type { IconProps } from '~/icons/types.js'
-import { focusRingVariants, inputBorderStyle } from '~/styles.js'
-import { cn } from '~/utils/classnames.js'
+import type { IconProps } from '../../icons/types.js'
+import { focusRingVariants, inputBorderStyle } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
+import { Field, type FieldProps } from '../Field/Field.js'
+import { textVariants } from '../Text/Text.js'
 
 const inputVariants = cva(
   [

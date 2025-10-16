@@ -1,6 +1,6 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 
-import { cn } from '~/utils/classnames.js'
+import { cn } from '../../utils/classnames.js'
 
 function Popover({
   ...props

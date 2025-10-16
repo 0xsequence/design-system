@@ -20,11 +20,7 @@
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "jsx": "react-jsx",
 
-    "baseUrl": ".",
-
-    "paths": {
-      "~/*": ["src/*"]
-    }
+    "baseUrl": "."
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

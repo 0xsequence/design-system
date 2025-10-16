@@ -7,7 +7,7 @@ import {
   type PropsWithChildren,
 } from 'react'
 
-import { colorNames, type ColorTokens } from '~/tokens/color.js'
+import { colorNames, type ColorTokens } from '../../tokens/color.js'
 
 export const themes = ['dark', 'light'] as const
 

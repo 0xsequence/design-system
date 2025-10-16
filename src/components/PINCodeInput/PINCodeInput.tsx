@@ -2,9 +2,13 @@ import { cva } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
-import { textVariants } from '~/components/Text/Text.js'
-import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
-import { cn } from '~/utils/classnames.js'
+import { textVariants } from '../Text/Text.js'
+import {
+  disabledStyle,
+  focusRingVariants,
+  inputBorderStyle,
+} from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 export const digitText = clsx(
   textVariants({ variant: 'large' }),

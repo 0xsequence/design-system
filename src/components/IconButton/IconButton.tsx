@@ -1,12 +1,8 @@
 import type { VariantProps } from 'class-variance-authority'
 import { forwardRef, type ComponentType } from 'react'
 
-import {
-  Button,
-  buttonVariants,
-  type ButtonProps,
-} from '~/components/Button/Button.js'
-import type { IconProps } from '~/icons/types.js'
+import type { IconProps } from '../../icons/types.js'
+import { Button, buttonVariants, type ButtonProps } from '../Button/Button.js'
 
 export interface IconButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> {

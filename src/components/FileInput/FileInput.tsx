@@ -1,13 +1,12 @@
 import { forwardRef, useRef, useState, type ChangeEvent } from 'react'
 
-import { Field, type FieldProps } from '~/components/Field/Field.js'
-import { IconButton } from '~/components/IconButton/IconButton.js'
-import { Text } from '~/components/Text/Text.js'
-import { useCombinedRefs } from '~/hooks/useCombinedRefs.js'
-import { CloseIcon } from '~/icons/index.js'
-import { focusRingVariants } from '~/styles.js'
-import { cn } from '~/utils/classnames.js'
-
+import { useCombinedRefs } from '../../hooks/useCombinedRefs.js'
+import { CloseIcon } from '../../icons/index.js'
+import { focusRingVariants } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
+import { Field, type FieldProps } from '../Field/Field.js'
+import { IconButton } from '../IconButton/IconButton.js'
+import { Text } from '../Text/Text.js'
 import { textVariants } from '../Text/Text.js'
 
 const MIME_TYPES = {

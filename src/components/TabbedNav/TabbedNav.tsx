@@ -6,10 +6,10 @@ import {
   type ReactNode,
 } from 'react'
 
-import { Button } from '~/components/Button/Button.js'
-import { textVariants } from '~/components/Text/Text.js'
-import type { IconProps } from '~/icons/types.js'
-import { cn } from '~/utils/classnames.js'
+import { Button } from '../Button/Button.js'
+import { textVariants } from '../Text/Text.js'
+import type { IconProps } from '../../icons/types.js'
+import { cn } from '../../utils/classnames.js'
 
 const tabVariants = cva(['select-none'], {
   variants: {

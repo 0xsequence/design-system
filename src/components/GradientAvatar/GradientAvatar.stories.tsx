@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Address, Mnemonic } from 'ox'
 
-import { Text } from '~/components/Text/Text.js'
+import { Text } from '../Text/Text.js'
 
 import { GradientAvatar } from './GradientAvatar.js'
 

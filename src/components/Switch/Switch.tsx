@@ -1,8 +1,12 @@
 import * as SwitchPrimitive from '@radix-ui/react-switch'
 
-import { Field, type FieldProps } from '~/components/Field/Field.js'
-import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
-import { cn } from '~/utils/classnames.js'
+import { Field, type FieldProps } from '../Field/Field.js'
+import {
+  disabledStyle,
+  focusRingVariants,
+  inputBorderStyle,
+} from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 export type SwitchProps = FieldProps & SwitchPrimitive.SwitchProps
 
