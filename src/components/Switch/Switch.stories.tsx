@@ -16,3 +16,15 @@ export const Default: Story = {
     description: 'Switch Description',
   },
 }
+
+export const Small: Story = {
+  args: {
+    size: 'sm',
+  },
+}
+
+export const Medium: Story = {
+  args: {
+    size: 'md',
+  },
+}

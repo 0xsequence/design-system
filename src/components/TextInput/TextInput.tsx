@@ -10,7 +10,7 @@ import { textVariants } from '../Text/Text.js'
 const inputVariants = cva(
   [
     'block bg-transparent text-primary border-none px-0 py-4 w-full h-full placeholder-muted',
-    'focus:outline-hidden focus:ring-0',
+    'focus:outline-hidden',
   ],
   {
     variants: {
@@ -74,7 +74,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               focusRingVariants({ variant: 'within', error: !!error }),
               inputBorderStyle,
               {
-                'cursor-default opacity-50 hover:ring-border-normal!': disabled,
+                'cursor-default opacity-50 hover:border-border-normal!':
+                  disabled,
               },
               className
             )}

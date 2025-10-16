@@ -23,14 +23,14 @@ export const buttonVariants = cva(
         ],
         primary: 'bg-gradient-primary text-white hover:opacity-80',
         secondary:
-          'bg-background-secondary text-primary ring-inset ring-1 ring-border-button hover:ring-border-hover hover:bg-background-hover',
+          'bg-background-secondary text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         glass:
-          'bg-button-glass text-primary ring-inset ring-1 ring-border-button hover:ring-border-hover hover:bg-background-hover',
+          'bg-button-glass text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         emphasis: 'bg-button-emphasis text-primary',
         raised: 'bg-background-raised text-primary',
         danger: 'bg-negative text-white',
         text: [
-          'bg-transparent text-muted rounded-xs outline-offset-1',
+          'bg-transparent text-muted rounded-xs',
           textVariants({ variant: 'small' }),
           'font-bold',
         ],

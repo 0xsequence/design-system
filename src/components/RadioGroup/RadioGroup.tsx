@@ -62,40 +62,6 @@ export type RadioGroupProps = VariantProps<typeof radioOptionVariants> &
     className?: string
   }
 
-type RadioOptionProps = VariantProps<typeof radioOptionVariants> & {
-  id: string
-  label: string
-  value: string
-  disabled?: boolean
-}
-
-const RadioOption = (props: RadioOptionProps) => {
-  const { id, label, size = 'sm', value, disabled } = props
-
-  return (
-    <div className="flex items-center">
-      <Field
-        disabled={disabled}
-        id={id}
-        label={label}
-        labelLocation="right"
-        className="flex"
-      >
-        <RadioPrimitive.Item
-          className={cn(radioOptionVariants({ size }))}
-          value={value}
-          id={id}
-          disabled={disabled}
-        >
-          <RadioPrimitive.Indicator
-            className={cn(indicatorVariants({ size }))}
-          />
-        </RadioPrimitive.Item>
-      </Field>
-    </div>
-  )
-}
-
 export const RadioGroup = forwardRef(
   (props: RadioGroupProps, ref: Ref<HTMLDivElement>) => {
     const {
@@ -129,3 +95,37 @@ export const RadioGroup = forwardRef(
     )
   }
 )
+
+type RadioOptionProps = VariantProps<typeof radioOptionVariants> & {
+  id: string
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const RadioOption = (props: RadioOptionProps) => {
+  const { id, label, size = 'sm', value, disabled } = props
+
+  return (
+    <div className="flex items-center">
+      <Field
+        disabled={disabled}
+        id={id}
+        label={label}
+        labelLocation="right"
+        className="flex"
+      >
+        <RadioPrimitive.Item
+          className={cn(radioOptionVariants({ size }))}
+          value={value}
+          id={id}
+          disabled={disabled}
+        >
+          <RadioPrimitive.Indicator
+            className={cn(indicatorVariants({ size }))}
+          />
+        </RadioPrimitive.Item>
+      </Field>
+    </div>
+  )
+}

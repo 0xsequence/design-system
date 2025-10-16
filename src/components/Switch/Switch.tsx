@@ -1,4 +1,5 @@
 import * as SwitchPrimitive from '@radix-ui/react-switch'
+import { cva, type VariantProps } from 'class-variance-authority'
 
 import {
   disabledStyle,
@@ -8,7 +9,26 @@ import {
 import { cn } from '../../utils/classnames.js'
 import { Field, type FieldProps } from '../Field/Field.js'
 
-export type SwitchProps = FieldProps & SwitchPrimitive.SwitchProps
+const switchVariants = cva(
+  [
+    'rounded-full bg-background-input bg-origin-border cursor-pointer data-[state=checked]:bg-gradient-primary data-[state=checked]:border-transparent!',
+  ],
+  {
+    variants: {
+      size: {
+        sm: 'w-[32px] h-5 p-0.75 [&_span]:size-[12px]',
+        md: 'w-[46px] h-7 p-1 [&_span]:size-[18px]',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  }
+)
+
+export type SwitchProps = FieldProps &
+  VariantProps<typeof switchVariants> &
+  SwitchPrimitive.SwitchProps
 
 export const Switch = (props: SwitchProps) => {
   const {
@@ -18,6 +38,7 @@ export const Switch = (props: SwitchProps) => {
     description,
     id,
     name,
+    size,
     ...rest
   } = props
 
@@ -32,8 +53,7 @@ export const Switch = (props: SwitchProps) => {
     >
       <SwitchPrimitive.Root
         className={cn(
-          'relative w-12 h-7 p-1 rounded-full bg-background-input cursor-pointer data-[state=checked]:bg-gradient-primary',
-          'data-[state=checked]:not-focus-visible:ring-transparent!',
+          switchVariants({ size }),
           focusRingVariants(),
           inputBorderStyle,
           disabledStyle
@@ -42,7 +62,7 @@ export const Switch = (props: SwitchProps) => {
         {...rest}
       >
         <div className="relative w-full h-full">
-          <SwitchPrimitive.Thumb className="absolute top-0 left-0 w-5 h-5 bg-border-normal rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:translate-x-5 data-[state=checked]:bg-white" />
+          <SwitchPrimitive.Thumb className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:bg-white data-[state=checked]:translate-x-full" />
         </div>
       </SwitchPrimitive.Root>
     </Field>

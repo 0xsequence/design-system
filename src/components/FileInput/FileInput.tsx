@@ -2,7 +2,7 @@ import { forwardRef, useRef, useState, type ChangeEvent } from 'react'
 
 import { useCombinedRefs } from '../../hooks/useCombinedRefs.js'
 import { CloseIcon } from '../../icons/index.js'
-import { focusRingVariants } from '../../styles.js'
+import { focusRingVariants, inputBorderStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 import { Field, type FieldProps } from '../Field/Field.js'
 import { IconButton } from '../IconButton/IconButton.js'
@@ -107,8 +107,8 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                 ? 'justify-between text-primary'
                 : 'justify-start text-muted',
               focusRingVariants({ variant: 'within', error: !!error }),
-              // inputBorderStyle,
-              'border border-dashed border-border-normal hover:not-disabled:not-focus-within:border-border-hover focus-within:[&:has(:focus-visible)]:border-none',
+              inputBorderStyle,
+              'border-dashed',
               className
             )}
           >
