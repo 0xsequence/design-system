@@ -75,9 +75,6 @@ importers:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
         version: 0.18.2
-      '@babel/core':
-        specifier: ^7.28.4
-        version: 7.28.4
       '@changesets/changelog-github':
         specifier: ^0.5.1
         version: 0.5.1
