@@ -1,6 +1,4 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
-import { AnimatePresence } from 'motion/react'
-import { useState } from 'react'
 
 import { Button } from '~/components/Button/index.js'
 
