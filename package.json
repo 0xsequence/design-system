@@ -37,7 +37,6 @@
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "pnpm build && pnpm test && changeset publish",
-    "codemod": "jscodeshift --transform ./transforms/tailwind-transform.ts --parser tsx",
     "attw": "attw --pack ."
   },
   "dependencies": {
@@ -90,7 +89,6 @@
     "eslint-plugin-storybook": "9.1.12",
     "happy-dom": "^20.0.2",
     "husky": "^9.1.7",
-    "jscodeshift": "^17.3.0",
     "motion": "^12.23.24",
     "ox": "^0.7.2",
     "prettier": "^3.6.2",

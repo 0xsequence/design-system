@@ -73,25 +73,6 @@ Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/
 pnpm install && pnpm storybook
 ```
 
-### Migration from 1.x to 2.x
-
-
-#### Codemod
-
-To make migrating from the vanilla-extract polymorphic box model styling system used in v1.x to the simplified tailwind classes version in 2.x you can use the supplied codemod to do most of the work for you.
-
-clone the 0xsequence/design-system repo to your local machine and run pnpm install to install dependencies.
-
-Run `codemod` from the design-system directory (eg ~/0xsequence/design-system), giving a relative path to your application, ie.
-
-`
-cd  ~/0xsequence/design-system
-pnpm codemod ../wallet-webapp/src/**/*.{ts,tsx}`
-`
-
-And the codemod will convert atom props to tailwind classnames and handle `as` props, amonst other things. Give it a try and save yourself some time.
-
-
 #### Manual project updates
 
 ##### 1. Upgrade the design system to the latest version
