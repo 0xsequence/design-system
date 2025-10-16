@@ -1,11 +1,11 @@
-import { API, FileInfo, JSXAttribute, Collection } from 'jscodeshift'
+import { API, Collection, FileInfo, JSXAttribute } from 'jscodeshift'
 
 import {
-  hasAtomProps,
-  getTailwindClassName,
   ATOM_KEYS,
   AtomKey,
   getAtomProps,
+  getTailwindClassName,
+  hasAtomProps,
 } from './atom-helpers'
 
 const IMPORTS_TO_REMOVE = [

@@ -15,11 +15,31 @@ type SelectOption = {
   value: string
 }
 
+type Direction = 'ltr' | 'rtl'
+
+// XXX This is a copy of SelectSharedProps from the Radix UI Select component
+// Which is not exported by the library which causes errors
+interface SelectPrimitiveProps {
+  // SelectSharedProps
+  children?: React.ReactNode
+  open?: boolean
+  defaultOpen?: boolean
+  onOpenChange?(open: boolean): void
+  dir?: Direction
+  name?: string
+  autoComplete?: string
+  disabled?: boolean
+  required?: boolean
+  form?: string
+
+  // SelectProps
+  value?: string
+  defaultValue?: string
+  onValueChange?(value: string): void
+}
+
 export type SelectProps = FieldProps &
-  SelectPrimitive.SelectProps & {
-    disabled?: boolean
-    id?: string
-    name: string
+  SelectPrimitiveProps & {
     placeholder?: string
     options: SelectOption[]
     className?: string
