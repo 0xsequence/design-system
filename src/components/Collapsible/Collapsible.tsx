@@ -39,7 +39,7 @@ export const Collapsible = (props: CollapsibleProps) => {
     className,
     variant,
     children,
-    defaultOpen,
+    defaultOpen = false,
     open,
     onOpenChange,
     label,

@@ -69,7 +69,7 @@ export const WithHeaderAndFooter: Story = {
     children: (
       <div className="flex flex-col gap-2 p-4">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(idx => (
-          <Card className="flex gap-2 items-center">
+          <Card className="flex gap-2 items-center" key={idx}>
             <div className="flex items-center justify-center rounded-full bg-positive w-8 h-8 text-white">
               <CheckmarkIcon />
             </div>
