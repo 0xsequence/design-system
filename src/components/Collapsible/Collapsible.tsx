@@ -4,9 +4,9 @@ import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState, type ReactNode } from 'react'
 
-import { Text } from '../Text/Text.js'
 import { ChevronDownIcon } from '../../icons/index.js'
 import { focusRingVariants } from '../../styles.js'
+import { Text } from '../Text/Text.js'
 
 const COLLAPSED_HEIGHT = '64px'
 

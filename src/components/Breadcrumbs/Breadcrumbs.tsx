@@ -1,9 +1,9 @@
 import type { HTMLAttributes, JSX, ReactNode } from 'react'
 
-import { Divider } from '../Divider/Divider.js'
-import { Text } from '../Text/Text.js'
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
+import { Divider } from '../Divider/Divider.js'
+import { Text } from '../Text/Text.js'
 
 interface Path {
   label: string

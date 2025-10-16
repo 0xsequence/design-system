@@ -1,8 +1,8 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
+import { TransactionIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
-import { TransactionIcon } from '../../icons/index.js'
 
 import { Toast, ToastProvider, useToast, type ToastProps } from './Toast.js'
 

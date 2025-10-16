@@ -10,11 +10,11 @@ import {
   type SetStateAction,
 } from 'react'
 
+import { CheckmarkIcon, CloseIcon } from '../../icons/index.js'
+import { type IconProps } from '../../icons/types.js'
 import { Card } from '../Card/Card.js'
 import { IconButton } from '../IconButton/IconButton.js'
 import { Text } from '../Text/Text.js'
-import { CheckmarkIcon, CloseIcon } from '../../icons/index.js'
-import { type IconProps } from '../../icons/types.js'
 
 const toastVariants = cva(
   [

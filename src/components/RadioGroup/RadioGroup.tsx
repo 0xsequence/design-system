@@ -2,13 +2,13 @@ import * as RadioPrimitive from '@radix-ui/react-radio-group'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type Ref } from 'react'
 
-import { Field } from '../Field/Field.js'
 import {
   disabledStyle,
   focusRingVariants,
   inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
+import { Field } from '../Field/Field.js'
 
 const radioOptionVariants = cva(
   [

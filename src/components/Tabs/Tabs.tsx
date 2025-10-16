@@ -1,9 +1,9 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { useState, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 
-import { Text } from '../Text/Text.js'
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
+import { Text } from '../Text/Text.js'
 
 export interface TabsProps
   extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {

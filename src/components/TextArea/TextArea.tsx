@@ -1,14 +1,14 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type ReactNode } from 'react'
 
-import { Field, type FieldProps } from '../Field/Field.js'
-import { textVariants } from '../Text/Text.js'
 import {
   disabledStyle,
   focusRingVariants,
   inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
+import { Field, type FieldProps } from '../Field/Field.js'
+import { textVariants } from '../Text/Text.js'
 
 const textareaVariants = cva(
   [

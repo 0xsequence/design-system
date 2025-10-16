@@ -2,10 +2,10 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 
+import { CheckmarkIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 import { Text } from '../Text/Text.js'
-import { CheckmarkIcon } from '../../icons/index.js'
 
 import { Modal } from './Modal.js'
 
