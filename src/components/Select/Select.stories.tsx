@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Modal } from '~/components/Modal/index.js'
-import { NetworkImage } from '~/components/NetworkImage/index.js'
-import { Text } from '~/components/Text/index.js'
+import { Modal } from '~/components/Modal/Modal.js'
+import { NetworkImage } from '~/components/NetworkImage/NetworkImage.js'
+import { Text } from '~/components/Text/Text.js'
 
 import { Select } from './Select.js'
 

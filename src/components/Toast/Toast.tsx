@@ -10,9 +10,9 @@ import {
   type SetStateAction,
 } from 'react'
 
-import { Card } from '~/components/Card/index.js'
-import { IconButton } from '~/components/IconButton/index.js'
-import { Text } from '~/components/Text/index.js'
+import { Card } from '~/components/Card/Card.js'
+import { IconButton } from '~/components/IconButton/IconButton.js'
+import { Text } from '~/components/Text/Text.js'
 import { CheckmarkIcon, CloseIcon } from '~/icons/index.js'
 import { type IconProps } from '~/icons/types.js'
 

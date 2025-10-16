@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Card } from '~/components/Card/index.js'
-import { Text } from '~/components/Text/index.js'
+import { Card } from '~/components/Card/Card.js'
+import { Text } from '~/components/Text/Text.js'
 
 import { Tabs } from './Tabs.js'
 

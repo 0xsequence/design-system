@@ -1,9 +1,9 @@
 import type { Meta } from '@storybook/react-vite'
 
-import { Button } from '~/components/Button/index.js'
-import { Card } from '~/components/Card/index.js'
-import { Collapsible } from '~/components/Collapsible/index.js'
-import { Text } from '~/components/Text/index.js'
+import { Button } from '~/components/Button/Button.js'
+import { Card } from '~/components/Card/Card.js'
+import { Collapsible } from '~/components/Collapsible/Collapsible.js'
+import { Text } from '~/components/Text/Text.js'
 
 import { ThemeProvider, useTheme } from './ThemeProvider.js'
 

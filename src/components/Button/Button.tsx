@@ -2,7 +2,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type ComponentType, type ReactNode } from 'react'
 
-import { Text, textVariants } from '~/components/Text/index.js'
+import { Text, textVariants } from '~/components/Text/Text.js'
 import type { IconProps } from '~/icons/types.js'
 import { focusRingVariants } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'

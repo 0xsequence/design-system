@@ -6,8 +6,8 @@ import {
   type ReactNode,
 } from 'react'
 
-import { Button } from '~/components/Button/index.js'
-import { textVariants } from '~/components/Text/index.js'
+import { Button } from '~/components/Button/Button.js'
+import { textVariants } from '~/components/Text/Text.js'
 import type { IconProps } from '~/icons/types.js'
 import { cn } from '~/utils/classnames.js'
 

@@ -4,8 +4,8 @@ import { forwardRef } from 'react'
 import { CheckmarkIcon } from '~/icons/index.js'
 import { cn } from '~/utils/classnames.js'
 
-import { Divider } from '../Divider/index.js'
-import { Text } from '../Text/index.js'
+import { Divider } from '../Divider/Divider.js'
+import { Text } from '../Text/Text.js'
 
 export { DropdownMenuPrimitive }
 

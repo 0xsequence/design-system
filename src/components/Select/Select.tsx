@@ -1,9 +1,9 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { forwardRef, type ReactNode, type Ref } from 'react'
 
-import { Field, type FieldProps } from '~/components/Field/index.js'
-import { textVariants } from '~/components/Text/index.js'
-import { useTheme } from '~/components/ThemeProvider/index.js'
+import { Field, type FieldProps } from '~/components/Field/Field.js'
+import { textVariants } from '~/components/Text/Text.js'
+import { useTheme } from '~/components/ThemeProvider/ThemeProvider.js'
 import { ChevronDownIcon } from '~/icons/index.js'
 import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'

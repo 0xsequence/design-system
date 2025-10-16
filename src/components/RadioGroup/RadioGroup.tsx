@@ -2,7 +2,7 @@ import * as RadioPrimitive from '@radix-ui/react-radio-group'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type Ref } from 'react'
 
-import { Field } from '~/components/Field/index.js'
+import { Field } from '~/components/Field/Field.js'
 import { disabledStyle, focusRingVariants, inputBorderStyle } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 

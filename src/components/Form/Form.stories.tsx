@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Button } from '~/components/Button/index.js'
-import { ControlledCheckbox as Checkbox } from '~/components/Checkbox/index.js'
-import { ControlledFileInput as FileInput } from '~/components/FileInput/index.js'
-import { ControlledRadioGroup as RadioGroup } from '~/components/RadioGroup/index.js'
-import { ControlledSelect as Select } from '~/components/Select/index.js'
-import { ControlledSwitch as Switch } from '~/components/Switch/index.js'
-import { ControlledTextInput as TextInput } from '~/components/TextInput/index.js'
-
+import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
-import { TextArea } from '../TextArea/index.js'
+import { ControlledCheckbox as Checkbox } from '../Checkbox/ControlledCheckbox.js'
+import { ControlledFileInput as FileInput } from '../FileInput/ControlledFileInput.js'
+import { ControlledRadioGroup as RadioGroup } from '../RadioGroup/ControlledRadioGroup.js'
+import { ControlledSelect as Select } from '../Select/ControlledSelect.js'
+import { ControlledSwitch as Switch } from '../Switch/ControlledSwitch.js'
+import { TextArea } from '../TextArea/TextArea.js'
+import { ControlledTextInput as TextInput } from '../TextInput/ControlledTextInput.js'
 
 import { Form } from './Form.js'
 

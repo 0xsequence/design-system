@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentType } from 'react'
 
-import { Text } from '~/components/Text/index.js'
+import { Text } from '~/components/Text/Text.js'
 import type { IconProps } from '~/icons/types.js'
 
 const tagVariants = cva(

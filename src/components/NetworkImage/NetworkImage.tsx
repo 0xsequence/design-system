@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { memo } from 'react'
 
-import { Image } from '~/components/Image/index.js'
+import { Image } from '~/components/Image/Image.js'
 import { networkImageUrl, replaceSize } from '~/utils/assets.js'
 import { cn } from '~/utils/classnames.js'
 

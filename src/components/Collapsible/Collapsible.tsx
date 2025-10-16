@@ -4,7 +4,7 @@ import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState, type ReactNode } from 'react'
 
-import { Text } from '~/components/Text/index.js'
+import { Text } from '~/components/Text/Text.js'
 import { ChevronDownIcon } from '~/icons/index.js'
 import { focusRingVariants } from '~/styles.js'
 

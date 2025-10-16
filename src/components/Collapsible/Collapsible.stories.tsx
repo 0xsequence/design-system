@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useEffect, useState } from 'react'
 
-import { Text } from '~/components/Text/index.js'
+import { Text } from '~/components/Text/Text.js'
 
 import { Collapsible } from './Collapsible.js'
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
-import { Button } from '~/components/Button/index.js'
+import { Button } from '~/components/Button/Button.js'
 
 import {
   Sheet,

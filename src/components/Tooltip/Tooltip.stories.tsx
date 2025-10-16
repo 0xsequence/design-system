@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Button } from '~/components/Button/index.js'
-import { Modal } from '~/components/Modal/index.js'
+import { Button } from '~/components/Button/Button.js'
+import { Modal } from '~/components/Modal/Modal.js'
 
 import { Tooltip } from './Tooltip.js'
 

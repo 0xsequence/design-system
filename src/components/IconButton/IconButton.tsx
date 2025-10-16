@@ -5,7 +5,7 @@ import {
   Button,
   buttonVariants,
   type ButtonProps,
-} from '~/components/Button/index.js'
+} from '~/components/Button/Button.js'
 import type { IconProps } from '~/icons/types.js'
 
 export interface IconButtonProps

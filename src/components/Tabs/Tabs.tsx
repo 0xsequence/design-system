@@ -1,7 +1,7 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { useState, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 
-import { Text } from '~/components/Text/index.js'
+import { Text } from '~/components/Text/Text.js'
 import { focusRingVariants } from '~/styles.js'
 import { cn } from '~/utils/classnames.js'
 
