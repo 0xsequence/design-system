@@ -32,7 +32,7 @@ const tabVariants = cva(['select-none'], {
     {
       variant: 'pill',
       active: true,
-      className: 'bg-button-inverse text-inverse',
+      className: 'bg-background-inverse text-inverse',
     },
     {
       variant: 'pill',

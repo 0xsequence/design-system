@@ -26,6 +26,7 @@
   --seq-color-background-input: var(--color-zinc-950);
   --seq-color-background-hover: var(--color-zinc-900);
   --seq-color-background-active: var(--color-zinc-700);
+  --seq-color-background-glass: rgba(255, 255, 255, 0.15);
 
   /* Border colors */
   --seq-color-border-normal: var(--color-zinc-700);
@@ -39,9 +40,7 @@
   --seq-color-drop-shadow: var(--color-zinc-950);
 
   /* Button colors */
-  --seq-color-button-glass: var(--color-zinc-800);
   --seq-color-button-emphasis: black;
-  --seq-color-button-inverse: white;
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
@@ -92,6 +91,7 @@
   --seq-color-background-input: var(--color-slate-50);
   --seq-color-background-hover: var(--color-slate-100);
   --seq-color-background-active: var(--color-slate-200);
+  --seq-color-background-glass: rgba(0, 0, 0, 0.15);
 
   /* Border colors */
   --seq-color-border-normal: var(--color-slate-300);
@@ -105,9 +105,7 @@
   --seq-color-drop-shadow: var(--color-slate-500);
 
   /* Button colors */
-  --seq-color-button-glass: white;
   --seq-color-button-emphasis: white;
-  --seq-color-button-inverse: black;
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
@@ -164,6 +162,7 @@
   --color-background-input: var(--seq-color-background-input);
   --color-background-hover: var(--seq-color-background-hover);
   --color-background-active: var(--seq-color-background-active);
+  --color-background-glass: var(--seq-color-button-glass);
 
   --color-border-normal: var(--seq-color-border-normal);
   --color-border-hover: var(--seq-color-border-hover);
@@ -172,9 +171,7 @@
   --color-border-card: var(--seq-color-border-card);
   --color-border-button: var(--seq-color-border-button);
 
-  --color-button-glass: var(--seq-color-button-glass);
   --color-button-emphasis: var(--seq-color-button-emphasis);
-  --color-button-inverse: var(--seq-color-button-inverse);
 
   --color-drop-shadow: var(--seq-color-drop-shadow);
 
@@ -209,6 +206,14 @@
       transform: translateX(100%);
     }
   }
+}
+
+:root {
+  --base-unit: 16;
+}
+
+@utility text-* {
+  font-size: calc(--value(integer) / var(--base-unit) * 1rem);
 }
 
 /* Typography utility classes */
