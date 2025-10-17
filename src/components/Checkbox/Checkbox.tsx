@@ -9,7 +9,6 @@ import {
   inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { Field, type FieldProps } from '../Field/Field.js'
 
 const checkboxVariants = cva(
   [
@@ -21,8 +20,8 @@ const checkboxVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-5 w-5',
-        lg: 'h-7 w-7',
+        sm: 'size-5',
+        lg: 'size-7',
       },
     },
     defaultVariants: {
@@ -31,8 +30,7 @@ const checkboxVariants = cva(
   }
 )
 
-export type CheckboxProps = FieldProps &
-  VariantProps<typeof checkboxVariants> &
+export type CheckboxProps = VariantProps<typeof checkboxVariants> &
   CheckboxPrimitive.CheckboxProps & {
     disabled?: boolean
     id?: string
@@ -52,32 +50,22 @@ export const Checkbox = forwardRef(
       disabled = false,
       id,
       name,
-      label = '',
-      labelLocation = 'left',
       size = 'sm',
       className,
       ...rest
     } = props
 
     return (
-      <Field
+      <CheckboxPrimitive.Root
+        className={cn(checkboxVariants({ size }), className)}
         disabled={disabled}
         id={id ?? name}
-        label={label}
-        labelLocation={labelLocation}
-        className="whitespace-nowrap"
+        name={name}
+        ref={ref}
+        {...rest}
       >
-        <CheckboxPrimitive.Root
-          className={cn(checkboxVariants({ size }), className)}
-          disabled={disabled}
-          id={id ?? name}
-          name={name}
-          ref={ref}
-          {...rest}
-        >
-          <Indicator size={size} />
-        </CheckboxPrimitive.Root>
-      </Field>
+        <Indicator size={size} />
+      </CheckboxPrimitive.Root>
     )
   }
 )

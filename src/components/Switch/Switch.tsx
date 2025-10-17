@@ -7,7 +7,6 @@ import {
   inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { Field, type FieldProps } from '../Field/Field.js'
 
 const switchVariants = cva(
   [
@@ -26,45 +25,28 @@ const switchVariants = cva(
   }
 )
 
-export type SwitchProps = FieldProps &
-  VariantProps<typeof switchVariants> &
+export type SwitchProps = VariantProps<typeof switchVariants> &
   SwitchPrimitive.SwitchProps
 
 export const Switch = (props: SwitchProps) => {
-  const {
-    disabled,
-    label,
-    labelLocation = 'left',
-    description,
-    id,
-    name,
-    size,
-    ...rest
-  } = props
+  const { disabled, id, name, size, ...rest } = props
 
   return (
-    <Field
+    <SwitchPrimitive.Root
+      className={cn(
+        switchVariants({ size }),
+        focusRingVariants(),
+        inputBorderStyle,
+        disabledStyle
+      )}
       disabled={disabled}
       id={id ?? name}
-      label={label}
-      labelLocation={labelLocation}
-      description={description}
-      className="flex whitespace-nowrap"
+      name={name}
+      {...rest}
     >
-      <SwitchPrimitive.Root
-        className={cn(
-          switchVariants({ size }),
-          focusRingVariants(),
-          inputBorderStyle,
-          disabledStyle
-        )}
-        disabled={disabled}
-        {...rest}
-      >
-        <div className="relative w-full h-full">
-          <SwitchPrimitive.Thumb className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:bg-white data-[state=checked]:translate-x-full" />
-        </div>
-      </SwitchPrimitive.Root>
-    </Field>
+      <div className="relative w-full h-full">
+        <SwitchPrimitive.Thumb className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:bg-white data-[state=checked]:translate-x-full" />
+      </div>
+    </SwitchPrimitive.Root>
   )
 }

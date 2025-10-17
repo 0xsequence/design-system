@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -23,78 +22,77 @@ export interface SearchInputProps extends ComponentProps<'input'> {
   showClear?: boolean
 }
 
-export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
-  (props, forwardRef) => {
-    const {
-      className,
-      onChange,
-      placeholder = 'Search…',
-      showKeyboardShortcut = true,
-      showClear = true,
-      ...rest
-    } = props
+export const SearchInput = (props: SearchInputProps) => {
+  const {
+    className,
+    onChange,
+    placeholder = 'Search…',
+    showKeyboardShortcut = true,
+    showClear = true,
+    ref,
+    ...rest
+  } = props
 
-    const ref = useRef<HTMLInputElement>(null)
+  const internalRef = useRef<HTMLInputElement>(null)
 
-    useImperativeHandle(forwardRef, () => ref.current!)
+  useImperativeHandle(ref, () => internalRef.current!)
 
-    useEffect(() => {
-      if (!showKeyboardShortcut) {
-        return
+  useEffect(() => {
+    if (!showKeyboardShortcut) {
+      return
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Check for Cmd+K (Mac) or Ctrl+K (Windows/Linux)
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault()
+        internalRef.current?.focus()
       }
+    }
 
-      const handleKeyDown = (event: KeyboardEvent) => {
-        // Check for Cmd+K (Mac) or Ctrl+K (Windows/Linux)
-        if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
-          event.preventDefault()
-          ref.current?.focus()
-        }
-      }
+    document.addEventListener('keydown', handleKeyDown)
 
-      document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [showKeyboardShortcut])
 
-      return () => document.removeEventListener('keydown', handleKeyDown)
-    }, [showKeyboardShortcut])
+  const handleClear = useCallback(() => {
+    onChange?.({ target: { value: '' } } as ChangeEvent<HTMLInputElement>)
+    internalRef.current?.focus()
+  }, [onChange])
 
-    const handleClear = useCallback(() => {
-      onChange?.({ target: { value: '' } } as ChangeEvent<HTMLInputElement>)
-      ref.current?.focus()
-    }, [onChange])
+  return (
+    <InputGroup className={className}>
+      <InputGroupAddon align="inline-start">
+        <SearchIcon />
+      </InputGroupAddon>
 
-    return (
-      <InputGroup className={className}>
-        <InputGroupAddon align="inline-start">
-          <SearchIcon />
-        </InputGroupAddon>
+      <InputGroupInput
+        placeholder={placeholder}
+        ref={internalRef}
+        onChange={onChange}
+        {...rest}
+      />
 
-        <InputGroupInput
-          placeholder={placeholder}
-          ref={ref}
-          onChange={onChange}
-          {...rest}
-        />
-
-        <InputGroupAddon align="inline-end" className="relative">
-          {showClear && (
-            <IconButton
-              className="transition-opacity opacity-100 inert:opacity-0"
-              icon={CloseIcon}
-              size="xs"
-              variant="ghost"
-              onClick={handleClear}
-              inert={!ref.current?.value.length}
-            />
-          )}
-          {showKeyboardShortcut && (
-            <Kbd
-              className="absolute right-4 transition-opacity opacity-100 group-focus-within/input-group:opacity-0 inert:opacity-0"
-              inert={!!ref.current?.value.length}
-            >
-              {isMacOS() ? '⌘K' : 'Ctrl+K'}
-            </Kbd>
-          )}
-        </InputGroupAddon>
-      </InputGroup>
-    )
-  }
-)
+      <InputGroupAddon align="inline-end" className="relative">
+        {showClear && (
+          <IconButton
+            className="transition-opacity opacity-100 inert:opacity-0"
+            icon={CloseIcon}
+            size="xs"
+            variant="ghost"
+            onClick={handleClear}
+            inert={!internalRef.current?.value.length}
+          />
+        )}
+        {showKeyboardShortcut && (
+          <Kbd
+            className="absolute right-4 transition-opacity opacity-100 group-focus-within/input-group:opacity-0 inert:opacity-0"
+            inert={!!internalRef.current?.value.length}
+          >
+            {isMacOS() ? '⌘K' : 'Ctrl+K'}
+          </Kbd>
+        )}
+      </InputGroupAddon>
+    </InputGroup>
+  )
+}

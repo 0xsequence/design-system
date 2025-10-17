@@ -17,19 +17,14 @@ export const buttonVariants = cva(
       variant: {
         base: 'bg-transparent text-primary',
         ghost: 'bg-transparent hover:bg-background-glass text-primary',
-        feature: [
-          'bg-gradient-secondary text-white',
-          'ring-inset ring-2 ring-white/10',
-        ],
         primary:
           'bg-gradient-primary text-white hover:opacity-80 border-1 border-transparent bg-origin-border',
         secondary:
           'bg-background-secondary text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         glass:
           'bg-background-glass text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
-        emphasis: 'bg-button-emphasis text-primary',
         raised: 'bg-background-raised text-primary',
-        danger: 'bg-negative text-white',
+        destructive: 'bg-destructive text-white',
         text: [
           'bg-transparent text-muted rounded-xs',
           textVariants({ variant: 'small' }),

@@ -19,9 +19,6 @@ export const Default: Story = {
       console.log('selected: ', value)
     },
     name: 'selectDemo',
-    label: 'Select',
-    description: 'This is a description',
-    labelLocation: 'top',
     placeholder: 'Select an option',
     disabled: false,
     options: [
@@ -56,8 +53,6 @@ export const Custom: Story = {
       console.log('selected: ', value)
     },
     name: 'selectDemo',
-    label: 'Networks',
-    labelLocation: 'top',
     disabled: false,
     defaultValue: 'mainnet',
     options: [

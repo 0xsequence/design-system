@@ -5,6 +5,7 @@ import { Card } from '../Card/Card.js'
 import { ControlledCheckbox as Checkbox } from '../Checkbox/ControlledCheckbox.js'
 import { Field } from '../Field/Field.js'
 import { ControlledFileInput as FileInput } from '../FileInput/ControlledFileInput.js'
+import { ControlledNumericInput as NumericInput } from '../NumericInput/ControlledNumericInput.js'
 import { ControlledRadioGroup as RadioGroup } from '../RadioGroup/ControlledRadioGroup.js'
 import { ControlledSelect as Select } from '../Select/ControlledSelect.js'
 import { ControlledSwitch as Switch } from '../Switch/ControlledSwitch.js'
@@ -47,53 +48,91 @@ export const Default: Story = {
       >
         {({ control, reset, formState: { errors }, setValue }) => (
           <div className="flex flex-col gap-4">
-            <TextInput
-              control={control}
+            <Field
               label="First Name"
-              name="firstName"
-              placeholder="Enter first name"
-              rules={{
-                required: 'First name is required',
-              }}
               error={
                 errors.firstName?.message
                   ? (errors.firstName.message as string)
                   : undefined
               }
-            />
+            >
+              <TextInput
+                control={control}
+                name="firstName"
+                placeholder="Enter first name"
+                rules={{
+                  required: 'First name is required',
+                }}
+              />
+            </Field>
 
-            <TextInput
-              control={control}
-              defaultValue=""
+            <Field
               label="Last Name"
-              name="lastName"
-              placeholder="Enter last name"
-              rules={{
-                required: 'Last name is required',
-              }}
               error={
                 errors.lastName?.message
                   ? (errors.lastName.message as string)
                   : undefined
               }
-            />
+            >
+              <TextInput
+                control={control}
+                defaultValue=""
+                name="lastName"
+                placeholder="Enter last name"
+                rules={{
+                  required: 'Last name is required',
+                }}
+              />
+            </Field>
 
-            <FileInput
-              defaultValue=""
-              control={control}
+            <Field
+              label="Amount"
+              error={
+                errors.amount?.message
+                  ? (errors.amount.message as string)
+                  : undefined
+              }
+            >
+              <NumericInput
+                control={control}
+                name="amount"
+                placeholder="0"
+                decimals={2}
+                rules={{
+                  required: 'Amount is required',
+                  min: {
+                    value: 0,
+                    message: 'Amount must be greater than 0',
+                  },
+                  max: {
+                    value: 1000000,
+                    message: 'Amount must be less than 1,000,000',
+                  },
+                }}
+              />
+            </Field>
+
+            <Field
               label="File Input"
-              name="fileInput"
-              onValueChange={(file: File | null) => setValue('fileInput', file)}
-              rules={{
-                required: 'A file is required',
-              }}
-              validExtensions={['images']}
               error={
                 errors.fileInput?.message
                   ? (errors.fileInput.message as string)
                   : undefined
               }
-            />
+            >
+              <FileInput
+                defaultValue=""
+                control={control}
+                name="fileInput"
+                onValueChange={(file: File | null) =>
+                  setValue('fileInput', file)
+                }
+                rules={{
+                  required: 'A file is required',
+                }}
+                validExtensions={['images']}
+              />
+            </Field>
 
             <Field
               label="Message"
@@ -106,45 +145,50 @@ export const Default: Story = {
               />
             </Field>
 
-            <Select
-              control={control}
+            <Field
               label="Select Option"
-              name="selectOption"
-              onValueChange={(value: string) => setValue('selectOption', value)}
-              options={selectOptions}
-              placeholder="Select an option"
-              rules={{
-                required: 'A selection is required',
-              }}
               error={
                 errors.selectOption?.message
                   ? (errors.selectOption.message as string)
                   : undefined
               }
-            />
+            >
+              <Select
+                control={control}
+                name="selectOption"
+                onValueChange={(value: string) =>
+                  setValue('selectOption', value)
+                }
+                options={selectOptions}
+                placeholder="Select an option"
+                rules={{
+                  required: 'A selection is required',
+                }}
+              />
+            </Field>
 
-            <Switch
-              control={control}
-              size="sm"
-              name="switchOption"
-              label="Switch Option"
-              labelLocation="right"
-              onCheckedChange={(value: boolean) =>
-                setValue('switchOption', value)
-              }
-              defaultChecked={false}
-            />
+            <Field label="Switch Option" labelLocation="right">
+              <Switch
+                control={control}
+                size="sm"
+                name="switchOption"
+                onCheckedChange={(value: boolean) =>
+                  setValue('switchOption', value)
+                }
+                defaultChecked={false}
+              />
+            </Field>
 
-            <Checkbox
-              control={control}
-              label="Checkbox Option"
-              labelLocation="right"
-              name="checkboxOption"
-              onCheckedChange={(value: boolean) =>
-                setValue('checkboxOption', value)
-              }
-              defaultChecked={false}
-            />
+            <Field label="Checkbox Option" labelLocation="right">
+              <Checkbox
+                control={control}
+                name="checkboxOption"
+                onCheckedChange={(value: boolean) =>
+                  setValue('checkboxOption', value)
+                }
+                defaultChecked={false}
+              />
+            </Field>
 
             <RadioGroup
               control={control}

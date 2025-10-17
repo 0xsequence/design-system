@@ -12,8 +12,6 @@ type Story = StoryObj<typeof Switch>
 export const Default: Story = {
   args: {
     disabled: false,
-    label: 'Switch Title',
-    description: 'Switch Description',
   },
 }
 

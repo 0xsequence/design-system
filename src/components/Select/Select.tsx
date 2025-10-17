@@ -8,7 +8,6 @@ import {
   inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { Field, type FieldProps } from '../Field/Field.js'
 import { textVariants } from '../Text/Text.js'
 import { useTheme } from '../ThemeProvider/ThemeProvider.js'
 
@@ -30,6 +29,7 @@ interface SelectPrimitiveProps {
   defaultOpen?: boolean
   onOpenChange?(open: boolean): void
   dir?: Direction
+  id?: string
   name?: string
   autoComplete?: string
   disabled?: boolean
@@ -42,88 +42,71 @@ interface SelectPrimitiveProps {
   onValueChange?(value: string): void
 }
 
-export type SelectProps = FieldProps &
-  SelectPrimitiveProps & {
-    placeholder?: string
-    options: SelectOption[]
-    className?: string
-  }
+export type SelectProps = SelectPrimitiveProps & {
+  placeholder?: string
+  options: SelectOption[]
+  className?: string
+}
 
 export const Select = forwardRef(
   (props: SelectProps, ref: Ref<HTMLButtonElement>) => {
     const {
       disabled = false,
       id,
-      label = '',
-      description,
-      labelLocation = 'hidden',
       name,
       options,
       placeholder,
       className,
-      error,
-      trailDescription,
       ...rest
     } = props
 
     const { container } = useTheme()
 
     return (
-      <Field
-        disabled={disabled}
-        id={id ?? name}
-        label={label}
-        labelLocation={labelLocation}
-        description={description}
-        className="grid whitespace-nowrap"
-        error={error}
-        trailDescription={trailDescription}
-      >
-        <SelectPrimitive.Root disabled={disabled} name={name} {...rest}>
-          <SelectPrimitive.Trigger
-            id={id ?? name}
-            className={cn(
-              textVariants({ variant: 'normal' }),
-              'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-background-input rounded-xl',
-              'text-base font-medium text-primary select-none cursor-pointer',
-              focusRingVariants({ error: !!error }),
-              inputBorderStyle,
-              disabledStyle,
-              className
-            )}
-            ref={ref}
-          >
-            <SelectPrimitive.Value placeholder={placeholder} />
-            <SelectPrimitive.Icon className="inline-flex">
-              <ChevronDownIcon />
-            </SelectPrimitive.Icon>
-          </SelectPrimitive.Trigger>
+      <SelectPrimitive.Root disabled={disabled} name={name} {...rest}>
+        <SelectPrimitive.Trigger
+          id={id ?? name}
+          className={cn(
+            textVariants({ variant: 'normal' }),
+            'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-background-input rounded-xl',
+            'text-base font-medium text-primary select-none cursor-pointer',
+            focusRingVariants(),
+            inputBorderStyle,
+            disabledStyle,
+            className
+          )}
+          ref={ref}
+        >
+          <SelectPrimitive.Value placeholder={placeholder} />
+          <SelectPrimitive.Icon className="inline-flex">
+            <ChevronDownIcon />
+          </SelectPrimitive.Icon>
+        </SelectPrimitive.Trigger>
 
-          <SelectPrimitive.Portal container={container}>
-            <SelectPrimitive.Content
-              position="popper"
-              side="bottom"
-              align="start"
-              className={cn(
-                'mt-2 bg-background-raised shadow-primary',
-                'min-w-[var(--radix-select-trigger-width)] rounded-lg',
-                'overflow-hidden z-30 outline-hidden max-h-[360px] overflow-y-auto',
-                'border-border-normal border-1'
-              )}
-            >
-              <SelectPrimitive.Viewport>
-                <SelectPrimitive.Group className="flex flex-col gap-0.5 p-1">
-                  {options.map(({ value, label, ...rest }) => (
-                    <SelectItem key={value} value={value} {...rest}>
-                      {label}
-                    </SelectItem>
-                  ))}
-                </SelectPrimitive.Group>
-              </SelectPrimitive.Viewport>
-            </SelectPrimitive.Content>
-          </SelectPrimitive.Portal>
-        </SelectPrimitive.Root>
-      </Field>
+        <SelectPrimitive.Portal container={container}>
+          <SelectPrimitive.Content
+            position="popper"
+            side="bottom"
+            align="start"
+            className={cn(
+              'mt-2 bg-background-raised shadow-primary',
+              'min-w-[var(--radix-select-trigger-width)] rounded-lg',
+              'overflow-hidden z-30 outline-hidden max-h-[360px] overflow-y-auto',
+              'border-border-normal border-1'
+            )}
+          >
+            <SelectPrimitive.Viewport>
+              <SelectPrimitive.Group className="flex flex-col gap-0.5 p-1">
+                {options.map(({ value, label, ...rest }) => (
+                  <SelectItem key={value} value={value} {...rest}>
+                    {label}
+                  </SelectItem>
+                ))}
+              </SelectPrimitive.Group>
+            </SelectPrimitive.Viewport>
+          </SelectPrimitive.Content>
+        </SelectPrimitive.Portal>
+      </SelectPrimitive.Root>
     )
   }
 )

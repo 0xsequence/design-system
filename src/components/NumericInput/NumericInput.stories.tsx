@@ -25,20 +25,12 @@ const StoryWrapper: StoryFn<typeof NumericInput> = args => {
 
 export const Default: Story = {
   render: StoryWrapper,
-  args: {
-    label: 'This the label',
-    description: 'This is the description',
-    labelLocation: 'top',
-  },
+  args: {},
 }
 
 export const WithDecimalRestriction: Story = {
   render: StoryWrapper,
   args: {
-    label: 'Amount (2 decimal places max)',
-    description:
-      'Values with more than 2 decimal places will be truncated. Values automatically adjust when the decimals prop changes. Try pasting: 0.123456',
-    labelLocation: 'top',
     decimals: 2,
   },
 }
@@ -46,10 +38,6 @@ export const WithDecimalRestriction: Story = {
 export const IntegerOnly: Story = {
   render: StoryWrapper,
   args: {
-    label: 'Integer Only',
-    description:
-      'Decimal values will be truncated to integers. Try pasting: 1.234',
-    labelLocation: 'top',
     decimals: 0,
   },
 }

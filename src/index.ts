@@ -43,6 +43,7 @@ export {
 export { Kbd, KbdGroup } from './components/Kbd/Kbd.js'
 export { Modal, ModalPrimitive } from './components/Modal/Modal.js'
 export { NumericInput } from './components/NumericInput/NumericInput.js'
+export { ControlledNumericInput } from './components/NumericInput/ControlledNumericInput.js'
 export { PINCodeInput } from './components/PINCodeInput/PINCodeInput.js'
 export {
   Popover,
