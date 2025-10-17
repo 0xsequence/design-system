@@ -14,11 +14,11 @@ const tokenImageVariants = cva(
   {
     variants: {
       size: {
-        xs: 'w-3 h-3 text-[4px]',
-        sm: 'w-5 h-5 text-[6px]',
-        md: 'w-8 h-8 text-[9px]',
-        lg: 'w-10 h-10 text-[11px]',
-        xl: 'w-16 h-16 text-[16px]',
+        xs: 'size-3 text-[4px]',
+        sm: 'size-5 text-[6px]',
+        md: 'size-8 text-[9px]',
+        lg: 'size-10 text-[11px]',
+        xl: 'size-16 text-[16px]',
       },
     },
     defaultVariants: {

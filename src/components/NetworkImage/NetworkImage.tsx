@@ -17,11 +17,11 @@ const networkImageVariants = cva(
   {
     variants: {
       size: {
-        xs: 'w-3 h-3',
-        sm: 'w-5 h-5',
-        md: 'w-8 h-8',
-        lg: 'w-10 h-10',
-        xl: 'w-16 h-16',
+        xs: 'size-3',
+        sm: 'size-5',
+        md: 'size-8',
+        lg: 'size-10',
+        xl: 'size-16',
       },
     },
   }
