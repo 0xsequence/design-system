@@ -3,6 +3,7 @@ import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Input } from '../Input/Input.js'
+import { TextArea } from '../TextArea/TextArea.js'
 
 function InputGroup({ className, ...props }: React.ComponentProps<'div'>) {
   return (
@@ -46,6 +47,22 @@ function InputGroupInput({
       data-slot="input-group-control"
       className={cn(
         'flex-1 rounded-none border-0 bg-transparent outline-none disabled:opacity-100',
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function InputGroupTextarea({
+  className,
+  ...props
+}: React.ComponentProps<'textarea'>) {
+  return (
+    <TextArea
+      data-slot="input-group-control"
+      className={cn(
+        'flex-1 resize-none rounded-none border-0 bg-transparent outline-none disabled:opacity-100',
         className
       )}
       {...props}
@@ -106,26 +123,10 @@ function InputGroupText({ className, ...props }: React.ComponentProps<'span'>) {
   )
 }
 
-// function InputGroupTextarea({
-//   className,
-//   ...props
-// }: React.ComponentProps<'textarea'>) {
-//   return (
-//     <TextArea
-//       data-slot="input-group-control"
-//       className={cn(
-//         'flex-1 resize-none rounded-none border-0 bg-transparent py-3 focus-visible:ring-0 dark:bg-transparent',
-//         className
-//       )}
-//       {...props}
-//     />
-//   )
-// }
-
 export {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-  // InputGroupTextarea,
+  InputGroupTextarea,
 }

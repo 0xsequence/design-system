@@ -7,6 +7,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
+  InputGroupTextarea,
 } from './InputGroup.js'
 
 export default {
@@ -85,5 +86,22 @@ export const WithError: Story = {
   args: {
     disabled: false,
     ['aria-invalid']: true,
+  },
+}
+
+export const TextareaInput: StoryObj<typeof InputGroupTextarea> = {
+  render: args => {
+    return (
+      <InputGroup>
+        <InputGroupTextarea placeholder="Enter text..." {...args} />
+        <InputGroupAddon align="block-end">
+          <InputGroupText>52% used</InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+    )
+  },
+  args: {
+    disabled: false,
+    ['aria-invalid']: false,
   },
 }

@@ -32,6 +32,13 @@ export { Field } from './components/Field/Field.js'
 export { GradientAvatar } from './components/GradientAvatar/GradientAvatar.js'
 export { IconButton } from './components/IconButton/IconButton.js'
 export { Image } from './components/Image/Image.js'
+export { Input } from './components/Input/Input.js'
+export {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from './components/InputGroup/InputGroup.js'
 export { Kbd, KbdGroup } from './components/Kbd/Kbd.js'
 export { Modal, ModalPrimitive } from './components/Modal/Modal.js'
 export { NumericInput } from './components/NumericInput/NumericInput.js'

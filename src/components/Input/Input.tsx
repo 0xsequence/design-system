@@ -5,14 +5,19 @@ import {
 } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
-function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
+function Input({
+  className,
+  type,
+  autoComplete = 'off',
+  spellCheck = 'false',
+  ...props
+}: React.ComponentProps<'input'>) {
   return (
     <input
       type={type}
       data-slot="input"
       className={cn(
         'placeholder:text-muted h-[52px] w-full min-w-0 rounded-xl bg-background-input px-4 py-1 text-primary type-normal',
-        // 'selection:bg-background-primary selection:text-primary',
         'file:text-primary file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium',
         inputBorderStyle,
         focusRingVariants(),
@@ -20,6 +25,8 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
         disabledStyle,
         className
       )}
+      autoComplete={autoComplete}
+      spellCheck={spellCheck}
       {...props}
     />
   )
