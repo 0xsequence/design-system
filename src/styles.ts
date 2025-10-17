@@ -1,9 +1,10 @@
 import { cva } from 'class-variance-authority'
 
-export const disabledStyle = 'disabled:cursor-default disabled:opacity-50'
+export const disabledStyle =
+  'disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-events-none'
 
 export const inputBorderStyle =
-  'border-1 border-border-normal hover:not-disabled:not-focus-visible:not-[&:has(:focus-visible)]:border-border-hover'
+  'border-1 border-border-normal hover:not-disabled:not-[[aria-invalid=true]]:not-has-[[aria-invalid=true]]:border-border-hover'
 
 export const focusRingVariants = cva('', {
   variants: {
@@ -13,7 +14,7 @@ export const focusRingVariants = cva('', {
         '[&:has(:focus-visible)]:outline-2 [&:has(:focus-visible)]:outline-border-focus',
     },
     error: {
-      true: 'border-border-error!',
+      true: 'border-destructive!',
     },
     inner: {
       true: 'outline-offset-[-2px]',
