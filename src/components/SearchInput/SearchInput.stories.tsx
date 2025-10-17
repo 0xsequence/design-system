@@ -15,7 +15,6 @@ const StoryWrapper: StoryFn<typeof SearchInput> = args => {
 
   return (
     <SearchInput
-      id="myInput"
       value={value}
       onChange={ev => setValue(ev.target.value)}
       {...args}
@@ -26,8 +25,6 @@ const StoryWrapper: StoryFn<typeof SearchInput> = args => {
 export const Default: Story = {
   render: StoryWrapper,
   args: {
-    label: 'Search',
-    labelLocation: 'top',
-    placeholder: 'This is the placeholder',
+    placeholder: 'Search for coins or collectibles...',
   },
 }
