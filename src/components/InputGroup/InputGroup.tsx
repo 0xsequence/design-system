@@ -75,12 +75,12 @@ const inputGroupAddonVariants = cva(
   {
     variants: {
       align: {
-        'inline-start': 'order-first pl-3',
-        'inline-end': 'order-last pr-3',
+        'inline-start': 'order-first pl-4',
+        'inline-end': 'order-last pr-4',
         'block-start':
-          'order-first w-full justify-start px-3 pt-3 [.border-b]:pb-3 group-has-[>input]/input-group:pt-2.5',
+          'order-first w-full justify-start px-4 pt-4 [.border-b]:pb-3 group-has-[>input]/input-group:pt-2.5',
         'block-end':
-          'order-last w-full justify-start px-3 pb-3 [.border-t]:pt-3 group-has-[>input]/input-group:pb-2.5',
+          'order-last w-full justify-start px-4 pb-4 [.border-t]:pt-3 group-has-[>input]/input-group:pb-2.5',
       },
     },
     defaultVariants: {

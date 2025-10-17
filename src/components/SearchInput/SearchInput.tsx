@@ -86,7 +86,10 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
             />
           )}
           {showKeyboardShortcut && (
-            <Kbd className="absolute right-4 transition-opacity opacity-100 group-focus-within/input-group:opacity-0">
+            <Kbd
+              className="absolute right-4 transition-opacity opacity-100 group-focus-within/input-group:opacity-0 inert:opacity-0"
+              inert={!!ref.current?.value.length}
+            >
               {isMacOS() ? '⌘K' : 'Ctrl+K'}
             </Kbd>
           )}

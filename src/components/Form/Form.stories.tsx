@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 import { ControlledCheckbox as Checkbox } from '../Checkbox/ControlledCheckbox.js'
+import { Field } from '../Field/Field.js'
 import { ControlledFileInput as FileInput } from '../FileInput/ControlledFileInput.js'
 import { ControlledRadioGroup as RadioGroup } from '../RadioGroup/ControlledRadioGroup.js'
 import { ControlledSelect as Select } from '../Select/ControlledSelect.js'
@@ -49,7 +50,6 @@ export const Default: Story = {
             <TextInput
               control={control}
               label="First Name"
-              labelLocation="top"
               name="firstName"
               placeholder="Enter first name"
               rules={{
@@ -66,7 +66,6 @@ export const Default: Story = {
               control={control}
               defaultValue=""
               label="Last Name"
-              labelLocation="top"
               name="lastName"
               placeholder="Enter last name"
               rules={{
@@ -83,7 +82,6 @@ export const Default: Story = {
               defaultValue=""
               control={control}
               label="File Input"
-              labelLocation="top"
               name="fileInput"
               onValueChange={(file: File | null) => setValue('fileInput', file)}
               rules={{
@@ -97,19 +95,20 @@ export const Default: Story = {
               }
             />
 
-            <TextArea
-              defaultValue=""
+            <Field
               label="Message"
-              labelLocation="top"
-              name="message"
-              placeholder="Enter a message"
               trailDescription="This is the trail description"
-            />
+            >
+              <TextArea
+                defaultValue=""
+                name="message"
+                placeholder="Enter a message"
+              />
+            </Field>
 
             <Select
               control={control}
               label="Select Option"
-              labelLocation="top"
               name="selectOption"
               onValueChange={(value: string) => setValue('selectOption', value)}
               options={selectOptions}

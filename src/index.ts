@@ -38,6 +38,7 @@ export {
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
+  InputGroupTextarea,
 } from './components/InputGroup/InputGroup.js'
 export { Kbd, KbdGroup } from './components/Kbd/Kbd.js'
 export { Modal, ModalPrimitive } from './components/Modal/Modal.js'
