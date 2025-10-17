@@ -108,6 +108,28 @@ export default defineConfig({
 })
 ```
 
+## Migrating from v2 to v3
+
+V3 attemps to be mostly compatible but there are some breaking changes that will need to be addressed.
+
+1. Form components are no longer wrapped in a Field component so properties like `labelLocation`, `label`, `description` are no longer on components like CheckBox, TextInput, etc. You will need to wrap these components in a Field component manually.
+
+2. RadioGroup no longer takes an options object. Instead you must use RadioGroup and RadioGroupItem components:
+
+```
+  <RadioGroup>
+    <RadioGroupItem>
+    <RadioGroupItem>
+    <RadioGroupItem>
+  </RadioGroup>
+```
+
+3. Button component is now a simple component which allows you to easily create your own Buttons with children content of your choice, the Legacy Button component is renamed ButtonPreset which accepts properties like `leftIcon`, `rightIcon`, `label`, etc.
+
+4. Button variants have changed, `glass` is no longer the default variant, now use `secondary`. Some variants have been removed like `feature`, and `emphasis`.
+
+5. Glass layers and blur effects: many of the raised popover layers like Toast, Popover, Tooltip, Select, used glass blurred effect. While this looked pretty good in certain cases, it caused issues with contrast and readability when overlayed ontop of certain user generated content and lighter content would show through too much. It was decided to switch to opaque layers instead.
+
 ### Used by
 
 - [Sequence Wallet](https://sequence.app/)
