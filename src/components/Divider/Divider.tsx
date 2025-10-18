@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 
-import { cn } from '~/utils/classnames.js'
+import { cn } from '../../utils/classnames.js'
 
 interface DividerProps extends HTMLAttributes<HTMLHRElement> {}
 

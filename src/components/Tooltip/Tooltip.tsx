@@ -1,8 +1,8 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import type { PropsWithChildren, ReactNode } from 'react'
 
-import { Text } from '~/components/Text/index.js'
-import { useTheme } from '~/components/ThemeProvider/index.js'
+import { Text } from '../Text/Text.js'
+import { useTheme } from '../ThemeProvider/ThemeProvider.js'
 
 interface TooltipProps {
   align?: 'center' | 'end' | 'start'
@@ -36,13 +36,13 @@ export const Tooltip = (props: PropsWithChildren<TooltipProps>) => {
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal container={container}>
           <TooltipPrimitive.Content
-            className="backdrop-blur-xs bg-background-raised rounded-lg px-4 pb-3 pt-2 shadow-[0_0_10px_0_rgba(0,0,0,0.5)] fill-background-raised z-1000"
+            className="bg-primary fill-primary rounded-lg p-2 flex justify-center items-center shadow-primary z-1000 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 w-fit origin-(--radix-tooltip-content-transform-origin)"
             side={side}
             align={align}
             sideOffset={vOffset}
             alignOffset={hOffset}
           >
-            <Text variant="small" fontWeight="medium" color="secondary">
+            <Text variant="small" fontWeight="medium" color="inverse">
               {message}
             </Text>
             <TooltipPrimitive.Arrow offset={12} width={10} height={5} />

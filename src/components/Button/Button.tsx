@@ -1,34 +1,31 @@
-import { Slot, Slottable } from '@radix-ui/react-slot'
+import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type ComponentType, type ReactNode } from 'react'
+import type { ComponentProps } from 'react'
+import { focusRingVariants } from 'src/styles.js'
+import { cn } from 'src/utils/classnames.js'
 
-import { Text, textVariants } from '~/components/Text/index.js'
-import type { IconProps } from '~/icons/types.js'
-import { cn } from '~/utils/classnames.js'
+import { textVariants } from '../Text/Text.js'
 
-export const buttonVariants = cva(
+const buttonVariants = cva(
   [
-    'inline-flex items-center whitespace-nowrap overflow-hidden border-none text-decoration-none',
-    'outline-hidden ring-inset focus-visible:ring-2 focus-visible:ring-border-focus',
+    'inline-flex items-center justify-center gap-2 whitespace-nowrap overflow-hidden text-decoration-none cursor-pointer disabled:cursor-default disabled:opacity-50',
+    focusRingVariants(),
   ],
   {
     variants: {
       variant: {
-        base: 'bg-transparent text-primary',
-        ghost: 'bg-transparent hover:bg-button-glass text-primary',
-        feature: [
-          'bg-gradient-secondary text-white',
-          'ring-inset ring-2 ring-white/10',
-        ],
-        primary: 'bg-gradient-primary text-white',
-        glass: 'bg-button-glass text-primary',
-        emphasis: 'bg-button-emphasis text-primary',
+        ghost: 'bg-transparent hover:bg-background-glass text-primary',
+        primary:
+          'bg-gradient-primary text-white hover:opacity-80 border-1 border-transparent bg-origin-border',
+        secondary:
+          'bg-background-secondary text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
+        glass:
+          'bg-background-glass text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         raised: 'bg-background-raised text-primary',
-        danger: 'bg-negative text-white',
+        destructive: 'bg-destructive text-white',
         text: [
-          'bg-transparent text-muted rounded-xs outline-offset-1',
-          textVariants({ variant: 'small' }),
-          'font-bold',
+          'bg-transparent text-muted rounded-xs',
+          textVariants({ variant: 'small-bold' }),
         ],
       },
       shape: {
@@ -38,7 +35,7 @@ export const buttonVariants = cva(
       size: {
         xs: [
           textVariants({ variant: 'xsmall', fontWeight: 'bold' }),
-          'h-7 px-3',
+          'h-7 px-2',
         ],
         sm: [
           textVariants({ variant: 'normal', fontWeight: 'bold' }),
@@ -46,7 +43,7 @@ export const buttonVariants = cva(
         ],
         md: [
           textVariants({ variant: 'normal', fontWeight: 'bold' }),
-          'h-11 px-5',
+          'h-11 px-4',
         ],
         lg: [
           textVariants({ variant: 'normal', fontWeight: 'bold' }),
@@ -55,162 +52,36 @@ export const buttonVariants = cva(
       },
       disabled: {
         true: 'cursor-default opacity-50',
-        false: 'cursor-pointer hover:opacity-80',
-      },
-      iconOnly: {
-        true: 'p-0 flex shrink-0 items-center justify-center',
-      },
-      hasLeftIcon: {
-        true: '',
-      },
-      hasRightIcon: {
-        true: '',
+        false: 'cursor-pointer',
       },
     },
-    compoundVariants: [
-      {
-        iconOnly: true,
-        size: 'xs',
-        className: 'w-7',
-      },
-      {
-        iconOnly: true,
-        size: 'sm',
-        className: 'w-9',
-      },
-      {
-        iconOnly: true,
-        size: 'md',
-        className: 'w-11',
-      },
-      {
-        iconOnly: true,
-        size: 'lg',
-        className: 'w-13',
-      },
-      {
-        iconOnly: false,
-        hasLeftIcon: true,
-        size: 'xs',
-        className: 'pl-2',
-      },
-      {
-        iconOnly: false,
-        hasLeftIcon: true,
-        size: 'sm',
-        className: 'pl-2',
-      },
-      {
-        iconOnly: false,
-        hasLeftIcon: true,
-        size: 'md',
-        className: 'pl-4',
-      },
-      {
-        iconOnly: false,
-        hasRightIcon: true,
-        size: 'xs',
-        className: 'pr-2',
-      },
-      {
-        iconOnly: false,
-        hasRightIcon: true,
-        size: 'sm',
-        className: 'pr-2',
-      },
-      {
-        iconOnly: false,
-        hasRightIcon: true,
-        size: 'md',
-        className: 'pr-4',
-      },
-    ],
+
     defaultVariants: {
-      variant: 'glass',
+      variant: 'secondary',
+      shape: 'circle',
     },
   }
 )
 
-export interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'>,
-    Omit<
-      VariantProps<typeof buttonVariants>,
-      'iconOnly' | 'hasLeftIcon' | 'hasRightIcon'
-    > {
-  asChild?: boolean
-  disabled?: boolean
-  pending?: boolean
-  label?: ReactNode
-  leftIcon?: ComponentType<IconProps>
-  rightIcon?: ComponentType<IconProps>
+function Button({
+  className,
+  variant,
+  size,
+  disabled,
+  asChild = false,
+  ...props
+}: ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }) {
+  const Comp = asChild ? Slot : 'button'
+  return (
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className, disabled }))}
+      disabled={disabled}
+      {...props}
+    />
+  )
 }
-
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      asChild,
-      className,
-      disabled = false,
-      pending = false,
-      label,
-      leftIcon: LeftIcon,
-      rightIcon: RightIcon,
-      size = 'md',
-      variant = 'glass',
-      shape = 'circle',
-      type = 'button',
-      children,
-      ...rest
-    } = props
-
-    const hasLeftIcon = LeftIcon !== undefined && label !== undefined
-    const hasRightIcon = RightIcon !== undefined && label !== undefined
-    const iconOnly = LeftIcon !== undefined && label === undefined
-
-    const iconSize = size === 'xs' ? 'xs' : 'sm'
-    const gap = size === 'xs' ? 'gap-1' : 'gap-2'
-
-    const Component = asChild ? Slot : 'button'
-
-    return (
-      <Component
-        ref={ref}
-        className={cn(
-          buttonVariants({
-            disabled: disabled || pending,
-            hasLeftIcon,
-            hasRightIcon,
-            iconOnly,
-            size: variant === 'text' ? undefined : size,
-            shape: variant === 'text' ? undefined : shape,
-            variant,
-          }),
-          className
-        )}
-        disabled={disabled || pending}
-        type={type}
-        {...rest}
-      >
-        <Slottable>{children}</Slottable>
-
-        {iconOnly ? (
-          <LeftIcon size={iconSize} />
-        ) : (
-          <div
-            className={cn(
-              'w-full h-full flex items-center justify-between',
-              gap
-            )}
-          >
-            <div className={cn('flex items-center justify-start', gap)}>
-              {LeftIcon && <LeftIcon size={iconSize} />}
-              <Text>{label}</Text>
-            </div>
-
-            {RightIcon && <RightIcon size={iconSize} />}
-          </div>
-        )}
-      </Component>
-    )
-  }
-)
+export { Button, buttonVariants }

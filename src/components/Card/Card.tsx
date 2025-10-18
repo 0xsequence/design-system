@@ -1,21 +1,29 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type HTMLAttributes } from 'react'
+import { type ComponentProps } from 'react'
 
-import { cn } from '~/utils/classnames.js'
+import { focusRingVariants } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 export const cardVariants = cva(
-  ['overflow-hidden', 'rounded-xl', 'p-4', 'w-full'],
+  [
+    'overflow-hidden',
+    'rounded-xl',
+    'p-4',
+    'w-full',
+    'border',
+    'border-border-card',
+  ],
   {
     variants: {
       clickable: {
-        true: 'hover:opacity-80 cursor-pointer focus:ring-2 focus:ring-focus focus:outline-hidden',
+        true: ['cursor-pointer hover:opacity-80', focusRingVariants()],
       },
       disabled: {
-        true: 'opacity-50 cursor-default pointer-events-none',
+        true: 'opacity-50 cursor-default pointer-events-none hover:border-border-card',
       },
       outlined: {
-        true: 'border border-border-normal bg-transparent',
+        true: 'bg-transparent',
         false: 'bg-background-secondary',
       },
       blur: {
@@ -29,13 +37,14 @@ export const cardVariants = cva(
 )
 
 interface CardProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends ComponentProps<'div'>,
     VariantProps<typeof cardVariants> {
   asChild?: boolean
 }
 
-export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
+export const Card = (props: CardProps) => {
   const {
+    ref,
     className,
     children,
     clickable,
@@ -65,4 +74,4 @@ export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
       {children}
     </Comp>
   )
-})
+}

@@ -2,8 +2,13 @@ import { cva } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
-import { textVariants } from '~/components/Text/index.js'
-import { cn } from '~/utils/classnames.js'
+import {
+  disabledStyle,
+  focusRingVariants,
+  inputBorderStyle,
+} from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
+import { textVariants } from '../Text/Text.js'
 
 export const digitText = clsx(
   textVariants({ variant: 'large' }),
@@ -14,11 +19,11 @@ const digitInputVariants = cva(
   [
     textVariants({ variant: 'large' }),
     'flex justify-center items-center h-12 w-10 p-[10px]',
-    'border-none rounded-lg text-primary bg-transparent text-center',
+    'rounded-lg text-primary bg-background-input text-center',
     'caret-transparent selection:bg-transparent',
-    'ring-inset ring-1 ring-border-normal hover:ring-border-focus',
-    'disabled:cursor-default disabled:opacity-50',
-    'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-border-focus',
+    focusRingVariants(),
+    inputBorderStyle,
+    disabledStyle,
   ],
   {
     variants: {},

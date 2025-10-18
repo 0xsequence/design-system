@@ -1,13 +1,17 @@
-import { forwardRef, useRef, useState, type ChangeEvent } from 'react'
+import {
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type ComponentProps,
+} from 'react'
 
-import { Field, type FieldProps } from '~/components/Field/index.js'
-import { IconButton } from '~/components/IconButton/index.js'
-import { Text } from '~/components/Text/index.js'
-import { useCombinedRefs } from '~/hooks/useCombinedRefs.js'
-import { CloseIcon } from '~/icons/index.js'
-import { cn } from '~/utils/classnames.js'
-
-import { textVariants } from '../Text/index.js'
+import { CloseIcon } from '../../icons/index.js'
+import { focusRingVariants, inputBorderStyle } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
+import { IconButton } from '../IconButton/IconButton.js'
+import { Text } from '../Text/Text.js'
+import { textVariants } from '../Text/Text.js'
 
 const MIME_TYPES = {
   png: '.png,image/png',
@@ -32,134 +36,112 @@ type FileData = {
 }
 
 export interface FileInputProps
-  extends Omit<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      'type' | 'onChange'
-    >,
-    FieldProps {
+  extends Omit<ComponentProps<'input'>, 'type' | 'onChange'> {
   name: string
   validExtensions: AllowedMimeTypes[]
   onValueChange?: (value: File | null) => void
 }
 
-export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  (props, ref) => {
-    const {
-      description,
-      disabled = false,
-      id,
-      label = '',
-      labelLocation = 'hidden',
-      name,
-      onValueChange,
-      placeholder = 'Upload a file',
-      validExtensions,
-      className,
-      error,
-      trailDescription,
-      ...rest
-    } = props
+export const FileInput = (props: FileInputProps) => {
+  const {
+    disabled = false,
+    id,
+    name,
+    onValueChange,
+    placeholder = 'Upload a file',
+    validExtensions,
+    className,
+    ref,
+    ...rest
+  } = props
 
-    const inputRef = useRef<HTMLInputElement>(null)
-    const combinedRef = useCombinedRefs(inputRef, ref)
-    const [fileData, setFileData] = useState<FileData | null>(null)
+  const internalRef = useRef<HTMLInputElement>(null)
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const filelist = e.currentTarget.files as FileList
-      if (!filelist || !filelist[0]) {
-        return
-      }
+  useImperativeHandle(ref, () => internalRef.current!)
 
-      const file = filelist[0]
-      const filename = file.name
-      const filesize = file.size / 1000
+  const [fileData, setFileData] = useState<FileData | null>(null)
 
-      setFileData({
-        name: filename,
-        size: filesize,
-        extension: filename.split('.').pop() ?? '',
-      })
-
-      onValueChange?.(file)
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const filelist = e.currentTarget.files as FileList
+    if (!filelist || !filelist[0]) {
+      return
     }
 
-    const accept = validExtensions.map(ext => MIME_TYPES[ext]).join(',')
+    const file = filelist[0]
+    const filename = file.name
+    const filesize = file.size / 1000
 
-    return (
-      <Field
-        description={description}
+    setFileData({
+      name: filename,
+      size: filesize,
+      extension: filename.split('.').pop() ?? '',
+    })
+
+    onValueChange?.(file)
+  }
+
+  const accept = validExtensions.map(ext => MIME_TYPES[ext]).join(',')
+
+  return (
+    <div
+      className={cn(
+        textVariants({ variant: 'normal' }),
+        'w-full min-w-0 inline-flex items-center flex-row justify-start p-4 relative h-[52px]',
+        'rounded-xl bg-background-input',
+        '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
+        fileData ? 'justify-between text-primary' : 'justify-start text-muted',
+        focusRingVariants({ variant: 'within' }),
+        inputBorderStyle,
+        'has-[[aria-invalid=true]]:border-destructive has-[[aria-invalid=true]]:outline-destructive',
+        'border-dashed',
+        className
+      )}
+    >
+      {fileData ? (
+        <div className="flex flex-row gap-2 items-center min-w-0">
+          <Text ellipsis asChild>
+            <p>{fileData.name}</p>
+          </Text>
+          <Text color="muted" variant="xsmall" nowrap>
+            {fileData.size.toFixed(2)} kb
+          </Text>
+        </div>
+      ) : (
+        <Text ellipsis asChild>
+          <p>{placeholder}</p>
+        </Text>
+      )}
+
+      <input
+        accept={accept}
+        className="absolute inset-0 opacity-0 cursor-pointer focus:outline-hidden"
         disabled={disabled}
         id={id ?? name}
-        label={label}
-        labelLocation={labelLocation}
-        className="grid"
-        error={error}
-        trailDescription={trailDescription}
-      >
-        <div className="w-full min-w-0">
-          <div
-            className={cn(
-              textVariants({ variant: 'normal' }),
-              'inline-flex items-center flex-row justify-start w-[200px] min-w-full p-4 relative h-[52px]',
-              'border border-dashed rounded-xl bg-background-primary/25',
-              '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
-              'focus-within:opacity-100 focus-within:ring-2 focus-within:ring-inset focus-within:border-transparent',
-              fileData ? 'justify-between' : 'justify-start',
-              fileData ? 'text-primary' : 'text-muted',
-              error && !disabled
-                ? 'border-border-error focus-within:ring-border-error'
-                : 'border-border-normal focus-within:ring-border-focus',
-              className
-            )}
-          >
-            {fileData ? (
-              <div className="flex flex-row gap-2 items-center min-w-0">
-                <Text ellipsis asChild>
-                  <p>{fileData.name}</p>
-                </Text>
-                <Text color="muted" variant="xsmall" nowrap>
-                  {fileData.size.toFixed(2)} kb
-                </Text>
-              </div>
-            ) : (
-              <Text ellipsis asChild>
-                <p>{placeholder}</p>
-              </Text>
-            )}
+        name={name}
+        onChange={handleChange}
+        ref={internalRef}
+        type="file"
+        {...rest}
+      />
 
-            <input
-              accept={accept}
-              className="absolute inset-0 opacity-0 cursor-pointer focus:outline-hidden"
-              disabled={disabled}
-              id={id ?? name}
-              name={name}
-              onChange={handleChange}
-              ref={combinedRef}
-              type="file"
-              {...rest}
-            />
+      {fileData && (
+        <IconButton
+          className="cursor-pointer z-10 ml-1"
+          icon={CloseIcon}
+          size="xs"
+          onClick={ev => {
+            ev.preventDefault()
+            ev.stopPropagation()
 
-            {fileData && (
-              <IconButton
-                className="cursor-pointer z-10 ml-1"
-                icon={CloseIcon}
-                size="xs"
-                onClick={ev => {
-                  ev.preventDefault()
-                  ev.stopPropagation()
+            if (internalRef.current?.value) {
+              internalRef.current.value = ''
+            }
 
-                  if (inputRef.current?.value) {
-                    inputRef.current.value = ''
-                  }
-
-                  onValueChange?.(null)
-                  setFileData(null)
-                }}
-              />
-            )}
-          </div>
-        </div>
-      </Field>
-    )
-  }
-)
+            onValueChange?.(null)
+            setFileData(null)
+          }}
+        />
+      )}
+    </div>
+  )
+}

@@ -1,8 +1,9 @@
+import type { ComponentProps } from 'react'
 import { Controller, type Control } from 'react-hook-form'
 
-import { Checkbox, type CheckboxProps } from './Checkbox.js'
+import { Checkbox } from './Checkbox.js'
 
-type ControlledCheckboxProps = CheckboxProps & {
+type ControlledCheckboxProps = ComponentProps<typeof Checkbox> & {
   control: Control
   name: string
   onCheckedChange: (checked: boolean) => void
@@ -22,12 +23,13 @@ export const ControlledCheckbox = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field: { ref: _, ...fieldProps } }) => (
+    render={({ field, fieldState }) => (
       <Checkbox
         onCheckedChange={onCheckedChange}
         defaultChecked={defaultChecked}
-        {...fieldProps}
+        {...field}
         {...checkboxProps}
+        aria-invalid={fieldState.invalid}
       />
     )}
   />

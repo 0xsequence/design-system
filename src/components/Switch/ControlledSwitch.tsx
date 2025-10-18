@@ -22,12 +22,13 @@ export const ControlledSwitch = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field: { ref: _, ...fieldProps } }) => (
+    render={({ field, fieldState }) => (
       <Switch
         onCheckedChange={onCheckedChange}
         defaultChecked={defaultChecked}
-        {...fieldProps}
+        {...field}
         {...switchProps}
+        aria-invalid={fieldState.invalid}
       />
     )}
   />

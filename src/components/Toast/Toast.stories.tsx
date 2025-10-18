@@ -1,8 +1,8 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
-import { Button } from '~/components/Button/index.js'
-import { Card } from '~/components/Card/index.js'
-import { TransactionIcon } from '~/icons/index.js'
+import { TransactionIcon } from '../../icons/index.js'
+import { Button } from '../Button/Button.js'
+import { Card } from '../Card/Card.js'
 
 import { Toast, ToastProvider, useToast, type ToastProps } from './Toast.js'
 
@@ -27,14 +27,15 @@ const ToastStory = (args: ToastProps) => {
   return (
     <Card>
       <Button
-        label="Raise a Toast"
         onClick={() => {
           toast({
             ...args,
             title: args.title + ' ' + new Date().getMilliseconds(),
           })
         }}
-      />
+      >
+        Raise a Toast
+      </Button>
     </Card>
   )
 }

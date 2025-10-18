@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { memo, useId } from 'react'
 
-import { cn } from '~/utils/classnames.js'
+import { cn } from '../../utils/classnames.js'
 
 const MOD = 1000
 const SIZE = 64
@@ -12,11 +12,11 @@ const prefix = 'gradient-avatar-'
 const avatarVariants = cva(['shrink-0 rounded-full overflow-hidden'], {
   variants: {
     size: {
-      xs: 'w-3 h-3',
-      sm: 'w-5 h-5',
-      md: 'w-8 h-8',
-      lg: 'w-10 h-10',
-      xl: 'w-[52px] h-[52px]',
+      xs: 'size-3',
+      sm: 'size-5',
+      md: 'size-8',
+      lg: 'size-10',
+      xl: 'size-[52px]',
     },
   },
   defaultVariants: {

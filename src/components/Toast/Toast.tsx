@@ -10,11 +10,11 @@ import {
   type SetStateAction,
 } from 'react'
 
-import { Card } from '~/components/Card/index.js'
-import { IconButton } from '~/components/IconButton/index.js'
-import { Text } from '~/components/Text/index.js'
-import { CheckmarkIcon, CloseIcon } from '~/icons/index.js'
-import { type IconProps } from '~/icons/types.js'
+import { CheckmarkIcon, CloseIcon } from '../../icons/index.js'
+import { type IconProps } from '../../icons/types.js'
+import { Card } from '../Card/Card.js'
+import { IconButton } from '../IconButton/IconButton.js'
+import { Text } from '../Text/Text.js'
 
 const toastVariants = cva(
   [
@@ -118,7 +118,7 @@ export const Toast = (props: ToastProps) => {
       {...rest}
     >
       <Card
-        className="rounded-md bg-button-glass backdrop-blur-xs relative flex justify-between w-full"
+        className="rounded-md bg-background-raised relative flex justify-between w-full shadow-primary"
         asChild
       >
         <motion.li

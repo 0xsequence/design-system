@@ -1,15 +1,21 @@
 import * as RadioPrimitive from '@radix-ui/react-radio-group'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type Ref } from 'react'
+import { type ComponentProps } from 'react'
 
-import { Field } from '~/components/Field/index.js'
-import { cn } from '~/utils/classnames.js'
+import {
+  disabledStyle,
+  focusRingVariants,
+  inputBorderStyle,
+} from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
+import { Field } from '../Field/Field.js'
 
 const radioOptionVariants = cva(
   [
-    'bg-background-primary/25 rounded-full p-0',
-    'cursor-pointer hover:opacity-80 disabled:cursor-default disabled:opacity-50',
-    'outline-hidden ring-inset ring-1 ring-border-focus focus-visible:ring-2 focus-visible:ring-border-focus',
+    'bg-background-input rounded-full p-0 cursor-pointer',
+    focusRingVariants(),
+    inputBorderStyle,
+    disabledStyle,
   ],
   {
     variants: {
@@ -49,12 +55,40 @@ type RadioOption = {
 }
 
 export type RadioGroupProps = VariantProps<typeof radioOptionVariants> &
-  RadioPrimitive.RadioGroupProps & {
-    disabled?: boolean
-    name: string
+  ComponentProps<typeof RadioPrimitive.Root> & {
     options: RadioOption[]
-    className?: string
   }
+
+export const RadioGroup = (props: RadioGroupProps) => {
+  const {
+    disabled = false,
+    name,
+    options,
+    size = 'sm',
+    className,
+    ...rest
+  } = props
+
+  return (
+    <RadioPrimitive.Root
+      className={cn('flex flex-col gap-2', className)}
+      disabled={disabled}
+      name={name}
+      {...rest}
+    >
+      {options.map(({ label, value, disabled }) => (
+        <RadioOption
+          id={`${name}-${value}`}
+          key={value}
+          label={label}
+          size={size}
+          value={value}
+          disabled={disabled}
+        />
+      ))}
+    </RadioPrimitive.Root>
+  )
+}
 
 type RadioOptionProps = VariantProps<typeof radioOptionVariants> & {
   id: string
@@ -89,37 +123,3 @@ const RadioOption = (props: RadioOptionProps) => {
     </div>
   )
 }
-
-export const RadioGroup = forwardRef(
-  (props: RadioGroupProps, ref: Ref<HTMLDivElement>) => {
-    const {
-      disabled = false,
-      name,
-      options,
-      size = 'sm',
-      className,
-      ...rest
-    } = props
-
-    return (
-      <RadioPrimitive.Root
-        className={cn('flex flex-col gap-2', className)}
-        disabled={disabled}
-        name={name}
-        ref={ref}
-        {...rest}
-      >
-        {options.map(({ label, value, disabled }) => (
-          <RadioOption
-            id={`${name}-${value}`}
-            key={value}
-            label={label}
-            size={size}
-            value={value}
-            disabled={disabled}
-          />
-        ))}
-      </RadioPrimitive.Root>
-    )
-  }
-)

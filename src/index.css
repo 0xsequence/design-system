@@ -1,39 +1,43 @@
+@import 'tw-animate-css';
+
 @source './';
 
 :root,
 [data-theme='dark'] {
   /* Status colors */
-  --seq-color-positive: #1fc266;
-  --seq-color-negative: #c2501f;
-  --seq-color-info: #0076cc;
-  --seq-color-warning: #f4b03e;
+  --seq-color-positive: var(--color-green-500);
+  --seq-color-negative: var(--color-red-500);
+  --seq-color-info: var(--color-blue-500);
+  --seq-color-warning: var(--color-yellow-500);
+  --seq-color-destructive: var(--color-red-500);
 
   /* Text colors */
-  --seq-color-primary: rgba(255, 255, 255, 1);
-  --seq-color-secondary: rgba(255, 255, 255, 0.8);
-  --seq-color-muted: rgba(255, 255, 255, 0.5);
-  --seq-color-inverse: rgba(0, 0, 0, 1);
+  --seq-color-primary: white;
+  --seq-color-secondary: white;
+  --seq-color-muted: var(--color-zinc-500);
+  --seq-color-inverse: black;
 
   /* Background colors */
-  --seq-color-background-primary: rgba(0, 0, 0, 1);
-  --seq-color-background-secondary: rgba(255, 255, 255, 0.1);
-  --seq-color-background-contrast: rgba(0, 0, 0, 0.5);
-  --seq-color-background-muted: rgba(255, 255, 255, 0.05);
-  --seq-color-background-control: rgba(255, 255, 255, 0.25);
-  --seq-color-background-inverse: rgba(255, 255, 255, 1);
-  --seq-color-background-backdrop: rgba(34, 34, 34, 0.9);
-  --seq-color-background-overlay: rgba(0, 0, 0, 0.7);
-  --seq-color-background-raised: rgba(54, 54, 54, 0.7);
+  --seq-color-background-primary: black;
+  --seq-color-background-secondary: var(--color-zinc-900);
+  --seq-color-background-muted: var(--color-zinc-950);
+  --seq-color-background-inverse: white;
+  --seq-color-background-overlay: var(--color-zinc-800);
+  --seq-color-background-raised: var(--color-zinc-800);
+  --seq-color-background-input: var(--color-zinc-950);
+  --seq-color-background-hover: var(--color-zinc-900);
+  --seq-color-background-active: var(--color-zinc-700);
+  --seq-color-background-glass: rgba(255, 255, 255, 0.15);
 
   /* Border colors */
-  --seq-color-border-normal: rgba(255, 255, 255, 0.25);
-  --seq-color-border-focus: rgba(255, 255, 255, 0.5);
-  --seq-color-border-error: rgba(255, 69, 0, 1);
+  --seq-color-border-normal: var(--color-zinc-700);
+  --seq-color-border-hover: var(--color-zinc-600);
+  --seq-color-border-focus: var(--color-violet-500);
+  --seq-color-border-card: var(--color-zinc-800);
+  --seq-color-border-button: var(--color-zinc-700);
 
-  /* Button colors */
-  --seq-color-button-glass: rgba(255, 255, 255, 0.15);
-  --seq-color-button-emphasis: rgba(0, 0, 0, 0.5);
-  --seq-color-button-inverse: rgba(255, 255, 255, 0.8);
+  /* Drop shadow */
+  --seq-color-drop-shadow: var(--color-zinc-950);
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
@@ -63,37 +67,39 @@
 
 [data-theme='light'] {
   /* Status colors */
-  --seq-color-positive: #1fc266;
-  --seq-color-negative: #c2501f;
-  --seq-color-info: #0076cc;
-  --seq-color-warning: #f4b03e;
+  --seq-color-positive: var(--color-green-500);
+  --seq-color-negative: var(--color-red-500);
+  --seq-color-info: var(--color-blue-500);
+  --seq-color-warning: var(--color-yellow-500);
+  --seq-color-destructive: var(--color-red-500);
 
   /* Text colors */
-  --seq-color-primary: rgba(0, 0, 0, 1);
-  --seq-color-secondary: rgba(0, 0, 0, 0.8);
-  --seq-color-muted: rgba(0, 0, 0, 0.5);
-  --seq-color-inverse: rgba(255, 255, 255, 1);
+  --seq-color-primary: var(--color-slate-800);
+  --seq-color-secondary: var(--color-slate-800);
+  --seq-color-muted: var(--color-slate-500);
+  --seq-color-inverse: var(--color-slate-50);
 
   /* Background colors */
-  --seq-color-background-primary: rgba(244, 244, 244, 1);
-  --seq-color-background-secondary: rgba(0, 0, 0, 0.1);
-  --seq-color-background-contrast: rgba(244, 244, 244, 0.5);
-  --seq-color-background-muted: rgba(0, 0, 0, 0.05);
-  --seq-color-background-control: rgba(0, 0, 0, 0.25);
-  --seq-color-background-inverse: rgba(0, 0, 0, 1);
-  --seq-color-background-backdrop: rgba(221, 221, 221, 0.9);
-  --seq-color-background-overlay: rgba(244, 244, 244, 0.7);
-  --seq-color-background-raised: rgba(192, 192, 192, 0.7);
+  --seq-color-background-primary: var(--color-slate-50);
+  --seq-color-background-secondary: white;
+  --seq-color-background-muted: var(--color-slate-100);
+  --seq-color-background-inverse: black;
+  --seq-color-background-overlay: var(--color-slate-300);
+  --seq-color-background-raised: white;
+  --seq-color-background-input: var(--color-slate-50);
+  --seq-color-background-hover: var(--color-slate-100);
+  --seq-color-background-active: var(--color-slate-200);
+  --seq-color-background-glass: rgba(0, 0, 0, 0.15);
 
   /* Border colors */
-  --seq-color-border-normal: rgba(0, 0, 0, 0.25);
-  --seq-color-border-focus: rgba(0, 0, 0, 0.5);
-  --seq-color-border-error: rgba(255, 69, 0, 1);
+  --seq-color-border-normal: var(--color-slate-300);
+  --seq-color-border-hover: var(--color-slate-400);
+  --seq-color-border-focus: var(--color-violet-600);
+  --seq-color-border-card: var(--color-slate-200);
+  --seq-color-border-button: var(--color-slate-300);
 
-  /* Button colors */
-  --seq-color-button-glass: rgba(0, 0, 0, 0.15);
-  --seq-color-button-emphasis: rgba(255, 255, 255, 0.5);
-  --seq-color-button-inverse: rgba(0, 0, 0, 0.8);
+  /* Drop shadow */
+  --seq-color-drop-shadow: var(--color-slate-500);
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
@@ -138,24 +144,27 @@
   --color-negative: var(--seq-color-negative);
   --color-info: var(--seq-color-info);
   --color-warning: var(--seq-color-warning);
+  --color-success: var(--seq-color-positive);
+  --color-destructive: var(--seq-color-destructive);
 
   --color-background-primary: var(--seq-color-background-primary);
   --color-background-secondary: var(--seq-color-background-secondary);
-  --color-background-contrast: var(--seq-color-background-contrast);
   --color-background-muted: var(--seq-color-background-muted);
-  --color-background-control: var(--seq-color-background-control);
   --color-background-inverse: var(--seq-color-background-inverse);
-  --color-background-backdrop: var(--seq-color-background-backdrop);
   --color-background-overlay: var(--seq-color-background-overlay);
   --color-background-raised: var(--seq-color-background-raised);
+  --color-background-input: var(--seq-color-background-input);
+  --color-background-hover: var(--seq-color-background-hover);
+  --color-background-active: var(--seq-color-background-active);
+  --color-background-glass: var(--seq-color-background-glass);
 
   --color-border-normal: var(--seq-color-border-normal);
+  --color-border-hover: var(--seq-color-border-hover);
   --color-border-focus: var(--seq-color-border-focus);
-  --color-border-error: var(--seq-color-border-error);
+  --color-border-card: var(--seq-color-border-card);
+  --color-border-button: var(--seq-color-border-button);
 
-  --color-button-glass: var(--seq-color-button-glass);
-  --color-button-emphasis: var(--seq-color-button-emphasis);
-  --color-button-inverse: var(--seq-color-button-inverse);
+  --color-drop-shadow: var(--seq-color-drop-shadow);
 
   --background-image-gradient-backdrop: var(--seq-color-gradient-backdrop);
   --background-image-gradient-primary: var(--seq-color-gradient-primary);
@@ -164,6 +173,9 @@
 
   --animate-skeleton: skeleton 1s ease infinite;
   --animate-swipe-out: swipe-out 200ms ease-out;
+
+  --shadow-primary: 0 0 16px 0
+    color-mix(in oklab, var(--color-drop-shadow) 30%, transparent);
 
   @keyframes skeleton {
     0% {
@@ -185,4 +197,61 @@
       transform: translateX(100%);
     }
   }
+}
+
+:root {
+  --base-unit: 16;
+}
+
+@utility text-* {
+  font-size: calc(--value(integer) / var(--base-unit) * 1rem);
+}
+
+/* Typography utility classes */
+@utility type-xxxlarge {
+  @apply font-body font-bold text-6xl tracking-normal leading-15;
+}
+
+@utility type-xxlarge {
+  @apply font-body font-bold text-4xl tracking-widest leading-10;
+}
+
+@utility type-xlarge {
+  @apply font-body font-bold text-2xl tracking-normal leading-8;
+}
+
+@utility type-large {
+  @apply font-body font-semibold text-xl tracking-normal leading-7;
+}
+
+@utility type-medium {
+  @apply font-body font-bold text-base tracking-normal leading-6;
+}
+
+@utility type-normal-bold {
+  @apply font-body font-bold text-sm tracking-wide leading-5;
+}
+
+@utility type-normal {
+  @apply font-body font-medium text-sm tracking-wide leading-5;
+}
+
+@utility type-small-bold {
+  @apply font-body font-bold text-xs tracking-normal leading-4;
+}
+
+@utility type-small {
+  @apply font-body font-medium text-xs tracking-wide leading-4;
+}
+
+@utility type-xsmall-bold {
+  @apply font-body font-bold text-[0.625rem] tracking-wide leading-4;
+}
+
+@utility type-xsmall {
+  @apply font-body font-bold text-[0.625rem] tracking-wide leading-4;
+}
+
+@utility type-code {
+  @apply font-mono font-normal text-sm tracking-normal leading-5;
 }

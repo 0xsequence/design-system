@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Button } from '~/components/Button/index.js'
-import { IconButton } from '~/components/IconButton/index.js'
 import {
   ArrowRightIcon,
   CloseIcon,
   ScanIcon,
   SearchIcon,
-} from '~/icons/index.js'
+} from '../../icons/index.js'
+import { Button } from '../Button/Button.js'
+import { IconButton } from '../IconButton/IconButton.js'
 
 import { TextInput } from './TextInput.js'
 
@@ -20,30 +20,24 @@ type Story = StoryObj<typeof TextInput>
 
 export const Default: Story = {
   args: {
-    label: 'This the label',
-    description: 'This is the description',
     placeholder: 'This is the placeholder',
-    labelLocation: 'top',
     disabled: false,
   },
 }
 export const WithLeftIcon: Story = {
   args: {
-    label: 'This the label',
     placeholder: 'This is the placeholder',
     leftIcon: ScanIcon,
   },
 }
 export const WithRightIcon: Story = {
   args: {
-    label: 'This the label',
     placeholder: 'This is the placeholder',
     rightIcon: ArrowRightIcon,
   },
 }
 export const WithBothIcons: Story = {
   args: {
-    label: 'This the label',
     placeholder: 'This is the placeholder',
     leftIcon: ScanIcon,
     rightIcon: ArrowRightIcon,
@@ -58,37 +52,22 @@ export const SearchInput: Story = {
 }
 export const Error: Story = {
   args: {
-    label: 'This the label',
     placeholder: 'This is the placeholder',
-    error: 'This is the error',
-  },
-}
-
-export const WithTrailDescription: Story = {
-  args: {
-    label: 'This the label',
-    placeholder: 'This is the placeholder',
-    trailDescription: 'This is the trail description',
-  },
-}
-
-export const WithTrailDescriptionAndError: Story = {
-  args: {
-    label: 'This the label',
-    placeholder: 'This is the placeholder',
-    trailDescription: 'This is the trail description',
-    error: 'This is the error',
+    ['aria-invalid']: true,
   },
 }
 
 export const WithComplexControls: Story = {
   args: {
-    label: 'This the label',
     placeholder: 'This is the placeholder',
     controls: (
       <div className="flex gap-2">
-        <Button label="Max" size="xs" shape="square" disabled />
-        <Button label="Paste" size="xs" shape="square" />
+        <Button size="xs" shape="square" disabled>
+          Max
+        </Button>
+        <Button size="xs" shape="square">
+          Paste
+        </Button>
       </div>
     ),
   },

@@ -1,6 +1,6 @@
 import { cleanup, render } from '@testing-library/react'
 
-import { networkImageUrl } from '~/utils/assets.js'
+import { networkImageUrl } from '../../utils/assets.js'
 
 import { NetworkImage } from './NetworkImage.js'
 

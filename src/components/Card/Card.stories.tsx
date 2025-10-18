@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Text } from '~/components/Text/index.js'
+import { Text } from '../Text/Text.js'
 
 import { Card } from './Card.js'
 
@@ -31,8 +31,9 @@ export const Clickable: Story = {
   args: {
     clickable: true,
     onClick: () => console.log('Clicked!'),
+    asChild: true,
     children: (
-      <>
+      <button>
         <div className="flex flex-col text-left">
           <Text variant="large" color="primary">
             Card
@@ -41,7 +42,7 @@ export const Clickable: Story = {
             Description
           </Text>
         </div>
-      </>
+      </button>
     ),
   },
 }

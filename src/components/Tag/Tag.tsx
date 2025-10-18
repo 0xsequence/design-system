@@ -1,8 +1,8 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentType } from 'react'
 
-import { Text } from '~/components/Text/index.js'
-import type { IconProps } from '~/icons/types.js'
+import type { IconProps } from '../../icons/types.js'
+import { Text } from '../Text/Text.js'
 
 const tagVariants = cva(
   [
@@ -11,7 +11,7 @@ const tagVariants = cva(
     'px-2',
     'py-1',
     'whitespace-nowrap',
-    'bg-button-glass',
+    'bg-background-secondary',
     'text-secondary',
     'rounded-xs',
   ],

@@ -1,7 +1,9 @@
 import type { HTMLAttributes, JSX, ReactNode } from 'react'
 
-import { Divider } from '~/components/Divider/index.js'
-import { Text } from '~/components/Text/index.js'
+import { focusRingVariants } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
+import { Divider } from '../Divider/Divider.js'
+import { Text } from '../Text/Text.js'
 
 interface Path {
   label: string
@@ -66,7 +68,10 @@ const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
         color="muted"
         nowrap
         capitalize
-        className="no-underline outline-hidden focus:ring-2 focus:ring-border-focus hover:opacity-80"
+        className={cn(
+          'no-underline hover:opacity-80 rounded-sm',
+          focusRingVariants({ inner: false })
+        )}
         asChild
       >
         {renderLink(path, path.label)}

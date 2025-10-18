@@ -1,8 +1,8 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
-import { IconButton } from '~/components/IconButton/index.js'
-import { Text } from '~/components/Text/index.js'
-import { ArrowRightIcon } from '~/icons/index.js'
+import { ArrowRightIcon } from '../../icons/index.js'
+import { IconButton } from '../IconButton/IconButton.js'
+import { Text } from '../Text/Text.js'
 
 import { StopClickPropagation } from './StopClickPropagation.js'
 
@@ -16,7 +16,7 @@ type Story = StoryObj<typeof StopClickPropagation>
 const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
   return (
     <div
-      className="flex items-center bg-background-secondary hover:bg-background-backdrop rounded-xl cursor-pointer justify-between p-4"
+      className="flex items-center bg-background-secondary hover:opacity-80 rounded-xl cursor-pointer justify-between p-4"
       onClick={() => console.log('Container Clicked!!')}
     >
       <div>

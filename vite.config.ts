@@ -1,15 +1,17 @@
-import path from 'path'
-import { version as designSystemVersion } from './package.json'
+import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import eslint from 'vite-plugin-eslint'
-import tsconfigPaths from 'vite-tsconfig-paths'
 import { replaceCodePlugin } from 'vite-plugin-replace'
+import tsconfigPaths from 'vite-tsconfig-paths'
+
+import { version as designSystemVersion } from './package.json'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     tsconfigPaths(),
     react(),
     eslint({
@@ -34,13 +36,5 @@ export default defineConfig({
       ],
     }),
   ],
-  resolve: {
-    alias: [
-      {
-        find: '~',
-        replacement: path.resolve(__dirname, './src'),
-      },
-    ],
-  },
   publicDir: false,
 })

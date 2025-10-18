@@ -1,14 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Button } from '~/components/Button/index.js'
-import { ControlledCheckbox as Checkbox } from '~/components/Checkbox/index.js'
-import { ControlledFileInput as FileInput } from '~/components/FileInput/index.js'
-import { ControlledRadioGroup as RadioGroup } from '~/components/RadioGroup/index.js'
-import { ControlledSelect as Select } from '~/components/Select/index.js'
-import { ControlledSwitch as Switch } from '~/components/Switch/index.js'
-import { ControlledTextInput as TextInput } from '~/components/TextInput/index.js'
-
-import { TextArea } from '../TextArea/index.js'
+import { Button } from '../Button/Button.js'
+import { Card } from '../Card/Card.js'
+import { ControlledCheckbox as Checkbox } from '../Checkbox/ControlledCheckbox.js'
+import { Field } from '../Field/Field.js'
+import { ControlledFileInput as FileInput } from '../FileInput/ControlledFileInput.js'
+import { ControlledNumericInput as NumericInput } from '../NumericInput/ControlledNumericInput.js'
+import { ControlledRadioGroup as RadioGroup } from '../RadioGroup/ControlledRadioGroup.js'
+import { ControlledSelect as Select } from '../Select/ControlledSelect.js'
+import { ControlledSwitch as Switch } from '../Switch/ControlledSwitch.js'
+import { ControlledTextArea as TextArea } from '../TextArea/ControlledTextArea.js'
+import { ControlledTextInput as TextInput } from '../TextInput/ControlledTextInput.js'
 
 import { Form } from './Form.js'
 
@@ -36,7 +38,7 @@ type Story = StoryObj<typeof Form>
 
 export const Default: Story = {
   render: ({ onSubmit, ...args }) => (
-    <div className="bg-background-secondary rounded-xl flex flex-col gap-3 p-4">
+    <Card>
       <Form
         defaultValues={{
           firstName: '',
@@ -46,106 +48,132 @@ export const Default: Story = {
       >
         {({ control, reset, formState: { errors }, setValue }) => (
           <div className="flex flex-col gap-4">
-            <TextInput
-              control={control}
+            <Field
               label="First Name"
-              labelLocation="top"
-              name="firstName"
-              placeholder="Enter first name"
-              rules={{
-                required: 'First name is required',
-              }}
               error={
                 errors.firstName?.message
                   ? (errors.firstName.message as string)
                   : undefined
               }
-            />
+            >
+              <TextInput
+                control={control}
+                name="firstName"
+                placeholder="Enter first name"
+                rules={{
+                  required: 'First name is required',
+                }}
+              />
+            </Field>
 
-            <TextInput
-              control={control}
-              defaultValue=""
+            <Field
               label="Last Name"
-              labelLocation="top"
-              name="lastName"
-              placeholder="Enter last name"
-              rules={{
-                required: 'Last name is required',
-              }}
               error={
                 errors.lastName?.message
                   ? (errors.lastName.message as string)
                   : undefined
               }
-            />
+            >
+              <TextInput
+                control={control}
+                defaultValue=""
+                name="lastName"
+                placeholder="Enter last name"
+                rules={{
+                  required: 'Last name is required',
+                }}
+              />
+            </Field>
 
-            <FileInput
-              defaultValue=""
-              control={control}
+            <Field
+              label="Amount"
+              error={
+                errors.amount?.message
+                  ? (errors.amount.message as string)
+                  : undefined
+              }
+            >
+              <NumericInput
+                control={control}
+                name="amount"
+                placeholder="0"
+                decimals={2}
+                rules={{
+                  required: 'Amount is required',
+                  min: {
+                    value: 0,
+                    message: 'Amount must be greater than 0',
+                  },
+                  max: {
+                    value: 1000000,
+                    message: 'Amount must be less than 1,000,000',
+                  },
+                }}
+              />
+            </Field>
+
+            <Field
               label="File Input"
-              labelLocation="top"
-              name="fileInput"
-              onValueChange={(file: File | null) => setValue('fileInput', file)}
-              rules={{
-                required: 'A file is required',
-              }}
-              validExtensions={['images']}
               error={
                 errors.fileInput?.message
                   ? (errors.fileInput.message as string)
                   : undefined
               }
-            />
+            >
+              <FileInput
+                defaultValue=""
+                control={control}
+                name="fileInput"
+                onValueChange={(file: File | null) =>
+                  setValue('fileInput', file)
+                }
+                rules={{
+                  required: 'A file is required',
+                }}
+                validExtensions={['images']}
+              />
+            </Field>
 
-            <TextArea
-              defaultValue=""
+            <Field
               label="Message"
-              labelLocation="top"
-              name="message"
-              placeholder="Enter a message"
               trailDescription="This is the trail description"
-            />
+            >
+              <TextArea
+                defaultValue=""
+                name="message"
+                placeholder="Enter a message"
+                control={control}
+                rules={{
+                  required: 'A message is required',
+                  maxLength: {
+                    value: 100,
+                    message: 'Message must be less than 100 characters',
+                  },
+                }}
+              />
+            </Field>
 
-            <Select
-              control={control}
+            <Field
               label="Select Option"
-              labelLocation="top"
-              name="selectOption"
-              onValueChange={(value: string) => setValue('selectOption', value)}
-              options={selectOptions}
-              placeholder="Select an option"
-              rules={{
-                required: 'A selection is required',
-              }}
               error={
                 errors.selectOption?.message
                   ? (errors.selectOption.message as string)
                   : undefined
               }
-            />
-
-            <Switch
-              control={control}
-              name="switchOption"
-              label="Switch Option"
-              labelLocation="right"
-              description="This is the switch description"
-              onCheckedChange={(value: boolean) =>
-                setValue('switchOption', value)
-              }
-              defaultChecked={false}
-            />
-
-            <Checkbox
-              control={control}
-              label="Checkbox Option"
-              labelLocation="right"
-              name="checkboxOption"
-              onCheckedChange={(value: boolean) =>
-                setValue('checkboxOption', value)
-              }
-              defaultChecked={false}
-            />
+            >
+              <Select
+                control={control}
+                name="selectOption"
+                onValueChange={(value: string) =>
+                  setValue('selectOption', value)
+                }
+                options={selectOptions}
+                placeholder="Select an option"
+                rules={{
+                  required: 'A selection is required',
+                }}
+              />
+            </Field>
 
             <RadioGroup
               control={control}
@@ -156,14 +184,63 @@ export const Default: Story = {
               className="flex-row gap-4"
             />
 
+            <Field
+              label="Switch Option"
+              labelLocation="right"
+              error={
+                errors.switchOption?.message
+                  ? (errors.switchOption.message as string)
+                  : undefined
+              }
+            >
+              <Switch
+                control={control}
+                size="sm"
+                name="switchOption"
+                onCheckedChange={(value: boolean) =>
+                  setValue('switchOption', value)
+                }
+                defaultChecked={false}
+                rules={{
+                  required: 'You must accept the terms and conditions',
+                }}
+              />
+            </Field>
+
+            <Field
+              label="Accept terms and conditions"
+              labelLocation="right"
+              error={
+                errors.checkboxOption?.message
+                  ? (errors.checkboxOption.message as string)
+                  : undefined
+              }
+            >
+              <Checkbox
+                control={control}
+                name="checkboxOption"
+                onCheckedChange={(value: boolean) =>
+                  setValue('checkboxOption', value)
+                }
+                defaultChecked={false}
+                rules={{
+                  required: 'You must accept the terms and conditions',
+                }}
+              />
+            </Field>
+
             <div className="flex flex-row-reverse gap-2">
-              <Button type="submit" label="Submit" variant="primary" />
-              <Button type="reset" label="Reset" onClick={() => reset()} />
+              <Button type="submit" variant="primary">
+                Submit
+              </Button>
+              <Button type="reset" onClick={() => reset()}>
+                Reset
+              </Button>
             </div>
           </div>
         )}
       </Form>
-    </div>
+    </Card>
   ),
   args: {
     onSubmit: (data: {}) => console.log(data),

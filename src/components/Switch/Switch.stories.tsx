@@ -12,7 +12,17 @@ type Story = StoryObj<typeof Switch>
 export const Default: Story = {
   args: {
     disabled: false,
-    label: 'Switch Title',
-    description: 'Switch Description',
+  },
+}
+
+export const Small: Story = {
+  args: {
+    size: 'sm',
+  },
+}
+
+export const Medium: Story = {
+  args: {
+    size: 'md',
   },
 }

@@ -1,10 +1,10 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { memo } from 'react'
 
-import { Image } from '~/components/Image/index.js'
-import { NetworkImage } from '~/components/NetworkImage/index.js'
-import { Text } from '~/components/Text/index.js'
-import { cn } from '~/utils/classnames.js'
+import { cn } from '../../utils/classnames.js'
+import { Image } from '../Image/Image.js'
+import { NetworkImage } from '../NetworkImage/NetworkImage.js'
+import { Text } from '../Text/Text.js'
 
 const NETWORK_IMAGE_SIZE = '40%'
 const NETWORK_IMAGE_OFFSET = '-2%'
@@ -14,11 +14,11 @@ const tokenImageVariants = cva(
   {
     variants: {
       size: {
-        xs: 'w-3 h-3 text-[4px]',
-        sm: 'w-5 h-5 text-[6px]',
-        md: 'w-8 h-8 text-[9px]',
-        lg: 'w-10 h-10 text-[11px]',
-        xl: 'w-16 h-16 text-[16px]',
+        xs: 'size-3 text-[4px]',
+        sm: 'size-5 text-[6px]',
+        md: 'size-8 text-[9px]',
+        lg: 'size-10 text-[11px]',
+        xl: 'size-16 text-[16px]',
       },
     },
     defaultVariants: {

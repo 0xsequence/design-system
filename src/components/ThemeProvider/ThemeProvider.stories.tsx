@@ -1,9 +1,9 @@
 import type { Meta } from '@storybook/react-vite'
 
-import { Button } from '~/components/Button/index.js'
-import { Card } from '~/components/Card/index.js'
-import { Collapsible } from '~/components/Collapsible/index.js'
-import { Text } from '~/components/Text/index.js'
+import { Button } from '../Button/Button.js'
+import { Card } from '../Card/Card.js'
+import { Collapsible } from '../Collapsible/Collapsible.js'
+import { Text } from '../Text/Text.js'
 
 import { ThemeProvider, useTheme } from './ThemeProvider.js'
 
@@ -18,7 +18,7 @@ export const Default = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
-  return <Button label="Toggle theme" onClick={toggleTheme} />
+  return <Button onClick={toggleTheme}>Toggle theme</Button>
 }
 
 const customThemes = {
@@ -168,10 +168,8 @@ const SetThemeButton = () => {
   }
 
   return (
-    <Button
-      variant="primary"
-      label={`Set ${themeLabel} Mode`}
-      onClick={toggleTheme}
-    />
+    <Button variant="primary" onClick={toggleTheme}>
+      Set {themeLabel} Mode
+    </Button>
   )
 }

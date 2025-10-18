@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import type { HTMLAttributes, ReactNode } from 'react'
 
-import { Text, textVariants } from '~/components/Text/index.js'
+import { Text, textVariants } from '../Text/Text.js'
 
 export const badgeVariants = cva(
   [

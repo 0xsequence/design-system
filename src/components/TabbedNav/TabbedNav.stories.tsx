@@ -1,8 +1,8 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
-import { Text } from '~/components/Text/index.js'
-import { ProfileIcon, TransactionIcon } from '~/icons/index.js'
+import { ProfileIcon, TransactionIcon } from '../../icons/index.js'
+import { Text } from '../Text/Text.js'
 
 import { TabbedNav } from './TabbedNav.js'
 

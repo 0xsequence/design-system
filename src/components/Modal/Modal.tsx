@@ -5,12 +5,12 @@ import { clsx } from 'clsx'
 import { motion, type HTMLMotionProps } from 'motion/react'
 import { Fragment, type PropsWithChildren } from 'react'
 
-import { IconButton } from '~/components/IconButton/index.js'
-import { Scroll } from '~/components/Scroll/index.js'
-import { Text } from '~/components/Text/index.js'
-import { useTheme } from '~/components/ThemeProvider/index.js'
-import { CloseIcon } from '~/icons/index.js'
-import { cn } from '~/utils/classnames.js'
+import { CloseIcon } from '../../icons/index.js'
+import { cn } from '../../utils/classnames.js'
+import { IconButton } from '../IconButton/IconButton.js'
+import { Scroll } from '../Scroll/Scroll.js'
+import { Text } from '../Text/Text.js'
+import { useTheme } from '../ThemeProvider/ThemeProvider.js'
 
 const modalContentVariants = cva(
   [
@@ -53,7 +53,7 @@ export interface ModalProps extends VariantProps<typeof modalContentVariants> {
   isDismissible?: boolean
   onClose?: () => void
 
-  backdropColor?: string
+  overlayColor?: string
   disableAnimation?: boolean
   overlayProps?: HTMLMotionProps<'div'>
   contentProps?: HTMLMotionProps<'div'>
@@ -69,7 +69,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     header,
     footer,
     autoHeight = false,
-    backdropColor = 'bg-background-backdrop',
+    overlayColor = 'bg-background-overlay/90',
     children,
     disableAnimation = false,
     isDismissible = true,
@@ -99,7 +99,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
           forceMount
         >
           <motion.div
-            className={clsx('absolute inset-0', backdropColor)}
+            className={clsx('absolute inset-0', overlayColor)}
             key="modal-overlay"
             initial={disableAnimation ? false : { opacity: 0 }}
             animate={disableAnimation ? false : { opacity: 1 }}
@@ -188,10 +188,10 @@ const ModalHeader = (props: PropsWithChildren) => {
     <div
       className={clsx(
         'absolute top-0 left-0 right-0 h-[60px] p-4 z-10',
-        'before:absolute before:left-0 before:-bottom-4 before:w-full before:h-4 before:z-[11] before:pointer-events-none before:bg-gradient-to-t before:from-transparent before:to-background-overlay'
+        'before:absolute before:left-0 before:-bottom-4 before:w-full before:h-4 before:z-[11] before:pointer-events-none before:bg-gradient-to-t before:from-transparent before:to-background-primary/70'
       )}
     >
-      <div className="backdrop-blur-md bg-background-overlay absolute w-full h-full top-0 left-0" />
+      <div className="backdrop-blur-md bg-background-primary/70 absolute w-full h-full top-0 left-0 border-b-1 border-border-card" />
       <div className="relative h-full w-full z-10 flex items-center justify-center">
         {typeof children === 'string' ? (
           <Text variant="normal" fontWeight="bold" color="primary" block>
@@ -214,10 +214,10 @@ const ModalFooter = (props: PropsWithChildren) => {
     <div
       className={clsx(
         'absolute bottom-0 left-0 right-0 p-4',
-        'before:absolute before:left-0 before:-top-4 before:w-full before:h-4 before:z-[11] before:pointer-events-none before:bg-gradient-to-b before:from-transparent before:to-background-overlay'
+        'before:absolute before:left-0 before:-top-4 before:w-full before:h-4 before:z-[11] before:pointer-events-none before:bg-gradient-to-b before:from-transparent before:to-background-primary/70'
       )}
     >
-      <div className="backdrop-blur-md bg-background-overlay absolute w-full h-full top-0 left-0" />
+      <div className="backdrop-blur-md bg-background-primary/70 absolute w-full h-full top-0 left-0 border-t-1 border-border-card" />
       <div className="relative w-full z-10 pb-[calc(env(safe-area-inset-bottom))]">
         {children}
       </div>

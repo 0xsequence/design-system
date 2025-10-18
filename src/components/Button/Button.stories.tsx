@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Badge } from '~/components/Badge/index.js'
-import { ArrowRightIcon, ScanIcon } from '~/icons/index.js'
+import { ArrowRightIcon, ScanIcon, WalletIcon } from '../../icons/index.js'
 
 import { Button } from './Button.js'
 
@@ -14,8 +13,11 @@ type Story = StoryObj<typeof Button>
 
 export const Primary: Story = {
   args: {
-    label: 'Click me',
+    children: 'Click me',
     variant: 'primary',
+    disabled: false,
+    size: 'md',
+    shape: 'circle',
   },
   parameters: {
     design: {
@@ -28,75 +30,80 @@ export const Primary: Story = {
 export const LabelOnly: Story = {
   args: {
     disabled: false,
-    label: 'Click me',
+    children: 'Click me',
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 export const Disabled: Story = {
   args: {
     disabled: true,
-    label: 'Click me',
+    children: 'Click me',
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 
 export const WithLeftIcon: Story = {
   args: {
     disabled: false,
-    label: 'Click me',
+    children: (
+      <>
+        <ScanIcon />
+        Click me
+      </>
+    ),
     onClick: () => console.log('Clicked!'),
-    leftIcon: ScanIcon,
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 
 export const WithRightIcon: Story = {
   args: {
     disabled: false,
-    label: 'Click me',
+    children: (
+      <>
+        Click me
+        <ArrowRightIcon />
+      </>
+    ),
     onClick: () => console.log('Clicked!'),
-    rightIcon: ArrowRightIcon,
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
   },
 }
 
 export const WithBothIcon: Story = {
   args: {
     disabled: false,
-    label: 'Click me',
-    leftIcon: ScanIcon,
-    onClick: () => console.log('Clicked!'),
-    rightIcon: ArrowRightIcon,
-    size: 'md',
-    variant: 'glass',
-  },
-}
-export const WithCountIcon: Story = {
-  args: {
-    disabled: false,
-    label: (
-      <div className="flex items-center gap-1">
+    children: (
+      <>
+        <ScanIcon />
         Click me
-        <Badge value="3" />
-      </div>
+        <ArrowRightIcon />
+      </>
     ),
     onClick: () => console.log('Clicked!'),
-    leftIcon: ScanIcon,
     size: 'md',
-    variant: 'glass',
+    variant: 'secondary',
+  },
+}
+
+export const IconButton: Story = {
+  args: {
+    size: 'sm',
+    variant: 'secondary',
+    children: <WalletIcon size="sm" />,
+    disabled: false,
   },
 }
 
 export const AnchorButton: Story = {
   args: {
-    label: 'Click me',
-    leftIcon: ScanIcon,
     size: 'md',
     asChild: true,
-    children: <a href="/wallet" />,
+    children: <a href="/wallet">Click me</a>,
+    disabled: false,
   },
 }

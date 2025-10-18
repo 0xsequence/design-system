@@ -1,38 +1,52 @@
 import * as SwitchPrimitive from '@radix-ui/react-switch'
+import { cva, type VariantProps } from 'class-variance-authority'
 
-import { Field, type FieldProps } from '~/components/Field/index.js'
+import {
+  disabledStyle,
+  focusRingVariants,
+  inputBorderStyle,
+} from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
-export type SwitchProps = FieldProps & SwitchPrimitive.SwitchProps
+const switchVariants = cva(
+  [
+    'rounded-full bg-background-input bg-origin-border cursor-pointer data-[state=checked]:bg-gradient-primary data-[state=checked]:border-transparent!',
+  ],
+  {
+    variants: {
+      size: {
+        sm: 'w-[32px] h-5 p-0.75 [&_span]:size-[12px]',
+        md: 'w-[46px] h-7 p-1 [&_span]:size-[18px]',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  }
+)
+
+export type SwitchProps = VariantProps<typeof switchVariants> &
+  SwitchPrimitive.SwitchProps
 
 export const Switch = (props: SwitchProps) => {
-  const {
-    disabled,
-    label,
-    labelLocation = 'left',
-    description,
-    id,
-    name,
-    ...rest
-  } = props
+  const { disabled, id, name, size, ...rest } = props
 
   return (
-    <Field
+    <SwitchPrimitive.Root
+      className={cn(
+        switchVariants({ size }),
+        focusRingVariants(),
+        inputBorderStyle,
+        disabledStyle
+      )}
       disabled={disabled}
       id={id ?? name}
-      label={label}
-      labelLocation={labelLocation}
-      description={description}
-      className="flex whitespace-nowrap"
+      name={name}
+      {...rest}
     >
-      <SwitchPrimitive.Root
-        className="relative w-12 h-7 p-1 rounded-full bg-background-control cursor-pointer border-none disabled:cursor-default disabled:opacity-50 data-[state=checked]:bg-gradient-primary focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-border-focus ring-inset"
-        disabled={disabled}
-        {...rest}
-      >
-        <div className="relative w-full h-full">
-          <SwitchPrimitive.Thumb className="absolute top-0 left-0 w-5 h-5 bg-white rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:translate-x-5" />
-        </div>
-      </SwitchPrimitive.Root>
-    </Field>
+      <div className="relative w-full h-full">
+        <SwitchPrimitive.Thumb className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:bg-white data-[state=checked]:translate-x-full" />
+      </div>
+    </SwitchPrimitive.Root>
   )
 }

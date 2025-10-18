@@ -2,10 +2,10 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 
-import { Button } from '~/components/Button/index.js'
-import { Card } from '~/components/Card/index.js'
-import { Text } from '~/components/Text/index.js'
-import { CheckmarkIcon } from '~/icons/index.js'
+import { CheckmarkIcon } from '../../icons/index.js'
+import { Button } from '../Button/Button.js'
+import { Card } from '../Card/Card.js'
+import { Text } from '../Text/Text.js'
 
 import { Modal } from './Modal.js'
 
@@ -20,7 +20,7 @@ const StoryWrapper: StoryFn<typeof Modal> = args => {
   const [isOpen, toggleModal] = useState(false)
   return (
     <>
-      <Button label="Open Modal" onClick={() => toggleModal(!isOpen)} />
+      <Button onClick={() => toggleModal(!isOpen)}>Open Modal</Button>
       <AnimatePresence>
         {isOpen && <Modal {...args} onClose={() => toggleModal(false)} />}
       </AnimatePresence>
@@ -44,7 +44,9 @@ export const Default: Story = {
         </div>
 
         <div className="flex justify-end">
-          <Button variant="primary" shape="square" label="Create" />
+          <Button variant="primary" shape="square">
+            Create
+          </Button>
         </div>
       </div>
     ),
@@ -57,19 +59,18 @@ export const WithHeaderAndFooter: Story = {
     header: 'Task list',
     footer: (
       <div className="flex gap-2">
-        <Button className="w-full" shape="square" label="Cancel" />
-        <Button
-          className="w-full"
-          variant="primary"
-          shape="square"
-          label="Confirm"
-        />
+        <Button className="w-full" shape="square">
+          Cancel
+        </Button>
+        <Button className="w-full" variant="primary" shape="square">
+          Confirm
+        </Button>
       </div>
     ),
     children: (
       <div className="flex flex-col gap-2 p-4">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(idx => (
-          <Card className="flex gap-2 items-center">
+          <Card className="flex gap-2 items-center" key={idx}>
             <div className="flex items-center justify-center rounded-full bg-positive w-8 h-8 text-white">
               <CheckmarkIcon />
             </div>
@@ -107,7 +108,9 @@ export const CustomAnimation: Story = {
         </div>
 
         <div className="flex justify-end">
-          <Button variant="primary" shape="square" label="Create" />
+          <Button variant="primary" shape="square">
+            Create
+          </Button>
         </div>
       </div>
     ),

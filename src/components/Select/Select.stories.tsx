@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Modal } from '~/components/Modal/index.js'
-import { NetworkImage } from '~/components/NetworkImage/index.js'
-import { Text } from '~/components/Text/index.js'
+import { Modal } from '../Modal/Modal.js'
+import { NetworkImage } from '../NetworkImage/NetworkImage.js'
+import { Text } from '../Text/Text.js'
 
 import { Select } from './Select.js'
 
@@ -19,9 +19,6 @@ export const Default: Story = {
       console.log('selected: ', value)
     },
     name: 'selectDemo',
-    label: 'Select',
-    description: 'This is a description',
-    labelLocation: 'top',
     placeholder: 'Select an option',
     disabled: false,
     options: [
@@ -56,8 +53,6 @@ export const Custom: Story = {
       console.log('selected: ', value)
     },
     name: 'selectDemo',
-    label: 'Networks',
-    labelLocation: 'top',
     disabled: false,
     defaultValue: 'mainnet',
     options: [

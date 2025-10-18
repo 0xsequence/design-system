@@ -7,18 +7,15 @@ import {
   type PropsWithChildren,
 } from 'react'
 
-import {
-  colors,
-  colorSchemes,
-  type ColorScheme,
-  type ColorTokens,
-} from '~/tokens/color.js'
+import { colorNames, type ColorTokens } from '../../tokens/color.js'
 
-export type Theme = ColorScheme
+export const themes = ['dark', 'light'] as const
+
+export type Theme = (typeof themes)[number]
+
 export type ThemeColors = ColorTokens
 
 type CustomThemes = {
-  defaults?: Partial<ThemeColors>
   light?: Partial<ThemeColors>
   dark?: Partial<ThemeColors>
 }
@@ -29,7 +26,6 @@ const STORAGE_KEY = '@sequence.theme'
 
 interface ThemeContextValue {
   theme: Theme
-  colors: ThemeColors
   container?: HTMLElement
   setTheme: (mode: Theme) => void
 }
@@ -43,7 +39,7 @@ interface ThemeProviderProps {
 }
 
 const isTheme = (theme: any): theme is Theme =>
-  typeof theme === 'string' && colorSchemes.includes(theme as any)
+  typeof theme === 'string' && themes.includes(theme as any)
 
 const getStorageKey = (scope?: string) =>
   scope ? `${STORAGE_KEY}.${scope}` : STORAGE_KEY
@@ -53,9 +49,7 @@ const toKebabCase = (str: string) =>
 
 const toCSSVar = (key: string) => `--seq-color-${toKebabCase(key)}`
 
-const themeVarNames = (Object.keys(colors.dark) as string[]).map(key =>
-  toCSSVar(key)
-)
+const themeVarNames = colorNames.map(key => toCSSVar(key))
 
 const clearThemeVars = (element: HTMLElement) => {
   // Clear each color token CSS variable
@@ -136,7 +130,6 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
       // Apply per-scheme overrides as CSS vars
       const overrides = {
-        ...props.customThemes?.defaults,
         ...props.customThemes?.[theme],
       }
       setThemeVars(rootElement, overrides)
@@ -154,11 +147,6 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
   const value: ThemeContextValue = useMemo(() => {
     return {
       theme,
-      colors: {
-        ...colors[theme],
-        ...props.customThemes?.defaults,
-        ...props.customThemes?.[theme],
-      },
       container,
       setTheme: (theme: Theme) => {
         // Save to local storage

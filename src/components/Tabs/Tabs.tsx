@@ -1,7 +1,9 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { useState, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 
-import { Text } from '~/components/Text/index.js'
+import { focusRingVariants } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
+import { Text } from '../Text/Text.js'
 
 export interface TabsProps
   extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
@@ -65,12 +67,15 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 
   return (
     <TabsPrimitive.List
-      className="px-2 flex relative w-full rounded-xl bg-background-secondary h-12 outline-hidden ring-inset focus-within:[&:has(:focus-visible)]:ring-2 focus-within:ring-border-focus"
+      className={cn(
+        'px-2 flex relative w-full rounded-xl bg-background-secondary h-12',
+        focusRingVariants({ variant: 'within' })
+      )}
       style={{ outline: undefined }}
     >
       <div className="flex absolute inset-2 h-8">
         <div
-          className="absolute rounded-lg top-0 left-0 h-8 bg-button-glass pointer-events-none transition-transform duration-200 ease-out"
+          className="absolute rounded-lg top-0 left-0 h-8 bg-background-active pointer-events-none transition-transform duration-200 ease-out"
           style={{
             width: `${selectorWidth}%`,
             transform: `translateX(${selectedIdx * 100}%)`,
@@ -94,8 +99,6 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 }
 
 export { TabsPrimitive }
-
-export const TabsRoot = TabsPrimitive.Root
 
 export const TabsList = TabsPrimitive.TabsList
 

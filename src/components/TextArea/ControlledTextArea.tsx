@@ -1,8 +1,9 @@
+import type { ComponentProps } from 'react'
 import { Controller, type Control } from 'react-hook-form'
 
-import { TextArea, type TextAreaProps } from './TextArea.js'
+import { TextArea } from './TextArea.js'
 
-type ControlledTextAreaProps = TextAreaProps & {
+type ControlledTextAreaProps = ComponentProps<typeof TextArea> & {
   control: Control
   defaultValue?: string
   name: string
@@ -21,6 +22,8 @@ export const ControlledTextArea = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field }) => <TextArea {...field} {...rest} />}
+    render={({ field, fieldState }) => (
+      <TextArea {...field} {...rest} aria-invalid={fieldState.invalid} />
+    )}
   />
 )

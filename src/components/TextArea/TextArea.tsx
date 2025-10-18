@@ -1,89 +1,34 @@
-import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type ReactNode } from 'react'
+import {
+  disabledStyle,
+  focusRingVariants,
+  inputBorderStyle,
+} from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
-import { Field, type FieldProps } from '~/components/Field/index.js'
-import { textVariants } from '~/components/Text/index.js'
-import { cn } from '~/utils/classnames.js'
-
-const textareaVariants = cva(
-  [
-    textVariants({ variant: 'normal' }),
-    'block bg-background-primary/25 text-primary w-full p-4 rounded-xl',
-    'outline-hidden ring-inset ring-1 ring-border-normal',
-    'cursor-text disabled:cursor-default disabled:opacity-50',
-    'focus:opacity-100 focus:ring-2 focus:ring-border-focus',
-    'placeholder-muted',
-    'resize-none',
-  ],
-  {
-    variants: {
-      resize: {
-        true: 'resize-y',
-        false: 'resize-none',
-      },
-    },
-    defaultVariants: {
-      resize: false,
-    },
-  }
-)
-
-export interface TextAreaProps
-  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>,
-    FieldProps,
-    VariantProps<typeof textareaVariants> {
-  name: string
-  controls?: ReactNode
-  value?: string
-  rows?: number
-  resize?: boolean
+function TextArea({
+  className,
+  resize,
+  autoComplete = 'off',
+  spellCheck = 'false',
+  ...props
+}: React.ComponentProps<'textarea'> & { resize?: boolean }) {
+  return (
+    <textarea
+      data-slot="textarea"
+      className={cn(
+        'bg-background-input type-normal text-primary placeholder:text-muted flex field-sizing-content min-h-16 w-full rounded-xl p-4',
+        'aria-invalid:outline-destructive aria-invalid:border-destructive',
+        resize ? 'resize-y' : 'resize-none',
+        inputBorderStyle,
+        focusRingVariants(),
+        disabledStyle,
+        className
+      )}
+      autoComplete={autoComplete}
+      spellCheck={spellCheck}
+      {...props}
+    />
+  )
 }
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  (props, ref) => {
-    const {
-      autoComplete = 'off',
-      description,
-      disabled = false,
-      id,
-      label = '',
-      labelLocation = 'hidden',
-      name,
-      rows,
-      resize = false,
-      className,
-      error,
-      trailDescription,
-      ...rest
-    } = props
-
-    return (
-      <Field
-        description={description}
-        disabled={disabled}
-        id={id ?? name}
-        label={label}
-        labelLocation={labelLocation}
-        className="grid"
-        trailDescription={trailDescription}
-        error={error}
-      >
-        <textarea
-          autoComplete={autoComplete}
-          spellCheck="false"
-          className={cn(
-            textareaVariants({ resize }),
-            className,
-            error && 'ring-border-error focus:ring-border-error'
-          )}
-          disabled={disabled}
-          id={id ?? name}
-          name={name}
-          ref={ref}
-          rows={rows}
-          {...rest}
-        />
-      </Field>
-    )
-  }
-)
+export { TextArea }

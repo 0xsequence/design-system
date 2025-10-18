@@ -22,8 +22,15 @@ export const ControlledFileInput = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field: { value: _v, onChange: _c, ...fieldProps } }) => (
-      <FileInput {...fieldProps} {...inputProps} />
+    render={({
+      field: { value: _v, onChange: _c, ...fieldProps },
+      fieldState,
+    }) => (
+      <FileInput
+        {...fieldProps}
+        {...inputProps}
+        aria-invalid={fieldState.invalid}
+      />
     )}
   />
 )
