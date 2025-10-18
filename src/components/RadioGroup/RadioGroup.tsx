@@ -1,6 +1,6 @@
 import * as RadioPrimitive from '@radix-ui/react-radio-group'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type Ref } from 'react'
+import { type ComponentProps } from 'react'
 
 import {
   disabledStyle,
@@ -55,46 +55,40 @@ type RadioOption = {
 }
 
 export type RadioGroupProps = VariantProps<typeof radioOptionVariants> &
-  RadioPrimitive.RadioGroupProps & {
-    disabled?: boolean
-    name: string
+  ComponentProps<typeof RadioPrimitive.Root> & {
     options: RadioOption[]
-    className?: string
   }
 
-export const RadioGroup = forwardRef(
-  (props: RadioGroupProps, ref: Ref<HTMLDivElement>) => {
-    const {
-      disabled = false,
-      name,
-      options,
-      size = 'sm',
-      className,
-      ...rest
-    } = props
+export const RadioGroup = (props: RadioGroupProps) => {
+  const {
+    disabled = false,
+    name,
+    options,
+    size = 'sm',
+    className,
+    ...rest
+  } = props
 
-    return (
-      <RadioPrimitive.Root
-        className={cn('flex flex-col gap-2', className)}
-        disabled={disabled}
-        name={name}
-        ref={ref}
-        {...rest}
-      >
-        {options.map(({ label, value, disabled }) => (
-          <RadioOption
-            id={`${name}-${value}`}
-            key={value}
-            label={label}
-            size={size}
-            value={value}
-            disabled={disabled}
-          />
-        ))}
-      </RadioPrimitive.Root>
-    )
-  }
-)
+  return (
+    <RadioPrimitive.Root
+      className={cn('flex flex-col gap-2', className)}
+      disabled={disabled}
+      name={name}
+      {...rest}
+    >
+      {options.map(({ label, value, disabled }) => (
+        <RadioOption
+          id={`${name}-${value}`}
+          key={value}
+          label={label}
+          size={size}
+          value={value}
+          disabled={disabled}
+        />
+      ))}
+    </RadioPrimitive.Root>
+  )
+}
 
 type RadioOptionProps = VariantProps<typeof radioOptionVariants> & {
   id: string

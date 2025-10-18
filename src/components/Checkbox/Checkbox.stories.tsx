@@ -13,5 +13,6 @@ export const Default: Story = {
   args: {
     size: 'sm',
     disabled: false,
+    ['aria-invalid']: false,
   },
 }

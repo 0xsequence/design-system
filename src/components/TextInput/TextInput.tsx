@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { forwardRef, type ComponentType, type ReactNode } from 'react'
+import { type ComponentProps, type ComponentType, type ReactNode } from 'react'
 
 import type { IconProps } from '../../icons/types.js'
 import { focusRingVariants, inputBorderStyle } from '../../styles.js'
@@ -24,8 +24,7 @@ const inputVariants = cva(
   }
 )
 
-export interface TextInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface TextInputProps extends Omit<ComponentProps<'input'>, 'size'> {
   leftIcon?: ComponentType<IconProps>
   rightIcon?: ComponentType<IconProps>
   name: string
@@ -33,53 +32,52 @@ export interface TextInputProps
   controls?: ReactNode
 }
 
-export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  (props, ref) => {
-    const {
-      autoComplete = 'off',
-      disabled = false,
-      id,
-      leftIcon: LeftIcon,
-      rightIcon: RightIcon,
-      name,
-      controls,
-      type = 'text',
-      numeric = false,
-      className,
-      ...rest
-    } = props
+export const TextInput = (props: TextInputProps) => {
+  const {
+    autoComplete = 'off',
+    disabled = false,
+    id,
+    leftIcon: LeftIcon,
+    rightIcon: RightIcon,
+    name,
+    controls,
+    type = 'text',
+    numeric = false,
+    className,
+    ref,
+    ...rest
+  } = props
 
-    return (
-      <div className="w-full">
-        <div
-          className={cn(
-            'inline-flex items-center bg-background-input text-primary min-w-full px-4 gap-2 rounded-xl h-[52px] cursor-text',
-            focusRingVariants({ variant: 'within' }),
-            inputBorderStyle,
-            {
-              'cursor-default opacity-50 hover:border-border-normal!': disabled,
-            },
-            className
-          )}
-        >
-          {LeftIcon && <LeftIcon size="sm" />}
+  return (
+    <div className="w-full">
+      <div
+        className={cn(
+          'inline-flex items-center bg-background-input text-primary min-w-full px-4 gap-2 rounded-xl h-[52px] cursor-text',
+          focusRingVariants({ variant: 'within' }),
+          inputBorderStyle,
+          {
+            'cursor-default opacity-50 hover:border-border-normal!': disabled,
+          },
+          className
+        )}
+      >
+        {LeftIcon && <LeftIcon size="sm" />}
 
-          <input
-            autoComplete={autoComplete}
-            spellCheck="false"
-            className={inputVariants({ numeric })}
-            disabled={disabled}
-            id={id ?? name}
-            name={name}
-            ref={ref}
-            type={type}
-            {...rest}
-          />
+        <input
+          autoComplete={autoComplete}
+          spellCheck="false"
+          className={inputVariants({ numeric })}
+          disabled={disabled}
+          id={id ?? name}
+          name={name}
+          ref={ref}
+          type={type}
+          {...rest}
+        />
 
-          {RightIcon && <RightIcon size="sm" />}
-          {controls}
-        </div>
+        {RightIcon && <RightIcon size="sm" />}
+        {controls}
       </div>
-    )
-  }
-)
+    </div>
+  )
+}

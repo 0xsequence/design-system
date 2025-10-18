@@ -1,17 +1,9 @@
-import { forwardRef } from 'react'
+import { type ComponentProps } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 
-interface StopClickPropagationProps {
-  children?: React.ReactNode
-  className?: string
-}
-
-export const StopClickPropagation = forwardRef<
-  HTMLDivElement,
-  StopClickPropagationProps
->((props, ref) => {
-  const { children, className } = props
+export const StopClickPropagation = (props: ComponentProps<'div'>) => {
+  const { children, className, ref } = props
 
   return (
     <div
@@ -31,4 +23,4 @@ export const StopClickPropagation = forwardRef<
       {children}
     </div>
   )
-})
+}

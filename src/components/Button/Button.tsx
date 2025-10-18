@@ -1,6 +1,6 @@
 import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type ComponentType, type ReactNode } from 'react'
+import { type ComponentType, type ReactNode, type Ref } from 'react'
 
 import type { IconProps } from '../../icons/types.js'
 import { focusRingVariants } from '../../styles.js'
@@ -141,76 +141,73 @@ export interface ButtonProps
   disabled?: boolean
   pending?: boolean
   label?: ReactNode
+  ref?: Ref<HTMLButtonElement>
   leftIcon?: ComponentType<IconProps>
   rightIcon?: ComponentType<IconProps>
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      asChild,
-      className,
-      disabled = false,
-      pending = false,
-      label,
-      leftIcon: LeftIcon,
-      rightIcon: RightIcon,
-      size = 'md',
-      variant = 'secondary',
-      shape = 'circle',
-      type = 'button',
-      children,
-      ...rest
-    } = props
+export const Button = (props: ButtonProps) => {
+  const {
+    ref,
+    asChild,
+    className,
+    disabled = false,
+    pending = false,
+    label,
+    leftIcon: LeftIcon,
+    rightIcon: RightIcon,
+    size = 'md',
+    variant = 'secondary',
+    shape = 'circle',
+    type = 'button',
+    children,
+    ...rest
+  } = props
 
-    const hasLeftIcon = LeftIcon !== undefined && label !== undefined
-    const hasRightIcon = RightIcon !== undefined && label !== undefined
-    const iconOnly = LeftIcon !== undefined && label === undefined
+  const hasLeftIcon = LeftIcon !== undefined && label !== undefined
+  const hasRightIcon = RightIcon !== undefined && label !== undefined
+  const iconOnly = LeftIcon !== undefined && label === undefined
 
-    const iconSize = size === 'xs' ? 'xs' : 'sm'
-    const gap = size === 'xs' ? 'gap-1' : 'gap-2'
+  const iconSize = size === 'xs' ? 'xs' : 'sm'
+  const gap = size === 'xs' ? 'gap-1' : 'gap-2'
 
-    const Component = asChild ? Slot : 'button'
+  const Component = asChild ? Slot : 'button'
 
-    return (
-      <Component
-        ref={ref}
-        className={cn(
-          buttonVariants({
-            disabled: disabled || pending,
-            hasLeftIcon,
-            hasRightIcon,
-            iconOnly,
-            size: variant === 'text' ? undefined : size,
-            shape: variant === 'text' ? undefined : shape,
-            variant,
-          }),
-          className
-        )}
-        disabled={disabled || pending}
-        type={type}
-        {...rest}
-      >
-        <Slottable>{children}</Slottable>
+  return (
+    <Component
+      ref={ref}
+      className={cn(
+        buttonVariants({
+          disabled: disabled || pending,
+          hasLeftIcon,
+          hasRightIcon,
+          iconOnly,
+          size: variant === 'text' ? undefined : size,
+          shape: variant === 'text' ? undefined : shape,
+          variant,
+        }),
+        className
+      )}
+      disabled={disabled || pending}
+      type={type}
+      {...rest}
+    >
+      <Slottable>{children}</Slottable>
 
-        {iconOnly ? (
-          <LeftIcon size={iconSize} />
-        ) : (
-          <div
-            className={cn(
-              'w-full h-full flex items-center justify-between',
-              gap
-            )}
-          >
-            <div className={cn('flex items-center justify-start', gap)}>
-              {LeftIcon && <LeftIcon size={iconSize} />}
-              <Text>{label}</Text>
-            </div>
-
-            {RightIcon && <RightIcon size={iconSize} />}
+      {iconOnly ? (
+        <LeftIcon size={iconSize} />
+      ) : (
+        <div
+          className={cn('w-full h-full flex items-center justify-between', gap)}
+        >
+          <div className={cn('flex items-center justify-start', gap)}>
+            {LeftIcon && <LeftIcon size={iconSize} />}
+            <Text>{label}</Text>
           </div>
-        )}
-      </Component>
-    )
-  }
-)
+
+          {RightIcon && <RightIcon size={iconSize} />}
+        </div>
+      )}
+    </Component>
+  )
+}

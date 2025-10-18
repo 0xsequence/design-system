@@ -1,5 +1,6 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { cva, type VariantProps } from 'class-variance-authority'
+import type { ComponentProps } from 'react'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 import {
@@ -25,7 +26,7 @@ function Checkbox({
   className,
   size = 'sm',
   ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root> &
+}: ComponentProps<typeof CheckboxPrimitive.Root> &
   VariantProps<typeof checkboxVariants>) {
   return (
     <CheckboxPrimitive.Root

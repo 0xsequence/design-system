@@ -1,8 +1,9 @@
+import type { ComponentProps } from 'react'
 import { Controller, type Control } from 'react-hook-form'
 
-import { Select, type SelectProps } from './Select.js'
+import { Select } from './Select.js'
 
-type ControlledSelectProps = SelectProps & {
+type ControlledSelectProps = ComponentProps<typeof Select> & {
   control: Control
   defaultValue?: string
   name: string

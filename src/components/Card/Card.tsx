@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type HTMLAttributes } from 'react'
+import { type ComponentProps } from 'react'
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
@@ -37,13 +37,14 @@ export const cardVariants = cva(
 )
 
 interface CardProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends ComponentProps<'div'>,
     VariantProps<typeof cardVariants> {
   asChild?: boolean
 }
 
-export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
+export const Card = (props: CardProps) => {
   const {
+    ref,
     className,
     children,
     clickable,
@@ -73,4 +74,4 @@ export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
       {children}
     </Comp>
   )
-})
+}
