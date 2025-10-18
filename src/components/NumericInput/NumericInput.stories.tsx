@@ -1,5 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
+import { WalletIcon } from 'src/icons/index.js'
 
 import { NumericInput } from './NumericInput.js'
 
@@ -39,5 +40,19 @@ export const IntegerOnly: Story = {
   render: StoryWrapper,
   args: {
     decimals: 0,
+  },
+}
+
+export const WithLeftIcon: Story = {
+  render: StoryWrapper,
+  args: {
+    leftIcon: WalletIcon,
+  },
+}
+
+export const WithError: Story = {
+  render: StoryWrapper,
+  args: {
+    ['aria-invalid']: true,
   },
 }

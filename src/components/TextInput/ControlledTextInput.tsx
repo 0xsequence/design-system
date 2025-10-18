@@ -1,8 +1,9 @@
+import type { ComponentProps } from 'react'
 import { Controller, type Control } from 'react-hook-form'
 
-import { TextInput, type TextInputProps } from './TextInput.js'
+import { TextInput } from './TextInput.js'
 
-type ControlledTextInputProps = TextInputProps & {
+type ControlledTextInputProps = ComponentProps<typeof TextInput> & {
   control: Control
   defaultValue?: string
   name: string
