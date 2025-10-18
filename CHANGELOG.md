@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.0.0-alpha.1
+
+### Patch Changes
+
+- Fixing Tabs
+
 ## 3.0.0-alpha.0
 
 ### Major Changes
