@@ -59,6 +59,7 @@ const buttonVariants = cva(
     defaultVariants: {
       variant: 'secondary',
       shape: 'circle',
+      size: 'md',
     },
   }
 )

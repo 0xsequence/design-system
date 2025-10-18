@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { useState } from 'react'
 
 import { Card } from '../Card/Card.js'
 import { Text } from '../Text/Text.js'
 
-import { Tabs } from './Tabs.js'
+import { Tabs, TabsContent, TabsHeader } from './Tabs.js'
 
 export default {
   title: 'Components/Tabs',
@@ -21,24 +22,31 @@ const Content = ({ children }: any) => (
 )
 
 export const Default: Story = {
-  args: {
-    defaultValue: 'coins',
-    tabs: [
-      {
-        value: 'coins',
-        label: 'Coins',
-        content: <Content>Coins content</Content>,
-      },
-      {
-        value: 'collectibles',
-        label: 'Collectibles',
-        content: <Content>Collectibles content</Content>,
-      },
-      {
-        value: 'other',
-        label: 'Other',
-        content: <Content>Other content</Content>,
-      },
-    ],
+  render: args => {
+    const [value, setValue] = useState<string>(
+      args.value ?? args.defaultValue ?? 'coins'
+    )
+
+    return (
+      <Tabs {...args} onValueChange={setValue}>
+        <TabsHeader
+          value={value}
+          tabs={[
+            { value: 'coins', label: 'Coins' },
+            { value: 'collectibles', label: 'Collectibles' },
+            { value: 'other', label: 'Other' },
+          ]}
+        />
+        <TabsContent value="coins">
+          <Content>Coins content</Content>
+        </TabsContent>
+        <TabsContent value="collectibles">
+          <Content>Collectibles content</Content>
+        </TabsContent>
+        <TabsContent value="other">
+          <Content>Other content</Content>
+        </TabsContent>
+      </Tabs>
+    )
   },
 }
