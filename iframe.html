@@ -1,7 +1,7 @@
 <!doctype html>
 <!--suppress HtmlUnknownTarget -->
 <html lang="en">
-  <head>
+  <head><script type="module" src="./vite-inject-mocker-entry.js"></script>
     <meta charset="utf-8" />
     <title>Storybook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -550,8 +550,13 @@
   }
 </style>
 
-    <script type="module" crossorigin src="./assets/iframe-f-zG5TfG.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/iframe-B7IpwDIy.css">
+<!-- Allow us to get color values for the different themes be selecting these elements -->
+<div id="light-mode" data-theme="light"></div>
+<div id="dark-mode" data-theme="dark"></div>
+
+    <script type="module" crossorigin src="./assets/iframe-4jdeRta1.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-Dp1pzeXC.js">
+    <link rel="stylesheet" crossorigin href="./assets/iframe-BoZnNb2M.css">
   </head>
 
   <body>
