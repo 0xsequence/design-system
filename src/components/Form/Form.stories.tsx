@@ -230,8 +230,12 @@ export const Default: Story = {
             </Field>
 
             <div className="flex flex-row-reverse gap-2">
-              <Button type="submit" label="Submit" variant="primary" />
-              <Button type="reset" label="Reset" onClick={() => reset()} />
+              <Button type="submit" variant="primary">
+                Submit
+              </Button>
+              <Button type="reset" onClick={() => reset()}>
+                Reset
+              </Button>
             </div>
           </div>
         )}

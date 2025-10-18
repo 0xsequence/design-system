@@ -1,23 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { ArrowRightIcon, ScanIcon, WalletIcon } from '../../icons/index.js'
+import { ArrowRightIcon, ScanIcon } from '../../icons/index.js'
+import { Badge } from '../Badge/Badge.js'
 
-import { Button } from './Button.js'
+import { ButtonPreset } from './ButtonPreset.js'
 
 export default {
-  title: 'Components/Button',
-  component: Button,
-} as Meta<typeof Button>
+  title: 'Components/ButtonPreset',
+  component: ButtonPreset,
+} as Meta<typeof ButtonPreset>
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof ButtonPreset>
 
 export const Primary: Story = {
   args: {
-    children: 'Click me',
+    label: 'Click me',
     variant: 'primary',
-    disabled: false,
-    size: 'md',
-    shape: 'circle',
   },
   parameters: {
     design: {
@@ -30,7 +28,7 @@ export const Primary: Story = {
 export const LabelOnly: Story = {
   args: {
     disabled: false,
-    children: 'Click me',
+    label: 'Click me',
     size: 'md',
     variant: 'secondary',
   },
@@ -38,7 +36,7 @@ export const LabelOnly: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
-    children: 'Click me',
+    label: 'Click me',
     size: 'md',
     variant: 'secondary',
   },
@@ -47,13 +45,9 @@ export const Disabled: Story = {
 export const WithLeftIcon: Story = {
   args: {
     disabled: false,
-    children: (
-      <>
-        <ScanIcon />
-        Click me
-      </>
-    ),
+    label: 'Click me',
     onClick: () => console.log('Clicked!'),
+    leftIcon: ScanIcon,
     size: 'md',
     variant: 'secondary',
   },
@@ -62,13 +56,9 @@ export const WithLeftIcon: Story = {
 export const WithRightIcon: Story = {
   args: {
     disabled: false,
-    children: (
-      <>
-        Click me
-        <ArrowRightIcon />
-      </>
-    ),
+    label: 'Click me',
     onClick: () => console.log('Clicked!'),
+    rightIcon: ArrowRightIcon,
     size: 'md',
     variant: 'secondary',
   },
@@ -77,33 +67,36 @@ export const WithRightIcon: Story = {
 export const WithBothIcon: Story = {
   args: {
     disabled: false,
-    children: (
-      <>
-        <ScanIcon />
-        Click me
-        <ArrowRightIcon />
-      </>
-    ),
+    label: 'Click me',
+    leftIcon: ScanIcon,
     onClick: () => console.log('Clicked!'),
+    rightIcon: ArrowRightIcon,
     size: 'md',
     variant: 'secondary',
   },
 }
-
-export const IconButton: Story = {
+export const WithCountIcon: Story = {
   args: {
-    size: 'sm',
-    variant: 'secondary',
-    children: <WalletIcon size="sm" />,
     disabled: false,
+    label: (
+      <div className="flex items-center gap-1">
+        Click me
+        <Badge value="3" />
+      </div>
+    ),
+    onClick: () => console.log('Clicked!'),
+    leftIcon: ScanIcon,
+    size: 'md',
+    variant: 'secondary',
   },
 }
 
 export const AnchorButton: Story = {
   args: {
+    label: 'Click me',
+    leftIcon: ScanIcon,
     size: 'md',
     asChild: true,
-    children: <a href="/wallet">Click me</a>,
-    disabled: false,
+    children: <a href="/wallet" />,
   },
 }

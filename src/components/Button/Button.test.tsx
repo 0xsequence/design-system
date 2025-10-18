@@ -11,7 +11,7 @@ describe('<Button />', () => {
     const user = userEvent.setup()
     const handleClick = vi.fn()
 
-    render(<Button label="Hello, world!" onClick={handleClick} />)
+    render(<Button onClick={handleClick}>Hello, world!</Button>)
 
     expect(screen.getByText('Hello, world!')).toBeInTheDocument()
 

@@ -8,7 +8,7 @@ import {
 
 import type { IconProps } from '../../icons/types.js'
 import { cn } from '../../utils/classnames.js'
-import { Button } from '../Button/Button.js'
+import { ButtonPreset } from '../Button/ButtonPreset.js'
 import { textVariants } from '../Text/Text.js'
 
 const tabVariants = cva(['select-none'], {
@@ -140,13 +140,13 @@ export const TabbedNav = (props: TabbedNavProps) => {
                   : undefined
               }
             >
-              <Button
+              <ButtonPreset
                 className={cn(
                   tabVariants({ active: isActive, variant }),
                   variant === 'line' && option.leftIcon ? 'pl-1' : undefined,
                   className
                 )}
-                variant={variant === 'line' ? 'text' : 'base'}
+                variant={variant === 'line' ? 'text' : 'raised'}
                 disabled={isLoading || option.disabled}
                 label={option.label}
                 leftIcon={option.leftIcon ?? undefined}

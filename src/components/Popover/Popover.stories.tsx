@@ -18,7 +18,7 @@ const StoryWrapper = (props: React.ComponentProps<typeof PopoverContent>) => {
     <div className="flex justify-center">
       <Popover>
         <PopoverTrigger asChild>
-          <Button label="Open Popover" />
+          <Button>Open Popover</Button>
         </PopoverTrigger>
         <PopoverContent className="p-4 w-[480px]" {...rest}>
           {children}

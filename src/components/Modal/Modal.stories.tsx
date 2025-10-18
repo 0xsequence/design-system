@@ -20,7 +20,7 @@ const StoryWrapper: StoryFn<typeof Modal> = args => {
   const [isOpen, toggleModal] = useState(false)
   return (
     <>
-      <Button label="Open Modal" onClick={() => toggleModal(!isOpen)} />
+      <Button onClick={() => toggleModal(!isOpen)}>Open Modal</Button>
       <AnimatePresence>
         {isOpen && <Modal {...args} onClose={() => toggleModal(false)} />}
       </AnimatePresence>
@@ -44,7 +44,9 @@ export const Default: Story = {
         </div>
 
         <div className="flex justify-end">
-          <Button variant="primary" shape="square" label="Create" />
+          <Button variant="primary" shape="square">
+            Create
+          </Button>
         </div>
       </div>
     ),
@@ -57,13 +59,12 @@ export const WithHeaderAndFooter: Story = {
     header: 'Task list',
     footer: (
       <div className="flex gap-2">
-        <Button className="w-full" shape="square" label="Cancel" />
-        <Button
-          className="w-full"
-          variant="primary"
-          shape="square"
-          label="Confirm"
-        />
+        <Button className="w-full" shape="square">
+          Cancel
+        </Button>
+        <Button className="w-full" variant="primary" shape="square">
+          Confirm
+        </Button>
       </div>
     ),
     children: (
@@ -107,7 +108,9 @@ export const CustomAnimation: Story = {
         </div>
 
         <div className="flex justify-end">
-          <Button variant="primary" shape="square" label="Create" />
+          <Button variant="primary" shape="square">
+            Create
+          </Button>
         </div>
       </div>
     ),

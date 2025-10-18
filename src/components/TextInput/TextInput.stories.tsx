@@ -62,8 +62,12 @@ export const WithComplexControls: Story = {
     placeholder: 'This is the placeholder',
     controls: (
       <div className="flex gap-2">
-        <Button label="Max" size="xs" shape="square" disabled />
-        <Button label="Paste" size="xs" shape="square" />
+        <Button size="xs" shape="square" disabled>
+          Max
+        </Button>
+        <Button size="xs" shape="square">
+          Paste
+        </Button>
       </div>
     ),
   },

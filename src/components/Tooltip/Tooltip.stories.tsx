@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Tooltip>
 export const Default: Story = {
   args: {
     message: 'Hello, world!',
-    children: <Button label="Hover me" />,
+    children: <Button>Hover me</Button>,
     disabled: false,
   },
 }
@@ -25,13 +25,13 @@ export const Multiple: Story = {
     return (
       <div className="flex gap-2 h-[200px] items-center justify-center">
         <Tooltip {...args} message="Suprise!">
-          <Button label="Button 1" />
+          <Button>Button 1</Button>
         </Tooltip>
         <Tooltip {...args} message="Peekaboo!">
-          <Button label="Button 2" />
+          <Button>Button 2</Button>
         </Tooltip>
         <Tooltip {...args} message="Hi, there!">
-          <Button label="Button 3" />
+          <Button>Button 3</Button>
         </Tooltip>
       </div>
     )
@@ -45,10 +45,10 @@ export const WithinModal: Story = {
       <Modal>
         <div className="flex p-4 gap-2">
           <Tooltip {...args} message="Tooltip 1">
-            <Button label="Button 1" />
+            <Button>Button 1</Button>
           </Tooltip>
           <Tooltip {...args} message="Tooltip 2">
-            <Button label="Button 2" />
+            <Button>Button 2</Button>
           </Tooltip>
         </div>
       </Modal>

@@ -18,7 +18,7 @@ export const Default = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
-  return <Button label="Toggle theme" onClick={toggleTheme} />
+  return <Button onClick={toggleTheme}>Toggle theme</Button>
 }
 
 const customThemes = {
@@ -168,10 +168,8 @@ const SetThemeButton = () => {
   }
 
   return (
-    <Button
-      variant="primary"
-      label={`Set ${themeLabel} Mode`}
-      onClick={toggleTheme}
-    />
+    <Button variant="primary" onClick={toggleTheme}>
+      Set {themeLabel} Mode
+    </Button>
   )
 }

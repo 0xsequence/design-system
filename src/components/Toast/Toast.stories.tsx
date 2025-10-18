@@ -27,14 +27,15 @@ const ToastStory = (args: ToastProps) => {
   return (
     <Card>
       <Button
-        label="Raise a Toast"
         onClick={() => {
           toast({
             ...args,
             title: args.title + ' ' + new Date().getMilliseconds(),
           })
         }}
-      />
+      >
+        Raise a Toast
+      </Button>
     </Card>
   )
 }
