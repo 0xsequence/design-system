@@ -1,53 +1,13 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
-import { useState, type ComponentPropsWithoutRef, type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 import { Text } from '../Text/Text.js'
 
-export interface TabsProps
-  extends ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
-  tabs: (TabItemProps & { content: ReactNode })[]
-}
-
 export interface TabItemProps {
   value: string
   label: ReactNode
-}
-
-export const Tabs = (props: TabsProps) => {
-  const { tabs, onValueChange, className, ...rest } = props
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(
-    rest.defaultValue
-  )
-  if (!tabs.length) {
-    return null
-  }
-
-  const handleValueChange = (value: string) => {
-    setSelectedValue(value)
-    onValueChange?.(value)
-  }
-
-  return (
-    <TabsPrimitive.Root
-      onValueChange={handleValueChange}
-      className={className}
-      {...rest}
-    >
-      <TabsHeader tabs={tabs} value={selectedValue} />
-
-      {tabs.map(tab => (
-        <TabsPrimitive.Content
-          className="outline-hidden"
-          key={tab.value}
-          value={tab.value}
-        >
-          {tab.content}
-        </TabsPrimitive.Content>
-      ))}
-    </TabsPrimitive.Root>
-  )
 }
 
 export interface TabsHeaderProps {
@@ -99,6 +59,8 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 }
 
 export { TabsPrimitive }
+
+export const Tabs = TabsPrimitive.Root
 
 export const TabsList = TabsPrimitive.TabsList
 
