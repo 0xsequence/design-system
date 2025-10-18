@@ -1,8 +1,9 @@
+import type { ComponentProps } from 'react'
 import { Controller, type Control } from 'react-hook-form'
 
-import { Checkbox, type CheckboxProps } from './Checkbox.js'
+import { Checkbox } from './Checkbox.js'
 
-type ControlledCheckboxProps = CheckboxProps & {
+type ControlledCheckboxProps = ComponentProps<typeof Checkbox> & {
   control: Control
   name: string
   onCheckedChange: (checked: boolean) => void

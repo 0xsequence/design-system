@@ -1,6 +1,5 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type Ref } from 'react'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 import {
@@ -10,62 +9,46 @@ import {
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 
-const checkboxVariants = cva(
-  [
-    'flex items-center justify-center bg-background-input rounded-sm cursor-pointer',
-    focusRingVariants(),
-    inputBorderStyle,
-    disabledStyle,
-  ],
-  {
-    variants: {
-      size: {
-        sm: 'size-5',
-        lg: 'size-7',
-      },
+const checkboxVariants = cva('', {
+  variants: {
+    size: {
+      sm: 'size-5',
+      lg: 'size-7',
     },
-    defaultVariants: {
-      size: 'sm',
-    },
-  }
-)
+  },
+  defaultVariants: {
+    size: 'sm',
+  },
+})
 
-export type CheckboxProps = VariantProps<typeof checkboxVariants> &
-  CheckboxPrimitive.CheckboxProps & {
-    disabled?: boolean
-    id?: string
-  }
-
-type IndicatorProps = VariantProps<typeof checkboxVariants>
-
-const Indicator = ({ size = 'sm' }: IndicatorProps) => (
-  <CheckboxPrimitive.Indicator className="flex items-center justify-center w-full h-full text-primary">
-    <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xxs'} />
-  </CheckboxPrimitive.Indicator>
-)
-
-export const Checkbox = forwardRef(
-  (props: CheckboxProps, ref: Ref<HTMLButtonElement>) => {
-    const {
-      disabled = false,
-      id,
-      name,
-      size = 'sm',
-      className,
-      ...rest
-    } = props
-
-    return (
-      <CheckboxPrimitive.Root
-        className={cn(checkboxVariants({ size }), className)}
-        disabled={disabled}
-        id={id ?? name}
-        name={name}
-        ref={ref}
-        {...rest}
+function Checkbox({
+  className,
+  size = 'sm',
+  ...props
+}: React.ComponentProps<typeof CheckboxPrimitive.Root> &
+  VariantProps<typeof checkboxVariants>) {
+  return (
+    <CheckboxPrimitive.Root
+      data-slot="checkbox"
+      className={cn(
+        'peer shrink-0 text-primary flex items-center justify-center bg-background-input rounded-sm cursor-pointer',
+        checkboxVariants({ size }),
+        focusRingVariants(),
+        inputBorderStyle,
+        disabledStyle,
+        'aria-invalid:outline-destructive aria-invalid:border-destructive',
+        className
+      )}
+      {...props}
+    >
+      <CheckboxPrimitive.Indicator
+        data-slot="checkbox-indicator"
+        className="grid place-content-center text-current transition-none"
       >
-        <Indicator size={size} />
-      </CheckboxPrimitive.Root>
-    )
-  }
-)
+        <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xxs'} />
+      </CheckboxPrimitive.Indicator>
+    </CheckboxPrimitive.Root>
+  )
+}
+
+export { Checkbox }
