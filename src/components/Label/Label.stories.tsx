@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
+import type { Meta } from '@storybook/react-vite'
 
 import { Checkbox } from '../Checkbox/Checkbox.js'
 
@@ -9,15 +9,7 @@ export default {
   component: Label,
 } as Meta<typeof Label>
 
-type Story = StoryObj<typeof Label>
-
-export const Default: Story = {
-  args: {
-    children: 'This is a label',
-  },
-}
-
-export const WithCheckbox = {
+export const Default = {
   render: () => {
     return (
       <div className="flex items-center space-x-2">
