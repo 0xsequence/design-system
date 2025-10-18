@@ -83,68 +83,65 @@ export const FileInput = (props: FileInputProps) => {
   const accept = validExtensions.map(ext => MIME_TYPES[ext]).join(',')
 
   return (
-    <div className="w-full min-w-0">
-      <div
-        className={cn(
-          textVariants({ variant: 'normal' }),
-          'inline-flex items-center flex-row justify-start w-[200px] min-w-full p-4 relative h-[52px]',
-          'rounded-xl bg-background-input',
-          '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
-          fileData
-            ? 'justify-between text-primary'
-            : 'justify-start text-muted',
-          focusRingVariants({ variant: 'within' }),
-          inputBorderStyle,
-          'border-dashed',
-          className
-        )}
-      >
-        {fileData ? (
-          <div className="flex flex-row gap-2 items-center min-w-0">
-            <Text ellipsis asChild>
-              <p>{fileData.name}</p>
-            </Text>
-            <Text color="muted" variant="xsmall" nowrap>
-              {fileData.size.toFixed(2)} kb
-            </Text>
-          </div>
-        ) : (
+    <div
+      className={cn(
+        textVariants({ variant: 'normal' }),
+        'w-full min-w-0 inline-flex items-center flex-row justify-start p-4 relative h-[52px]',
+        'rounded-xl bg-background-input',
+        '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
+        fileData ? 'justify-between text-primary' : 'justify-start text-muted',
+        focusRingVariants({ variant: 'within' }),
+        inputBorderStyle,
+        'has-[[aria-invalid=true]]:border-destructive has-[[aria-invalid=true]]:outline-destructive',
+        'border-dashed',
+        className
+      )}
+    >
+      {fileData ? (
+        <div className="flex flex-row gap-2 items-center min-w-0">
           <Text ellipsis asChild>
-            <p>{placeholder}</p>
+            <p>{fileData.name}</p>
           </Text>
-        )}
+          <Text color="muted" variant="xsmall" nowrap>
+            {fileData.size.toFixed(2)} kb
+          </Text>
+        </div>
+      ) : (
+        <Text ellipsis asChild>
+          <p>{placeholder}</p>
+        </Text>
+      )}
 
-        <input
-          accept={accept}
-          className="absolute inset-0 opacity-0 cursor-pointer focus:outline-hidden"
-          disabled={disabled}
-          id={id ?? name}
-          name={name}
-          onChange={handleChange}
-          ref={internalRef}
-          type="file"
-          {...rest}
+      <input
+        accept={accept}
+        className="absolute inset-0 opacity-0 cursor-pointer focus:outline-hidden"
+        disabled={disabled}
+        id={id ?? name}
+        name={name}
+        onChange={handleChange}
+        ref={internalRef}
+        type="file"
+        {...rest}
+      />
+
+      {fileData && (
+        <IconButton
+          className="cursor-pointer z-10 ml-1"
+          icon={CloseIcon}
+          size="xs"
+          onClick={ev => {
+            ev.preventDefault()
+            ev.stopPropagation()
+
+            if (internalRef.current?.value) {
+              internalRef.current.value = ''
+            }
+
+            onValueChange?.(null)
+            setFileData(null)
+          }}
         />
-
-        {fileData && (
-          <IconButton
-            className="cursor-pointer z-10 ml-1"
-            icon={CloseIcon}
-            size="xs"
-            onClick={ev => {
-              ev.preventDefault()
-              ev.stopPropagation()
-
-              if (internalRef.current?.value) {
-                internalRef.current.value = ''
-              }
-
-              onValueChange?.(null)
-              setFileData(null)
-            }}
-          />
-        )}
-      </div>
+      )}
     </div>
   )
 }

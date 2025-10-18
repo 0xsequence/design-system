@@ -24,12 +24,13 @@ export const ControlledSelect = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field }) => (
+    render={({ field, fieldState }) => (
       <Select
         onValueChange={onValueChange}
         defaultValue={defaultValue}
         {...field}
         {...selectProps}
+        aria-invalid={fieldState.invalid}
       />
     )}
   />

@@ -22,6 +22,8 @@ export const ControlledNumericInput = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field }) => <NumericInput {...field} {...rest} />}
+    render={({ field, fieldState }) => (
+      <NumericInput {...field} {...rest} aria-invalid={fieldState.invalid} />
+    )}
   />
 )

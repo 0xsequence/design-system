@@ -9,7 +9,7 @@ import { ControlledNumericInput as NumericInput } from '../NumericInput/Controll
 import { ControlledRadioGroup as RadioGroup } from '../RadioGroup/ControlledRadioGroup.js'
 import { ControlledSelect as Select } from '../Select/ControlledSelect.js'
 import { ControlledSwitch as Switch } from '../Switch/ControlledSwitch.js'
-import { TextArea } from '../TextArea/TextArea.js'
+import { ControlledTextArea as TextArea } from '../TextArea/ControlledTextArea.js'
 import { ControlledTextInput as TextInput } from '../TextInput/ControlledTextInput.js'
 
 import { Form } from './Form.js'
@@ -142,6 +142,14 @@ export const Default: Story = {
                 defaultValue=""
                 name="message"
                 placeholder="Enter a message"
+                control={control}
+                rules={{
+                  required: 'A message is required',
+                  maxLength: {
+                    value: 100,
+                    message: 'Message must be less than 100 characters',
+                  },
+                }}
               />
             </Field>
 
@@ -167,29 +175,6 @@ export const Default: Story = {
               />
             </Field>
 
-            <Field label="Switch Option" labelLocation="right">
-              <Switch
-                control={control}
-                size="sm"
-                name="switchOption"
-                onCheckedChange={(value: boolean) =>
-                  setValue('switchOption', value)
-                }
-                defaultChecked={false}
-              />
-            </Field>
-
-            <Field label="Checkbox Option" labelLocation="right">
-              <Checkbox
-                control={control}
-                name="checkboxOption"
-                onCheckedChange={(value: boolean) =>
-                  setValue('checkboxOption', value)
-                }
-                defaultChecked={false}
-              />
-            </Field>
-
             <RadioGroup
               control={control}
               defaultValue={selectOptions[0].value}
@@ -198,6 +183,51 @@ export const Default: Story = {
               name="radioOption"
               className="flex-row gap-4"
             />
+
+            <Field
+              label="Switch Option"
+              labelLocation="right"
+              error={
+                errors.switchOption?.message
+                  ? (errors.switchOption.message as string)
+                  : undefined
+              }
+            >
+              <Switch
+                control={control}
+                size="sm"
+                name="switchOption"
+                onCheckedChange={(value: boolean) =>
+                  setValue('switchOption', value)
+                }
+                defaultChecked={false}
+                rules={{
+                  required: 'You must accept the terms and conditions',
+                }}
+              />
+            </Field>
+
+            <Field
+              label="Accept terms and conditions"
+              labelLocation="right"
+              error={
+                errors.checkboxOption?.message
+                  ? (errors.checkboxOption.message as string)
+                  : undefined
+              }
+            >
+              <Checkbox
+                control={control}
+                name="checkboxOption"
+                onCheckedChange={(value: boolean) =>
+                  setValue('checkboxOption', value)
+                }
+                defaultChecked={false}
+                rules={{
+                  required: 'You must accept the terms and conditions',
+                }}
+              />
+            </Field>
 
             <div className="flex flex-row-reverse gap-2">
               <Button type="submit" label="Submit" variant="primary" />

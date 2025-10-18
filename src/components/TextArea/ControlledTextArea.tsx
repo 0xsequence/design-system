@@ -22,6 +22,8 @@ export const ControlledTextArea = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field }) => <TextArea {...field} {...rest} />}
+    render={({ field, fieldState }) => (
+      <TextArea {...field} {...rest} aria-invalid={fieldState.invalid} />
+    )}
   />
 )

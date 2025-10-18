@@ -18,35 +18,13 @@ type SelectOption = {
   value: string
 }
 
-type Direction = 'ltr' | 'rtl'
-
-// XXX This is a copy of SelectSharedProps from the Radix UI Select component
-// Which is not exported by the library which causes errors
-interface SelectPrimitiveProps {
-  // SelectSharedProps
-  children?: React.ReactNode
-  open?: boolean
-  defaultOpen?: boolean
-  onOpenChange?(open: boolean): void
-  dir?: Direction
-  id?: string
-  name?: string
-  autoComplete?: string
-  disabled?: boolean
-  required?: boolean
-  form?: string
-
-  // SelectProps
-  value?: string
-  defaultValue?: string
-  onValueChange?(value: string): void
-}
-
-type SelectProps = SelectPrimitiveProps & {
+type SelectProps = ComponentProps<typeof SelectPrimitive.Root> & {
   placeholder?: string
   options: SelectOption[]
   className?: string
   ref?: Ref<HTMLButtonElement>
+  id?: string
+  'aria-invalid'?: boolean
 }
 
 export const Select = (props: SelectProps) => {
@@ -58,6 +36,7 @@ export const Select = (props: SelectProps) => {
     placeholder,
     className,
     ref,
+    'aria-invalid': ariaInvalid,
     ...rest
   } = props
 
@@ -74,8 +53,10 @@ export const Select = (props: SelectProps) => {
           focusRingVariants(),
           inputBorderStyle,
           disabledStyle,
+          'aria-invalid:border-destructive aria-invalid:outline-destructive',
           className
         )}
+        aria-invalid={ariaInvalid}
         ref={ref}
       >
         <SelectPrimitive.Value placeholder={placeholder} />

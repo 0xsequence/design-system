@@ -23,12 +23,13 @@ export const ControlledRadioGroup = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field }) => (
+    render={({ field, fieldState }) => (
       <RadioGroup
         onValueChange={onValueChange}
         defaultValue={defaultValue}
         {...field}
         {...radioProps}
+        aria-invalid={fieldState.invalid}
       />
     )}
   />

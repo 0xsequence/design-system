@@ -22,6 +22,8 @@ export const ControlledTextInput = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field }) => <TextInput {...field} {...inputProps} />}
+    render={({ field, fieldState }) => (
+      <TextInput {...field} {...inputProps} aria-invalid={fieldState.invalid} />
+    )}
   />
 )

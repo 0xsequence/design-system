@@ -23,12 +23,13 @@ export const ControlledCheckbox = ({
     name={name}
     control={control}
     rules={rules}
-    render={({ field: { ref: _, ...fieldProps } }) => (
+    render={({ field, fieldState }) => (
       <Checkbox
         onCheckedChange={onCheckedChange}
         defaultChecked={defaultChecked}
-        {...fieldProps}
+        {...field}
         {...checkboxProps}
+        aria-invalid={fieldState.invalid}
       />
     )}
   />

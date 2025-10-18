@@ -11,7 +11,7 @@ export const focusRingVariants = cva('', {
     variant: {
       visible: 'focus-visible:outline-2 focus-visible:outline-border-focus',
       within:
-        '[&:has(:focus-visible)]:outline-2 [&:has(:focus-visible)]:outline-border-focus',
+        'has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-border-focus',
     },
     inner: {
       true: 'outline-offset-[-2px]',
