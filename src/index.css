@@ -27,7 +27,11 @@
   --seq-color-background-input: var(--color-zinc-950);
   --seq-color-background-hover: var(--color-zinc-900);
   --seq-color-background-active: var(--color-zinc-700);
-  --seq-color-background-glass: rgba(255, 255, 255, 0.15);
+  --seq-color-background-glass: color-mix(
+    in oklab,
+    var(--color-zinc-50) 15%,
+    transparent
+  );
 
   /* Border colors */
   --seq-color-border-normal: var(--color-zinc-700);
@@ -89,7 +93,11 @@
   --seq-color-background-input: var(--color-slate-50);
   --seq-color-background-hover: var(--color-slate-100);
   --seq-color-background-active: var(--color-slate-200);
-  --seq-color-background-glass: rgba(0, 0, 0, 0.15);
+  --seq-color-background-glass: color-mix(
+    in oklab,
+    var(--color-slate-950) 15%,
+    transparent
+  );
 
   /* Border colors */
   --seq-color-border-normal: var(--color-slate-300);

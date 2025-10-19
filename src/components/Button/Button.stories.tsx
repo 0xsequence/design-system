@@ -11,10 +11,39 @@ export default {
 
 type Story = StoryObj<typeof Button>
 
-export const Primary: Story = {
+export const Default: Story = {
+  render: args => (
+    <div className="flex gap-4 flex-wrap">
+      <Button {...args} variant="primary">
+        Primary
+      </Button>
+      <Button {...args} variant="secondary">
+        Secondary
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+      <Button {...args} variant="emphasis">
+        Emphasis
+      </Button>
+      <Button {...args} variant="glass">
+        Glass
+      </Button>
+      <Button {...args} variant="ghost">
+        Ghost
+      </Button>
+      <Button {...args} variant="raised">
+        Raised
+      </Button>
+      <Button {...args} variant="destructive">
+        Destructive
+      </Button>
+      <Button {...args} variant="text">
+        Text
+      </Button>
+    </div>
+  ),
   args: {
-    children: 'Click me',
-    variant: 'primary',
     disabled: false,
     size: 'md',
     shape: 'circle',

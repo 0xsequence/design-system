@@ -8,7 +8,7 @@ import { textVariants } from '../Text/Text.js'
 
 const buttonVariants = cva(
   [
-    'inline-flex items-center justify-center gap-2 whitespace-nowrap overflow-hidden text-decoration-none cursor-pointer disabled:cursor-default disabled:opacity-50',
+    'inline-flex items-center gap-2 whitespace-nowrap overflow-hidden text-decoration-none cursor-pointer disabled:cursor-default disabled:opacity-50',
     focusRingVariants(),
   ],
   {
@@ -19,12 +19,12 @@ const buttonVariants = cva(
         secondary:
           'bg-background-secondary text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         outline:
-          'bg-transparent text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
-        glass:
-          'bg-background-glass text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
+          'bg-transparent text-primary border-1 border-border-button hover:border-border-hover',
+        glass: 'bg-background-glass text-primary hover:bg-background-glass/80',
         ghost:
           'bg-transparent hover:bg-background-glass text-muted hover:text-primary',
         raised: 'bg-background-raised text-primary',
+        emphasis: 'bg-primary text-background-primary hover:bg-primary/80',
         destructive: 'bg-destructive text-white hover:bg-destructive/80',
         text: [
           'bg-transparent text-muted rounded-xs',
@@ -71,6 +71,7 @@ function Button({
   className,
   variant,
   size,
+  shape,
   disabled,
   asChild = false,
   ...props
@@ -82,7 +83,9 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className, disabled }))}
+      className={cn(
+        buttonVariants({ variant, size, shape, className, disabled })
+      )}
       disabled={disabled}
       {...props}
     />
