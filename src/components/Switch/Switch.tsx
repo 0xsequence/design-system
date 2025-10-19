@@ -10,7 +10,7 @@ import { cn } from '../../utils/classnames.js'
 
 const switchVariants = cva(
   [
-    'rounded-full bg-background-input bg-origin-border cursor-pointer data-[state=checked]:bg-gradient-primary data-[state=checked]:border-transparent!',
+    'peer rounded-full bg-background-input bg-origin-border cursor-pointer data-[state=checked]:bg-gradient-primary data-[state=checked]:border-transparent!',
   ],
   {
     variants: {
@@ -33,6 +33,7 @@ export const Switch = (props: SwitchProps) => {
 
   return (
     <SwitchPrimitive.Root
+      data-slot="switch"
       className={cn(
         switchVariants({ size }),
         focusRingVariants(),
@@ -45,7 +46,10 @@ export const Switch = (props: SwitchProps) => {
       {...rest}
     >
       <div className="relative w-full h-full">
-        <SwitchPrimitive.Thumb className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:bg-white data-[state=checked]:translate-x-full" />
+        <SwitchPrimitive.Thumb
+          data-slot="switch-thumb"
+          className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[state=checked]:bg-white data-[state=checked]:translate-x-full"
+        />
       </div>
     </SwitchPrimitive.Root>
   )

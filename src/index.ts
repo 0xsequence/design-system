@@ -28,7 +28,18 @@ export {
 export { FileInput } from './components/FileInput/FileInput.js'
 export { ControlledFileInput } from './components/FileInput/ControlledFileInput.js'
 export { Form } from './components/Form/Form.js'
-export { Field } from './components/Field/Field.js'
+export {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldTitle,
+} from './components/Field/Field.js'
 export { GradientAvatar } from './components/GradientAvatar/GradientAvatar.js'
 export { IconButton } from './components/IconButton/IconButton.js'
 export { Image } from './components/Image/Image.js'
@@ -56,7 +67,10 @@ export {
 } from './components/Popover/Popover.js'
 export { Skeleton } from './components/Skeleton/Skeleton.js'
 export { Progress } from './components/Progress/Progress.js'
-export { RadioGroup } from './components/RadioGroup/RadioGroup.js'
+export {
+  RadioGroup,
+  RadioGroupItem,
+} from './components/RadioGroup/RadioGroup.js'
 export { ControlledRadioGroup } from './components/RadioGroup/ControlledRadioGroup.js'
 export { Scroll } from './components/Scroll/Scroll.js'
 export { Select } from './components/Select/Select.js'

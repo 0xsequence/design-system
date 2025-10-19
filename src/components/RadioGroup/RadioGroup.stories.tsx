@@ -1,6 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { RadioGroup } from './RadioGroup.js'
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from '../Field/Field.js'
+
+import { RadioGroup, RadioGroupItem } from './RadioGroup.js'
 
 export default {
   title: 'Forms/RadioGroup',
@@ -10,26 +18,31 @@ export default {
 type Story = StoryObj<typeof RadioGroup>
 
 export const Default: Story = {
+  render: args => (
+    <FieldSet>
+      <FieldLegend>Notification Method</FieldLegend>
+      <FieldDescription>How would you like to be notified?</FieldDescription>
+      <RadioGroup name="notification-method" {...args}>
+        <Field orientation="horizontal">
+          <RadioGroupItem id="email" value="email" />
+          <FieldLabel htmlFor="email">Email</FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem id="sms" value="sms" />
+          <FieldLabel htmlFor="sms">SMS</FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem id="phone" value="phone" />
+          <FieldLabel htmlFor="phone">Phone</FieldLabel>
+        </Field>
+        <Field orientation="horizontal" data-disabled={true}>
+          <RadioGroupItem id="telegram" value="telegram" disabled={true} />
+          <FieldLabel htmlFor="telegram">Telegram</FieldLabel>
+        </Field>
+      </RadioGroup>
+    </FieldSet>
+  ),
   args: {
-    size: 'sm',
-    options: [
-      {
-        label: 'Option 1',
-        value: 'option-1',
-      },
-      {
-        label: 'Option 2',
-        value: 'option-2',
-      },
-      {
-        label: 'Option 3',
-        value: 'option-3',
-      },
-      {
-        label: 'Option 4',
-        value: 'option-4',
-        disabled: true,
-      },
-    ],
+    defaultValue: 'email',
   },
 }

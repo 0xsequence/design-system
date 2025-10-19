@@ -3,10 +3,18 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 import { ControlledCheckbox as Checkbox } from '../Checkbox/ControlledCheckbox.js'
-import { Field } from '../Field/Field.js'
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from '../Field/Field.js'
 import { ControlledFileInput as FileInput } from '../FileInput/ControlledFileInput.js'
 import { ControlledNumericInput as NumericInput } from '../NumericInput/ControlledNumericInput.js'
 import { ControlledRadioGroup as RadioGroup } from '../RadioGroup/ControlledRadioGroup.js'
+import { RadioGroupItem } from '../RadioGroup/RadioGroup.js'
 import { ControlledSelect as Select } from '../Select/ControlledSelect.js'
 import { ControlledSwitch as Switch } from '../Switch/ControlledSwitch.js'
 import { ControlledTextArea as TextArea } from '../TextArea/ControlledTextArea.js'
@@ -18,21 +26,6 @@ export default {
   title: 'Forms/Form',
   component: Form,
 } as Meta<typeof Form>
-
-const selectOptions = [
-  {
-    label: 'Option 1',
-    value: 'option-1',
-  },
-  {
-    label: 'Option 2',
-    value: 'option-2',
-  },
-  {
-    label: 'Option 3',
-    value: 'option-3',
-  },
-]
 
 type Story = StoryObj<typeof Form>
 
@@ -48,14 +41,8 @@ export const Default: Story = {
       >
         {({ control, reset, formState: { errors }, setValue }) => (
           <div className="flex flex-col gap-4">
-            <Field
-              label="First Name"
-              error={
-                errors.firstName?.message
-                  ? (errors.firstName.message as string)
-                  : undefined
-              }
-            >
+            <Field>
+              <FieldLabel>First Name</FieldLabel>
               <TextInput
                 control={control}
                 name="firstName"
@@ -64,16 +51,11 @@ export const Default: Story = {
                   required: 'First name is required',
                 }}
               />
+              <FieldError errors={[errors.firstName]} />
             </Field>
 
-            <Field
-              label="Last Name"
-              error={
-                errors.lastName?.message
-                  ? (errors.lastName.message as string)
-                  : undefined
-              }
-            >
+            <Field>
+              <FieldLabel>Last Name</FieldLabel>
               <TextInput
                 control={control}
                 defaultValue=""
@@ -83,16 +65,11 @@ export const Default: Story = {
                   required: 'Last name is required',
                 }}
               />
+              <FieldError errors={[errors.lastName]} />
             </Field>
 
-            <Field
-              label="Amount"
-              error={
-                errors.amount?.message
-                  ? (errors.amount.message as string)
-                  : undefined
-              }
-            >
+            <Field>
+              <FieldLabel>Amount</FieldLabel>
               <NumericInput
                 control={control}
                 name="amount"
@@ -110,16 +87,11 @@ export const Default: Story = {
                   },
                 }}
               />
+              <FieldError errors={[errors.amount]} />
             </Field>
 
-            <Field
-              label="File Input"
-              error={
-                errors.fileInput?.message
-                  ? (errors.fileInput.message as string)
-                  : undefined
-              }
-            >
+            <Field>
+              <FieldLabel>File Input</FieldLabel>
               <FileInput
                 defaultValue=""
                 control={control}
@@ -132,12 +104,11 @@ export const Default: Story = {
                 }}
                 validExtensions={['images']}
               />
+              <FieldError errors={[errors.fileInput]} />
             </Field>
 
-            <Field
-              label="Message"
-              trailDescription="This is the trail description"
-            >
+            <Field>
+              <FieldLabel>Message</FieldLabel>
               <TextArea
                 defaultValue=""
                 name="message"
@@ -151,48 +122,77 @@ export const Default: Story = {
                   },
                 }}
               />
+              <FieldDescription>This is the trail description</FieldDescription>
+              <FieldError errors={[errors.selectOption]} />
             </Field>
 
-            <Field
-              label="Select Option"
-              error={
-                errors.selectOption?.message
-                  ? (errors.selectOption.message as string)
-                  : undefined
-              }
-            >
+            <Field>
+              <FieldLabel>Select Option</FieldLabel>
               <Select
                 control={control}
                 name="selectOption"
                 onValueChange={(value: string) =>
                   setValue('selectOption', value)
                 }
-                options={selectOptions}
+                options={[
+                  {
+                    label: 'Option 1',
+                    value: 'option-1',
+                  },
+                  {
+                    label: 'Option 2',
+                    value: 'option-2',
+                  },
+                  {
+                    label: 'Option 3',
+                    value: 'option-3',
+                  },
+                ]}
                 placeholder="Select an option"
                 rules={{
                   required: 'A selection is required',
                 }}
               />
+              <FieldError errors={[errors.selectOption]} />
             </Field>
 
-            <RadioGroup
-              control={control}
-              defaultValue={selectOptions[0].value}
-              onValueChange={(value: string) => setValue('radioOption', value)}
-              options={selectOptions}
-              name="radioOption"
-              className="flex-row gap-4"
-            />
+            <FieldSet>
+              <FieldLegend>Notification Method</FieldLegend>
+              <FieldDescription>
+                How would you like to be notified?
+              </FieldDescription>
+              <RadioGroup
+                control={control}
+                name="notificationMethod"
+                defaultValue="email"
+                onValueChange={(value: string) =>
+                  setValue('notificationMethod', value)
+                }
+              >
+                <Field orientation="horizontal">
+                  <RadioGroupItem id="email" value="email" />
+                  <FieldLabel htmlFor="email">Email</FieldLabel>
+                </Field>
+                <Field orientation="horizontal">
+                  <RadioGroupItem id="sms" value="sms" />
+                  <FieldLabel htmlFor="sms">SMS</FieldLabel>
+                </Field>
+                <Field orientation="horizontal">
+                  <RadioGroupItem id="phone" value="phone" />
+                  <FieldLabel htmlFor="phone">Phone</FieldLabel>
+                </Field>
+                <Field orientation="horizontal" data-disabled={true}>
+                  <RadioGroupItem
+                    id="telegram"
+                    value="telegram"
+                    disabled={true}
+                  />
+                  <FieldLabel htmlFor="telegram">Telegram</FieldLabel>
+                </Field>
+              </RadioGroup>
+            </FieldSet>
 
-            <Field
-              label="Switch Option"
-              labelLocation="right"
-              error={
-                errors.switchOption?.message
-                  ? (errors.switchOption.message as string)
-                  : undefined
-              }
-            >
+            <Field orientation="horizontal">
               <Switch
                 control={control}
                 size="sm"
@@ -205,19 +205,14 @@ export const Default: Story = {
                   required: 'You must accept the terms and conditions',
                 }}
               />
+              <FieldLabel>Switch Option</FieldLabel>
+              <FieldError errors={[errors.switchOption]} />
             </Field>
 
-            <Field
-              label="Accept terms and conditions"
-              labelLocation="right"
-              error={
-                errors.checkboxOption?.message
-                  ? (errors.checkboxOption.message as string)
-                  : undefined
-              }
-            >
+            <Field orientation="horizontal">
               <Checkbox
                 control={control}
+                id="checkboxOption"
                 name="checkboxOption"
                 onCheckedChange={(value: boolean) =>
                   setValue('checkboxOption', value)
@@ -227,6 +222,10 @@ export const Default: Story = {
                   required: 'You must accept the terms and conditions',
                 }}
               />
+              <FieldLabel htmlFor="checkboxOption">
+                Accept terms and conditions
+              </FieldLabel>
+              <FieldError errors={[errors.checkboxOption]} />
             </Field>
 
             <div className="flex flex-row-reverse gap-2">
