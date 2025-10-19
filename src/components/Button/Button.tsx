@@ -14,15 +14,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        ghost: 'bg-transparent hover:bg-background-glass text-primary',
         primary:
           'bg-gradient-primary text-white hover:opacity-80 border-1 border-transparent bg-origin-border',
         secondary:
           'bg-background-secondary text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
+        outline:
+          'bg-transparent text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         glass:
           'bg-background-glass text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
+        ghost:
+          'bg-transparent hover:bg-background-glass text-muted hover:text-primary',
         raised: 'bg-background-raised text-primary',
-        destructive: 'bg-destructive text-white',
+        destructive: 'bg-destructive text-white hover:bg-destructive/80',
         text: [
           'bg-transparent text-muted rounded-xs',
           textVariants({ variant: 'small-bold' }),
@@ -35,7 +38,7 @@ const buttonVariants = cva(
       size: {
         xs: [
           textVariants({ variant: 'xsmall', fontWeight: 'bold' }),
-          'h-7 px-2',
+          'h-7 px-2 gap-1',
         ],
         sm: [
           textVariants({ variant: 'normal', fontWeight: 'bold' }),

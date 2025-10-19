@@ -57,8 +57,12 @@ export const SearchInput = (props: SearchInputProps) => {
 
   const handleClear = useCallback(() => {
     onChange?.({ target: { value: '' } } as ChangeEvent<HTMLInputElement>)
-    internalRef.current?.focus()
-  }, [onChange])
+
+    if (internalRef.current) {
+      internalRef.current.value = ''
+      internalRef.current.focus()
+    }
+  }, [internalRef, onChange])
 
   return (
     <InputGroup className={className}>

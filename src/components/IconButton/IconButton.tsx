@@ -1,5 +1,6 @@
 import { cva } from 'class-variance-authority'
 import { type ComponentProps, type ComponentType } from 'react'
+import { cn } from 'src/utils/classnames.js'
 
 import type { IconProps } from '../../icons/types.js'
 import { ButtonPreset } from '../Button/ButtonPreset.js'
@@ -27,11 +28,11 @@ interface IconButtonProps
 }
 
 export const IconButton = (props: IconButtonProps) => {
-  const { icon: Icon, size = 'md', ...rest } = props
+  const { className, icon: Icon, size = 'md', ...rest } = props
 
   return (
     <ButtonPreset
-      className={iconButtonVariants({ size })}
+      className={cn(iconButtonVariants({ size }), className)}
       leftIcon={Icon}
       size={size}
       {...rest}
