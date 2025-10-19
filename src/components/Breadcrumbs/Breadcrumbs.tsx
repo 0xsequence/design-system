@@ -2,7 +2,6 @@ import type { HTMLAttributes, JSX, ReactNode } from 'react'
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { Divider } from '../Divider/Divider.js'
 import { Text } from '../Text/Text.js'
 
 interface Path {
@@ -11,19 +10,12 @@ interface Path {
 }
 
 interface BreadcrumbsProps extends HTMLAttributes<HTMLDivElement> {
-  excludeDivider?: boolean
   paths: Path[]
   renderLink?: (path: Path, children: ReactNode) => JSX.Element
 }
 
 export const Breadcrumbs = (props: BreadcrumbsProps) => {
-  const {
-    className,
-    paths,
-    excludeDivider = false,
-    renderLink,
-    ...rest
-  } = props
+  const { className, paths, renderLink, ...rest } = props
 
   return (
     <div className={className} {...rest}>
@@ -39,8 +31,6 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
           ))}
         </div>
       </Text>
-
-      {!excludeDivider && <Divider />}
     </div>
   )
 }

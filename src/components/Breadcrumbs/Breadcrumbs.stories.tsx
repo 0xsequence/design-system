@@ -11,7 +11,6 @@ type Story = StoryObj<typeof Breadcrumbs>
 
 export const Default: Story = {
   args: {
-    excludeDivider: false,
     paths: [
       {
         label: 'Home',

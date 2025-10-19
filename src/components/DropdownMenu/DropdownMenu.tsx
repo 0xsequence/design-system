@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 import { cn } from '../../utils/classnames.js'
-import { Divider } from '../Divider/Divider.js'
+import { Separator } from '../Separator/Separator.js'
 import { Text } from '../Text/Text.js'
 
 export { DropdownMenuPrimitive }
@@ -69,7 +69,7 @@ const DropdownMenuItemIndicator = ({
 
 export const DropdownMenuSeparator = () => (
   <DropdownMenuPrimitive.Separator asChild>
-    <Divider className="-mx-1 my-1" />
+    <Separator className="-mx-1 my-1" />
   </DropdownMenuPrimitive.Separator>
 )
 

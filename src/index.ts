@@ -13,7 +13,6 @@ export {
   Collapsible,
   CollapsiblePrimitive,
 } from './components/Collapsible/Collapsible.js'
-export { Divider } from './components/Divider/Divider.js'
 export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -73,6 +72,7 @@ export {
   SheetTitle,
   SheetTrigger,
 } from './components/Sheet/Sheet.js'
+export { Separator } from './components/Separator/Separator.js'
 export { Spinner } from './components/Spinner/Spinner.js'
 export { StopClickPropagation } from './components/StopClickPropagation/StopClickPropagation.js'
 export { Switch } from './components/Switch/Switch.js'

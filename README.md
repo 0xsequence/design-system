@@ -130,6 +130,8 @@ V3 attemps to be mostly compatible but there are some breaking changes that will
 
 5. Glass layers and blur effects: many of the raised popover layers like Toast, Popover, Tooltip, Select, used glass blurred effect. While this looked pretty good in certain cases, it caused issues with contrast and readability when overlayed ontop of certain user generated content and lighter content would show through too much. It was decided to switch to opaque layers instead.
 
+6. Divider component is replaced with shadcn Separator component which supports horizontal and vertical orientation
+
 ### Used by
 
 - [Sequence Wallet](https://sequence.app/)
