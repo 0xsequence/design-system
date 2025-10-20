@@ -5,7 +5,7 @@ import { Checkbox } from '../Checkbox/Checkbox.js'
 import { Label } from './Label.js'
 
 export default {
-  title: 'Components/Label',
+  title: 'Forms/Label',
   component: Label,
 } as Meta<typeof Label>
 

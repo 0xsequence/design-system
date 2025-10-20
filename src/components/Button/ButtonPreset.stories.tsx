@@ -6,7 +6,7 @@ import { Badge } from '../Badge/Badge.js'
 import { ButtonPreset } from './ButtonPreset.js'
 
 export default {
-  title: 'Components/ButtonPreset',
+  title: 'Components/Buttons/ButtonPreset',
   component: ButtonPreset,
 } as Meta<typeof ButtonPreset>
 

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SettingsIcon } from '../icons/index.js'
 
 export default {
-  title: 'Components/Icons',
+  title: 'Components/Icon/SettingsIcon',
   component: SettingsIcon,
 } as Meta<typeof SettingsIcon>
 

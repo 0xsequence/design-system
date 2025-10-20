@@ -8,7 +8,7 @@ import { Text } from '../Text/Text.js'
 import { ThemeProvider, useTheme } from './ThemeProvider.js'
 
 export default {
-  title: 'Components/ThemeProvider',
+  title: 'Providers/ThemeProvider',
   component: ThemeProvider,
 } as Meta<typeof ThemeProvider>
 

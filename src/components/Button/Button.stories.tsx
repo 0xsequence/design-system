@@ -5,7 +5,7 @@ import { ArrowRightIcon, ScanIcon, WalletIcon } from '../../icons/index.js'
 import { Button } from './Button.js'
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Buttons/Button',
   component: Button,
 } as Meta<typeof Button>
 

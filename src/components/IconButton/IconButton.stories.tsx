@@ -5,7 +5,7 @@ import { ArrowRightIcon } from '../../icons/index.js'
 import { IconButton } from './IconButton.js'
 
 export default {
-  title: 'Components/IconButton',
+  title: 'Components/Buttons/IconButton',
   component: IconButton,
 } as Meta<typeof IconButton>
 
