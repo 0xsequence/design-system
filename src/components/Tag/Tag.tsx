@@ -11,7 +11,7 @@ const tagVariants = cva(
     'px-2',
     'py-1',
     'whitespace-nowrap',
-    'bg-background-secondary',
+    'bg-background-active',
     'text-secondary',
     'rounded-xs',
   ],

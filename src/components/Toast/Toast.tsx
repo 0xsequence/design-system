@@ -94,13 +94,13 @@ export const Toast = (props: ToastProps) => {
     switch (variant) {
       case 'success':
         return (
-          <div className="bg-positive text-black rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
+          <div className="bg-positive text-white rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
             <CheckmarkIcon />
           </div>
         )
       case 'error':
         return (
-          <div className="bg-negative text-black rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
+          <div className="bg-negative text-white rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
             <CloseIcon />
           </div>
         )

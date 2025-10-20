@@ -7,7 +7,7 @@ import { Text } from '../Text/Text.js'
 import { StopClickPropagation } from './StopClickPropagation.js'
 
 export default {
-  title: 'Components/StopClickPropagation',
+  title: 'Utilities/StopClickPropagation',
   component: StopClickPropagation,
 } as Meta<typeof StopClickPropagation>
 
