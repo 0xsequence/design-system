@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.0.0-alpha.2
+
+### Patch Changes
+
+- More styling and color fixes
+
 ## 3.0.0-alpha.1
 
 ### Patch Changes
