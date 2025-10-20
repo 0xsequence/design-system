@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/@0xsequence%2Fdesign-system.svg)](https://badge.fury.io/js/@0xsequence%2Fdesign-system)
+
 [Live Storybook](https://0xsequence.github.io/design-system/)
 
 # Sequence Design System
