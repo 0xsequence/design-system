@@ -22,7 +22,7 @@ export const DropdownMenuContent = ({
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
       className={cn(
-        'w-40 bg-background-secondary border-1 border-border-normal shadow-primary p-1 rounded-md',
+        'w-40 bg-background-raised border-1 border-border-normal shadow-primary p-1 rounded-md',
         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto',
         className
       )}
@@ -48,9 +48,9 @@ export const DropdownMenuItem = ({
 }: DropdownMenuPrimitive.DropdownMenuItemProps) => (
   <DropdownMenuPrimitive.Item
     className={cn(
-      'flex items-center justify-between rounded-xs px-2 py-1 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
+      'flex items-center justify-between rounded-xs px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
       'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-      'data-highlighted:bg-background-primary',
+      'data-highlighted:bg-background-hover',
       className
     )}
     {...rest}
@@ -81,9 +81,9 @@ export const DropdownMenuCheckboxItem = ({
   return (
     <DropdownMenuPrimitive.CheckboxItem
       className={cn(
-        'flex items-center justify-between rounded-xs px-2 py-1 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
+        'flex items-center justify-between rounded-xs px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-        'data-highlighted:bg-background-primary',
+        'data-highlighted:bg-background-hover',
         className
       )}
       {...rest}
@@ -106,9 +106,9 @@ export const DropdownMenuRadioItem = ({
   return (
     <DropdownMenuPrimitive.RadioItem
       className={cn(
-        'flex items-center justify-between rounded-xs px-2 py-1 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
+        'flex items-center justify-between rounded-xs px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-        'data-highlighted:bg-background-primary',
+        'data-highlighted:bg-background-hover',
         className
       )}
       {...rest}

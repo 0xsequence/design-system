@@ -5,7 +5,7 @@ import { cn } from '../../utils/classnames.js'
 
 const skeletonVariants = cva(
   [
-    'rounded-xs',
+    'rounded-md',
     'bg-gradient-skeleton',
     'bg-[length:400%_400%]',
     'bg-no-repeat',

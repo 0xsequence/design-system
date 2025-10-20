@@ -18,8 +18,9 @@ const collapsibleVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-background-muted ring-inset border-1 border-border-card',
-        outlined: 'bg-transparent ring-inset border-1 border-border-normal',
+        default: 'bg-background-secondary border-1 border-border-card',
+        muted: 'bg-background-muted border-1 border-border-card',
+        outline: 'bg-transparent ring-inset border-1 border-border-normal',
       },
     },
     defaultVariants: {
@@ -82,16 +83,11 @@ export const Collapsible = (props: CollapsibleProps) => {
       >
         <CollapsiblePrimitive.Trigger
           className={clsx(
-            'flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden'
+            'flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden',
+            'text-primary hover:text-primary/80'
           )}
         >
-          <Text
-            variant="normal"
-            fontWeight="bold"
-            color="secondary"
-            asChild
-            ellipsis
-          >
+          <Text variant="normal" fontWeight="bold" asChild ellipsis>
             <div>{label}</div>
           </Text>
           <motion.div

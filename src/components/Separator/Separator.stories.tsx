@@ -28,7 +28,7 @@ export const Example = {
           An open-source UI component library.
         </p>
       </div>
-      <Separator className="my-4" />
+      <Separator className="my-4 -mx-4 w-auto" />
       <div className="text-primary flex h-5 items-center space-x-4 text-sm">
         <div>Blog</div>
         <Separator orientation="vertical" />

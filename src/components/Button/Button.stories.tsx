@@ -93,7 +93,7 @@ export const WithRightIcon: Story = {
     disabled: false,
     children: (
       <>
-        Click me
+        <span>Click me</span>
         <ArrowRightIcon />
       </>
     ),
@@ -119,16 +119,17 @@ export const WithBothIcon: Story = {
   },
 }
 
-export const IconButton: Story = {
+export const IconOnly: Story = {
   args: {
-    size: 'sm',
+    size: 'md',
     variant: 'secondary',
-    children: <WalletIcon size="sm" />,
+    children: <WalletIcon />,
     disabled: false,
+    iconOnly: true,
   },
 }
 
-export const AnchorButton: Story = {
+export const WithAnchor: Story = {
   args: {
     size: 'md',
     asChild: true,

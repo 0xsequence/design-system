@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Button } from '../Button/Button.js'
-import { Card } from '../Card/Card.js'
+import { Separator } from '../Separator/Separator.js'
 import { Text } from '../Text/Text.js'
 
 import { Popover, PopoverContent, PopoverTrigger } from './Popover.js'
@@ -20,7 +20,7 @@ const StoryWrapper = (props: React.ComponentProps<typeof PopoverContent>) => {
         <PopoverTrigger asChild>
           <Button>Open Popover</Button>
         </PopoverTrigger>
-        <PopoverContent className="p-4 w-[480px]" {...rest}>
+        <PopoverContent className="w-[480px]" {...rest}>
           {children}
         </PopoverContent>
       </Popover>
@@ -33,18 +33,17 @@ export const Default: Story = {
   args: {
     children: (
       <div>
-        <Card>
-          <div>
-            <Text variant="large" color="primary">
-              This is a popover
-            </Text>
-          </div>
-          <div>
-            <Text variant="normal" color="muted">
-              It can contain any content you like.
-            </Text>
-          </div>
-        </Card>
+        <div className="p-4">
+          <Text variant="large" color="primary">
+            This is a popover
+          </Text>
+        </div>
+        <Separator />
+        <div className="p-4">
+          <Text variant="normal" color="muted">
+            It can contain any content you like.
+          </Text>
+        </div>
       </div>
     ),
     sideOffset: 8,

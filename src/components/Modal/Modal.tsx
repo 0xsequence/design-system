@@ -69,7 +69,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
     header,
     footer,
     autoHeight = false,
-    overlayColor = 'bg-background-overlay/90',
+    overlayColor = 'bg-background-overlay',
     children,
     disableAnimation = false,
     isDismissible = true,

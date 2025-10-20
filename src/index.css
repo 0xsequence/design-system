@@ -22,7 +22,11 @@
   --seq-color-background-secondary: var(--color-zinc-900);
   --seq-color-background-muted: var(--color-zinc-950);
   --seq-color-background-inverse: white;
-  --seq-color-background-overlay: var(--color-zinc-800);
+  --seq-color-background-overlay: color-mix(
+    in oklab,
+    var(--color-zinc-700) 90%,
+    transparent
+  );
   --seq-color-background-raised: var(--color-zinc-800);
   --seq-color-background-input: var(--color-zinc-950);
   --seq-color-background-hover: var(--color-zinc-900);
@@ -41,7 +45,7 @@
   --seq-color-border-button: var(--color-zinc-700);
 
   /* Drop shadow */
-  --seq-color-drop-shadow: var(--color-zinc-950);
+  --seq-color-drop-shadow: color-mix(in oklab, black 15%, transparent);
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
@@ -64,7 +68,7 @@
   --seq-color-gradient-skeleton: linear-gradient(
     -45deg,
     transparent,
-    var(--seq-color-background-secondary),
+    var(--color-zinc-700),
     transparent
   );
 }
@@ -88,7 +92,11 @@
   --seq-color-background-secondary: white;
   --seq-color-background-muted: var(--color-slate-100);
   --seq-color-background-inverse: black;
-  --seq-color-background-overlay: var(--color-slate-300);
+  --seq-color-background-overlay: color-mix(
+    in oklab,
+    var(--color-slate-300) 80%,
+    transparent
+  );
   --seq-color-background-raised: white;
   --seq-color-background-input: var(--color-slate-50);
   --seq-color-background-hover: var(--color-slate-100);
@@ -107,7 +115,11 @@
   --seq-color-border-button: var(--color-slate-300);
 
   /* Drop shadow */
-  --seq-color-drop-shadow: var(--color-slate-500);
+  --seq-color-drop-shadow: color-mix(
+    in oklab,
+    var(--color-slate-950) 15%,
+    transparent
+  );
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
@@ -130,7 +142,7 @@
   --seq-color-gradient-skeleton: linear-gradient(
     -45deg,
     transparent,
-    var(--seq-color-background-secondary),
+    var(--color-slate-300),
     transparent
   );
 }
@@ -179,11 +191,10 @@
   --background-image-gradient-secondary: var(--seq-color-gradient-secondary);
   --background-image-gradient-skeleton: var(--seq-color-gradient-skeleton);
 
-  --animate-skeleton: skeleton 1s ease infinite;
+  --animate-skeleton: skeleton 3s ease infinite;
   --animate-swipe-out: swipe-out 200ms ease-out;
 
-  --shadow-primary: 0 0 16px 0
-    color-mix(in oklab, var(--color-drop-shadow) 30%, transparent);
+  --shadow-primary: 0 0 16px 0 var(--seq-color-drop-shadow);
 
   @keyframes skeleton {
     0% {
