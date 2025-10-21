@@ -45,7 +45,11 @@
   --seq-color-border-button: var(--color-zinc-700);
 
   /* Drop shadow */
-  --seq-color-drop-shadow: color-mix(in oklab, black 15%, transparent);
+  --seq-color-drop-shadow: color-mix(
+    in oklab,
+    var(--color-zinc-950) 40%,
+    transparent
+  );
 
   /* Gradients */
   --seq-color-gradient-backdrop: linear-gradient(
