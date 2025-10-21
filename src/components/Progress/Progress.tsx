@@ -1,6 +1,7 @@
 import * as ProgressPrimitive from '@radix-ui/react-progress'
 import { cva, type VariantProps } from 'class-variance-authority'
-import clsx from 'clsx'
+import type { ComponentProps } from 'react'
+import { cn } from 'src/utils/classnames.js'
 
 const progressIndicatorVariants = cva('h-full rounded-full', {
   variants: {
@@ -16,10 +17,10 @@ const progressIndicatorVariants = cva('h-full rounded-full', {
   },
 })
 
-interface ProgressProps extends VariantProps<typeof progressIndicatorVariants> {
-  value: number // Ratio between 0 and 1
-  className?: string
-}
+type ProgressProps = ComponentProps<typeof ProgressPrimitive.Root> &
+  VariantProps<typeof progressIndicatorVariants> & {
+    value: number
+  }
 
 export const Progress = (props: ProgressProps) => {
   const { value, color, className } = props
@@ -27,13 +28,15 @@ export const Progress = (props: ProgressProps) => {
 
   return (
     <ProgressPrimitive.Root
-      value={percent}
-      className={clsx(
-        'h-1 w-full rounded-full bg-background-primary overflow-hidden relative',
+      data-slot="progress"
+      value={value}
+      className={cn(
+        'h-2 w-full rounded-full bg-primary/20 overflow-hidden relative',
         className
       )}
     >
       <ProgressPrimitive.ProgressIndicator
+        data-slot="progress-indicator"
         className={progressIndicatorVariants({ color })}
         style={{
           width: `${percent}%`,
