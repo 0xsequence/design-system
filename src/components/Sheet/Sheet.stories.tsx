@@ -15,6 +15,7 @@ import {
 
 export default {
   title: 'Components/Sheet',
+  component: SheetContent,
 } as Meta<typeof SheetContent>
 
 type Story = StoryObj<typeof SheetContent>
