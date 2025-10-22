@@ -17,59 +17,63 @@ import {
 
 export default {
   title: 'Components/DropdownMenu',
-} as Meta<any>
+  component: DropdownMenuContent,
+} as Meta<typeof DropdownMenuContent>
 
-type Story = StoryObj<any>
-
-const StoryWrapper = () => {
-  const [showBookmarks, setShowBookmarks] = useState(true)
-  const [showFullURLs, setShowFullURLs] = useState(false)
-  const [mode, setMode] = useState<'list' | 'grid'>('list')
-
-  return (
-    <div className="flex justify-center">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <IconButton icon={ContextMenuIcon} />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem>New Tab</DropdownMenuItem>
-          <DropdownMenuItem>New Window</DropdownMenuItem>
-          <DropdownMenuItem disabled>New Private Tab</DropdownMenuItem>
-          <DropdownMenuItem>Item 4</DropdownMenuItem>
-          <DropdownMenuItem>Item 5</DropdownMenuItem>
-
-          <DropdownMenuSeparator />
-
-          <DropdownMenuCheckboxItem
-            checked={showBookmarks}
-            onCheckedChange={value => setShowBookmarks(!!value)}
-          >
-            Show Bookmarks
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showFullURLs}
-            onCheckedChange={value => setShowFullURLs(!!value)}
-          >
-            Show Full URLs
-          </DropdownMenuCheckboxItem>
-
-          <DropdownMenuSeparator />
-
-          <DropdownMenuRadioGroup
-            value={mode}
-            onValueChange={value => setMode(value as any)}
-          >
-            <DropdownMenuRadioItem value="list">List</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="grid">Grid</DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
-  )
-}
+type Story = StoryObj<typeof DropdownMenuContent>
 
 export const Default: Story = {
-  render: StoryWrapper,
-  args: {},
+  render: args => {
+    const [showBookmarks, setShowBookmarks] = useState(true)
+    const [showFullURLs, setShowFullURLs] = useState(false)
+    const [mode, setMode] = useState<'list' | 'grid'>('list')
+
+    return (
+      <div className="flex justify-center">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <IconButton icon={ContextMenuIcon} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent {...args}>
+            <DropdownMenuItem>New Tab</DropdownMenuItem>
+            <DropdownMenuItem>New Window</DropdownMenuItem>
+            <DropdownMenuItem disabled>New Private Tab</DropdownMenuItem>
+            <DropdownMenuItem>Item 4</DropdownMenuItem>
+            <DropdownMenuItem>Item 5</DropdownMenuItem>
+
+            <DropdownMenuSeparator />
+
+            <DropdownMenuCheckboxItem
+              checked={showBookmarks}
+              onCheckedChange={value => setShowBookmarks(!!value)}
+            >
+              Show Bookmarks
+            </DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem
+              checked={showFullURLs}
+              onCheckedChange={value => setShowFullURLs(!!value)}
+            >
+              Show Full URLs
+            </DropdownMenuCheckboxItem>
+
+            <DropdownMenuSeparator />
+
+            <DropdownMenuRadioGroup
+              value={mode}
+              onValueChange={value => setMode(value as any)}
+            >
+              <DropdownMenuRadioItem value="list">List</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="grid">Grid</DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+    )
+  },
+  args: {
+    align: 'center',
+    alignOffset: 0,
+    side: 'bottom',
+    sideOffset: 4,
+  },
 }

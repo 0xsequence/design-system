@@ -3,7 +3,6 @@ import type { ComponentProps } from 'react'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 import { cn } from '../../utils/classnames.js'
-import { Separator } from '../Separator/Separator.js'
 import { Text } from '../Text/Text.js'
 
 export { DropdownMenuPrimitive }
@@ -17,35 +16,30 @@ export const DropdownMenuPortal = DropdownMenuPrimitive.Portal
 export const DropdownMenuContent = ({
   className,
   children,
+  sideOffset = 4,
   ...rest
-}: DropdownMenuPrimitive.DropdownMenuContentProps) => (
+}: ComponentProps<typeof DropdownMenuPrimitive.Content>) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
+      data-slot="dropdown-menu-content"
       className={cn(
         'w-40 bg-background-raised border-1 border-border-normal shadow-primary p-1 rounded-md',
         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto',
         className
       )}
-      side="bottom"
-      sideOffset={4}
-      align="center"
+      sideOffset={sideOffset}
       {...rest}
     >
       {children}
-      {/* <DropdownMenuArrow /> */}
     </DropdownMenuPrimitive.Content>
   </DropdownMenuPrimitive.Portal>
 )
-
-// const DropdownMenuArrow = () => (
-//   <DropdownMenuPrimitive.Arrow className="fill-background-raised" />
-// )
 
 export const DropdownMenuItem = ({
   className,
   children,
   ...rest
-}: DropdownMenuPrimitive.DropdownMenuItemProps) => (
+}: ComponentProps<typeof DropdownMenuPrimitive.Item>) => (
   <DropdownMenuPrimitive.Item
     className={cn(
       'flex items-center justify-between rounded-xs px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
@@ -59,19 +53,27 @@ export const DropdownMenuItem = ({
   </DropdownMenuPrimitive.Item>
 )
 
-const DropdownMenuItemIndicator = ({
-  children,
-}: DropdownMenuPrimitive.DropdownMenuItemIndicatorProps) => (
-  <DropdownMenuPrimitive.ItemIndicator className="absolute left-0 w-6 inline-flex items-center justify-center">
-    {children}
-  </DropdownMenuPrimitive.ItemIndicator>
+const DropdownMenuItemIndicator = (
+  props: ComponentProps<typeof DropdownMenuPrimitive.ItemIndicator>
+) => (
+  <DropdownMenuPrimitive.ItemIndicator
+    className="absolute left-0 w-6 inline-flex items-center justify-center"
+    {...props}
+  />
 )
 
-export const DropdownMenuSeparator = () => (
-  <DropdownMenuPrimitive.Separator asChild>
-    <Separator className="-mx-1 my-1" />
-  </DropdownMenuPrimitive.Separator>
-)
+export function DropdownMenuSeparator({
+  className,
+  ...props
+}: ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
+  return (
+    <DropdownMenuPrimitive.Separator
+      data-slot="dropdown-menu-separator"
+      className={cn('bg-border-normal -mx-1 my-1 h-px', className)}
+      {...props}
+    />
+  )
+}
 
 export const DropdownMenuCheckboxItem = ({
   className,
