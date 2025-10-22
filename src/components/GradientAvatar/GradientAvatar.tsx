@@ -16,7 +16,7 @@ const avatarVariants = cva(['shrink-0 rounded-full overflow-hidden'], {
       sm: 'size-5',
       md: 'size-8',
       lg: 'size-10',
-      xl: 'size-[52px]',
+      xl: 'size-13',
     },
   },
   defaultVariants: {

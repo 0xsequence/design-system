@@ -48,7 +48,7 @@ export const Select = (props: SelectProps) => {
         id={id ?? name}
         className={cn(
           textVariants({ variant: 'normal' }),
-          'inline-flex items-center justify-between gap-1 p-4 h-[52px] bg-background-input rounded-xl',
+          'inline-flex items-center justify-between gap-1 p-4 h-13 bg-background-input rounded-xl',
           'text-base font-medium text-primary select-none cursor-pointer',
           focusRingVariants(),
           inputBorderStyle,
@@ -101,7 +101,7 @@ const SelectItem = ({
     <SelectPrimitive.Item
       className={cn(
         textVariants({ variant: 'normal' }),
-        'flex justify-between items-center px-4 py-3 h-[52px] cursor-pointer rounded-sm',
+        'flex justify-between items-center px-4 py-3 h-13 cursor-pointer rounded-sm',
         'text-base text-primary opacity-100 data-disabled:cursor-default data-disabled:opacity-50',
         'data-highlighted:bg-background-active/33 data-[state=checked]:bg-background-active outline-hidden',
         className

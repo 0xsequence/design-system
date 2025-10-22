@@ -86,7 +86,7 @@ export const FileInput = (props: FileInputProps) => {
     <div
       className={cn(
         textVariants({ variant: 'normal' }),
-        'w-full min-w-0 inline-flex items-center flex-row justify-start p-4 relative h-[52px]',
+        'w-full min-w-0 inline-flex items-center flex-row justify-start p-4 relative h-13',
         'rounded-xl bg-background-input',
         '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
         fileData ? 'justify-between text-primary' : 'justify-start text-muted',

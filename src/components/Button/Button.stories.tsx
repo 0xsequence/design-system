@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Button>
 
 export const Default: Story = {
   render: args => (
-    <div className="flex gap-4 flex-wrap">
+    <div className="flex gap-4 items-center flex-wrap">
       <Button {...args} variant="primary">
         Primary
       </Button>
@@ -104,12 +104,13 @@ export const WithBothIcon: Story = {
       <>
         <ScanIcon />
         Click me
-        <ArrowRightIcon />
+        <ArrowRightIcon className="ml-auto" />
       </>
     ),
     onClick: () => console.log('Clicked!'),
     size: 'md',
     variant: 'secondary',
+    className: 'w-full',
   },
 }
 

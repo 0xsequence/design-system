@@ -11,13 +11,34 @@ const buttonVariants = cva(
     'inline-flex items-center gap-2 whitespace-nowrap overflow-hidden text-decoration-none cursor-pointer',
     'disabled:cursor-default disabled:opacity-50',
 
-    // Icon specific styles
-    '[&.h-7>svg]:not(.size-*):!size-4 [&_svg:not([class*="size-"])]:size-4',
-
     focusRingVariants(),
   ],
   {
     variants: {
+      size: {
+        xs: [
+          textVariants({ variant: 'xsmall-bold' }),
+          'min-w-7 h-7 px-2 gap-1 [&_svg:not([class*="size-"])]:size-4',
+        ],
+        sm: [
+          textVariants({ variant: 'normal-bold' }),
+          'min-w-9 h-9 px-4 [&_svg:not([class*="size-"])]:size-5',
+        ],
+        md: [
+          textVariants({ variant: 'normal-bold' }),
+          'min-w-11 h-11 px-4 [&_svg:not([class*="size-"])]:size-5',
+        ],
+        lg: [
+          textVariants({ variant: 'normal-bold' }),
+          'min-w-13 h-13 px-5 [&_svg:not([class*="size-"])]:size-5',
+        ],
+      },
+
+      shape: {
+        circle: 'rounded-full',
+        square: 'rounded-lg',
+      },
+
       variant: {
         primary:
           'bg-gradient-primary text-white hover:opacity-80 border-1 border-transparent bg-origin-border',
@@ -29,32 +50,10 @@ const buttonVariants = cva(
         emphasis: 'bg-primary text-background-primary hover:bg-primary/80',
         destructive: 'bg-destructive text-white hover:bg-destructive/80',
         text: [
-          'bg-transparent text-primary rounded-xs !p-0 h-auto w-auto min-w-0',
-          textVariants({ variant: 'small-bold' }),
+          'bg-transparent text-primary rounded-xs h-auto w-auto h-auto min-w-0 p-0 focus-visible:outline-offset-1 grow-0',
         ],
       },
-      shape: {
-        circle: 'rounded-full',
-        square: 'rounded-lg',
-      },
-      size: {
-        xs: [
-          textVariants({ variant: 'xsmall', fontWeight: 'bold' }),
-          'min-w-7 h-7 px-2 gap-1',
-        ],
-        sm: [
-          textVariants({ variant: 'normal', fontWeight: 'bold' }),
-          'min-w-9 h-9 px-4',
-        ],
-        md: [
-          textVariants({ variant: 'normal', fontWeight: 'bold' }),
-          'min-w-11 h-11 px-4',
-        ],
-        lg: [
-          textVariants({ variant: 'normal', fontWeight: 'bold' }),
-          'min-w-[52px] h-[52px] px-5',
-        ],
-      },
+
       disabled: {
         true: 'cursor-default opacity-50',
         false: 'cursor-pointer',
