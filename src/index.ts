@@ -14,6 +14,19 @@ export {
   CollapsiblePrimitive,
 } from './components/Collapsible/Collapsible.js'
 export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogPrimitive,
+  DialogTitle,
+  DialogTrigger,
+} from './components/Dialog/Dialog.js'
+export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -53,7 +66,7 @@ export {
 } from './components/InputGroup/InputGroup.js'
 export { Kbd, KbdGroup } from './components/Kbd/Kbd.js'
 export { Label } from './components/Label/Label.js'
-export { Modal, ModalPrimitive } from './components/Modal/Modal.js'
+export { Modal } from './components/Modal/Modal.js'
 export { NumericInput } from './components/NumericInput/NumericInput.js'
 export { ControlledNumericInput } from './components/NumericInput/ControlledNumericInput.js'
 export { PINCodeInput } from './components/PINCodeInput/PINCodeInput.js'

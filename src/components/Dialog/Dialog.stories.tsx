@@ -1,0 +1,65 @@
+import type { Meta, StoryObj } from '@storybook/react-vite'
+
+import { Button } from '../Button/Button.js'
+import { Input } from '../Input/Input.js'
+import { Label } from '../Label/Label.js'
+
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './Dialog.js'
+
+export default {
+  title: 'Components/Dialog',
+  component: DialogContent,
+} as Meta<typeof DialogContent>
+
+export const Default: StoryObj<typeof DialogContent> = {
+  render: args => {
+    return (
+      <Dialog>
+        <form>
+          <DialogTrigger asChild>
+            <Button variant="outline">Open Dialog</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]" {...args}>
+            <DialogHeader>
+              <DialogTitle>Edit profile</DialogTitle>
+              <DialogDescription>
+                Make changes to your profile here. Click save when you&apos;re
+                done.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4">
+              <div className="grid gap-3">
+                <Label htmlFor="name-1">Name</Label>
+                <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+              </div>
+              <div className="grid gap-3">
+                <Label htmlFor="username-1">Username</Label>
+                <Input
+                  id="username-1"
+                  name="username"
+                  defaultValue="@peduarte"
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="outline">Cancel</Button>
+              </DialogClose>
+              <Button type="submit">Save changes</Button>
+            </DialogFooter>
+          </DialogContent>
+        </form>
+      </Dialog>
+    )
+  },
+  args: {},
+}

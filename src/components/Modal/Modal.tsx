@@ -1,4 +1,4 @@
-import * as ModalPrimitive from '@radix-ui/react-dialog'
+import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
@@ -87,9 +87,9 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const ContentWrapper = scroll ? Scroll : Fragment
 
   return container ? (
-    <ModalPrimitive.Root modal defaultOpen onOpenChange={onClose}>
-      <ModalPrimitive.Portal forceMount container={container}>
-        <ModalPrimitive.Overlay
+    <DialogPrimitive.Root modal defaultOpen onOpenChange={onClose}>
+      <DialogPrimitive.Portal forceMount container={container}>
+        <DialogPrimitive.Overlay
           {...rootProps}
           className={cn(
             'seq-root',
@@ -111,7 +111,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
             {...overlayProps}
           />
 
-          <ModalPrimitive.Content
+          <DialogPrimitive.Content
             asChild
             forceMount
             onEscapeKeyDown={ev => {
@@ -155,7 +155,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               )}
             >
               <VisuallyHidden>
-                <ModalPrimitive.Title>{title}</ModalPrimitive.Title>
+                <DialogPrimitive.Title>{title}</DialogPrimitive.Title>
               </VisuallyHidden>
               {header && <ModalHeader>{header}</ModalHeader>}
               <ContentWrapper>
@@ -164,20 +164,20 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
               </ContentWrapper>
               {footer && <ModalFooter>{footer}</ModalFooter>}
               {isDismissible && (
-                <ModalPrimitive.Close asChild>
+                <DialogPrimitive.Close asChild>
                   <IconButton
                     icon={CloseIcon}
                     size="xs"
                     className="absolute right-4 top-4 z-20 backdrop-blur-xs"
                     aria-label="Close"
                   />
-                </ModalPrimitive.Close>
+                </DialogPrimitive.Close>
               )}
             </motion.div>
-          </ModalPrimitive.Content>
-        </ModalPrimitive.Overlay>
-      </ModalPrimitive.Portal>
-    </ModalPrimitive.Root>
+          </DialogPrimitive.Content>
+        </DialogPrimitive.Overlay>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
   ) : null
 }
 
@@ -224,5 +224,3 @@ const ModalFooter = (props: PropsWithChildren) => {
     </div>
   )
 }
-
-export { ModalPrimitive }
