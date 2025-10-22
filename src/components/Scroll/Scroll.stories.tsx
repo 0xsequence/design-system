@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Scroll>
 
 const StoryWrapper: StoryFn<typeof Scroll> = args => (
   <Card
-    outlined
+    variant="outline"
     className="overflow-hidden p-0"
     style={{
       width: 200,
