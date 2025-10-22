@@ -18,7 +18,6 @@ export const Default: Story = {
       <IconButton {...args} variant="secondary" />
       <IconButton {...args} variant="outline" />
       <IconButton {...args} variant="emphasis" />
-      <IconButton {...args} variant="glass" />
       <IconButton {...args} variant="ghost" />
       <IconButton {...args} variant="raised" />
       <IconButton {...args} variant="destructive" />

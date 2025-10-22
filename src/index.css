@@ -31,11 +31,6 @@
   --seq-color-background-input: var(--color-zinc-950);
   --seq-color-background-hover: var(--color-zinc-900);
   --seq-color-background-active: var(--color-zinc-700);
-  --seq-color-background-glass: color-mix(
-    in oklab,
-    var(--color-zinc-50) 15%,
-    transparent
-  );
 
   /* Border colors */
   --seq-color-border-normal: var(--color-zinc-700);
@@ -79,11 +74,11 @@
 
 [data-theme='light'] {
   /* Status colors */
-  --seq-color-positive: var(--color-green-500);
-  --seq-color-negative: var(--color-red-500);
-  --seq-color-info: var(--color-blue-500);
-  --seq-color-warning: var(--color-yellow-500);
-  --seq-color-destructive: var(--color-red-500);
+  --seq-color-positive: var(--color-green-600);
+  --seq-color-negative: var(--color-red-600);
+  --seq-color-info: var(--color-blue-600);
+  --seq-color-warning: var(--color-yellow-600);
+  --seq-color-destructive: var(--color-red-600);
 
   /* Text colors */
   --seq-color-primary: var(--color-slate-800);
@@ -105,11 +100,6 @@
   --seq-color-background-input: var(--color-slate-50);
   --seq-color-background-hover: var(--color-slate-100);
   --seq-color-background-active: var(--color-slate-200);
-  --seq-color-background-glass: color-mix(
-    in oklab,
-    var(--color-slate-950) 15%,
-    transparent
-  );
 
   /* Border colors */
   --seq-color-border-normal: var(--color-slate-300);
@@ -180,7 +170,6 @@
   --color-background-input: var(--seq-color-background-input);
   --color-background-hover: var(--seq-color-background-hover);
   --color-background-active: var(--seq-color-background-active);
-  --color-background-glass: var(--seq-color-background-glass);
 
   --color-border-normal: var(--seq-color-border-normal);
   --color-border-hover: var(--seq-color-border-hover);

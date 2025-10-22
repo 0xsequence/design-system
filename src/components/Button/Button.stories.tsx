@@ -26,9 +26,6 @@ export const Default: Story = {
       <Button {...args} variant="emphasis">
         Emphasis
       </Button>
-      <Button {...args} variant="glass">
-        Glass
-      </Button>
       <Button {...args} variant="ghost">
         Ghost
       </Button>

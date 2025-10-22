@@ -14,7 +14,6 @@ export const colorNames = [
   'backgroundInverse',
   'backgroundOverlay',
   'backgroundRaised',
-  'backgroundGlass',
   'borderNormal',
   'borderFocus',
   'gradientBackdrop',
