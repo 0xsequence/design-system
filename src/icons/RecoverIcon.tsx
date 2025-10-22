@@ -23,7 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgRecoverIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgRecoverIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

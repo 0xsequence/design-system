@@ -23,7 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgUnlinkIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgUnlinkIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

@@ -21,7 +21,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgUnityFlatIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgUnityFlatIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

@@ -21,7 +21,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgHeartIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgHeartIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

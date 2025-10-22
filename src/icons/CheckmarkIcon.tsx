@@ -23,7 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgCheckmarkIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgCheckmarkIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

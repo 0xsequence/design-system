@@ -29,11 +29,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgLayoutStrokeIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgLayoutStrokeIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

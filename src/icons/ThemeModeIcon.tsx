@@ -24,7 +24,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgThemeModeIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgThemeModeIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

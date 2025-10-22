@@ -29,7 +29,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgUnrealIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgUnrealIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

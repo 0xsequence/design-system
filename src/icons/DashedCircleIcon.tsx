@@ -23,11 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgDashedCircleIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgDashedCircleIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

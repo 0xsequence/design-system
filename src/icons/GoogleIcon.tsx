@@ -33,7 +33,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgGoogleIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgGoogleIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

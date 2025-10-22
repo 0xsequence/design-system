@@ -27,7 +27,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgKitIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgKitIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

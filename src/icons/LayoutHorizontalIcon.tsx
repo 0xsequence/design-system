@@ -23,11 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgLayoutHorizontalIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgLayoutHorizontalIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

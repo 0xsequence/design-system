@@ -22,11 +22,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgLayoutButtonIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgLayoutButtonIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

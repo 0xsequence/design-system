@@ -29,7 +29,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgAirDropperIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgAirDropperIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

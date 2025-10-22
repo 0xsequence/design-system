@@ -27,11 +27,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgLinkNewConnectionIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgLinkNewConnectionIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

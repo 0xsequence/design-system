@@ -23,11 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgChevronRightIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgChevronRightIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

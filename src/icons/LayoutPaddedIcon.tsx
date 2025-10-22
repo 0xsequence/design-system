@@ -29,11 +29,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgLayoutPaddedIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgLayoutPaddedIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

@@ -29,11 +29,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgSearchGlobeIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgSearchGlobeIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

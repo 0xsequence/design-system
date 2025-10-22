@@ -11,7 +11,4 @@ export const iconVariants = cva('block shrink-0', {
       xl: 'size-9',
     },
   },
-  defaultVariants: {
-    size: 'md',
-  },
 })

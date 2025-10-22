@@ -33,11 +33,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgContactProfileIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgContactProfileIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

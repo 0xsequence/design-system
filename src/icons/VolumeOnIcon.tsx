@@ -23,7 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgVolumeOnIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgVolumeOnIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

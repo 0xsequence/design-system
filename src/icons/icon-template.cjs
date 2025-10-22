@@ -19,7 +19,7 @@ const template = ({ exports, componentName, jsx }, { tpl }) => {
     ${jsx}
   )
   ${NEWLINE}
-  const ${componentName} = ({ className, size = 'sm', ...props }: IconProps) => (
+  const ${componentName} = ({ className, size, ...props }: IconProps) => (
     <Svg className={cn(iconVariants({ size }), className)} {...props} />
   );
   ${NEWLINE}

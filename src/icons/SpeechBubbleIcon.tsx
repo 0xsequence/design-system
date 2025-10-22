@@ -30,11 +30,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgSpeechBubbleIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgSpeechBubbleIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

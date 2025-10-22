@@ -59,7 +59,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
 
 const SvgBoilerplateEmbeddedWalletIcon = ({
   className,
-  size = 'sm',
+  size,
   ...props
 }: IconProps) => (
   <Svg

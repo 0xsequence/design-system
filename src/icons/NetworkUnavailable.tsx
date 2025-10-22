@@ -21,11 +21,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgNetworkUnavailable = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgNetworkUnavailable = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

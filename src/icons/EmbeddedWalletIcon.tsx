@@ -30,11 +30,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgEmbeddedWalletIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgEmbeddedWalletIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

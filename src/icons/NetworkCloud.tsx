@@ -21,7 +21,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgNetworkCloud = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgNetworkCloud = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

@@ -21,11 +21,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgContextMenuIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgContextMenuIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

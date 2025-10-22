@@ -23,11 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgExternalLinkIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgExternalLinkIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

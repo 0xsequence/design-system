@@ -33,7 +33,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgOnRampIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgOnRampIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

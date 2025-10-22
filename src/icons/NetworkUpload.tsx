@@ -25,7 +25,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgNetworkUpload = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgNetworkUpload = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

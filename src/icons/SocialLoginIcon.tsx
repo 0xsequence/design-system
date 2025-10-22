@@ -21,11 +21,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgSocialLoginIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgSocialLoginIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

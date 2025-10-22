@@ -35,7 +35,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgLooksRareIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgLooksRareIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

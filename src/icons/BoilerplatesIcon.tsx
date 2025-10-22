@@ -23,11 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgBoilerplatesIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgBoilerplatesIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

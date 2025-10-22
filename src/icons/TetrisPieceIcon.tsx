@@ -23,11 +23,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgTetrisPieceIcon = ({
-  className,
-  size = 'sm',
-  ...props
-}: IconProps) => (
+const SvgTetrisPieceIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

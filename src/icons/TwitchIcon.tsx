@@ -30,7 +30,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgTwitchIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgTwitchIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({

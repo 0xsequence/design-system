@@ -37,7 +37,7 @@ const Svg = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const SvgListThumbIcon = ({ className, size = 'sm', ...props }: IconProps) => (
+const SvgListThumbIcon = ({ className, size, ...props }: IconProps) => (
   <Svg
     className={cn(
       iconVariants({
