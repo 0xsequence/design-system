@@ -1,5 +1,19 @@
 # @0xsequence/design-system
 
+## 3.0.0
+
+### Major Changes
+
+- New color schemes for light and dark, more compositable components, better form handling, shadcn based components
+
+### Patch Changes
+
+- v3.0.0
+
+- Fixing Tabs
+
+- More styling and color fixes
+
 ## 3.0.0-alpha.2
 
 ### Patch Changes
