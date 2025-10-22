@@ -29,9 +29,6 @@ export const Default: Story = {
       <Button {...args} variant="ghost">
         Ghost
       </Button>
-      <Button {...args} variant="raised">
-        Raised
-      </Button>
       <Button {...args} variant="destructive">
         Destructive
       </Button>

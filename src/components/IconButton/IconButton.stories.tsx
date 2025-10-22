@@ -19,7 +19,6 @@ export const Default: Story = {
       <IconButton {...args} variant="outline" />
       <IconButton {...args} variant="emphasis" />
       <IconButton {...args} variant="ghost" />
-      <IconButton {...args} variant="raised" />
       <IconButton {...args} variant="destructive" />
     </div>
   ),
