@@ -104,7 +104,6 @@ export { Spinner } from './components/Spinner/Spinner.js'
 export { StopClickPropagation } from './components/StopClickPropagation/StopClickPropagation.js'
 export { Switch } from './components/Switch/Switch.js'
 export { ControlledSwitch } from './components/Switch/ControlledSwitch.js'
-export { TabbedNav } from './components/TabbedNav/TabbedNav.js'
 export {
   Tabs,
   TabsContent,

@@ -1,3 +1,5 @@
+import type { ComponentProps } from 'react'
+
 import {
   disabledStyle,
   focusRingVariants,
@@ -11,7 +13,7 @@ function TextArea({
   autoComplete = 'off',
   spellCheck = 'false',
   ...props
-}: React.ComponentProps<'textarea'> & { resize?: boolean }) {
+}: ComponentProps<'textarea'> & { resize?: boolean }) {
   return (
     <textarea
       data-slot="textarea"

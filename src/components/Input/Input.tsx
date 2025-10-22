@@ -1,3 +1,4 @@
+import type { ComponentProps } from 'react'
 import {
   disabledStyle,
   focusRingVariants,
@@ -13,7 +14,7 @@ function Input({
   autoComplete = 'off',
   spellCheck = 'false',
   ...props
-}: React.ComponentProps<'input'>) {
+}: ComponentProps<'input'>) {
   return (
     <input
       type={type}

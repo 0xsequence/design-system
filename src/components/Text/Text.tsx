@@ -1,5 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
+import type { HTMLAttributes } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 
@@ -172,7 +173,7 @@ export const textVariants = cva('', {
 })
 
 export interface TextProps
-  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'hidden' | 'color'>,
+  extends Omit<HTMLAttributes<HTMLSpanElement>, 'hidden' | 'color'>,
     VariantProps<typeof textVariants> {
   asChild?: boolean
 }

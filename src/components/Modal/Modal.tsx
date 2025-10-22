@@ -3,7 +3,7 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { motion, type HTMLMotionProps } from 'motion/react'
-import { Fragment, type PropsWithChildren } from 'react'
+import { Fragment, type PropsWithChildren, type ReactNode } from 'react'
 
 import { CloseIcon } from '../../icons/index.js'
 import { cn } from '../../utils/classnames.js'
@@ -47,8 +47,8 @@ const modalContentVariants = cva(
 )
 
 export interface ModalProps extends VariantProps<typeof modalContentVariants> {
-  header?: React.ReactNode
-  footer?: React.ReactNode
+  header?: ReactNode
+  footer?: ReactNode
   scroll?: boolean
   isDismissible?: boolean
   onClose?: () => void

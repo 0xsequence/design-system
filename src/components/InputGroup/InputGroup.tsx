@@ -1,11 +1,12 @@
 import { cva, type VariantProps } from 'class-variance-authority'
+import type { ComponentProps } from 'react'
 import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Input } from '../Input/Input.js'
 import { TextArea } from '../TextArea/TextArea.js'
 
-function InputGroup({ className, ...props }: React.ComponentProps<'div'>) {
+function InputGroup({ className, ...props }: ComponentProps<'div'>) {
   return (
     <div
       data-slot="input-group"
@@ -38,10 +39,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<'div'>) {
   )
 }
 
-function InputGroupInput({
-  className,
-  ...props
-}: React.ComponentProps<'input'>) {
+function InputGroupInput({ className, ...props }: ComponentProps<'input'>) {
   return (
     <Input
       data-slot="input-group-control"
@@ -57,7 +55,7 @@ function InputGroupInput({
 function InputGroupTextarea({
   className,
   ...props
-}: React.ComponentProps<'textarea'>) {
+}: ComponentProps<'textarea'>) {
   return (
     <TextArea
       data-slot="input-group-control"
@@ -93,7 +91,7 @@ function InputGroupAddon({
   className,
   align = 'inline-start',
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof inputGroupAddonVariants>) {
+}: ComponentProps<'div'> & VariantProps<typeof inputGroupAddonVariants>) {
   return (
     <div
       role="group"
@@ -111,7 +109,7 @@ function InputGroupAddon({
   )
 }
 
-function InputGroupText({ className, ...props }: React.ComponentProps<'span'>) {
+function InputGroupText({ className, ...props }: ComponentProps<'span'>) {
   return (
     <span
       className={cn(

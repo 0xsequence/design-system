@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { memo } from 'react'
+import { memo, type HTMLAttributes } from 'react'
 
 import { networkImageUrl, replaceSize } from '../../utils/assets.js'
 import { cn } from '../../utils/classnames.js'
@@ -28,7 +28,7 @@ const networkImageVariants = cva(
 )
 
 interface NetworkImageProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof networkImageVariants> {
   chainId: number
   src?: string

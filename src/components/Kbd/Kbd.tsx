@@ -1,7 +1,9 @@
+import type { ComponentProps } from 'react'
+
 import { cn } from '../../utils/classnames.js'
 import { textVariants } from '../Text/Text.js'
 
-export const Kbd = ({ className, ...props }: React.ComponentProps<'kbd'>) => {
+export const Kbd = ({ className, ...props }: ComponentProps<'kbd'>) => {
   return (
     <kbd
       data-slot="kbd"
@@ -15,10 +17,7 @@ export const Kbd = ({ className, ...props }: React.ComponentProps<'kbd'>) => {
   )
 }
 
-export const KbdGroup = ({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) => {
+export const KbdGroup = ({ className, ...props }: ComponentProps<'div'>) => {
   return (
     <kbd
       data-slot="kbd-group"

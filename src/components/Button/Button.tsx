@@ -12,7 +12,7 @@ const buttonVariants = cva(
     'disabled:cursor-default disabled:opacity-50',
 
     // Icon specific styles
-    '[&.h-7>svg]:not(.size-*):!size-4 [&>svg]:not(.size-*):!size-5',
+    '[&.h-7>svg]:not(.size-*):!size-4 [&_svg:not([class*="size-"])]:size-4',
 
     focusRingVariants(),
   ],
@@ -26,8 +26,7 @@ const buttonVariants = cva(
         outline:
           'bg-transparent text-primary border-1 border-border-button hover:border-border-hover',
         glass: 'bg-background-glass text-primary hover:bg-background-glass/80',
-        ghost:
-          'bg-transparent hover:bg-background-glass text-primary hover:text-primary',
+        ghost: 'bg-transparent hover:bg-primary/15 text-primary transition-all',
         raised: 'bg-background-raised text-primary',
         emphasis: 'bg-primary text-background-primary hover:bg-primary/80',
         destructive: 'bg-destructive text-white hover:bg-destructive/80',

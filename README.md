@@ -114,7 +114,7 @@ export default defineConfig({
 
 V3 attemps to be mostly compatible but there are some breaking changes that will need to be addressed.
 
-1. Form components are no longer wrapped in a Field component so properties like `labelLocation`, `label`, `description` are no longer on components like CheckBox, TextInput, etc. You will need to wrap these components in a Field component manually.
+1. Form components are no longer wrapped in a Field component so properties like `labelLocation`, `label`, `description` are no longer on components like CheckBox, TextInput, etc. You will need to wrap these components in a Field components manually. Field is now broken up between a collection of Field based components like FieldSet, FieldGroup, Field, FieldLabel, FieldDescription, FieldError to give more control how fields are displayed. Check the Field and Form examples in storybook to see how to use these or refer to the shadcn Field docs.
 
 2. RadioGroup no longer takes an options object. Instead you must use RadioGroup and RadioGroupItem components:
 
@@ -128,11 +128,13 @@ V3 attemps to be mostly compatible but there are some breaking changes that will
 
 3. Button component is now a simple component which allows you to easily create your own Buttons with children content of your choice, the Legacy Button component is renamed ButtonPreset which accepts properties like `leftIcon`, `rightIcon`, `label`, etc.
 
-4. Button variants have changed, `glass` is no longer the default variant, now use `secondary`. Some variants have been removed like `feature`, and `emphasis`.
+4. Button variants have changed, `glass` is no longer available, now uses `secondary` as the default. Some variants have been removed like `feature`, `glass`, `emphasis`, and `raised`.
 
 5. Glass layers and blur effects: many of the raised popover layers like Toast, Popover, Tooltip, Select, used glass blurred effect. While this looked pretty good in certain cases, it caused issues with contrast and readability when overlayed ontop of certain user generated content and lighter content would show through too much. It was decided to switch to opaque layers instead.
 
 6. Divider component is replaced with shadcn Separator component which supports horizontal and vertical orientation
+
+7. TabbedNav has been removed in favor of the Tabs components. If you want a similar behavior as the TabbedNav it is suggested you create a component within your project built from Tabs, TabsList, and TabsTrigger components.
 
 ### Used by
 

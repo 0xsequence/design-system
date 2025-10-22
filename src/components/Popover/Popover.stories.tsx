@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import type { ComponentProps } from 'react'
 
 import { Button } from '../Button/Button.js'
 import { Separator } from '../Separator/Separator.js'
@@ -12,7 +13,7 @@ export default {
 
 type Story = StoryObj<typeof PopoverContent>
 
-const StoryWrapper = (props: React.ComponentProps<typeof PopoverContent>) => {
+const StoryWrapper = (props: ComponentProps<typeof PopoverContent>) => {
   const { children, ...rest } = props
   return (
     <div className="flex justify-center">

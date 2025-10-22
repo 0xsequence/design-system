@@ -1,9 +1,73 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
-import { type ReactNode } from 'react'
+import { type ComponentProps, type ReactNode } from 'react'
 
-import { focusRingVariants } from '../../styles.js'
+import { disabledStyle, focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { Text } from '../Text/Text.js'
+import { textVariants } from '../Text/Text.js'
+
+function Tabs({
+  className,
+  ...props
+}: ComponentProps<typeof TabsPrimitive.Root>) {
+  return (
+    <TabsPrimitive.Root
+      data-slot="tabs"
+      className={cn('flex flex-col gap-2', className)}
+      {...props}
+    />
+  )
+}
+
+function TabsList({
+  className,
+  ...props
+}: ComponentProps<typeof TabsPrimitive.List>) {
+  return (
+    <TabsPrimitive.List
+      data-slot="tabs-list"
+      className={cn(
+        'inline-flex h-10 w-full items-center justify-start border-b border-border-normal',
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function TabsTrigger({
+  className,
+  ...props
+}: ComponentProps<typeof TabsPrimitive.Trigger>) {
+  return (
+    <TabsPrimitive.Trigger
+      data-slot="tabs-trigger"
+      className={cn(
+        textVariants({ variant: 'normal-bold' }),
+        'h-full text-muted inline-flex items-center justify-center whitespace-nowrap cursor-pointer border-b-1 border-transparent px-4 -mb-[2px] rounded-t-sm',
+        'hover:not-[[data-state=active]]:opacity-80 data-[state=active]:border-border-focus data-[state=active]:text-border-focus',
+        focusRingVariants(),
+        disabledStyle,
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function TabsContent({
+  className,
+  ...props
+}: ComponentProps<typeof TabsPrimitive.Content>) {
+  return (
+    <TabsPrimitive.Content
+      data-slot="tabs-content"
+      className={cn('flex-1 outline-none', className)}
+      {...props}
+    />
+  )
+}
+
+export { Tabs, TabsContent, TabsList, TabsPrimitive, TabsTrigger }
 
 export interface TabItemProps {
   value: string
@@ -45,25 +109,16 @@ export const TabsHeader = (props: TabsHeaderProps) => {
 
       {tabs.map(tab => (
         <TabsPrimitive.Trigger
-          className="w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-secondary outline-hidden appearance-none border-none z-2 data-[state=active]:text-primary disabled:opacity-50"
+          className={cn(
+            textVariants({ variant: 'normal-bold' }),
+            'w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-secondary outline-hidden appearance-none border-none z-2 data-[state=active]:text-primary disabled:opacity-50'
+          )}
           key={tab.value}
           value={tab.value}
         >
-          <Text variant="normal" fontWeight="bold" className="block">
-            {tab.label}
-          </Text>
+          {tab.label}
         </TabsPrimitive.Trigger>
       ))}
     </TabsPrimitive.List>
   )
 }
-
-export { TabsPrimitive }
-
-export const Tabs = TabsPrimitive.Root
-
-export const TabsList = TabsPrimitive.TabsList
-
-export const TabsTrigger = TabsPrimitive.TabsTrigger
-
-export const TabsContent = TabsPrimitive.TabsContent

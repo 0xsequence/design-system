@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useState } from 'react'
 
 import { Card } from '../Card/Card.js'
 import { Text } from '../Text/Text.js'
 
-import { Tabs, TabsContent, TabsHeader } from './Tabs.js'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs.js'
 
 export default {
   title: 'Components/Tabs',
@@ -23,30 +22,49 @@ const Content = ({ children }: any) => (
 
 export const Default: Story = {
   render: args => {
-    const [value, setValue] = useState<string>(
-      args.value ?? args.defaultValue ?? 'coins'
-    )
-
     return (
-      <Tabs {...args} onValueChange={setValue}>
-        <TabsHeader
-          value={value}
-          tabs={[
-            { value: 'coins', label: 'Coins' },
-            { value: 'collectibles', label: 'Collectibles' },
-            { value: 'other', label: 'Other' },
-          ]}
-        />
+      <Tabs {...args}>
+        <TabsList>
+          <TabsTrigger value="coins">Coins</TabsTrigger>
+          <TabsTrigger value="collectibles">Collectibles</TabsTrigger>
+          <TabsTrigger value="rwas">RWAs</TabsTrigger>
+        </TabsList>
         <TabsContent value="coins">
           <Content>Coins content</Content>
         </TabsContent>
         <TabsContent value="collectibles">
           <Content>Collectibles content</Content>
         </TabsContent>
-        <TabsContent value="other">
+        <TabsContent value="rwas">
           <Content>Other content</Content>
         </TabsContent>
       </Tabs>
     )
+  },
+  args: {
+    defaultValue: 'coins',
+    onValueChange: (value: string) => {
+      console.log('value', value)
+    },
+  },
+}
+
+export const WithoutContent: Story = {
+  render: args => {
+    return (
+      <Tabs {...args}>
+        <TabsList>
+          <TabsTrigger value="coins">Coins</TabsTrigger>
+          <TabsTrigger value="collectibles">Collectibles</TabsTrigger>
+          <TabsTrigger value="rwas">RWAs</TabsTrigger>
+        </TabsList>
+      </Tabs>
+    )
+  },
+  args: {
+    defaultValue: 'coins',
+    onValueChange: (value: string) => {
+      console.log('value', value)
+    },
   },
 }
