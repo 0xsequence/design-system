@@ -12,29 +12,27 @@ export default {
 type Story = StoryObj<typeof Card>
 
 export const Default: Story = {
+  render: args => (
+    <Card {...args}>
+      <div className="flex flex-col">
+        <Text variant="large" color="primary">
+          Card
+        </Text>
+        <Text variant="normal" color="muted">
+          Description
+        </Text>
+      </div>
+    </Card>
+  ),
   args: {
-    children: (
-      <>
-        <div className="flex flex-col">
-          <Text variant="large" color="primary">
-            Card
-          </Text>
-          <Text variant="normal" color="muted">
-            Description
-          </Text>
-        </div>
-      </>
-    ),
+    variant: 'default',
   },
 }
 export const Clickable: Story = {
-  args: {
-    clickable: true,
-    onClick: () => console.log('Clicked!'),
-    asChild: true,
-    children: (
+  render: args => (
+    <Card {...args}>
       <button>
-        <div className="flex flex-col text-left">
+        <div className="flex flex-col">
           <Text variant="large" color="primary">
             Card
           </Text>
@@ -43,41 +41,12 @@ export const Clickable: Story = {
           </Text>
         </div>
       </button>
-    ),
-  },
-}
-export const Disabled: Story = {
+    </Card>
+  ),
   args: {
     clickable: true,
-    disabled: true,
-    children: (
-      <>
-        <div className="flex flex-col text-left">
-          <Text variant="large" color="primary">
-            Card
-          </Text>
-          <Text variant="normal" color="muted">
-            Description
-          </Text>
-        </div>
-      </>
-    ),
-  },
-}
-export const Outlined: Story = {
-  args: {
-    outlined: true,
-    children: (
-      <>
-        <div className="flex flex-col">
-          <Text variant="large" color="primary">
-            Card
-          </Text>
-          <Text variant="normal" color="muted">
-            Description
-          </Text>
-        </div>
-      </>
-    ),
+    disabled: false,
+    asChild: true,
+    onClick: () => console.log('Clicked!'),
   },
 }

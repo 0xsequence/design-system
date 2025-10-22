@@ -6,17 +6,12 @@ import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 
 export const cardVariants = cva(
-  [
-    'overflow-hidden',
-    'rounded-xl',
-    'p-4',
-    'w-full',
-    'border',
-    'border-border-card',
-  ],
+  ['overflow-hidden', 'rounded-xl', 'p-4', 'w-full'],
   {
     variants: {
       variant: {
+        default: 'bg-background-secondary border-1 border-border-card',
+        outline: 'bg-transparent border-1 border-border-card',
         muted: 'bg-background-muted border-1 border-border-card',
       },
       clickable: {
@@ -25,16 +20,9 @@ export const cardVariants = cva(
       disabled: {
         true: 'opacity-50 cursor-default pointer-events-none hover:border-border-card',
       },
-      outlined: {
-        true: 'bg-transparent',
-        false: 'bg-background-secondary',
-      },
-      blur: {
-        true: 'backdrop-blur-xs',
-      },
     },
     defaultVariants: {
-      outlined: false,
+      variant: 'default',
     },
   }
 )
@@ -50,10 +38,9 @@ export const Card = (props: CardProps) => {
     ref,
     className,
     children,
+    variant,
     clickable,
-    outlined,
     disabled,
-    blur,
     asChild,
     ...rest
   } = props
@@ -65,10 +52,9 @@ export const Card = (props: CardProps) => {
       ref={ref}
       className={cn(
         cardVariants({
+          variant,
           clickable,
-          outlined,
           disabled,
-          blur,
         }),
         className
       )}
