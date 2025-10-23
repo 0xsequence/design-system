@@ -90,7 +90,7 @@ export const SearchInput = (props: SearchInputProps) => {
         )}
         {showKeyboardShortcut && (
           <Kbd
-            className="absolute right-4 transition-opacity opacity-100 group-focus-within/input-group:opacity-0 inert:opacity-0"
+            className="hidden sm:inline-flex absolute right-4 transition-opacity opacity-100 group-focus-within/input-group:opacity-0 inert:opacity-0"
             inert={!!internalRef.current?.value.length}
           >
             {isMacOS() ? '⌘K' : 'Ctrl+K'}
