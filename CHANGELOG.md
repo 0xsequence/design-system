@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.0.1
+
+### Patch Changes
+
+- Fixing icons default sizes
+
 ## 3.0.0
 
 ### Major Changes
