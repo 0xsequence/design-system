@@ -35,6 +35,9 @@ export const Default: Story = {
       <Button {...args} variant="text">
         Text
       </Button>
+      <Button {...args} variant={null}>
+        Null
+      </Button>
     </div>
   ),
   args: {

@@ -72,11 +72,7 @@ export const Collapsible = (props: CollapsibleProps) => {
       {...rest}
     >
       <motion.div
-        className={clsx(
-          collapsibleVariants({ variant }),
-
-          className
-        )}
+        className={clsx(collapsibleVariants({ variant }), className)}
         initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
         animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
         transition={{ ease: 'easeOut', duration: 0.3 }}
