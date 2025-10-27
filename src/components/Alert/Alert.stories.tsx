@@ -16,17 +16,13 @@ export default {
 } as Meta<typeof Alert>
 
 export const All = {
-  render: (args: {
-    title: string
-    description: string
-    variant: 'default' | 'destructive'
-  }) => (
+  render: () => (
     <div className="flex flex-col gap-4">
       <Alert variant="default">
         <NetworkIcon />
         <AlertTitle>Default Alert</AlertTitle>
         <AlertDescription>
-          This is an alert with, title and description.
+          This is an alert with, icon, title and description.
         </AlertDescription>
       </Alert>
       <Alert variant="info">
@@ -65,7 +61,7 @@ export const Default = {
   render: (args: {
     title: string
     description: string
-    variant: 'default' | 'destructive'
+    variant: 'default' | 'info' | 'success' | 'warning' | 'error'
   }) => (
     <Alert variant={args.variant}>
       <CheckmarkIcon />
