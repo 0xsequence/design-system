@@ -8,7 +8,9 @@ import { TextArea } from '../TextArea/TextArea.js'
 
 import {
   Field,
+  FieldContent,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
@@ -151,14 +153,41 @@ export const Default = {
   ),
 }
 
-// export const Default: Story = {
-//   args: {
-//     labelLocation: 'top',
-//     label: 'Field label',
-//     description: 'Field description',
-//     trailDescription: 'Field trail description',
-//     error: 'Field error',
-//     disabled: false,
-//     required: false,
-//   },
-// }
+export const Responsive = {
+  render: () => (
+    <Card>
+      <FieldGroup>
+        <Field orientation="responsive">
+          <FieldContent>
+            <FieldLabel>Label</FieldLabel>
+            <FieldDescription>This is a description</FieldDescription>
+          </FieldContent>
+          <FieldContent>
+            <Input />
+            <FieldError>This is an error</FieldError>
+          </FieldContent>
+        </Field>
+        <Field orientation="responsive">
+          <FieldContent>
+            <FieldLabel>Label</FieldLabel>
+            <FieldDescription>This is a description</FieldDescription>
+          </FieldContent>
+          <FieldContent>
+            <Input />
+            <FieldError>This is an error</FieldError>
+          </FieldContent>
+        </Field>
+        <Field orientation="responsive">
+          <FieldContent>
+            <FieldLabel>Label</FieldLabel>
+            <FieldDescription>This is a description</FieldDescription>
+          </FieldContent>
+          <FieldContent>
+            <Input />
+            <FieldError>This is an error</FieldError>
+          </FieldContent>
+        </Field>
+      </FieldGroup>
+    </Card>
+  ),
+}

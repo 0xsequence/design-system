@@ -192,6 +192,10 @@ function FieldContent({ className, ...props }: ComponentProps<'div'>) {
 }
 
 function FieldLabel({ className, ...props }: ComponentProps<typeof Label>) {
+  if (!props.children) {
+    return null
+  }
+
   return (
     <Label
       data-slot="field-label"
@@ -207,6 +211,9 @@ function FieldLabel({ className, ...props }: ComponentProps<typeof Label>) {
 }
 
 function FieldTitle({ className, ...props }: ComponentProps<'div'>) {
+  if (!props.children) {
+    return null
+  }
   return (
     <div
       data-slot="field-label"
@@ -220,6 +227,10 @@ function FieldTitle({ className, ...props }: ComponentProps<'div'>) {
 }
 
 function FieldDescription({ className, ...props }: ComponentProps<'p'>) {
+  if (!props.children) {
+    return null
+  }
+
   return (
     <p
       data-slot="field-description"
