@@ -3,23 +3,40 @@ import type { ComponentProps } from 'react'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 import { cn } from '../../utils/classnames.js'
-import { Text } from '../Text/Text.js'
+import { Text, textVariants } from '../Text/Text.js'
 
 export { DropdownMenuPrimitive }
 
-export const DropdownMenu = DropdownMenuPrimitive.Root
+function DropdownMenu({
+  ...props
+}: ComponentProps<typeof DropdownMenuPrimitive.Root>) {
+  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />
+}
+function DropdownMenuPortal({
+  ...props
+}: ComponentProps<typeof DropdownMenuPrimitive.Portal>) {
+  return (
+    <DropdownMenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />
+  )
+}
+function DropdownMenuTrigger({
+  ...props
+}: ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
+  return (
+    <DropdownMenuPrimitive.Trigger
+      data-slot="dropdown-menu-trigger"
+      {...props}
+    />
+  )
+}
 
-export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
-
-export const DropdownMenuPortal = DropdownMenuPrimitive.Portal
-
-export const DropdownMenuContent = ({
+const DropdownMenuContent = ({
   className,
   children,
   sideOffset = 4,
   ...rest
 }: ComponentProps<typeof DropdownMenuPrimitive.Content>) => (
-  <DropdownMenuPrimitive.Portal>
+  <DropdownMenuPortal>
     <DropdownMenuPrimitive.Content
       data-slot="dropdown-menu-content"
       className={cn(
@@ -32,26 +49,42 @@ export const DropdownMenuContent = ({
     >
       {children}
     </DropdownMenuPrimitive.Content>
-  </DropdownMenuPrimitive.Portal>
+  </DropdownMenuPortal>
 )
 
-export const DropdownMenuItem = ({
+function DropdownMenuGroup({
+  ...props
+}: ComponentProps<typeof DropdownMenuPrimitive.Group>) {
+  return (
+    <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />
+  )
+}
+
+function DropdownMenuItem({
   className,
-  children,
-  ...rest
-}: ComponentProps<typeof DropdownMenuPrimitive.Item>) => (
-  <DropdownMenuPrimitive.Item
-    className={cn(
-      'flex items-center justify-between rounded-xs px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
-      'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-      'data-highlighted:bg-background-hover',
-      className
-    )}
-    {...rest}
-  >
-    <Text variant="small">{children}</Text>
-  </DropdownMenuPrimitive.Item>
-)
+  inset,
+  variant = 'default',
+  ...props
+}: ComponentProps<typeof DropdownMenuPrimitive.Item> & {
+  inset?: boolean
+  variant?: 'default' | 'destructive'
+}) {
+  return (
+    <DropdownMenuPrimitive.Item
+      data-slot="dropdown-menu-item"
+      data-inset={inset}
+      data-variant={variant}
+      className={cn(
+        textVariants({ variant: 'small' }),
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-secondary outline-hidden',
+        'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-primary/50',
+        'data-highlighted:bg-background-hover',
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 const DropdownMenuItemIndicator = (
   props: ComponentProps<typeof DropdownMenuPrimitive.ItemIndicator>
@@ -62,7 +95,7 @@ const DropdownMenuItemIndicator = (
   />
 )
 
-export function DropdownMenuSeparator({
+function DropdownMenuSeparator({
   className,
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
@@ -75,15 +108,37 @@ export function DropdownMenuSeparator({
   )
 }
 
-export const DropdownMenuCheckboxItem = ({
+function DropdownMenuLabel({
+  className,
+  inset,
+  ...props
+}: ComponentProps<typeof DropdownMenuPrimitive.Label> & {
+  inset?: boolean
+}) {
+  return (
+    <DropdownMenuPrimitive.Label
+      data-slot="dropdown-menu-label"
+      data-inset={inset}
+      className={cn(
+        textVariants({ variant: 'small-bold' }),
+        'text-primary px-2 py-1.5 data-[inset]:pl-8',
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+const DropdownMenuCheckboxItem = ({
   className,
   children,
   ...rest
 }: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>) => {
   return (
     <DropdownMenuPrimitive.CheckboxItem
+      data-slot="dropdown-menu-checkbox-item"
       className={cn(
-        'flex items-center justify-between rounded-xs px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
         'data-highlighted:bg-background-hover',
         className
@@ -98,17 +153,27 @@ export const DropdownMenuCheckboxItem = ({
   )
 }
 
-export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
+function DropdownMenuRadioGroup({
+  ...props
+}: ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
+  return (
+    <DropdownMenuPrimitive.RadioGroup
+      data-slot="dropdown-menu-radio-group"
+      {...props}
+    />
+  )
+}
 
-export const DropdownMenuRadioItem = ({
+const DropdownMenuRadioItem = ({
   className,
   children,
   ...rest
 }: ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) => {
   return (
     <DropdownMenuPrimitive.RadioItem
+      data-slot="dropdown-menu-radio-item"
       className={cn(
-        'flex items-center justify-between rounded-xs px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
         'data-highlighted:bg-background-hover',
         className
@@ -121,4 +186,23 @@ export const DropdownMenuRadioItem = ({
       <Text variant="small">{children}</Text>
     </DropdownMenuPrimitive.RadioItem>
   )
+}
+
+export {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+
+  // DropdownMenuShortcut,
+  // DropdownMenuSub,
+  // DropdownMenuSubTrigger,
+  // DropdownMenuSubContent,
 }

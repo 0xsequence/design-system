@@ -8,7 +8,9 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
@@ -35,36 +37,43 @@ export const Default: Story = {
             <IconButton icon={ContextMenuIcon} />
           </DropdownMenuTrigger>
           <DropdownMenuContent {...args}>
-            <DropdownMenuItem>New Tab</DropdownMenuItem>
-            <DropdownMenuItem>New Window</DropdownMenuItem>
-            <DropdownMenuItem disabled>New Private Tab</DropdownMenuItem>
-            <DropdownMenuItem>Item 4</DropdownMenuItem>
-            <DropdownMenuItem>Item 5</DropdownMenuItem>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuGroup>
+              <DropdownMenuItem>New Tab</DropdownMenuItem>
+              <DropdownMenuItem>New Window</DropdownMenuItem>
+              <DropdownMenuItem disabled>New Private Tab</DropdownMenuItem>
+              <DropdownMenuItem>Item 4</DropdownMenuItem>
+              <DropdownMenuItem>Item 5</DropdownMenuItem>
+            </DropdownMenuGroup>
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuCheckboxItem
-              checked={showBookmarks}
-              onCheckedChange={value => setShowBookmarks(!!value)}
-            >
-              Show Bookmarks
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem
-              checked={showFullURLs}
-              onCheckedChange={value => setShowFullURLs(!!value)}
-            >
-              Show Full URLs
-            </DropdownMenuCheckboxItem>
+            <DropdownMenuGroup>
+              <DropdownMenuCheckboxItem
+                checked={showBookmarks}
+                onCheckedChange={value => setShowBookmarks(!!value)}
+              >
+                Show Bookmarks
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem
+                checked={showFullURLs}
+                onCheckedChange={value => setShowFullURLs(!!value)}
+              >
+                Show Full URLs
+              </DropdownMenuCheckboxItem>
+            </DropdownMenuGroup>
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuRadioGroup
-              value={mode}
-              onValueChange={value => setMode(value as any)}
-            >
-              <DropdownMenuRadioItem value="list">List</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="grid">Grid</DropdownMenuRadioItem>
-            </DropdownMenuRadioGroup>
+            <DropdownMenuGroup>
+              <DropdownMenuRadioGroup
+                value={mode}
+                onValueChange={value => setMode(value as any)}
+              >
+                <DropdownMenuRadioItem value="list">List</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="grid">Grid</DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
