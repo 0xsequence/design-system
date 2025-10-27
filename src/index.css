@@ -8,7 +8,7 @@
   --seq-color-positive: var(--color-green-500);
   --seq-color-negative: var(--color-red-500);
   --seq-color-info: var(--color-blue-500);
-  --seq-color-warning: var(--color-yellow-500);
+  --seq-color-warning: var(--color-amber-500);
   --seq-color-destructive: var(--color-red-500);
 
   /* Text colors */
@@ -77,7 +77,7 @@
   --seq-color-positive: var(--color-green-600);
   --seq-color-negative: var(--color-red-600);
   --seq-color-info: var(--color-blue-600);
-  --seq-color-warning: var(--color-yellow-600);
+  --seq-color-warning: var(--color-amber-500);
   --seq-color-destructive: var(--color-red-600);
 
   /* Text colors */

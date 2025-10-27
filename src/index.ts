@@ -2,6 +2,11 @@
 export { colorNames, type ColorName, type ColorTokens } from './tokens/color.js'
 
 // Components
+export {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from './components/Alert/Alert.js'
 export { Badge } from './components/Badge/Badge.js'
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'
 export { Button, buttonVariants } from './components/Button/Button.js'
