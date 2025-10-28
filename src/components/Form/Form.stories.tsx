@@ -123,7 +123,7 @@ export const Default: Story = {
                 }}
               />
               <FieldDescription>This is the trail description</FieldDescription>
-              <FieldError errors={[errors.selectOption]} />
+              <FieldError errors={[errors.message]} />
             </Field>
 
             <Field>
