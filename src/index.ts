@@ -93,7 +93,20 @@ export {
 } from './components/RadioGroup/RadioGroup.js'
 export { ControlledRadioGroup } from './components/RadioGroup/ControlledRadioGroup.js'
 export { Scroll } from './components/Scroll/Scroll.js'
-export { Select } from './components/Select/Select.js'
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectHelper,
+  SelectItem,
+  SelectLabel,
+  SelectPrimitive,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from './components/Select/Select.js'
 export { ControlledSelect } from './components/Select/ControlledSelect.js'
 export { SearchInput } from './components/SearchInput/SearchInput.js'
 export {

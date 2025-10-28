@@ -1,17 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { useState } from 'react'
 
+import { Button } from '../Button/Button.js'
 import { Modal } from '../Modal/Modal.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
 import { Text } from '../Text/Text.js'
 
-import { Select } from './Select.js'
+import { SelectHelper } from './Select.js'
 
 export default {
   title: 'Forms/Select',
-  component: Select,
-} as Meta<typeof Select>
+  component: SelectHelper,
+} as Meta<typeof SelectHelper>
 
-type Story = StoryObj<typeof Select>
+type Story = StoryObj<typeof SelectHelper>
 
 export const Default: Story = {
   args: {
@@ -118,12 +120,20 @@ export const TooManyOptions: Story = {
 export const WithinModal: Story = {
   tags: ['!autodocs'],
   render: args => {
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
-      <Modal>
-        <div className="p-4">
-          <Select className="w-full" {...args} />
-        </div>
-      </Modal>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+
+        {isOpen && (
+          <Modal onClose={() => setIsOpen(false)}>
+            <div className="p-4">
+              <SelectHelper className="w-full" {...args} />
+            </div>
+          </Modal>
+        )}
+      </>
     )
   },
   args: Default.args,
@@ -134,12 +144,20 @@ export const TooManyOptionsWithModal: Story = {
     ...TooManyOptions.args,
   },
   render: args => {
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
-      <Modal>
-        <div className="p-4">
-          <Select {...args} />
-        </div>
-      </Modal>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+
+        {isOpen && (
+          <Modal onClose={() => setIsOpen(false)}>
+            <div className="p-4">
+              <SelectHelper className="w-full" {...args} />
+            </div>
+          </Modal>
+        )}
+      </>
     )
   },
 }

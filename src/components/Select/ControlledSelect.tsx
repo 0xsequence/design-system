@@ -1,9 +1,9 @@
 import type { ComponentProps } from 'react'
 import { Controller, type Control } from 'react-hook-form'
 
-import { Select } from './Select.js'
+import { SelectHelper } from './Select.js'
 
-type ControlledSelectProps = ComponentProps<typeof Select> & {
+type ControlledSelectProps = ComponentProps<typeof SelectHelper> & {
   control: Control
   defaultValue?: string
   name: string
@@ -25,7 +25,7 @@ export const ControlledSelect = ({
     control={control}
     rules={rules}
     render={({ field, fieldState }) => (
-      <Select
+      <SelectHelper
         onValueChange={onValueChange}
         defaultValue={defaultValue}
         {...field}

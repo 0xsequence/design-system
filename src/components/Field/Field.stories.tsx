@@ -4,6 +4,13 @@ import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 import { Checkbox } from '../Checkbox/Checkbox.js'
 import { Input } from '../Input/Input.js'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../Select/Select.js'
 import { TextArea } from '../TextArea/TextArea.js'
 
 import {
@@ -57,7 +64,7 @@ export const Default = {
                 />
               </Field>
               <div className="grid grid-cols-3 gap-4">
-                {/* <Field>
+                <Field>
                   <FieldLabel htmlFor="checkout-exp-month-ts6">
                     Month
                   </FieldLabel>
@@ -98,7 +105,7 @@ export const Default = {
                       <SelectItem value="2029">2029</SelectItem>
                     </SelectContent>
                   </Select>
-                </Field> */}
+                </Field>
                 <Field>
                   <FieldLabel htmlFor="checkout-7j9-cvv">CVV</FieldLabel>
                   <Input id="checkout-7j9-cvv" placeholder="123" required />
@@ -114,7 +121,6 @@ export const Default = {
             <FieldDescription>
               The billing address associated with your payment method
             </FieldDescription>
-            {/* <FieldGroup> */}
             <Field orientation="horizontal">
               <Checkbox id="checkout-7j9-same-as-shipping-wgm" defaultChecked />
               <FieldLabel
@@ -124,23 +130,18 @@ export const Default = {
                 Same as shipping address
               </FieldLabel>
             </Field>
-            {/* </FieldGroup> */}
           </FieldSet>
 
-          <FieldSet>
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="checkout-7j9-optional-comments">
-                  Comments
-                </FieldLabel>
-                <TextArea
-                  id="checkout-7j9-optional-comments"
-                  placeholder="Add any additional comments"
-                  className="resize-none"
-                />
-              </Field>
-            </FieldGroup>
-          </FieldSet>
+          <Field>
+            <FieldLabel htmlFor="checkout-7j9-optional-comments">
+              Comments
+            </FieldLabel>
+            <TextArea
+              id="checkout-7j9-optional-comments"
+              placeholder="Add any additional comments"
+              className="resize-none"
+            />
+          </Field>
           <Field orientation="horizontal">
             <Button type="submit">Submit</Button>
             <Button variant="outline" type="button">
