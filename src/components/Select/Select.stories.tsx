@@ -4,9 +4,16 @@ import { useState } from 'react'
 import { Button } from '../Button/Button.js'
 import { Modal } from '../Modal/Modal.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
-import { Text } from '../Text/Text.js'
 
-import { SelectHelper } from './Select.js'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectHelper,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from './Select.js'
 
 export default {
   title: 'Forms/Select',
@@ -49,61 +56,56 @@ export const Default: Story = {
   },
 }
 
-export const Custom: Story = {
+export const NetworkSelect: Story = {
+  render: args => (
+    <Select
+      defaultValue={args.defaultValue}
+      onValueChange={args.onValueChange}
+      disabled={args.disabled}
+    >
+      <SelectTrigger>
+        <SelectValue placeholder="Select a network" />
+      </SelectTrigger>
+      <SelectContent align="start" position="popper">
+        <SelectGroup className=">*:h-13">
+          <SelectItem value="mainnet">
+            <NetworkImage chainId={1} />
+            Mainnet
+          </SelectItem>
+          <SelectItem value="polygon">
+            <NetworkImage chainId={137} />
+            Polygon
+          </SelectItem>
+          <SelectItem value="bsc">
+            <NetworkImage chainId={56} />
+            BNB Smart Chain
+          </SelectItem>
+          <SelectItem value="avalanche">
+            <NetworkImage chainId={43114} />
+            Avalanche
+          </SelectItem>
+          <SelectItem value="arbitrum">
+            <NetworkImage chainId={42161} />
+            Arbitrum
+          </SelectItem>
+          <SelectItem value="optimism">
+            <NetworkImage chainId={10} />
+            Optimism
+          </SelectItem>
+          <SelectItem value="base">
+            <NetworkImage chainId={8453} />
+            Base
+          </SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  ),
   args: {
     onValueChange: value => {
       console.log('selected: ', value)
     },
-    name: 'selectDemo',
     disabled: false,
     defaultValue: 'mainnet',
-    options: [
-      {
-        label: (
-          <div className="flex items-center gap-2">
-            <NetworkImage chainId={1} />
-            <Text>Mainnet</Text>
-          </div>
-        ),
-        value: 'mainnet',
-      },
-      {
-        label: (
-          <div className="flex items-center gap-2">
-            <NetworkImage chainId={137} />
-            <Text>Polygon</Text>
-          </div>
-        ),
-        value: 'polygon',
-      },
-      {
-        label: (
-          <div className="flex items-center gap-2">
-            <NetworkImage chainId={56} />
-            <Text>BNB Smart Chain</Text>
-          </div>
-        ),
-        value: 'bsc',
-      },
-      {
-        label: (
-          <div className="flex items-center gap-2">
-            <NetworkImage chainId={43114} />
-            <Text>Avalanche</Text>
-          </div>
-        ),
-        value: 'avalanche',
-      },
-      {
-        label: (
-          <div className="flex items-center gap-2">
-            <NetworkImage chainId={42161} />
-            <Text>Arbitrum</Text>
-          </div>
-        ),
-        value: 'arbitrum',
-      },
-    ],
   },
 }
 
