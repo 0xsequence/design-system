@@ -22,7 +22,7 @@ const buttonVariants = cva(
         ],
         sm: [
           textVariants({ variant: 'normal-bold' }),
-          'min-w-9 h-9 px-4 [&_svg:not([class*="size-"])]:size-5',
+          'min-w-9 h-9 px-3 gap-1 [&_svg:not([class*="size-"])]:size-5',
         ],
         md: [
           textVariants({ variant: 'normal-bold' }),
