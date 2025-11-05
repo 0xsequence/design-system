@@ -4,6 +4,8 @@ import {
   CheckmarkIcon,
   CloseIcon,
   InfoIcon,
+  RefreshIcon,
+  SettingsIcon,
   WarningIcon,
 } from '../../icons/index.js'
 
@@ -23,7 +25,10 @@ export const All = {
         <AlertDescription>
           This is an alert with icon, title and description.
         </AlertDescription>
-        <AlertButton>Configure</AlertButton>
+        <AlertButton>
+          <SettingsIcon />
+          Configure
+        </AlertButton>
       </Alert>
       <Alert variant="success">
         <CheckmarkIcon />
@@ -31,7 +36,10 @@ export const All = {
         <AlertDescription>
           This is an alert with icon, title and description.
         </AlertDescription>
-        <AlertButton>Configure</AlertButton>
+        <AlertButton>
+          <SettingsIcon />
+          Configure
+        </AlertButton>
       </Alert>
       <Alert variant="warning">
         <WarningIcon />
@@ -39,7 +47,10 @@ export const All = {
         <AlertDescription>
           This is an alert with icon, title and description.
         </AlertDescription>
-        <AlertButton>Configure</AlertButton>
+        <AlertButton>
+          <SettingsIcon />
+          Configure
+        </AlertButton>
       </Alert>
       <Alert variant="error">
         <CloseIcon />
@@ -47,7 +58,10 @@ export const All = {
         <AlertDescription>
           This is an alert with icon, title and description.
         </AlertDescription>
-        <AlertButton>Configure</AlertButton>
+        <AlertButton>
+          <SettingsIcon />
+          Configure
+        </AlertButton>
       </Alert>
     </div>
   ),
@@ -63,7 +77,10 @@ export const Default: StoryObj<{
       <CheckmarkIcon />
       <AlertTitle>{args.title}</AlertTitle>
       <AlertDescription>{args.description}</AlertDescription>
-      <AlertButton>Configure</AlertButton>
+      <AlertButton>
+        <SettingsIcon />
+        Configure
+      </AlertButton>
     </Alert>
   ),
   args: {
@@ -101,6 +118,35 @@ export const WithoutIcon: StoryObj<{
     <Alert variant={args.variant}>
       <AlertTitle>{args.title}</AlertTitle>
       <AlertDescription>{args.description}</AlertDescription>
+    </Alert>
+  ),
+  args: {
+    title: 'Success! Your changes have been saved',
+    description: 'This is an alert with icon, title and description.',
+    variant: 'info',
+  },
+}
+
+export const BottomButtons: StoryObj<{
+  title: string
+  description: string
+  variant: 'info' | 'success' | 'warning' | 'error'
+}> = {
+  render: args => (
+    <Alert variant={args.variant}>
+      <CheckmarkIcon />
+      <AlertTitle>{args.title}</AlertTitle>
+      <AlertDescription>{args.description}</AlertDescription>
+      <div className="col-start-2 flex gap-2">
+        <AlertButton>
+          <SettingsIcon />
+          Configure
+        </AlertButton>
+        <AlertButton>
+          <RefreshIcon />
+          Reset
+        </AlertButton>
+      </div>
     </Alert>
   ),
   args: {

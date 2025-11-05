@@ -8,8 +8,8 @@ import { textVariants } from '../Text/Text.js'
 const alertVariants = cva(
   [
     textVariants({ variant: 'normal' }),
-    'text-primary relative w-full rounded-xl border-1 px-4 py-3 grid gap-y-0.5 items-center grid-cols-[auto_1fr_auto]',
-    'has-[>svg]:gap-x-2 [&>svg]:size-4',
+    'text-primary relative w-full rounded-xl border-1 p-4 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
+    '[&>svg]:size-4 [&>svg]:mr-2',
   ],
   {
     variants: {
@@ -59,7 +59,7 @@ function AlertTitle({ className, ...props }: ComponentProps<'div'>) {
       data-slot="alert-title"
       className={cn(
         textVariants({ variant: 'normal-bold' }),
-        'text-current col-start-2 line-clamp-1 min-h-4',
+        'text-current col-start-2 col-end-4 line-clamp-1 min-h-4 sm:col-end-3',
         className
       )}
       {...props}
@@ -73,7 +73,7 @@ function AlertDescription({ className, ...props }: ComponentProps<'div'>) {
       data-slot="alert-description"
       className={cn(
         textVariants({ variant: 'normal' }),
-        'text-current col-start-2 grid justify-items-start gap-1 [&_p]:leading-relaxed',
+        'text-current col-start-2 col-end-4 grid justify-items-start gap-1 sm:col-end-3',
         className
       )}
       {...props}
@@ -88,7 +88,10 @@ function AlertButton({ className, ...props }: ComponentProps<'button'>) {
       variant="outline"
       size="sm"
       shape="square"
-      className={cn('row-start-1 row-span-2 col-start-3', className)}
+      className={cn(
+        'row-start-3 col-start-3 sm:row-start-1 sm:col-start-3 sm:row-span-2',
+        className
+      )}
       {...props}
     />
   )
