@@ -2,13 +2,15 @@
 
 @source './';
 
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 :root,
 [data-theme='dark'] {
   /* Status colors */
   --seq-color-positive: var(--color-green-500);
   --seq-color-negative: var(--color-red-500);
-  --seq-color-info: var(--color-blue-500);
-  --seq-color-warning: var(--color-amber-500);
+  --seq-color-info: var(--color-indigo-500);
+  --seq-color-warning: var(--color-yellow-500);
   --seq-color-destructive: var(--color-red-500);
 
   /* Text colors */
@@ -76,8 +78,8 @@
   /* Status colors */
   --seq-color-positive: var(--color-green-600);
   --seq-color-negative: var(--color-red-600);
-  --seq-color-info: var(--color-blue-600);
-  --seq-color-warning: var(--color-amber-500);
+  --seq-color-info: var(--color-indigo-600);
+  --seq-color-warning: var(--color-yellow-500);
   --seq-color-destructive: var(--color-red-600);
 
   /* Text colors */
@@ -213,6 +215,7 @@
 
 :root {
   --base-unit: 16;
+  color: var(--color-primary);
 }
 
 @utility text-* {
