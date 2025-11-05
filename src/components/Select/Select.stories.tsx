@@ -67,7 +67,7 @@ export const NetworkSelect: Story = {
         <SelectValue placeholder="Select a network" />
       </SelectTrigger>
       <SelectContent align="start" position="popper">
-        <SelectGroup className=">*:h-13">
+        <SelectGroup className="[&>*]:h-13">
           <SelectItem value="mainnet">
             <NetworkImage chainId={1} />
             Mainnet
