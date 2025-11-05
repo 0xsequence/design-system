@@ -1,14 +1,13 @@
-import type { Meta } from '@storybook/react-vite'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import {
   CheckmarkIcon,
   CloseIcon,
   InfoIcon,
-  NetworkIcon,
   WarningIcon,
 } from '../../icons/index.js'
 
-import { Alert, AlertDescription, AlertTitle } from './Alert.js'
+import { Alert, AlertButton, AlertDescription, AlertTitle } from './Alert.js'
 
 export default {
   title: 'Components/Alert',
@@ -18,19 +17,13 @@ export default {
 export const All = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Alert variant="default">
-        <NetworkIcon />
-        <AlertTitle>Default Alert</AlertTitle>
-        <AlertDescription>
-          This is an alert with, icon, title and description.
-        </AlertDescription>
-      </Alert>
       <Alert variant="info">
         <InfoIcon />
         <AlertTitle>Info Alert</AlertTitle>
         <AlertDescription>
           This is an alert with icon, title and description.
         </AlertDescription>
+        <AlertButton>Configure</AlertButton>
       </Alert>
       <Alert variant="success">
         <CheckmarkIcon />
@@ -38,6 +31,7 @@ export const All = {
         <AlertDescription>
           This is an alert with icon, title and description.
         </AlertDescription>
+        <AlertButton>Configure</AlertButton>
       </Alert>
       <Alert variant="warning">
         <WarningIcon />
@@ -45,6 +39,7 @@ export const All = {
         <AlertDescription>
           This is an alert with icon, title and description.
         </AlertDescription>
+        <AlertButton>Configure</AlertButton>
       </Alert>
       <Alert variant="error">
         <CloseIcon />
@@ -52,17 +47,38 @@ export const All = {
         <AlertDescription>
           This is an alert with icon, title and description.
         </AlertDescription>
+        <AlertButton>Configure</AlertButton>
       </Alert>
     </div>
   ),
 }
 
-export const Default = {
-  render: (args: {
-    title: string
-    description: string
-    variant: 'default' | 'info' | 'success' | 'warning' | 'error'
-  }) => (
+export const Default: StoryObj<{
+  title: string
+  description: string
+  variant: 'info' | 'success' | 'warning' | 'error'
+}> = {
+  render: args => (
+    <Alert variant={args.variant}>
+      <CheckmarkIcon />
+      <AlertTitle>{args.title}</AlertTitle>
+      <AlertDescription>{args.description}</AlertDescription>
+      <AlertButton>Configure</AlertButton>
+    </Alert>
+  ),
+  args: {
+    title: 'Success! Your changes have been saved',
+    description: 'This is an alert with icon, title and description.',
+    variant: 'info',
+  },
+}
+
+export const WithoutButton: StoryObj<{
+  title: string
+  description: string
+  variant: 'info' | 'success' | 'warning' | 'error'
+}> = {
+  render: args => (
     <Alert variant={args.variant}>
       <CheckmarkIcon />
       <AlertTitle>{args.title}</AlertTitle>
@@ -72,6 +88,24 @@ export const Default = {
   args: {
     title: 'Success! Your changes have been saved',
     description: 'This is an alert with icon, title and description.',
-    variant: 'default',
+    variant: 'info',
+  },
+}
+
+export const WithoutIcon: StoryObj<{
+  title: string
+  description: string
+  variant: 'info' | 'success' | 'warning' | 'error'
+}> = {
+  render: args => (
+    <Alert variant={args.variant}>
+      <AlertTitle>{args.title}</AlertTitle>
+      <AlertDescription>{args.description}</AlertDescription>
+    </Alert>
+  ),
+  args: {
+    title: 'Success! Your changes have been saved',
+    description: 'This is an alert with icon, title and description.',
+    variant: 'info',
   },
 }
