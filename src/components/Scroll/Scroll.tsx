@@ -41,7 +41,7 @@ const overlayVariants = cva(['relative w-full h-full'], {
   },
   defaultVariants: {
     direction: 'vertical',
-    shadows: true,
+    shadows: false,
   },
 })
 
@@ -54,7 +54,7 @@ interface ScrollProps
 export const Scroll = (props: ScrollProps) => {
   const {
     children,
-    shadows = true,
+    shadows,
     direction = 'vertical',
     contentProps,
     className,
