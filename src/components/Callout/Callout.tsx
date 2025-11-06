@@ -14,7 +14,7 @@ import { textVariants } from '../Text/Text.js'
 const alertVariants = cva(
   [
     textVariants({ variant: 'normal' }),
-    'text-primary relative w-full rounded-lg border-1 overflow-hidden border-[var(--callout-header)]',
+    'text-primary relative w-full rounded-lg border-1 overflow-hidden bg-[var(--callout-header)] border-[var(--callout-header)]',
   ],
   {
     variants: {
