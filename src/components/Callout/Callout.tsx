@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { type ComponentProps } from 'react'
+import { type ComponentProps, type ReactNode } from 'react'
 import {
   CheckmarkIcon,
   CloseIcon,
@@ -72,7 +72,7 @@ function Callout({
   ...props
 }: ComponentProps<'div'> &
   VariantProps<typeof alertVariants> & {
-    title: string
+    title: ReactNode
     onClose?: () => void
   }) {
   const Icon = getVariantIcon(variant)
