@@ -8,27 +8,31 @@ import { textVariants } from '../Text/Text.js'
 const alertVariants = cva(
   [
     textVariants({ variant: 'normal' }),
-    'text-primary relative w-full rounded-xl border-1 p-4 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
-    '[&>svg]:size-4 [&>svg]:mr-2',
+    'text-primary relative w-full rounded-lg border-1 border-[var(--alert-border)] bg-[var(--alert-background)] p-4 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
+    '[&>svg]:size-4 [&>svg]:mr-2 [&>svg]:text-[var(--alert-accent)] [&_[data-slot=alert-button]]:text-[var(--alert-accent)]',
   ],
   {
     variants: {
       variant: {
         info: [
-          'bg-indigo-200  border-indigo-500 [&>svg]:text-indigo-700 [&_[data-slot=alert-button]]:text-indigo-700',
-          'dark:bg-indigo-950 dark:border-indigo-900 dark:[&>svg]:text-indigo-400 dark:[&_[data-slot=alert-button]]:text-indigo-400',
+          '[--alert-background:var(--color-indigo-200)] dark:[--alert-background:var(--color-indigo-950)]',
+          '[--alert-border:var(--color-indigo-500)] dark:[--alert-border:var(--color-indigo-900)]',
+          '[--alert-accent:var(--color-indigo-700)] dark:[--alert-accent:var(--color-indigo-400)]',
         ],
         success: [
-          'bg-green-200 border-green-500 [&>svg]:text-green-700 [&_[data-slot=alert-button]]:text-green-700',
-          'dark:bg-green-950 dark:border-green-900 dark:[&>svg]:text-green-400 dark:[&_[data-slot=alert-button]]:text-green-400',
+          '[--alert-background:var(--color-green-200)] dark:[--alert-background:var(--color-green-950)]',
+          '[--alert-border:var(--color-green-500)] dark:[--alert-border:var(--color-green-900)]',
+          '[--alert-accent:var(--color-green-700)] dark:[--alert-accent:var(--color-green-400)]',
         ],
         warning: [
-          'bg-yellow-100 border-yellow-500 [&>svg]:text-yellow-700 [&_[data-slot=alert-button]]:text-yellow-700',
-          'dark:bg-yellow-950 dark:border-yellow-900 dark:[&>svg]:text-yellow-400 dark:[&_[data-slot=alert-button]]:text-yellow-400',
+          '[--alert-background:var(--color-yellow-100)] dark:[--alert-background:var(--color-yellow-950)]',
+          '[--alert-border:var(--color-yellow-500)] dark:[--alert-border:var(--color-yellow-900)]',
+          '[--alert-accent:var(--color-yellow-700)] dark:[--alert-accent:var(--color-yellow-400)]',
         ],
         error: [
-          'bg-red-200 border-red-500 [&>svg]:text-red-700 [&_[data-slot=alert-button]]:text-red-700',
-          'dark:bg-red-950 dark:border-red-900 dark:[&>svg]:text-red-400 dark:[&_[data-slot=alert-button]]:text-red-400',
+          '[--alert-background:var(--color-red-200)] dark:[--alert-background:var(--color-red-950)]',
+          '[--alert-border:var(--color-red-500)] dark:[--alert-border:var(--color-red-900)]',
+          '[--alert-accent:var(--color-red-700)] dark:[--alert-accent:var(--color-red-400)]',
         ],
       },
     },
@@ -59,7 +63,7 @@ function AlertTitle({ className, ...props }: ComponentProps<'div'>) {
       data-slot="alert-title"
       className={cn(
         textVariants({ variant: 'normal-bold' }),
-        'text-current col-start-2 col-end-4 line-clamp-1 min-h-4 sm:col-end-3',
+        'text-[var(--alert-accent)] col-start-2 col-end-4 line-clamp-1 min-h-4 sm:col-end-3',
         className
       )}
       {...props}
@@ -81,7 +85,7 @@ function AlertDescription({ className, ...props }: ComponentProps<'div'>) {
   )
 }
 
-function AlertButton({ className, ...props }: ComponentProps<'button'>) {
+function AlertButton({ className, ...props }: ComponentProps<typeof Button>) {
   return (
     <Button
       data-slot="alert-button"

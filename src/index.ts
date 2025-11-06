@@ -4,9 +4,11 @@ export { colorNames, type ColorName, type ColorTokens } from './tokens/color.js'
 // Components
 export {
   Alert,
+  AlertButton,
   AlertDescription,
   AlertTitle,
 } from './components/Alert/Alert.js'
+export { Callout, CalloutButton } from './components/Callout/Callout.js'
 export { Badge } from './components/Badge/Badge.js'
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'
 export { Button, buttonVariants } from './components/Button/Button.js'
