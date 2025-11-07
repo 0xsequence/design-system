@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { Card } from '../Card/Card.js'
 import { Text } from '../Text/Text.js'
@@ -14,11 +14,7 @@ export default {
 type Story = StoryObj<typeof Collapsible>
 
 const CollapsibleStory = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  useEffect(() => {
-    setIsOpen(true)
-  }, [])
+  const [isOpen, setIsOpen] = useState(true)
 
   return (
     <Collapsible

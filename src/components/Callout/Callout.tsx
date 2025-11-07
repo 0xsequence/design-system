@@ -6,12 +6,13 @@ import {
   InfoIcon,
   WarningIcon,
 } from 'src/icons/index.js'
+import type { IconProps } from 'src/icons/types.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
 import { textVariants } from '../Text/Text.js'
 
-const alertVariants = cva(
+const calloutVariants = cva(
   [
     textVariants({ variant: 'normal' }),
     'text-primary relative w-full rounded-lg border-1 overflow-hidden bg-(--callout-header) border-(--callout-header)',
@@ -51,12 +52,12 @@ function Callout({
   className,
   variant,
   ...props
-}: ComponentProps<'div'> & VariantProps<typeof alertVariants>) {
+}: ComponentProps<'div'> & VariantProps<typeof calloutVariants>) {
   return (
     <div
       data-slot="callout"
       role="alert"
-      className={cn(alertVariants({ variant }), className)}
+      className={cn(calloutVariants({ variant }), className)}
       {...props}
     />
   )
@@ -102,20 +103,22 @@ function CalloutButton({ className, ...props }: ComponentProps<typeof Button>) {
   )
 }
 
-const getVariantIcon = (
-  variant: VariantProps<typeof alertVariants>['variant']
-) => {
+function CalloutIcon({
+  variant,
+  size = 'xs',
+  ...props
+}: IconProps & { variant: VariantProps<typeof calloutVariants>['variant'] }) {
   switch (variant) {
     case 'info':
-      return InfoIcon
+      return <InfoIcon size={size} {...props} />
     case 'success':
-      return CheckmarkIcon
+      return <CheckmarkIcon size={size} {...props} />
     case 'warning':
     case 'error':
-      return WarningIcon
+      return <WarningIcon size={size} {...props} />
+    default:
+      return null
   }
-
-  return null
 }
 
 function CalloutHelper({
@@ -128,12 +131,11 @@ function CalloutHelper({
   title: ReactNode
   onClose?: () => void
 }) {
-  const Icon = getVariantIcon(variant)
   return (
     <Callout variant={variant} {...props}>
       <CalloutHeader>
         <div className="line-clamp-1 min-h-4 flex items-center gap-2">
-          {Icon && <Icon size="xs" />}
+          <CalloutIcon variant={variant} />
           {title}
         </div>
         <Button
@@ -154,4 +156,4 @@ function CalloutHelper({
 
 Callout.Helper = CalloutHelper
 
-export { Callout, CalloutButton, CalloutContent, CalloutHeader }
+export { Callout, CalloutButton, CalloutContent, CalloutHeader, CalloutIcon }

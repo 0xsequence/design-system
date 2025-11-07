@@ -6,6 +6,7 @@ export {
   Alert,
   AlertButton,
   AlertDescription,
+  AlertIcon,
   AlertTitle,
 } from './components/Alert/Alert.js'
 export {
@@ -13,6 +14,7 @@ export {
   CalloutButton,
   CalloutContent,
   CalloutHeader,
+  CalloutIcon,
 } from './components/Callout/Callout.js'
 export { Badge } from './components/Badge/Badge.js'
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'

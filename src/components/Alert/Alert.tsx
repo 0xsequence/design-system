@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { type ComponentProps, type ReactNode } from 'react'
 import { CheckmarkIcon, InfoIcon, WarningIcon } from 'src/icons/index.js'
+import type { IconProps } from 'src/icons/types.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
@@ -102,17 +103,21 @@ function AlertButton({ className, ...props }: ComponentProps<typeof Button>) {
   )
 }
 
-const getVariantIcon = (
-  variant: VariantProps<typeof alertVariants>['variant']
-) => {
+function AlertIcon({
+  variant,
+  size = 'xs',
+  ...props
+}: IconProps & { variant: VariantProps<typeof alertVariants>['variant'] }) {
   switch (variant) {
     case 'info':
-      return InfoIcon
+      return <InfoIcon size={size} {...props} />
     case 'success':
-      return CheckmarkIcon
+      return <CheckmarkIcon size={size} {...props} />
     case 'warning':
     case 'error':
-      return WarningIcon
+      return <WarningIcon size={size} {...props} />
+    default:
+      return null
   }
 }
 
@@ -126,11 +131,9 @@ function AlertHelper({
   title: ReactNode
   description?: ReactNode
 }) {
-  const Icon = getVariantIcon(variant)
-
   return (
     <Alert variant={variant} {...props}>
-      {Icon && <Icon size="xs" />}
+      <AlertIcon variant={variant} />
       <AlertTitle>{title}</AlertTitle>
       {description && <AlertDescription>{description}</AlertDescription>}
       {children}
@@ -140,4 +143,4 @@ function AlertHelper({
 
 Alert.Helper = AlertHelper
 
-export { Alert, AlertButton, AlertDescription, AlertTitle }
+export { Alert, AlertButton, AlertDescription, AlertIcon, AlertTitle }

@@ -88,10 +88,7 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
       case 'Backspace':
         ev.preventDefault()
 
-        if (currentRef) {
-          currentRef.value = ''
-          handleChange(idx, '')
-        }
+        handleChange(idx, '')
 
         prevRef?.focus()
         break
