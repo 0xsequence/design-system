@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.1.0
+
+### Minor Changes
+
+- Composite components and Helpers
+
 ## 3.0.1
 
 ### Patch Changes
