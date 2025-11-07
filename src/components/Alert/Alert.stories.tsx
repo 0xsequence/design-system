@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import {
-  CheckmarkIcon,
-  CloseIcon,
-  InfoIcon,
-  RefreshIcon,
-  SettingsIcon,
-  WarningIcon,
-} from '../../icons/index.js'
+import { RefreshIcon, SettingsIcon } from '../../icons/index.js'
 
-import { Alert, AlertButton, AlertDescription, AlertTitle } from './Alert.js'
+import {
+  Alert,
+  AlertButton,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from './Alert.js'
 
 export default {
   title: 'Components/Alert',
@@ -20,7 +19,7 @@ export const All = {
   render: () => (
     <div className="flex flex-col gap-4">
       <Alert variant="info">
-        <InfoIcon />
+        <AlertIcon variant="info" />
         <AlertTitle>Info Alert</AlertTitle>
         <AlertDescription>
           This is an alert with icon, title and description.
@@ -31,7 +30,7 @@ export const All = {
         </AlertButton>
       </Alert>
       <Alert variant="success">
-        <CheckmarkIcon />
+        <AlertIcon variant="success" />
         <AlertTitle>Success Alert</AlertTitle>
         <AlertDescription>
           This is an alert with icon, title and description.
@@ -42,7 +41,7 @@ export const All = {
         </AlertButton>
       </Alert>
       <Alert variant="warning">
-        <WarningIcon />
+        <AlertIcon variant="warning" />
         <AlertTitle>Warning Alert</AlertTitle>
         <AlertDescription>
           This is an alert with icon, title and description.
@@ -53,7 +52,7 @@ export const All = {
         </AlertButton>
       </Alert>
       <Alert variant="error">
-        <CloseIcon />
+        <AlertIcon variant="error" />
         <AlertTitle>Error Alert</AlertTitle>
         <AlertDescription>
           This is an alert with icon, title and description.
@@ -74,7 +73,7 @@ export const Default: StoryObj<{
 }> = {
   render: args => (
     <Alert variant={args.variant}>
-      <CheckmarkIcon />
+      <AlertIcon variant={args.variant} />
       <AlertTitle>{args.title}</AlertTitle>
       <AlertDescription>{args.description}</AlertDescription>
       <AlertButton>
@@ -97,7 +96,7 @@ export const WithoutButton: StoryObj<{
 }> = {
   render: args => (
     <Alert variant={args.variant}>
-      <CheckmarkIcon />
+      <AlertIcon variant={args.variant} />
       <AlertTitle>{args.title}</AlertTitle>
       <AlertDescription>{args.description}</AlertDescription>
     </Alert>
@@ -157,7 +156,7 @@ export const BottomButtons: StoryObj<{
 }> = {
   render: args => (
     <Alert variant={args.variant}>
-      <CheckmarkIcon />
+      <AlertIcon variant={args.variant} />
       <AlertTitle>{args.title}</AlertTitle>
       <AlertDescription>{args.description}</AlertDescription>
       <div className="col-start-2 flex gap-2">
