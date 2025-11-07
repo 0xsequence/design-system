@@ -11,7 +11,7 @@ const alertVariants = cva(
   [
     textVariants({ variant: 'normal' }),
     'text-primary relative w-full rounded-lg border-1 border-(--alert-border) bg-(--alert-background) p-4 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
-    '[&>svg]:size-4 [&>svg]:mr-2 [&>svg]:text-(--alert-accent) [&_[data-slot=alert-button]]:text-(--alert-accent)',
+    '[&>svg]:mr-2 [&>svg]:text-(--alert-accent) [&_[data-slot=alert-button]]:text-(--alert-accent)',
   ],
   {
     variants: {
@@ -105,7 +105,7 @@ function AlertButton({ className, ...props }: ComponentProps<typeof Button>) {
 
 function AlertIcon({
   variant,
-  size = 'xs',
+  size = 'sm',
   ...props
 }: IconProps & { variant: VariantProps<typeof alertVariants>['variant'] }) {
   switch (variant) {
