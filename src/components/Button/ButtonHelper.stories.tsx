@@ -3,14 +3,14 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ArrowRightIcon, ScanIcon } from '../../icons/index.js'
 import { Badge } from '../Badge/Badge.js'
 
-import { ButtonPreset } from './ButtonPreset.js'
+import { Button } from './Button.js'
 
 export default {
-  title: 'Components/Buttons/ButtonPreset',
-  component: ButtonPreset,
-} as Meta<typeof ButtonPreset>
+  title: 'Components/Buttons/ButtonHelper',
+  component: Button.Helper,
+} as Meta<typeof Button.Helper>
 
-type Story = StoryObj<typeof ButtonPreset>
+type Story = StoryObj<typeof Button.Helper>
 
 export const Primary: Story = {
   args: {

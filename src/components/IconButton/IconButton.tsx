@@ -3,7 +3,7 @@ import { type ComponentProps, type ComponentType } from 'react'
 import { cn } from 'src/utils/classnames.js'
 
 import type { IconProps } from '../../icons/types.js'
-import { ButtonPreset } from '../Button/ButtonPreset.js'
+import { Button } from '../Button/Button.js'
 
 const iconButtonVariants = cva(
   'p-0 flex shrink-0 items-center justify-center',
@@ -21,7 +21,7 @@ const iconButtonVariants = cva(
 
 interface IconButtonProps
   extends Omit<
-    ComponentProps<typeof ButtonPreset>,
+    ComponentProps<typeof Button.Helper>,
     'leftIcon' | 'rightIcon' | 'label'
   > {
   icon: ComponentType<IconProps>
@@ -31,7 +31,7 @@ export const IconButton = (props: IconButtonProps) => {
   const { className, icon: Icon, size = 'md', ...rest } = props
 
   return (
-    <ButtonPreset
+    <Button.Helper
       className={cn(iconButtonVariants({ size }), className)}
       leftIcon={Icon}
       size={size}

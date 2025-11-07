@@ -126,7 +126,7 @@ V3 attemps to be mostly compatible but there are some breaking changes that will
   </RadioGroup>
 ```
 
-3. Button component is now a simple component which allows you to easily create your own Buttons with children content of your choice, the Legacy Button component is renamed ButtonPreset which accepts properties like `leftIcon`, `rightIcon`, `label`, etc.
+3. Button component is now a simple component which allows you to easily create your own Buttons with children content of your choice, the Legacy Button component is renamed Button.Helper which accepts properties like `leftIcon`, `rightIcon`, `label`, etc.
 
 4. Button variants have changed, `glass` is no longer available, now uses `secondary` as the default. Some variants have been removed like `feature`, `glass`, `emphasis`, and `raised`.
 
@@ -135,6 +135,8 @@ V3 attemps to be mostly compatible but there are some breaking changes that will
 6. Divider component is replaced with shadcn Separator component which supports horizontal and vertical orientation
 
 7. TabbedNav has been removed in favor of the Tabs components. If you want a similar behavior as the TabbedNav it is suggested you create a component within your project built from Tabs, TabsList, and TabsTrigger components.
+
+8. Select component has been broken up into composite components, the legacy Select bahavior can be accessed via Select.Helper
 
 ### Used by
 

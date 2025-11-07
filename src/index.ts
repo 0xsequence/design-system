@@ -8,11 +8,15 @@ export {
   AlertDescription,
   AlertTitle,
 } from './components/Alert/Alert.js'
-export { Callout, CalloutButton } from './components/Callout/Callout.js'
+export {
+  Callout,
+  CalloutButton,
+  CalloutContent,
+  CalloutHeader,
+} from './components/Callout/Callout.js'
 export { Badge } from './components/Badge/Badge.js'
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'
 export { Button, buttonVariants } from './components/Button/Button.js'
-export { ButtonPreset } from './components/Button/ButtonPreset.js'
 export { Card, cardVariants } from './components/Card/Card.js'
 export { Checkbox } from './components/Checkbox/Checkbox.js'
 export { ControlledCheckbox } from './components/Checkbox/ControlledCheckbox.js'
