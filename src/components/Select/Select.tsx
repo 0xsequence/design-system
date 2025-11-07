@@ -195,7 +195,7 @@ function SelectScrollDownButton({
   )
 }
 
-type SelectHelperProps = ComponentProps<typeof SelectPrimitive.Root> & {
+type SelectHelperProps = ComponentProps<typeof Select> & {
   placeholder?: string
   options: SelectOption[]
   className?: string
