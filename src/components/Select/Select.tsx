@@ -92,7 +92,7 @@ function SelectContent({
           className={cn(
             'p-1',
             position === 'popper' &&
-              'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] scroll-my-1'
+              'h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width) scroll-my-1'
           )}
         >
           {children}
@@ -225,7 +225,7 @@ const SelectHelper = (props: SelectHelperProps) => {
   } = props
 
   return (
-    <SelectPrimitive.Root disabled={disabled} name={name} {...rest}>
+    <Select disabled={disabled} name={name} {...rest}>
       <SelectTrigger
         className={className}
         id={id ?? name}
@@ -244,15 +244,16 @@ const SelectHelper = (props: SelectHelperProps) => {
           ))}
         </SelectGroup>
       </SelectContent>
-    </SelectPrimitive.Root>
+    </Select>
   )
 }
+
+Select.Helper = SelectHelper
 
 export {
   Select,
   SelectContent,
   SelectGroup,
-  SelectHelper,
   SelectItem,
   SelectLabel,
   SelectPrimitive,

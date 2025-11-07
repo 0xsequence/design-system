@@ -9,7 +9,6 @@ import {
   Select,
   SelectContent,
   SelectGroup,
-  SelectHelper,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -17,10 +16,10 @@ import {
 
 export default {
   title: 'Forms/Select',
-  component: SelectHelper,
-} as Meta<typeof SelectHelper>
+  component: Select.Helper,
+} as Meta<typeof Select.Helper>
 
-type Story = StoryObj<typeof SelectHelper>
+type Story = StoryObj<typeof Select.Helper>
 
 export const Default: Story = {
   args: {
@@ -131,7 +130,7 @@ export const WithinModal: Story = {
         {isOpen && (
           <Modal onClose={() => setIsOpen(false)}>
             <div className="p-4">
-              <SelectHelper className="w-full" {...args} />
+              <Select.Helper className="w-full" {...args} />
             </div>
           </Modal>
         )}
@@ -155,7 +154,7 @@ export const TooManyOptionsWithModal: Story = {
         {isOpen && (
           <Modal onClose={() => setIsOpen(false)}>
             <div className="p-4">
-              <SelectHelper className="w-full" {...args} />
+              <Select.Helper className="w-full" {...args} />
             </div>
           </Modal>
         )}

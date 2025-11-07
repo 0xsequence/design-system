@@ -99,7 +99,6 @@ export {
   Select,
   SelectContent,
   SelectGroup,
-  SelectHelper,
   SelectItem,
   SelectLabel,
   SelectPrimitive,

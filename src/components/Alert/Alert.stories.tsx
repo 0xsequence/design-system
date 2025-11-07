@@ -118,11 +118,34 @@ export const WithoutIcon: StoryObj<{
     <Alert variant={args.variant}>
       <AlertTitle>{args.title}</AlertTitle>
       <AlertDescription>{args.description}</AlertDescription>
+      <AlertButton>
+        <SettingsIcon />
+        Configure
+      </AlertButton>
     </Alert>
   ),
   args: {
     title: 'Success! Your changes have been saved',
     description: 'This is an alert with icon, title and description.',
+    variant: 'info',
+  },
+}
+
+export const WithouDescription: StoryObj<{
+  title: string
+  variant: 'info' | 'success' | 'warning' | 'error'
+}> = {
+  render: args => (
+    <Alert variant={args.variant}>
+      <AlertTitle>{args.title}</AlertTitle>
+      <AlertButton>
+        <SettingsIcon />
+        Configure
+      </AlertButton>
+    </Alert>
+  ),
+  args: {
+    title: 'Success! Your changes have been saved',
     variant: 'info',
   },
 }
@@ -148,6 +171,26 @@ export const BottomButtons: StoryObj<{
         </AlertButton>
       </div>
     </Alert>
+  ),
+  args: {
+    title: 'Success! Your changes have been saved',
+    description: 'This is an alert with icon, title and description.',
+    variant: 'info',
+  },
+}
+
+export const Helper: StoryObj<typeof Alert.Helper> = {
+  render: args => (
+    <Alert.Helper
+      variant={args.variant}
+      title={args.title}
+      description={args.description}
+    >
+      <AlertButton>
+        <SettingsIcon />
+        Configure
+      </AlertButton>
+    </Alert.Helper>
   ),
   args: {
     title: 'Success! Your changes have been saved',

@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { type ComponentProps } from 'react'
+import { type ComponentProps, type ReactNode } from 'react'
+import { CheckmarkIcon, InfoIcon, WarningIcon } from 'src/icons/index.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
@@ -8,8 +9,8 @@ import { textVariants } from '../Text/Text.js'
 const alertVariants = cva(
   [
     textVariants({ variant: 'normal' }),
-    'text-primary relative w-full rounded-lg border-1 border-[var(--alert-border)] bg-[var(--alert-background)] p-4 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
-    '[&>svg]:size-4 [&>svg]:mr-2 [&>svg]:text-[var(--alert-accent)] [&_[data-slot=alert-button]]:text-[var(--alert-accent)]',
+    'text-primary relative w-full rounded-lg border-1 border-(--alert-border) bg-(--alert-background) p-4 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
+    '[&>svg]:size-4 [&>svg]:mr-2 [&>svg]:text-(--alert-accent) [&_[data-slot=alert-button]]:text-(--alert-accent)',
   ],
   {
     variants: {
@@ -63,7 +64,7 @@ function AlertTitle({ className, ...props }: ComponentProps<'div'>) {
       data-slot="alert-title"
       className={cn(
         textVariants({ variant: 'normal-bold' }),
-        'text-[var(--alert-accent)] col-start-2 col-end-4 line-clamp-1 min-h-4 sm:col-end-3',
+        'text-(--alert-accent) col-start-2 col-end-4 line-clamp-1 min-h-4 sm:col-end-3',
         className
       )}
       {...props}
@@ -93,12 +94,50 @@ function AlertButton({ className, ...props }: ComponentProps<typeof Button>) {
       size="sm"
       shape="square"
       className={cn(
-        'row-start-3 col-start-3 sm:row-start-1 sm:col-start-3 sm:row-span-2',
+        'row-start-3 col-start-3 mt-2 sm:mt-0 sm:row-start-1 sm:row-end-3 sm:col-start-3',
         className
       )}
       {...props}
     />
   )
 }
+
+const getVariantIcon = (
+  variant: VariantProps<typeof alertVariants>['variant']
+) => {
+  switch (variant) {
+    case 'info':
+      return InfoIcon
+    case 'success':
+      return CheckmarkIcon
+    case 'warning':
+    case 'error':
+      return WarningIcon
+  }
+}
+
+function AlertHelper({
+  variant,
+  title,
+  description,
+  children,
+  ...props
+}: ComponentProps<typeof Alert> & {
+  title: ReactNode
+  description?: ReactNode
+}) {
+  const Icon = getVariantIcon(variant)
+
+  return (
+    <Alert variant={variant} {...props}>
+      {Icon && <Icon size="xs" />}
+      <AlertTitle>{title}</AlertTitle>
+      {description && <AlertDescription>{description}</AlertDescription>}
+      {children}
+    </Alert>
+  )
+}
+
+Alert.Helper = AlertHelper
 
 export { Alert, AlertButton, AlertDescription, AlertTitle }

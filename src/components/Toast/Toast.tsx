@@ -19,7 +19,7 @@ import { Text } from '../Text/Text.js'
 const toastVariants = cva(
   [
     'will-change-transform will-change-opacity',
-    'data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)]',
+    'data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x)',
     'data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-transform data-[swipe=cancel]:duration-200 data-[swipe=cancel]:ease-out',
     'data-[swipe=end]:animate-swipe-out',
   ],
