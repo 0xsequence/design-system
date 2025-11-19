@@ -130,12 +130,13 @@ export const WithoutIcon: StoryObj<{
   },
 }
 
-export const WithouDescription: StoryObj<{
+export const WithoutDescription: StoryObj<{
   title: string
   variant: 'info' | 'success' | 'warning' | 'error'
 }> = {
   render: args => (
     <Alert variant={args.variant}>
+      <AlertIcon variant={args.variant} />
       <AlertTitle>{args.title}</AlertTitle>
       <AlertButton>
         <SettingsIcon />
@@ -144,7 +145,8 @@ export const WithouDescription: StoryObj<{
     </Alert>
   ),
   args: {
-    title: 'Success! Your changes have been saved',
+    title:
+      'Success! Your changes have been saved. This is a long title that should wrap.',
     variant: 'info',
   },
 }

@@ -11,7 +11,7 @@ const alertVariants = cva(
   [
     textVariants({ variant: 'normal' }),
     'text-primary relative w-full rounded-lg border-1 border-(--alert-border) bg-(--alert-background) p-4 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
-    '[&>svg]:mr-2 [&>svg]:text-(--alert-accent) [&_[data-slot=alert-button]]:text-(--alert-accent)',
+    '[&>svg]:mr-2 [&>svg]:text-(--alert-accent) [&>svg]:self-start [&_[data-slot=alert-button]]:text-(--alert-accent)',
   ],
   {
     variants: {
@@ -65,7 +65,7 @@ function AlertTitle({ className, ...props }: ComponentProps<'div'>) {
       data-slot="alert-title"
       className={cn(
         textVariants({ variant: 'normal-bold' }),
-        'text-(--alert-accent) col-start-2 col-end-4 line-clamp-1 min-h-4 sm:col-end-3',
+        'text-(--alert-accent) col-start-2 col-end-4 min-h-4 sm:col-end-3',
         className
       )}
       {...props}
