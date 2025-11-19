@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { ArrowRightIcon, ScanIcon, WalletIcon } from '../../icons/index.js'
+import { Spinner } from '../Spinner/Spinner.js'
 
 import { Button } from './Button.js'
 
@@ -132,6 +133,20 @@ export const WithAnchor: Story = {
     size: 'md',
     asChild: true,
     children: <a href="/wallet">Click me</a>,
+    disabled: false,
+  },
+}
+
+export const WithSpinner: Story = {
+  args: {
+    size: 'md',
+    variant: 'secondary',
+    children: (
+      <>
+        Click me
+        <Spinner />
+      </>
+    ),
     disabled: false,
   },
 }
