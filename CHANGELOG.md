@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.1.1
+
+### Patch Changes
+
+- Fixing issues with Alert, Callout, and Spinner component
+
 ## 3.1.0
 
 ### Minor Changes
