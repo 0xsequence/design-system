@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsup'
+import { version } from './package.json'
 
 export default defineConfig({
   entryPoints: ['src/index.ts'],
@@ -8,5 +9,8 @@ export default defineConfig({
   clean: true,
   banner: {
     js: '"use client";',
+  },
+  define: {
+    __DESIGN_SYSTEM_VERSION__: JSON.stringify(version),
   },
 })

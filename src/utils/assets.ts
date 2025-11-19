@@ -1,10 +1,10 @@
+// Because the assets on assets.sequence.info are not versioned, we need to occasionally update the version
+// in order to cache bust the assets when an asset with the same name is updated.
+import { VERSION } from '../constants/version.js'
+
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
 const SEQUENCE_ASSETS_URL_PREFIX = 'https://assets.sequence.info/'
-
-// Because the assets on assets.sequence.info are not versioned, we need to occasionally update the version
-// in order to cache bust the assets when an asset with the same name is updated.
-const VERSION = '__DESIGN_SYSTEM_VERSION__'
 
 type Size = 'small' | 'medium' | 'large'
 type SizeAbbreviation = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
