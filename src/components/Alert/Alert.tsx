@@ -127,7 +127,7 @@ function AlertHelper({
   description,
   children,
   ...props
-}: ComponentProps<typeof Alert> & {
+}: Omit<ComponentProps<typeof Alert>, 'title'> & {
   title: ReactNode
   description?: ReactNode
 }) {

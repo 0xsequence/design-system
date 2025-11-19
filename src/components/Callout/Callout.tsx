@@ -127,7 +127,7 @@ function CalloutHelper({
   children,
   onClose,
   ...props
-}: ComponentProps<typeof Callout> & {
+}: Omit<ComponentProps<typeof Callout>, 'title'> & {
   title: ReactNode
   onClose?: () => void
 }) {
