@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { useState } from 'react'
 
 import SearchIcon from '../../icons/SearchIcon.js'
 
@@ -91,11 +92,17 @@ export const WithError: Story = {
 
 export const TextareaInput: StoryObj<typeof InputGroupTextarea> = {
   render: args => {
+    const [value, setValue] = useState('')
     return (
       <InputGroup>
-        <InputGroupTextarea placeholder="Enter text..." {...args} />
+        <InputGroupTextarea
+          placeholder="Enter text..."
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          {...args}
+        />
         <InputGroupAddon align="block-end">
-          <InputGroupText>52% used</InputGroupText>
+          <InputGroupText>{value.length}/100 characters used</InputGroupText>
         </InputGroupAddon>
       </InputGroup>
     )
