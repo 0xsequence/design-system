@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.1.2
+
+### Patch Changes
+
+- Fixing text variant class helpers
+
 ## 3.1.1
 
 ### Patch Changes
