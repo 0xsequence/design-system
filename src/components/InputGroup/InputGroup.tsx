@@ -4,6 +4,7 @@ import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Input } from '../Input/Input.js'
+import { textVariants } from '../Text/Text.js'
 import { TextArea } from '../TextArea/TextArea.js'
 
 function InputGroup({ className, ...props }: ComponentProps<'div'>) {
@@ -69,7 +70,10 @@ function InputGroupTextarea({
 }
 
 const inputGroupAddonVariants = cva(
-  'text-primary flex h-auto cursor-text items-center justify-center gap-2 py-1.5 type-small select-none group-data-[disabled=true]/input-group:opacity-50',
+  [
+    textVariants({ variant: 'small' }),
+    'text-primary flex h-auto cursor-text items-center justify-center gap-2 py-1.5 select-none group-data-[disabled=true]/input-group:opacity-50',
+  ],
   {
     variants: {
       align: {
@@ -113,7 +117,8 @@ function InputGroupText({ className, ...props }: ComponentProps<'span'>) {
   return (
     <span
       className={cn(
-        'text-muted flex items-center gap-2 type-normal [&_svg]:pointer-events-none',
+        textVariants({ variant: 'normal' }),
+        'text-muted flex items-center gap-2 [&_svg]:pointer-events-none',
         className
       )}
       {...props}
