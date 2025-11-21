@@ -8,6 +8,7 @@ import {
 } from 'react'
 
 import { colorNames, type ColorTokens } from '../../tokens/color.js'
+import { kebabize } from '../../utils/string.js'
 
 export const themes = ['dark', 'light'] as const
 
@@ -31,23 +32,17 @@ interface ThemeContextValue {
 }
 
 interface ThemeProviderProps {
-  theme?: Theme
+  defaultTheme?: Theme
   customThemes?: CustomThemes
+  storageKey?: string
   root?: string | HTMLElement
-  scope?: string
   prefersColorScheme?: boolean
 }
 
 const isTheme = (theme: any): theme is Theme =>
   typeof theme === 'string' && themes.includes(theme as any)
 
-const getStorageKey = (scope?: string) =>
-  scope ? `${STORAGE_KEY}.${scope}` : STORAGE_KEY
-
-const toKebabCase = (str: string) =>
-  str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
-
-const toCSSVar = (key: string) => `--seq-color-${toKebabCase(key)}`
+const toCSSVar = (key: string) => `--seq-color-${kebabize(key)}`
 
 const themeVarNames = colorNames.map(key => toCSSVar(key))
 
@@ -67,10 +62,8 @@ const setThemeVars = (element: HTMLElement, props: Partial<ColorTokens>) => {
   })
 }
 
-const getPersistedTheme = (scope?: string) => {
-  const persistedTheme = localStorage.getItem(
-    getStorageKey(scope)
-  ) as Theme | null
+const getPersistedTheme = (storageKey: string): Theme | null => {
+  const persistedTheme = localStorage.getItem(storageKey) as Theme | null
 
   if (persistedTheme && isTheme(persistedTheme)) {
     return persistedTheme
@@ -79,7 +72,7 @@ const getPersistedTheme = (scope?: string) => {
   return null
 }
 
-const getPreferredColorScheme = () => {
+const getSystemTheme = (): Theme | null => {
   if (matchMedia(`(prefers-color-scheme: light)`).matches) {
     return 'light'
   } else if (matchMedia(`(prefers-color-scheme: dark)`).matches) {
@@ -92,7 +85,17 @@ const getPreferredColorScheme = () => {
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
-  const [theme, setTheme] = useState<Theme>(props.theme || DEFAULT_THEME)
+  const {
+    children,
+    defaultTheme = DEFAULT_THEME,
+    customThemes,
+    prefersColorScheme = false,
+    storageKey = STORAGE_KEY,
+    root,
+  } = props
+  const [theme, setTheme] = useState<Theme>(
+    () => getPersistedTheme(storageKey) || defaultTheme
+  )
   const [container, setContainer] = useState<HTMLElement | undefined>(undefined)
 
   useEffect(() => {
@@ -104,24 +107,22 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
   useEffect(() => {
     const theme =
-      // Use the theme prop if it exists
-      props.theme ||
       // or use the persisted theme from local store if it exists
-      getPersistedTheme(props.scope) ||
+      getPersistedTheme(storageKey) ||
       // or use the browser's preferred color scheme if enabled
-      (props.prefersColorScheme && getPreferredColorScheme()) ||
+      (prefersColorScheme && getSystemTheme()) ||
       // or use the default theme
-      DEFAULT_THEME
+      defaultTheme
 
     setTheme(theme)
-  }, [props.theme, props.scope, props.prefersColorScheme])
+  }, [defaultTheme, storageKey, prefersColorScheme])
 
   // Set the data-theme attribute and CSS variables on the document root element
   useEffect(() => {
     const rootElement =
-      typeof props.root === 'object'
-        ? props.root
-        : (document.querySelector(props.root || ':root') as HTMLElement)
+      typeof root === 'object'
+        ? root
+        : (document.querySelector(root || ':root') as HTMLElement)
 
     if (rootElement) {
       clearThemeVars(rootElement)
@@ -130,18 +131,18 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
 
       // Apply per-scheme overrides as CSS vars
       const overrides = {
-        ...props.customThemes?.[theme],
+        ...customThemes?.[theme],
       }
       setThemeVars(rootElement, overrides)
 
       // Add seq-root class to the root element of custom root
-      if (props.root) {
+      if (root) {
         rootElement.classList.add('seq-root')
       }
 
-      setContainer(props.root ? rootElement : document.body)
+      setContainer(root ? rootElement : document.body)
     }
-  }, [theme, props.root, props.customThemes])
+  }, [theme, root, customThemes])
 
   // Create the context value
   const value: ThemeContextValue = useMemo(() => {
@@ -150,19 +151,15 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
       container,
       setTheme: (theme: Theme) => {
         // Save to local storage
-        localStorage.setItem(getStorageKey(props.scope), theme)
+        localStorage.setItem(storageKey, theme)
 
         // Set the theme state which will cause a re-render
         setTheme(theme)
       },
     }
-  }, [theme, container, props.scope, props.customThemes])
+  }, [theme, customThemes, container, storageKey])
 
-  return (
-    <ThemeContext.Provider value={value}>
-      {props.children}
-    </ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 
 export const useTheme = () => {

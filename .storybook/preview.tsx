@@ -34,8 +34,9 @@ const withTheme: Decorator = (StoryFn, context) => {
 
   return (
     <ThemeProvider
-      theme={appliedTheme as 'light' | 'dark'}
+      defaultTheme={appliedTheme as 'light' | 'dark'}
       customThemes={isCustom ? customThemes : undefined}
+      storageKey="storybook-preview-theme"
     >
       <div className="bg-background-primary p-4">
         <StoryFn />
