@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.1.3
+
+### Patch Changes
+
+- Updating ThemeProvider to accept defaultTheme
+
 ## 3.1.2
 
 ### Patch Changes
