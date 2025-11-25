@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.1.4
+
+### Patch Changes
+
+- Adding Empty components
+
 ## 3.1.3
 
 ### Patch Changes
