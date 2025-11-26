@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.1.5
+
+### Patch Changes
+
+- Updating Icons
+
 ## 3.1.4
 
 ### Patch Changes
