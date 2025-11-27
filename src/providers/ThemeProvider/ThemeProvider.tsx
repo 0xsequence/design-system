@@ -4,11 +4,15 @@ import {
   useEffect,
   useMemo,
   useState,
-  type PropsWithChildren,
+  type ReactNode,
 } from 'react'
 
 import { colorNames, type ColorTokens } from '../../tokens/color.js'
 import { kebabize } from '../../utils/string.js'
+
+const THEME_ATTR = 'data-theme'
+const DEFAULT_THEME = 'dark'
+const DEFAULT_STORAGE_KEY = '@sequence.theme'
 
 export type Theme = 'light' | 'dark' | 'system'
 export type ResolvedTheme = Exclude<Theme, 'system'>
@@ -19,10 +23,6 @@ export type CustomThemes = {
   light?: Partial<ThemeColors>
   dark?: Partial<ThemeColors>
 }
-
-const DEFAULT_THEME = 'dark'
-const THEME_ATTR = 'data-theme'
-const STORAGE_KEY = '@sequence.theme'
 
 interface ThemeContextValue {
   /* User defined theme setting, includes 'system' */
@@ -42,53 +42,17 @@ interface ThemeProviderProps {
   customThemes?: CustomThemes
   storageKey?: string
   root?: string | HTMLElement
+  children?: ReactNode
 }
-
-const validThemes: Theme[] = ['light', 'dark', 'system']
-const isValidTheme = (theme: any): theme is Theme =>
-  typeof theme === 'string' && validThemes.includes(theme as any)
-
-const toCSSVar = (key: string) => `--seq-color-${kebabize(key)}`
-
-const themeVarNames = colorNames.map(key => toCSSVar(key))
-
-const clearThemeVars = (element: HTMLElement) => {
-  // Clear each color token CSS variable
-  themeVarNames.forEach(name => {
-    element.style.removeProperty(name)
-  })
-}
-
-const setThemeVars = (element: HTMLElement, props: Partial<ColorTokens>) => {
-  // Set each color token as a CSS variable
-  Object.entries(props).forEach(([key, value]) => {
-    if (value) {
-      element.style.setProperty(toCSSVar(key), value)
-    }
-  })
-}
-
-const getPersistedTheme = (storageKey: string): Theme | null => {
-  const persistedTheme = localStorage.getItem(storageKey) as Theme | null
-
-  if (persistedTheme && isValidTheme(persistedTheme)) {
-    return persistedTheme
-  }
-
-  return null
-}
-
-const getSystemTheme = (): ResolvedTheme =>
-  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 
 export const ThemeContext = createContext<ThemeContextValue | null>(null)
 
-export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
+export const ThemeProvider = (props: ThemeProviderProps) => {
   const {
     children,
-    defaultTheme = DEFAULT_THEME,
     customThemes,
-    storageKey = STORAGE_KEY,
+    defaultTheme = DEFAULT_THEME,
+    storageKey = DEFAULT_STORAGE_KEY,
     root,
   } = props
   const [theme, setTheme] = useState<Theme>(
@@ -102,8 +66,6 @@ export const ThemeProvider = (props: PropsWithChildren<ThemeProviderProps>) => {
     return theme
   }, [theme])
   const [container, setContainer] = useState<HTMLElement | undefined>(undefined)
-
-  useEffect(() => {}, [theme])
 
   useEffect(() => {
     // Add is-apple class
@@ -167,3 +129,40 @@ export const useTheme = () => {
 
   return context
 }
+
+const validThemes: Theme[] = ['light', 'dark', 'system']
+const isValidTheme = (theme: any): theme is Theme =>
+  typeof theme === 'string' && validThemes.includes(theme as any)
+
+const toCSSVar = (key: string) => `--seq-color-${kebabize(key)}`
+
+const themeVarNames = colorNames.map(key => toCSSVar(key))
+
+const clearThemeVars = (element: HTMLElement) => {
+  // Clear each color token CSS variable
+  themeVarNames.forEach(name => {
+    element.style.removeProperty(name)
+  })
+}
+
+const setThemeVars = (element: HTMLElement, props: Partial<ColorTokens>) => {
+  // Set each color token as a CSS variable
+  Object.entries(props).forEach(([key, value]) => {
+    if (value) {
+      element.style.setProperty(toCSSVar(key), value)
+    }
+  })
+}
+
+const getPersistedTheme = (storageKey: string): Theme | null => {
+  const persistedTheme = localStorage.getItem(storageKey) as Theme | null
+
+  if (persistedTheme && isValidTheme(persistedTheme)) {
+    return persistedTheme
+  }
+
+  return null
+}
+
+const getSystemTheme = (): ResolvedTheme =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
