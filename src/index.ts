@@ -13,6 +13,7 @@ export {
 } from './providers/ThemeProvider/ThemeProvider.js'
 
 // Components
+export { AspectRatio } from './components/AspectRatio/AspectRatio.js'
 export {
   Alert,
   AlertButton,
