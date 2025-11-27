@@ -6,6 +6,7 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from '../../icons/index.js'
+import { useTheme } from '../../providers/ThemeProvider/ThemeProvider.js'
 import {
   disabledStyle,
   focusRingVariants,
@@ -13,7 +14,6 @@ import {
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 import { textVariants } from '../Text/Text.js'
-import { useTheme } from '../ThemeProvider/ThemeProvider.js'
 
 function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
   return <SelectPrimitive.Root data-slot="select" {...props} />

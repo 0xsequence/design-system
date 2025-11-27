@@ -1,11 +1,11 @@
 import type { Meta } from '@storybook/react-vite'
 
-import { Button } from '../Button/Button.js'
-import { Card } from '../Card/Card.js'
-import { Collapsible } from '../Collapsible/Collapsible.js'
-import { Text } from '../Text/Text.js'
+import { Button } from '../../components/Button/Button.js'
+import { Card } from '../../components/Card/Card.js'
+import { Collapsible } from '../../components/Collapsible/Collapsible.js'
+import { Text } from '../../components/Text/Text.js'
 
-import { ThemeProvider, useTheme } from './ThemeProvider.js'
+import { ThemeProvider, useTheme, type CustomThemes } from './ThemeProvider.js'
 
 export default {
   title: 'Providers/ThemeProvider',
@@ -21,7 +21,7 @@ export const Default = () => {
   return <Button onClick={toggleTheme}>Toggle theme</Button>
 }
 
-const customThemes = {
+const customThemes: CustomThemes = {
   light: {
     primary: 'black',
     secondary: '#006',
@@ -132,7 +132,7 @@ export const Nested = () => {
                 <ThemeProvider
                   root="#app4"
                   storageKey="theme4"
-                  prefersColorScheme
+                  defaultTheme="system"
                 >
                   <Card className="bg-background-primary mt-4">
                     <Collapsible

@@ -6,11 +6,11 @@ import { motion, type HTMLMotionProps } from 'motion/react'
 import { Fragment, type PropsWithChildren, type ReactNode } from 'react'
 
 import { CloseIcon } from '../../icons/index.js'
+import { useTheme } from '../../providers/ThemeProvider/ThemeProvider.js'
 import { cn } from '../../utils/classnames.js'
 import { IconButton } from '../IconButton/IconButton.js'
 import { Scroll } from '../Scroll/Scroll.js'
 import { Text } from '../Text/Text.js'
-import { useTheme } from '../ThemeProvider/ThemeProvider.js'
 
 const modalContentVariants = cva(
   [

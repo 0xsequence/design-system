@@ -22,7 +22,7 @@ export default defineConfig({
         'tests',
         '**/*.stories.tsx',
         '**/*.test.tsx',
-        'src/components/ThemeProvider/renderWithTheme.tsx',
+        'src/providers/ThemeProvider/renderWithTheme.tsx',
       ],
       outDir: 'dist/types',
     }),

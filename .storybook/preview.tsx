@@ -1,40 +1,65 @@
 import type { Decorator, Preview } from '@storybook/react-vite'
 import React from 'react'
 
-import { ThemeProvider } from '../src/components/ThemeProvider/ThemeProvider.js'
+import {
+  ThemeProvider,
+  type CustomThemes,
+  type Theme,
+} from '../src/providers/ThemeProvider/ThemeProvider.js'
 
 import docsTheme from './theme'
 
 import './index.css'
 
-const customThemes = {
+const customThemes: CustomThemes = {
   light: {
-    primary: 'black',
-    secondary: '#006',
-    muted: '#009',
-    backgroundPrimary: 'white',
-    backgroundSecondary: '#EEF',
+    primary: 'var(--color-violet-950)',
+    muted: 'var(--color-violet-600)',
+
     gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
+
+    backgroundPrimary: 'var(--color-violet-50)',
+    backgroundSecondary: 'var(--color-violet-100)',
+    backgroundRaised: 'var(--color-violet-200)',
+    backgroundInput: 'var(--color-violet-50)',
+    backgroundHover: 'var(--color-violet-100)',
+    backgroundActive: 'var(--color-violet-300)',
+
+    borderNormal: 'var(--color-violet-400)',
+    borderCard: 'var(--color-violet-300)',
+    borderButton: 'var(--color-violet-300)',
+    borderHover: 'var(--color-violet-400)',
   },
   dark: {
-    primary: 'white',
-    secondary: '#CCC',
-    muted: '#888',
-    backgroundPrimary: 'black',
-    backgroundSecondary: '#004',
+    primary: 'var(--color-violet-50)',
+    muted: 'var(--color-violet-400)',
+
     gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
+
+    backgroundPrimary: 'var(--color-violet-950)',
+    backgroundSecondary: 'var(--color-violet-900)',
+    backgroundRaised: 'var(--color-violet-800)',
+    backgroundInput: 'var(--color-violet-950)',
+    backgroundHover: 'var(--color-violet-900)',
+    backgroundActive: 'var(--color-violet-700)',
+
+    borderNormal: 'var(--color-violet-600)',
+    borderCard: 'var(--color-violet-700)',
+    borderButton: 'var(--color-violet-500)',
+    borderHover: 'var(--color-violet-600)',
   },
 }
 
 const withTheme: Decorator = (StoryFn, context) => {
-  const { theme } = context.globals
+  const { theme } = context.globals as { theme: Theme | 'custom' }
 
   const isCustom = theme === 'custom'
   const appliedTheme = isCustom ? 'dark' : theme
 
   return (
     <ThemeProvider
-      defaultTheme={appliedTheme as 'light' | 'dark'}
+      key={theme}
+      defaultTheme={appliedTheme}
       customThemes={isCustom ? customThemes : undefined}
       storageKey="storybook-preview-theme"
     >
@@ -81,6 +106,7 @@ const preview: Preview = {
         items: [
           { value: 'dark', icon: 'moon', title: 'Dark (default)' },
           { value: 'light', icon: 'sun', title: 'Light' },
+          { value: 'system', icon: 'cog', title: 'System' },
           { value: 'custom', icon: 'paintbrush', title: 'Custom' },
         ],
       },
