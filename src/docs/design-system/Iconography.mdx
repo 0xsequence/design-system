@@ -13,7 +13,7 @@ import * as icons from '../../icons/index.js'
 
 Collection of icons used in the design system.
 
-<ThemeProvider defaultTheme="light" storageKey="storybook-preview-theme">
+<ThemeProvider theme="light" storageKey={null}>
   <IconGallery>
     {Object.entries(icons).map(([key, Icon]) => (
       <IconItem name={key} key={key}>

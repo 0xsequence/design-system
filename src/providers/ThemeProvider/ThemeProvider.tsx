@@ -25,23 +25,34 @@ export type CustomThemes = {
 }
 
 interface ThemeContextValue {
-  /* User defined theme setting, includes 'system' */
+  // User defined theme setting, includes 'system'
   theme: Theme
 
-  /* Resolved theme, 'light' or 'dark' */
+  // Resolved theme, 'light' or 'dark'
   resolvedTheme: ResolvedTheme
 
-  /* Container element the ThemeProvider is attached to*/
+  // Container element the ThemeProvider is attached to
   container?: HTMLElement
 
-  setTheme: (mode: Theme) => void
+  setTheme: (theme: Theme) => void
 }
 
 interface ThemeProviderProps {
+  // theme property overrides the theme value
+  theme?: Theme
+
+  // the initial theme until the user manually changes it
   defaultTheme?: Theme
+
+  // custom theme color properties for light and dark mode
   customThemes?: CustomThemes
-  storageKey?: string
+
+  // local storage key to persist the selected theme. Set to null to disable
+  storageKey?: string | null
+
+  // root selector or element to attach the theme to, (defaults to :root)
   root?: string | HTMLElement
+
   children?: ReactNode
 }
 
@@ -56,7 +67,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     root,
   } = props
   const [theme, setTheme] = useState<Theme>(
-    () => getPersistedTheme(storageKey) || defaultTheme
+    () => props.theme || getPersistedTheme(storageKey) || defaultTheme
   )
   const resolvedTheme = useMemo<ResolvedTheme>(() => {
     if (theme === 'system') {
@@ -66,6 +77,12 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     return theme
   }, [theme])
   const [container, setContainer] = useState<HTMLElement | undefined>(undefined)
+
+  useEffect(() => {
+    if (props.theme) {
+      setTheme(props.theme)
+    }
+  }, [props.theme])
 
   useEffect(() => {
     // Add is-apple class
@@ -109,7 +126,9 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
       container,
       setTheme: (theme: Theme) => {
         // Save to local storage
-        localStorage.setItem(storageKey, theme)
+        if (storageKey) {
+          localStorage.setItem(storageKey, theme)
+        }
 
         // Set the theme state which will cause a re-render
         setTheme(theme)
@@ -154,7 +173,11 @@ const setThemeVars = (element: HTMLElement, props: Partial<ColorTokens>) => {
   })
 }
 
-const getPersistedTheme = (storageKey: string): Theme | null => {
+const getPersistedTheme = (storageKey: string | null): Theme | null => {
+  if (!storageKey) {
+    return null
+  }
+
   const persistedTheme = localStorage.getItem(storageKey) as Theme | null
 
   if (persistedTheme && isValidTheme(persistedTheme)) {

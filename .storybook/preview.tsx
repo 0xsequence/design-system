@@ -51,17 +51,16 @@ const customThemes: CustomThemes = {
 }
 
 const withTheme: Decorator = (StoryFn, context) => {
-  const { theme } = context.globals as { theme: Theme | 'custom' }
-
-  const isCustom = theme === 'custom'
-  const appliedTheme = isCustom ? 'dark' : theme
+  const { theme, isCustomTheme } = context.globals as {
+    theme: Theme
+    isCustomTheme: boolean
+  }
 
   return (
     <ThemeProvider
-      key={theme}
-      defaultTheme={appliedTheme}
-      customThemes={isCustom ? customThemes : undefined}
-      storageKey="storybook-preview-theme"
+      theme={theme}
+      customThemes={isCustomTheme ? customThemes : undefined}
+      storageKey={null}
     >
       <div className="bg-background-primary p-4">
         <StoryFn />
@@ -104,11 +103,25 @@ const preview: Preview = {
         title: 'Theme',
         icon: 'moon',
         items: [
-          { value: 'dark', icon: 'moon', title: 'Dark (default)' },
+          { value: 'dark', icon: 'moon', title: 'Dark' },
           { value: 'light', icon: 'sun', title: 'Light' },
           { value: 'system', icon: 'cog', title: 'System' },
-          { value: 'custom', icon: 'paintbrush', title: 'Custom' },
         ],
+      },
+    },
+
+    // Custom colors toggle
+    isCustomTheme: {
+      name: 'Colors',
+      description: 'Toggle custom theme colors',
+      defaultValue: false,
+      toolbar: {
+        icon: 'paintbrush',
+        items: [
+          { value: false, title: 'Default' },
+          { value: true, title: 'Custom' },
+        ],
+        dynamicTitle: true, // will show "Default" / "Custom" in toolbar
       },
     },
   },
