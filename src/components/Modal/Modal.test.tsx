@@ -1,6 +1,6 @@
 import { cleanup, screen } from '@testing-library/react'
 
-import { renderWithTheme } from '../ThemeProvider/renderWithTheme.js'
+import { renderWithTheme } from '../../providers/ThemeProvider/renderWithTheme.js'
 
 import { Modal } from './Modal.js'
 

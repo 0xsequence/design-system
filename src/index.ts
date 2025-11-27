@@ -1,6 +1,16 @@
 // Tokens
 export { colorNames, type ColorName, type ColorTokens } from './tokens/color.js'
 
+// Providers
+export {
+  ThemeContext,
+  ThemeProvider,
+  useTheme,
+  type ResolvedTheme,
+  type Theme,
+  type ThemeColors,
+} from './providers/ThemeProvider/ThemeProvider.js'
+
 // Components
 export {
   Alert,
@@ -154,13 +164,6 @@ export { TextArea } from './components/TextArea/TextArea.js'
 export { ControlledTextArea } from './components/TextArea/ControlledTextArea.js'
 export { TextInput } from './components/TextInput/TextInput.js'
 export { ControlledTextInput } from './components/TextInput/ControlledTextInput.js'
-export {
-  ThemeProvider,
-  themes,
-  useTheme,
-  type Theme,
-  type ThemeColors,
-} from './components/ThemeProvider/ThemeProvider.js'
 export { NetworkImage } from './components/NetworkImage/NetworkImage.js'
 export { TokenImage } from './components/TokenImage/TokenImage.js'
 export { Tooltip, TooltipPrimitive } from './components/Tooltip/Tooltip.js'

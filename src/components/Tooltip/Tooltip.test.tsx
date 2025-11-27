@@ -1,7 +1,7 @@
 import { cleanup, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-import { renderWithTheme } from '../ThemeProvider/renderWithTheme.js'
+import { renderWithTheme } from '../../providers/ThemeProvider/renderWithTheme.js'
 
 import { Tooltip } from './Tooltip.js'
 
