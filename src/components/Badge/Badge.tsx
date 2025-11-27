@@ -4,7 +4,7 @@ import type { HTMLAttributes, ReactNode } from 'react'
 
 import { Text, textVariants } from '../Text/Text.js'
 
-export const badgeVariants = cva(
+const badgeVariants = cva(
   [
     'inline-flex',
     'shrink-0',

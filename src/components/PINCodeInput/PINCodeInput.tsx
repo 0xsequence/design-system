@@ -1,5 +1,4 @@
 import { cva } from 'class-variance-authority'
-import { clsx } from 'clsx'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
 import {
@@ -9,11 +8,6 @@ import {
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 import { textVariants } from '../Text/Text.js'
-
-export const digitText = clsx(
-  textVariants({ variant: 'large' }),
-  'w-10 h-12 flex justify-center items-center p-[10px] bg-background-secondary rounded-lg text-primary'
-)
 
 const digitInputVariants = cva(
   [
@@ -166,5 +160,5 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
   )
 }
 
-export const range = (start: number, end: number) =>
+const range = (start: number, end: number) =>
   Array.from({ length: end - start }, (v, k) => k + start)

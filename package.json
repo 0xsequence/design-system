@@ -39,7 +39,8 @@
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "pnpm build && pnpm test && changeset publish",
-    "attw": "attw --pack ."
+    "attw": "attw --pack .",
+    "knip": "knip"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.8",
@@ -78,7 +79,6 @@
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
-    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
@@ -87,11 +87,11 @@
     "@vitest/coverage-v8": "^4.0.14",
     "eslint": "^9.39.1",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-storybook": "10.0.8",
     "happy-dom": "^20.0.10",
     "husky": "^9.1.7",
+    "knip": "^5.70.2",
     "motion": "^12.23.24",
     "ox": "^0.9.17",
     "prettier": "^3.6.2",

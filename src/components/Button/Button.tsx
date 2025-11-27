@@ -108,7 +108,7 @@ type ButtonHelperProps = ComponentProps<typeof Button> &
     rightIcon?: ComponentType<IconProps>
   }
 
-export const ButtonHelper = (props: ButtonHelperProps) => {
+const ButtonHelper = (props: ButtonHelperProps) => {
   const {
     ref,
     asChild,
