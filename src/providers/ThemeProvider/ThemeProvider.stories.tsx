@@ -5,7 +5,7 @@ import { Card } from '../../components/Card/Card.js'
 import { Collapsible } from '../../components/Collapsible/Collapsible.js'
 import { Text } from '../../components/Text/Text.js'
 
-import { ThemeProvider, useTheme } from './ThemeProvider.js'
+import { ThemeProvider, useTheme, type CustomThemes } from './ThemeProvider.js'
 
 export default {
   title: 'Providers/ThemeProvider',
@@ -21,7 +21,7 @@ export const Default = () => {
   return <Button onClick={toggleTheme}>Toggle theme</Button>
 }
 
-const customThemes = {
+const customThemes: CustomThemes = {
   light: {
     primary: 'black',
     secondary: '#006',

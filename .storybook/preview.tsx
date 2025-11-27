@@ -3,6 +3,7 @@ import React from 'react'
 
 import {
   ThemeProvider,
+  type CustomThemes,
   type Theme,
 } from '../src/providers/ThemeProvider/ThemeProvider.js'
 
@@ -10,7 +11,7 @@ import docsTheme from './theme'
 
 import './index.css'
 
-const customThemes = {
+const customThemes: CustomThemes = {
   light: {
     primary: 'var(--color-violet-950)',
     muted: 'var(--color-violet-600)',

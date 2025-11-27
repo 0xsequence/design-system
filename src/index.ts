@@ -6,6 +6,7 @@ export {
   ThemeContext,
   ThemeProvider,
   useTheme,
+  type CustomThemes,
   type ResolvedTheme,
   type Theme,
   type ThemeColors,

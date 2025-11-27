@@ -15,7 +15,7 @@ export type ResolvedTheme = Exclude<Theme, 'system'>
 
 export type ThemeColors = ColorTokens
 
-type CustomThemes = {
+export type CustomThemes = {
   light?: Partial<ThemeColors>
   dark?: Partial<ThemeColors>
 }
