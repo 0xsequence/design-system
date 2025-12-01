@@ -32,6 +32,14 @@ export { Badge } from './components/Badge/Badge.js'
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'
 export { Button, buttonVariants } from './components/Button/Button.js'
 export { Card, cardVariants } from './components/Card/Card.js'
+export {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from './components/Carousel/Carousel.js'
 export { Checkbox } from './components/Checkbox/Checkbox.js'
 export { ControlledCheckbox } from './components/Checkbox/ControlledCheckbox.js'
 export {
