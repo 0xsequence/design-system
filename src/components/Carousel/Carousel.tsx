@@ -22,6 +22,8 @@ interface CarouselContext {
   autoAdvance: boolean
   isPaused: boolean
   setPaused: (value: boolean) => void
+  setDirection: (value: 'ltr' | 'rtl') => void
+  direction: 'ltr' | 'rtl'
 }
 
 const CarouselContext = createContext<CarouselContext | null>(null)
@@ -35,7 +37,7 @@ function useCarouselState() {
   return context
 }
 
-function CarouselParent({
+function Carousel({
   children,
   count,
   autoAdvance = false,
@@ -48,9 +50,10 @@ function CarouselParent({
 }) {
   const [slide, setSlide] = useState(0)
   const [isPaused, setPaused] = useState(false)
-
+  const [direction, setDirection] = useState<'rtl' | 'ltr'>('rtl')
   function nextSlide() {
     setSlide(current => {
+      setDirection('rtl')
       let next = current
 
       if (current === count - 1) {
@@ -65,6 +68,8 @@ function CarouselParent({
 
   function prevSlide() {
     setSlide(current => {
+      setDirection('ltr')
+
       let prev = current
       if (current === 0) {
         prev = count - 1
@@ -88,6 +93,8 @@ function CarouselParent({
         autoAdvance: shouldAutoAdvance,
         totalSlides: count,
         currentSlide: slide,
+        setDirection,
+        direction,
       }}
     >
       <div
@@ -100,7 +107,7 @@ function CarouselParent({
   )
 }
 
-function Deck({
+function CarouselDeck({
   children,
 }: {
   children: (current: number) => React.ReactNode
@@ -110,7 +117,7 @@ function Deck({
   return (
     <div
       data-slot="deck"
-      className="overflow-clip relative z-2 grid-stack rounded-3xl focus-within:ring-2 ring-black"
+      className="relative z-2 grid-stack rounded-3xl focus-within:ring-2 ring-black"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -121,7 +128,7 @@ function Deck({
   )
 }
 
-function PrevButton({
+function CarouselPrevButton({
   children,
   variant = 'default',
   className = '',
@@ -159,7 +166,7 @@ function PrevButton({
   )
 }
 
-function NextButton({
+function CarouselNextButton({
   children,
   variant = 'default',
   className = '',
@@ -199,7 +206,7 @@ function NextButton({
   )
 }
 
-function Status({ hidden }: { hidden?: boolean }) {
+function CarouselStatus({ hidden }: { hidden?: boolean }) {
   const {
     autoAdvance,
     setSlide,
@@ -279,7 +286,7 @@ function StatusDot({
     >
       {' '}
       <div
-        className="in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse data-pause:duration-300 rounded-sm duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
+        className="in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse not-in-data-current:duration-1 data-pause:duration-300 rounded-sm duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
         data-slide-id={index}
         onTransitionEnd={onTransitionEnd}
         data-pause={!autoAdvance || isPaused || undefined}
@@ -296,7 +303,7 @@ function StatusDot({
   )
 }
 
-export function Slide({
+function CarouselSlide({
   children,
   current,
   index,
@@ -307,19 +314,22 @@ export function Slide({
 }) {
   const { ref, attributes } = useTransitionState(current === index)
 
+  const { direction } = useCarouselState()
+
   return (
     <div
       inert={!current || undefined}
       data-index={index}
       data-slot="slide"
       data-current={current === index || undefined}
+      data-ltr={direction === 'ltr' || undefined}
       className={`
         transition-[translate,opacity] duration-300 text-end
         data-entering:opacity-100 data-entering:translate-x-0
         data-entered:opacity-100 data-entered:translate-x-0
-        data-exiting:opacity-0 data-exiting:-translate-x-16
-        data-exited:opacity-0 data-exited:translate-x-16 data-exited:transition-none!
-        opacity-0 translate-x-16
+        data-exiting:opacity-0 data-exiting:-translate-x-16 data-ltr:data-exiting:translate-x-16
+        data-exited:opacity-0 data-exited:translate-x-16 data-ltr:data-exited:-translate-x-16 data-exited:transition-none!
+        opacity-0 translate-x-16 data-ltr:not-current:-translate-x-16
       `}
       ref={ref as React.RefObject<HTMLDivElement>}
       {...attributes}
@@ -329,11 +339,12 @@ export function Slide({
   )
 }
 
-export const Carousel = Object.assign(CarouselParent, {
-  Deck,
-  Slide,
-  Status,
-  PrevButton,
-  NextButton,
+export {
+  Carousel,
+  CarouselDeck,
+  CarouselNextButton,
+  CarouselPrevButton,
+  CarouselSlide,
+  CarouselStatus,
   useCarouselState,
-})
+}
