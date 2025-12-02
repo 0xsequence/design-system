@@ -116,7 +116,7 @@ function CarouselDeck({
 
   return (
     <div
-      data-slot="deck"
+      data-slot="carousel-deck"
       className="relative z-2 grid-stack rounded-3xl focus-within:ring-2 ring-black"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -124,6 +124,42 @@ function CarouselDeck({
       onBlur={() => setPaused(false)}
     >
       {children(currentSlide)}
+    </div>
+  )
+}
+
+function CarouselSlide({
+  children,
+  current,
+  index,
+}: {
+  children: React.ReactNode
+  current: number
+  index: number
+}) {
+  const { ref, attributes } = useTransitionState(current === index)
+
+  const { direction } = useCarousel()
+
+  return (
+    <div
+      inert={!current || undefined}
+      data-index={index}
+      data-slot="carousel-slide"
+      data-current={current === index || undefined}
+      data-ltr={direction === 'ltr' || undefined}
+      className={`
+        transition-[translate,opacity] duration-300 text-end
+        data-entering:opacity-100 data-entering:translate-x-0
+        data-entered:opacity-100 data-entered:translate-x-0
+        data-exiting:opacity-0 data-exiting:-translate-x-16 data-ltr:data-exiting:translate-x-16
+        data-exited:opacity-0 data-exited:translate-x-16 data-ltr:data-exited:-translate-x-16 data-exited:transition-none!
+        opacity-0 translate-x-16 data-ltr:not-current:-translate-x-16
+      `}
+      ref={ref as React.RefObject<HTMLDivElement>}
+      {...attributes}
+    >
+      {children}
     </div>
   )
 }
@@ -156,6 +192,7 @@ function CarouselPrevButton({
   ) : null
   return (
     <button
+      data-slot="carousel-prev-button"
       type="button"
       className={cn('cursor-pointer', variants[variant], className)}
       onClick={prevSlide}
@@ -195,7 +232,7 @@ function CarouselNextButton({
 
   return (
     <button
-      data-slot="next-button"
+      data-slot="carousel-next-button"
       type="button"
       className={cn('cursor-pointer', variants[variant], className)}
       onClick={nextSlide}
@@ -233,7 +270,7 @@ function CarouselStatus({ hidden }: { hidden?: boolean }) {
     <div
       className="flex gap-2 justify-center items-center mx-auto inert:overflow-clip inert:absolute inert:opacity-0"
       inert={hidden || undefined}
-      data-slot="status"
+      data-slot="carousel-status"
     >
       {Array.from({ length: totalSlides }).map((_, i) => (
         <StatusDot
@@ -278,7 +315,7 @@ function StatusDot({
 
   return (
     <div
-      data-slot="status-dot"
+      data-slot="carousel-status-dot"
       data-index={index}
       className="grid-stack size-2.5 data-auto-advance:data-current:w-6 transition-all rounded-full bg-primary/20 overflow-clip focus-within:ring-2 ring-primary"
       data-current={active || undefined}
@@ -299,42 +336,6 @@ function StatusDot({
         className="appearance-none opacity-0"
         tabIndex={active ? 0 : -1}
       />
-    </div>
-  )
-}
-
-function CarouselSlide({
-  children,
-  current,
-  index,
-}: {
-  children: React.ReactNode
-  current: number
-  index: number
-}) {
-  const { ref, attributes } = useTransitionState(current === index)
-
-  const { direction } = useCarousel()
-
-  return (
-    <div
-      inert={!current || undefined}
-      data-index={index}
-      data-slot="slide"
-      data-current={current === index || undefined}
-      data-ltr={direction === 'ltr' || undefined}
-      className={`
-        transition-[translate,opacity] duration-300 text-end
-        data-entering:opacity-100 data-entering:translate-x-0
-        data-entered:opacity-100 data-entered:translate-x-0
-        data-exiting:opacity-0 data-exiting:-translate-x-16 data-ltr:data-exiting:translate-x-16
-        data-exited:opacity-0 data-exited:translate-x-16 data-ltr:data-exited:-translate-x-16 data-exited:transition-none!
-        opacity-0 translate-x-16 data-ltr:not-current:-translate-x-16
-      `}
-      ref={ref as React.RefObject<HTMLDivElement>}
-      {...attributes}
-    >
-      {children}
     </div>
   )
 }
