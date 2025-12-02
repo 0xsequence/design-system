@@ -194,9 +194,9 @@ function CarouselPrevButton({
   }
   const content = children ? (
     children
-  ) : variant == 'default' ? (
+  ) : variant === 'default' ? (
     <ArrowLeftIcon />
-  ) : variant == 'small' ? (
+  ) : variant === 'small' ? (
     <ChevronLeftIcon className="size-4" />
   ) : null
   return (
@@ -232,9 +232,9 @@ function CarouselNextButton({
 
   const content = children ? (
     children
-  ) : variant == 'default' ? (
+  ) : variant === 'default' ? (
     <ArrowRightIcon />
-  ) : variant == 'small' ? (
+  ) : variant === 'small' ? (
     <ChevronRightIcon className="size-4" />
   ) : null
 
