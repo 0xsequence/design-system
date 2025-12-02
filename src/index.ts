@@ -32,7 +32,14 @@ export {
   CalloutIcon,
 } from './components/Callout/Callout.js'
 export { Card, cardVariants } from './components/Card/Card.js'
-export { Carousel } from './components/Carousel/Carousel.js'
+export {
+  Carousel,
+  CarouselDeck,
+  CarouselNextButton,
+  CarouselPrevButton,
+  CarouselSlide,
+  CarouselStatus,
+} from './components/Carousel/Carousel.js'
 export { Checkbox } from './components/Checkbox/Checkbox.js'
 export { ControlledCheckbox } from './components/Checkbox/ControlledCheckbox.js'
 export {
