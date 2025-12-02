@@ -1,240 +1,339 @@
-import useEmblaCarousel, {
-  type UseEmblaCarouselType,
-} from 'embla-carousel-react'
 import {
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useState,
   type ComponentProps,
-  type KeyboardEvent,
 } from 'react'
 
-import { ArrowLeftIcon, ArrowRightIcon } from '../../icons/index.js'
+import { useTransitionState } from '../../hooks/useTransitionState.js'
+import ArrowLeftIcon from '../../icons/ArrowLeftIcon.js'
+import ArrowRightIcon from '../../icons/ArrowRightIcon.js'
+import ChevronLeftIcon from '../../icons/ChevronLeftIcon.js'
+import ChevronRightIcon from '../../icons/ChevronRightIcon.js'
 import { cn } from '../../utils/classnames.js'
-import { Button } from '../Button/Button.js'
 
-type CarouselApi = UseEmblaCarouselType[1]
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
-type CarouselProps = {
-  opts?: CarouselOptions
-  plugins?: CarouselPlugin
-  orientation?: 'horizontal' | 'vertical'
-  setApi?: (api: CarouselApi) => void
+interface CarouselContext {
+  prevSlide: () => void
+  nextSlide: () => void
+  setSlide: (value: number) => void
+  totalSlides: number
+  currentSlide: number
+  autoAdvance: boolean
+  isPaused: boolean
+  setPaused: (value: boolean) => void
 }
-type CarouselContextProps = {
-  carouselRef: ReturnType<typeof useEmblaCarousel>[0]
-  api: ReturnType<typeof useEmblaCarousel>[1]
-  scrollPrev: () => void
-  scrollNext: () => void
-  canScrollPrev: boolean
-  canScrollNext: boolean
-} & CarouselProps
 
-const CarouselContext = createContext<CarouselContextProps | null>(null)
+const CarouselContext = createContext<CarouselContext | null>(null)
 
-function useCarousel() {
+function useCarouselState() {
   const context = useContext(CarouselContext)
+
   if (!context) {
-    throw new Error('useCarousel must be used within a <Carousel />')
+    throw new Error('useCarouselState must be used within the CarouselContext')
   }
   return context
 }
-function Carousel({
-  orientation = 'horizontal',
-  opts,
-  setApi,
-  plugins,
-  className,
+
+function CarouselParent({
   children,
-  ...props
-}: ComponentProps<'div'> & CarouselProps) {
-  const [carouselRef, api] = useEmblaCarousel(
-    {
-      ...opts,
-      axis: orientation === 'horizontal' ? 'x' : 'y',
-    },
-    plugins
-  )
-  const [canScrollPrev, setCanScrollPrev] = useState(false)
-  const [canScrollNext, setCanScrollNext] = useState(false)
-  const onSelect = useCallback((api: CarouselApi) => {
-    if (!api) {
-      return
-    }
-    setCanScrollPrev(api.canScrollPrev())
-    setCanScrollNext(api.canScrollNext())
-  }, [])
-  const scrollPrev = useCallback(() => {
-    api?.scrollPrev()
-  }, [api])
-  const scrollNext = useCallback(() => {
-    api?.scrollNext()
-  }, [api])
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault()
-        scrollPrev()
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault()
-        scrollNext()
+  count,
+  autoAdvance = false,
+  duration = 4000,
+}: {
+  children: React.ReactNode
+  count: number
+  autoAdvance?: boolean
+  duration?: number
+}) {
+  const [slide, setSlide] = useState(0)
+  const [isPaused, setPaused] = useState(false)
+
+  function nextSlide() {
+    setSlide(current => {
+      let next = current
+
+      if (current === count - 1) {
+        next = 0
+      } else {
+        next = current + 1
       }
-    },
-    [scrollPrev, scrollNext]
-  )
 
-  useEffect(() => {
-    if (!api || !setApi) {
-      return
-    }
-    setApi(api)
-  }, [api, setApi])
+      return next
+    })
+  }
 
-  useEffect(() => {
-    if (!api) {
-      return
-    }
-    onSelect(api)
-    api.on('reInit', onSelect)
-    api.on('select', onSelect)
-    return () => {
-      api?.off('select', onSelect)
-    }
-  }, [api, onSelect])
+  function prevSlide() {
+    setSlide(current => {
+      let prev = current
+      if (current === 0) {
+        prev = count - 1
+      } else {
+        prev = current - 1
+      }
+      return prev
+    })
+  }
+
+  const shouldAutoAdvance = duration > 0 || autoAdvance
 
   return (
     <CarouselContext.Provider
       value={{
-        carouselRef,
-        api: api,
-        opts,
-        orientation:
-          orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
-        scrollPrev,
-        scrollNext,
-        canScrollPrev,
-        canScrollNext,
+        nextSlide,
+        prevSlide,
+        setSlide,
+        isPaused,
+        setPaused,
+        autoAdvance: shouldAutoAdvance,
+        totalSlides: count,
+        currentSlide: slide,
       }}
     >
       <div
-        onKeyDownCapture={handleKeyDown}
-        className={cn('relative', className)}
-        role="region"
-        aria-roledescription="carousel"
         data-slot="carousel"
-        {...props}
+        style={{ '--duration': `${duration}ms` } as React.CSSProperties}
       >
         {children}
       </div>
     </CarouselContext.Provider>
   )
 }
-function CarouselContent({ className, ...props }: ComponentProps<'div'>) {
-  const { carouselRef, orientation } = useCarousel()
+
+function Deck({
+  children,
+}: {
+  children: (current: number) => React.ReactNode
+}) {
+  const { currentSlide, setPaused } = useCarouselState()
+
   return (
     <div
-      ref={carouselRef}
-      className="overflow-hidden"
-      data-slot="carousel-content"
+      data-slot="deck"
+      className="overflow-clip relative z-2 grid-stack rounded-3xl focus-within:ring-2 ring-black"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
     >
+      {children(currentSlide)}
+    </div>
+  )
+}
+
+function PrevButton({
+  children,
+  variant = 'default',
+  className = '',
+  ...rest
+}: {
+  children?: React.ReactNode
+  variant?: 'default' | 'small' | 'none'
+  className?: string
+} & ComponentProps<'button'>) {
+  const { prevSlide } = useCarouselState()
+
+  const variants = {
+    default:
+      'rounded-full border border-border-card text-primary flex items-center justify-center size-9 bg-background-secondary focus-visible:opacity-80 hover:opacity-80 transition-all active:scale-95 origin-bottom',
+    small: 'text-primary',
+
+    none: '',
+  }
+  const content = children ? (
+    children
+  ) : variant == 'default' ? (
+    <ArrowLeftIcon />
+  ) : variant == 'small' ? (
+    <ChevronLeftIcon className="size-4" />
+  ) : null
+  return (
+    <button
+      type="button"
+      className={cn('cursor-pointer', variants[variant], className)}
+      onClick={prevSlide}
+      {...rest}
+    >
+      {content}
+    </button>
+  )
+}
+
+function NextButton({
+  children,
+  variant = 'default',
+  className = '',
+  ...rest
+}: {
+  children?: React.ReactNode
+  variant?: 'default' | 'small' | 'none'
+  className?: string
+} & ComponentProps<'button'>) {
+  const { nextSlide } = useCarouselState()
+
+  const variants = {
+    default:
+      'rounded-full border border-border-card text-primary flex items-center justify-center size-9 bg-background-secondary focus-visible:opacity-80 hover:opacity-80 transition-all active:scale-95 origin-bottom',
+    small: 'text-primary',
+    none: '',
+  }
+
+  const content = children ? (
+    children
+  ) : variant == 'default' ? (
+    <ArrowRightIcon />
+  ) : variant == 'small' ? (
+    <ChevronRightIcon className="size-4" />
+  ) : null
+
+  return (
+    <button
+      data-slot="next-button"
+      type="button"
+      className={cn('cursor-pointer', variants[variant], className)}
+      onClick={nextSlide}
+      {...rest}
+    >
+      {content}
+    </button>
+  )
+}
+
+function Status({ hidden }: { hidden?: boolean }) {
+  const {
+    autoAdvance,
+    setSlide,
+    nextSlide,
+    isPaused,
+    totalSlides,
+    currentSlide,
+  } = useCarouselState()
+
+  function handleSlideTransitionEnd(
+    evt: React.TransitionEvent<HTMLDivElement>
+  ) {
+    if (
+      evt.propertyName === 'translate' &&
+      !isPaused &&
+      autoAdvance &&
+      Number(evt.currentTarget.dataset.slideId) === currentSlide
+    ) {
+      nextSlide()
+    }
+  }
+
+  return (
+    <div
+      className="flex gap-2 justify-center items-center mx-auto inert:overflow-clip inert:absolute inert:opacity-0"
+      inert={hidden || undefined}
+      data-slot="status"
+    >
+      {Array.from({ length: totalSlides }).map((_, i) => (
+        <StatusDot
+          key={i}
+          index={i}
+          isPaused={isPaused}
+          current={currentSlide === i}
+          autoAdvance={autoAdvance}
+          onTransitionEnd={handleSlideTransitionEnd}
+          handleSetSlide={() => {
+            setSlide(i)
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function StatusDot({
+  current,
+  index,
+  isPaused,
+  autoAdvance,
+  handleSetSlide,
+  ...props
+}: {
+  current: boolean
+  index: number
+  isPaused: boolean
+  autoAdvance?: boolean
+  handleSetSlide: () => void
+} & ComponentProps<'div'>) {
+  const [active, setActive] = useState(false)
+
+  const { onTransitionEnd } = props
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      setActive(current)
+    })
+  }, [current])
+
+  return (
+    <div
+      data-slot="status-dot"
+      data-index={index}
+      className="grid-stack size-2.5 data-auto-advance:data-current:w-6 transition-all rounded-full bg-primary/20 overflow-clip focus-within:ring-2 ring-primary"
+      data-current={active || undefined}
+      data-auto-advance={autoAdvance || undefined}
+    >
+      {' '}
       <div
-        className={cn(
-          'flex',
-          orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col',
-          className
-        )}
-        {...props}
+        className="in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse data-pause:duration-300 rounded-sm duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
+        data-slide-id={index}
+        onTransitionEnd={onTransitionEnd}
+        data-pause={!autoAdvance || isPaused || undefined}
+      ></div>
+      <input
+        type="radio"
+        value={`Slide ${index + 1}`}
+        name="current-slide"
+        onChange={handleSetSlide}
+        className="appearance-none opacity-0"
+        tabIndex={active ? 0 : -1}
       />
     </div>
   )
 }
-function CarouselItem({ className, ...props }: ComponentProps<'div'>) {
-  const { orientation } = useCarousel()
+
+export function Slide({
+  children,
+  current,
+  index,
+}: {
+  children: React.ReactNode
+  current: number
+  index: number
+}) {
+  const { ref, attributes } = useTransitionState(current === index)
+
   return (
     <div
-      role="group"
-      aria-roledescription="slide"
-      data-slot="carousel-item"
-      className={cn(
-        'min-w-0 shrink-0 grow-0 basis-full',
-        orientation === 'horizontal' ? 'pl-4' : 'pt-4',
-        className
-      )}
-      {...props}
-    />
-  )
-}
-function CarouselPrevious({
-  className,
-  variant = 'secondary',
-  shape = 'circle',
-  size = 'sm',
-  ...props
-}: ComponentProps<typeof Button>) {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
-  return (
-    <Button
-      data-slot="carousel-previous"
-      variant={variant}
-      shape={shape}
-      size={size}
-      className={cn(
-        'absolute',
-        orientation === 'horizontal'
-          ? 'top-1/2 -left-12 -translate-y-1/2'
-          : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
-        className
-      )}
-      disabled={!canScrollPrev}
-      onClick={scrollPrev}
-      iconOnly
-      {...props}
+      inert={!current || undefined}
+      data-index={index}
+      data-slot="slide"
+      data-current={current === index || undefined}
+      className={`
+        transition-[translate,opacity] duration-300 text-end
+        data-entering:opacity-100 data-entering:translate-x-0
+        data-entered:opacity-100 data-entered:translate-x-0
+        data-exiting:opacity-0 data-exiting:-translate-x-16
+        data-exited:opacity-0 data-exited:translate-x-16 data-exited:transition-none!
+        opacity-0 translate-x-16
+      `}
+      ref={ref as React.RefObject<HTMLDivElement>}
+      {...attributes}
     >
-      <ArrowLeftIcon />
-      <span className="sr-only">Previous slide</span>
-    </Button>
+      {children}
+    </div>
   )
 }
-function CarouselNext({
-  className,
-  variant = 'secondary',
-  shape = 'circle',
-  size = 'sm',
-  ...props
-}: ComponentProps<typeof Button>) {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
-  return (
-    <Button
-      data-slot="carousel-next"
-      variant={variant}
-      shape={shape}
-      size={size}
-      className={cn(
-        'absolute',
-        orientation === 'horizontal'
-          ? 'top-1/2 -right-12 -translate-y-1/2'
-          : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
-        className
-      )}
-      disabled={!canScrollNext}
-      onClick={scrollNext}
-      iconOnly
-      {...props}
-    >
-      <ArrowRightIcon />
-      <span className="sr-only">Next slide</span>
-    </Button>
-  )
-}
-export {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-}
+
+export const Carousel = Object.assign(CarouselParent, {
+  Deck,
+  Slide,
+  Status,
+  PrevButton,
+  NextButton,
+  useCarouselState,
+})
