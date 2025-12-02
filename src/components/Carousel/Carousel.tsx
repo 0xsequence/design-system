@@ -4,6 +4,8 @@ import {
   useEffect,
   useState,
   type ComponentProps,
+  type Dispatch,
+  type SetStateAction,
 } from 'react'
 import { Button } from 'src/components/Button/Button.js'
 
@@ -17,12 +19,12 @@ import { cn } from '../../utils/classnames.js'
 interface CarouselContext {
   prevSlide: () => void
   nextSlide: () => void
-  setSlide: (value: number) => void
+  setSlide: Dispatch<SetStateAction<number>>
   totalSlides: number
   currentSlide: number
   autoAdvance: boolean
   isPaused: boolean
-  setPaused: (value: boolean) => void
+  setPaused: Dispatch<SetStateAction<boolean>>
   setDirection: (value: 'ltr' | 'rtl') => void
   direction: 'ltr' | 'rtl'
 }
@@ -262,6 +264,7 @@ function CarouselStatus({
     isPaused,
     totalSlides,
     currentSlide,
+    setDirection,
   } = useCarousel()
 
   function handleSlideTransitionEnd(
@@ -295,7 +298,15 @@ function CarouselStatus({
           autoAdvance={autoAdvance}
           onTransitionEnd={handleSlideTransitionEnd}
           handleSetSlide={() => {
-            setSlide(i)
+            setSlide((current: number) => {
+              if (i < current) {
+                setDirection('ltr')
+              } else {
+                setDirection('rtl')
+              }
+
+              return i
+            })
           }}
         />
       ))}
