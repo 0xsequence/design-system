@@ -5,6 +5,7 @@ import {
   useState,
   type ComponentProps,
 } from 'react'
+import { Button } from 'src/components/Button/Button.js'
 
 import { useTransitionState } from '../../hooks/useTransitionState.js'
 import ArrowLeftIcon from '../../icons/ArrowLeftIcon.js'
@@ -40,13 +41,13 @@ function useCarousel() {
 function Carousel({
   children,
   count,
-  autoAdvance = false,
   duration = 4000,
+  className = '',
 }: {
   children: React.ReactNode
   count: number
-  autoAdvance?: boolean
   duration?: number
+  className?: string
 }) {
   const [slide, setSlide] = useState(0)
   const [isPaused, setPaused] = useState(false)
@@ -80,7 +81,7 @@ function Carousel({
     })
   }
 
-  const shouldAutoAdvance = duration > 0 || autoAdvance
+  const autoAdvance = duration > 0 ? true : false
 
   return (
     <CarouselContext.Provider
@@ -90,7 +91,7 @@ function Carousel({
         setSlide,
         isPaused,
         setPaused,
-        autoAdvance: shouldAutoAdvance,
+        autoAdvance,
         totalSlides: count,
         currentSlide: slide,
         setDirection,
@@ -98,6 +99,7 @@ function Carousel({
       }}
     >
       <div
+        className={cn(className)}
         data-slot="carousel"
         style={{ '--duration': `${duration}ms` } as React.CSSProperties}
       >
@@ -130,10 +132,12 @@ function CarouselDeck({
 
 function CarouselSlide({
   children,
+  className = '',
   current,
   index,
 }: {
   children: React.ReactNode
+  className?: string
   current: number
   index: number
 }) {
@@ -143,19 +147,22 @@ function CarouselSlide({
 
   return (
     <div
-      inert={!current || undefined}
+      inert={current !== index || undefined}
       data-index={index}
       data-slot="carousel-slide"
       data-current={current === index || undefined}
       data-ltr={direction === 'ltr' || undefined}
-      className={`
+      className={cn(
+        `
         transition-[translate,opacity] duration-300 text-end
         data-entering:opacity-100 data-entering:translate-x-0
         data-entered:opacity-100 data-entered:translate-x-0
         data-exiting:opacity-0 data-exiting:-translate-x-16 data-ltr:data-exiting:translate-x-16
         data-exited:opacity-0 data-exited:translate-x-16 data-ltr:data-exited:-translate-x-16 data-exited:transition-none!
         opacity-0 translate-x-16 data-ltr:not-current:-translate-x-16
-      `}
+      `,
+        className
+      )}
       ref={ref as React.RefObject<HTMLDivElement>}
       {...attributes}
     >
@@ -191,15 +198,14 @@ function CarouselPrevButton({
     <ChevronLeftIcon className="size-4" />
   ) : null
   return (
-    <button
+    <Button
       data-slot="carousel-prev-button"
-      type="button"
       className={cn('cursor-pointer', variants[variant], className)}
       onClick={prevSlide}
       {...rest}
     >
       {content}
-    </button>
+    </Button>
   )
 }
 
@@ -231,19 +237,24 @@ function CarouselNextButton({
   ) : null
 
   return (
-    <button
+    <Button
       data-slot="carousel-next-button"
-      type="button"
       className={cn('cursor-pointer', variants[variant], className)}
       onClick={nextSlide}
       {...rest}
     >
       {content}
-    </button>
+    </Button>
   )
 }
 
-function CarouselStatus({ hidden }: { hidden?: boolean }) {
+function CarouselStatus({
+  hidden,
+  className = '',
+}: {
+  hidden?: boolean
+  className?: string
+}) {
   const {
     autoAdvance,
     setSlide,
@@ -268,7 +279,10 @@ function CarouselStatus({ hidden }: { hidden?: boolean }) {
 
   return (
     <div
-      className="flex gap-2 justify-center items-center mx-auto inert:overflow-clip inert:absolute inert:opacity-0"
+      className={cn(
+        'flex gap-2 justify-center items-center mx-auto inert:overflow-clip inert:absolute inert:opacity-0',
+        className
+      )}
       inert={hidden || undefined}
       data-slot="carousel-status"
     >
@@ -321,7 +335,6 @@ function StatusDot({
       data-current={active || undefined}
       data-auto-advance={autoAdvance || undefined}
     >
-      {' '}
       <div
         className="in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse not-in-data-current:duration-1 data-pause:duration-300 rounded-sm duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
         data-slide-id={index}
