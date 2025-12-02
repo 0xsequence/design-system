@@ -28,11 +28,11 @@ interface CarouselContext {
 
 const CarouselContext = createContext<CarouselContext | null>(null)
 
-function useCarouselState() {
+function useCarousel() {
   const context = useContext(CarouselContext)
 
   if (!context) {
-    throw new Error('useCarouselState must be used within the CarouselContext')
+    throw new Error('useCarousel must be used within the CarouselContext')
   }
   return context
 }
@@ -112,7 +112,7 @@ function CarouselDeck({
 }: {
   children: (current: number) => React.ReactNode
 }) {
-  const { currentSlide, setPaused } = useCarouselState()
+  const { currentSlide, setPaused } = useCarousel()
 
   return (
     <div
@@ -138,7 +138,7 @@ function CarouselPrevButton({
   variant?: 'default' | 'small' | 'none'
   className?: string
 } & ComponentProps<'button'>) {
-  const { prevSlide } = useCarouselState()
+  const { prevSlide } = useCarousel()
 
   const variants = {
     default:
@@ -176,7 +176,7 @@ function CarouselNextButton({
   variant?: 'default' | 'small' | 'none'
   className?: string
 } & ComponentProps<'button'>) {
-  const { nextSlide } = useCarouselState()
+  const { nextSlide } = useCarousel()
 
   const variants = {
     default:
@@ -214,7 +214,7 @@ function CarouselStatus({ hidden }: { hidden?: boolean }) {
     isPaused,
     totalSlides,
     currentSlide,
-  } = useCarouselState()
+  } = useCarousel()
 
   function handleSlideTransitionEnd(
     evt: React.TransitionEvent<HTMLDivElement>
@@ -314,7 +314,7 @@ function CarouselSlide({
 }) {
   const { ref, attributes } = useTransitionState(current === index)
 
-  const { direction } = useCarouselState()
+  const { direction } = useCarousel()
 
   return (
     <div
