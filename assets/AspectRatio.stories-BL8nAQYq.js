@@ -1,8 +1,0 @@
-import{r as c,j as e}from"./iframe-Bog5ZZmr.js";import{I as d}from"./Image-DbMQmp6C.js";import{P as l}from"./index-CEXRTyF2.js";import"./preload-helper-PPVm8Dsz.js";import"./proxy-BfYJJNJL.js";import"./index-BY0e2orR.js";import"./index-C6UBWOEH.js";import"./index-D6-7_pNp.js";import"./index-pGT3UMXN.js";var m="AspectRatio",a=c.forwardRef((t,s)=>{const{ratio:i=1/1,style:p,...n}=t;return e.jsx("div",{style:{position:"relative",width:"100%",paddingBottom:`${100/i}%`},"data-radix-aspect-ratio-wrapper":"",children:e.jsx(l.div,{...n,ref:s,style:{...p,position:"absolute",top:0,right:0,bottom:0,left:0}})})});a.displayName=m;var u=a;function r({...t}){return e.jsx(u,{"data-slot":"aspect-ratio",...t})}try{r.displayName="AspectRatio",r.__docgenInfo={description:"",displayName:"AspectRatio",props:{asChild:{defaultValue:null,description:"",name:"asChild",required:!1,type:{name:"boolean"}}}}}catch{}const b={title:"Components/AspectRatio",component:r},o={render:t=>e.jsx(r,{ratio:t.ratio,className:"bg-muted rounded-lg",children:e.jsx(d,{src:"https://skyweaver.ghost.io/content/images/size/w600/2023/01/hexbound_promo.png",className:"h-full w-full rounded-lg object-cover"})}),args:{ratio:1}};o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:`{
-  render: args => <AspectRatio ratio={args.ratio} className="bg-muted rounded-lg">
-      <Image src="https://skyweaver.ghost.io/content/images/size/w600/2023/01/hexbound_promo.png" className="h-full w-full rounded-lg object-cover" />
-    </AspectRatio>,
-  args: {
-    ratio: 1
-  }
-}`,...o.parameters?.docs?.source}}};const j=["Default"];export{o as Default,j as __namedExportsOrder,b as default};
