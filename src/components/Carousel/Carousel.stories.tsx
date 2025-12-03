@@ -55,6 +55,30 @@ export const Default: Story = {
   args: {},
 }
 
+export const SideButtons: Story = {
+  render: () => {
+    return (
+      <Carousel duration={4000} className="relative">
+        <CarouselPrevButton className="absolute left-4 top-1/2 -translate-y-1/2 z-3" />
+        <CarouselDeck>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <CarouselSlide key={index}>
+              <Card
+                variant="muted"
+                className="flex aspect-video items-center justify-center p-6"
+              >
+                <span className="text-4xl font-semibold">{index + 1}</span>
+              </Card>
+            </CarouselSlide>
+          ))}
+        </CarouselDeck>
+        <CarouselNextButton className="absolute right-4 top-1/2 -translate-y-1/2 z-3" />
+      </Carousel>
+    )
+  },
+  args: {},
+}
+
 export const Small: Story = {
   render: () => {
     return (
