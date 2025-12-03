@@ -49,30 +49,46 @@ function Carousel({
   duration?: number
   className?: string
 }) {
-  const [currentSlide, setSlide] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setPaused] = useState(false)
   const [direction, setDirection] = useState<'rtl' | 'ltr'>('rtl')
 
-  function handleSlideChange(index: number) {
-    setSlide(current => {
-      setDirection(index < current ? 'ltr' : 'rtl')
+  function setSlide(index: number) {
+    setCurrentSlide(current => {
+      let newIndex = index
 
+      // Handle wraparound
       if (index > count - 1) {
-        return 0
+        newIndex = 0
       } else if (index < 0) {
-        return count - 1
+        newIndex = count - 1
       }
 
-      return index
+      // Handle wraparound direction
+      if (current === count - 1 && newIndex === 0) {
+        setDirection('rtl') // next wrapped
+      } else if (current === 0 && newIndex === count - 1) {
+        setDirection('ltr') // prev wrapped
+      } else {
+        setDirection(newIndex < current ? 'ltr' : 'rtl')
+      }
+
+      return newIndex
     })
   }
 
   function nextSlide() {
-    handleSlideChange(currentSlide + 1)
+    setCurrentSlide(current => {
+      setDirection('rtl')
+      return current === count - 1 ? 0 : current + 1
+    })
   }
 
   function prevSlide() {
-    handleSlideChange(currentSlide - 1)
+    setCurrentSlide(current => {
+      setDirection('ltr')
+      return current === 0 ? count - 1 : current - 1
+    })
   }
 
   const autoAdvance = duration > 0
@@ -90,14 +106,14 @@ function Carousel({
     return () => {
       clearInterval(interval)
     }
-  }, [autoAdvance, isPaused, duration, currentSlide])
+  }, [autoAdvance, isPaused, duration, currentSlide, nextSlide])
 
   return (
     <CarouselContext.Provider
       value={{
         nextSlide,
         prevSlide,
-        setSlide: handleSlideChange,
+        setSlide,
         isPaused,
         setPaused,
         autoAdvance,
@@ -152,7 +168,7 @@ function CarouselSlide({
   current: number
   index: number
 }) {
-  const { ref, attributes } = useTransitionState(current === index)
+  const { ref, attributes } = useTransitionState(current === index, 'opacity')
 
   const { direction } = useCarousel()
 
@@ -294,7 +310,7 @@ function StatusDot({
       data-auto-advance={autoAdvance || undefined}
     >
       <div
-        className="in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse not-in-data-current:duration-1 data-pause:duration-300 rounded-full duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
+        className="pointer-events-none in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse not-in-data-current:duration-1 data-pause:duration-300 rounded-full duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
         data-slide-id={index}
         data-pause={!autoAdvance || isPaused || undefined}
       />
@@ -305,6 +321,7 @@ function StatusDot({
         onChange={() => onChangeSlide(index)}
         className="sr-only"
         tabIndex={active ? 0 : -1}
+        checked={current}
       />
     </label>
   )

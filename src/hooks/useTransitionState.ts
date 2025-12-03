@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 export type TransitionState = 'entering' | 'entered' | 'exiting' | 'exited'
 
-export function useTransitionState(active: boolean) {
+export function useTransitionState(active: boolean, propertyName?: string) {
   const [transition, setTransition] = useState<TransitionState>(
     active ? 'entered' : 'exited'
   )
@@ -47,6 +47,11 @@ export function useTransitionState(active: boolean) {
         return
       }
 
+      // Filter by propertyName if specified
+      if (propertyName && event.propertyName !== propertyName) {
+        return
+      }
+
       // Only transition to final state if we're in the corresponding transient state
       setTransition(current => {
         if (current === 'entering') {
@@ -61,7 +66,7 @@ export function useTransitionState(active: boolean) {
 
     node.addEventListener('transitionend', handleEnd)
     return () => node.removeEventListener('transitionend', handleEnd)
-  }, [transition])
+  }, [propertyName])
 
   // Provide helper data attributes (undefined when inactive)
   const attributes = {
