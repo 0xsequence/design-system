@@ -39,6 +39,7 @@ export {
   CarouselPrevButton,
   CarouselSlide,
   CarouselStatus,
+  useCarousel,
 } from './components/Carousel/Carousel.js'
 export { Checkbox } from './components/Checkbox/Checkbox.js'
 export { ControlledCheckbox } from './components/Checkbox/ControlledCheckbox.js'

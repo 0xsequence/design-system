@@ -2,6 +2,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ComponentProps,
   type Dispatch,
@@ -23,6 +24,7 @@ interface CarouselContext {
   autoAdvance: boolean
   duration: number
   isPaused: boolean
+  setTotalSlides: Dispatch<SetStateAction<number>>
   setPaused: Dispatch<SetStateAction<boolean>>
   direction: 'ltr' | 'rtl'
 }
@@ -40,15 +42,14 @@ function useCarousel() {
 
 function Carousel({
   children,
-  count,
   duration = 4000,
   className,
 }: {
   children: React.ReactNode
-  count: number
   duration?: number
   className?: string
 }) {
+  const [totalSlides, setTotalSlides] = useState(0)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setPaused] = useState(false)
   const [direction, setDirection] = useState<'rtl' | 'ltr'>('rtl')
@@ -58,16 +59,16 @@ function Carousel({
       let newIndex = index
 
       // Handle wraparound
-      if (index > count - 1) {
+      if (index > totalSlides - 1) {
         newIndex = 0
       } else if (index < 0) {
-        newIndex = count - 1
+        newIndex = totalSlides - 1
       }
 
       // Handle wraparound direction
-      if (current === count - 1 && newIndex === 0) {
+      if (current === totalSlides - 1 && newIndex === 0) {
         setDirection('rtl') // next wrapped
-      } else if (current === 0 && newIndex === count - 1) {
+      } else if (current === 0 && newIndex === totalSlides - 1) {
         setDirection('ltr') // prev wrapped
       } else {
         setDirection(newIndex < current ? 'ltr' : 'rtl')
@@ -80,14 +81,14 @@ function Carousel({
   function nextSlide() {
     setCurrentSlide(current => {
       setDirection('rtl')
-      return current === count - 1 ? 0 : current + 1
+      return current === totalSlides - 1 ? 0 : current + 1
     })
   }
 
   function prevSlide() {
     setCurrentSlide(current => {
       setDirection('ltr')
-      return current === 0 ? count - 1 : current - 1
+      return current === 0 ? totalSlides - 1 : current - 1
     })
   }
 
@@ -118,7 +119,8 @@ function Carousel({
         setPaused,
         autoAdvance,
         duration,
-        totalSlides: count,
+        totalSlides,
+        setTotalSlides,
         currentSlide,
         direction,
       }}
@@ -136,15 +138,25 @@ function Carousel({
   )
 }
 
-function CarouselDeck({
-  children,
-}: {
-  children: (current: number) => React.ReactNode
-}) {
-  const { currentSlide, setPaused } = useCarousel()
+function CarouselDeck({ children }: { children: React.ReactNode }) {
+  const { setPaused, setTotalSlides } = useCarousel()
+
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (ref.current) {
+      const slides = ref.current.querySelectorAll('[data-slot=carousel-slide]')
+
+      if (slides) {
+        const count = Array.from(slides).length
+        setTotalSlides(count)
+      }
+    }
+  }, [])
 
   return (
     <div
+      ref={ref}
       data-slot="carousel-deck"
       className="relative z-2 grid-stack rounded-3xl focus-within:ring-2 ring-black"
       onMouseEnter={() => setPaused(true)}
@@ -152,7 +164,7 @@ function CarouselDeck({
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      {children(currentSlide)}
+      {children}
     </div>
   )
 }
@@ -160,24 +172,25 @@ function CarouselDeck({
 function CarouselSlide({
   children,
   className,
-  current,
   index,
 }: {
   children: React.ReactNode
   className?: string
-  current: number
   index: number
 }) {
-  const { ref, attributes } = useTransitionState(current === index, 'opacity')
+  const { direction, currentSlide } = useCarousel()
 
-  const { direction } = useCarousel()
+  const { ref, attributes } = useTransitionState(
+    currentSlide === index,
+    'opacity'
+  )
 
   return (
     <div
-      inert={current !== index || undefined}
+      inert={currentSlide !== index || undefined}
       data-index={index}
       data-slot="carousel-slide"
-      data-current={current === index || undefined}
+      data-current={currentSlide === index || undefined}
       data-ltr={direction === 'ltr' || undefined}
       className={cn(
         `
@@ -254,8 +267,16 @@ function CarouselStatus({
   hidden?: boolean
   className?: string
 }) {
-  const { autoAdvance, setSlide, isPaused, totalSlides, currentSlide } =
-    useCarousel()
+  const {
+    autoAdvance,
+    setPaused,
+    setSlide,
+    isPaused,
+    totalSlides,
+    currentSlide,
+  } = useCarousel()
+
+  console.log(totalSlides)
 
   return (
     <div
@@ -265,6 +286,8 @@ function CarouselStatus({
       )}
       inert={hidden || undefined}
       data-slot="carousel-status"
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
     >
       {Array.from({ length: totalSlides }).map((_, i) => (
         <StatusDot
@@ -334,4 +357,5 @@ export {
   CarouselPrevButton,
   CarouselSlide,
   CarouselStatus,
+  useCarousel,
 }
