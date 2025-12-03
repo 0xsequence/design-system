@@ -19,13 +19,12 @@ import { cn } from '../../utils/classnames.js'
 interface CarouselContext {
   prevSlide: () => void
   nextSlide: () => void
-  setSlide: Dispatch<SetStateAction<number>>
+  setSlide: (index: number) => void
   totalSlides: number
   currentSlide: number
   autoAdvance: boolean
   isPaused: boolean
   setPaused: Dispatch<SetStateAction<boolean>>
-  setDirection: (value: 'ltr' | 'rtl') => void
   direction: 'ltr' | 'rtl'
 }
 
@@ -44,43 +43,41 @@ function Carousel({
   children,
   count,
   duration = 4000,
-  className = '',
+  className,
 }: {
   children: React.ReactNode
   count: number
   duration?: number
   className?: string
 }) {
-  const [slide, setSlide] = useState(0)
+  const [currentSlide, setSlide] = useState(0)
   const [isPaused, setPaused] = useState(false)
   const [direction, setDirection] = useState<'rtl' | 'ltr'>('rtl')
-  function nextSlide() {
-    setSlide(current => {
-      setDirection('rtl')
-      let next = current
 
-      if (current === count - 1) {
-        next = 0
-      } else {
-        next = current + 1
+  function handleSlideChange(index: number) {
+    setSlide(current => {
+      if (index === current) {
+        return index
       }
 
-      return next
+      setDirection(index < current ? 'ltr' : 'rtl')
+
+      if (index > count - 1) {
+        return 0
+      } else if (index < 0) {
+        return count - 1
+      }
+
+      return index
     })
   }
 
-  function prevSlide() {
-    setSlide(current => {
-      setDirection('ltr')
+  function nextSlide() {
+    handleSlideChange(currentSlide + 1)
+  }
 
-      let prev = current
-      if (current === 0) {
-        prev = count - 1
-      } else {
-        prev = current - 1
-      }
-      return prev
-    })
+  function prevSlide() {
+    handleSlideChange(currentSlide - 1)
   }
 
   const autoAdvance = duration > 0 ? true : false
@@ -90,13 +87,12 @@ function Carousel({
       value={{
         nextSlide,
         prevSlide,
-        setSlide,
+        setSlide: handleSlideChange,
         isPaused,
         setPaused,
         autoAdvance,
         totalSlides: count,
-        currentSlide: slide,
-        setDirection,
+        currentSlide,
         direction,
       }}
     >
@@ -134,7 +130,7 @@ function CarouselDeck({
 
 function CarouselSlide({
   children,
-  className = '',
+  className,
   current,
   index,
 }: {
@@ -176,7 +172,7 @@ function CarouselSlide({
 function CarouselPrevButton({
   children,
   variant = 'default',
-  className = '',
+  className,
   ...rest
 }: {
   children?: React.ReactNode
@@ -214,7 +210,7 @@ function CarouselPrevButton({
 function CarouselNextButton({
   children,
   variant = 'default',
-  className = '',
+  className,
   ...rest
 }: {
   children?: React.ReactNode
@@ -252,7 +248,7 @@ function CarouselNextButton({
 
 function CarouselStatus({
   hidden,
-  className = '',
+  className,
 }: {
   hidden?: boolean
   className?: string
@@ -264,7 +260,6 @@ function CarouselStatus({
     isPaused,
     totalSlides,
     currentSlide,
-    setDirection,
   } = useCarousel()
 
   function handleSlideTransitionEnd(
@@ -297,16 +292,9 @@ function CarouselStatus({
           current={currentSlide === i}
           autoAdvance={autoAdvance}
           onTransitionEnd={handleSlideTransitionEnd}
-          handleSetSlide={() => {
-            setSlide((current: number) => {
-              if (i < current) {
-                setDirection('ltr')
-              } else {
-                setDirection('rtl')
-              }
-
-              return i
-            })
+          onChange={ev => {
+            console.log(ev)
+            setSlide(i)
           }}
         />
       ))}
@@ -319,18 +307,16 @@ function StatusDot({
   index,
   isPaused,
   autoAdvance,
-  handleSetSlide,
-  ...props
+  onChange,
+  onTransitionEnd,
 }: {
   current: boolean
   index: number
   isPaused: boolean
   autoAdvance?: boolean
-  handleSetSlide: () => void
+  // onChange: () => void
 } & ComponentProps<'div'>) {
   const [active, setActive] = useState(false)
-
-  const { onTransitionEnd } = props
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -356,7 +342,7 @@ function StatusDot({
         type="radio"
         value={`Slide ${index + 1}`}
         name="current-slide"
-        onChange={handleSetSlide}
+        onChange={onChange}
         className="appearance-none opacity-0"
         tabIndex={active ? 0 : -1}
       />
