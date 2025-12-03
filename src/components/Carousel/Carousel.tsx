@@ -21,6 +21,7 @@ interface CarouselContext {
   totalSlides: number
   currentSlide: number
   autoAdvance: boolean
+  duration: number
   isPaused: boolean
   setPaused: Dispatch<SetStateAction<boolean>>
   direction: 'ltr' | 'rtl'
@@ -74,7 +75,22 @@ function Carousel({
     handleSlideChange(currentSlide - 1)
   }
 
-  const autoAdvance = duration > 0 ? true : false
+  const autoAdvance = duration > 0
+
+  // Handle auto-advance with interval timer
+  useEffect(() => {
+    if (!autoAdvance || isPaused) {
+      return
+    }
+
+    const interval = setInterval(() => {
+      nextSlide()
+    }, duration)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [autoAdvance, isPaused, duration, currentSlide])
 
   return (
     <CarouselContext.Provider
@@ -85,6 +101,7 @@ function Carousel({
         isPaused,
         setPaused,
         autoAdvance,
+        duration,
         totalSlides: count,
         currentSlide,
         direction,
@@ -221,27 +238,8 @@ function CarouselStatus({
   hidden?: boolean
   className?: string
 }) {
-  const {
-    autoAdvance,
-    setSlide,
-    nextSlide,
-    isPaused,
-    totalSlides,
-    currentSlide,
-  } = useCarousel()
-
-  function handleSlideTransitionEnd(
-    evt: React.TransitionEvent<HTMLDivElement>
-  ) {
-    if (
-      evt.propertyName === 'translate' &&
-      !isPaused &&
-      autoAdvance &&
-      Number(evt.currentTarget.dataset.slideId) === currentSlide
-    ) {
-      nextSlide()
-    }
-  }
+  const { autoAdvance, setSlide, isPaused, totalSlides, currentSlide } =
+    useCarousel()
 
   return (
     <div
@@ -259,7 +257,6 @@ function CarouselStatus({
           isPaused={isPaused}
           current={currentSlide === i}
           autoAdvance={autoAdvance}
-          onTransitionEnd={handleSlideTransitionEnd}
           onChangeSlide={setSlide}
         />
       ))}
@@ -273,14 +270,13 @@ function StatusDot({
   isPaused,
   autoAdvance,
   onChangeSlide,
-  onTransitionEnd,
 }: {
   current: boolean
   index: number
   isPaused: boolean
   autoAdvance?: boolean
   onChangeSlide: (index: number) => void
-} & ComponentProps<'div'>) {
+}) {
   const [active, setActive] = useState(false)
 
   useEffect(() => {
@@ -300,9 +296,8 @@ function StatusDot({
       <div
         className="in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse not-in-data-current:duration-1 data-pause:duration-300 rounded-full duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
         data-slide-id={index}
-        onTransitionEnd={onTransitionEnd}
         data-pause={!autoAdvance || isPaused || undefined}
-      ></div>
+      />
       <input
         type="radio"
         value={`Slide ${index + 1}`}
