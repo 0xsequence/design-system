@@ -289,7 +289,7 @@ function StatusDot({
     <label
       data-slot="carousel-status-dot"
       data-index={index}
-      className="grid-stack size-2.5 data-auto-advance:data-current:w-6 transition-all rounded-full bg-background-inverse/20 overflow-clip focus-within:ring-2 ring-background-inverse cursor-pointer"
+      className="grid-stack size-2.5 data-auto-advance:data-current:w-6 transition-all rounded-full bg-background-inverse/20 overflow-clip has-[:focus-visible]:outline-2 outline-offset-1 has-[:focus-visible]:outline-border-focus cursor-pointer"
       data-current={active || undefined}
       data-auto-advance={autoAdvance || undefined}
     >
