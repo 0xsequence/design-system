@@ -91,8 +91,10 @@ function Carousel({
       }}
     >
       <div
-        className={cn(className)}
         data-slot="carousel"
+        role="region"
+        aria-roledescription="carousel"
+        className={cn(className)}
         style={{ '--duration': `${duration}ms` } as React.CSSProperties}
       >
         {children}
@@ -152,6 +154,7 @@ function CarouselSlide({
         data-exiting:opacity-0 data-exiting:-translate-x-16 data-ltr:data-exiting:translate-x-16
         data-exited:opacity-0 data-exited:translate-x-16 data-ltr:data-exited:-translate-x-16 data-exited:transition-none!
         opacity-0 translate-x-16 data-ltr:not-current:-translate-x-16
+        z-1 inert:z-0
       `,
         className
       )}
@@ -287,15 +290,15 @@ function StatusDot({
   }, [current])
 
   return (
-    <div
+    <label
       data-slot="carousel-status-dot"
       data-index={index}
-      className="grid-stack size-2.5 data-auto-advance:data-current:w-6 transition-all rounded-full bg-primary/20 overflow-clip focus-within:ring-2 ring-primary"
+      className="grid-stack size-2.5 data-auto-advance:data-current:w-6 transition-all rounded-full bg-background-inverse/20 overflow-clip focus-within:ring-2 ring-background-inverse cursor-pointer"
       data-current={active || undefined}
       data-auto-advance={autoAdvance || undefined}
     >
       <div
-        className="in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse not-in-data-current:duration-1 data-pause:duration-300 rounded-sm duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
+        className="in-data-current:opacity-100 opacity-0 transition-transform size-full ease-linear bg-background-inverse not-in-data-current:duration-1 data-pause:duration-300 rounded-full duration-(--duration) in-data-current:translate-x-6 data-pause:translate-x-0"
         data-slide-id={index}
         onTransitionEnd={onTransitionEnd}
         data-pause={!autoAdvance || isPaused || undefined}
@@ -305,10 +308,10 @@ function StatusDot({
         value={`Slide ${index + 1}`}
         name="current-slide"
         onChange={() => onChangeSlide(index)}
-        className="appearance-none opacity-0"
+        className="sr-only"
         tabIndex={active ? 0 : -1}
       />
-    </div>
+    </label>
   )
 }
 
