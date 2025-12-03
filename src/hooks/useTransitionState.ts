@@ -13,9 +13,23 @@ export function useTransitionState(active: boolean) {
   useEffect(() => {
     if (prevActive.current !== active) {
       if (active) {
-        setTransition('entering')
-      } else if (prevActive.current) {
-        setTransition('exiting')
+        // Valid transitions to 'entering': from 'exited'
+        setTransition(current => {
+          // If already entering or entered, don't restart
+          if (current === 'entering' || current === 'entered') {
+            return current
+          }
+          return 'entering'
+        })
+      } else {
+        // Valid transitions to 'exiting': from 'entered' or 'entering'
+        setTransition(current => {
+          // If already exiting or exited, don't restart
+          if (current === 'exiting' || current === 'exited') {
+            return current
+          }
+          return 'exiting'
+        })
       }
       prevActive.current = active
     }
@@ -32,11 +46,17 @@ export function useTransitionState(active: boolean) {
       if (event.target !== node) {
         return
       }
-      if (transition === 'entering') {
-        setTransition('entered')
-      } else if (transition === 'exiting') {
-        setTransition('exited')
-      }
+
+      // Only transition to final state if we're in the corresponding transient state
+      setTransition(current => {
+        if (current === 'entering') {
+          return 'entered'
+        } else if (current === 'exiting') {
+          return 'exited'
+        }
+        // If we're already in a final state, don't change
+        return current
+      })
     }
 
     node.addEventListener('transitionend', handleEnd)
