@@ -22,7 +22,7 @@ type Story = StoryObj<typeof Carousel>
 export const Default: Story = {
   render: () => {
     return (
-      <Carousel count={5} duration={4000}>
+      <Carousel totalSlides={5} duration={4000}>
         <div className="w-full flex flex-col items-center flex-1 justify-center gap-4">
           <div className="max-w-3xl w-full flex flex-col gap-4">
             <div className="flex justify-between gap-4 w-full items-center">
@@ -34,9 +34,9 @@ export const Default: Story = {
               </div>
             </div>
             <CarouselDeck>
-              {current =>
-                Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselSlide key={index} index={index} current={current}>
+              <>
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <CarouselSlide key={index} index={index}>
                     <div className="p-1">
                       <Card className="flex aspect-video items-center justify-center p-6">
                         <span className="text-4xl font-semibold">
@@ -45,8 +45,8 @@ export const Default: Story = {
                       </Card>
                     </div>
                   </CarouselSlide>
-                ))
-              }
+                ))}
+              </>
             </CarouselDeck>
           </div>
           <CarouselStatus />
@@ -60,13 +60,13 @@ export const Default: Story = {
 export const Small: Story = {
   render: () => {
     return (
-      <Carousel count={5} duration={4000}>
+      <Carousel totalSlides={5} duration={4000}>
         <div className="w-full flex flex-col items-center flex-1 justify-center gap-4">
           <div className="max-w-lg w-full">
             <CarouselDeck>
-              {current =>
-                Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselSlide key={index} current={current} index={index}>
+              <>
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <CarouselSlide key={index} index={index}>
                     <div className="p-1">
                       <Card className="flex aspect-video items-center justify-center p-6">
                         <span className="text-4xl font-semibold">
@@ -75,8 +75,8 @@ export const Small: Story = {
                       </Card>
                     </div>
                   </CarouselSlide>
-                ))
-              }
+                ))}
+              </>
             </CarouselDeck>
           </div>
           <div className="flex gap-4 items-center">

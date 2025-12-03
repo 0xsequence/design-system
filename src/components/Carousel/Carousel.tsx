@@ -40,12 +40,12 @@ function useCarousel() {
 
 function Carousel({
   children,
-  count,
+  totalSlides,
   duration = 4000,
   className,
 }: {
   children: React.ReactNode
-  count: number
+  totalSlides: number
   duration?: number
   className?: string
 }) {
@@ -58,16 +58,16 @@ function Carousel({
       let newIndex = index
 
       // Handle wraparound
-      if (index > count - 1) {
+      if (index > totalSlides - 1) {
         newIndex = 0
       } else if (index < 0) {
-        newIndex = count - 1
+        newIndex = totalSlides - 1
       }
 
       // Handle wraparound direction
-      if (current === count - 1 && newIndex === 0) {
+      if (current === totalSlides - 1 && newIndex === 0) {
         setDirection('rtl') // next wrapped
-      } else if (current === 0 && newIndex === count - 1) {
+      } else if (current === 0 && newIndex === totalSlides - 1) {
         setDirection('ltr') // prev wrapped
       } else {
         setDirection(newIndex < current ? 'ltr' : 'rtl')
@@ -80,14 +80,14 @@ function Carousel({
   function nextSlide() {
     setCurrentSlide(current => {
       setDirection('rtl')
-      return current === count - 1 ? 0 : current + 1
+      return current === totalSlides - 1 ? 0 : current + 1
     })
   }
 
   function prevSlide() {
     setCurrentSlide(current => {
       setDirection('ltr')
-      return current === 0 ? count - 1 : current - 1
+      return current === 0 ? totalSlides - 1 : current - 1
     })
   }
 
@@ -118,7 +118,7 @@ function Carousel({
         setPaused,
         autoAdvance,
         duration,
-        totalSlides: count,
+        totalSlides,
         currentSlide,
         direction,
       }}
@@ -136,12 +136,8 @@ function Carousel({
   )
 }
 
-function CarouselDeck({
-  children,
-}: {
-  children: (current: number) => React.ReactNode
-}) {
-  const { currentSlide, setPaused } = useCarousel()
+function CarouselDeck({ children }: { children: React.ReactNode }) {
+  const { setPaused } = useCarousel()
 
   return (
     <div
@@ -152,7 +148,7 @@ function CarouselDeck({
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      {children(currentSlide)}
+      {children}
     </div>
   )
 }
@@ -160,24 +156,25 @@ function CarouselDeck({
 function CarouselSlide({
   children,
   className,
-  current,
   index,
 }: {
   children: React.ReactNode
   className?: string
-  current: number
   index: number
 }) {
-  const { ref, attributes } = useTransitionState(current === index, 'opacity')
+  const { direction, currentSlide } = useCarousel()
 
-  const { direction } = useCarousel()
+  const { ref, attributes } = useTransitionState(
+    currentSlide === index,
+    'opacity'
+  )
 
   return (
     <div
-      inert={current !== index || undefined}
+      inert={currentSlide !== index || undefined}
       data-index={index}
       data-slot="carousel-slide"
-      data-current={current === index || undefined}
+      data-current={currentSlide === index || undefined}
       data-ltr={direction === 'ltr' || undefined}
       className={cn(
         `
@@ -254,8 +251,14 @@ function CarouselStatus({
   hidden?: boolean
   className?: string
 }) {
-  const { autoAdvance, setSlide, isPaused, totalSlides, currentSlide } =
-    useCarousel()
+  const {
+    autoAdvance,
+    setPaused,
+    setSlide,
+    isPaused,
+    totalSlides,
+    currentSlide,
+  } = useCarousel()
 
   return (
     <div
@@ -265,6 +268,8 @@ function CarouselStatus({
       )}
       inert={hidden || undefined}
       data-slot="carousel-status"
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
     >
       {Array.from({ length: totalSlides }).map((_, i) => (
         <StatusDot
