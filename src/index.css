@@ -92,7 +92,7 @@
   --seq-color-background-primary: var(--color-slate-50);
   --seq-color-background-secondary: white;
   --seq-color-background-muted: var(--color-slate-100);
-  --seq-color-background-inverse: black;
+  --seq-color-background-inverse: var(--color-slate-950);
   --seq-color-background-overlay: color-mix(
     in oklab,
     var(--color-slate-300) 80%,

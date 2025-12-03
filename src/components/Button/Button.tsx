@@ -47,8 +47,10 @@ const buttonVariants = cva(
           'bg-background-secondary text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         outline:
           'bg-transparent text-primary border-1 border-current hover:opacity-80',
-        ghost: 'bg-transparent hover:bg-primary/15 text-primary transition-all',
-        emphasis: 'bg-primary text-background-primary hover:bg-primary/80',
+        ghost:
+          'bg-transparent text-primary/80 hover:bg-background-inverse/15 hover:text-primary',
+        emphasis:
+          'bg-background-inverse text-background-primary hover:bg-primary/80',
         destructive: 'bg-destructive text-white hover:bg-destructive/80',
         text: [
           'bg-transparent text-primary rounded-xs h-auto w-auto h-auto min-w-0 p-0 focus-visible:outline-offset-1 grow-0 hover:opacity-80',
