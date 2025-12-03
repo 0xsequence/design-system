@@ -35,7 +35,7 @@ export const Default: Story = {
             </div>
             <CarouselDeck>
               {Array.from({ length: 5 }).map((_, index) => (
-                <CarouselSlide key={index} index={index}>
+                <CarouselSlide key={index}>
                   <div className="p-1">
                     <Card className="flex aspect-video items-center justify-center p-6">
                       <span className="text-4xl font-semibold">
@@ -62,8 +62,8 @@ export const Small: Story = {
         <div className="w-full flex flex-col items-center flex-1 justify-center gap-4">
           <div className="max-w-lg w-full">
             <CarouselDeck>
-              {Array.from({ length: 5 }).map((_, index) => (
-                <CarouselSlide key={index} index={index}>
+              {Array.from({ length: 7 }).map((_, index) => (
+                <CarouselSlide key={index}>
                   <div className="p-1">
                     <Card className="flex aspect-video items-center justify-center p-6">
                       <span className="text-4xl font-semibold">

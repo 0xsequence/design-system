@@ -1,8 +1,10 @@
 import {
+  Children,
+  cloneElement,
   createContext,
+  isValidElement,
   useContext,
   useEffect,
-  useRef,
   useState,
   type ComponentProps,
   type Dispatch,
@@ -141,22 +143,25 @@ function Carousel({
 function CarouselDeck({ children }: { children: React.ReactNode }) {
   const { setPaused, setTotalSlides } = useCarousel()
 
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (ref.current) {
-      const slides = ref.current.querySelectorAll('[data-slot=carousel-slide]')
-
-      if (slides) {
-        const count = Array.from(slides).length
-        setTotalSlides(count)
+  // Automatically inject index into each CarouselSlide child and filter to only slides
+  const childrenWithIndex = Children.toArray(children)
+    .filter(child => isValidElement(child) && child.type === CarouselSlide)
+    .map((child, index) => {
+      if (isValidElement(child)) {
+        return cloneElement(child, { index } as any)
       }
-    }
-  }, [])
+      return child
+    })
+
+  const slideCount = childrenWithIndex.length
+
+  // Update total slides count based on number of children
+  useEffect(() => {
+    setTotalSlides(slideCount)
+  }, [setTotalSlides, slideCount])
 
   return (
     <div
-      ref={ref}
       data-slot="carousel-deck"
       className="relative z-2 grid-stack rounded-3xl focus-within:ring-2 ring-black"
       onMouseEnter={() => setPaused(true)}
@@ -164,7 +169,7 @@ function CarouselDeck({ children }: { children: React.ReactNode }) {
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      {children}
+      {childrenWithIndex}
     </div>
   )
 }
@@ -172,11 +177,11 @@ function CarouselDeck({ children }: { children: React.ReactNode }) {
 function CarouselSlide({
   children,
   className,
-  index,
+  index = 0,
 }: {
   children: React.ReactNode
   className?: string
-  index: number
+  index?: number
 }) {
   const { direction, currentSlide } = useCarousel()
 
