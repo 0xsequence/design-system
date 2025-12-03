@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.1.6
+
+### Patch Changes
+
+- Adding Carousel component
+
 ## 3.1.5
 
 ### Patch Changes
