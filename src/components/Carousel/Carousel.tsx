@@ -7,14 +7,12 @@ import {
   type Dispatch,
   type SetStateAction,
 } from 'react'
-import { Button } from 'src/components/Button/Button.js'
 
 import { useTransitionState } from '../../hooks/useTransitionState.js'
 import ArrowLeftIcon from '../../icons/ArrowLeftIcon.js'
 import ArrowRightIcon from '../../icons/ArrowRightIcon.js'
-import ChevronLeftIcon from '../../icons/ChevronLeftIcon.js'
-import ChevronRightIcon from '../../icons/ChevronRightIcon.js'
 import { cn } from '../../utils/classnames.js'
+import { Button } from '../Button/Button.js'
 
 interface CarouselContext {
   prevSlide: () => void
@@ -56,10 +54,6 @@ function Carousel({
 
   function handleSlideChange(index: number) {
     setSlide(current => {
-      if (index === current) {
-        return index
-      }
-
       setDirection(index < current ? 'ltr' : 'rtl')
 
       if (index > count - 1) {
@@ -171,77 +165,48 @@ function CarouselSlide({
 
 function CarouselPrevButton({
   children,
-  variant = 'default',
-  className,
-  ...rest
-}: {
-  children?: React.ReactNode
-  variant?: 'default' | 'small' | 'none'
-  className?: string
-} & ComponentProps<'button'>) {
+  variant = 'secondary',
+  shape = 'circle',
+  size = 'md',
+  ...props
+}: ComponentProps<typeof Button>) {
   const { prevSlide } = useCarousel()
 
-  const variants = {
-    default:
-      'rounded-full border border-border-card text-primary flex items-center justify-center size-9 bg-background-secondary focus-visible:opacity-80 hover:opacity-80 transition-all active:scale-95 origin-bottom',
-    small: 'text-primary',
-
-    none: '',
-  }
-  const content = children ? (
-    children
-  ) : variant === 'default' ? (
-    <ArrowLeftIcon />
-  ) : variant === 'small' ? (
-    <ChevronLeftIcon className="size-4" />
-  ) : null
   return (
     <Button
       data-slot="carousel-prev-button"
-      className={cn('cursor-pointer', variants[variant], className)}
+      variant={variant}
+      shape={shape}
+      size={size}
       onClick={prevSlide}
-      {...rest}
+      iconOnly
+      {...props}
     >
-      {content}
+      {children ? children : <ArrowLeftIcon />}
     </Button>
   )
 }
 
 function CarouselNextButton({
   children,
-  variant = 'default',
-  className,
-  ...rest
-}: {
-  children?: React.ReactNode
-  variant?: 'default' | 'small' | 'none'
-  className?: string
-} & ComponentProps<'button'>) {
+  variant = 'secondary',
+  shape = 'circle',
+  size = 'md',
+  ...props
+}: ComponentProps<typeof Button>) {
   const { nextSlide } = useCarousel()
-
-  const variants = {
-    default:
-      'rounded-full border border-border-card text-primary flex items-center justify-center size-9 bg-background-secondary focus-visible:opacity-80 hover:opacity-80 transition-all active:scale-95 origin-bottom',
-    small: 'text-primary',
-    none: '',
-  }
-
-  const content = children ? (
-    children
-  ) : variant === 'default' ? (
-    <ArrowRightIcon />
-  ) : variant === 'small' ? (
-    <ChevronRightIcon className="size-4" />
-  ) : null
 
   return (
     <Button
       data-slot="carousel-next-button"
-      className={cn('cursor-pointer', variants[variant], className)}
+      variant={variant}
+      shape={shape}
+      size={size}
       onClick={nextSlide}
-      {...rest}
+      iconOnly
+      {...props}
     >
-      {content}
+      {children ? children : <ArrowRightIcon />}
     </Button>
   )
 }
@@ -292,10 +257,7 @@ function CarouselStatus({
           current={currentSlide === i}
           autoAdvance={autoAdvance}
           onTransitionEnd={handleSlideTransitionEnd}
-          onChange={ev => {
-            console.log(ev)
-            setSlide(i)
-          }}
+          onChangeSlide={setSlide}
         />
       ))}
     </div>
@@ -307,14 +269,14 @@ function StatusDot({
   index,
   isPaused,
   autoAdvance,
-  onChange,
+  onChangeSlide,
   onTransitionEnd,
 }: {
   current: boolean
   index: number
   isPaused: boolean
   autoAdvance?: boolean
-  // onChange: () => void
+  onChangeSlide: (index: number) => void
 } & ComponentProps<'div'>) {
   const [active, setActive] = useState(false)
 
@@ -342,7 +304,7 @@ function StatusDot({
         type="radio"
         value={`Slide ${index + 1}`}
         name="current-slide"
-        onChange={onChange}
+        onChange={() => onChangeSlide(index)}
         className="appearance-none opacity-0"
         tabIndex={active ? 0 : -1}
       />

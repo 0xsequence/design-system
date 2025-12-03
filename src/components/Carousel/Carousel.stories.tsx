@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { ChevronLeftIcon, ChevronRightIcon } from '../../icons/index.js'
 import { Card } from '../Card/Card.js'
 
 import {
@@ -79,9 +80,13 @@ export const Small: Story = {
             </CarouselDeck>
           </div>
           <div className="flex gap-4 items-center">
-            <CarouselPrevButton variant="small" />
+            <CarouselPrevButton variant="ghost" size="xs">
+              <ChevronLeftIcon />
+            </CarouselPrevButton>
             <CarouselStatus />
-            <CarouselNextButton variant="small" />
+            <CarouselNextButton variant="ghost" size="xs">
+              <ChevronRightIcon />
+            </CarouselNextButton>
           </div>
         </div>
       </Carousel>
