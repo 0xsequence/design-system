@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.1.7
+
+### Patch Changes
+
+- QOL changes to Carousel
+
 ## 3.1.6
 
 ### Patch Changes
