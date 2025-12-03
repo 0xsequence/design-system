@@ -22,7 +22,7 @@ type Story = StoryObj<typeof Carousel>
 export const Default: Story = {
   render: () => {
     return (
-      <Carousel totalSlides={5} duration={4000}>
+      <Carousel duration={4000}>
         <div className="w-full flex flex-col items-center flex-1 justify-center gap-4">
           <div className="max-w-3xl w-full flex flex-col gap-4">
             <div className="flex justify-between gap-4 w-full items-center">
@@ -60,7 +60,7 @@ export const Default: Story = {
 export const Small: Story = {
   render: () => {
     return (
-      <Carousel totalSlides={5} duration={4000}>
+      <Carousel duration={4000}>
         <div className="w-full flex flex-col items-center flex-1 justify-center gap-4">
           <div className="max-w-lg w-full">
             <CarouselDeck>

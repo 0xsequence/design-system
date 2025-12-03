@@ -2,6 +2,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ComponentProps,
   type Dispatch,
@@ -23,6 +24,7 @@ interface CarouselContext {
   autoAdvance: boolean
   duration: number
   isPaused: boolean
+  setTotalSlides: Dispatch<SetStateAction<number>>
   setPaused: Dispatch<SetStateAction<boolean>>
   direction: 'ltr' | 'rtl'
 }
@@ -40,15 +42,14 @@ function useCarousel() {
 
 function Carousel({
   children,
-  totalSlides,
   duration = 4000,
   className,
 }: {
   children: React.ReactNode
-  totalSlides: number
   duration?: number
   className?: string
 }) {
+  const [totalSlides, setTotalSlides] = useState(0)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setPaused] = useState(false)
   const [direction, setDirection] = useState<'rtl' | 'ltr'>('rtl')
@@ -119,6 +120,7 @@ function Carousel({
         autoAdvance,
         duration,
         totalSlides,
+        setTotalSlides,
         currentSlide,
         direction,
       }}
@@ -137,10 +139,24 @@ function Carousel({
 }
 
 function CarouselDeck({ children }: { children: React.ReactNode }) {
-  const { setPaused } = useCarousel()
+  const { setPaused, setTotalSlides } = useCarousel()
+
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (ref.current) {
+      const slides = ref.current.querySelectorAll('[data-slot=carousel-slide]')
+
+      if (slides) {
+        const count = Array.from(slides).length
+        setTotalSlides(count)
+      }
+    }
+  }, [])
 
   return (
     <div
+      ref={ref}
       data-slot="carousel-deck"
       className="relative z-2 grid-stack rounded-3xl focus-within:ring-2 ring-black"
       onMouseEnter={() => setPaused(true)}
@@ -259,6 +275,8 @@ function CarouselStatus({
     totalSlides,
     currentSlide,
   } = useCarousel()
+
+  console.log(totalSlides)
 
   return (
     <div
