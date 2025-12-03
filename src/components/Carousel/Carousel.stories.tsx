@@ -34,19 +34,17 @@ export const Default: Story = {
               </div>
             </div>
             <CarouselDeck>
-              <>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselSlide key={index} index={index}>
-                    <div className="p-1">
-                      <Card className="flex aspect-video items-center justify-center p-6">
-                        <span className="text-4xl font-semibold">
-                          {index + 1}
-                        </span>
-                      </Card>
-                    </div>
-                  </CarouselSlide>
-                ))}
-              </>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselSlide key={index} index={index}>
+                  <div className="p-1">
+                    <Card className="flex aspect-video items-center justify-center p-6">
+                      <span className="text-4xl font-semibold">
+                        {index + 1}
+                      </span>
+                    </Card>
+                  </div>
+                </CarouselSlide>
+              ))}
             </CarouselDeck>
           </div>
           <CarouselStatus />
@@ -64,19 +62,17 @@ export const Small: Story = {
         <div className="w-full flex flex-col items-center flex-1 justify-center gap-4">
           <div className="max-w-lg w-full">
             <CarouselDeck>
-              <>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselSlide key={index} index={index}>
-                    <div className="p-1">
-                      <Card className="flex aspect-video items-center justify-center p-6">
-                        <span className="text-4xl font-semibold">
-                          {index + 1}
-                        </span>
-                      </Card>
-                    </div>
-                  </CarouselSlide>
-                ))}
-              </>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselSlide key={index} index={index}>
+                  <div className="p-1">
+                    <Card className="flex aspect-video items-center justify-center p-6">
+                      <span className="text-4xl font-semibold">
+                        {index + 1}
+                      </span>
+                    </Card>
+                  </div>
+                </CarouselSlide>
+              ))}
             </CarouselDeck>
           </div>
           <div className="flex gap-4 items-center">
