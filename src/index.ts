@@ -198,7 +198,8 @@ export { capitalize, kebabize, pluralize } from './utils/string.js'
 
 // Hooks
 export { useCombinedRefs } from './hooks/useCombinedRefs.js'
-export { useMediaQuery, type BreakpointType } from './hooks/useMediaQuery.js'
+export { useMediaQuery } from './hooks/useMediaQuery.js'
+export { useIsMobile } from './hooks/useIsMobile.js'
 
 // Icons
 export * from './icons/aliased.js'

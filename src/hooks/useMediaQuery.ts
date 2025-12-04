@@ -1,72 +1,55 @@
 import { useEffect, useState } from 'react'
 
-// Inspired by Material-UIs useMediaQuery hook:
-// https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/useMediaQuery/useMediaQuery.js
-
-// TODO move this to design-system
-
-export type BreakpointType = 'isMobile' | 'isDesktop'
-
-interface Options {
-  defaultMatches?: boolean
+interface UseMediaQueryOptions {
+  defaultValue?: boolean
 }
 
-// useMediaQuery will re-render state whenever the media query matches.
+/**
+ * Hook that tracks whether a media query matches
+ * @param query - Media query string (e.g., "(max-width: 768px)")
+ * @param options - Optional configuration
+ * @param options.defaultValue - Default value to use during SSR or before hydration (default: false)
+ * @returns boolean indicating whether the media query matches
+ */
 export const useMediaQuery = (
-  queryInput: BreakpointType | string,
-  options: Options = {}
-) => {
-  const bp = new Map<BreakpointType, string>()
-    .set('isMobile', `@media screen and (max-width: 767px)`)
-    .set('isDesktop', `@media screen and (min-width: 768px)`)
+  query: string,
+  options: UseMediaQueryOptions = {}
+): boolean => {
+  const { defaultValue = false } = options
 
-  if (!queryInput.startsWith('@media')) {
-    const bpQuery = bp.get(queryInput as any)
-    if (!bpQuery || bpQuery === '') {
-      throw new Error(
-        `useMediaQuery failed to get breakpoint from theme for: ${queryInput}`
-      )
+  const [matches, setMatches] = useState<boolean>(() => {
+    // Server-side rendering or when window is not available
+    if (typeof window === 'undefined') {
+      return defaultValue
     }
-    queryInput = bpQuery
-  }
-
-  const query = queryInput.replace(/^@media( ?)/m, '')
-  const supportMatchMedia =
-    typeof window !== 'undefined' && typeof window.matchMedia !== 'undefined'
-  const { defaultMatches = false } = options
-
-  const [match, setMatch] = useState(() => {
-    if (supportMatchMedia) {
-      return window.matchMedia(query).matches
-    }
-    // Once the component is mounted, we rely on the
-    // event listeners to return the correct matches value.
-    return defaultMatches
+    // Initial client-side value
+    return window.matchMedia(query).matches
   })
 
   useEffect(() => {
-    let active = true
-
-    if (!supportMatchMedia) {
-      return undefined
+    // Only run on client-side
+    if (typeof window === 'undefined') {
+      return
     }
 
-    const queryList = window.matchMedia(query)
-    const updateMatch = () => {
-      // Workaround Safari wrong implementation of matchMedia
-      // TODO can we remove it?
-      // https://github.com/mui-org/material-ui/pull/17315#issuecomment-528286677
-      if (active) {
-        setMatch(queryList.matches)
-      }
+    const mediaQuery = window.matchMedia(query)
+
+    // Handler for media query changes
+    const handleChange = (event: MediaQueryListEvent | MediaQueryList) => {
+      setMatches(event.matches)
     }
-    updateMatch()
-    queryList.addListener(updateMatch)
+
+    // Set initial value
+    handleChange(mediaQuery)
+
+    // Use modern addEventListener API
+    mediaQuery.addEventListener('change', handleChange)
+
+    // Cleanup
     return () => {
-      active = false
-      queryList.removeListener(updateMatch)
+      mediaQuery.removeEventListener('change', handleChange)
     }
-  }, [query, supportMatchMedia])
+  }, [query])
 
-  return match
+  return matches
 }
