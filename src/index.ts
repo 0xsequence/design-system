@@ -193,13 +193,13 @@ export {
 } from './utils/assets.js'
 export { cn } from './utils/classnames.js'
 export { getCssVar } from './utils/css.js'
-export { isTruthy } from './utils/filter.js'
 export { capitalize, kebabize, pluralize } from './utils/string.js'
 
 // Hooks
 export { useCombinedRefs } from './hooks/useCombinedRefs.js'
 export { useMediaQuery } from './hooks/useMediaQuery.js'
 export { useIsMobile } from './hooks/useIsMobile.js'
+export { useBreakpoint, type Breakpoint } from './hooks/useBreakpoint.js'
 
 // Icons
 export * from './icons/aliased.js'
