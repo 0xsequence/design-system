@@ -156,6 +156,22 @@ export {
   SheetTitle,
   SheetTrigger,
 } from './components/Sheet/Sheet.js'
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarContext,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
+  useSidebar,
+} from './components/Sidebar/Sidebar.js'
 export { Skeleton } from './components/Skeleton/Skeleton.js'
 export { Spinner } from './components/Spinner/Spinner.js'
 export { StopClickPropagation } from './components/StopClickPropagation/StopClickPropagation.js'
