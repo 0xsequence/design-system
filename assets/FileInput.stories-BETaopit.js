@@ -1,0 +1,14 @@
+import{F as n}from"./FileInput-hjMdzP77.js";import"./iframe-CuPMd-Xv.js";import"./preload-helper-PPVm8Dsz.js";import"./YoutubeIcon-DervRuzk.js";import"./index-Cn1xQXcm.js";import"./SearchIcon-CEFG-nPA.js";import"./styles-DSBOcsIh.js";import"./IconButton-Bwd2cdWU.js";import"./Button-BAJp8szO.js";import"./index-Dof-t4Bc.js";import"./index-BAQm0HaW.js";import"./Text-I1IMu2RH.js";const f={title:"Forms/FileInput",component:n},e={args:{name:"myFileInput",validExtensions:["images"],onValueChange:r=>console.log(r)}},o={args:{name:"myFileInput",validExtensions:["images"],onValueChange:r=>console.log(r),"aria-invalid":!0}};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`{
+  args: {
+    name: 'myFileInput',
+    validExtensions: ['images'],
+    onValueChange: file => console.log(file)
+  }
+}`,...e.parameters?.docs?.source}}};o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:`{
+  args: {
+    name: 'myFileInput',
+    validExtensions: ['images'],
+    onValueChange: file => console.log(file),
+    ['aria-invalid']: true
+  }
+}`,...o.parameters?.docs?.source}}};const E=["Default","Error"];export{e as Default,o as Error,E as __namedExportsOrder,f as default};
