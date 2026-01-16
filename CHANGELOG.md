@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.0
+
+### Minor Changes
+
+- Updating media query hooks
+
 ## 3.1.7
 
 ### Patch Changes
