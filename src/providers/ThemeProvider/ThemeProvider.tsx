@@ -126,7 +126,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
       container,
       setTheme: (theme: Theme) => {
         // Save to local storage
-        if (storageKey) {
+        if (storageKey && typeof localStorage !== 'undefined') {
           localStorage.setItem(storageKey, theme)
         }
 
@@ -174,7 +174,7 @@ const setThemeVars = (element: HTMLElement, props: Partial<ColorTokens>) => {
 }
 
 const getPersistedTheme = (storageKey: string | null): Theme | null => {
-  if (!storageKey) {
+  if (!storageKey || typeof localStorage === 'undefined') {
     return null
   }
 
@@ -188,4 +188,7 @@ const getPersistedTheme = (storageKey: string | null): Theme | null => {
 }
 
 const getSystemTheme = (): ResolvedTheme =>
-  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light'
