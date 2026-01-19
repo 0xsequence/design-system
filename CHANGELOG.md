@@ -1,5 +1,18 @@
 # @0xsequence/design-system
 
+## 3.2.1
+
+### Patch Changes
+
+- Adding SSR guards for localStorage
+- removing compareAddress and truncateAddress utils
+
+## 3.2.0
+
+### Patch Changes
+
+- Adding useMediaQuery, useIsMobile, and useBreakpoint hooks
+
 ## 3.1.7
 
 ### Patch Changes
