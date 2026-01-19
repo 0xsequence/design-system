@@ -184,7 +184,6 @@ export { VisuallyHidden } from './components/VisuallyHidden/VisuallyHidden.js'
 export { disabledStyle, focusRingVariants, inputBorderStyle } from './styles.js'
 
 // Utils
-export { compareAddress, truncateAddress } from './utils/address.js'
 export {
   nativeTokenImageUrl,
   networkImageUrl,
