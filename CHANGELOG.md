@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.2
+
+### Patch Changes
+
+- Added Table component
+
 ## 3.2.1
 
 ### Patch Changes
