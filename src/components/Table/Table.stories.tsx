@@ -1,14 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { useState } from 'react'
+
+import { Checkbox } from '../Checkbox/Checkbox.js'
 
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableFooter,
   TableHead,
   TableHeader,
   TableRow,
+  TableSortIcon,
 } from './Table.js'
 
 export default {
@@ -64,20 +67,86 @@ const invoices = [
 
 export const Default: Story = {
   render: () => {
+    const [activeColumn, setActiveColumn] = useState<
+      'invoice' | 'status' | 'method' | 'amount'
+    >('amount')
+    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
+
+    const handleSort = (column: 'invoice' | 'status' | 'method' | 'amount') => {
+      if (activeColumn === column) {
+        setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
+      } else {
+        setActiveColumn(column)
+        setSortDirection('asc')
+      }
+    }
+
     return (
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
+            <TableHead />
+            <TableHead
+              className="w-[100px]"
+              data-active={activeColumn === 'invoice'}
+            >
+              <button
+                className="inline-flex items-center gap-1 cursor-pointer"
+                onClick={() => handleSort('invoice')}
+              >
+                Invoice
+                <TableSortIcon
+                  active={activeColumn === 'invoice'}
+                  direction={sortDirection}
+                />
+              </button>
+            </TableHead>
+            <TableHead
+              data-active={activeColumn === 'status'}
+              onClick={() => handleSort('status')}
+            >
+              <button className="inline-flex items-center gap-1 cursor-pointer">
+                Status
+                <TableSortIcon
+                  active={activeColumn === 'status'}
+                  direction={sortDirection}
+                />
+              </button>
+            </TableHead>
+            <TableHead
+              data-active={activeColumn === 'method'}
+              onClick={() => handleSort('method')}
+            >
+              <button className="inline-flex items-center gap-1 cursor-pointer">
+                Method
+                <TableSortIcon
+                  active={activeColumn === 'method'}
+                  direction={sortDirection}
+                />
+              </button>
+            </TableHead>
+            <TableHead
+              className="text-right"
+              data-active={activeColumn === 'amount'}
+              onClick={() => handleSort('amount')}
+            >
+              <button className="inline-flex items-center gap-1 cursor-pointer">
+                Amount
+                <TableSortIcon
+                  active={activeColumn === 'amount'}
+                  direction={sortDirection}
+                />
+              </button>
+            </TableHead>
           </TableRow>
         </TableHeader>
+
         <TableBody>
           {invoices.slice(0, 3).map(invoice => (
             <TableRow key={invoice.invoice}>
+              <TableCell>
+                <Checkbox />
+              </TableCell>
               <TableCell className="font-medium">{invoice.invoice}</TableCell>
               <TableCell>{invoice.paymentStatus}</TableCell>
               <TableCell>{invoice.paymentMethod}</TableCell>
@@ -87,9 +156,10 @@ export const Default: Story = {
             </TableRow>
           ))}
         </TableBody>
+
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
+            <TableCell colSpan={4}>Total</TableCell>
             <TableCell className="text-right">$2,500.00</TableCell>
           </TableRow>
         </TableFooter>
