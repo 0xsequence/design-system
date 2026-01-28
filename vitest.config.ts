@@ -9,6 +9,9 @@ export default defineConfig({
     silent: true,
     environment: 'happy-dom',
     setupFiles: './tests/setup.ts',
+    execArgv: [
+      '--no-webstorage'
+    ],
   },
   define: {
     __DESIGN_SYSTEM_VERSION__: JSON.stringify(version),
