@@ -169,6 +169,16 @@ export {
   TabsPrimitive,
   TabsTrigger,
 } from './components/Tabs/Tabs.js'
+export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from './components/Table/Table.js'
 export { Tag } from './components/Tag/Tag.js'
 export { Text, textVariants, type TextProps } from './components/Text/Text.js'
 export { ControlledTextArea } from './components/TextArea/ControlledTextArea.js'
