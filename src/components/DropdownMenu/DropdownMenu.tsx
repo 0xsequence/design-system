@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 import { cn } from '../../utils/classnames.js'
-import { Text, textVariants } from '../Text/Text.js'
+import { textVariants } from '../Text/Text.js'
 
 export { DropdownMenuPrimitive }
 
@@ -132,24 +132,47 @@ function DropdownMenuLabel({
 const DropdownMenuCheckboxItem = ({
   className,
   children,
+  defaultIndicator = true,
   ...rest
-}: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>) => {
+}: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem> & {
+  defaultIndicator?: boolean
+}) => {
   return (
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       className={cn(
-        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none  relative text-secondary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-        'data-highlighted:bg-background-hover',
+        'data-highlighted:bg-background-hover text-small',
         className
       )}
       {...rest}
     >
-      <DropdownMenuItemIndicator>
-        <CheckmarkIcon size="xxs" />
-      </DropdownMenuItemIndicator>
-      <Text variant="small">{children}</Text>
+      {children}
+
+      {defaultIndicator ? (
+        <span className="ml-auto">
+          <DropdownMenuCheckboxIndicator />
+        </span>
+      ) : null}
     </DropdownMenuPrimitive.CheckboxItem>
+  )
+}
+
+function DropdownMenuCheckboxIndicator({
+  className,
+  size = 'xl',
+  ...rest
+}: ComponentProps<typeof DropdownMenuPrimitive.DropdownMenuItemIndicator> &
+  Pick<ComponentProps<typeof CheckmarkIcon>, 'size'>) {
+  return (
+    <DropdownMenuPrimitive.DropdownMenuItemIndicator
+      data-slot="dropdown-menu-radio-indicator"
+      className={cn(`*:size-4`, className)}
+      {...rest}
+    >
+      <CheckmarkIcon size={size} />
+    </DropdownMenuPrimitive.DropdownMenuItemIndicator>
   )
 }
 
@@ -163,33 +186,57 @@ function DropdownMenuRadioGroup({
     />
   )
 }
-
 const DropdownMenuRadioItem = ({
   className,
   children,
+  defaultIndicator = true,
   ...rest
-}: ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) => {
+}: ComponentProps<typeof DropdownMenuPrimitive.RadioItem> & {
+  defaultIndicator?: boolean
+}) => {
   return (
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none pl-6 relative text-secondary outline-hidden',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-secondary outline-hidden text-small',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
         'data-highlighted:bg-background-hover',
         className
       )}
       {...rest}
     >
-      <DropdownMenuPrimitive.ItemIndicator className="absolute left-0 w-6 inline-flex items-center justify-center">
-        <div className="w-2 h-2 rounded-full bg-primary" />
-      </DropdownMenuPrimitive.ItemIndicator>
-      <Text variant="small">{children}</Text>
+      {children}
+      {defaultIndicator ? (
+        <span className="ml-auto">
+          <DropdownMenuRadioIndicator />
+        </span>
+      ) : null}
     </DropdownMenuPrimitive.RadioItem>
+  )
+}
+
+function DropdownMenuRadioIndicator({
+  className,
+  ...rest
+}: ComponentProps<'div'>) {
+  return (
+    <DropdownMenuPrimitive.ItemIndicator
+      data-slot="dropdown-menu-radio-indicator"
+      className={cn(
+        'size-4 flex items-center justify-center',
+        '*:size-2 *:rounded-full *:bg-primary',
+        className
+      )}
+      {...rest}
+    >
+      <div />
+    </DropdownMenuPrimitive.ItemIndicator>
   )
 }
 
 export {
   DropdownMenu,
+  DropdownMenuCheckboxIndicator,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -197,12 +244,8 @@ export {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuRadioGroup,
+  DropdownMenuRadioIndicator,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-
-  // DropdownMenuShortcut,
-  // DropdownMenuSub,
-  // DropdownMenuSubTrigger,
-  // DropdownMenuSubContent,
 }
