@@ -2,78 +2,10 @@
 
 @source './';
 
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 :root,
-[data-theme='dark'] {
-  /* Status colors */
-  --seq-color-positive: var(--color-green-500);
-  --seq-color-negative: var(--color-red-500);
-  --seq-color-info: var(--color-indigo-500);
-  --seq-color-warning: var(--color-yellow-500);
-  --seq-color-destructive: var(--color-red-500);
-
-  /* Text colors */
-  --seq-color-primary: white;
-  --seq-color-secondary: white;
-  --seq-color-muted: var(--color-zinc-500);
-  --seq-color-inverse: black;
-
-  /* Background colors */
-  --seq-color-background-primary: black;
-  --seq-color-background-secondary: var(--color-zinc-900);
-  --seq-color-background-muted: var(--color-zinc-950);
-  --seq-color-background-inverse: white;
-  --seq-color-background-overlay: color-mix(
-    in oklab,
-    var(--color-zinc-700) 90%,
-    transparent
-  );
-  --seq-color-background-raised: var(--color-zinc-800);
-  --seq-color-background-input: var(--color-zinc-950);
-  --seq-color-background-hover: var(--color-zinc-900);
-  --seq-color-background-active: var(--color-zinc-700);
-
-  /* Border colors */
-  --seq-color-border-normal: var(--color-zinc-700);
-  --seq-color-border-hover: var(--color-zinc-600);
-  --seq-color-border-focus: var(--color-violet-500);
-  --seq-color-border-card: var(--color-zinc-800);
-  --seq-color-border-button: var(--color-zinc-700);
-
-  /* Drop shadow */
-  --seq-color-drop-shadow: color-mix(
-    in oklab,
-    var(--color-zinc-950) 40%,
-    transparent
-  );
-
-  /* Gradients */
-  --seq-color-gradient-backdrop: linear-gradient(
-    243.18deg,
-    rgba(86, 52, 189, 0.85) 0%,
-    rgba(49, 41, 223, 0.85) 63.54%,
-    rgba(7, 98, 149, 0.85) 100%
-  );
-  --seq-color-gradient-primary: linear-gradient(
-    89.69deg,
-    #4411e1 0.27%,
-    #7537f9 99.73%
-  );
-  --seq-color-gradient-secondary: linear-gradient(
-    32.51deg,
-    #951990 -15.23%,
-    #3a35b1 48.55%,
-    #20a8b0 100%
-  );
-  --seq-color-gradient-skeleton: linear-gradient(
-    -45deg,
-    transparent,
-    var(--color-zinc-700),
-    transparent
-  );
-}
-
 [data-theme='light'] {
   /* Status colors */
   --seq-color-positive: var(--color-green-600);
@@ -139,6 +71,75 @@
     -45deg,
     transparent,
     var(--color-slate-300),
+    transparent
+  );
+}
+
+[data-theme='dark'] {
+  /* Status colors */
+  --seq-color-positive: var(--color-green-500);
+  --seq-color-negative: var(--color-red-500);
+  --seq-color-info: var(--color-indigo-500);
+  --seq-color-warning: var(--color-yellow-500);
+  --seq-color-destructive: var(--color-red-500);
+
+  /* Text colors */
+  --seq-color-primary: white;
+  --seq-color-secondary: white;
+  --seq-color-muted: var(--color-zinc-500);
+  --seq-color-inverse: black;
+
+  /* Background colors */
+  --seq-color-background-primary: black;
+  --seq-color-background-secondary: var(--color-zinc-900);
+  --seq-color-background-muted: var(--color-zinc-950);
+  --seq-color-background-inverse: white;
+  --seq-color-background-overlay: color-mix(
+    in oklab,
+    var(--color-zinc-700) 90%,
+    transparent
+  );
+  --seq-color-background-raised: var(--color-zinc-800);
+  --seq-color-background-input: var(--color-zinc-950);
+  --seq-color-background-hover: var(--color-zinc-900);
+  --seq-color-background-active: var(--color-zinc-700);
+
+  /* Border colors */
+  --seq-color-border-normal: var(--color-zinc-700);
+  --seq-color-border-hover: var(--color-zinc-600);
+  --seq-color-border-focus: var(--color-violet-500);
+  --seq-color-border-card: var(--color-zinc-800);
+  --seq-color-border-button: var(--color-zinc-700);
+
+  /* Drop shadow */
+  --seq-color-drop-shadow: color-mix(
+    in oklab,
+    var(--color-zinc-950) 40%,
+    transparent
+  );
+
+  /* Gradients */
+  --seq-color-gradient-backdrop: linear-gradient(
+    243.18deg,
+    rgba(86, 52, 189, 0.85) 0%,
+    rgba(49, 41, 223, 0.85) 63.54%,
+    rgba(7, 98, 149, 0.85) 100%
+  );
+  --seq-color-gradient-primary: linear-gradient(
+    89.69deg,
+    #4411e1 0.27%,
+    #7537f9 99.73%
+  );
+  --seq-color-gradient-secondary: linear-gradient(
+    32.51deg,
+    #951990 -15.23%,
+    #3a35b1 48.55%,
+    #20a8b0 100%
+  );
+  --seq-color-gradient-skeleton: linear-gradient(
+    -45deg,
+    transparent,
+    var(--color-zinc-700),
     transparent
   );
 }

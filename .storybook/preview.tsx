@@ -98,13 +98,13 @@ const preview: Preview = {
     theme: {
       name: 'Theme',
       description: 'Global theme for components',
-      defaultValue: 'dark',
+      defaultValue: 'light',
       toolbar: {
         title: 'Theme',
         icon: 'moon',
         items: [
-          { value: 'dark', icon: 'moon', title: 'Dark' },
           { value: 'light', icon: 'sun', title: 'Light' },
+          { value: 'dark', icon: 'moon', title: 'Dark' },
           { value: 'system', icon: 'cog', title: 'System' },
         ],
       },
