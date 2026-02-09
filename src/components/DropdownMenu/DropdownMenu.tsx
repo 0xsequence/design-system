@@ -86,15 +86,6 @@ function DropdownMenuItem({
   )
 }
 
-const DropdownMenuItemIndicator = (
-  props: ComponentProps<typeof DropdownMenuPrimitive.ItemIndicator>
-) => (
-  <DropdownMenuPrimitive.ItemIndicator
-    className="absolute left-0 w-6 inline-flex items-center justify-center"
-    {...props}
-  />
-)
-
 function DropdownMenuSeparator({
   className,
   ...props
