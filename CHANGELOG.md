@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.3
+
+### Patch Changes
+
+- Dropdown indicator location update and Tabs active border width updated
+
 ## 3.2.2
 
 ### Patch Changes
