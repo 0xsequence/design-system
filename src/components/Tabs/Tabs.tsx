@@ -43,7 +43,7 @@ function TabsTrigger({
       data-slot="tabs-trigger"
       className={cn(
         textVariants({ variant: 'normal-bold' }),
-        'h-full text-muted inline-flex items-center justify-center whitespace-nowrap cursor-pointer border-b-1 border-transparent px-4 -mb-[2px] rounded-t-sm',
+        'h-full text-muted inline-flex items-center justify-center whitespace-nowrap cursor-pointer border-b-2 border-transparent px-4 -mb-[2px] rounded-t-sm',
         'hover:not-[[data-state=active]]:opacity-80 data-[state=active]:border-border-focus data-[state=active]:text-border-focus',
         focusRingVariants(),
         disabledStyle,
