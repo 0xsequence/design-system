@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.4
+
+### Patch Changes
+
+- Fixing DropdownMenu exports
+
 ## 3.2.3
 
 ### Patch Changes
