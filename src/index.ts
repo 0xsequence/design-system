@@ -62,6 +62,7 @@ export {
 } from './components/Dialog/Dialog.js'
 export {
   DropdownMenu,
+  DropdownMenuCheckboxIndicator,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -70,6 +71,7 @@ export {
   DropdownMenuPortal,
   DropdownMenuPrimitive,
   DropdownMenuRadioGroup,
+  DropdownMenuRadioIndicator,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -162,14 +164,6 @@ export { StopClickPropagation } from './components/StopClickPropagation/StopClic
 export { ControlledSwitch } from './components/Switch/ControlledSwitch.js'
 export { Switch } from './components/Switch/Switch.js'
 export {
-  Tabs,
-  TabsContent,
-  TabsHeader,
-  TabsList,
-  TabsPrimitive,
-  TabsTrigger,
-} from './components/Tabs/Tabs.js'
-export {
   Table,
   TableBody,
   TableCell,
@@ -179,6 +173,14 @@ export {
   TableRow,
   TableSortIcon,
 } from './components/Table/Table.js'
+export {
+  Tabs,
+  TabsContent,
+  TabsHeader,
+  TabsList,
+  TabsPrimitive,
+  TabsTrigger,
+} from './components/Tabs/Tabs.js'
 export { Tag } from './components/Tag/Tag.js'
 export { Text, textVariants, type TextProps } from './components/Text/Text.js'
 export { ControlledTextArea } from './components/TextArea/ControlledTextArea.js'
@@ -205,10 +207,10 @@ export { getCssVar } from './utils/css.js'
 export { capitalize, kebabize, pluralize } from './utils/string.js'
 
 // Hooks
-export { useCombinedRefs } from './hooks/useCombinedRefs.js'
-export { useMediaQuery } from './hooks/useMediaQuery.js'
-export { useIsMobile } from './hooks/useIsMobile.js'
 export { useBreakpoint, type Breakpoint } from './hooks/useBreakpoint.js'
+export { useCombinedRefs } from './hooks/useCombinedRefs.js'
+export { useIsMobile } from './hooks/useIsMobile.js'
+export { useMediaQuery } from './hooks/useMediaQuery.js'
 
 // Icons
 export * from './icons/aliased.js'
