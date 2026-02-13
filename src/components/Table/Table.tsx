@@ -6,11 +6,29 @@ import { cn } from 'src/utils/classnames.js'
 
 import { textVariants } from '../Text/Text.js'
 
-function Table({ className, ...props }: ComponentProps<'table'>) {
+type TableProps = ComponentProps<'table'> & {
+  stickyHeader?: boolean
+  maxHeight?: string
+}
+
+function Table({ className, stickyHeader, maxHeight, ...props }: TableProps) {
+  const hasContainerScroll = stickyHeader && maxHeight
+  const allowPageScrollSticky = stickyHeader && !maxHeight
+
   return (
     <div
       data-slot="table-container"
-      className="relative w-full overflow-x-auto"
+      data-sticky-header={stickyHeader}
+      className={cn(
+        'relative w-full',
+        allowPageScrollSticky ? 'overflow-visible' : 'overflow-x-auto',
+        stickyHeader && [
+          '[&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-background-primary [&_thead]:border-b [&_thead]:border-border-normal',
+          '[&_thead_th]:bg-background-primary',
+        ],
+        hasContainerScroll && 'overflow-y-auto overflow-x-auto'
+      )}
+      style={hasContainerScroll ? { maxHeight } : undefined}
     >
       <table
         data-slot="table"
