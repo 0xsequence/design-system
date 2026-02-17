@@ -9,9 +9,9 @@ import {
   TableCell,
   TableFooter,
   TableHead,
+  TableHeadButton,
   TableHeader,
   TableRow,
-  TableSortIcon,
 } from './Table.js'
 
 export default {
@@ -58,57 +58,42 @@ export const Default: Story = {
         <TableHeader>
           <TableRow>
             <TableHead />
-            <TableHead
-              className="w-[100px]"
-              data-active={activeColumn === 'invoice'}
-            >
-              <button
-                className="inline-flex items-center gap-1 cursor-pointer"
+            <TableHead className="w-[100px]">
+              <TableHeadButton
+                active={activeColumn === 'invoice'}
+                direction={sortDirection}
                 onClick={() => handleSort('invoice')}
               >
                 Invoice
-                <TableSortIcon
-                  active={activeColumn === 'invoice'}
-                  direction={sortDirection}
-                />
-              </button>
+              </TableHeadButton>
             </TableHead>
-            <TableHead
-              data-active={activeColumn === 'status'}
-              onClick={() => handleSort('status')}
-            >
-              <button className="inline-flex items-center gap-1 cursor-pointer">
+            <TableHead>
+              <TableHeadButton
+                active={activeColumn === 'status'}
+                direction={sortDirection}
+                onClick={() => handleSort('status')}
+              >
                 Status
-                <TableSortIcon
-                  active={activeColumn === 'status'}
-                  direction={sortDirection}
-                />
-              </button>
+              </TableHeadButton>
             </TableHead>
-            <TableHead
-              data-active={activeColumn === 'method'}
-              onClick={() => handleSort('method')}
-            >
-              <button className="inline-flex items-center gap-1 cursor-pointer">
+            <TableHead>
+              <TableHeadButton
+                active={activeColumn === 'method'}
+                direction={sortDirection}
+                onClick={() => handleSort('method')}
+              >
                 Method
-                <TableSortIcon
-                  active={activeColumn === 'method'}
-                  direction={sortDirection}
-                />
-              </button>
+              </TableHeadButton>
             </TableHead>
-            <TableHead
-              className="text-right"
-              data-active={activeColumn === 'amount'}
-              onClick={() => handleSort('amount')}
-            >
-              <button className="inline-flex items-center gap-1 cursor-pointer">
+            <TableHead>
+              <TableHeadButton
+                className="justify-end"
+                active={activeColumn === 'amount'}
+                direction={sortDirection}
+                onClick={() => handleSort('amount')}
+              >
                 Amount
-                <TableSortIcon
-                  active={activeColumn === 'amount'}
-                  direction={sortDirection}
-                />
-              </button>
+              </TableHeadButton>
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -167,57 +152,42 @@ const StickyHeaderTableContent = ({
       <TableHeader>
         <TableRow>
           <TableHead />
-          <TableHead
-            className="w-[100px]"
-            data-active={activeColumn === 'invoice'}
-          >
-            <button
-              className="inline-flex items-center gap-1 cursor-pointer"
+          <TableHead className="w-[100px]">
+            <TableHeadButton
+              active={activeColumn === 'invoice'}
+              direction={sortDirection}
               onClick={() => handleSort('invoice')}
             >
               Invoice
-              <TableSortIcon
-                active={activeColumn === 'invoice'}
-                direction={sortDirection}
-              />
-            </button>
+            </TableHeadButton>
           </TableHead>
-          <TableHead
-            data-active={activeColumn === 'status'}
-            onClick={() => handleSort('status')}
-          >
-            <button className="inline-flex items-center gap-1 cursor-pointer">
+          <TableHead>
+            <TableHeadButton
+              active={activeColumn === 'status'}
+              direction={sortDirection}
+              onClick={() => handleSort('status')}
+            >
               Status
-              <TableSortIcon
-                active={activeColumn === 'status'}
-                direction={sortDirection}
-              />
-            </button>
+            </TableHeadButton>
           </TableHead>
-          <TableHead
-            data-active={activeColumn === 'method'}
-            onClick={() => handleSort('method')}
-          >
-            <button className="inline-flex items-center gap-1 cursor-pointer">
+          <TableHead>
+            <TableHeadButton
+              active={activeColumn === 'method'}
+              direction={sortDirection}
+              onClick={() => handleSort('method')}
+            >
               Method
-              <TableSortIcon
-                active={activeColumn === 'method'}
-                direction={sortDirection}
-              />
-            </button>
+            </TableHeadButton>
           </TableHead>
-          <TableHead
-            className="text-right"
-            data-active={activeColumn === 'amount'}
-            onClick={() => handleSort('amount')}
-          >
-            <button className="inline-flex items-center gap-1 cursor-pointer">
+          <TableHead>
+            <TableHeadButton
+              className="justify-end"
+              active={activeColumn === 'amount'}
+              direction={sortDirection}
+              onClick={() => handleSort('amount')}
+            >
               Amount
-              <TableSortIcon
-                active={activeColumn === 'amount'}
-                direction={sortDirection}
-              />
-            </button>
+            </TableHeadButton>
           </TableHead>
         </TableRow>
       </TableHeader>

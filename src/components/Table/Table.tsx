@@ -4,6 +4,7 @@ import type { ComponentProps } from 'react'
 import { ArrowDownIcon, ArrowUpIcon } from 'src/icons/index.js'
 import { cn } from 'src/utils/classnames.js'
 
+import { Button } from '../Button/Button.js'
 import { textVariants } from '../Text/Text.js'
 
 type TableProps = ComponentProps<'table'> & {
@@ -23,8 +24,8 @@ function Table({ className, stickyHeader, maxHeight, ...props }: TableProps) {
         'relative w-full',
         allowPageScrollSticky ? 'overflow-visible' : 'overflow-x-auto',
         stickyHeader && [
-          '[&_thead]:sticky [&_thead]:top-0 [&_thead]:z-10 [&_thead]:bg-background-primary [&_thead]:border-b [&_thead]:border-border-normal',
-          '[&_thead_th]:bg-background-primary',
+          '[&_thead_th]:sticky [&_thead_th]:top-0 [&_thead_th]:z-10 [&_thead_th]:bg-background-primary',
+          '[&_thead_th]:shadow-[0_4px_8px_-4px_rgba(0,0,0,0.1)]',
         ],
         hasContainerScroll && 'overflow-y-auto overflow-x-auto'
       )}
@@ -34,7 +35,7 @@ function Table({ className, stickyHeader, maxHeight, ...props }: TableProps) {
         data-slot="table"
         className={cn(
           textVariants({ variant: 'small' }),
-          'w-full caption-bottom',
+          'w-full caption-bottom border-separate border-spacing-0',
           className
         )}
         {...props}
@@ -77,8 +78,8 @@ function TableHead({ className, ...props }: ComponentProps<'th'>) {
       data-slot="table-head"
       className={cn(
         textVariants({ variant: 'normal' }),
-        'h-13 px-4 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0',
-        'text-muted font-medium  data-[active=true]:font-bold data-[active=true]:text-border-focus',
+        'h-13 py-2 px-4 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has(button)]:px-0',
+        'text-muted font-medium',
         className
       )}
       {...props}
@@ -100,12 +101,42 @@ function TableCell({ className, ...props }: ComponentProps<'td'>) {
   )
 }
 
+type SortDirection = 'asc' | 'desc'
+
+function TableHeadButton({
+  className,
+  children,
+  active,
+  direction,
+  ...props
+}: ComponentProps<typeof Button> & {
+  active?: boolean
+  direction: SortDirection
+}) {
+  return (
+    <Button
+      variant={null}
+      shape="square"
+      data-active={active}
+      className={cn(
+        'inline-flex w-full h-full items-center gap-1 overflow-visible relative text-inherit px-4 hover:bg-background-hover',
+        'data-[active=true]:font-bold data-[active=true]:text-border-focus',
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <TableSortIcon active={active} direction={direction} />
+    </Button>
+  )
+}
+
 function TableSortIcon({
   className,
   active = true,
   direction,
   ...props
-}: ComponentProps<'div'> & { active?: boolean; direction: 'asc' | 'desc' }) {
+}: ComponentProps<'div'> & { active?: boolean; direction: SortDirection }) {
   if (!active) {
     return null
   }
@@ -131,6 +162,7 @@ export {
   TableCell,
   TableFooter,
   TableHead,
+  TableHeadButton,
   TableHeader,
   TableRow,
   TableSortIcon,

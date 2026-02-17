@@ -169,6 +169,7 @@ export {
   TableCell,
   TableFooter,
   TableHead,
+  TableHeadButton,
   TableHeader,
   TableRow,
   TableSortIcon,
