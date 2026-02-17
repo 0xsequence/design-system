@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.5
+
+### Patch Changes
+
+- Adding stickyHeader mode to Table component
+
 ## 3.2.4
 
 ### Patch Changes
