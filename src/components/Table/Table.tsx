@@ -25,7 +25,6 @@ function Table({ className, stickyHeader, maxHeight, ...props }: TableProps) {
         allowPageScrollSticky ? 'overflow-visible' : 'overflow-x-auto',
         stickyHeader && [
           '[&_thead_th]:sticky [&_thead_th]:top-0 [&_thead_th]:z-10 [&_thead_th]:bg-background-primary',
-          '[&_thead_th]:shadow-[0_4px_8px_-4px_rgba(0,0,0,0.1)]',
         ],
         hasContainerScroll && 'overflow-y-auto overflow-x-auto'
       )}
