@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.6
+
+### Patch Changes
+
+- Fixing sticky header shadow
+
 ## 3.2.5
 
 ### Patch Changes
