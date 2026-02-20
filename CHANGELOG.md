@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.7
+
+### Patch Changes
+
+- Updating deps
+
 ## 3.2.6
 
 ### Patch Changes
