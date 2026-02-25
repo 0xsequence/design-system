@@ -1,6 +1,7 @@
-import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import type { ComponentProps, ComponentType, ReactNode } from 'react'
+import { cloneElement, isValidElement, type ComponentProps, type ComponentType, type ReactElement, type ReactNode } from 'react'
+
+type AnyProps = { className?: string; children?: ReactNode; [key: string]: unknown }
 import type { IconProps } from 'src/icons/types.js'
 import { focusRingVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
@@ -81,20 +82,31 @@ function Button({
   shape,
   iconOnly,
   disabled,
-  asChild = false,
+  render,
   ...props
 }: ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
+    render?: ReactElement
   }) {
-  const Comp = asChild ? Slot : 'button'
+  const computedClassName = cn(
+    buttonVariants({ variant, size, shape, iconOnly, disabled }),
+    className
+  )
+
+  if (render && isValidElement(render)) {
+    const renderProps = render.props as AnyProps
+    return cloneElement(render as ReactElement<AnyProps>, {
+      ...props,
+      ...renderProps,
+      'data-slot': 'button',
+      className: cn(computedClassName, renderProps.className),
+    })
+  }
+
   return (
-    <Comp
+    <button
       data-slot="button"
-      className={cn(
-        buttonVariants({ variant, size, shape, iconOnly, disabled }),
-        className
-      )}
+      className={computedClassName}
       disabled={disabled}
       {...props}
     />
@@ -103,7 +115,7 @@ function Button({
 
 type ButtonHelperProps = ComponentProps<typeof Button> &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
+    render?: ReactElement
     pending?: boolean
     label?: ReactNode
     leftIcon?: ComponentType<IconProps>
@@ -113,7 +125,7 @@ type ButtonHelperProps = ComponentProps<typeof Button> &
 const ButtonHelper = (props: ButtonHelperProps) => {
   const {
     ref,
-    asChild,
+    render,
     className,
     disabled = false,
     pending = false,
@@ -133,25 +145,19 @@ const ButtonHelper = (props: ButtonHelperProps) => {
   const iconSize = size === 'xs' ? 'xs' : 'sm'
   const gap = size === 'xs' ? 'gap-1' : 'gap-2'
 
-  const Component = asChild ? Slot : 'button'
+  const computedClassName = cn(
+    buttonVariants({
+      disabled: disabled || pending,
+      size: variant === 'text' ? undefined : size,
+      shape: variant === 'text' ? undefined : shape,
+      variant,
+    }),
+    className
+  )
 
-  return (
-    <Component
-      ref={ref}
-      className={cn(
-        buttonVariants({
-          disabled: disabled || pending,
-          size: variant === 'text' ? undefined : size,
-          shape: variant === 'text' ? undefined : shape,
-          variant,
-        }),
-        className
-      )}
-      disabled={disabled || pending}
-      type={type}
-      {...rest}
-    >
-      <Slottable>{children}</Slottable>
+  const content = (
+    <>
+      {children}
 
       {iconOnly ? (
         <LeftIcon size={iconSize} />
@@ -167,7 +173,30 @@ const ButtonHelper = (props: ButtonHelperProps) => {
           {RightIcon && <RightIcon size={iconSize} />}
         </div>
       )}
-    </Component>
+    </>
+  )
+
+  if (render && isValidElement(render)) {
+    const renderProps = render.props as AnyProps
+    return cloneElement(render as ReactElement<AnyProps>, {
+      ref,
+      ...rest,
+      ...renderProps,
+      className: cn(computedClassName, renderProps.className),
+      children: content,
+    })
+  }
+
+  return (
+    <button
+      ref={ref}
+      className={computedClassName}
+      disabled={disabled || pending}
+      type={type}
+      {...rest}
+    >
+      {content}
+    </button>
   )
 }
 

@@ -96,7 +96,6 @@ export const AnchorButton: Story = {
     label: 'Click me',
     leftIcon: ScanIcon,
     size: 'md',
-    asChild: true,
-    children: <a href="/wallet" />,
+    render: <a href="/wallet" />,
   },
 }

@@ -1,3 +1,10 @@
-import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden'
+import { type ComponentProps } from 'react'
 
-export const VisuallyHidden = VisuallyHiddenPrimitive.Root
+import { cn } from '../../utils/classnames.js'
+
+export const VisuallyHidden = ({
+  className,
+  ...props
+}: ComponentProps<'span'>) => (
+  <span className={cn('sr-only', className)} {...props} />
+)

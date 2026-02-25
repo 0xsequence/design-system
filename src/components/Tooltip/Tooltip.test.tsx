@@ -21,12 +21,12 @@ describe('<Tooltip />', () => {
     const triggerEl = screen.getByText(/Hover me/)
 
     expect(triggerEl).toBeInTheDocument()
-    expect(triggerEl.getAttribute('data-state')).toBe('closed')
+    expect(triggerEl.hasAttribute('data-popup-open')).toBe(false)
     expect(screen.queryByText(/Tip/)).toBeNull()
 
     await user.hover(res.getByText(/Hover me/))
 
-    expect(triggerEl.getAttribute('data-state')).toBe('delayed-open')
+    expect(triggerEl.hasAttribute('data-popup-open')).toBe(true)
 
     expect(screen.getAllByText(/Tip/i)[0]).toBeInTheDocument()
   })

@@ -3,7 +3,7 @@ import { Controller, type Control } from 'react-hook-form'
 
 import { RadioGroup } from './RadioGroup.js'
 
-type ControlledRadioGroupProps = ComponentProps<typeof RadioGroup> & {
+type ControlledRadioGroupProps = Omit<ComponentProps<typeof RadioGroup>, 'onValueChange'> & {
   control: Control
   defaultValue?: string
   name: string
@@ -26,7 +26,7 @@ export const ControlledRadioGroup = ({
     rules={rules}
     render={({ field, fieldState }) => (
       <RadioGroup
-        onValueChange={onValueChange}
+        onValueChange={(value: unknown) => onValueChange(value as string)}
         defaultValue={defaultValue}
         {...field}
         {...radioProps}

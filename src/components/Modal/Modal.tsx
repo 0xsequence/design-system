@@ -1,5 +1,4 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog'
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { Dialog } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { motion, type HTMLMotionProps } from 'motion/react'
@@ -11,6 +10,7 @@ import { cn } from '../../utils/classnames.js'
 import { IconButton } from '../IconButton/IconButton.js'
 import { Scroll } from '../Scroll/Scroll.js'
 import { Text } from '../Text/Text.js'
+import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden.js'
 
 const modalContentVariants = cva(
   [
@@ -87,46 +87,41 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const ContentWrapper = scroll ? Scroll : Fragment
 
   return container ? (
-    <DialogPrimitive.Root modal defaultOpen onOpenChange={onClose}>
-      <DialogPrimitive.Portal forceMount container={container}>
-        <DialogPrimitive.Overlay
+    <Dialog.Root
+      modal
+      open={true}
+      onOpenChange={(isOpen: boolean) => {
+        if (!isOpen && isDismissible) {
+          onClose?.()
+        }
+      }}
+      disablePointerDismissal={!isDismissible}
+    >
+      <Dialog.Portal container={container}>
+        <Dialog.Backdrop
+          render={
+            <motion.div
+              key="modal-overlay"
+              initial={disableAnimation ? false : { opacity: 0 }}
+              animate={disableAnimation ? false : { opacity: 1 }}
+              exit={disableAnimation ? undefined : { opacity: 0 }}
+              transition={{
+                type: 'tween',
+                ease: 'linear',
+              }}
+              {...overlayProps}
+            />
+          }
           {...rootProps}
           className={cn(
             'seq-root',
-            'fixed inset-0 flex items-center justify-center z-20',
+            'fixed inset-0 z-20',
+            overlayColor,
             rootProps?.className
           )}
-          forceMount
-        >
-          <motion.div
-            className={clsx('absolute inset-0', overlayColor)}
-            key="modal-overlay"
-            initial={disableAnimation ? false : { opacity: 0 }}
-            animate={disableAnimation ? false : { opacity: 1 }}
-            exit={disableAnimation ? undefined : { opacity: 0 }}
-            transition={{
-              type: 'tween',
-              ease: 'linear',
-            }}
-            {...overlayProps}
-          />
-
-          <DialogPrimitive.Content
-            asChild
-            forceMount
-            onEscapeKeyDown={ev => {
-              if (isDismissible) {
-                onClose?.()
-              } else {
-                ev.preventDefault()
-              }
-            }}
-            onInteractOutside={ev => {
-              if (!isDismissible) {
-                ev.preventDefault()
-              }
-            }}
-          >
+        />
+        <Dialog.Popup
+          render={
             <motion.div
               key="modal-content"
               initial={
@@ -149,35 +144,44 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
                 return `${generated} translateZ(0)`
               }}
               {...contentProps}
-              className={cn(
-                modalContentVariants({ size, autoHeight }),
-                contentProps?.className
-              )}
-            >
-              <VisuallyHidden>
-                <DialogPrimitive.Title>{title}</DialogPrimitive.Title>
-              </VisuallyHidden>
-              {header && <ModalHeader>{header}</ModalHeader>}
-              <ContentWrapper>
-                {header && <ModalHeaderSpacer />}
-                {children}
-              </ContentWrapper>
-              {footer && <ModalFooter>{footer}</ModalFooter>}
-              {isDismissible && (
-                <DialogPrimitive.Close asChild>
+            />
+          }
+          className={cn(
+            'fixed inset-0 flex items-center justify-center z-20 pointer-events-none',
+            contentProps?.className
+          )}
+        >
+          <div
+            className={cn(
+              modalContentVariants({ size, autoHeight }),
+              'pointer-events-auto'
+            )}
+          >
+            <VisuallyHidden>
+              <Dialog.Title>{title}</Dialog.Title>
+            </VisuallyHidden>
+            {header && <ModalHeader>{header}</ModalHeader>}
+            <ContentWrapper>
+              {header && <ModalHeaderSpacer />}
+              {children}
+            </ContentWrapper>
+            {footer && <ModalFooter>{footer}</ModalFooter>}
+            {isDismissible && (
+              <Dialog.Close
+                render={
                   <IconButton
                     icon={CloseIcon}
                     size="xs"
                     className="absolute right-4 top-4 z-20 backdrop-blur-xs"
                     aria-label="Close"
                   />
-                </DialogPrimitive.Close>
-              )}
-            </motion.div>
-          </DialogPrimitive.Content>
-        </DialogPrimitive.Overlay>
-      </DialogPrimitive.Portal>
-    </DialogPrimitive.Root>
+                }
+              />
+            )}
+          </div>
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
   ) : null
 }
 

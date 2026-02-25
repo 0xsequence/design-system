@@ -1,21 +1,18 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import type { Meta, StoryFn } from '@storybook/react-vite'
 
 import { TransactionIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 
-import { Toast, ToastProvider, useToast, type ToastProps } from './Toast.js'
+import { ToastProvider, useToast, type ToastProps } from './Toast.js'
 
 export default {
   title: 'Components/Toast',
-  component: Toast,
-} as Meta<typeof Toast>
+} as Meta
 
-type Story = StoryObj<typeof Toast>
-
-const StoryWrapper: StoryFn<typeof Toast> = args => {
+const StoryWrapper: StoryFn<ToastProps> = args => {
   return (
-    <ToastProvider swipeDirection="right">
+    <ToastProvider>
       <ToastStory {...args} />
     </ToastProvider>
   )
@@ -40,38 +37,38 @@ const ToastStory = (args: ToastProps) => {
   )
 }
 
-export const Default: Story = {
+export const Default = {
   render: StoryWrapper,
   args: {
     title: 'Title',
     description: 'Description',
-  },
+  } as ToastProps,
 }
 
-export const WithIcon: Story = {
+export const WithIcon = {
   render: StoryWrapper,
   args: {
     icon: TransactionIcon,
     title: 'Transaction Sent',
     description: 'Waiting for confirmation',
-  },
+  } as ToastProps,
 }
 
-export const Success: Story = {
+export const Success = {
   render: StoryWrapper,
   args: {
     title: 'Success',
     description: 'Description',
     variant: 'success',
-  },
+  } as ToastProps,
 }
 
-export const Error: Story = {
+export const Error = {
   render: StoryWrapper,
   args: {
     title: 'Error',
     description:
       'The transaction failed to send because the relayer encountered an error. "Not enough gas"',
     variant: 'error',
-  },
+  } as ToastProps,
 }

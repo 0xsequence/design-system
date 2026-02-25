@@ -99,16 +99,16 @@ export const FileInput = (props: FileInputProps) => {
     >
       {fileData ? (
         <div className="flex flex-row gap-2 items-center min-w-0">
-          <Text ellipsis asChild>
-            <p>{fileData.name}</p>
+          <Text ellipsis render={<p />}>
+            {fileData.name}
           </Text>
           <Text color="muted" variant="xsmall" nowrap>
             {fileData.size.toFixed(2)} kb
           </Text>
         </div>
       ) : (
-        <Text ellipsis asChild>
-          <p>{placeholder}</p>
+        <Text ellipsis render={<p />}>
+          {placeholder}
         </Text>
       )}
 

@@ -51,7 +51,6 @@ export const AnchorButton: Story = {
     icon: ArrowRightIcon,
     size: 'md',
     variant: 'secondary',
-    asChild: true,
-    children: <a href="/wallet" />,
+    render: <a href="/wallet" />,
   },
 }
