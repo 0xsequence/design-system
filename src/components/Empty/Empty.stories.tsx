@@ -42,11 +42,9 @@ export const Default = {
         variant="text"
         className="text-muted underline underline-offset-4"
         size="sm"
-        asChild
+        render={<a href="#" />}
       >
-        <a href="#">
-          Learn More <ExternalLinkIcon />
-        </a>
+        Learn More <ExternalLinkIcon />
       </Button>
     </Empty>
   ),

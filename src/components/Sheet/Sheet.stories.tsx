@@ -23,9 +23,7 @@ type Story = StoryObj<typeof SheetContent>
 const StoryWrapper: StoryFn<typeof SheetContent> = args => {
   return (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button>Open</Button>
-      </SheetTrigger>
+      <SheetTrigger render={<Button>Open</Button>} />
       <SheetContent {...args}></SheetContent>
     </Sheet>
   )
@@ -45,9 +43,7 @@ export const Default: Story = {
         </SheetHeader>
         <SheetFooter>
           <Button variant="primary">Save changes</Button>
-          <SheetClose asChild>
-            <Button>Close</Button>
-          </SheetClose>
+          <SheetClose render={<Button>Close</Button>} />
         </SheetFooter>
       </>
     ),

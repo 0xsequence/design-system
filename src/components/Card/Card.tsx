@@ -1,6 +1,7 @@
-import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { type ComponentProps } from 'react'
+import { cloneElement, isValidElement, type ComponentProps, type ReactElement, type ReactNode } from 'react'
+
+type AnyProps = { className?: string; children?: ReactNode; ref?: unknown; [key: string]: unknown }
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
@@ -30,7 +31,7 @@ export const cardVariants = cva(
 interface CardProps
   extends ComponentProps<'div'>,
     VariantProps<typeof cardVariants> {
-  asChild?: boolean
+  render?: ReactElement
 }
 
 export const Card = (props: CardProps) => {
@@ -41,26 +42,29 @@ export const Card = (props: CardProps) => {
     variant,
     clickable,
     disabled,
-    asChild,
+    render,
     ...rest
   } = props
 
-  const Comp = asChild ? Slot : 'div'
+  const computedClassName = cn(
+    cardVariants({ variant, clickable, disabled }),
+    className
+  )
+
+  if (render && isValidElement(render)) {
+    const renderProps = render.props as AnyProps
+    return cloneElement(render as ReactElement<AnyProps>, {
+      ref,
+      ...rest,
+      ...renderProps,
+      className: cn(computedClassName, renderProps.className),
+      children,
+    })
+  }
 
   return (
-    <Comp
-      ref={ref}
-      className={cn(
-        cardVariants({
-          variant,
-          clickable,
-          disabled,
-        }),
-        className
-      )}
-      {...rest}
-    >
+    <div ref={ref} className={computedClassName} {...rest}>
       {children}
-    </Comp>
+    </div>
   )
 }

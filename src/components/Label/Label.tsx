@@ -1,15 +1,11 @@
-import * as LabelPrimitive from '@radix-ui/react-label'
 import type { ComponentProps } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 import { textVariants } from '../Text/Text.js'
 
-function Label({
-  className,
-  ...props
-}: ComponentProps<typeof LabelPrimitive.Root>) {
+function Label({ className, ...props }: ComponentProps<'label'>) {
   return (
-    <LabelPrimitive.Root
+    <label
       data-slot="label"
       className={cn(
         textVariants({ variant: 'normal' }),

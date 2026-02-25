@@ -119,7 +119,6 @@ export { NumericInput } from './components/NumericInput/NumericInput.js'
 export { PINCodeInput } from './components/PINCodeInput/PINCodeInput.js'
 export {
   Popover,
-  PopoverAnchor,
   PopoverClose,
   PopoverContent,
   PopoverPrimitive,

@@ -131,8 +131,8 @@ export const IconOnly: Story = {
 export const WithAnchor: Story = {
   args: {
     size: 'md',
-    asChild: true,
-    children: <a href="/wallet">Click me</a>,
+    render: <a href="/wallet" />,
+    children: 'Click me',
     disabled: false,
   },
 }

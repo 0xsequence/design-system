@@ -19,17 +19,15 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
 
   return (
     <div className={className} {...rest}>
-      <Text variant="small" fontWeight="medium" asChild>
-        <div>
-          {paths.map((path, idx) => (
-            <BreadcrumbSegment
-              key={idx}
-              path={path}
-              active={idx === paths.length - 1}
-              renderLink={renderLink}
-            />
-          ))}
-        </div>
+      <Text variant="small" fontWeight="medium" render={<div />}>
+        {paths.map((path, idx) => (
+          <BreadcrumbSegment
+            key={idx}
+            path={path}
+            active={idx === paths.length - 1}
+            renderLink={renderLink}
+          />
+        ))}
       </Text>
     </div>
   )
@@ -48,6 +46,8 @@ const defaultRenderLink = (path: Path, children: ReactNode) => (
 const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
   const { path, active, renderLink = defaultRenderLink } = props
 
+  const linkElement = renderLink(path, path.label)
+
   return active ? (
     <Text color="primary" nowrap capitalize>
       {path.label}
@@ -62,10 +62,8 @@ const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
           'no-underline hover:opacity-80 rounded-sm',
           focusRingVariants({ inner: false })
         )}
-        asChild
-      >
-        {renderLink(path, path.label)}
-      </Text>
+        render={linkElement}
+      />
       <Text color="muted">{' / '}</Text>
     </>
   )

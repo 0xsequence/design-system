@@ -1,14 +1,7 @@
-import * as ToastPrimitive from '@radix-ui/react-toast'
+import { Toast } from '@base-ui/react'
 import { cva } from 'class-variance-authority'
 import { AnimatePresence, motion } from 'motion/react'
-import {
-  createContext,
-  useContext,
-  useState,
-  type ComponentType,
-  type Dispatch,
-  type SetStateAction,
-} from 'react'
+import { type ComponentType } from 'react'
 
 import { CheckmarkIcon, CloseIcon } from '../../icons/index.js'
 import { type IconProps } from '../../icons/types.js'
@@ -16,12 +9,29 @@ import { Card } from '../Card/Card.js'
 import { IconButton } from '../IconButton/IconButton.js'
 import { Text } from '../Text/Text.js'
 
+type ToastVariant = 'normal' | 'success' | 'error'
+
+type ToastData = {
+  variant?: ToastVariant
+  isDismissible?: boolean
+  icon?: ComponentType<IconProps>
+}
+
+export type ToastProps = {
+  id?: string
+  title?: string
+  description?: string
+  variant?: ToastVariant
+  isDismissible?: boolean
+  icon?: ComponentType<IconProps>
+}
+
 const toastVariants = cva(
   [
     'will-change-transform will-change-opacity',
-    'data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x)',
-    'data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-transform data-[swipe=cancel]:duration-200 data-[swipe=cancel]:ease-out',
-    'data-[swipe=end]:animate-swipe-out',
+    'data-[swiping]:translate-x-(--toast-swipe-movement-x)',
+    'data-[swipe-direction=right]:data-[swiping]:translate-x-(--toast-swipe-movement-x)',
+    'data-[swipe-direction=left]:data-[swiping]:translate-x-(--toast-swipe-movement-x)',
   ],
   {
     variants: {
@@ -37,54 +47,40 @@ const toastVariants = cva(
   }
 )
 
-export type ToastProps = ToastPrimitive.ToastProps & {
-  id?: string
-  title?: string
-  description?: string
-  variant?: 'normal' | 'success' | 'error'
-  isDismissible?: boolean
-  icon?: ComponentType<IconProps>
-}
-
-const ToastQueueContext = createContext<
-  Dispatch<SetStateAction<Set<ToastProps>>>
->(null as any)
-
-export const ToastProvider = (props: ToastPrimitive.ToastProviderProps) => {
+export const ToastProvider = (props: Toast.Provider.Props) => {
   const { children, ...rest } = props
-  const [toasts, setToasts] = useState<Set<ToastProps>>(new Set())
 
   return (
-    <ToastPrimitive.Provider {...rest}>
-      <ToastQueueContext.Provider value={setToasts}>
-        {children}
-
-        <AnimatePresence>
-          {Array.from(toasts).map(toast => (
-            <Toast key={toast.id} {...toast} />
-          ))}
-        </AnimatePresence>
-      </ToastQueueContext.Provider>
-
-      <ToastViewport />
-    </ToastPrimitive.Provider>
+    <Toast.Provider {...rest}>
+      <ToasterList />
+      {children}
+    </Toast.Provider>
   )
 }
 
-const ToastViewport = () => (
-  <ToastPrimitive.Viewport className="fixed right-0 bottom-0 focus:outline-hidden w-full flex flex-col gap-2 p-4 pt-0 z-1000 list-none max-w-[532px]" />
-)
+function ToasterList() {
+  const { toasts } = Toast.useToastManager<ToastData>()
 
-export const Toast = (props: ToastProps) => {
-  const {
-    id,
-    variant,
-    title,
-    description,
-    icon: Icon,
-    isDismissible = true,
-    ...rest
-  } = props
+  return (
+    <Toast.Viewport className="fixed right-0 bottom-0 focus:outline-hidden w-full flex flex-col gap-2 p-4 pt-0 z-1000 list-none max-w-[532px]">
+      <AnimatePresence>
+        {toasts.map(toast => (
+          <ToastItem key={toast.id} toast={toast} />
+        ))}
+      </AnimatePresence>
+    </Toast.Viewport>
+  )
+}
+
+function ToastItem({
+  toast,
+}: {
+  toast: Toast.Root.ToastObject<ToastData>
+}) {
+  const { id, title, description, data } = toast
+  const variant = data?.variant ?? 'normal'
+  const isDismissible = data?.isDismissible ?? true
+  const Icon = data?.icon
 
   const renderIcon = () => {
     if (Icon) {
@@ -110,82 +106,79 @@ export const Toast = (props: ToastProps) => {
   }
 
   return (
-    <ToastPrimitive.Root
+    <Toast.Root
+      toast={toast}
       className={toastVariants({ variant })}
-      open
-      forceMount
-      asChild
-      {...rest}
+      render={
+        <Card
+          className="rounded-md bg-background-raised relative flex justify-between w-full shadow-primary"
+          render={
+            <motion.li
+              layoutId={id}
+              layout
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ y: '100%', opacity: 0 }}
+            />
+          }
+        />
+      }
     >
-      <Card
-        className="rounded-md bg-background-raised relative flex justify-between w-full shadow-primary"
-        asChild
-      >
-        <motion.li
-          layoutId={id}
-          layout
-          initial={{ x: '100%' }}
-          animate={{ x: 0 }}
-          exit={{ y: '100%', opacity: 0 }}
-        >
-          <div className="flex gap-3 items-center">
-            {renderIcon()}
+      <div className="flex gap-3 items-center">
+        {renderIcon()}
 
-            <div className="flex flex-col gap-1">
-              {title && (
-                <ToastPrimitive.Title>
-                  <Text
-                    variant="normal"
-                    fontWeight="bold"
-                    color="secondary"
-                    asChild
-                  >
-                    <div>{title}</div>
-                  </Text>
-                </ToastPrimitive.Title>
-              )}
-
-              <ToastPrimitive.Description>
-                <Text
-                  variant="normal"
-                  fontWeight="medium"
-                  color="muted"
-                  asChild
-                >
-                  <div>{description}</div>
-                </Text>
-              </ToastPrimitive.Description>
-            </div>
-          </div>
-
-          {isDismissible && (
-            <ToastPrimitive.Close aria-label="Close" asChild>
-              <IconButton icon={CloseIcon} size="xs" />
-            </ToastPrimitive.Close>
+        <div className="flex flex-col gap-1">
+          {title && (
+            <Toast.Title>
+              <Text
+                variant="normal"
+                fontWeight="bold"
+                color="secondary"
+                render={<div />}
+              >
+                {title}
+              </Text>
+            </Toast.Title>
           )}
-        </motion.li>
-      </Card>
-    </ToastPrimitive.Root>
+
+          <Toast.Description>
+            <Text
+              variant="normal"
+              fontWeight="medium"
+              color="muted"
+              render={<div />}
+            >
+              {description}
+            </Text>
+          </Toast.Description>
+        </div>
+      </div>
+
+      {isDismissible && (
+        <Toast.Close
+          aria-label="Close"
+          render={<IconButton icon={CloseIcon} size="xs" />}
+        />
+      )}
+    </Toast.Root>
   )
 }
 
+export { ToastItem as Toast }
+
 export const useToast = () => {
-  const setToasts = useContext(ToastQueueContext)
+  const { add } = Toast.useToastManager<ToastData>()
 
   return (props: ToastProps) => {
-    const toast: ToastProps = {
-      ...props,
-      id: Math.random().toString(36).slice(2, 12),
-      onOpenChange: open => {
-        if (!open) {
-          setToasts(toasts => {
-            toasts.delete(toast)
-            return new Set([...toasts])
-          })
-        }
+    add({
+      id: props.id ?? Math.random().toString(36).slice(2, 12),
+      title: props.title,
+      description: props.description,
+      data: {
+        variant: props.variant,
+        isDismissible: props.isDismissible,
+        icon: props.icon,
       },
-    }
-
-    setToasts(toasts => new Set([...toasts, toast]))
+    })
   }
 }

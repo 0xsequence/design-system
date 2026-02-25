@@ -1,4 +1,4 @@
-import * as ProgressPrimitive from '@radix-ui/react-progress'
+import { Progress as ProgressPrimitive } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentProps } from 'react'
 import { cn } from 'src/utils/classnames.js'
@@ -35,15 +35,17 @@ export const Progress = (props: ProgressProps) => {
         className
       )}
     >
-      <ProgressPrimitive.ProgressIndicator
-        data-slot="progress-indicator"
-        className={progressIndicatorVariants({ color })}
-        style={{
-          width: `${percent}%`,
-          transition: 'width 660ms cubic-bezier(0.65, 0, 0.35, 1)',
-          backgroundSize: '300% 100%',
-        }}
-      />
+      <ProgressPrimitive.Track className="h-full w-full relative">
+        <ProgressPrimitive.Indicator
+          data-slot="progress-indicator"
+          className={progressIndicatorVariants({ color })}
+          style={{
+            width: `${percent}%`,
+            transition: 'width 660ms cubic-bezier(0.65, 0, 0.35, 1)',
+            backgroundSize: '300% 100%',
+          }}
+        />
+      </ProgressPrimitive.Track>
     </ProgressPrimitive.Root>
   )
 }

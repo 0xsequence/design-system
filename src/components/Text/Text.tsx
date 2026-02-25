@@ -1,6 +1,7 @@
-import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import type { HTMLAttributes } from 'react'
+import { cloneElement, isValidElement, type HTMLAttributes, type ReactElement, type ReactNode } from 'react'
+
+type AnyProps = { className?: string; children?: ReactNode; [key: string]: unknown }
 
 import { cn } from '../../utils/classnames.js'
 
@@ -175,12 +176,12 @@ export const textVariants = cva('', {
 export interface TextProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, 'hidden' | 'color'>,
     VariantProps<typeof textVariants> {
-  asChild?: boolean
+  render?: ReactElement
 }
 
 export const Text = (props: TextProps) => {
   const {
-    asChild,
+    render,
     variant = 'inherit',
     color,
     fontWeight,
@@ -196,27 +197,31 @@ export const Text = (props: TextProps) => {
     ...rest
   } = props
 
-  const Component = asChild ? Slot : 'span'
-
-  return (
-    <Component
-      className={cn(
-        textVariants({
-          variant,
-          fontWeight,
-          color,
-          hidden,
-          italic,
-          underline,
-          ellipsis,
-          uppercase,
-          capitalize,
-          nowrap,
-          block,
-        }),
-        className
-      )}
-      {...rest}
-    />
+  const computedClassName = cn(
+    textVariants({
+      variant,
+      fontWeight,
+      color,
+      hidden,
+      italic,
+      underline,
+      ellipsis,
+      uppercase,
+      capitalize,
+      nowrap,
+      block,
+    }),
+    className
   )
+
+  if (render && isValidElement(render)) {
+    const renderProps = render.props as AnyProps
+    return cloneElement(render as ReactElement<AnyProps>, {
+      ...rest,
+      ...renderProps,
+      className: cn(computedClassName, renderProps.className),
+    })
+  }
+
+  return <span className={computedClassName} {...rest} />
 }

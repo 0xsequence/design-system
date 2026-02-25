@@ -3,7 +3,7 @@ import { Controller, type Control } from 'react-hook-form'
 
 import { Select } from './Select.js'
 
-type ControlledSelectProps = ComponentProps<typeof Select.Helper> & {
+type ControlledSelectProps = Omit<ComponentProps<typeof Select.Helper>, 'onValueChange'> & {
   control: Control
   defaultValue?: string
   name: string
@@ -26,7 +26,7 @@ export const ControlledSelect = ({
     rules={rules}
     render={({ field, fieldState }) => (
       <Select.Helper
-        onValueChange={onValueChange}
+        onValueChange={(value: unknown) => onValueChange(value as string)}
         defaultValue={defaultValue}
         {...field}
         {...selectProps}

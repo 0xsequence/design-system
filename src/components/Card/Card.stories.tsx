@@ -46,7 +46,7 @@ export const Clickable: Story = {
   args: {
     clickable: true,
     disabled: false,
-    asChild: true,
+    render: <button />,
     onClick: () => console.log('Clicked!'),
   },
 }

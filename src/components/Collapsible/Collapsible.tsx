@@ -1,8 +1,8 @@
-import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
+import { Collapsible as CollapsiblePrimitive } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'motion/react'
-import { useState, type ReactNode } from 'react'
+import { useState, type ComponentProps, type ReactNode } from 'react'
 
 import { ChevronDownIcon } from '../../icons/index.js'
 import { focusRingVariants } from '../../styles.js'
@@ -30,9 +30,13 @@ const collapsibleVariants = cva(
 )
 
 interface CollapsibleProps
-  extends CollapsiblePrimitive.CollapsibleProps,
+  extends Omit<
+      ComponentProps<typeof CollapsiblePrimitive.Root>,
+      'onOpenChange'
+    >,
     VariantProps<typeof collapsibleVariants> {
   label: ReactNode
+  onOpenChange?: (open: boolean) => void
 }
 
 export const Collapsible = (props: CollapsibleProps) => {
@@ -68,52 +72,52 @@ export const Collapsible = (props: CollapsibleProps) => {
       open={isOpen}
       defaultOpen={defaultOpen}
       onOpenChange={handleOpenChange}
-      asChild
+      render={
+        <motion.div
+          className={clsx(collapsibleVariants({ variant }), className)}
+          initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
+          animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
+          transition={{ ease: 'easeOut', duration: 0.3 }}
+        />
+      }
       {...rest}
     >
-      <motion.div
-        className={clsx(collapsibleVariants({ variant }), className)}
-        initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
-        animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
-        transition={{ ease: 'easeOut', duration: 0.3 }}
+      <CollapsiblePrimitive.Trigger
+        className={clsx(
+          'flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden',
+          'text-primary hover:text-primary/80'
+        )}
       >
-        <CollapsiblePrimitive.Trigger
-          className={clsx(
-            'flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden',
-            'text-primary hover:text-primary/80'
-          )}
+        <Text variant="normal" fontWeight="bold" render={<div />} ellipsis>
+          {label}
+        </Text>
+        <motion.div
+          className="absolute right-0 mr-4"
+          initial={{ rotate: isOpen ? 180 : 0 }}
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ ease: 'linear', duration: 0.1 }}
         >
-          <Text variant="normal" fontWeight="bold" asChild ellipsis>
-            <div>{label}</div>
-          </Text>
-          <motion.div
-            className="absolute right-0 mr-4"
-            initial={{ rotate: isOpen ? 180 : 0 }}
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ ease: 'linear', duration: 0.1 }}
-          >
-            <ChevronDownIcon className="h-5 w-5 block text-muted" />
-          </motion.div>
-        </CollapsiblePrimitive.Trigger>
-        <AnimatePresence>
-          {isOpen && (
-            <CollapsiblePrimitive.Content
-              className="pt-0 px-4 pb-4 w-full origin-top"
-              asChild
-              forceMount
-            >
+          <ChevronDownIcon className="h-5 w-5 block text-muted" />
+        </motion.div>
+      </CollapsiblePrimitive.Trigger>
+      <AnimatePresence>
+        {isOpen && (
+          <CollapsiblePrimitive.Panel
+            className="pt-0 px-4 pb-4 w-full origin-top"
+            keepMounted
+            render={
               <motion.div
                 initial={{ opacity: isOpen ? 1 : 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ ease: 'easeOut', duration: 0.3 }}
-              >
-                {children}
-              </motion.div>
-            </CollapsiblePrimitive.Content>
-          )}
-        </AnimatePresence>
-      </motion.div>
+              />
+            }
+          >
+            {children}
+          </CollapsiblePrimitive.Panel>
+        )}
+      </AnimatePresence>
     </CollapsiblePrimitive.Root>
   )
 }
