@@ -1,7 +1,6 @@
+import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { cloneElement, isValidElement, type ComponentProps, type ComponentType, type ReactElement, type ReactNode } from 'react'
-
-type AnyProps = { className?: string; children?: ReactNode; [key: string]: unknown }
+import { type ComponentType, type ReactNode } from 'react'
 import type { IconProps } from 'src/icons/types.js'
 import { focusRingVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
@@ -11,7 +10,7 @@ import { textVariants } from '../Text/Text.js'
 const buttonVariants = cva(
   [
     'inline-flex items-center gap-2 whitespace-nowrap overflow-hidden text-decoration-none cursor-pointer',
-    'disabled:cursor-default disabled:opacity-50',
+    'disalbed:cursor-default disabled:pointer-events-none disabled:opacity-50',
 
     focusRingVariants(),
   ],
@@ -58,10 +57,6 @@ const buttonVariants = cva(
         ],
       },
 
-      disabled: {
-        true: 'cursor-default opacity-50',
-        false: 'cursor-pointer',
-      },
       iconOnly: {
         true: 'p-0 shrink-0 items-center justify-center',
       },
@@ -81,42 +76,22 @@ function Button({
   size,
   shape,
   iconOnly,
-  disabled,
-  render,
   ...props
-}: ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
-    render?: ReactElement
-  }) {
-  const computedClassName = cn(
-    buttonVariants({ variant, size, shape, iconOnly, disabled }),
-    className
-  )
-
-  if (render && isValidElement(render)) {
-    const renderProps = render.props as AnyProps
-    return cloneElement(render as ReactElement<AnyProps>, {
-      ...props,
-      ...renderProps,
-      'data-slot': 'button',
-      className: cn(computedClassName, renderProps.className),
-    })
-  }
-
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
   return (
-    <button
+    <ButtonPrimitive
       data-slot="button"
-      className={computedClassName}
-      disabled={disabled}
+      className={cn(
+        buttonVariants({ variant, size, shape, iconOnly }),
+        className
+      )}
       {...props}
     />
   )
 }
 
-type ButtonHelperProps = ComponentProps<typeof Button> &
+type ButtonHelperProps = ButtonPrimitive.Props &
   VariantProps<typeof buttonVariants> & {
-    render?: ReactElement
-    pending?: boolean
     label?: ReactNode
     leftIcon?: ComponentType<IconProps>
     rightIcon?: ComponentType<IconProps>
@@ -125,10 +100,7 @@ type ButtonHelperProps = ComponentProps<typeof Button> &
 const ButtonHelper = (props: ButtonHelperProps) => {
   const {
     ref,
-    render,
     className,
-    disabled = false,
-    pending = false,
     label,
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
@@ -145,20 +117,21 @@ const ButtonHelper = (props: ButtonHelperProps) => {
   const iconSize = size === 'xs' ? 'xs' : 'sm'
   const gap = size === 'xs' ? 'gap-1' : 'gap-2'
 
-  const computedClassName = cn(
-    buttonVariants({
-      disabled: disabled || pending,
-      size: variant === 'text' ? undefined : size,
-      shape: variant === 'text' ? undefined : shape,
-      variant,
-    }),
-    className
-  )
-
-  const content = (
-    <>
+  return (
+    <ButtonPrimitive
+      ref={ref}
+      className={cn(
+        buttonVariants({
+          size: variant === 'text' ? undefined : size,
+          shape: variant === 'text' ? undefined : shape,
+          variant,
+        }),
+        className
+      )}
+      type={type}
+      {...rest}
+    >
       {children}
-
       {iconOnly ? (
         <LeftIcon size={iconSize} />
       ) : (
@@ -173,30 +146,7 @@ const ButtonHelper = (props: ButtonHelperProps) => {
           {RightIcon && <RightIcon size={iconSize} />}
         </div>
       )}
-    </>
-  )
-
-  if (render && isValidElement(render)) {
-    const renderProps = render.props as AnyProps
-    return cloneElement(render as ReactElement<AnyProps>, {
-      ref,
-      ...rest,
-      ...renderProps,
-      className: cn(computedClassName, renderProps.className),
-      children: content,
-    })
-  }
-
-  return (
-    <button
-      ref={ref}
-      className={computedClassName}
-      disabled={disabled || pending}
-      type={type}
-      {...rest}
-    >
-      {content}
-    </button>
+    </ButtonPrimitive>
   )
 }
 
