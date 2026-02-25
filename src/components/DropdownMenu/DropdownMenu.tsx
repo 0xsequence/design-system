@@ -109,16 +109,18 @@ function DropdownMenuLabel({
   inset?: boolean
 }) {
   return (
-    <DropdownMenuPrimitive.GroupLabel
-      data-slot="dropdown-menu-label"
-      data-inset={inset}
-      className={cn(
-        textVariants({ variant: 'small-bold' }),
-        'text-primary px-2 py-1.5 data-[inset]:pl-8',
-        className
-      )}
-      {...props}
-    />
+    <DropdownMenuPrimitive.Group>
+      <DropdownMenuPrimitive.GroupLabel
+        data-slot="dropdown-menu-label"
+        data-inset={inset}
+        className={cn(
+          textVariants({ variant: 'small-bold' }),
+          'text-primary px-2 py-1.5 data-[inset]:pl-8',
+          className
+        )}
+        {...props}
+      />
+    </DropdownMenuPrimitive.Group>
   )
 }
 
