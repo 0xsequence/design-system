@@ -3,8 +3,11 @@ import { afterEach, describe, expect, it } from 'vitest'
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from './Dialog.js'
@@ -59,6 +62,39 @@ describe('<Dialog />', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Open' }))
 
     expect(screen.queryByRole('button', { name: /close/i })).toBeNull()
+  })
+
+  it('renders DialogHeader and DialogFooter', () => {
+    render(
+      <Dialog defaultOpen>
+        <DialogContent>
+          <DialogHeader>Header content</DialogHeader>
+          <DialogTitle>Title</DialogTitle>
+          <DialogFooter>Footer content</DialogFooter>
+        </DialogContent>
+      </Dialog>
+    )
+
+    expect(document.querySelector('[data-slot=dialog-header]')).toBeInTheDocument()
+    expect(document.querySelector('[data-slot=dialog-footer]')).toBeInTheDocument()
+  })
+
+  it('DialogClose dismisses the dialog', () => {
+    render(
+      <Dialog>
+        <DialogTrigger>Open</DialogTrigger>
+        <DialogContent showCloseButton={false}>
+          <DialogTitle>My Dialog</DialogTitle>
+          <DialogClose>Dismiss</DialogClose>
+        </DialogContent>
+      </Dialog>
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: 'Open' }))
+    expect(screen.getByText('My Dialog')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Dismiss' }))
+    expect(screen.queryByText('My Dialog')).toBeNull()
   })
 
   it('closes when the close button is clicked', () => {

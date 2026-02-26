@@ -246,6 +246,60 @@ describe('<NumericInput />', () => {
     )
   })
 
+  it('strips a trailing decimal point on blur', () => {
+    const onChange = vi.fn()
+    render(<NumericInput name="amount" onChange={onChange} />)
+
+    const el = screen.getByRole('textbox')
+    fireEvent.blur(el, { target: { value: '5.' } })
+
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ target: expect.objectContaining({ value: '5' }) })
+    )
+  })
+
+  it('strips a trailing .0 on blur', () => {
+    const onChange = vi.fn()
+    render(<NumericInput name="amount" onChange={onChange} />)
+
+    const el = screen.getByRole('textbox')
+    fireEvent.blur(el, { target: { value: '5.0' } })
+
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ target: expect.objectContaining({ value: '5' }) })
+    )
+  })
+
+  it('clears a lone zero on blur', () => {
+    const onChange = vi.fn()
+    render(<NumericInput name="amount" onChange={onChange} />)
+
+    const el = screen.getByRole('textbox')
+    fireEvent.blur(el, { target: { value: '0' } })
+
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ target: expect.objectContaining({ value: '' }) })
+    )
+  })
+
+  it('calls onBlur callback on blur', () => {
+    const onBlur = vi.fn()
+    render(<NumericInput name="amount" onBlur={onBlur} />)
+
+    fireEvent.blur(screen.getByRole('textbox'), { target: { value: '1' } })
+
+    expect(onBlur).toHaveBeenCalledTimes(1)
+  })
+
+  it('does not fire onChange on blur when value is unchanged', () => {
+    const onChange = vi.fn()
+    render(<NumericInput name="amount" onChange={onChange} />)
+
+    fireEvent.blur(screen.getByRole('textbox'), { target: { value: '42' } })
+
+    expect(onChange).not.toHaveBeenCalled()
+  })
+
   it('should handle typing 0.1 with decimals=0 correctly', () => {
     const onChange = vi.fn()
     render(<NumericInput name="amount" decimals={0} onChange={onChange} />)

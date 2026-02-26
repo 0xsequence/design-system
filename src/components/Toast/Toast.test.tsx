@@ -1,7 +1,8 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { type ToastProps, ToastProvider, useToast } from './Toast.js'
+import { CheckmarkIcon } from '../../icons/index.js'
+import { type ToastProps, Toast, ToastProvider, useToast } from './Toast.js'
 
 const Trigger = (props: ToastProps) => {
   const toast = useToast()
@@ -42,6 +43,33 @@ describe('<Toast />', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
     expect(document.querySelector('button[aria-label="Close"]')).toBeNull()
+  })
+
+  it('shows a success icon for the success variant', () => {
+    setup({ title: 'Done', variant: 'success' })
+    fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
+
+    expect(document.querySelector('.bg-positive')).toBeInTheDocument()
+  })
+
+  it('shows an error icon for the error variant', () => {
+    setup({ title: 'Oops', variant: 'error' })
+    fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
+
+    expect(document.querySelector('.bg-negative')).toBeInTheDocument()
+  })
+
+  it('renders a custom icon when provided', () => {
+    render(
+      <ToastProvider>
+        <Toast title="Custom" icon={CheckmarkIcon} />
+      </ToastProvider>
+    )
+
+    // CheckmarkIcon renders an svg
+    expect(document.querySelector('svg')).toBeInTheDocument()
+    // No variant-specific wrapper should appear
+    expect(document.querySelector('.bg-positive')).toBeNull()
   })
 
   it('can show multiple toasts', () => {
