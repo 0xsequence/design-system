@@ -40,7 +40,7 @@ function RadioGroupItem({
     >
       <Radio.Indicator
         data-slot="radio-group-indicator"
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center w-full h-full"
       >
         <div className="size-3 bg-primary rounded-full" />
       </Radio.Indicator>
