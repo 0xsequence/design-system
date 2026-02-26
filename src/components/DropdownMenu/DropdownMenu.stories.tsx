@@ -33,9 +33,7 @@ export const Default: Story = {
     return (
       <div className="flex justify-center">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <IconButton icon={ContextMenuIcon} />
-          </DropdownMenuTrigger>
+          <DropdownMenuTrigger render={<IconButton icon={ContextMenuIcon} />} />
           <DropdownMenuContent {...args}>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuGroup>
@@ -80,9 +78,6 @@ export const Default: Story = {
     )
   },
   args: {
-    align: 'center',
-    alignOffset: 0,
-    side: 'bottom',
     sideOffset: 4,
   },
 }

@@ -1,4 +1,4 @@
-import * as SelectPrimitive from '@radix-ui/react-select'
+import { Select as SelectPrimitive } from '@base-ui/react'
 import { type ComponentProps, type ReactNode } from 'react'
 
 import {
@@ -56,9 +56,9 @@ function SelectTrigger({
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon asChild>
-        <ChevronDownIcon className="size-4 text-muted" />
-      </SelectPrimitive.Icon>
+      <SelectPrimitive.Icon
+        render={<ChevronDownIcon className="size-4 text-muted" />}
+      />
     </SelectPrimitive.Trigger>
   )
 }
@@ -68,37 +68,52 @@ function SelectContent({
   children,
   position = 'popper',
   align = 'center',
+  side,
+  sideOffset,
+  alignOffset,
   ...props
-}: ComponentProps<typeof SelectPrimitive.Content>) {
+}: ComponentProps<typeof SelectPrimitive.Popup> &
+  Pick<
+    ComponentProps<typeof SelectPrimitive.Positioner>,
+    'align' | 'side' | 'sideOffset' | 'alignOffset'
+  > & {
+    position?: 'popper' | 'item-aligned'
+  }) {
   const { container } = useTheme()
 
   return (
     <SelectPrimitive.Portal container={container}>
-      <SelectPrimitive.Content
-        data-slot="select-content"
-        className={cn(
-          'bg-background-raised text-primary relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-lg border border-border-normal shadow-primary',
-          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-          position === 'popper' &&
-            'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
-          className
-        )}
-        position={position}
+      <SelectPrimitive.Positioner
+        side={side ?? 'bottom'}
         align={align}
-        {...props}
+        sideOffset={sideOffset}
+        alignOffset={alignOffset}
+        alignItemWithTrigger={position === 'item-aligned'}
       >
-        <SelectScrollUpButton />
-        <SelectPrimitive.Viewport
+        <SelectPrimitive.Popup
+          data-slot="select-content"
           className={cn(
-            'p-1',
+            'bg-background-raised text-primary relative max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg border border-border-normal shadow-primary',
+            'data-[open]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[open]:fade-in-0 data-[closed]:zoom-out-95 data-[open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
             position === 'popper' &&
-              'h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width) scroll-my-1'
+              'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+            className
           )}
+          {...props}
         >
-          {children}
-        </SelectPrimitive.Viewport>
-        <SelectScrollDownButton />
-      </SelectPrimitive.Content>
+          <SelectScrollUpButton />
+          <SelectPrimitive.List
+            className={cn(
+              'p-1',
+              position === 'popper' &&
+                'h-(--anchor-height) w-full min-w-(--anchor-width) scroll-my-1'
+            )}
+          >
+            {children}
+          </SelectPrimitive.List>
+          <SelectScrollDownButton />
+        </SelectPrimitive.Popup>
+      </SelectPrimitive.Positioner>
     </SelectPrimitive.Portal>
   )
 }
@@ -106,9 +121,9 @@ function SelectContent({
 function SelectLabel({
   className,
   ...props
-}: ComponentProps<typeof SelectPrimitive.Label>) {
+}: ComponentProps<typeof SelectPrimitive.GroupLabel>) {
   return (
-    <SelectPrimitive.Label
+    <SelectPrimitive.GroupLabel
       data-slot="select-label"
       className={cn(
         textVariants({ variant: 'small' }),
@@ -162,9 +177,9 @@ function SelectSeparator({
 function SelectScrollUpButton({
   className,
   ...props
-}: ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
+}: ComponentProps<typeof SelectPrimitive.ScrollUpArrow>) {
   return (
-    <SelectPrimitive.ScrollUpButton
+    <SelectPrimitive.ScrollUpArrow
       data-slot="select-scroll-up-button"
       className={cn(
         'flex cursor-default items-center justify-center py-1',
@@ -173,16 +188,16 @@ function SelectScrollUpButton({
       {...props}
     >
       <ChevronUpIcon className="size-4" />
-    </SelectPrimitive.ScrollUpButton>
+    </SelectPrimitive.ScrollUpArrow>
   )
 }
 
 function SelectScrollDownButton({
   className,
   ...props
-}: ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
+}: ComponentProps<typeof SelectPrimitive.ScrollDownArrow>) {
   return (
-    <SelectPrimitive.ScrollDownButton
+    <SelectPrimitive.ScrollDownArrow
       data-slot="select-scroll-down-button"
       className={cn(
         'flex cursor-default items-center justify-center py-1',
@@ -191,7 +206,7 @@ function SelectScrollDownButton({
       {...props}
     >
       <ChevronDownIcon className="size-4" />
-    </SelectPrimitive.ScrollDownButton>
+    </SelectPrimitive.ScrollDownArrow>
   )
 }
 

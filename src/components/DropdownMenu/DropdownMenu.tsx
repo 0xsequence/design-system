@@ -1,4 +1,4 @@
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
+import { Menu as DropdownMenuPrimitive } from '@base-ui/react'
 import type { ComponentProps } from 'react'
 
 import { CheckmarkIcon } from '../../icons/index.js'
@@ -35,21 +35,26 @@ const DropdownMenuContent = ({
   children,
   sideOffset = 4,
   ...rest
-}: ComponentProps<typeof DropdownMenuPrimitive.Content>) => (
-  <DropdownMenuPortal>
-    <DropdownMenuPrimitive.Content
-      data-slot="dropdown-menu-content"
-      className={cn(
-        'w-40 bg-background-raised border-1 border-border-normal shadow-primary p-1 rounded-md',
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto',
-        className
-      )}
-      sideOffset={sideOffset}
-      {...rest}
-    >
-      {children}
-    </DropdownMenuPrimitive.Content>
-  </DropdownMenuPortal>
+}: ComponentProps<typeof DropdownMenuPrimitive.Popup> &
+  Pick<
+    ComponentProps<typeof DropdownMenuPrimitive.Positioner>,
+    'sideOffset'
+  >) => (
+  <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.Positioner sideOffset={sideOffset}>
+      <DropdownMenuPrimitive.Popup
+        data-slot="dropdown-menu-content"
+        className={cn(
+          'w-40 bg-background-raised border-1 border-border-normal shadow-primary p-1 rounded-md',
+          'data-[open]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[open]:fade-in-0 data-[closed]:zoom-out-95 data-[open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-x-hidden overflow-y-auto',
+          className
+        )}
+        {...rest}
+      >
+        {children}
+      </DropdownMenuPrimitive.Popup>
+    </DropdownMenuPrimitive.Positioner>
+  </DropdownMenuPrimitive.Portal>
 )
 
 function DropdownMenuGroup({
@@ -103,20 +108,22 @@ function DropdownMenuLabel({
   className,
   inset,
   ...props
-}: ComponentProps<typeof DropdownMenuPrimitive.Label> & {
+}: ComponentProps<typeof DropdownMenuPrimitive.GroupLabel> & {
   inset?: boolean
 }) {
   return (
-    <DropdownMenuPrimitive.Label
-      data-slot="dropdown-menu-label"
-      data-inset={inset}
-      className={cn(
-        textVariants({ variant: 'small-bold' }),
-        'text-primary px-2 py-1.5 data-[inset]:pl-8',
-        className
-      )}
-      {...props}
-    />
+    <DropdownMenuPrimitive.Group>
+      <DropdownMenuPrimitive.GroupLabel
+        data-slot="dropdown-menu-label"
+        data-inset={inset}
+        className={cn(
+          textVariants({ variant: 'small-bold' }),
+          'text-primary px-2 py-1.5 data-[inset]:pl-8',
+          className
+        )}
+        {...props}
+      />
+    </DropdownMenuPrimitive.Group>
   )
 }
 
@@ -154,16 +161,16 @@ function DropdownMenuCheckboxIndicator({
   className,
   size = 'xl',
   ...rest
-}: ComponentProps<typeof DropdownMenuPrimitive.DropdownMenuItemIndicator> &
+}: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItemIndicator> &
   Pick<ComponentProps<typeof CheckmarkIcon>, 'size'>) {
   return (
-    <DropdownMenuPrimitive.DropdownMenuItemIndicator
+    <DropdownMenuPrimitive.CheckboxItemIndicator
       data-slot="dropdown-menu-radio-indicator"
       className={cn(`*:size-4`, className)}
       {...rest}
     >
       <CheckmarkIcon size={size} />
-    </DropdownMenuPrimitive.DropdownMenuItemIndicator>
+    </DropdownMenuPrimitive.CheckboxItemIndicator>
   )
 }
 
@@ -211,17 +218,19 @@ function DropdownMenuRadioIndicator({
   ...rest
 }: ComponentProps<'div'>) {
   return (
-    <DropdownMenuPrimitive.ItemIndicator
+    <DropdownMenuPrimitive.RadioItemIndicator
       data-slot="dropdown-menu-radio-indicator"
       className={cn(
         'size-4 flex items-center justify-center',
         '*:size-2 *:rounded-full *:bg-primary',
         className
       )}
-      {...rest}
+      {...(rest as ComponentProps<
+        typeof DropdownMenuPrimitive.RadioItemIndicator
+      >)}
     >
       <div />
-    </DropdownMenuPrimitive.ItemIndicator>
+    </DropdownMenuPrimitive.RadioItemIndicator>
   )
 }
 

@@ -1,4 +1,4 @@
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
+import { Checkbox as CheckboxPrimitive } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentProps } from 'react'
 
@@ -52,4 +52,4 @@ function Checkbox({
   )
 }
 
-export { Checkbox }
+export { Checkbox, CheckboxPrimitive }

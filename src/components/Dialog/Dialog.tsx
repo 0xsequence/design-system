@@ -1,4 +1,4 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog'
+import { Dialog as DialogPrimitive } from '@base-ui/react'
 import { type ComponentProps } from 'react'
 import { CloseIcon } from 'src/icons/index.js'
 
@@ -31,12 +31,12 @@ function DialogClose({
 function DialogOverlay({
   className,
   ...props
-}: ComponentProps<typeof DialogPrimitive.Overlay>) {
+}: ComponentProps<typeof DialogPrimitive.Backdrop>) {
   return (
-    <DialogPrimitive.Overlay
+    <DialogPrimitive.Backdrop
       data-slot="dialog-overlay"
       className={cn(
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-background-overlay',
+        'data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 isolate bg-background-overlay',
         className
       )}
       {...props}
@@ -49,16 +49,17 @@ function DialogContent({
   children,
   showCloseButton = true,
   ...props
-}: ComponentProps<typeof DialogPrimitive.Content> & {
+}: ComponentProps<typeof DialogPrimitive.Popup> & {
   showCloseButton?: boolean
 }) {
   return (
     <DialogPortal data-slot="dialog-portal">
       <DialogOverlay />
-      <DialogPrimitive.Content
+      <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
-          'bg-background-primary data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl p-6 duration-200 sm:max-w-lg',
+          'bg-background-primary grid max-w-[calc(100%-2rem)] gap-4 rounded-2xl p-6 duration-100 sm:max-w-sm fixed top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 outline-none',
+          'data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ',
           className
         )}
         {...props}
@@ -68,15 +69,15 @@ function DialogContent({
           <DialogPrimitive.Close
             data-slot="dialog-close"
             className="absolute top-4 right-4"
-            asChild
-          >
-            <Button variant="ghost" size="xs" iconOnly>
-              <CloseIcon size="xs" />
-              <span className="sr-only">Close</span>
-            </Button>
-          </DialogPrimitive.Close>
+            render={
+              <Button variant="ghost" size="xs" iconOnly>
+                <CloseIcon size="xs" />
+                <span className="sr-only">Close</span>
+              </Button>
+            }
+          />
         )}
-      </DialogPrimitive.Content>
+      </DialogPrimitive.Popup>
     </DialogPortal>
   )
 }

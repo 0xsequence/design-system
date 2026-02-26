@@ -25,9 +25,7 @@ export const Default: StoryObj<typeof DialogContent> = {
     return (
       <Dialog>
         <form>
-          <DialogTrigger asChild>
-            <Button variant="outline">Open Dialog</Button>
-          </DialogTrigger>
+          <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} />
           <DialogContent className="sm:max-w-[425px]" {...args}>
             <DialogHeader>
               <DialogTitle>Edit profile</DialogTitle>
@@ -51,9 +49,7 @@ export const Default: StoryObj<typeof DialogContent> = {
               </div>
             </div>
             <DialogFooter>
-              <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DialogClose>
+              <DialogClose render={<Button variant="outline">Cancel</Button>} />
               <Button type="submit">Save changes</Button>
             </DialogFooter>
           </DialogContent>

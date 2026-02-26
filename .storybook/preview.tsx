@@ -62,7 +62,7 @@ const withTheme: Decorator = (StoryFn, context) => {
       customThemes={isCustomTheme ? customThemes : undefined}
       storageKey={null}
     >
-      <div className="bg-background-primary p-4">
+      <div className="bg-background-primary p-4 isolate">
         <StoryFn />
       </div>
     </ThemeProvider>

@@ -1,6 +1,6 @@
-import { Slot, Slottable } from '@radix-ui/react-slot'
+import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { cva, type VariantProps } from 'class-variance-authority'
-import type { ComponentProps, ComponentType, ReactNode } from 'react'
+import { type ComponentType, type ReactNode } from 'react'
 import type { IconProps } from 'src/icons/types.js'
 import { focusRingVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
@@ -10,7 +10,7 @@ import { textVariants } from '../Text/Text.js'
 const buttonVariants = cva(
   [
     'inline-flex items-center gap-2 whitespace-nowrap overflow-hidden text-decoration-none cursor-pointer',
-    'disabled:cursor-default disabled:opacity-50',
+    'disalbed:cursor-default disabled:pointer-events-none disabled:opacity-50',
 
     focusRingVariants(),
   ],
@@ -57,10 +57,6 @@ const buttonVariants = cva(
         ],
       },
 
-      disabled: {
-        true: 'cursor-default opacity-50',
-        false: 'cursor-pointer',
-      },
       iconOnly: {
         true: 'p-0 shrink-0 items-center justify-center',
       },
@@ -80,31 +76,22 @@ function Button({
   size,
   shape,
   iconOnly,
-  disabled,
-  asChild = false,
   ...props
-}: ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot : 'button'
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
   return (
-    <Comp
+    <ButtonPrimitive
       data-slot="button"
       className={cn(
-        buttonVariants({ variant, size, shape, iconOnly, disabled }),
+        buttonVariants({ variant, size, shape, iconOnly }),
         className
       )}
-      disabled={disabled}
       {...props}
     />
   )
 }
 
-type ButtonHelperProps = ComponentProps<typeof Button> &
+type ButtonHelperProps = ButtonPrimitive.Props &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-    pending?: boolean
     label?: ReactNode
     leftIcon?: ComponentType<IconProps>
     rightIcon?: ComponentType<IconProps>
@@ -113,10 +100,7 @@ type ButtonHelperProps = ComponentProps<typeof Button> &
 const ButtonHelper = (props: ButtonHelperProps) => {
   const {
     ref,
-    asChild,
     className,
-    disabled = false,
-    pending = false,
     label,
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
@@ -133,26 +117,21 @@ const ButtonHelper = (props: ButtonHelperProps) => {
   const iconSize = size === 'xs' ? 'xs' : 'sm'
   const gap = size === 'xs' ? 'gap-1' : 'gap-2'
 
-  const Component = asChild ? Slot : 'button'
-
   return (
-    <Component
+    <ButtonPrimitive
       ref={ref}
       className={cn(
         buttonVariants({
-          disabled: disabled || pending,
           size: variant === 'text' ? undefined : size,
           shape: variant === 'text' ? undefined : shape,
           variant,
         }),
         className
       )}
-      disabled={disabled || pending}
       type={type}
       {...rest}
     >
-      <Slottable>{children}</Slottable>
-
+      {children}
       {iconOnly ? (
         <LeftIcon size={iconSize} />
       ) : (
@@ -167,7 +146,7 @@ const ButtonHelper = (props: ButtonHelperProps) => {
           {RightIcon && <RightIcon size={iconSize} />}
         </div>
       )}
-    </Component>
+    </ButtonPrimitive>
   )
 }
 
