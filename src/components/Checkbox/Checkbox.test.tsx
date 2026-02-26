@@ -36,7 +36,7 @@ describe('<Checkbox />', () => {
 
     fireEvent.click(screen.getByRole('checkbox', { name: 'Agree' }))
 
-    expect(onCheckedChange).toHaveBeenCalledWith(true)
+    expect(onCheckedChange).toHaveBeenCalledWith(true, expect.anything())
   })
 
   it('does not toggle when disabled', () => {

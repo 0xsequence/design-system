@@ -42,19 +42,19 @@ describe('<Tabs />', () => {
     expect(screen.queryByText('Content A')).toBeNull()
   })
 
-  it('marks the active tab with data-state', async () => {
+  it('marks the active tab with data-active', async () => {
     const user = userEvent.setup()
     render(<TestTabs />)
 
     const tabA = screen.getByText('Tab A').closest('[data-slot=tabs-trigger]')!
     const tabB = screen.getByText('Tab B').closest('[data-slot=tabs-trigger]')!
 
-    expect(tabA).toHaveAttribute('data-state', 'active')
-    expect(tabB).not.toHaveAttribute('data-state', 'active')
+    expect(tabA).toHaveAttribute('data-active')
+    expect(tabB).not.toHaveAttribute('data-active')
 
     await user.click(screen.getByText('Tab B'))
 
-    expect(tabA).not.toHaveAttribute('data-state', 'active')
-    expect(tabB).toHaveAttribute('data-state', 'active')
+    expect(tabA).not.toHaveAttribute('data-active')
+    expect(tabB).toHaveAttribute('data-active')
   })
 })
