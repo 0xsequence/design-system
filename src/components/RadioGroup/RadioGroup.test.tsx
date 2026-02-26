@@ -47,7 +47,7 @@ describe('<RadioGroup />', () => {
 
     fireEvent.click(screen.getByRole('radio', { name: 'Apple' }))
 
-    expect(onValueChange).toHaveBeenCalledWith('apple')
+    expect(onValueChange).toHaveBeenCalledWith('apple', expect.anything())
   })
 
   it('does not select a disabled item', () => {

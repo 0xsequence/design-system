@@ -1,4 +1,5 @@
 import { cleanup, fireEvent, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { renderWithTheme } from '../../providers/ThemeProvider/renderWithTheme.js'
@@ -34,18 +35,20 @@ describe('<Select />', () => {
     expect(screen.getByText('Cherry')).toBeInTheDocument()
   })
 
-  it('displays the selected value after choosing an item', () => {
+  it('displays the selected value after choosing an item', async () => {
+    const user = userEvent.setup()
     renderWithTheme(
       <Select.Helper options={options} placeholder="Pick a fruit" />
     )
 
-    fireEvent.click(screen.getByRole('combobox'))
-    fireEvent.click(screen.getByText('Banana'))
+    await user.click(screen.getByRole('combobox'))
+    await user.click(screen.getByText('Banana'))
 
     expect(screen.getByRole('combobox')).toHaveTextContent(/banana/i)
   })
 
-  it('calls onValueChange with the selected value', () => {
+  it('calls onValueChange with the selected value', async () => {
+    const user = userEvent.setup()
     const onValueChange = vi.fn()
     renderWithTheme(
       <Select.Helper
@@ -55,10 +58,10 @@ describe('<Select />', () => {
       />
     )
 
-    fireEvent.click(screen.getByRole('combobox'))
-    fireEvent.click(screen.getByText('Banana'))
+    await user.click(screen.getByRole('combobox'))
+    await user.click(screen.getByText('Banana'))
 
-    expect(onValueChange).toHaveBeenCalledWith('banana')
+    expect(onValueChange).toHaveBeenCalledWith('banana', expect.anything())
   })
 
   it('renders disabled options as non-interactive', () => {

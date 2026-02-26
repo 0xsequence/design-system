@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 
-import { Toast, ToastProvider, useToast, type ToastProps } from './Toast.js'
+import { ToastProvider, useToast, type ToastProps } from './Toast.js'
 
 const Trigger = (props: ToastProps) => {
   const toast = useToast()
@@ -63,11 +63,8 @@ describe('<Toast />', () => {
   })
 
   it('renders a custom icon when provided', () => {
-    render(
-      <ToastProvider>
-        <Toast title="Custom" icon={CheckmarkIcon} />
-      </ToastProvider>
-    )
+    setup({ title: 'Custom', icon: CheckmarkIcon })
+    fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
     // CheckmarkIcon renders an svg
     expect(document.querySelector('svg')).toBeInTheDocument()
