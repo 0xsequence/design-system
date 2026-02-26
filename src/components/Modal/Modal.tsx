@@ -115,7 +115,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
           {...rootProps}
           className={cn(
             'seq-root',
-            'fixed inset-0 z-20',
+            'fixed inset-0',
             overlayColor,
             rootProps?.className
           )}
@@ -147,7 +147,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
             />
           }
           className={cn(
-            'fixed inset-0 flex items-center justify-center z-20 pointer-events-none',
+            'fixed inset-0 flex items-center justify-center pointer-events-none',
             contentProps?.className
           )}
         >

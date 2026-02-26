@@ -36,14 +36,17 @@ const DropdownMenuContent = ({
   sideOffset = 4,
   ...rest
 }: ComponentProps<typeof DropdownMenuPrimitive.Popup> &
-  Pick<ComponentProps<typeof DropdownMenuPrimitive.Positioner>, 'sideOffset'>) => (
+  Pick<
+    ComponentProps<typeof DropdownMenuPrimitive.Positioner>,
+    'sideOffset'
+  >) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Positioner sideOffset={sideOffset}>
       <DropdownMenuPrimitive.Popup
         data-slot="dropdown-menu-content"
         className={cn(
           'w-40 bg-background-raised border-1 border-border-normal shadow-primary p-1 rounded-md',
-          'data-[open]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[open]:fade-in-0 data-[closed]:zoom-out-95 data-[open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-x-hidden overflow-y-auto',
+          'data-[open]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[open]:fade-in-0 data-[closed]:zoom-out-95 data-[open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-x-hidden overflow-y-auto',
           className
         )}
         {...rest}
@@ -222,7 +225,9 @@ function DropdownMenuRadioIndicator({
         '*:size-2 *:rounded-full *:bg-primary',
         className
       )}
-      {...(rest as ComponentProps<typeof DropdownMenuPrimitive.RadioItemIndicator>)}
+      {...(rest as ComponentProps<
+        typeof DropdownMenuPrimitive.RadioItemIndicator
+      >)}
     >
       <div />
     </DropdownMenuPrimitive.RadioItemIndicator>
