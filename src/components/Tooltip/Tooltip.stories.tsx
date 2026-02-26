@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Button } from '../Button/Button.js'
+import { Dialog, DialogContent } from '../Dialog/Dialog.js'
 import { Modal } from '../Modal/Modal.js'
 
 import { Tooltip } from './Tooltip.js'
@@ -52,6 +53,26 @@ export const WithinModal: Story = {
           </Tooltip>
         </div>
       </Modal>
+    )
+  },
+}
+
+export const WithinDialog: Story = {
+  tags: ['!autodocs'],
+  render: args => {
+    return (
+      <Dialog defaultOpen disablePointerDismissal>
+        <DialogContent className="sm:max-w-[425px] p-0" showCloseButton={false}>
+          <div className="flex p-4 gap-2">
+            <Tooltip {...args} message="Tooltip 1">
+              <Button>Button 1</Button>
+            </Tooltip>
+            <Tooltip {...args} message="Tooltip 2">
+              <Button>Button 2</Button>
+            </Tooltip>
+          </div>
+        </DialogContent>
+      </Dialog>
     )
   },
 }

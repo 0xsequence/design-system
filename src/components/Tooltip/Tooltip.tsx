@@ -54,7 +54,7 @@ export const Tooltip = (props: PropsWithChildren<TooltipProps>) => {
             sideOffset={vOffset}
             alignOffset={hOffset}
           >
-            <TooltipPrimitive.Popup className="bg-primary fill-primary rounded-lg p-2 flex justify-center items-center shadow-primary z-1000 animate-in fade-in-0 zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 w-fit origin-(--transform-origin)">
+            <TooltipPrimitive.Popup className="bg-primary fill-primary rounded-lg p-2 flex justify-center items-center shadow-primary animate-in fade-in-0 zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 w-fit origin-(--transform-origin)">
               <Text variant="small" fontWeight="medium" color="inverse">
                 {message}
               </Text>
