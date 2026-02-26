@@ -1,12 +1,13 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
+import type { ComponentProps } from 'react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { FileInput } from './FileInput.js'
 
-const defaultProps = {
+const defaultProps: ComponentProps<typeof FileInput> = {
   name: 'upload',
-  validExtensions: ['png', 'jpg'] as const,
+  validExtensions: ['png', 'jpg'],
 }
 
 describe('<FileInput />', () => {
@@ -29,9 +30,7 @@ describe('<FileInput />', () => {
     render(<FileInput {...defaultProps} />)
 
     const file = new File(['content'], 'photo.png', { type: 'image/png' })
-    const input = document.querySelector(
-      'input[type=file]'
-    ) as HTMLInputElement
+    const input = document.querySelector('input[type=file]') as HTMLInputElement
 
     await user.upload(input, file)
 
@@ -43,9 +42,7 @@ describe('<FileInput />', () => {
     render(<FileInput {...defaultProps} />)
 
     const file = new File(['hello world'], 'doc.png', { type: 'image/png' })
-    const input = document.querySelector(
-      'input[type=file]'
-    ) as HTMLInputElement
+    const input = document.querySelector('input[type=file]') as HTMLInputElement
 
     await user.upload(input, file)
 
@@ -59,9 +56,7 @@ describe('<FileInput />', () => {
     render(<FileInput {...defaultProps} onValueChange={onValueChange} />)
 
     const file = new File(['data'], 'image.png', { type: 'image/png' })
-    const input = document.querySelector(
-      'input[type=file]'
-    ) as HTMLInputElement
+    const input = document.querySelector('input[type=file]') as HTMLInputElement
 
     await user.upload(input, file)
 
