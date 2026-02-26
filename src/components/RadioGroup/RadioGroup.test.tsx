@@ -7,7 +7,7 @@ const TestRadioGroup = (props: {
   defaultValue?: string
   onValueChange?: (value: string) => void
 }) => (
-  <RadioGroup aria-label="Fruit" {...props}>
+  <RadioGroup {...props}>
     <RadioGroupItem value="apple" aria-label="Apple" />
     <RadioGroupItem value="banana" aria-label="Banana" />
     <RadioGroupItem value="cherry" aria-label="Cherry" disabled />
