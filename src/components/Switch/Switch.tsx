@@ -11,7 +11,7 @@ import { cn } from '../../utils/classnames.js'
 
 const switchVariants = cva(
   [
-    'peer rounded-full bg-background-input bg-origin-border cursor-pointer data-[checked]:bg-gradient-primary data-[checked]:border-transparent!',
+    'flex peer rounded-full bg-background-input bg-origin-border cursor-pointer data-[checked]:bg-gradient-primary data-[checked]:border-transparent!',
   ],
   {
     variants: {
