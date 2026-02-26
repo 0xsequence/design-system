@@ -1,8 +1,9 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 
 import { CheckmarkIcon } from '../../icons/index.js'
-import { type ToastProps, Toast, ToastProvider, useToast } from './Toast.js'
+
+import { Toast, ToastProvider, useToast, type ToastProps } from './Toast.js'
 
 const Trigger = (props: ToastProps) => {
   const toast = useToast()
@@ -34,7 +35,9 @@ describe('<Toast />', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
     // The close button is aria-hidden during animation; query the DOM directly
-    expect(document.querySelector('button[aria-label="Close"]')).toBeInTheDocument()
+    expect(
+      document.querySelector('button[aria-label="Close"]')
+    ).toBeInTheDocument()
   })
 
   it('hides dismiss button when isDismissible is false', () => {

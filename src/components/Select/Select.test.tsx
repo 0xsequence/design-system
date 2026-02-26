@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { renderWithTheme } from '../../providers/ThemeProvider/renderWithTheme.js'
@@ -64,14 +64,19 @@ describe('<Select />', () => {
   it('renders disabled options as non-interactive', () => {
     renderWithTheme(
       <Select.Helper
-        options={[...options, { value: 'grape', label: 'Grape', disabled: true }]}
+        options={[
+          ...options,
+          { value: 'grape', label: 'Grape', disabled: true },
+        ]}
         placeholder="Pick a fruit"
       />
     )
 
     fireEvent.click(screen.getByRole('combobox'))
 
-    const grapeItem = screen.getByText('Grape').closest('[data-slot=select-item]')
+    const grapeItem = screen
+      .getByText('Grape')
+      .closest('[data-slot=select-item]')
     expect(grapeItem).toHaveAttribute('data-disabled')
   })
 })

@@ -9,7 +9,6 @@ import {
   TableHeadButton,
   TableHeader,
   TableRow,
-  TableSortIcon,
 } from './Table.js'
 
 const BasicTable = () => (
@@ -36,8 +35,12 @@ describe('<Table />', () => {
     render(<BasicTable />)
 
     expect(screen.getByRole('table')).toBeInTheDocument()
-    expect(screen.getByRole('columnheader', { name: 'Name' })).toBeInTheDocument()
-    expect(screen.getByRole('columnheader', { name: 'Age' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('columnheader', { name: 'Name' })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('columnheader', { name: 'Age' })
+    ).toBeInTheDocument()
     expect(screen.getByRole('cell', { name: 'Alice' })).toBeInTheDocument()
     expect(screen.getByRole('cell', { name: '30' })).toBeInTheDocument()
   })
