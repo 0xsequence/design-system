@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.8
+
+### Patch Changes
+
+- Increasing test coverage
+
 ## 3.2.7
 
 ### Patch Changes
