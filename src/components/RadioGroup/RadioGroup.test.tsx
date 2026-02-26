@@ -1,12 +1,12 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { type ComponentProps } from 'react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { RadioGroup, RadioGroupItem } from './RadioGroup.js'
 
-const TestRadioGroup = (props: {
-  defaultValue?: string
-  onValueChange?: (value: string) => void
-}) => (
+const TestRadioGroup = (
+  props: Pick<ComponentProps<typeof RadioGroup>, 'defaultValue' | 'onValueChange'>
+) => (
   <RadioGroup {...props}>
     <RadioGroupItem value="apple" aria-label="Apple" />
     <RadioGroupItem value="banana" aria-label="Banana" />
