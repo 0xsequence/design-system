@@ -1,14 +1,27 @@
 import { Collapsible as CollapsiblePrimitive } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
-import { AnimatePresence, motion } from 'motion/react'
 import { useState, type ComponentProps, type ReactNode } from 'react'
+import { cn } from 'src/utils/classnames.js'
 
 import { ChevronDownIcon } from '../../icons/index.js'
 import { focusRingVariants } from '../../styles.js'
-import { Text } from '../Text/Text.js'
 
-const COLLAPSED_HEIGHT = '64px'
+function CollapsibleRoot({ ...props }: CollapsiblePrimitive.Root.Props) {
+  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
+}
+
+function CollapsibleTrigger({ ...props }: CollapsiblePrimitive.Trigger.Props) {
+  return (
+    <CollapsiblePrimitive.Trigger data-slot="collapsible-trigger" {...props} />
+  )
+}
+
+function CollapsibleContent({ ...props }: CollapsiblePrimitive.Panel.Props) {
+  return (
+    <CollapsiblePrimitive.Panel data-slot="collapsible-content" {...props} />
+  )
+}
 
 const collapsibleVariants = cva(
   [
@@ -30,10 +43,8 @@ const collapsibleVariants = cva(
 )
 
 interface CollapsibleProps
-  extends Omit<
-      ComponentProps<typeof CollapsiblePrimitive.Root>,
-      'onOpenChange'
-    >,
+  extends
+    Omit<ComponentProps<typeof CollapsiblePrimitive.Root>, 'onOpenChange'>,
     VariantProps<typeof collapsibleVariants> {
   label: ReactNode
   onOpenChange?: (open: boolean) => void
@@ -68,57 +79,26 @@ export const Collapsible = (props: CollapsibleProps) => {
   }
 
   return (
-    <CollapsiblePrimitive.Root
+    <CollapsibleRoot
       open={isOpen}
       defaultOpen={defaultOpen}
       onOpenChange={handleOpenChange}
-      render={
-        <motion.div
-          className={clsx(collapsibleVariants({ variant }), className)}
-          initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
-          animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
-          transition={{ ease: 'easeOut', duration: 0.3 }}
-        />
-      }
+      className={cn(collapsibleVariants({ variant }), className)}
       {...rest}
     >
-      <CollapsiblePrimitive.Trigger
+      <CollapsibleTrigger
         className={clsx(
-          'flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden',
-          'text-primary hover:text-primary/80'
+          'group flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden',
+          'text-normal-bold text-primary hover:text-primary/80'
         )}
       >
-        <Text variant="normal" fontWeight="bold" render={<div />} ellipsis>
-          {label}
-        </Text>
-        <motion.div
-          className="absolute right-0 mr-4"
-          initial={{ rotate: isOpen ? 180 : 0 }}
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ ease: 'linear', duration: 0.1 }}
-        >
-          <ChevronDownIcon className="h-5 w-5 block text-muted" />
-        </motion.div>
-      </CollapsiblePrimitive.Trigger>
-      <AnimatePresence>
-        {isOpen && (
-          <CollapsiblePrimitive.Panel
-            className="pt-0 px-4 pb-4 w-full origin-top"
-            keepMounted
-            render={
-              <motion.div
-                initial={{ opacity: isOpen ? 1 : 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ ease: 'easeOut', duration: 0.3 }}
-              />
-            }
-          >
-            {children}
-          </CollapsiblePrimitive.Panel>
-        )}
-      </AnimatePresence>
-    </CollapsiblePrimitive.Root>
+        {label}
+        <ChevronDownIcon className="h-5 w-5 block text-muted absolute right-0 mr-4 group-data-panel-open:rotate-180 transition-transform duration-150" />
+      </CollapsibleTrigger>
+      <CollapsibleContent className="flex flex-col justify-end overflow-hidden w-full transition-[height, opacity] duration-150 ease-out h-(--collapsible-panel-height) data-starting-style:h-0 data-ending-style:h-0 opacity-100 data-starting-style:opacity-0 data-ending-style:opacity-0">
+        <div className="pt-0 px-4 pb-4">{children}</div>
+      </CollapsibleContent>
+    </CollapsibleRoot>
   )
 }
 
