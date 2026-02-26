@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { capitalize, kebabize } from './string.js'
+import { capitalize, kebabize, pluralize } from './string.js'
 
 describe('Utils / String', () => {
   it('should capitalize', () => {
@@ -18,5 +18,11 @@ describe('Utils / String', () => {
     expect(kebabize('aAaA')).toEqual('a-aa-a')
     expect(kebabize('HelloWorld')).toEqual('hello-world')
     expect(kebabize('helloworld')).toEqual('helloworld')
+  })
+
+  it('should pluralize', () => {
+    expect(pluralize(0, 'item', 'items')).toEqual('items')
+    expect(pluralize(1, 'item', 'items')).toEqual('item')
+    expect(pluralize(2, 'item', 'items')).toEqual('items')
   })
 })
