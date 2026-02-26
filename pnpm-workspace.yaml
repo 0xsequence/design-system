@@ -1,0 +1,7 @@
+minimumReleaseAge: 20160
+
+minimumReleaseAgeExclude:
+  - '@0xsequence/*'
+  - '@0xtrails/*'
+  - '0xtrails'
+  - '0xsequence'
