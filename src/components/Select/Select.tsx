@@ -48,7 +48,7 @@ function SelectTrigger({
         focusRingVariants(),
         inputBorderStyle,
         disabledStyle,
-        'bg-background-input text-primary select-none cursor-pointer data-[placeholder]:text-muted flex w-fit items-center justify-between gap-2 rounded-xl px-4 py-2 whitespace-nowrap data-[size=default]:h-13 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2',
+        'bg-background-input text-primary select-none cursor-pointer data-placeholder:text-muted flex w-fit items-center justify-between gap-2 rounded-xl px-4 py-2 whitespace-nowrap data-[size=default]:h-13 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2',
         "[&_svg:not([class*='text-'])]:text-muted [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         'aria-invalid:border-destructive aria-invalid:outline-destructive',
         className
@@ -66,19 +66,17 @@ function SelectTrigger({
 function SelectContent({
   className,
   children,
-  position = 'popper',
   align = 'center',
   side,
   sideOffset,
   alignOffset,
+  alignItemWithTrigger = false,
   ...props
 }: ComponentProps<typeof SelectPrimitive.Popup> &
   Pick<
-    ComponentProps<typeof SelectPrimitive.Positioner>,
-    'align' | 'side' | 'sideOffset' | 'alignOffset'
-  > & {
-    position?: 'popper' | 'item-aligned'
-  }) {
+    SelectPrimitive.Positioner.Props,
+    'align' | 'alignOffset' | 'side' | 'sideOffset' | 'alignItemWithTrigger'
+  >) {
   const { container } = useTheme()
 
   return (
@@ -88,27 +86,20 @@ function SelectContent({
         align={align}
         sideOffset={sideOffset}
         alignOffset={alignOffset}
-        alignItemWithTrigger={position === 'item-aligned'}
+        alignItemWithTrigger={alignItemWithTrigger}
       >
         <SelectPrimitive.Popup
           data-slot="select-content"
+          data-align-trigger={alignItemWithTrigger}
           className={cn(
             'bg-background-raised text-primary relative max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg border border-border-normal shadow-primary',
             'data-[open]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[open]:fade-in-0 data-[closed]:zoom-out-95 data-[open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-            position === 'popper' &&
-              'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
             className
           )}
           {...props}
         >
           <SelectScrollUpButton />
-          <SelectPrimitive.List
-            className={cn(
-              'p-1',
-              position === 'popper' &&
-                'h-(--anchor-height) w-full min-w-(--anchor-width) scroll-my-1'
-            )}
-          >
+          <SelectPrimitive.List className={cn('p-1')}>
             {children}
           </SelectPrimitive.List>
           <SelectScrollDownButton />
@@ -145,7 +136,7 @@ function SelectItem({
       data-slot="select-item"
       className={cn(
         textVariants({ variant: 'normal' }),
-        "[&_svg:not([class*='text-'])]:text-muted relative flex w-full cursor-pointer items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "[&_svg:not([class*='text-'])]:text-muted relative flex w-full cursor-pointer items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         'focus:bg-background-hover data-highlighted:bg-background-hover',
         className
       )}
@@ -240,7 +231,7 @@ const SelectHelper = (props: SelectHelperProps) => {
   } = props
 
   return (
-    <Select disabled={disabled} name={name} {...rest}>
+    <Select disabled={disabled} name={name} items={options} {...rest}>
       <SelectTrigger
         className={className}
         id={id ?? name}
@@ -250,7 +241,7 @@ const SelectHelper = (props: SelectHelperProps) => {
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
 
-      <SelectContent position="popper" side="bottom" align="start">
+      <SelectContent side="bottom" align="start">
         <SelectGroup>
           {options.map(({ value, label, ...rest }) => (
             <SelectItem key={value} value={value} {...rest}>
