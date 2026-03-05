@@ -42,7 +42,7 @@ const buttonVariants = cva(
 
       variant: {
         primary:
-          'bg-gradient-primary text-white hover:opacity-80 border-1 border-transparent bg-origin-border',
+          'bg-gradient-primary text-button-primary hover:opacity-80 border-1 border-transparent bg-origin-border',
         secondary:
           'bg-background-secondary text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         outline:

@@ -19,6 +19,7 @@
   --seq-color-secondary: var(--color-slate-800);
   --seq-color-muted: var(--color-slate-500);
   --seq-color-inverse: var(--color-slate-50);
+  --seq-color-button-primary: var(--color-white);
 
   /* Background colors */
   --seq-color-background-primary: var(--color-slate-50);
@@ -88,6 +89,7 @@
   --seq-color-secondary: white;
   --seq-color-muted: var(--color-zinc-500);
   --seq-color-inverse: black;
+  --seq-color-button-primary: var(--color-white);
 
   /* Background colors */
   --seq-color-background-primary: black;
@@ -163,6 +165,7 @@
   --color-warning: var(--seq-color-warning);
   --color-success: var(--seq-color-positive);
   --color-destructive: var(--seq-color-destructive);
+  --color-button-primary: var(--seq-color-button-primary);
 
   --color-background-primary: var(--seq-color-background-primary);
   --color-background-secondary: var(--seq-color-background-secondary);

@@ -8,6 +8,7 @@ export const colorNames = [
   'secondary',
   'muted',
   'inverse',
+  'buttonPrimary',
   'backgroundPrimary',
   'backgroundSecondary',
   'backgroundMuted',
