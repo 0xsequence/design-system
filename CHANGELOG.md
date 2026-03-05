@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 3.2.9
+
+### Patch Changes
+
+- Adding button-primary text color var
+
 ## 3.2.8
 
 ### Patch Changes
