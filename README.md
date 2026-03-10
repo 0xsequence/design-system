@@ -119,6 +119,8 @@ V4 is a larger departure than previous releases and includes many breaking chang
 
 3. We no longer export string utils capitalize, pluralize, and kebabize. These were used internally in the design-system but never meant to be exported as they fall outside its scope.
 
+4. Image component is removed. This was superfluous and only served to add fade in animation support on image load.
+
 
 ## Migrating from v2 to v3
 

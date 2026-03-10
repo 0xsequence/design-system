@@ -2,7 +2,6 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { memo, type HTMLAttributes } from 'react'
 
 import { cn } from '../../utils/classnames.js'
-import { Image } from '../Image/Image.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
 import { Text } from '../Text/Text.js'
 
@@ -31,12 +30,12 @@ const maskClass =
   '[mask-image:radial-gradient(circle_at_82%_82%,transparent_22%,black_0)]'
 
 interface TokenImageProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends
+    HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof tokenImageVariants> {
   src?: string
   symbol?: string
   withNetwork?: number
-  fadeIn?: boolean
 }
 
 export const TokenImage = memo((props: TokenImageProps) => {
@@ -47,7 +46,6 @@ export const TokenImage = memo((props: TokenImageProps) => {
     symbol,
     size = 'md',
     withNetwork,
-    fadeIn,
     ...rest
   } = props
 
@@ -58,13 +56,13 @@ export const TokenImage = memo((props: TokenImageProps) => {
       {...rest}
     >
       {src ? (
-        <Image
+        <img
           className={cn(
             'rounded-full max-w-full max-h-full object-cover w-full overflow-hidden',
             withNetwork && maskClass
           )}
-          fadeIn={fadeIn}
           src={src}
+          alt={`${symbol} Token Logo`}
         />
       ) : (
         <Text
@@ -84,7 +82,6 @@ export const TokenImage = memo((props: TokenImageProps) => {
         <NetworkImage
           chainId={withNetwork}
           className="absolute z-1"
-          fadeIn={fadeIn}
           style={{
             width: NETWORK_IMAGE_SIZE,
             height: NETWORK_IMAGE_SIZE,

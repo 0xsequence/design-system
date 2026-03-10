@@ -98,7 +98,6 @@ export {
 export { FileInput } from './components/FileInput/FileInput.js'
 export { GradientAvatar } from './components/GradientAvatar/GradientAvatar.js'
 export { IconButton } from './components/IconButton/IconButton.js'
-export { Image } from './components/Image/Image.js'
 export { Input } from './components/Input/Input.js'
 export {
   InputGroup,
