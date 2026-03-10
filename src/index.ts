@@ -42,7 +42,6 @@ export {
   useCarousel,
 } from './components/Carousel/Carousel.js'
 export { Checkbox } from './components/Checkbox/Checkbox.js'
-export { ControlledCheckbox } from './components/Checkbox/ControlledCheckbox.js'
 export {
   Collapsible,
   CollapsiblePrimitive,
@@ -96,9 +95,7 @@ export {
   FieldSet,
   FieldTitle,
 } from './components/Field/Field.js'
-export { ControlledFileInput } from './components/FileInput/ControlledFileInput.js'
 export { FileInput } from './components/FileInput/FileInput.js'
-export { Form } from './components/Form/Form.js'
 export { GradientAvatar } from './components/GradientAvatar/GradientAvatar.js'
 export { IconButton } from './components/IconButton/IconButton.js'
 export { Image } from './components/Image/Image.js'
@@ -114,7 +111,6 @@ export { Kbd, KbdGroup } from './components/Kbd/Kbd.js'
 export { Label } from './components/Label/Label.js'
 export { Modal } from './components/Modal/Modal.js'
 export { NetworkImage } from './components/NetworkImage/NetworkImage.js'
-export { ControlledNumericInput } from './components/NumericInput/ControlledNumericInput.js'
 export { NumericInput } from './components/NumericInput/NumericInput.js'
 export { PINCodeInput } from './components/PINCodeInput/PINCodeInput.js'
 export {
@@ -125,14 +121,12 @@ export {
   PopoverTrigger,
 } from './components/Popover/Popover.js'
 export { Progress } from './components/Progress/Progress.js'
-export { ControlledRadioGroup } from './components/RadioGroup/ControlledRadioGroup.js'
 export {
   RadioGroup,
   RadioGroupItem,
 } from './components/RadioGroup/RadioGroup.js'
 export { Scroll } from './components/Scroll/Scroll.js'
 export { SearchInput } from './components/SearchInput/SearchInput.js'
-export { ControlledSelect } from './components/Select/ControlledSelect.js'
 export {
   Select,
   SelectContent,
@@ -160,7 +154,6 @@ export {
 export { Skeleton } from './components/Skeleton/Skeleton.js'
 export { Spinner } from './components/Spinner/Spinner.js'
 export { StopClickPropagation } from './components/StopClickPropagation/StopClickPropagation.js'
-export { ControlledSwitch } from './components/Switch/ControlledSwitch.js'
 export { Switch } from './components/Switch/Switch.js'
 export {
   Table,
@@ -183,9 +176,7 @@ export {
 } from './components/Tabs/Tabs.js'
 export { Tag } from './components/Tag/Tag.js'
 export { Text, textVariants, type TextProps } from './components/Text/Text.js'
-export { ControlledTextArea } from './components/TextArea/ControlledTextArea.js'
 export { TextArea } from './components/TextArea/TextArea.js'
-export { ControlledTextInput } from './components/TextInput/ControlledTextInput.js'
 export { TextInput } from './components/TextInput/TextInput.js'
 export { Toast, ToastProvider, useToast } from './components/Toast/Toast.js'
 export { TokenImage } from './components/TokenImage/TokenImage.js'

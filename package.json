@@ -81,7 +81,6 @@
     "prettier": "3.8.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-hook-form": "7.71.2",
     "storybook": "10.2.10",
     "tsup": "8.5.1",
     "typescript": "5.9.3",
@@ -95,8 +94,7 @@
   "peerDependencies": {
     "motion": ">= 12",
     "react": ">= 17",
-    "react-dom": ">= 17",
-    "react-hook-form": ">= 7"
+    "react-dom": ">= 17"
   },
   "packageManager": "pnpm@10.30.1"
 }
