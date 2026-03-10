@@ -204,7 +204,6 @@ export {
 } from './utils/assets.js'
 export { cn } from './utils/classnames.js'
 export { getCssVar } from './utils/css.js'
-export { capitalize, kebabize, pluralize } from './utils/string.js'
 
 // Hooks
 export { useBreakpoint, type Breakpoint } from './hooks/useBreakpoint.js'
