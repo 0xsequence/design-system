@@ -108,7 +108,6 @@ export {
 } from './components/InputGroup/InputGroup.js'
 export { Kbd, KbdGroup } from './components/Kbd/Kbd.js'
 export { Label } from './components/Label/Label.js'
-export { Modal } from './components/Modal/Modal.js'
 export { NetworkImage } from './components/NetworkImage/NetworkImage.js'
 export { NumericInput } from './components/NumericInput/NumericInput.js'
 export { PINCodeInput } from './components/PINCodeInput/PINCodeInput.js'

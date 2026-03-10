@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useState } from 'react'
 
 import { Button } from '../Button/Button.js'
-import { Modal } from '../Modal/Modal.js'
+import { Dialog, DialogContent, DialogTrigger } from '../Dialog/Dialog.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
 
 import {
@@ -141,47 +140,39 @@ export const TooManyOptions: Story = {
   },
 }
 
-export const WithinModal: Story = {
+export const WithinDialog: Story = {
   tags: ['!autodocs'],
   render: args => {
-    const [isOpen, setIsOpen] = useState(false)
-
     return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Dialog>
+        <DialogTrigger
+          render={<Button variant="outline">Open Dialog</Button>}
+        />
 
-        {isOpen && (
-          <Modal onClose={() => setIsOpen(false)}>
-            <div className="p-4">
-              <Select.Helper className="w-full" {...args} />
-            </div>
-          </Modal>
-        )}
-      </>
+        <DialogContent>
+          <Select.Helper className="w-full" {...args} />
+        </DialogContent>
+      </Dialog>
     )
   },
   args: Default.args,
 }
 
-export const TooManyOptionsWithModal: Story = {
+export const TooManyOptionsWithinDialog: Story = {
   args: {
     ...TooManyOptions.args,
   },
   render: args => {
-    const [isOpen, setIsOpen] = useState(false)
-
     return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Dialog>
+        <DialogTrigger
+          render={<Button variant="outline">Open Dialog</Button>}
+        />
 
-        {isOpen && (
-          <Modal onClose={() => setIsOpen(false)}>
-            <div className="p-4">
-              <Select.Helper className="w-full" {...args} />
-            </div>
-          </Modal>
-        )}
-      </>
+        <DialogContent>
+          <Select.Helper className="w-full" {...args} />
+        </DialogContent>
+      </Dialog>
     )
   },
 }

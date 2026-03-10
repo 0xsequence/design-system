@@ -109,18 +109,22 @@ export default defineConfig({
   ],
 })
 ```
+
 ## Migrating from v3 to v4
 
 V4 is a larger departure than previous releases and includes many breaking changes.
 
 1. Migrated from radix-ui components to base-ui. This should largely be a smooth transition, the most notable breaking change is that the @radix-ui/react-slot `asChild` behavior is no longer valid; base-ui uses a standard `render` prop https://base-ui.com/react/handbook/composition.
 
-2. react-hook-form dependency is removed as well as all controlled form components which depended on it, including Form, ControlledTextInput, ControlledCheckbox, ControlledSelect, etc. This is out of scope of the design system as it should not dictate how you should use the primitives or which form library. Check out https://ui.shadcn.com/docs/forms for details on how you could integrate the design-system primitives with a few different react form library options or simply copy over the Controlled implementations from v3.
+2. `react-hook-form` dependency is removed as well as all controlled form components which depended on it, including `Form`, `ControlledTextInput`, `ControlledCheckbox`, `ControlledSelect`, etc. This is out of scope of the design system as it should not dictate how you should use the primitives or which form library. Check out https://ui.shadcn.com/docs/forms for details on how you could integrate the design-system primitives with a few different react form library options or simply copy over the Controlled implementations from v3.
 
-3. We no longer export string utils capitalize, pluralize, and kebabize. These were used internally in the design-system but never meant to be exported as they fall outside its scope.
+3. We no longer export string utils `capitalize`, `pluralize`, and `kebabize`. These were used internally in the design-system but never meant to be exported as they fall outside its scope.
 
-4. Image component is removed. This was superfluous and only served to add fade in animation support on image load.
+4. `Image` component is removed. This was superfluous and only served to add fade in animation support on image load.
 
+5. `Modal` component is removed. Use Dialog primitive components instead.
+
+6. `motion` dependency removed. We are opting to use css transistions and animation classes on primitive components instead so they can be easily overridden. If you want to use motion to animate you can do so within your individual project.
 
 ## Migrating from v2 to v3
 
