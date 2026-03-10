@@ -81,7 +81,7 @@ export const WithCountIcon: Story = {
     label: (
       <div className="flex items-center gap-1">
         Click me
-        <Badge value="3" />
+        <Badge>3</Badge>
       </div>
     ),
     onClick: () => console.log('Clicked!'),

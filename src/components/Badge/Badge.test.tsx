@@ -7,39 +7,39 @@ describe('<Badge />', () => {
   afterEach(cleanup)
 
   it('renders the value', () => {
-    render(<Badge value="42" />)
+    render(<Badge>42</Badge>)
 
     expect(screen.getByText('42')).toBeInTheDocument()
   })
 
   it('renders with default info variant', () => {
-    render(<Badge value="New" />)
+    render(<Badge>New</Badge>)
 
-    const badge = screen.getByText('New').closest('div')
-    expect(badge).toHaveClass('bg-info')
+    const badge = screen.getByText('New').closest('span')
+    expect(badge).toHaveClass('bg-background-active')
   })
 
   it('applies the correct variant class', () => {
-    const { rerender } = render(<Badge value="OK" variant="success" />)
-    expect(screen.getByText('OK').closest('div')).toHaveClass('bg-positive')
+    const { rerender } = render(<Badge variant="success">OK</Badge>)
+    expect(screen.getByText('OK').closest('span')).toHaveClass('bg-positive')
 
-    rerender(<Badge value="OK" variant="error" />)
-    expect(screen.getByText('OK').closest('div')).toHaveClass('bg-negative')
+    rerender(<Badge variant="error">OK</Badge>)
+    expect(screen.getByText('OK').closest('span')).toHaveClass('bg-negative')
 
-    rerender(<Badge value="OK" variant="warning" />)
-    expect(screen.getByText('OK').closest('div')).toHaveClass('bg-warning')
+    rerender(<Badge variant="warning">OK</Badge>)
+    expect(screen.getByText('OK').closest('span')).toHaveClass('bg-warning')
   })
 
   it('accepts a custom className', () => {
-    render(<Badge value="Custom" className="my-custom-class" />)
+    render(<Badge className="my-custom-class">Custom</Badge>)
 
-    expect(screen.getByText('Custom').closest('div')).toHaveClass(
+    expect(screen.getByText('Custom').closest('span')).toHaveClass(
       'my-custom-class'
     )
   })
 
   it('renders ReactNode as value', () => {
-    render(<Badge value={<span data-testid="icon" />} />)
+    render(<Badge render={<span data-testid="icon" />} />)
 
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })

@@ -1,8 +1,8 @@
+import { mergeProps, useRender } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { clsx } from 'clsx'
-import type { HTMLAttributes, ReactNode } from 'react'
 
-import { Text, textVariants } from '../Text/Text.js'
+import { cn } from '../../utils/classnames.js'
+import { textVariants } from '../Text/Text.js'
 
 const badgeVariants = cva(
   [
@@ -17,6 +17,7 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
+        default: 'bg-background-active',
         info: 'bg-info',
         warning: 'bg-warning',
         success: 'bg-positive',
@@ -29,27 +30,31 @@ const badgeVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'info',
+      variant: 'default',
       size: 'md',
     },
   }
 )
 
-interface BadgeProps
-  extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {
-  value: ReactNode
+function Badge({
+  className,
+  variant = 'default',
+  render,
+  ...props
+}: useRender.ComponentProps<'span'> & VariantProps<typeof badgeVariants>) {
+  return useRender({
+    defaultTagName: 'span',
+    props: mergeProps<'span'>(
+      {
+        className: cn(badgeVariants({ variant }), className),
+      },
+      props
+    ),
+    render,
+    state: {
+      slot: 'badge',
+      variant,
+    },
+  })
 }
-
-export const Badge = (props: BadgeProps) => {
-  const { className, value, variant, size, ...rest } = props
-
-  return (
-    <div
-      className={clsx(badgeVariants({ variant, size }), className)}
-      {...rest}
-    >
-      <Text>{value}</Text>
-    </div>
-  )
-}
+export { Badge, badgeVariants }

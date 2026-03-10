@@ -11,14 +11,14 @@ type Story = StoryObj<typeof Badge>
 
 export const SingleCharacter: Story = {
   args: {
-    value: '3',
+    children: '3',
     variant: 'info',
   },
 }
 
 export const MultiCharacter: Story = {
   args: {
-    value: '2713',
+    children: '2713',
     variant: 'success',
   },
 }
