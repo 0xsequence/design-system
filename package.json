@@ -76,7 +76,6 @@
     "happy-dom": "20.7.0",
     "husky": "9.1.7",
     "knip": "5.85.0",
-    "motion": "12.34.3",
     "ox": "0.13.1",
     "prettier": "3.8.1",
     "react": "19.2.4",
@@ -92,7 +91,6 @@
     "vitest": "4.0.18"
   },
   "peerDependencies": {
-    "motion": ">= 12",
     "react": ">= 17",
     "react-dom": ">= 17"
   },
