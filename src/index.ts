@@ -176,7 +176,12 @@ export { Tag } from './components/Tag/Tag.js'
 export { Text, textVariants, type TextProps } from './components/Text/Text.js'
 export { TextArea } from './components/TextArea/TextArea.js'
 export { TextInput } from './components/TextInput/TextInput.js'
-export { Toast, ToastProvider, useToast } from './components/Toast/Toast.js'
+export {
+  Toast,
+  ToastPrimitive,
+  ToastProvider,
+  useToast,
+} from './components/Toast/Toast.js'
 export { TokenImage } from './components/TokenImage/TokenImage.js'
 export { Tooltip, TooltipPrimitive } from './components/Tooltip/Tooltip.js'
 export { VisuallyHidden } from './components/VisuallyHidden/VisuallyHidden.js'

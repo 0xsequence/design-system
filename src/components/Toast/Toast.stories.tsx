@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react-vite'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
 import { TransactionIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
@@ -10,6 +10,8 @@ export default {
   title: 'Components/Toast',
 } as Meta
 
+type Story = StoryObj<ToastProps>
+
 const StoryWrapper: StoryFn<ToastProps> = args => {
   return (
     <ToastProvider>
@@ -18,6 +20,7 @@ const StoryWrapper: StoryFn<ToastProps> = args => {
   )
 }
 
+let count = 0
 const ToastStory = (args: ToastProps) => {
   const toast = useToast()
 
@@ -25,9 +28,9 @@ const ToastStory = (args: ToastProps) => {
     <Card>
       <Button
         onClick={() => {
-          toast({
+          toast.add({
             ...args,
-            title: args.title + ' ' + new Date().getMilliseconds(),
+            title: `${args.title} ${++count}`,
           })
         }}
       >
@@ -37,38 +40,40 @@ const ToastStory = (args: ToastProps) => {
   )
 }
 
-export const Default = {
+export const Default: Story = {
   render: StoryWrapper,
   args: {
     title: 'Title',
     description: 'Description',
-  } as ToastProps,
+  },
 }
 
-export const WithIcon = {
+export const WithIcon: Story = {
   render: StoryWrapper,
   args: {
-    icon: TransactionIcon,
     title: 'Transaction Sent',
     description: 'Waiting for confirmation',
-  } as ToastProps,
+    data: {
+      icon: TransactionIcon,
+    },
+  },
 }
 
 export const Success = {
   render: StoryWrapper,
   args: {
+    type: 'success',
     title: 'Success',
     description: 'Description',
-    variant: 'success',
-  } as ToastProps,
+  },
 }
 
 export const Error = {
   render: StoryWrapper,
   args: {
+    type: 'error',
     title: 'Error',
     description:
       'The transaction failed to send because the relayer encountered an error. "Not enough gas"',
-    variant: 'error',
-  } as ToastProps,
+  },
 }

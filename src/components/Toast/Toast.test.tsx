@@ -7,7 +7,7 @@ import { ToastProvider, useToast, type ToastProps } from './Toast.js'
 
 const Trigger = (props: ToastProps) => {
   const toast = useToast()
-  return <button onClick={() => toast(props)}>Trigger</button>
+  return <button onClick={() => toast.add(props)}>Trigger</button>
 }
 
 const setup = (props: ToastProps) =>
@@ -41,7 +41,7 @@ describe('<Toast />', () => {
   })
 
   it('hides dismiss button when isDismissible is false', () => {
-    setup({ title: 'Hello', isDismissible: false })
+    setup({ title: 'Hello', data: { isDismissible: false } })
 
     fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
@@ -49,21 +49,21 @@ describe('<Toast />', () => {
   })
 
   it('shows a success icon for the success variant', () => {
-    setup({ title: 'Done', variant: 'success' })
+    setup({ title: 'Done', type: 'success' })
     fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
-    expect(document.querySelector('.bg-positive')).toBeInTheDocument()
+    expect(document.querySelector('.bg-success')).toBeInTheDocument()
   })
 
   it('shows an error icon for the error variant', () => {
-    setup({ title: 'Oops', variant: 'error' })
+    setup({ title: 'Oops', type: 'error' })
     fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
-    expect(document.querySelector('.bg-negative')).toBeInTheDocument()
+    expect(document.querySelector('.bg-destructive')).toBeInTheDocument()
   })
 
   it('renders a custom icon when provided', () => {
-    setup({ title: 'Custom', icon: CheckmarkIcon })
+    setup({ title: 'Custom', data: { icon: CheckmarkIcon } })
     fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
     // CheckmarkIcon renders an svg
