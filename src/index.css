@@ -206,15 +206,6 @@
       background-position: 0% 50%;
     }
   }
-
-  @keyframes swipe-out {
-    from {
-      transform: translateX(var(--radix-toast-swipe-end-x));
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
 }
 
 :root {
