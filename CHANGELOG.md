@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.0
+
+### Major Changes
+
+- Migrated to base-ui
+
 ## 3.2.9
 
 ### Patch Changes
