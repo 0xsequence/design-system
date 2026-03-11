@@ -1,9 +1,9 @@
 import { Menu as DropdownMenuPrimitive } from '@base-ui/react'
 import type { ComponentProps } from 'react'
+import { textVariants } from 'src/styles.js'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 export { DropdownMenuPrimitive }
 

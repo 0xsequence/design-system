@@ -1,5 +1,6 @@
 import { cva } from 'class-variance-authority'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
+import { textVariants } from 'src/styles.js'
 
 import {
   disabledStyle,
@@ -7,7 +8,6 @@ import {
   inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 const digitInputVariants = cva(
   [

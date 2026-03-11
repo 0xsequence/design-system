@@ -7,13 +7,13 @@ import {
   type ReactNode,
 } from 'react'
 import type { IconProps } from 'src/icons/types.js'
+import { textVariants } from 'src/styles.js'
 
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from '../InputGroup/InputGroup.js'
-import { textVariants } from '../Text/Text.js'
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`)
 

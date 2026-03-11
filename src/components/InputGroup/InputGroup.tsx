@@ -1,10 +1,10 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentProps } from 'react'
 import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
+import { textVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Input } from '../Input/Input.js'
-import { textVariants } from '../Text/Text.js'
 import { TextArea } from '../TextArea/TextArea.js'
 
 function InputGroup({ className, ...props }: ComponentProps<'div'>) {

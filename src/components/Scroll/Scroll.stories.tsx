@@ -1,7 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
 import { Card } from '../Card/Card.js'
-import { Text } from '../Text/Text.js'
 
 import { Scroll } from './Scroll.js'
 
@@ -62,10 +61,8 @@ export const VerticalScroll: Story = {
     children: (
       <div className="p-4 flex flex-col gap-4 items-center">
         {ALPHABET.map(letter => (
-          <div key={letter}>
-            <Text color="primary" variant="xlarge">
-              {letter}
-            </Text>
+          <div key={letter} className="text-xlarge text-primary">
+            {letter}
           </div>
         ))}
       </div>
@@ -81,10 +78,8 @@ export const HorizontalScroll: Story = {
     children: (
       <div className="p-4 gap-4 items-center h-full w-max">
         {ALPHABET.map(letter => (
-          <div key={letter}>
-            <Text color="primary" variant="xlarge">
-              {letter}
-            </Text>
+          <div key={letter} className="text-xlarge text-primary">
+            {letter}
           </div>
         ))}
       </div>

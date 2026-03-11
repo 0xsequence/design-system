@@ -1,8 +1,8 @@
 import { cva, type VariantProps } from 'class-variance-authority'
+import { textVariants } from 'src/styles.js'
 
 import { cn } from '../../utils/classnames.js'
 import { Card } from '../Card/Card.js'
-import { textVariants } from '../Text/Text.js'
 
 function Empty({ className, ...props }: React.ComponentProps<'div'>) {
   return (

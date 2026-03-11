@@ -54,13 +54,13 @@ root.render(
 Then import components from the design system to build your UI:
 
 ```jsx
-import { Text, Button, useTheme } from '@0xsequence/design-system'
+import { Button, useTheme } from '@0xsequence/design-system'
 
 const App = () => (
   const { theme, setTheme } = useTheme()
 
   <div>
-    <Text variant="normal">Hello, World!</Text>
+    <span className="text-normal">Hello, World!</span>
     <Button variant="primary" label="Change theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
   </div>
 )
@@ -129,6 +129,8 @@ V4 is a larger departure than previous releases and includes many breaking chang
 7. IconButton component removed. Use <Button iconOnly><CloseIcon /></Button> instead
 
 8. Button.Helper component removed.
+
+9. Text component is removed. Use text-\* classes instead.
 
 ## Migrating from v2 to v3
 

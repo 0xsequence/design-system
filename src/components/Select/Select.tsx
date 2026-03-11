@@ -1,5 +1,6 @@
 import { Select as SelectPrimitive } from '@base-ui/react'
 import { type ComponentProps, type ReactNode } from 'react'
+import { textVariants } from 'src/styles.js'
 
 import {
   CheckmarkIcon,
@@ -13,7 +14,6 @@ import {
   inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
   return <SelectPrimitive.Root data-slot="select" {...props} />

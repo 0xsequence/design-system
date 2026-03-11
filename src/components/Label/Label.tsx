@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react'
+import { textVariants } from 'src/styles.js'
 
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 function Label({ className, ...props }: ComponentProps<'label'>) {
   return (

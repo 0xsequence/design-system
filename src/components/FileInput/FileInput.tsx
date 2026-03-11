@@ -10,8 +10,6 @@ import { CloseIcon } from '../../icons/index.js'
 import { focusRingVariants, inputBorderStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
-import { Text } from '../Text/Text.js'
-import { textVariants } from '../Text/Text.js'
 
 const MIME_TYPES = {
   png: '.png,image/png',
@@ -87,7 +85,7 @@ export const FileInput = (props: FileInputProps) => {
   return (
     <div
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-normal',
         'w-full min-w-0 inline-flex items-center flex-row justify-start p-4 relative h-13',
         'rounded-xl bg-background-input',
         '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
@@ -101,17 +99,13 @@ export const FileInput = (props: FileInputProps) => {
     >
       {fileData ? (
         <div className="flex flex-row gap-2 items-center min-w-0">
-          <Text ellipsis render={<p />}>
-            {fileData.name}
-          </Text>
-          <Text color="muted" variant="xsmall" nowrap>
+          <p className="truncate">{fileData.name}</p>
+          <span className="text-xsmall text-muted whitespace-nowrap">
             {fileData.size.toFixed(2)} kb
-          </Text>
+          </span>
         </div>
       ) : (
-        <Text ellipsis render={<p />}>
-          {placeholder}
-        </Text>
+        <p className="truncate">{placeholder}</p>
       )}
 
       <input

@@ -2,10 +2,10 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { type ComponentProps, type ReactNode } from 'react'
 import { CheckmarkIcon, InfoIcon, WarningIcon } from 'src/icons/index.js'
 import type { IconProps } from 'src/icons/types.js'
+import { textVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
-import { textVariants } from '../Text/Text.js'
 
 const alertVariants = cva(
   [

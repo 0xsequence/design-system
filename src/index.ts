@@ -172,7 +172,6 @@ export {
   TabsTrigger,
 } from './components/Tabs/Tabs.js'
 export { Tag } from './components/Tag/Tag.js'
-export { Text, textVariants, type TextProps } from './components/Text/Text.js'
 export { TextArea } from './components/TextArea/TextArea.js'
 export { TextInput } from './components/TextInput/TextInput.js'
 export {
@@ -186,7 +185,12 @@ export { Tooltip, TooltipPrimitive } from './components/Tooltip/Tooltip.js'
 export { VisuallyHidden } from './components/VisuallyHidden/VisuallyHidden.js'
 
 // Styles
-export { disabledStyle, focusRingVariants, inputBorderStyle } from './styles.js'
+export {
+  disabledStyle,
+  focusRingVariants,
+  inputBorderStyle,
+  textVariants,
+} from './styles.js'
 
 // Utils
 export {

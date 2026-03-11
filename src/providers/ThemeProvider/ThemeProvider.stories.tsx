@@ -3,7 +3,6 @@ import type { Meta } from '@storybook/react-vite'
 import { Button } from '../../components/Button/Button.js'
 import { Card } from '../../components/Card/Card.js'
 import { Collapsible } from '../../components/Collapsible/Collapsible.js'
-import { Text } from '../../components/Text/Text.js'
 
 import { ThemeProvider, useTheme, type CustomThemes } from './ThemeProvider.js'
 
@@ -43,15 +42,13 @@ const customThemes: CustomThemes = {
 export const Nested = () => {
   return (
     <Card>
-      <Text variant="normal" color="primary" fontWeight="bold">
-        Root Application
-      </Text>
+      <div className="text-normal text-primary font-bold">Root Application</div>
 
       <div id="app1">
         <ThemeProvider root="#app1" storageKey="theme1" defaultTheme="light">
           <Card className="bg-background-primary mt-4">
             <Collapsible label="Nested Application 1" defaultOpen>
-              <Text variant="normal" color="primary">
+              <p className="text-normal text-primary">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -59,7 +56,7 @@ export const Nested = () => {
                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </Text>
+              </p>
 
               <div className="mt-4">
                 <SetThemeButton />
@@ -76,7 +73,7 @@ export const Nested = () => {
                       label="Nested Application 2 (Dark)"
                       defaultOpen
                     >
-                      <Text variant="normal" color="primary">
+                      <p className="text-normal text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -86,7 +83,7 @@ export const Nested = () => {
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
-                      </Text>
+                      </p>
 
                       <div className="mt-4">
                         <SetThemeButton />
@@ -108,7 +105,7 @@ export const Nested = () => {
                       label="Nested Application 3 (Custom Theme)"
                       defaultOpen
                     >
-                      <Text variant="normal" color="primary">
+                      <p className="text-normal text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -118,7 +115,7 @@ export const Nested = () => {
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
-                      </Text>
+                      </p>
 
                       <div className="mt-4">
                         <SetThemeButton />
@@ -139,7 +136,7 @@ export const Nested = () => {
                       label="Nested Application 4 (Prefers Color Scheme)"
                       defaultOpen
                     >
-                      <Text variant="normal" color="primary">
+                      <p className="text-normal text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -149,7 +146,7 @@ export const Nested = () => {
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
-                      </Text>
+                      </p>
                     </Collapsible>
                   </Card>
                 </ThemeProvider>

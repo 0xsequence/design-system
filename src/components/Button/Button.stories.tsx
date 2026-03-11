@@ -6,7 +6,7 @@ import { Spinner } from '../Spinner/Spinner.js'
 import { Button } from './Button.js'
 
 export default {
-  title: 'Components/Buttons/Button',
+  title: 'Components/Button',
   component: Button,
 } as Meta<typeof Button>
 

@@ -197,73 +197,61 @@
 
   /* Typography */
   --text-xxxlarge: var(--text-6xl);
-  --text-xxxlarge--font: var(--font-body);
   --text-xxxlarge--font-weight: var(--font-weight-bold);
   --text-xxxlarge--letter-spacing: var(--tracking-normal);
   --text-xxxlarge--line-height: calc(var(--spacing) * 15);
 
   --text-xxlarge: var(--text-4xl);
-  --text-xxlarge--font: var(--font-body);
   --text-xxlarge--font-weight: var(--font-weight-bold);
   --text-xxlarge--letter-spacing: var(--tracking-widest);
   --text-xxlarge--line-height: calc(var(--spacing) * 10);
 
   --text-xlarge: var(--text-2xl);
-  --text-xlarge--font: var(--font-body);
   --text-xlarge--font-weight: var(--font-weight-bold);
   --text-xlarge--letter-spacing: var(--tracking-normal);
   --text-xlarge--line-height: calc(var(--spacing) * 8);
 
   --text-large: var(--text-xl);
-  --text-large--font: var(--font-body);
   --text-large--font-weight: var(--font-weight-semibold);
   --text-large--letter-spacing: var(--tracking-normal);
   --text-large--line-height: calc(var(--spacing) * 7);
 
   --text-medium: var(--text-base);
-  --text-medium--font: var(--font-body);
   --text-medium--font-weight: var(--font-weight-bold);
   --text-medium--letter-spacing: var(--tracking-normal);
   --text-medium--line-height: calc(var(--spacing) * 6);
 
   --text-normal-bold: var(--text-sm);
-  --text-normal-bold--font: var(--font-body);
   --text-normal-bold--font-weight: var(--font-weight-bold);
   --text-normal-bold--letter-spacing: var(--tracking-wide);
   --text-normal-bold--line-height: calc(var(--spacing) * 5);
 
   --text-normal: var(--text-sm);
-  --text-normal--font: var(--font-body);
   --text-normal--font-weight: var(--font-weight-medium);
   --text-normal--letter-spacing: var(--tracking-wide);
   --text-normal--line-height: calc(var(--spacing) * 5);
 
   --text-small-bold: var(--text-xs);
-  --text-small-bold--font: var(--font-body);
   --text-small-bold--font-weight: var(--font-weight-bold);
   --text-small-bold--letter-spacing: var(--tracking-normal);
   --text-small-bold--line-height: calc(var(--spacing) * 4);
 
   --text-small: var(--text-xs);
-  --text-small--font: var(--font-body);
   --text-small--font-weight: var(--font-weight-medium);
   --text-small--letter-spacing: var(--tracking-wide);
   --text-small--line-height: calc(var(--spacing) * 4);
 
-  --text-xsmall-bold: var(--text-[0.625rem]);
-  --text-xsmall-bold--font: var(--font-body);
+  --text-xsmall-bold: 0.625rem;
   --text-xsmall-bold--font-weight: var(--font-weight-bold);
   --text-xsmall-bold--letter-spacing: var(--tracking-wide);
   --text-xsmall-bold--line-height: calc(var(--spacing) * 4);
 
-  --text-xsmall: var(--text-[0.625rem]);
-  --text-xsmall--font: var(--font-body);
+  --text-xsmall: 0.625rem;
   --text-xsmall--font-weight: var(--font-weight-bold);
   --text-xsmall--letter-spacing: var(--tracking-wide);
   --text-xsmall--line-height: calc(var(--spacing) * 4);
 
   --text-code: var(--text-sm);
-  --text-code--font: var(--font-mono);
   --text-code--font-weight: var(--font-weight-normal);
   --text-code--letter-spacing: var(--tracking-normal);
   --text-code--line-height: calc(var(--spacing) * 5);
@@ -283,6 +271,7 @@
 
 :root {
   color: var(--color-primary);
+  font-family: var(--font-body);
 }
 
 @utility grid-stack {

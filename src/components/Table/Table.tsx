@@ -2,10 +2,10 @@
 
 import type { ComponentProps } from 'react'
 import { ArrowDownIcon, ArrowUpIcon } from 'src/icons/index.js'
+import { textVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
-import { textVariants } from '../Text/Text.js'
 
 type TableProps = ComponentProps<'table'> & {
   stickyHeader?: boolean

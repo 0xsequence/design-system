@@ -1,10 +1,10 @@
 import { Dialog as DialogPrimitive } from '@base-ui/react'
 import { type ComponentProps } from 'react'
 import { CloseIcon } from 'src/icons/index.js'
+import { textVariants } from 'src/styles.js'
 
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
-import { textVariants } from '../Text/Text.js'
 
 function Dialog({ ...props }: ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />

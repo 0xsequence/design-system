@@ -1,8 +1,8 @@
 import { mergeProps, useRender } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { textVariants } from 'src/styles.js'
 
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 const badgeVariants = cva(
   [

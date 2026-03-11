@@ -1,9 +1,9 @@
 import { Tabs as TabsPrimitive } from '@base-ui/react'
 import { type ComponentProps, type ReactNode } from 'react'
+import { textVariants } from 'src/styles.js'
 
 import { disabledStyle, focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 function Tabs({
   className,

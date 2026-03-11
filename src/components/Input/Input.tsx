@@ -4,9 +4,9 @@ import {
   focusRingVariants,
   inputBorderStyle,
 } from 'src/styles.js'
+import { textVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
-import { textVariants } from '../Text/Text.js'
 
 function Input({
   className,

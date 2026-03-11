@@ -3,7 +3,6 @@ import type { ComponentProps } from 'react'
 
 import { Button } from '../Button/Button.js'
 import { Separator } from '../Separator/Separator.js'
-import { Text } from '../Text/Text.js'
 
 import { Popover, PopoverContent, PopoverTrigger } from './Popover.js'
 
@@ -33,15 +32,13 @@ export const Default: Story = {
     children: (
       <div>
         <div className="p-4">
-          <Text variant="large" color="primary">
-            This is a popover
-          </Text>
+          <span className="text-large text-primary">This is a popover</span>
         </div>
         <Separator />
         <div className="p-4">
-          <Text variant="normal" color="muted">
+          <span className="text-normal text-muted">
             It can contain any content you like.
-          </Text>
+          </span>
         </div>
       </div>
     ),

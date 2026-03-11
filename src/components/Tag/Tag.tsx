@@ -2,7 +2,6 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentType } from 'react'
 
 import type { IconProps } from '../../icons/types.js'
-import { Text } from '../Text/Text.js'
 
 const tagVariants = cva(
   [
@@ -34,7 +33,7 @@ export const Tag = (props: TagProps) => {
   return (
     <div className={tagVariants({ className })} {...rest}>
       {Icon && <Icon size="xs" />}
-      <Text variant="xsmall">{label}</Text>
+      <span className="text-xsmall">{label}</span>
     </div>
   )
 }

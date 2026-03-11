@@ -3,7 +3,6 @@ import { memo, type HTMLAttributes } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
-import { Text } from '../Text/Text.js'
 
 const NETWORK_IMAGE_SIZE = '40%'
 const NETWORK_IMAGE_OFFSET = '-2%'
@@ -65,18 +64,14 @@ export const TokenImage = memo((props: TokenImageProps) => {
           alt={`${symbol} Token Logo`}
         />
       ) : (
-        <Text
+        <span
           className={cn(
-            'bg-background-secondary rounded-full w-full h-full flex items-center justify-center overflow-hidden',
+            'text-muted uppercase font-medium bg-background-secondary rounded-full w-full h-full flex items-center justify-center overflow-hidden',
             withNetwork && maskClass
           )}
-          variant="inherit"
-          fontWeight="medium"
-          color="muted"
-          uppercase
         >
           {symbol?.replace(/\s/, '').slice(0, 4)}
-        </Text>
+        </span>
       )}
       {withNetwork && (
         <NetworkImage
