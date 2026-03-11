@@ -195,6 +195,79 @@
 
   --shadow-primary: 0 0 16px 0 var(--seq-color-drop-shadow);
 
+  /* Typography */
+  --text-xxxlarge: var(--text-6xl);
+  --text-xxxlarge--font: var(--font-body);
+  --text-xxxlarge--font-weight: var(--font-weight-bold);
+  --text-xxxlarge--letter-spacing: var(--tracking-normal);
+  --text-xxxlarge--line-height: calc(var(--spacing) * 15);
+
+  --text-xxlarge: var(--text-4xl);
+  --text-xxlarge--font: var(--font-body);
+  --text-xxlarge--font-weight: var(--font-weight-bold);
+  --text-xxlarge--letter-spacing: var(--tracking-widest);
+  --text-xxlarge--line-height: calc(var(--spacing) * 10);
+
+  --text-xlarge: var(--text-2xl);
+  --text-xlarge--font: var(--font-body);
+  --text-xlarge--font-weight: var(--font-weight-bold);
+  --text-xlarge--letter-spacing: var(--tracking-normal);
+  --text-xlarge--line-height: calc(var(--spacing) * 8);
+
+  --text-large: var(--text-xl);
+  --text-large--font: var(--font-body);
+  --text-large--font-weight: var(--font-weight-semibold);
+  --text-large--letter-spacing: var(--tracking-normal);
+  --text-large--line-height: calc(var(--spacing) * 7);
+
+  --text-medium: var(--text-base);
+  --text-medium--font: var(--font-body);
+  --text-medium--font-weight: var(--font-weight-bold);
+  --text-medium--letter-spacing: var(--tracking-normal);
+  --text-medium--line-height: calc(var(--spacing) * 6);
+
+  --text-normal-bold: var(--text-sm);
+  --text-normal-bold--font: var(--font-body);
+  --text-normal-bold--font-weight: var(--font-weight-bold);
+  --text-normal-bold--letter-spacing: var(--tracking-wide);
+  --text-normal-bold--line-height: calc(var(--spacing) * 5);
+
+  --text-normal: var(--text-sm);
+  --text-normal--font: var(--font-body);
+  --text-normal--font-weight: var(--font-weight-medium);
+  --text-normal--letter-spacing: var(--tracking-wide);
+  --text-normal--line-height: calc(var(--spacing) * 5);
+
+  --text-small-bold: var(--text-xs);
+  --text-small-bold--font: var(--font-body);
+  --text-small-bold--font-weight: var(--font-weight-bold);
+  --text-small-bold--letter-spacing: var(--tracking-normal);
+  --text-small-bold--line-height: calc(var(--spacing) * 4);
+
+  --text-small: var(--text-xs);
+  --text-small--font: var(--font-body);
+  --text-small--font-weight: var(--font-weight-medium);
+  --text-small--letter-spacing: var(--tracking-wide);
+  --text-small--line-height: calc(var(--spacing) * 4);
+
+  --text-xsmall-bold: var(--text-[0.625rem]);
+  --text-xsmall-bold--font: var(--font-body);
+  --text-xsmall-bold--font-weight: var(--font-weight-bold);
+  --text-xsmall-bold--letter-spacing: var(--tracking-wide);
+  --text-xsmall-bold--line-height: calc(var(--spacing) * 4);
+
+  --text-xsmall: var(--text-[0.625rem]);
+  --text-xsmall--font: var(--font-body);
+  --text-xsmall--font-weight: var(--font-weight-bold);
+  --text-xsmall--letter-spacing: var(--tracking-wide);
+  --text-xsmall--line-height: calc(var(--spacing) * 4);
+
+  --text-code: var(--text-sm);
+  --text-code--font: var(--font-mono);
+  --text-code--font-weight: var(--font-weight-normal);
+  --text-code--letter-spacing: var(--tracking-normal);
+  --text-code--line-height: calc(var(--spacing) * 5);
+
   @keyframes skeleton {
     0% {
       background-position: 0% 50%;
@@ -209,63 +282,9 @@
 }
 
 :root {
-  --base-unit: 16;
   color: var(--color-primary);
 }
 
 @utility grid-stack {
   @apply grid grid-cols-1 grid-rows-1 *:col-start-1 *:row-start-1;
-}
-
-@utility text-* {
-  font-size: calc(--value(integer) / var(--base-unit) * 1rem);
-}
-
-/* Typography utility classes */
-@utility text-xxxlarge {
-  @apply font-body font-bold text-6xl tracking-normal leading-15;
-}
-
-@utility text-xxlarge {
-  @apply font-body font-bold text-4xl tracking-widest leading-10;
-}
-
-@utility text-xlarge {
-  @apply font-body font-bold text-2xl tracking-normal leading-8;
-}
-
-@utility text-large {
-  @apply font-body font-semibold text-xl tracking-normal leading-7;
-}
-
-@utility text-medium {
-  @apply font-body font-bold text-base tracking-normal leading-6;
-}
-
-@utility text-normal-bold {
-  @apply font-body font-bold text-sm tracking-wide leading-5;
-}
-
-@utility text-normal {
-  @apply font-body font-medium text-sm tracking-wide leading-5;
-}
-
-@utility text-small-bold {
-  @apply font-body font-bold text-xs tracking-normal leading-4;
-}
-
-@utility text-small {
-  @apply font-body font-medium text-xs tracking-wide leading-4;
-}
-
-@utility text-xsmall-bold {
-  @apply font-body font-bold text-[0.625rem] tracking-wide leading-4;
-}
-
-@utility text-xsmall {
-  @apply font-body font-bold text-[0.625rem] tracking-wide leading-4;
-}
-
-@utility text-code {
-  @apply font-mono font-normal text-sm tracking-normal leading-5;
 }

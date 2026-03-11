@@ -5,7 +5,8 @@ const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
       'font-size': [
-        // Design system composite text utilities
+        'text-xxxlarge',
+        'text-xxlarge',
         'text-xlarge',
         'text-large',
         'text-medium',
@@ -13,8 +14,9 @@ const twMerge = extendTailwindMerge({
         'text-normal-bold',
         'text-small',
         'text-small-bold',
-        // Numeric text sizes (e.g. text-9, text-12, text-14, text-16)
-        { text: [(value: string) => /^\d+$/.test(value)] },
+        'text-xsmall',
+        'text-xsmall-bold',
+        'text-code',
       ],
     },
   },
