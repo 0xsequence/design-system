@@ -9,7 +9,7 @@ import {
 import { CloseIcon } from '../../icons/index.js'
 import { focusRingVariants, inputBorderStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { IconButton } from '../IconButton/IconButton.js'
+import { Button } from '../Button/Button.js'
 import { Text } from '../Text/Text.js'
 import { textVariants } from '../Text/Text.js'
 
@@ -35,8 +35,10 @@ type FileData = {
   extension: string
 }
 
-export interface FileInputProps
-  extends Omit<ComponentProps<'input'>, 'type' | 'onChange'> {
+export interface FileInputProps extends Omit<
+  ComponentProps<'input'>,
+  'type' | 'onChange'
+> {
   name: string
   validExtensions: AllowedMimeTypes[]
   onValueChange?: (value: File | null) => void
@@ -125,10 +127,10 @@ export const FileInput = (props: FileInputProps) => {
       />
 
       {fileData && (
-        <IconButton
+        <Button
           className="cursor-pointer z-10 ml-1"
-          icon={CloseIcon}
           size="xs"
+          iconOnly
           onClick={ev => {
             ev.preventDefault()
             ev.stopPropagation()
@@ -140,7 +142,9 @@ export const FileInput = (props: FileInputProps) => {
             onValueChange?.(null)
             setFileData(null)
           }}
-        />
+        >
+          <CloseIcon />
+        </Button>
       )}
     </div>
   )

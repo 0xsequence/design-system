@@ -126,6 +126,8 @@ V4 is a larger departure than previous releases and includes many breaking chang
 
 6. `motion` dependency removed. We are opting to use css transistions and animation classes on primitive components instead so they can be easily overridden. If you want to use motion to animate you can do so within your individual project.
 
+7. IconButton component removed. Use <Button iconOnly><CloseIcon /></Button> instead
+
 ## Migrating from v2 to v3
 
 V3 attemps to be mostly compatible but there are some breaking changes that will need to be addressed.

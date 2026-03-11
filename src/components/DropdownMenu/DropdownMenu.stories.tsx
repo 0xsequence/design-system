@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
 import { ContextMenuIcon } from '../../icons/index.js'
-import { IconButton } from '../IconButton/IconButton.js'
+import { Button } from '../Button/Button.js'
 
 import {
   DropdownMenu,
@@ -33,7 +33,13 @@ export const Default: Story = {
     return (
       <div className="flex justify-center">
         <DropdownMenu>
-          <DropdownMenuTrigger render={<IconButton icon={ContextMenuIcon} />} />
+          <DropdownMenuTrigger
+            render={
+              <Button iconOnly>
+                <ContextMenuIcon />
+              </Button>
+            }
+          />
           <DropdownMenuContent {...args}>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuGroup>

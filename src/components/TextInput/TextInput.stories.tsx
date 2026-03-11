@@ -7,7 +7,6 @@ import {
   SearchIcon,
 } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
-import { IconButton } from '../IconButton/IconButton.js'
 
 import { TextInput } from './TextInput.js'
 
@@ -47,7 +46,11 @@ export const SearchInput: Story = {
   args: {
     placeholder: 'Search for coins or collectibles',
     leftIcon: SearchIcon,
-    controls: <IconButton icon={CloseIcon} size="xs" />,
+    controls: (
+      <Button size="xs" iconOnly>
+        <CloseIcon />
+      </Button>
+    ),
   },
 }
 export const Error: Story = {

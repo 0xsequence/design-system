@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 
 import { ArrowRightIcon } from '../../icons/index.js'
-import { IconButton } from '../IconButton/IconButton.js'
+import { Button } from '../Button/Button.js'
 import { Text } from '../Text/Text.js'
 
 import { StopClickPropagation } from './StopClickPropagation.js'
@@ -28,10 +28,12 @@ const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
       </div>
 
       <StopClickPropagation>
-        <IconButton
-          icon={ArrowRightIcon}
+        <Button
+          iconOnly
           onClick={() => console.log('Button Clicked! Propagation Stopped!')}
-        />
+        >
+          <ArrowRightIcon />
+        </Button>
       </StopClickPropagation>
     </div>
   )
