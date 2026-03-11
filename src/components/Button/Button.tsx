@@ -1,7 +1,5 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { type ComponentType, type ReactNode } from 'react'
-import type { IconProps } from 'src/icons/types.js'
 import { focusRingVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
@@ -89,67 +87,5 @@ function Button({
     />
   )
 }
-
-type ButtonHelperProps = ButtonPrimitive.Props &
-  VariantProps<typeof buttonVariants> & {
-    label?: ReactNode
-    leftIcon?: ComponentType<IconProps>
-    rightIcon?: ComponentType<IconProps>
-  }
-
-const ButtonHelper = (props: ButtonHelperProps) => {
-  const {
-    ref,
-    className,
-    label,
-    leftIcon: LeftIcon,
-    rightIcon: RightIcon,
-    size = 'md',
-    variant = 'secondary',
-    shape = 'circle',
-    type = 'button',
-    children,
-    ...rest
-  } = props
-
-  const iconOnly = LeftIcon !== undefined && label === undefined
-
-  const iconSize = size === 'xs' ? 'xs' : 'sm'
-  const gap = size === 'xs' ? 'gap-1' : 'gap-2'
-
-  return (
-    <ButtonPrimitive
-      ref={ref}
-      className={cn(
-        buttonVariants({
-          size: variant === 'text' ? undefined : size,
-          shape: variant === 'text' ? undefined : shape,
-          variant,
-        }),
-        className
-      )}
-      type={type}
-      {...rest}
-    >
-      {children}
-      {iconOnly ? (
-        <LeftIcon size={iconSize} />
-      ) : (
-        <div
-          className={cn('w-full h-full flex items-center justify-between', gap)}
-        >
-          <div className={cn('flex items-center justify-start', gap)}>
-            {LeftIcon && <LeftIcon size={iconSize} />}
-            {label}
-          </div>
-
-          {RightIcon && <RightIcon size={iconSize} />}
-        </div>
-      )}
-    </ButtonPrimitive>
-  )
-}
-
-Button.Helper = ButtonHelper
 
 export { Button, buttonVariants }
