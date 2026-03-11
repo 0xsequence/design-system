@@ -18,7 +18,7 @@ pnpm add @0xsequence/design-system
 
 The design system relies on these peer dependencies to be installed in your application:
 
-- `pnpm add react react-dom motion`
+- `pnpm add react react-dom`
 
 ### Use
 
@@ -72,7 +72,7 @@ const App = () => (
 Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/design-system) then start Storybook.
 
 ```
-pnpm install && pnpm storybook
+pnpm install && pnpm dev
 ```
 
 #### Manual project updates
