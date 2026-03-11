@@ -7,6 +7,14 @@ describe('Utils / Classnames', () => {
     expect(cn('text-large', 'text-small')).toEqual('text-small')
   })
 
+  it('should merge classes based on extended twMerge classGroups config', () => {
+    expect(cn('text-large', 'text-sm')).toEqual('text-sm')
+  })
+
+  it('should merge classes based on extended twMerge classGroups config', () => {
+    expect(cn('text-sm', 'text-large')).toEqual('text-large')
+  })
+
   it('should merge tailwind text- utility with our text variant classes', () => {
     expect(cn('text-small', 'text-yellow-500')).toEqual(
       'text-small text-yellow-500'
