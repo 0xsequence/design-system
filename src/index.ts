@@ -44,7 +44,9 @@ export {
 export { Checkbox } from './components/Checkbox/Checkbox.js'
 export {
   Collapsible,
-  CollapsiblePrimitive
+  CollapsibleContent,
+  CollapsiblePrimitive,
+  CollapsibleTrigger
 } from './components/Collapsible/Collapsible.js'
 export {
   Dialog,
@@ -148,6 +150,32 @@ export {
   SheetTitle,
   SheetTrigger
 } from './components/Sheet/Sheet.js'
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInput,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuBadge,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSkeleton,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarSeparator,
+  SidebarTrigger,
+  useSidebar
+} from './components/Sidebar/Sidebar.js'
 export { Skeleton } from './components/Skeleton/Skeleton.js'
 export { Spinner } from './components/Spinner/Spinner.js'
 export { StopClickPropagation } from './components/StopClickPropagation/StopClickPropagation.js'

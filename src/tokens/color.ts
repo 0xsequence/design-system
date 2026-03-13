@@ -27,6 +27,14 @@ export const colorNames = [
   'gradientPrimary',
   'gradientSecondary',
   'gradientSkeleton',
+
+  // Sidebar colors
+  'sidebar',
+  'sidebarForeground',
+  'sidebarAccent',
+  'sidebarAccentForeground',
+  'sidebarBorder',
+  'sidebarRing',
 ] as const
 
 export type ColorName = (typeof colorNames)[number]
