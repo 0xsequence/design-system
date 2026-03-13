@@ -42,13 +42,13 @@ const customThemes: CustomThemes = {
 export const Nested = () => {
   return (
     <Card>
-      <div className="text-normal text-primary font-bold">Root Application</div>
+      <div className="text-sm text-primary font-bold">Root Application</div>
 
       <div id="app1">
         <ThemeProvider root="#app1" storageKey="theme1" defaultTheme="light">
           <Card className="bg-background-primary mt-4">
             <Collapsible label="Nested Application 1" defaultOpen>
-              <p className="text-normal text-primary">
+              <p className="text-sm text-primary">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -73,7 +73,7 @@ export const Nested = () => {
                       label="Nested Application 2 (Dark)"
                       defaultOpen
                     >
-                      <p className="text-normal text-primary">
+                      <p className="text-sm text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -105,7 +105,7 @@ export const Nested = () => {
                       label="Nested Application 3 (Custom Theme)"
                       defaultOpen
                     >
-                      <p className="text-normal text-primary">
+                      <p className="text-sm text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -136,7 +136,7 @@ export const Nested = () => {
                       label="Nested Application 4 (Prefers Color Scheme)"
                       defaultOpen
                     >
-                      <p className="text-normal text-primary">
+                      <p className="text-sm text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud

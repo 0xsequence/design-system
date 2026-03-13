@@ -13,8 +13,8 @@ export const Default: Story = {
   render: args => (
     <Card {...args}>
       <div className="flex flex-col">
-        <span className="text-large text-primary">Card</span>
-        <span className="text-normal text-muted">Description</span>
+        <span className="text-xl text-primary">Card</span>
+        <span className="text-sm text-muted">Description</span>
       </div>
     </Card>
   ),
@@ -27,8 +27,8 @@ export const Clickable: Story = {
     <Card {...args}>
       <button>
         <div className="flex flex-col">
-          <span className="text-large text-primary">Card</span>
-          <span className="text-normal text-muted">Description</span>
+          <span className="text-xl text-primary">Card</span>
+          <span className="text-sm text-muted">Description</span>
         </div>
       </button>
     </Card>

@@ -32,11 +32,11 @@ export const Default: Story = {
     children: (
       <div>
         <div className="p-4">
-          <span className="text-large text-primary">This is a popover</span>
+          <span className="text-xl text-primary">This is a popover</span>
         </div>
         <Separator />
         <div className="p-4">
-          <span className="text-normal text-muted">
+          <span className="text-sm text-muted">
             It can contain any content you like.
           </span>
         </div>

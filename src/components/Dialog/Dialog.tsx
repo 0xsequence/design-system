@@ -1,7 +1,6 @@
 import { Dialog as DialogPrimitive } from '@base-ui/react'
 import { type ComponentProps } from 'react'
 import { CloseIcon } from 'src/icons/index.js'
-import { textVariants } from 'src/styles.js'
 
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
@@ -113,7 +112,7 @@ function DialogTitle({
     <DialogPrimitive.Title
       data-slot="dialog-title"
       className={cn(
-        textVariants({ variant: 'large' }),
+        'text-xl font-bold',
         'text-primary',
         className
       )}
@@ -130,8 +129,7 @@ function DialogDescription({
     <DialogPrimitive.Description
       data-slot="dialog-description"
       className={cn(
-        textVariants({ variant: 'normal' }),
-        'text-muted',
+        'text-sm text-muted',
         className
       )}
       {...props}
@@ -150,5 +148,6 @@ export {
   DialogPortal,
   DialogPrimitive,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 }
+

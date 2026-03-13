@@ -1,6 +1,6 @@
 import {
-  Toast as ToastPrimitive,
-  type ToastManagerAddOptions,
+    Toast as ToastPrimitive,
+    type ToastManagerAddOptions,
 } from '@base-ui/react/toast'
 import { clsx } from 'clsx'
 import { type ComponentType } from 'react'
@@ -89,8 +89,8 @@ function Toast({
             {Icon ? <Icon /> : <ToastIcon variant={variant} />}
 
             <div className="flex flex-col gap-1">
-              <ToastPrimitive.Title className="text-normal-bold text-primary" />
-              <ToastPrimitive.Description className="text-small text-muted" />
+              <ToastPrimitive.Title className="text-sm font-bold text-primary" />
+              <ToastPrimitive.Description className="text-xs text-muted" />
             </div>
           </div>
 

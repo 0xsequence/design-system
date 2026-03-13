@@ -12,7 +12,7 @@ export default {
 type Story = StoryObj<typeof Tabs>
 
 const Content = ({ children }: any) => (
-  <Card className="mt-4 text-normal text-secondary">{children}</Card>
+  <Card className="mt-4 text-sm text-primary">{children}</Card>
 )
 
 export const Default: Story = {

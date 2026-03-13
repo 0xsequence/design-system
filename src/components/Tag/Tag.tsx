@@ -11,7 +11,7 @@ const tagVariants = cva(
     'py-1',
     'whitespace-nowrap',
     'bg-background-active',
-    'text-secondary',
+    'text-primary',
     'rounded-xs',
   ],
   {
@@ -33,7 +33,7 @@ export const Tag = (props: TagProps) => {
   return (
     <div className={tagVariants({ className })} {...rest}>
       {Icon && <Icon size="xs" />}
-      <span className="text-xsmall">{label}</span>
+      <span className="text-xxs">{label}</span>
     </div>
   )
 }

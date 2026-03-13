@@ -1,6 +1,5 @@
 import { Tabs as TabsPrimitive } from '@base-ui/react'
 import { type ComponentProps, type ReactNode } from 'react'
-import { textVariants } from 'src/styles.js'
 
 import { disabledStyle, focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
@@ -42,7 +41,7 @@ function TabsTrigger({
     <TabsPrimitive.Tab
       data-slot="tabs-trigger"
       className={cn(
-        textVariants({ variant: 'normal-bold' }),
+        'text-sm font-bold',
         'h-full text-muted inline-flex items-center justify-center whitespace-nowrap cursor-pointer border-b-2 border-transparent px-4 -mb-[2px] rounded-t-sm',
         'hover:not-[[data-active]]:opacity-80 data-[active]:border-border-focus data-[active]:text-border-focus',
         focusRingVariants(),
@@ -110,8 +109,8 @@ export const TabsHeader = (props: TabsHeaderProps) => {
       {tabs.map(tab => (
         <TabsPrimitive.Tab
           className={cn(
-            textVariants({ variant: 'normal-bold' }),
-            'w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-secondary outline-hidden appearance-none border-none z-2 data-[active]:text-primary disabled:opacity-50'
+            'text-sm font-bold',
+            'w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-primary outline-hidden appearance-none border-none z-2 data-[active]:text-primary disabled:opacity-50'
           )}
           key={tab.value}
           value={tab.value}

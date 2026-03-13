@@ -22,7 +22,7 @@ const CollapsibleStory = () => {
       onOpenChange={open => setIsOpen(open)}
     >
       {[1, 2, 3, 4, 5].map(x => (
-        <p className="text-normal text-secondary" key={x}>
+        <p className="text-sm text-primary" key={x}>
           Item {x}
         </p>
       ))}
@@ -36,7 +36,7 @@ export const Default: Story = {
     children: (
       <Card>
         {[1, 2, 3, 4, 5].map(x => (
-          <p className="text-normal text-secondary" key={x}>
+          <p className="text-sm text-primary" key={x}>
             Item {x}
           </p>
         ))}

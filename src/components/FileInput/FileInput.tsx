@@ -1,9 +1,9 @@
 import {
-  useImperativeHandle,
-  useRef,
-  useState,
-  type ChangeEvent,
-  type ComponentProps,
+    useImperativeHandle,
+    useRef,
+    useState,
+    type ChangeEvent,
+    type ComponentProps,
 } from 'react'
 
 import { CloseIcon } from '../../icons/index.js'
@@ -85,7 +85,7 @@ export const FileInput = (props: FileInputProps) => {
   return (
     <div
       className={cn(
-        'text-normal',
+        'text-sm',
         'w-full min-w-0 inline-flex items-center flex-row justify-start p-4 relative h-13',
         'rounded-xl bg-background-input',
         '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
@@ -100,7 +100,7 @@ export const FileInput = (props: FileInputProps) => {
       {fileData ? (
         <div className="flex flex-row gap-2 items-center min-w-0">
           <p className="truncate">{fileData.name}</p>
-          <span className="text-xsmall text-muted whitespace-nowrap">
+          <span className="text-xxs text-muted whitespace-nowrap">
             {fileData.size.toFixed(2)} kb
           </span>
         </div>

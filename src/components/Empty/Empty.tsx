@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { textVariants } from 'src/styles.js'
 
 import { cn } from '../../utils/classnames.js'
 import { Card } from '../Card/Card.js'
@@ -66,7 +65,7 @@ function EmptyTitle({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="empty-title"
       className={cn(
-        textVariants({ variant: 'medium' }),
+        'text-base font-bold',
         'text-primary',
         className
       )}
@@ -80,7 +79,7 @@ function EmptyDescription({ className, ...props }: React.ComponentProps<'p'>) {
     <div
       data-slot="empty-description"
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-sm',
         'text-muted [&>a]:underline [&>a]:underline-offset-4',
         className
       )}
@@ -94,7 +93,7 @@ function EmptyContent({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="empty-content"
       className={cn(
-        textVariants({ variant: 'small' }),
+        'text-xs',
         'flex w-full max-w-sm min-w-0 flex-col items-center gap-4',
         className
       )}
@@ -109,5 +108,6 @@ export {
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
-  EmptyTitle,
+  EmptyTitle
 }
+

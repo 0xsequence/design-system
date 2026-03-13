@@ -5,12 +5,12 @@ import { Dialog, DialogContent, DialogTrigger } from '../Dialog/Dialog.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
 
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from './Select.js'
 
 export default {
@@ -92,7 +92,7 @@ const networks: Network[] = [
 
 const NetworkItem = ({ network }: { network: Network }) => {
   return (
-    <div className="flex items-center gap-2 text-normal-bold">
+    <div className="flex items-center gap-2 text-sm font-bold">
       <NetworkImage chainId={network.chainId} />
       {network.name}
     </div>

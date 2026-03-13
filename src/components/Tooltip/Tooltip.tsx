@@ -1,9 +1,9 @@
 import { Tooltip as TooltipPrimitive } from '@base-ui/react'
 import {
-  isValidElement,
-  type PropsWithChildren,
-  type ReactElement,
-  type ReactNode,
+    isValidElement,
+    type PropsWithChildren,
+    type ReactElement,
+    type ReactNode,
 } from 'react'
 
 import { useTheme } from '../../providers/ThemeProvider/ThemeProvider.js'
@@ -54,7 +54,7 @@ export const Tooltip = (props: PropsWithChildren<TooltipProps>) => {
             alignOffset={hOffset}
           >
             <TooltipPrimitive.Popup className="bg-primary fill-primary rounded-lg p-2 flex justify-center items-center shadow-primary animate-in fade-in-0 zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 w-fit origin-(--transform-origin)">
-              <span className="text-small text-inverse">{message}</span>
+              <span className="text-xs text-inverse">{message}</span>
               <TooltipPrimitive.Arrow className="flex data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180 data-[side=bottom]:top-[-8px] data-[side=bottom]:rotate-0 data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:rotate-[-90deg]">
                 <ArrowSvg />
               </TooltipPrimitive.Arrow>

@@ -2,7 +2,6 @@
 
 import type { ComponentProps } from 'react'
 import { ArrowDownIcon, ArrowUpIcon } from 'src/icons/index.js'
-import { textVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
@@ -33,7 +32,7 @@ function Table({ className, stickyHeader, maxHeight, ...props }: TableProps) {
       <table
         data-slot="table"
         className={cn(
-          textVariants({ variant: 'small' }),
+          'text-xs',
           'w-full caption-bottom border-separate border-spacing-0',
           className
         )}
@@ -76,7 +75,7 @@ function TableHead({ className, ...props }: ComponentProps<'th'>) {
     <th
       data-slot="table-head"
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-sm',
         'h-13 py-2 px-4 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has(button)]:px-0',
         'text-muted font-medium',
         className
@@ -91,7 +90,7 @@ function TableCell({ className, ...props }: ComponentProps<'td'>) {
     <td
       data-slot="table-cell"
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-sm',
         'text-primary p-4 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0',
         className
       )}
@@ -164,5 +163,6 @@ export {
   TableHeadButton,
   TableHeader,
   TableRow,
-  TableSortIcon,
+  TableSortIcon
 }
+

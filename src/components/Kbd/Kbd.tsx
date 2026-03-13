@@ -1,5 +1,4 @@
 import type { ComponentProps } from 'react'
-import { textVariants } from 'src/styles.js'
 
 import { cn } from '../../utils/classnames.js'
 
@@ -8,8 +7,7 @@ export const Kbd = ({ className, ...props }: ComponentProps<'kbd'>) => {
     <kbd
       data-slot="kbd"
       className={cn(
-        textVariants({ variant: 'small', color: 'muted' }),
-        'bg-transparent border border-border-normal pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 select-none',
+        'text-xs text-muted bg-transparent border border-border-normal pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 select-none',
         className
       )}
       {...props}

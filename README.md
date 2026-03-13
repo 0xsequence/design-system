@@ -60,7 +60,7 @@ const App = () => (
   const { theme, setTheme } = useTheme()
 
   <div>
-    <span className="text-normal">Hello, World!</span>
+    <span className="text-sm">Hello, World!</span>
     <Button variant="primary" label="Change theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
   </div>
 )

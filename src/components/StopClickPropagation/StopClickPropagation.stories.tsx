@@ -18,7 +18,7 @@ const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
       className="flex items-center bg-background-secondary hover:opacity-80 rounded-xl cursor-pointer justify-between p-4"
       onClick={() => console.log('Container Clicked!!')}
     >
-      <div className="text-normal text-secondary">
+      <div className="text-sm text-primary">
         This container here has a click action. The button on the right also has
         a click action. Since the button is wrapped in a StopClickPropagation
         component, the click-through is prevented.

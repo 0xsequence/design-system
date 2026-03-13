@@ -67,7 +67,7 @@ for (let row = 0; row < ROWS; row++) {
 export const Multiple = () => {
   return (
     <>
-      <div className="text-normal text-primary font-bold">SVG</div>
+      <div className="text-sm text-primary font-bold">SVG</div>
 
       <div className="flex flex-col gap-4">
         {rows.map((cols, idx) => (

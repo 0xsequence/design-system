@@ -1,6 +1,5 @@
 import { Menu as DropdownMenuPrimitive } from '@base-ui/react'
 import type { ComponentProps } from 'react'
-import { textVariants } from 'src/styles.js'
 
 import { CheckmarkIcon } from '../../icons/index.js'
 import { cn } from '../../utils/classnames.js'
@@ -80,8 +79,8 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        textVariants({ variant: 'small' }),
-        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-secondary outline-hidden',
+        'text-xs',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-primary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-primary/50',
         'data-highlighted:bg-background-hover',
         className
@@ -117,8 +116,8 @@ function DropdownMenuLabel({
         data-slot="dropdown-menu-label"
         data-inset={inset}
         className={cn(
-          textVariants({ variant: 'small-bold' }),
-          'text-primary px-2 py-1.5 data-[inset]:pl-8',
+          'text-xs font-bold',
+          'text-primary px-2 py-1.5 data-inset:pl-8',
           className
         )}
         {...props}
@@ -139,9 +138,9 @@ const DropdownMenuCheckboxItem = ({
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       className={cn(
-        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none  relative text-secondary outline-hidden',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none  relative text-primary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-        'data-highlighted:bg-background-hover text-small',
+        'data-highlighted:bg-background-hover text-xs',
         className
       )}
       {...rest}
@@ -196,7 +195,7 @@ const DropdownMenuRadioItem = ({
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-secondary outline-hidden text-small',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-primary outline-hidden text-xs',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
         'data-highlighted:bg-background-hover',
         className
@@ -247,5 +246,6 @@ export {
   DropdownMenuRadioIndicator,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 }
+

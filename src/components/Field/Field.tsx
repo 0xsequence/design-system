@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { useMemo, type ComponentProps, type ReactNode } from 'react'
-import { textVariants } from 'src/styles.js'
 
 import { cn } from '../../utils/classnames.js'
 import { Label } from '../Label/Label.js'
@@ -30,7 +29,7 @@ function FieldLegend({
       data-slot="field-legend"
       data-variant={variant}
       className={cn(
-        textVariants({ variant: variant === 'legend' ? 'medium' : 'normal' }),
+        variant === 'legend' ? 'text-base font-bold' : 'text-sm',
         'text-primary mb-3',
         className
       )}
@@ -149,7 +148,7 @@ function FieldDescription({ className, ...props }: ComponentProps<'p'>) {
     <p
       data-slot="field-description"
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-sm',
         'text-muted group-has-[[data-orientation=horizontal]]/field:text-balance',
         'last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5',
         '[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4',
@@ -230,7 +229,7 @@ function FieldError({
       role="alert"
       data-slot="field-error"
       className={cn(
-        textVariants({ variant: 'small' }),
+        'text-xs',
         'text-destructive',
         className
       )}
@@ -251,5 +250,6 @@ export {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-  FieldTitle,
+  FieldTitle
 }
+

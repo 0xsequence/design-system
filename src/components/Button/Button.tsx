@@ -1,6 +1,6 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { focusRingVariants, textVariants } from 'src/styles.js'
+import { focusRingVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 const buttonVariants = cva(
@@ -14,19 +14,19 @@ const buttonVariants = cva(
     variants: {
       size: {
         xs: [
-          textVariants({ variant: 'xsmall-bold' }),
+          'text-xxs font-bold',
           'min-w-7 h-7 px-2 gap-1 [&_svg:not([class*="size-"])]:size-4',
         ],
         sm: [
-          textVariants({ variant: 'normal-bold' }),
+          'text-sm font-bold',
           'min-w-9 h-9 px-3 gap-1 [&_svg:not([class*="size-"])]:size-5',
         ],
         md: [
-          textVariants({ variant: 'normal-bold' }),
+          'text-sm font-bold',
           'min-w-11 h-11 px-4 [&_svg:not([class*="size-"])]:size-5',
         ],
         lg: [
-          textVariants({ variant: 'normal-bold' }),
+          'text-sm font-bold',
           'min-w-13 h-13 px-5 [&_svg:not([class*="size-"])]:size-5',
         ],
       },
@@ -48,9 +48,8 @@ const buttonVariants = cva(
         emphasis:
           'bg-background-inverse text-background-primary hover:bg-primary/80',
         destructive: 'bg-destructive text-white hover:bg-destructive/80',
-        text: [
-          'bg-transparent text-primary rounded-xs h-auto w-auto h-auto min-w-0 p-0 focus-visible:outline-offset-1 grow-0 hover:opacity-80',
-        ],
+        text: 'bg-transparent text-primary rounded-xs h-auto w-auto h-auto min-w-0 p-0 focus-visible:outline-offset-1 grow-0 hover:opacity-80',
+        link: 'text-primary underline-offset-4 hover:underline',
       },
 
       iconOnly: {

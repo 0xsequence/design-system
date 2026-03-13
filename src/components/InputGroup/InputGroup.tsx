@@ -1,7 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentProps } from 'react'
 import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
-import { textVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Input } from '../Input/Input.js'
@@ -71,8 +70,7 @@ function InputGroupTextarea({
 
 const inputGroupAddonVariants = cva(
   [
-    textVariants({ variant: 'small' }),
-    'text-primary flex h-auto cursor-text items-center justify-center gap-2 py-1.5 select-none group-data-[disabled=true]/input-group:opacity-50',
+    'text-xs text-primary flex h-auto cursor-text items-center justify-center gap-2 py-1.5 select-none group-data-[disabled=true]/input-group:opacity-50',
   ],
   {
     variants: {
@@ -117,8 +115,7 @@ function InputGroupText({ className, ...props }: ComponentProps<'span'>) {
   return (
     <span
       className={cn(
-        textVariants({ variant: 'normal' }),
-        'text-muted flex items-center gap-2 [&_svg]:pointer-events-none',
+        'text-sm text-muted flex items-center gap-2 [&_svg]:pointer-events-none',
         className
       )}
       {...props}
@@ -131,5 +128,6 @@ export {
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-  InputGroupTextarea,
+  InputGroupTextarea
 }
+

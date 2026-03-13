@@ -89,7 +89,7 @@ export const Collapsible = (props: CollapsibleProps) => {
       <CollapsibleTrigger
         className={clsx(
           'group flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden',
-          'text-normal-bold text-primary hover:text-primary/80'
+          'text-sm font-bold text-primary hover:text-primary/80'
         )}
       >
         {label}

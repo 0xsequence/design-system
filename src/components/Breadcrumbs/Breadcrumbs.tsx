@@ -26,7 +26,7 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
 
   return (
     <div className={className} {...rest}>
-      <div className="text-small">
+      <div className="text-xs">
         {paths.map((path, idx) => (
           <BreadcrumbSegment
             key={idx}

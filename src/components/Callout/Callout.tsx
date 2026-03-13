@@ -7,14 +7,13 @@ import {
   WarningIcon,
 } from 'src/icons/index.js'
 import type { IconProps } from 'src/icons/types.js'
-import { textVariants } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
 
 const calloutVariants = cva(
   [
-    textVariants({ variant: 'normal' }),
+    'text-sm',
     'text-primary relative w-full rounded-lg border-1 overflow-hidden bg-(--callout-header) border-(--callout-header)',
   ],
   {
@@ -68,7 +67,7 @@ function CalloutHeader({ className, ...props }: ComponentProps<'div'>) {
     <div
       data-slot="callout-header"
       className={cn(
-        textVariants({ variant: 'normal-bold' }),
+        'text-sm font-bold',
         'bg-(--callout-header) text-white flex items-center justify-between px-4 py-3',
         className
       )}

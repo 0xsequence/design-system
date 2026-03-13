@@ -7,7 +7,6 @@ import {
   type ReactNode,
 } from 'react'
 import type { IconProps } from 'src/icons/types.js'
-import { textVariants } from 'src/styles.js'
 
 import {
   InputGroup,
@@ -130,7 +129,7 @@ export const NumericInput = (props: NumericInputProps) => {
   return (
     <InputGroup className={className}>
       <InputGroupInput
-        className={textVariants({ variant: 'large' })}
+        className="text-xl font-bold"
         id={id ?? name}
         name={name}
         value={value}

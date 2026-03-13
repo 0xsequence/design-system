@@ -1,6 +1,5 @@
 import { Select as SelectPrimitive } from '@base-ui/react'
 import { type ComponentProps, type ReactNode } from 'react'
-import { textVariants } from 'src/styles.js'
 
 import {
   CheckmarkIcon,
@@ -44,7 +43,7 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-sm',
         focusRingVariants(),
         inputBorderStyle,
         disabledStyle,
@@ -117,7 +116,7 @@ function SelectLabel({
     <SelectPrimitive.GroupLabel
       data-slot="select-label"
       className={cn(
-        textVariants({ variant: 'small' }),
+        'text-xs',
         'text-muted px-2 py-1.5',
         className
       )}
@@ -135,7 +134,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-sm',
         "[&_svg:not([class*='text-'])]:text-muted relative flex w-full cursor-pointer items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         'focus:bg-background-hover data-highlighted:bg-background-hover',
         className
@@ -267,5 +266,6 @@ export {
   SelectScrollUpButton,
   SelectSeparator,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 }
+
