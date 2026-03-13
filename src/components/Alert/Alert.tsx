@@ -76,7 +76,7 @@ function AlertDescription({ className, ...props }: ComponentProps<'div'>) {
     <div
       data-slot="alert-description"
       className={cn(
-        'text-sm font-medium',
+        'text-sm',
         'text-current col-start-2 col-end-4 grid justify-items-start gap-1 sm:col-end-3',
         className
       )}
