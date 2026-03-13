@@ -13,13 +13,12 @@ type Story = StoryObj<typeof Tag>
 
 export const Default: Story = {
   args: {
-    label: 'ERC1155',
+    children: 'ERC1155',
   },
 }
 
 export const WithIcon: Story = {
   args: {
-    label: 'ERC1155',
-    icon: SettingsIcon,
+    children: <><SettingsIcon size="xxs"/>ERC1155</>,
   },
 }
