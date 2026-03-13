@@ -1,14 +1,75 @@
 import { Tooltip as TooltipPrimitive } from '@base-ui/react'
 import {
-    isValidElement,
-    type PropsWithChildren,
-    type ReactElement,
-    type ReactNode,
+  isValidElement,
+  type PropsWithChildren,
+  type ReactElement,
+  type ReactNode,
 } from 'react'
+import { cn } from 'src/utils/classnames.js'
 
 import { useTheme } from '../../providers/ThemeProvider/ThemeProvider.js'
 
-interface TooltipProps {
+function TooltipProvider({
+  delay = 0,
+  ...props
+}: TooltipPrimitive.Provider.Props) {
+  return (
+    <TooltipPrimitive.Provider
+      data-slot="tooltip-provider"
+      delay={delay}
+      {...props}
+    />
+  )
+}
+function Tooltip({ ...props }: TooltipPrimitive.Root.Props) {
+  return <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+}
+
+function TooltipTrigger({ ...props }: TooltipPrimitive.Trigger.Props) {
+  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
+}
+
+function TooltipContent({
+  className,
+  side = "top",
+  sideOffset = 4,
+  align = "center",
+  alignOffset = 0,
+  children,
+  container,
+  ...props
+}: TooltipPrimitive.Popup.Props &
+  Pick<
+    TooltipPrimitive.Positioner.Props,
+    "align" | "alignOffset" | "side" | "sideOffset"
+  > & Pick<TooltipPrimitive.Portal.Props, 'container'>)   {
+  return (
+    <TooltipPrimitive.Portal container={container}>
+      <TooltipPrimitive.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset}
+        className="isolate z-50"
+      >
+        <TooltipPrimitive.Popup
+          data-slot="tooltip-content"
+          className={cn(
+            "bg-primary fill-primary text-inverse text-xs rounded-lg shadow-primary p-2 inline-flex items-center gap-1.5 has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm  z-50 w-fit max-w-xs origin-(--transform-origin)",
+            "data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=delayed-open]:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2",
+            className
+          )}
+          {...props}
+        >
+          {children}
+          <TooltipPrimitive.Arrow className="size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-[2px] data-[side=inline-end]:top-1/2! data-[side=inline-end]:-left-1 data-[side=inline-end]:-translate-y-1/2 data-[side=inline-start]:top-1/2! data-[side=inline-start]:-right-1 data-[side=inline-start]:-translate-y-1/2 z-50 bg-primary fill-primary data-[side=bottom]:top-1 data-[side=left]:top-1/2! data-[side=left]:-right-1 data-[side=left]:-translate-y-1/2 data-[side=right]:top-1/2! data-[side=right]:-left-1 data-[side=right]:-translate-y-1/2 data-[side=top]:-bottom-2.5" />
+        </TooltipPrimitive.Popup>
+      </TooltipPrimitive.Positioner>
+    </TooltipPrimitive.Portal>
+  )
+}
+
+interface TooltipHelperProps {
   align?: 'center' | 'end' | 'start'
   delayDuration?: number
   disabled?: boolean
@@ -18,7 +79,7 @@ interface TooltipProps {
   vOffset?: number
 }
 
-export const Tooltip = (props: PropsWithChildren<TooltipProps>) => {
+const TooltipHelper = (props: PropsWithChildren<TooltipHelperProps>) => {
   const {
     align = 'center',
     children,
@@ -35,54 +96,25 @@ export const Tooltip = (props: PropsWithChildren<TooltipProps>) => {
   return disabled ? (
     <>{children}</>
   ) : (
-    <TooltipPrimitive.Provider delay={delayDuration}>
-      <TooltipPrimitive.Root>
-        <TooltipPrimitive.Trigger
+    <TooltipProvider delay={delayDuration}>
+      <Tooltip disabled={disabled}>
+        <TooltipTrigger
           render={
             isValidElement(children) ? (
               (children as ReactElement)
             ) : (
               <span>{children}</span>
             )
-          }
-        />
-        <TooltipPrimitive.Portal container={container}>
-          <TooltipPrimitive.Positioner
-            side={side}
-            align={align}
-            sideOffset={vOffset}
-            alignOffset={hOffset}
-          >
-            <TooltipPrimitive.Popup className="bg-primary fill-primary rounded-lg p-2 flex justify-center items-center shadow-primary animate-in fade-in-0 zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 w-fit origin-(--transform-origin)">
-              <span className="text-xs text-inverse">{message}</span>
-              <TooltipPrimitive.Arrow className="flex data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180 data-[side=bottom]:top-[-8px] data-[side=bottom]:rotate-0 data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:rotate-[-90deg]">
-                <ArrowSvg />
-              </TooltipPrimitive.Arrow>
-            </TooltipPrimitive.Popup>
-          </TooltipPrimitive.Positioner>
-        </TooltipPrimitive.Portal>
-      </TooltipPrimitive.Root>
-    </TooltipPrimitive.Provider>
+          }/>
+        <TooltipContent container={container} side={side} align={align} sideOffset={vOffset} alignOffset={hOffset}>
+          {message}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   )
 }
 
-function ArrowSvg(props: React.ComponentProps<'svg'>) {
-  return (
-    <svg width="20" height="10" viewBox="0 0 20 10" fill="none" {...props}>
-      <path
-        d="M9.66437 2.60207L4.80758 6.97318C4.07308 7.63423 3.11989 8 2.13172 8H0V10H20V8H18.5349C17.5468 8 16.5936 7.63423 15.8591 6.97318L11.0023 2.60207C10.622 2.2598 10.0447 2.25979 9.66437 2.60207Z"
-        className="fill-primary"
-      />
-      {/* <path
-        d="M8.99542 1.85876C9.75604 1.17425 10.9106 1.17422 11.6713 1.85878L16.5281 6.22989C17.0789 6.72568 17.7938 7.00001 18.5349 7.00001L15.89 7L11.0023 2.60207C10.622 2.2598 10.0447 2.2598 9.66436 2.60207L4.77734 7L2.13171 7.00001C2.87284 7.00001 3.58774 6.72568 4.13861 6.22989L8.99542 1.85876Z"
-        className="fill-border-normal"
-      />
-      <path
-        d="M10.3333 3.34539L5.47654 7.71648C4.55842 8.54279 3.36693 9 2.13172 9H0V8H2.13172C3.11989 8 4.07308 7.63423 4.80758 6.97318L9.66437 2.60207C10.0447 2.25979 10.622 2.2598 11.0023 2.60207L15.8591 6.97318C16.5936 7.63423 17.5468 8 18.5349 8H20V9H18.5349C17.2998 9 16.1083 8.54278 15.1901 7.71648L10.3333 3.34539Z"
-        className="fill-primary"
-      /> */}
-    </svg>
-  )
-}
+Tooltip.Helper = TooltipHelper
 
-export { TooltipPrimitive }
+export { Tooltip, TooltipContent, TooltipPrimitive, TooltipProvider, TooltipTrigger }
+

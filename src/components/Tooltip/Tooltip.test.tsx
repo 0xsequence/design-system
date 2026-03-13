@@ -13,9 +13,9 @@ describe('<Tooltip />', () => {
     const user = userEvent.setup()
 
     const res = renderWithTheme(
-      <Tooltip message="Tip">
+      <Tooltip.Helper message="Tip">
         <button>Hover me</button>
-      </Tooltip>
+      </Tooltip.Helper>
     )
 
     const triggerEl = screen.getByText(/Hover me/)

@@ -181,7 +181,7 @@ export {
   useToast
 } from './components/Toast/Toast.js'
 export { TokenImage } from './components/TokenImage/TokenImage.js'
-export { Tooltip, TooltipPrimitive } from './components/Tooltip/Tooltip.js'
+export { Tooltip, TooltipContent, TooltipPrimitive, TooltipProvider, TooltipTrigger } from './components/Tooltip/Tooltip.js'
 export { VisuallyHidden } from './components/VisuallyHidden/VisuallyHidden.js'
 
 // Styles
