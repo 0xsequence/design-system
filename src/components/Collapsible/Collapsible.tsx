@@ -7,7 +7,7 @@ import { cn } from 'src/utils/classnames.js'
 import { ChevronDownIcon } from '../../icons/index.js'
 import { focusRingVariants } from '../../styles.js'
 
-function CollapsibleRoot({ ...props }: CollapsiblePrimitive.Root.Props) {
+function Collapsible({ ...props }: CollapsiblePrimitive.Root.Props) {
   return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
 }
 
@@ -42,7 +42,7 @@ const collapsibleVariants = cva(
   }
 )
 
-interface CollapsibleProps
+interface CollapsibleHelperProps
   extends
     Omit<ComponentProps<typeof CollapsiblePrimitive.Root>, 'onOpenChange'>,
     VariantProps<typeof collapsibleVariants> {
@@ -50,7 +50,7 @@ interface CollapsibleProps
   onOpenChange?: (open: boolean) => void
 }
 
-export const Collapsible = (props: CollapsibleProps) => {
+const CollapsibleHelper = (props: CollapsibleHelperProps) => {
   const {
     className,
     variant,
@@ -79,7 +79,7 @@ export const Collapsible = (props: CollapsibleProps) => {
   }
 
   return (
-    <CollapsibleRoot
+    <Collapsible
       open={isOpen}
       defaultOpen={defaultOpen}
       onOpenChange={handleOpenChange}
@@ -98,8 +98,10 @@ export const Collapsible = (props: CollapsibleProps) => {
       <CollapsibleContent className="flex flex-col justify-end overflow-hidden w-full transition-[height, opacity] duration-150 ease-out h-(--collapsible-panel-height) data-starting-style:h-0 data-ending-style:h-0 opacity-100 data-starting-style:opacity-0 data-ending-style:opacity-0">
         <div className="pt-0 px-4 pb-4">{children}</div>
       </CollapsibleContent>
-    </CollapsibleRoot>
+    </Collapsible>
   )
 }
 
-export { CollapsiblePrimitive }
+Collapsible.Helper = CollapsibleHelper
+
+export { Collapsible, CollapsibleContent, CollapsiblePrimitive, CollapsibleTrigger }

@@ -8,13 +8,13 @@ const TestComponent = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <Collapsible
+    <Collapsible.Helper
       open={isOpen}
       onOpenChange={open => setIsOpen(open)}
       label="Hello"
     >
       World
-    </Collapsible>
+    </Collapsible.Helper>
   )
 }
 
@@ -22,7 +22,7 @@ describe('<Collapsible />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
-    render(<Collapsible label="Hello">World</Collapsible>)
+    render(<Collapsible.Helper label="Hello">World</Collapsible.Helper>)
     expect(screen.getByText(/Hello/)).toBeInTheDocument()
     expect(screen.queryByText(/World/)).toBeNull()
 
@@ -43,9 +43,9 @@ describe('<Collapsible />', () => {
 
   it('with default open', () => {
     render(
-      <Collapsible label="Hello" defaultOpen>
+      <Collapsible.Helper label="Hello" defaultOpen>
         World
-      </Collapsible>
+      </Collapsible.Helper>
     )
     expect(screen.getByText(/World/)).toBeInTheDocument()
   })

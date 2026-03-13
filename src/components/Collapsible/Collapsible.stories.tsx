@@ -7,16 +7,16 @@ import { Collapsible } from './Collapsible.js'
 
 export default {
   title: 'Components/Collapsible',
-  component: Collapsible,
-} as Meta<typeof Collapsible>
+  component: Collapsible.Helper,
+} as Meta<typeof Collapsible.Helper>
 
-type Story = StoryObj<typeof Collapsible>
+type Story = StoryObj<typeof Collapsible.Helper>
 
 const CollapsibleStory = () => {
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <Collapsible
+    <Collapsible.Helper
       open={isOpen}
       label="My Heading"
       onOpenChange={open => setIsOpen(open)}
@@ -26,7 +26,7 @@ const CollapsibleStory = () => {
           Item {x}
         </p>
       ))}
-    </Collapsible>
+    </Collapsible.Helper>
   )
 }
 
