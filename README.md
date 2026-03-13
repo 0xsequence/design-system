@@ -130,7 +130,14 @@ V4 is a larger departure than previous releases and includes many breaking chang
 
 8. Button.Helper component removed.
 
-9. Text component is removed. Use text-\* classes instead.
+9. Text component is removed. Use default text classes instead.
+
+10. textVariants have been removed. Use default tailwind text classes instead
+
+11. Collapsible now exports its primitives, use Collapsible.Helper for old behavior.
+
+12. Tooltip now exports its primitives, use Tooltip.Helper for old behavior.
+
 
 ## Migrating from v2 to v3
 
