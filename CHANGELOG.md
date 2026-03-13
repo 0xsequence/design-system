@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.1
+
+### Patch Changes
+
+- Added Sidebar component, removed old text classes in favor of default tailwind classes.
+
 ## 4.0.0-alpha.0
 
 ### Major Changes
