@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Card } from './Card.js'
+import { SettingsIcon } from '../../icons/index.js'
+import { Button } from '../Button/Button.js'
+
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card.js'
 
 export default {
   title: 'Components/Card',
@@ -12,24 +15,72 @@ type Story = StoryObj<typeof Card>
 export const Default: Story = {
   render: args => (
     <Card {...args}>
-      <div className="flex flex-col">
-        <span className="text-xl text-primary">Card</span>
-        <span className="text-sm text-muted">Description</span>
-      </div>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter>
+        <p>Card Footer</p>
+      </CardFooter>
     </Card>
   ),
   args: {
     variant: 'default',
   },
 }
+
+export const WithAction: Story = {
+  render: args => (
+    <Card {...args}>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+        <CardAction>
+          <Button iconOnly size="xs"><SettingsIcon /></Button>
+        </CardAction>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter className="flex gap-2">
+        <Button variant="ghost" size="sm">Cancel</Button>
+        <Button size="sm">Confirm</Button>
+      </CardFooter>
+    </Card>
+  ),
+  args: {
+    variant: 'default',
+  },
+}
+
+export const Outline: Story = {
+  render: args => (
+    <Card {...args}>
+      <CardHeader>
+        <CardTitle>Outline Card</CardTitle>
+        <CardDescription>This card uses the outline variant</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+    </Card>
+  ),
+  args: {
+    variant: 'outline',
+  },
+}
+
 export const Clickable: Story = {
   render: args => (
     <Card {...args}>
       <button>
-        <div className="flex flex-col">
-          <span className="text-xl text-primary">Card</span>
-          <span className="text-sm text-muted">Description</span>
-        </div>
+        <CardHeader>
+          <CardTitle>Clickable Card</CardTitle>
+          <CardDescription>Click me</CardDescription>
+        </CardHeader>
       </button>
     </Card>
   ),

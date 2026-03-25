@@ -68,3 +68,51 @@ export const Card = (props: CardProps) => {
     </div>
   )
 }
+
+export const CardHeader = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    className={cn('flex flex-col gap-1.5 relative', className)}
+    {...props}
+  />
+)
+
+export const CardTitle = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    className={cn('text-lg font-semibold leading-none', className)}
+    {...props}
+  />
+)
+
+export const CardDescription = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    className={cn('text-sm text-muted', className)}
+    {...props}
+  />
+)
+
+export const CardAction = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    className={cn('absolute top-0 right-0', className)}
+    {...props}
+  />
+)
+
+export const CardContent = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    className={cn('pt-3', className)}
+    {...props}
+  />
+)
+
+export const CardFooter = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    className={cn('flex items-center pt-3 border-t border-border-card', className)}
+    {...props}
+  />
+)
