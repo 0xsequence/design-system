@@ -47,7 +47,7 @@ export const Nested = () => {
       <div id="app1">
         <ThemeProvider root="#app1" storageKey="theme1" defaultTheme="light">
           <Card className="bg-background-primary mt-4">
-            <Collapsible label="Nested Application 1" defaultOpen>
+            <Collapsible.Helper label="Nested Application 1" defaultOpen>
               <p className="text-sm text-primary">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -69,7 +69,7 @@ export const Nested = () => {
                   defaultTheme="dark"
                 >
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible
+                    <Collapsible.Helper
                       label="Nested Application 2 (Dark)"
                       defaultOpen
                     >
@@ -88,7 +88,7 @@ export const Nested = () => {
                       <div className="mt-4">
                         <SetThemeButton />
                       </div>
-                    </Collapsible>
+                    </Collapsible.Helper>
                   </Card>
                 </ThemeProvider>
               </div>
@@ -101,7 +101,7 @@ export const Nested = () => {
                   customThemes={customThemes}
                 >
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible
+                    <Collapsible.Helper
                       label="Nested Application 3 (Custom Theme)"
                       defaultOpen
                     >
@@ -120,7 +120,7 @@ export const Nested = () => {
                       <div className="mt-4">
                         <SetThemeButton />
                       </div>
-                    </Collapsible>
+                    </Collapsible.Helper>
                   </Card>
                 </ThemeProvider>
               </div>
@@ -132,7 +132,7 @@ export const Nested = () => {
                   defaultTheme="system"
                 >
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible
+                    <Collapsible.Helper
                       label="Nested Application 4 (Prefers Color Scheme)"
                       defaultOpen
                     >
@@ -147,11 +147,11 @@ export const Nested = () => {
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
                       </p>
-                    </Collapsible>
+                    </Collapsible.Helper>
                   </Card>
                 </ThemeProvider>
               </div>
-            </Collapsible>
+            </Collapsible.Helper>
           </Card>
         </ThemeProvider>
       </div>
