@@ -16,6 +16,8 @@ describe('Utils / Classnames', () => {
   })
 
   it('should merge tailwind text- utility with our text variant classes', () => {
-    expect(cn('text-xxs', 'text-yellow-500')).toEqual('text-xxs text-yellow-500')
+    expect(cn('text-xxs', 'text-yellow-500')).toEqual(
+      'text-xxs text-yellow-500'
+    )
   })
 })

@@ -31,7 +31,16 @@ export {
   CalloutHeader,
   CalloutIcon
 } from './components/Callout/Callout.js'
-export { Card, cardVariants } from './components/Card/Card.js'
+export {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  cardVariants
+} from './components/Card/Card.js'
 export {
   Carousel,
   CarouselDeck,

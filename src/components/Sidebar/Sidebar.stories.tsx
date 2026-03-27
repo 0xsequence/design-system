@@ -10,9 +10,9 @@ import {
   SettingsIcon,
 } from 'src/icons/index.js'
 
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../Collapsible/Collapsible.js'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../DropdownMenu/DropdownMenu.js'
 
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../Collapsible/Collapsible.js'
 import {
   Sidebar,
   SidebarContent,
