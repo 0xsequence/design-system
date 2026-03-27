@@ -55,6 +55,7 @@ export const Card = (props: CardProps) => {
     const renderProps = render.props as AnyProps
     return cloneElement(render as ReactElement<AnyProps>, {
       ref,
+      'data-slot': 'card',
       ...rest,
       ...renderProps,
       className: cn(computedClassName, renderProps.className),
@@ -63,7 +64,7 @@ export const Card = (props: CardProps) => {
   }
 
   return (
-    <div ref={ref} className={computedClassName} {...rest}>
+    <div ref={ref} data-slot="card" className={computedClassName} {...rest}>
       {children}
     </div>
   )
@@ -72,6 +73,7 @@ export const Card = (props: CardProps) => {
 export const CardHeader = ({ ref, className, ...props }: ComponentProps<'div'>) => (
   <div
     ref={ref}
+    data-slot="card-header"
     className={cn('flex flex-col gap-1.5 relative', className)}
     {...props}
   />
@@ -80,6 +82,7 @@ export const CardHeader = ({ ref, className, ...props }: ComponentProps<'div'>) 
 export const CardTitle = ({ ref, className, ...props }: ComponentProps<'div'>) => (
   <div
     ref={ref}
+    data-slot="card-title"
     className={cn('text-lg font-semibold leading-none', className)}
     {...props}
   />
@@ -88,6 +91,7 @@ export const CardTitle = ({ ref, className, ...props }: ComponentProps<'div'>) =
 export const CardDescription = ({ ref, className, ...props }: ComponentProps<'div'>) => (
   <div
     ref={ref}
+    data-slot="card-description"
     className={cn('text-sm text-muted', className)}
     {...props}
   />
@@ -96,6 +100,7 @@ export const CardDescription = ({ ref, className, ...props }: ComponentProps<'di
 export const CardAction = ({ ref, className, ...props }: ComponentProps<'div'>) => (
   <div
     ref={ref}
+    data-slot="card-action"
     className={cn('absolute top-0 right-0', className)}
     {...props}
   />
@@ -104,6 +109,7 @@ export const CardAction = ({ ref, className, ...props }: ComponentProps<'div'>) 
 export const CardContent = ({ ref, className, ...props }: ComponentProps<'div'>) => (
   <div
     ref={ref}
+    data-slot="card-content"
     className={cn('pt-3', className)}
     {...props}
   />
@@ -112,6 +118,7 @@ export const CardContent = ({ ref, className, ...props }: ComponentProps<'div'>)
 export const CardFooter = ({ ref, className, ...props }: ComponentProps<'div'>) => (
   <div
     ref={ref}
+    data-slot="card-footer"
     className={cn('flex items-center pt-3 border-t border-border-card', className)}
     {...props}
   />
