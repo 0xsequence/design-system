@@ -5,13 +5,13 @@ import { CloseIcon } from 'src/icons/index.js'
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
 
-function Dialog({ ...props }: ComponentProps<typeof DialogPrimitive.Root>) {
+function Dialog<Payload>({ ...props }: ComponentProps<typeof DialogPrimitive.Root<Payload>>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
 }
 
-function DialogTrigger({
+function DialogTrigger<Payload>({
   ...props
-}: ComponentProps<typeof DialogPrimitive.Trigger>) {
+}: ComponentProps<typeof DialogPrimitive.Trigger<Payload>>) {
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
 }
 
