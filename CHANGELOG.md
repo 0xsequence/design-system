@@ -1,5 +1,14 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.2
+
+### Patch Changes
+
+  - Card components — Added new Card component system (#142)
+  - Dialog typing fix — Fixed Dialog and DialogTrigger Payload typing
+  - Badge styling — Updated Badge component styling
+  - Border-radius updates — Updated border-radius on Alert, Card, and Popover components
+
 ## 4.0.0-alpha.1
 
 ### Patch Changes
