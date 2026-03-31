@@ -8,30 +8,30 @@ import { Button } from '../Button/Button.js'
 
 const alertVariants = cva(
   [
-    'text-sm text-primary relative w-full rounded-lg border-1 border-(--alert-border) bg-(--alert-background) p-4 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
-    '[&>svg]:mr-2 [&>svg]:text-(--alert-accent) [&>svg]:self-start [&_[data-slot=alert-button]]:text-(--alert-accent)',
+    'text-sm text-primary relative w-full rounded-3xl border border-(--alert-border) bg-(--alert-background) p-4 md:p-6 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
+    '[&>svg]:mr-4 [&>svg]:text-(--alert-accent) [&>svg]:self-start [&_[data-slot=alert-button]]:text-(--alert-accent)',
   ],
   {
     variants: {
       variant: {
         info: [
-          '[--alert-background:var(--color-indigo-200)] dark:[--alert-background:var(--color-indigo-950)]',
-          '[--alert-border:var(--color-indigo-500)] dark:[--alert-border:var(--color-indigo-900)]',
-          '[--alert-accent:var(--color-indigo-700)] dark:[--alert-accent:var(--color-indigo-400)]',
+          '[--alert-background:var(--color-purple-50)] dark:[--alert-background:var(--color-purple-950)]',
+          '[--alert-border:var(--color-purple-100)] dark:[--alert-border:var(--color-purple-900)]',
+          '[--alert-accent:var(--color-purple-700)] dark:[--alert-accent:var(--color-purple-400)]',
         ],
         success: [
-          '[--alert-background:var(--color-green-200)] dark:[--alert-background:var(--color-green-950)]',
-          '[--alert-border:var(--color-green-500)] dark:[--alert-border:var(--color-green-900)]',
-          '[--alert-accent:var(--color-green-700)] dark:[--alert-accent:var(--color-green-400)]',
+          '[--alert-background:var(--color-emerald-50)] dark:[--alert-background:var(--color-emerald-950)]',
+          '[--alert-border:var(--color-emerald-100)] dark:[--alert-border:var(--color-emerald-900)]',
+          '[--alert-accent:var(--color-emerald-700)] dark:[--alert-accent:var(--color-emerald-400)]',
         ],
         warning: [
-          '[--alert-background:var(--color-yellow-100)] dark:[--alert-background:var(--color-yellow-950)]',
-          '[--alert-border:var(--color-yellow-500)] dark:[--alert-border:var(--color-yellow-900)]',
-          '[--alert-accent:var(--color-yellow-700)] dark:[--alert-accent:var(--color-yellow-400)]',
+          '[--alert-background:var(--color-orange-50)] dark:[--alert-background:var(--color-orange-950)]',
+          '[--alert-border:var(--color-orange-100)] dark:[--alert-border:var(--color-orange-900)]',
+          '[--alert-accent:var(--color-orange-700)] dark:[--alert-accent:var(--color-orange-400)]',
         ],
         error: [
-          '[--alert-background:var(--color-red-200)] dark:[--alert-background:var(--color-red-950)]',
-          '[--alert-border:var(--color-red-500)] dark:[--alert-border:var(--color-red-900)]',
+          '[--alert-background:var(--color-red-50)] dark:[--alert-background:var(--color-red-950)]',
+          '[--alert-border:var(--color-red-100)] dark:[--alert-border:var(--color-red-900)]',
           '[--alert-accent:var(--color-red-700)] dark:[--alert-accent:var(--color-red-400)]',
         ],
       },
@@ -62,8 +62,8 @@ function AlertTitle({ className, ...props }: ComponentProps<'div'>) {
     <div
       data-slot="alert-title"
       className={cn(
-        'text-sm font-bold',
-        'text-(--alert-accent) col-start-2 col-end-4 min-h-4 sm:col-end-3',
+        'text-xl font-bold',
+        'text-black dark:text-white col-start-2 col-end-4 min-h-4 sm:col-end-3',
         className
       )}
       {...props}

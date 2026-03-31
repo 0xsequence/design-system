@@ -1,13 +1,13 @@
-import { cva, type VariantProps } from 'class-variance-authority'
-import { cloneElement, isValidElement, type ComponentProps, type ReactElement, type ReactNode } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cloneElement, isValidElement, type ComponentProps, type ReactElement, type ReactNode } from 'react';
 
 type AnyProps = { className?: string; children?: ReactNode; ref?: unknown; [key: string]: unknown }
 
-import { focusRingVariants } from '../../styles.js'
-import { cn } from '../../utils/classnames.js'
+import { focusRingVariants } from '../../styles.js';
+import { cn } from '../../utils/classnames.js';
 
 export const cardVariants = cva(
-  ['overflow-hidden', 'rounded-xl', 'p-4', 'w-full'],
+  ['overflow-hidden', 'rounded-3xl', 'p-6', 'w-full'],
   {
     variants: {
       variant: {
