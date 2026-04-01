@@ -1,9 +1,9 @@
 import {
-    useImperativeHandle,
-    useRef,
-    useState,
-    type ChangeEvent,
-    type ComponentProps,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type ComponentProps,
 } from 'react'
 
 import { CloseIcon } from '../../icons/index.js'
@@ -123,8 +123,7 @@ export const FileInput = (props: FileInputProps) => {
       {fileData && (
         <Button
           className="cursor-pointer z-10 ml-1"
-          size="xs"
-          iconOnly
+          size="icon-xs"
           onClick={ev => {
             ev.preventDefault()
             ev.stopPropagation()

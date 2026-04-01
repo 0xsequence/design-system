@@ -119,7 +119,7 @@ function Toast({
             <ToastPrimitive.Close
               aria-label="Close"
               render={
-                <Button size="xs" iconOnly>
+                <Button size="icon-xs">
                   <CloseIcon />
                 </Button>
               }

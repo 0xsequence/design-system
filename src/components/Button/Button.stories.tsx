@@ -15,8 +15,8 @@ type Story = StoryObj<typeof Button>
 export const Default: Story = {
   render: args => (
     <div className="flex gap-4 items-center flex-wrap">
-      <Button {...args} variant="primary">
-        Primary
+      <Button {...args} variant="default">
+        Default
       </Button>
       <Button {...args} variant="secondary">
         Secondary
@@ -24,16 +24,13 @@ export const Default: Story = {
       <Button {...args} variant="outline">
         Outline
       </Button>
-      <Button {...args} variant="emphasis">
-        Emphasis
-      </Button>
       <Button {...args} variant="ghost">
         Ghost
       </Button>
       <Button {...args} variant="destructive">
         Destructive
       </Button>
-      <Button {...args} variant="text">
+      <Button {...args} variant="link">
         Text
       </Button>
       <Button {...args} variant={null}>
@@ -43,8 +40,7 @@ export const Default: Story = {
   ),
   args: {
     disabled: false,
-    size: 'md',
-    shape: 'circle',
+    size: 'default',
   },
   parameters: {
     design: {
@@ -58,16 +54,16 @@ export const LabelOnly: Story = {
   args: {
     disabled: false,
     children: 'Click me',
-    size: 'md',
-    variant: 'secondary',
+    size: 'default',
+    variant: 'default',
   },
 }
 export const Disabled: Story = {
   args: {
     disabled: true,
     children: 'Click me',
-    size: 'md',
-    variant: 'secondary',
+    size: 'default',
+    variant: 'default',
   },
 }
 
@@ -81,8 +77,8 @@ export const WithLeftIcon: Story = {
       </>
     ),
     onClick: () => console.log('Clicked!'),
-    size: 'md',
-    variant: 'secondary',
+    size: 'default',
+    variant: 'default',
   },
 }
 
@@ -96,8 +92,8 @@ export const WithRightIcon: Story = {
       </>
     ),
     onClick: () => console.log('Clicked!'),
-    size: 'md',
-    variant: 'secondary',
+    size: 'default',
+    variant: 'default',
   },
 }
 
@@ -112,25 +108,25 @@ export const WithBothIcon: Story = {
       </>
     ),
     onClick: () => console.log('Clicked!'),
-    size: 'md',
-    variant: 'secondary',
+    size: 'default',
+    variant: 'default',
     className: 'w-full',
   },
 }
 
 export const IconOnly: Story = {
   args: {
-    size: 'md',
-    variant: 'secondary',
+    size: 'icon',
+    variant: 'default',
     children: <WalletIcon />,
     disabled: false,
-    iconOnly: true,
   },
 }
 
 export const WithAnchor: Story = {
   args: {
-    size: 'md',
+    size: 'default',
+    variant: 'default',
     render: <a href="/wallet" />,
     children: 'Click me',
     disabled: false,
@@ -139,8 +135,8 @@ export const WithAnchor: Story = {
 
 export const WithSpinner: Story = {
   args: {
-    size: 'md',
-    variant: 'secondary',
+    size: 'default',
+    variant: 'default',
     children: (
       <>
         Click me

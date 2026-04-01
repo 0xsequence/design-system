@@ -26,7 +26,7 @@ const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
 
       <StopClickPropagation>
         <Button
-          iconOnly
+          size="icon"
           onClick={() => console.log('Button Clicked! Propagation Stopped!')}
         >
           <ArrowRightIcon />

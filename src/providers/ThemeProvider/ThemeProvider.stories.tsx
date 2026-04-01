@@ -169,7 +169,7 @@ const SetThemeButton = () => {
   }
 
   return (
-    <Button variant="primary" onClick={toggleTheme}>
+    <Button onClick={toggleTheme}>
       Set {themeLabel} Mode
     </Button>
   )

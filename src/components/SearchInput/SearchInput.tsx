@@ -81,8 +81,7 @@ export const SearchInput = (props: SearchInputProps) => {
         {showClear && (
           <Button
             className="transition-opacity opacity-100 inert:opacity-0"
-            iconOnly
-            size="xs"
+            size="icon-xs"
             variant="ghost"
             onClick={handleClear}
             inert={!internalRef.current?.value.length}

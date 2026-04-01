@@ -30,17 +30,17 @@ export const Default = {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <Button variant="emphasis" shape="square" size="sm">
+          <Button size="sm">
             Create Project
           </Button>
-          <Button shape="square" size="sm">
+          <Button variant="secondary" size="sm">
             Import Project
           </Button>
         </div>
       </EmptyContent>
       <Button
-        variant="text"
-        className="text-muted underline underline-offset-4"
+        variant="link"
+        className="text-muted"
         size="sm"
         render={<a href="#" />}
       >

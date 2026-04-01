@@ -35,7 +35,7 @@ export const Default: Story = {
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button iconOnly>
+              <Button size="icon">
                 <ContextMenuIcon />
               </Button>
             }

@@ -225,8 +225,8 @@ function CarouselSlide({
 function CarouselPrevButton({
   children,
   variant = 'secondary',
-  shape = 'circle',
-  size = 'md',
+  size = 'icon',
+  className,
   ...props
 }: ComponentProps<typeof Button>) {
   const { prevSlide } = useCarousel()
@@ -235,10 +235,9 @@ function CarouselPrevButton({
     <Button
       data-slot="carousel-prev-button"
       variant={variant}
-      shape={shape}
       size={size}
       onClick={prevSlide}
-      iconOnly
+      className={cn('rounded-full', className)}
       {...props}
     >
       {children ? children : <ArrowLeftIcon />}
@@ -249,8 +248,8 @@ function CarouselPrevButton({
 function CarouselNextButton({
   children,
   variant = 'secondary',
-  shape = 'circle',
-  size = 'md',
+  size = 'icon',
+  className,
   ...props
 }: ComponentProps<typeof Button>) {
   const { nextSlide } = useCarousel()
@@ -259,10 +258,9 @@ function CarouselNextButton({
     <Button
       data-slot="carousel-next-button"
       variant={variant}
-      shape={shape}
       size={size}
       onClick={nextSlide}
-      iconOnly
+      className={cn('rounded-full', className)}
       {...props}
     >
       {children ? children : <ArrowRightIcon />}
@@ -369,5 +367,6 @@ export {
   CarouselPrevButton,
   CarouselSlide,
   CarouselStatus,
-  useCarousel,
+  useCarousel
 }
+

@@ -42,8 +42,8 @@ export const Default: Story = {
           </SheetDescription>
         </SheetHeader>
         <SheetFooter>
-          <Button variant="primary">Save changes</Button>
-          <SheetClose render={<Button>Close</Button>} />
+          <Button>Save changes</Button>
+          <SheetClose render={<Button variant="outline">Close</Button>} />
         </SheetFooter>
       </>
     ),

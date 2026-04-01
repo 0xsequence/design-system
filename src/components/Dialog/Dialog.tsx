@@ -69,7 +69,7 @@ function DialogContent({
             data-slot="dialog-close"
             className="absolute top-4 right-4"
             render={
-              <Button variant="ghost" size="xs" iconOnly>
+              <Button variant="ghost" size="icon-xs">
                 <CloseIcon size="xs" />
                 <span className="sr-only">Close</span>
               </Button>

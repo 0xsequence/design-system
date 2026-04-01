@@ -47,7 +47,7 @@ export const SearchInput: Story = {
     placeholder: 'Search for coins or collectibles',
     leftIcon: SearchIcon,
     controls: (
-      <Button size="xs" iconOnly>
+      <Button size="icon-xs">
         <CloseIcon />
       </Button>
     ),
@@ -65,10 +65,10 @@ export const WithComplexControls: Story = {
     placeholder: 'This is the placeholder',
     controls: (
       <div className="flex gap-2">
-        <Button size="xs" shape="square" disabled>
+        <Button size="xs" disabled>
           Max
         </Button>
-        <Button size="xs" shape="square">
+        <Button size="xs">
           Paste
         </Button>
       </div>

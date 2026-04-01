@@ -60,7 +60,7 @@ function SheetContent({
         <SheetPrimitive.Close
           className="absolute top-4 right-4"
           render={
-            <Button variant="ghost" size="xs" iconOnly>
+            <Button variant="ghost" size="icon-xs">
               <CloseIcon size="xs" />
               <span className="sr-only">Close</span>
             </Button>
@@ -120,5 +120,6 @@ export {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 }
+

@@ -39,7 +39,7 @@ export const WithAction: Story = {
         <CardTitle>Card Title</CardTitle>
         <CardDescription>Card Description</CardDescription>
         <CardAction>
-          <Button iconOnly size="xs"><SettingsIcon /></Button>
+          <Button size="icon-xs"><SettingsIcon /></Button>
         </CardAction>
       </CardHeader>
       <CardContent>
