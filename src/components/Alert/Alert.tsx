@@ -91,7 +91,7 @@ function AlertButton({ className, ...props }: ComponentProps<typeof Button>) {
       data-slot="alert-button"
       variant="outline"
       size="sm"
-      shape="square"
+      
       className={cn(
         'row-start-3 col-start-3 mt-2 sm:mt-0 sm:row-start-1 sm:row-end-3 sm:col-start-3',
         className

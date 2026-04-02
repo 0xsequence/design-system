@@ -225,7 +225,6 @@ function CarouselSlide({
 function CarouselPrevButton({
   children,
   variant = 'secondary',
-  shape = 'circle',
   size = 'md',
   ...props
 }: ComponentProps<typeof Button>) {
@@ -235,7 +234,6 @@ function CarouselPrevButton({
     <Button
       data-slot="carousel-prev-button"
       variant={variant}
-      shape={shape}
       size={size}
       onClick={prevSlide}
       iconOnly
@@ -249,7 +247,6 @@ function CarouselPrevButton({
 function CarouselNextButton({
   children,
   variant = 'secondary',
-  shape = 'circle',
   size = 'md',
   ...props
 }: ComponentProps<typeof Button>) {
@@ -259,7 +256,6 @@ function CarouselNextButton({
     <Button
       data-slot="carousel-next-button"
       variant={variant}
-      shape={shape}
       size={size}
       onClick={nextSlide}
       iconOnly
@@ -369,5 +365,6 @@ export {
   CarouselPrevButton,
   CarouselSlide,
   CarouselStatus,
-  useCarousel,
+  useCarousel
 }
+

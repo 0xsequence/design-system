@@ -15,25 +15,20 @@ const buttonVariants = cva(
       size: {
         xs: [
           'text-xxs font-bold',
-          'min-w-7 h-7 px-2 gap-1 [&_svg:not([class*="size-"])]:size-4',
+          'rounded-md min-w-6 h-6 px-2 gap-1 [&_svg:not([class*="size-"])]:size-4',
         ],
         sm: [
-          'text-sm font-bold',
-          'min-w-9 h-9 px-3 gap-1 [&_svg:not([class*="size-"])]:size-5',
+          'text-xs font-bold',
+          'rounded-lg min-w-7.5 h-7.5 px-2 gap-1 [&_svg:not([class*="size-"])]:size-5',
         ],
         md: [
           'text-sm font-bold',
-          'min-w-11 h-11 px-4 [&_svg:not([class*="size-"])]:size-5',
+          'rounded-lg min-w-8 h-8 px-3 [&_svg:not([class*="size-"])]:size-5',
         ],
         lg: [
-          'text-sm font-bold',
-          'min-w-13 h-13 px-5 [&_svg:not([class*="size-"])]:size-5',
+          'text-base font-bold',
+          'rounded-xl min-w-10 h-10 px-4 [&_svg:not([class*="size-"])]:size-5',
         ],
-      },
-
-      shape: {
-        circle: 'rounded-full',
-        square: 'rounded-lg',
       },
 
       variant: {
@@ -59,7 +54,6 @@ const buttonVariants = cva(
 
     defaultVariants: {
       variant: 'secondary',
-      shape: 'circle',
       size: 'md',
     },
   }
@@ -69,7 +63,6 @@ function Button({
   className,
   variant,
   size,
-  shape,
   iconOnly,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
@@ -77,7 +70,7 @@ function Button({
     <ButtonPrimitive
       data-slot="button"
       className={cn(
-        buttonVariants({ variant, size, shape, iconOnly }),
+        buttonVariants({ variant, size, iconOnly }),
         className
       )}
       {...props}

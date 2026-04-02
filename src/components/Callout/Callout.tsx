@@ -95,8 +95,7 @@ function CalloutButton({ className, ...props }: ComponentProps<typeof Button>) {
       data-slot="callout-button"
       variant="outline"
       size="sm"
-      shape="circle"
-      className={cn(className, 'text-(--callout-accent)')}
+      className={cn('text-(--callout-accent) rounded-full', className)}
       {...props}
     />
   )
@@ -140,7 +139,7 @@ function CalloutHelper({
         <Button
           variant="text"
           size="xs"
-          shape="square"
+          
           iconOnly
           onClick={onClose}
           className="text-white"

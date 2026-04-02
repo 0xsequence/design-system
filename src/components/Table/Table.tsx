@@ -114,7 +114,7 @@ function TableHeadButton({
   return (
     <Button
       variant={null}
-      shape="square"
+      
       data-active={active}
       className={cn(
         'inline-flex w-full h-full items-center gap-1 overflow-visible relative text-inherit px-4 hover:bg-background-hover',

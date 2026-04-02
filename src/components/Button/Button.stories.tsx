@@ -44,7 +44,6 @@ export const Default: Story = {
   args: {
     disabled: false,
     size: 'md',
-    shape: 'circle',
   },
   parameters: {
     design: {
