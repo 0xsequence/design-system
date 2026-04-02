@@ -120,6 +120,15 @@ export { Kbd, KbdGroup } from './components/Kbd/Kbd.js'
 export { Label } from './components/Label/Label.js'
 export { NetworkImage } from './components/NetworkImage/NetworkImage.js'
 export { NumericInput } from './components/NumericInput/NumericInput.js'
+export {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious
+} from './components/Pagination/Pagination.js'
 export { PINCodeInput } from './components/PINCodeInput/PINCodeInput.js'
 export {
   Popover,
