@@ -137,7 +137,10 @@ export {
   PopoverPrimitive,
   PopoverTrigger
 } from './components/Popover/Popover.js'
-export { Progress } from './components/Progress/Progress.js'
+export {
+  Progress, ProgressIndicator,
+  ProgressLabel, ProgressTrack, ProgressValue
+} from './components/Progress/Progress.js'
 export {
   RadioGroup,
   RadioGroupItem
