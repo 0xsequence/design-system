@@ -225,7 +225,7 @@ function CarouselSlide({
 function CarouselPrevButton({
   children,
   variant = 'secondary',
-  size = 'md',
+  size = 'default',
   ...props
 }: ComponentProps<typeof Button>) {
   const { prevSlide } = useCarousel()
@@ -247,7 +247,7 @@ function CarouselPrevButton({
 function CarouselNextButton({
   children,
   variant = 'secondary',
-  size = 'md',
+  size = 'default',
   ...props
 }: ComponentProps<typeof Button>) {
   const { nextSlide } = useCarousel()

@@ -137,9 +137,8 @@ function CalloutHelper({
           {title}
         </div>
         <Button
-          variant="text"
+          variant="ghost"
           size="xs"
-          
           iconOnly
           onClick={onClose}
           className="text-white"

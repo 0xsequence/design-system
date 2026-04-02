@@ -21,7 +21,7 @@ const buttonVariants = cva(
           'text-xs font-bold',
           'rounded-lg min-w-7.5 h-7.5 px-2 gap-1 [&_svg:not([class*="size-"])]:size-5',
         ],
-        md: [
+        default: [
           'text-sm font-bold',
           'rounded-lg min-w-8 h-8 px-3 [&_svg:not([class*="size-"])]:size-5',
         ],
@@ -32,18 +32,15 @@ const buttonVariants = cva(
       },
 
       variant: {
-        primary:
-          'bg-gradient-primary text-button-primary hover:opacity-80 border-1 border-transparent bg-origin-border',
+        default:
+          'bg-background-inverse text-background-primary hover:bg-primary/80',
         secondary:
           'bg-background-secondary text-primary border-1 border-border-button hover:border-border-hover hover:bg-background-hover',
         outline:
           'bg-transparent text-primary border-1 border-current hover:opacity-80',
         ghost:
           'bg-transparent text-primary/80 hover:bg-background-inverse/15 hover:text-primary',
-        emphasis:
-          'bg-background-inverse text-background-primary hover:bg-primary/80',
         destructive: 'bg-destructive text-white hover:bg-destructive/80',
-        text: 'bg-transparent text-primary rounded-xs h-auto w-auto h-auto min-w-0 p-0 focus-visible:outline-offset-1 grow-0 hover:opacity-80',
         link: 'text-primary underline-offset-4 hover:underline',
       },
 
@@ -53,8 +50,8 @@ const buttonVariants = cva(
     },
 
     defaultVariants: {
-      variant: 'secondary',
-      size: 'md',
+      variant: 'default',
+      size: 'default',
     },
   }
 )
