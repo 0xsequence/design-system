@@ -140,6 +140,13 @@ export const TooManyOptions: Story = {
   },
 }
 
+export const FullWidth: Story = {
+  args: {
+    ...Default.args,
+    className: 'w-full',
+  },
+}
+
 export const WithinDialog: Story = {
   tags: ['!autodocs'],
   render: args => {
