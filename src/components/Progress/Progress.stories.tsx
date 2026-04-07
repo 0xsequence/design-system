@@ -108,14 +108,14 @@ export const Rtl: Story = {
   },
 }
 
-/** Custom colors via `indicatorClassName` prop. */
+/** Custom colors via `indicatorClassName` and `trackClassName` props. */
 export const CustomColors: Story = {
   render: () => (
     <div className="flex w-full flex-col gap-6">
-      <Progress value={75} indicatorClassName="bg-green-500" />
-      <Progress value={50} indicatorClassName="bg-blue-500" />
-      <Progress value={25} indicatorClassName="bg-red-500" />
-      <Progress value={60} indicatorClassName="bg-gradient-to-r from-purple-500 to-pink-500" />
+      <Progress value={75} trackClassName="bg-green-50" indicatorClassName="bg-green-500" />
+      <Progress value={50} trackClassName="bg-blue-50" indicatorClassName="bg-blue-500" />
+      <Progress value={25} trackClassName="bg-red-50" indicatorClassName="bg-red-500" />
+      <Progress value={60} trackClassName="bg-purple-50" indicatorClassName="bg-gradient-to-r from-purple-500 to-pink-500" />
     </div>
   ),
 }
@@ -124,10 +124,10 @@ export const CustomColors: Story = {
 export const CustomSizes: Story = {
   render: () => (
     <div className="flex w-full flex-col gap-6">
-      <Progress value={60} trackClassName="h-1" indicatorClassName="bg-blue-500" />
-      <Progress value={60} trackClassName="h-2" indicatorClassName="bg-green-500" />
-      <Progress value={60} trackClassName="h-3" indicatorClassName="bg-orange-500" />
-      <Progress value={60} trackClassName="h-4" indicatorClassName="bg-red-500" />
+      <Progress value={60} trackClassName="h-1" />
+      <Progress value={60} trackClassName="h-2" />
+      <Progress value={60} trackClassName="h-3" />
+      <Progress value={60} trackClassName="h-4" />
     </div>
   ),
 }
