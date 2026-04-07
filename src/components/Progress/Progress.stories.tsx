@@ -107,3 +107,27 @@ export const Rtl: Story = {
     value: 56,
   },
 }
+
+/** Custom colors via `indicatorClassName` prop. */
+export const CustomColors: Story = {
+  render: () => (
+    <div className="flex w-full flex-col gap-6">
+      <Progress value={75} indicatorClassName="bg-green-500" />
+      <Progress value={50} indicatorClassName="bg-blue-500" />
+      <Progress value={25} indicatorClassName="bg-red-500" />
+      <Progress value={60} indicatorClassName="bg-gradient-to-r from-purple-500 to-pink-500" />
+    </div>
+  ),
+}
+
+/** Different sizes via `trackClassName` prop. */
+export const CustomSizes: Story = {
+  render: () => (
+    <div className="flex w-full flex-col gap-6">
+      <Progress value={60} trackClassName="h-1" indicatorClassName="bg-blue-500" />
+      <Progress value={60} trackClassName="h-2" indicatorClassName="bg-green-500" />
+      <Progress value={60} trackClassName="h-3" indicatorClassName="bg-orange-500" />
+      <Progress value={60} trackClassName="h-4" indicatorClassName="bg-red-500" />
+    </div>
+  ),
+}
