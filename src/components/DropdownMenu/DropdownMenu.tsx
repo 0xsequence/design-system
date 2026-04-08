@@ -44,7 +44,7 @@ const DropdownMenuContent = ({
       <DropdownMenuPrimitive.Popup
         data-slot="dropdown-menu-content"
         className={cn(
-          'w-40 bg-background-raised border-1 border-border-normal shadow-primary p-1 rounded-md',
+          'w-40 bg-background-raised border border-border-normal shadow-lg p-1 rounded-md',
           'data-[open]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[open]:fade-in-0 data-[closed]:zoom-out-95 data-[open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-x-hidden overflow-y-auto',
           className
         )}
