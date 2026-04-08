@@ -23,7 +23,6 @@ export const Default = () => {
 const customThemes: CustomThemes = {
   light: {
     primary: 'black',
-    secondary: '#006',
     muted: '#009',
     backgroundPrimary: 'white',
     backgroundSecondary: '#EEF',
@@ -31,7 +30,6 @@ const customThemes: CustomThemes = {
   },
   dark: {
     primary: 'white',
-    secondary: '#CCC',
     muted: '#888',
     backgroundPrimary: 'black',
     backgroundSecondary: '#004',

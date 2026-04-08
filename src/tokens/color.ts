@@ -1,17 +1,17 @@
 export const colorNames = [
   'brand',
-  
+
   'positive',
   'negative',
   'info',
   'warning',
   'destructive',
-  
+
   'primary',
   'muted',
   'inverse',
   'buttonPrimary',
-  
+
   'backgroundPrimary',
   'backgroundSecondary',
   'backgroundMuted',
@@ -21,7 +21,7 @@ export const colorNames = [
   'backgroundInput',
   'backgroundHover',
   'backgroundActive',
-  
+
   'borderNormal',
   'borderHover',
   'borderFocus',
