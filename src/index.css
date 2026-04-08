@@ -10,7 +10,7 @@
   --brand: var(--color-violet-700);
 
   /* Status colors */
-  --positive: var(--color-green-600);
+  --positive: var(--color-emerald-600);
   --negative: var(--color-red-600);
   --info: var(--color-indigo-600);
   --warning: var(--color-yellow-500);
@@ -88,7 +88,7 @@
   --brand: #670DE5;
 
   /* Status colors */
-  --positive: var(--color-green-500);
+  --positive: var(--color-emerald-500);
   --negative: var(--color-red-500);
   --info: var(--color-indigo-500);
   --warning: var(--color-yellow-500);

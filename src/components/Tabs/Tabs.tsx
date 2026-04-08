@@ -41,11 +41,12 @@ function TabsTrigger({
     <TabsPrimitive.Tab
       data-slot="tabs-trigger"
       className={cn(
-        'text-sm font-bold',
-        'h-full text-muted inline-flex items-center justify-center whitespace-nowrap cursor-pointer border-b-2 border-transparent px-4 -mb-[2px] rounded-t-sm',
-        'hover:not-[[data-active]]:opacity-80 data-[active]:border-border-focus data-[active]:text-border-focus',
+        'text-sm font-medium text-primary',
+        'h-full inline-flex items-center justify-center whitespace-nowrap cursor-pointer border-b-2 border-transparent px-4 -mb-[2px] rounded-t-md',
+        'hover:not-data-active:opacity-80 data-active:border-brand data-active:font-bold data-active:tracking-[-0.015em]',
         focusRingVariants(),
         disabledStyle,
+        'outline-offset-0',
         className
       )}
       {...props}
@@ -110,7 +111,7 @@ export const TabsHeader = (props: TabsHeaderProps) => {
         <TabsPrimitive.Tab
           className={cn(
             'text-sm font-bold',
-            'w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-primary outline-hidden appearance-none border-none z-2 data-[active]:text-primary disabled:opacity-50'
+            'w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-primary outline-hidden appearance-none border-none z-2 data-active:text-primary disabled:opacity-50'
           )}
           key={tab.value}
           value={tab.value}
