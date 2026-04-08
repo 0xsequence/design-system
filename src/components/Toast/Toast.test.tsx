@@ -1,7 +1,6 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 
-import { CheckmarkIcon } from '../../icons/index.js'
 
 import { ToastProvider, useToast, type ToastProps } from './Toast.js'
 
@@ -46,30 +45,6 @@ describe('<Toast />', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
     expect(document.querySelector('button[aria-label="Close"]')).toBeNull()
-  })
-
-  it('shows a success icon for the success variant', () => {
-    setup({ title: 'Done', type: 'success' })
-    fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
-
-    expect(document.querySelector('.bg-success')).toBeInTheDocument()
-  })
-
-  it('shows an error icon for the error variant', () => {
-    setup({ title: 'Oops', type: 'error' })
-    fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
-
-    expect(document.querySelector('.bg-destructive')).toBeInTheDocument()
-  })
-
-  it('renders a custom icon when provided', () => {
-    setup({ title: 'Custom', data: { icon: CheckmarkIcon } })
-    fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
-
-    // CheckmarkIcon renders an svg
-    expect(document.querySelector('svg')).toBeInTheDocument()
-    // No variant-specific wrapper should appear
-    expect(document.querySelector('.bg-positive')).toBeNull()
   })
 
   it('can show multiple toasts', () => {

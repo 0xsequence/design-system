@@ -68,6 +68,16 @@ export const Success = {
   },
 }
 
+export const Warning = {
+  render: StoryWrapper,
+  args: {
+    type: 'warning',
+    title: 'Warning',
+    description:
+      'The servers are scheduled for maintenance in 10 minutes. Please check back later.',
+  },
+}
+
 export const Error = {
   render: StoryWrapper,
   args: {

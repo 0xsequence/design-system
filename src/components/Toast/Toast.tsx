@@ -3,14 +3,14 @@ import {
   type ToastManagerAddOptions,
 } from '@base-ui/react/toast'
 import { clsx } from 'clsx'
+import { CircleCheckBigIcon, CircleXIcon, TriangleAlertIcon, XIcon } from 'lucide-react'
 import { type ComponentType } from 'react'
 
-import { CheckmarkIcon, CloseIcon } from '../../icons/index.js'
 import { type IconProps } from '../../icons/types.js'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 
-type ToastVariant = 'normal' | 'success' | 'error'
+type ToastVariant = 'normal' | 'success' | 'warning' |'error'
 
 type ToastData = {
   isDismissible?: boolean
@@ -101,7 +101,7 @@ function Toast({
         "after:content-[''] after:absolute after:top-full after:left-0 after:w-full after:h-[calc(var(--gap)+1px)]",
       ])}
       render={
-        <Card className="rounded-md bg-background-raised shadow-primary overflow-visible" />
+        <Card className="w-[360px] px-4 py-6 rounded-3xl bg-background-raised shadow-lg overflow-visible" />
       }
     >
       <ToastPrimitive.Content className="overflow-hidden transition-opacity duration-250 data-behind:opacity-0 data-expanded:opacity-100">
@@ -110,8 +110,8 @@ function Toast({
             {Icon ? <Icon /> : <ToastIcon variant={variant} />}
 
             <div className="flex flex-col gap-1">
-              <ToastPrimitive.Title className="text-sm font-bold text-primary" />
-              <ToastPrimitive.Description className="text-xs text-muted" />
+              <ToastPrimitive.Title className="text-base font-bold text-primary" />
+              <ToastPrimitive.Description className="text-sm font-medium text-muted" />
             </div>
           </div>
 
@@ -119,8 +119,8 @@ function Toast({
             <ToastPrimitive.Close
               aria-label="Close"
               render={
-                <Button size="xs" iconOnly>
-                  <CloseIcon />
+                <Button size="xs" variant="ghost" iconOnly>
+                  <XIcon />
                 </Button>
               }
             />
@@ -135,15 +135,15 @@ const ToastIcon = ({ variant }: { variant: ToastVariant }) => {
   switch (variant) {
     case 'success':
       return (
-        <div className="bg-success text-white rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
-          <CheckmarkIcon />
-        </div>
+        <CircleCheckBigIcon className="size-5 text-success shrink-0"/>
+      )
+    case 'warning':
+      return (
+        <TriangleAlertIcon className="size-5 text-warning shrink-0"/>
       )
     case 'error':
       return (
-        <div className="bg-destructive text-white rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
-          <CloseIcon />
-        </div>
+        <CircleXIcon className="size-5 text-destructive shrink-0"/>
       )
     default:
       return null
