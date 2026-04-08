@@ -65,7 +65,7 @@ const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
 
   const linkClassName = cn(
     'text-muted whitespace-nowrap capitalize no-underline hover:opacity-80 rounded-sm',
-    focusRingVariants({ inner: false })
+    focusRingVariants()
   )
 
   return active ? (

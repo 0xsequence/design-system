@@ -7,7 +7,7 @@
 
 :root,
 [data-theme='light'] {
-  --brand: #670DE5;
+  --brand: var(--color-violet-700);
 
   /* Status colors */
   --positive: var(--color-green-600);
@@ -40,7 +40,7 @@
   /* Border colors */
   --border-normal: var(--color-slate-300);
   --border-hover: var(--color-slate-400);
-  --border-focus: var(--color-violet-600);
+  --border-focus: var(--color-violet-400);
   --border-card: var(--color-slate-200);
   --border-button: var(--color-slate-300);
 
