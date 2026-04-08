@@ -33,7 +33,7 @@ function Table({ className, stickyHeader, maxHeight, ...props }: TableProps) {
         data-slot="table"
         className={cn(
           'text-xs',
-          'w-full caption-bottom border-separate border-spacing-0',
+          'w-full caption-bottom  border-spacing-0',
           className
         )}
         {...props}
@@ -63,6 +63,7 @@ function TableRow({ className, ...props }: ComponentProps<'tr'>) {
         'hover:[&>td]:bg-background-hover data-[state=selected]:[&>td]:bg-background-hover',
         'focus-within:[&>td]:bg-background-hover',
         '[&>td]:first:rounded-l-lg [&>td]:last:rounded-r-lg',
+        'border-b border-border-normal',
         className
       )}
       {...props}
@@ -75,9 +76,8 @@ function TableHead({ className, ...props }: ComponentProps<'th'>) {
     <th
       data-slot="table-head"
       className={cn(
-        'text-sm',
-        'h-13 py-2 px-4 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has(button)]:px-0',
-        'text-muted font-medium',
+        'text-base font-bold text-primary',
+        'border-b border-border-normal h-9 px-3 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has(button)]:px-0',
         className
       )}
       {...props}
@@ -90,8 +90,8 @@ function TableCell({ className, ...props }: ComponentProps<'td'>) {
     <td
       data-slot="table-cell"
       className={cn(
-        'text-sm',
-        'text-primary p-4 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0',
+        'text-sm font-medium text-primary',
+        'h-14 px-3 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0',
         className
       )}
       {...props}
@@ -117,8 +117,7 @@ function TableHeadButton({
       
       data-active={active}
       className={cn(
-        'inline-flex w-full h-full items-center gap-1 overflow-visible relative text-inherit px-4 hover:bg-background-hover',
-        'data-[active=true]:font-bold data-[active=true]:text-border-focus',
+        'inline-flex w-full h-full items-center gap-1 overflow-visible relative text-base font-bold px-3',
         className
       )}
       {...props}
@@ -142,7 +141,7 @@ function TableSortIcon({
   return (
     <div
       data-slot="table-sort-icon"
-      className={cn(className, 'text-border-focus')}
+      className={cn(className, 'text-inherit')}
       {...props}
     >
       {direction === 'asc' ? (
