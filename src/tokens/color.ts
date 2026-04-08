@@ -1,4 +1,5 @@
 export const colorNames = [
+  'brand',
   'positive',
   'negative',
   'info',
