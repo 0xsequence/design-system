@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.4
+
+### Patch Changes
+
+- Updating styling of components to match final alpha
+
 ## 4.0.0-alpha.3
 
 ### Patch Changes
