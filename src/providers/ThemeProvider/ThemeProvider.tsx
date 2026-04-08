@@ -153,7 +153,7 @@ const validThemes: Theme[] = ['light', 'dark', 'system']
 const isValidTheme = (theme: any): theme is Theme =>
   typeof theme === 'string' && validThemes.includes(theme as any)
 
-const toCSSVar = (key: string) => `--seq-color-${kebabize(key)}`
+const toCSSVar = (key: string) => `--${kebabize(key)}`
 
 const themeVarNames = colorNames.map(key => toCSSVar(key))
 

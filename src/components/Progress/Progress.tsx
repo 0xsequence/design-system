@@ -79,7 +79,10 @@ function ProgressValue({ className, ...props }: ProgressPrimitive.Value.Props) {
 }
 
 export {
-  Progress, ProgressIndicator,
-  ProgressLabel, ProgressTrack, ProgressValue
+  Progress,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressValue
 }
 

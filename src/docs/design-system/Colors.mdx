@@ -10,16 +10,16 @@ import { getCssVar } from '../../utils/css'
 Semantic colors point to color palettes and are used to give a name to a color that is used in a specific context. For example, `primary` is a semantic color that points to a color in the `brand` palette. This way, if the brand color changes, the `primary` color will change as well.
 
 <ColorPalette>
-  {colorNames.map(key => {
-    const name = `--seq-color-${kebabize(key)}`
-    const lightValue = getCssVar(name, document.getElementById('light-mode'))
-    const darkValue = getCssVar(name, document.getElementById('dark-mode'))
-
+  {colorNames.map(name => {
+    const key = kebabize(name)
+    const lightValue = getCssVar(`--${key}`, document.getElementById('light-mode'))
+    const darkValue = getCssVar(`--${key}`, document.getElementById('dark-mode'))
+    console.log('lightValue', lightValue)
     return (
       <ColorItem
-        key={key}
-        title={key}
-        subtitle={name}
+        key={name}
+        title={name}
+        subtitle={`--color-${key}`}
         colors={{ 'light': lightValue, 'dark': darkValue }}
       />
     )
