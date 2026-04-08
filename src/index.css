@@ -18,7 +18,6 @@
 
   /* Text colors */
   --primary: var(--color-slate-800);
-  --secondary: var(--color-slate-800);
   --muted: var(--color-slate-500);
   --inverse: var(--color-slate-50);
   --button-primary: var(--color-white);
@@ -97,7 +96,6 @@
 
   /* Text colors */
   --primary: white;
-  --secondary: white;
   --muted: var(--color-zinc-500);
   --inverse: black;
   --button-primary: var(--color-white);
@@ -175,7 +173,6 @@
   --color-brand: var(--brand);
 
   --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
   --color-muted: var(--muted);
   --color-inverse: var(--inverse);
 

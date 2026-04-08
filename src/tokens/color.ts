@@ -1,15 +1,17 @@
 export const colorNames = [
   'brand',
+  
   'positive',
   'negative',
   'info',
   'warning',
   'destructive',
+  
   'primary',
-  'secondary',
   'muted',
   'inverse',
   'buttonPrimary',
+  
   'backgroundPrimary',
   'backgroundSecondary',
   'backgroundMuted',
@@ -19,17 +21,18 @@ export const colorNames = [
   'backgroundInput',
   'backgroundHover',
   'backgroundActive',
+  
   'borderNormal',
   'borderHover',
   'borderFocus',
   'borderButton',
   'borderCard',
+
   'gradientBackdrop',
   'gradientPrimary',
   'gradientSecondary',
   'gradientSkeleton',
 
-  // Sidebar colors
   'sidebar',
   'sidebarForeground',
   'sidebarAccent',
