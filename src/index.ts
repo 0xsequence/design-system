@@ -24,6 +24,7 @@ export { AspectRatio } from './components/AspectRatio/AspectRatio.js'
 export { Badge } from './components/Badge/Badge.js'
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'
 export { Button, buttonVariants } from './components/Button/Button.js'
+export { Calendar, CalendarDayButton } from './components/Calendar/Calendar.js'
 export {
   Callout,
   CalloutButton,
