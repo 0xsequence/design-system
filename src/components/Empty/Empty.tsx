@@ -6,7 +6,6 @@ import { Card } from '../Card/Card.js'
 function Empty({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <Card
-      variant="muted"
       data-slot="empty"
       className={cn(
         'flex min-w-0 flex-1 flex-col items-center justify-center gap-6 p-6 text-center md:p-12',
@@ -65,7 +64,7 @@ function EmptyTitle({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="empty-title"
       className={cn(
-        'text-base font-bold',
+        'text-xl md:text-2xl font-bold',
         'text-primary',
         className
       )}
@@ -79,7 +78,7 @@ function EmptyDescription({ className, ...props }: React.ComponentProps<'p'>) {
     <div
       data-slot="empty-description"
       className={cn(
-        'text-sm',
+        'text-sm md:text-base font-medium',
         'text-muted [&>a]:underline [&>a]:underline-offset-4',
         className
       )}
