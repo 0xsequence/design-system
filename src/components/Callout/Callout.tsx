@@ -1,11 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
+import { XIcon } from 'lucide-react'
 import { type ComponentProps, type ReactNode } from 'react'
-import {
-  CheckmarkIcon,
-  CloseIcon,
-  InfoIcon,
-  WarningIcon,
-} from 'src/icons/index.js'
+import { CheckmarkIcon, InfoIcon, WarningIcon } from 'src/icons/index.js'
 import type { IconProps } from 'src/icons/types.js'
 import { cn } from 'src/utils/classnames.js'
 
@@ -143,7 +139,7 @@ function CalloutHelper({
           onClick={onClose}
           className="text-white"
         >
-          <CloseIcon />
+          <XIcon />
         </Button>
       </CalloutHeader>
       {children && <CalloutContent>{children}</CalloutContent>}

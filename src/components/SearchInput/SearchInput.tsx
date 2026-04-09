@@ -1,3 +1,4 @@
+import { XIcon } from 'lucide-react'
 import {
   useCallback,
   useEffect,
@@ -7,7 +8,8 @@ import {
   type ComponentProps,
 } from 'react'
 
-import { CloseIcon, SearchIcon } from '../../icons/index.js'
+
+import { SearchIcon } from '../../icons/index.js'
 import { isMacOS } from '../../utils/platform.js'
 import { Button } from '../Button/Button.js'
 import {
@@ -87,7 +89,7 @@ export const SearchInput = (props: SearchInputProps) => {
             onClick={handleClear}
             inert={!internalRef.current?.value.length}
           >
-            <CloseIcon />
+            <XIcon />
           </Button>
         )}
         {showKeyboardShortcut && (
