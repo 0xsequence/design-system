@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.5
+
+### Patch Changes
+
+- Updating Table, Progress, and Empty component styling
+
 ## 4.0.0-alpha.4
 
 ### Patch Changes
