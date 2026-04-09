@@ -15,19 +15,19 @@ const buttonVariants = cva(
       size: {
         xs: [
           'text-xxs font-bold',
-          'rounded-md min-w-6 h-6 px-2 gap-1 [&_svg:not([class*="size-"])]:size-4',
+          'rounded-md min-w-6 h-6 px-2 gap-1 [&_svg:not([class*="size-"])]:size-3',
         ],
         sm: [
           'text-xs font-bold',
-          'rounded-lg min-w-7.5 h-7.5 px-2 gap-1 [&_svg:not([class*="size-"])]:size-5',
+          'rounded-lg min-w-7.5 h-7.5 px-2 gap-1 [&_svg:not([class*="size-"])]:size-3',
         ],
         default: [
           'text-sm font-bold',
-          'rounded-lg min-w-8 h-8 px-3 [&_svg:not([class*="size-"])]:size-5',
+          'rounded-lg min-w-8 h-8 px-3 [&_svg:not([class*="size-"])]:size-4',
         ],
         lg: [
           'text-base font-bold',
-          'rounded-xl min-w-10 h-10 px-4 [&_svg:not([class*="size-"])]:size-5',
+          'rounded-xl min-w-10 h-10 px-4 [&_svg:not([class*="size-"])]:size-4',
         ],
       },
 
@@ -66,10 +66,7 @@ function Button({
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={cn(
-        buttonVariants({ variant, size, iconOnly }),
-        className
-      )}
+      className={cn(buttonVariants({ variant, size, iconOnly }), className)}
       {...props}
     />
   )
