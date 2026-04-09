@@ -1,7 +1,22 @@
 import { Progress as ProgressPrimitive } from '@base-ui/react/progress'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from 'src/utils/classnames.js'
 
-interface ProgressProps extends ProgressPrimitive.Root.Props {
+const progressVariants = cva('', {
+  variants: {
+    size: {
+      xs: 'h-1',
+      sm: 'h-2',
+      md: 'h-3',
+      lg: 'h-4',
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+  },
+})
+
+interface ProgressProps extends ProgressPrimitive.Root.Props, VariantProps<typeof progressVariants> {
   indicatorClassName?: string
   trackClassName?: string
 }
@@ -12,6 +27,7 @@ function Progress({
   value,
   indicatorClassName,
   trackClassName,
+  size = 'sm',
   ...props
 }: ProgressProps) {
   return (
@@ -22,7 +38,7 @@ function Progress({
       {...props}
     >
       {children}
-      <ProgressTrack className={trackClassName}>
+      <ProgressTrack className={cn(progressVariants({ size }), trackClassName)}>
         <ProgressIndicator className={indicatorClassName} />
       </ProgressTrack>
     </ProgressPrimitive.Root>
@@ -33,7 +49,7 @@ function ProgressTrack({ className, ...props }: ProgressPrimitive.Track.Props) {
   return (
     <ProgressPrimitive.Track
       className={cn(
-        "relative flex h-1 w-full items-center overflow-x-hidden rounded-full bg-background-muted border border-border-card",
+        "relative flex h-1 w-full items-center overflow-x-hidden rounded-full bg-background-muted",
         className
       )}
       data-slot="progress-track"
@@ -49,7 +65,7 @@ function ProgressIndicator({
   return (
     <ProgressPrimitive.Indicator
       data-slot="progress-indicator"
-      className={cn("h-full bg-black transition-all", className)}
+      className={cn("h-full bg-brand transition-all", className)}
       {...props}
     />
   )

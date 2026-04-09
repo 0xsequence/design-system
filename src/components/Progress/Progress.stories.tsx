@@ -124,10 +124,10 @@ export const CustomColors: Story = {
 export const CustomSizes: Story = {
   render: () => (
     <div className="flex w-full flex-col gap-6">
-      <Progress value={60} trackClassName="h-1" />
-      <Progress value={60} trackClassName="h-2" />
-      <Progress value={60} trackClassName="h-3" />
-      <Progress value={60} trackClassName="h-4" />
+      <Progress size="xs" value={60}  />
+      <Progress size="sm" value={60}  />
+      <Progress size="md" value={60}  />
+      <Progress size="lg" value={60}  />
     </div>
   ),
 }
