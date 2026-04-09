@@ -1,5 +1,11 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { CircleCheckIcon, CircleXIcon, InfoIcon, TriangleAlertIcon, type LucideProps } from 'lucide-react'
+import {
+  CircleCheckIcon,
+  CircleXIcon,
+  InfoIcon,
+  TriangleAlertIcon,
+  type LucideProps,
+} from 'lucide-react'
 import { type ComponentProps, type ReactNode } from 'react'
 import { cn } from 'src/utils/classnames.js'
 
@@ -90,7 +96,6 @@ function AlertButton({ className, ...props }: ComponentProps<typeof Button>) {
       data-slot="alert-button"
       variant="outline"
       size="sm"
-      
       className={cn(
         'row-start-3 col-start-3 mt-2 sm:mt-0 sm:row-start-1 sm:row-end-3 sm:col-start-3',
         className
@@ -105,8 +110,8 @@ function AlertIcon({
   className,
   ...props
 }: LucideProps & { variant: VariantProps<typeof alertVariants>['variant'] }) {
-  className = cn("size-4 md:size-5", className)
-  
+  className = cn('size-4 md:size-5', className)
+
   switch (variant) {
     case 'info':
       return <InfoIcon className={className} {...props} />

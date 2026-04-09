@@ -365,6 +365,5 @@ export {
   CarouselPrevButton,
   CarouselSlide,
   CarouselStatus,
-  useCarousel
+  useCarousel,
 }
-

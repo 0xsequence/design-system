@@ -111,11 +111,7 @@ function SelectLabel({
   return (
     <SelectPrimitive.GroupLabel
       data-slot="select-label"
-      className={cn(
-        'text-xs',
-        'text-muted px-2 py-1.5',
-        className
-      )}
+      className={cn('text-xs', 'text-muted px-2 py-1.5', className)}
       {...props}
     />
   )
@@ -262,6 +258,5 @@ export {
   SelectScrollUpButton,
   SelectSeparator,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 }
-

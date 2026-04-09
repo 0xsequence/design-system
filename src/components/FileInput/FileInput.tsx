@@ -1,10 +1,10 @@
 import { XIcon } from 'lucide-react'
 import {
-    useImperativeHandle,
-    useRef,
-    useState,
-    type ChangeEvent,
-    type ComponentProps,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type ComponentProps,
 } from 'react'
 
 import { focusRingVariants, inputBorderStyle } from '../../styles.js'

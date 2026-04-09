@@ -41,7 +41,9 @@ describe('<SearchInput />', () => {
     fireEvent.click(screen.getByRole('button'))
 
     expect(onChange).toHaveBeenLastCalledWith(
-      expect.objectContaining({ target: expect.objectContaining({ value: '' }) })
+      expect.objectContaining({
+        target: expect.objectContaining({ value: '' }),
+      })
     )
   })
 

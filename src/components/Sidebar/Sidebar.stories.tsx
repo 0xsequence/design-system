@@ -10,8 +10,17 @@ import {
   SettingsIcon,
 } from 'src/icons/index.js'
 
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../Collapsible/Collapsible.js'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../DropdownMenu/DropdownMenu.js'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '../Collapsible/Collapsible.js'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '../DropdownMenu/DropdownMenu.js'
 
 import {
   Sidebar,
@@ -55,12 +64,14 @@ export const Default: Story = {
             <SidebarMenu>
               <SidebarMenuItem>
                 <DropdownMenu>
-                  <DropdownMenuTrigger render={
-                    <SidebarMenuButton>
-                      Select Workspace
-                      <ChevronDownIcon className="ml-auto" />
-                    </SidebarMenuButton> 
-                  } />
+                  <DropdownMenuTrigger
+                    render={
+                      <SidebarMenuButton>
+                        Select Workspace
+                        <ChevronDownIcon className="ml-auto" />
+                      </SidebarMenuButton>
+                    }
+                  />
                   <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
                     <DropdownMenuItem>
                       <span>Acme Inc</span>
@@ -82,7 +93,7 @@ export const Default: Story = {
                   <SidebarMenuItem>
                     <SidebarMenuButton isActive>
                       <HomeIcon />
-                      Home   
+                      Home
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
@@ -105,14 +116,10 @@ export const Default: Story = {
                   </SidebarMenuButton>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuSubButton>
-                        History
-                      </SidebarMenuSubButton>
+                      <SidebarMenuSubButton>History</SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuSubButton>
-                        Tasks
-                      </SidebarMenuSubButton>
+                      <SidebarMenuSubButton>Tasks</SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 </SidebarMenuItem>
@@ -122,35 +129,32 @@ export const Default: Story = {
                     Settings
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-    
               </SidebarGroupContent>
             </SidebarGroup>
 
             <Collapsible defaultOpen className="group/collapsible">
               <SidebarGroup>
-                <SidebarGroupLabel render={<CollapsibleTrigger>
-                    Help
-                    <ChevronDownIcon className="ml-auto transition-transform group-data-open/collapsible:rotate-180" />
-                  </CollapsibleTrigger>}/>       
+                <SidebarGroupLabel
+                  render={
+                    <CollapsibleTrigger>
+                      Help
+                      <ChevronDownIcon className="ml-auto transition-transform group-data-open/collapsible:rotate-180" />
+                    </CollapsibleTrigger>
+                  }
+                />
                 <CollapsibleContent>
                   <SidebarGroupContent>
                     <SidebarMenu>
                       <SidebarMenuItem>
-                        <SidebarMenuButton>
-                          Help Item 1
-                        </SidebarMenuButton>
+                        <SidebarMenuButton>Help Item 1</SidebarMenuButton>
                       </SidebarMenuItem>
 
                       <SidebarMenuItem>
-                        <SidebarMenuButton>
-                          Help Item 2
-                        </SidebarMenuButton>
+                        <SidebarMenuButton>Help Item 2</SidebarMenuButton>
                       </SidebarMenuItem>
 
                       <SidebarMenuItem>
-                        <SidebarMenuButton>
-                          Help Item 3
-                        </SidebarMenuButton>
+                        <SidebarMenuButton>Help Item 3</SidebarMenuButton>
                       </SidebarMenuItem>
                     </SidebarMenu>
                   </SidebarGroupContent>
@@ -176,9 +180,7 @@ export const Default: Story = {
           <SidebarFooter>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  Username
-                </SidebarMenuButton>
+                <SidebarMenuButton>Username</SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarFooter>

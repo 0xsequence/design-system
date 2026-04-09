@@ -104,4 +104,9 @@ const CollapsibleHelper = (props: CollapsibleHelperProps) => {
 
 Collapsible.Helper = CollapsibleHelper
 
-export { Collapsible, CollapsibleContent, CollapsiblePrimitive, CollapsibleTrigger }
+export {
+  Collapsible,
+  CollapsibleContent,
+  CollapsiblePrimitive,
+  CollapsibleTrigger,
+}

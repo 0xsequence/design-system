@@ -128,6 +128,5 @@ export {
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-  InputGroupTextarea
+  InputGroupTextarea,
 }
-

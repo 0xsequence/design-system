@@ -8,7 +8,6 @@ import {
   type ComponentProps,
 } from 'react'
 
-
 import { SearchIcon } from '../../icons/index.js'
 import { isMacOS } from '../../utils/platform.js'
 import { Button } from '../Button/Button.js'

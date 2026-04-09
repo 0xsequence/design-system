@@ -5,7 +5,9 @@ import { type ComponentProps } from 'react'
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
 
-function Dialog<Payload>({ ...props }: ComponentProps<typeof DialogPrimitive.Root<Payload>>) {
+function Dialog<Payload>({
+  ...props
+}: ComponentProps<typeof DialogPrimitive.Root<Payload>>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
 }
 
@@ -111,11 +113,7 @@ function DialogTitle({
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      className={cn(
-        'text-xl font-bold',
-        'text-primary',
-        className
-      )}
+      className={cn('text-xl font-bold', 'text-primary', className)}
       {...props}
     />
   )
@@ -128,10 +126,7 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn(
-        'text-sm text-muted',
-        className
-      )}
+      className={cn('text-sm text-muted', className)}
       {...props}
     />
   )
@@ -148,6 +143,5 @@ export {
   DialogPortal,
   DialogPrimitive,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 }
-

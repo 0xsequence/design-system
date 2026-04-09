@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { ComponentProps, ReactNode } from 'react'
 import { useState } from 'react'
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from 'src/icons/index.js'
+import { ChevronLeftIcon, ChevronRightIcon } from 'src/icons/index.js'
 
 import {
   Select,

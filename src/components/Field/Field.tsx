@@ -228,11 +228,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn(
-        'text-xs',
-        'text-destructive',
-        className
-      )}
+      className={cn('text-xs', 'text-destructive', className)}
       {...props}
     >
       {content}
@@ -250,6 +246,5 @@ export {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-  FieldTitle
+  FieldTitle,
 }
-

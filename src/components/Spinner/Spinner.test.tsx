@@ -15,7 +15,10 @@ describe('<Spinner />', () => {
   it('has the correct viewBox', () => {
     const { container } = render(<Spinner />)
 
-    expect(container.querySelector('svg')).toHaveAttribute('viewBox', '0 0 24 24')
+    expect(container.querySelector('svg')).toHaveAttribute(
+      'viewBox',
+      '0 0 24 24'
+    )
   })
 
   it('applies the animate-spin class', () => {

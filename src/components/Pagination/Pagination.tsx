@@ -1,8 +1,8 @@
 import type { ComponentProps } from 'react'
 import {
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ContextMenuIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ContextMenuIcon,
 } from 'src/icons/index.js'
 
 import { cn } from '../../utils/classnames.js'
@@ -45,7 +45,6 @@ function PaginationLink({
     <Button
       variant={isActive ? 'outline' : 'ghost'}
       size={size}
-      
       className={cn(className)}
       nativeButton={false}
       render={
@@ -110,12 +109,11 @@ function PaginationEllipsis({ className, ...props }: ComponentProps<'span'>) {
   )
 }
 export {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 }
-

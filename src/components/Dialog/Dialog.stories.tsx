@@ -30,7 +30,9 @@ export const Default: StoryObj<typeof DialogContent> = {
     return (
       <Dialog>
         <form>
-          <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} />
+          <DialogTrigger
+            render={<Button variant="outline">Open Dialog</Button>}
+          />
           <DialogContent className="sm:max-w-[425px]" {...args}>
             <DialogHeader>
               <DialogTitle>Edit profile</DialogTitle>
@@ -65,9 +67,7 @@ export const Default: StoryObj<typeof DialogContent> = {
   args: {},
 }
 
-function ControlledDialogStory(
-  args: ComponentProps<typeof DialogContent>
-) {
+function ControlledDialogStory(args: ComponentProps<typeof DialogContent>) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -129,10 +129,7 @@ function DetachedPayloadDialogStory(
           render={<Button variant="outline">Open Beta</Button>}
         />
       </div>
-      <Dialog
-        data-slot="dialog"
-        handle={dialogHandle}
-      >
+      <Dialog data-slot="dialog" handle={dialogHandle}>
         {({ payload }) => (
           <DialogContent className="sm:max-w-[425px]" {...args}>
             <DialogHeader>

@@ -40,9 +40,7 @@ describe('<Card />', () => {
 
   it('renders as the child element when render prop is used', () => {
     render(
-      <Card render={<a href="/home" data-testid="card-link" />}>
-        Link card
-      </Card>
+      <Card render={<a href="/home" data-testid="card-link" />}>Link card</Card>
     )
 
     expect(screen.getByTestId('card-link').tagName).toBe('A')

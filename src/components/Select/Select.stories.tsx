@@ -5,12 +5,12 @@ import { Dialog, DialogContent, DialogTrigger } from '../Dialog/Dialog.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
 
 import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from './Select.js'
 
 export default {

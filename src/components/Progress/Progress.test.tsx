@@ -15,8 +15,9 @@ describe('<Progress />', () => {
   it('sets the indicator width proportional to value', () => {
     render(<Progress value={75} />)
 
-    const indicator = document
-      .querySelector('[data-slot=progress-indicator]') as HTMLElement
+    const indicator = document.querySelector(
+      '[data-slot=progress-indicator]'
+    ) as HTMLElement
 
     expect(indicator.style.width).toBe('75%')
   })
@@ -24,8 +25,9 @@ describe('<Progress />', () => {
   it('renders indicator at 0% for value 0', () => {
     render(<Progress value={0} />)
 
-    const indicator = document
-      .querySelector('[data-slot=progress-indicator]') as HTMLElement
+    const indicator = document.querySelector(
+      '[data-slot=progress-indicator]'
+    ) as HTMLElement
 
     expect(indicator.style.width).toBe('0%')
   })

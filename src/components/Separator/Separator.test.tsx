@@ -22,7 +22,9 @@ describe('<Separator />', () => {
     render(<Separator decorative={false} />)
 
     // Native div: horizontal uses h-px class, no aria-orientation
-    expect(screen.getByRole('separator')).not.toHaveAttribute('aria-orientation')
+    expect(screen.getByRole('separator')).not.toHaveAttribute(
+      'aria-orientation'
+    )
   })
 
   it('renders with vertical orientation', () => {
@@ -37,8 +39,8 @@ describe('<Separator />', () => {
   it('accepts a custom className', () => {
     render(<Separator className="my-separator" />)
 
-    expect(
-      document.querySelector('[data-slot=separator]')
-    ).toHaveClass('my-separator')
+    expect(document.querySelector('[data-slot=separator]')).toHaveClass(
+      'my-separator'
+    )
   })
 })

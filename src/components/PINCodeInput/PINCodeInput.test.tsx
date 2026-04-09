@@ -7,9 +7,7 @@ describe('<PINCodeInput />', () => {
   afterEach(cleanup)
 
   it('renders the correct number of input fields', () => {
-    render(
-      <PINCodeInput digits={6} value={[]} onChange={vi.fn()} />
-    )
+    render(<PINCodeInput digits={6} value={[]} onChange={vi.fn()} />)
 
     expect(screen.getAllByRole('textbox')).toHaveLength(6)
   })
@@ -17,11 +15,7 @@ describe('<PINCodeInput />', () => {
   it('calls onChange with updated value when a digit is entered', () => {
     const onChange = vi.fn()
     render(
-      <PINCodeInput
-        digits={4}
-        value={['', '', '', '']}
-        onChange={onChange}
-      />
+      <PINCodeInput digits={4} value={['', '', '', '']} onChange={onChange} />
     )
 
     const inputs = screen.getAllByRole('textbox')
@@ -46,11 +40,7 @@ describe('<PINCodeInput />', () => {
   it('backspace clears the current field and moves focus to previous', () => {
     const onChange = vi.fn()
     render(
-      <PINCodeInput
-        digits={4}
-        value={['1', '2', '', '']}
-        onChange={onChange}
-      />
+      <PINCodeInput digits={4} value={['1', '2', '', '']} onChange={onChange} />
     )
 
     const inputs = screen.getAllByRole('textbox')

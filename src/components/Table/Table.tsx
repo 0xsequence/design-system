@@ -114,7 +114,6 @@ function TableHeadButton({
   return (
     <Button
       variant={null}
-      
       data-active={active}
       className={cn(
         'inline-flex w-full h-full items-center gap-1 overflow-visible relative text-base font-bold px-3',
@@ -162,6 +161,5 @@ export {
   TableHeadButton,
   TableHeader,
   TableRow,
-  TableSortIcon
+  TableSortIcon,
 }
-

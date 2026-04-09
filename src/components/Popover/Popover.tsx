@@ -58,6 +58,5 @@ export {
   PopoverClose,
   PopoverContent,
   PopoverPrimitive,
-  PopoverTrigger
+  PopoverTrigger,
 }
-

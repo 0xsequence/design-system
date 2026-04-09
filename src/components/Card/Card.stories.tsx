@@ -3,7 +3,15 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SettingsIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card.js'
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './Card.js'
 
 export default {
   title: 'Components/Card',
@@ -39,14 +47,18 @@ export const WithAction: Story = {
         <CardTitle>Card Title</CardTitle>
         <CardDescription>Card Description</CardDescription>
         <CardAction>
-          <Button iconOnly size="xs"><SettingsIcon /></Button>
+          <Button iconOnly size="xs">
+            <SettingsIcon />
+          </Button>
         </CardAction>
       </CardHeader>
       <CardContent>
         <p>Card Content</p>
       </CardContent>
       <CardFooter className="flex gap-2">
-        <Button variant="ghost" size="sm">Cancel</Button>
+        <Button variant="ghost" size="sm">
+          Cancel
+        </Button>
         <Button size="sm">Confirm</Button>
       </CardFooter>
     </Card>

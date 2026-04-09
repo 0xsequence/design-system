@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useEffect, useState } from 'react'
 
-import {
-  Progress,
-  ProgressLabel,
-  ProgressValue,
-} from './Progress.js'
+import { Progress, ProgressLabel, ProgressValue } from './Progress.js'
 
 export default {
   title: 'Components/Progress',
@@ -45,12 +41,12 @@ export const AnimatedDemo: Story = {
       }
     }, [])
     return <Progress value={progress} />
-  }
+  },
 }
 
 /** Label and percentage via `ProgressLabel` and `ProgressValue`. */
 export const WithLabel: Story = {
-  render: ( args ) => (
+  render: args => (
     <Progress {...args}>
       <ProgressLabel>Upload progress</ProgressLabel>
       <ProgressValue />
@@ -70,7 +66,7 @@ export const Controlled: Story = {
     const [value, setValue] = useState(50)
     return (
       <div className="flex w-full max-w-sm flex-col gap-4">
-        <Progress value={value}/>
+        <Progress value={value} />
         <input
           aria-label="Progress"
           className="w-full accent-primary"
@@ -90,7 +86,7 @@ export const Controlled: Story = {
 
 /** RTL layout and localized label, following the docs’ RTL example pattern. */
 export const Rtl: Story = {
-  render: (args) => (
+  render: args => (
     <Progress value={args.value} dir="rtl">
       <ProgressLabel>تقدم الرفع</ProgressLabel>
       <ProgressValue>
@@ -112,10 +108,26 @@ export const Rtl: Story = {
 export const CustomColors: Story = {
   render: () => (
     <div className="flex w-full flex-col gap-6">
-      <Progress value={75} trackClassName="bg-green-50" indicatorClassName="bg-green-500" />
-      <Progress value={50} trackClassName="bg-blue-50" indicatorClassName="bg-blue-500" />
-      <Progress value={25} trackClassName="bg-red-50" indicatorClassName="bg-red-500" />
-      <Progress value={60} trackClassName="bg-purple-50" indicatorClassName="bg-gradient-to-r from-purple-500 to-pink-500" />
+      <Progress
+        value={75}
+        trackClassName="bg-green-50"
+        indicatorClassName="bg-green-500"
+      />
+      <Progress
+        value={50}
+        trackClassName="bg-blue-50"
+        indicatorClassName="bg-blue-500"
+      />
+      <Progress
+        value={25}
+        trackClassName="bg-red-50"
+        indicatorClassName="bg-red-500"
+      />
+      <Progress
+        value={60}
+        trackClassName="bg-purple-50"
+        indicatorClassName="bg-gradient-to-r from-purple-500 to-pink-500"
+      />
     </div>
   ),
 }
@@ -124,10 +136,10 @@ export const CustomColors: Story = {
 export const CustomSizes: Story = {
   render: () => (
     <div className="flex w-full flex-col gap-6">
-      <Progress size="xs" value={60}  />
-      <Progress size="sm" value={60}  />
-      <Progress size="md" value={60}  />
-      <Progress size="lg" value={60}  />
+      <Progress size="xs" value={60} />
+      <Progress size="sm" value={60} />
+      <Progress size="md" value={60} />
+      <Progress size="lg" value={60} />
     </div>
   ),
 }

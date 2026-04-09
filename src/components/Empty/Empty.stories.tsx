@@ -30,12 +30,8 @@ export const Default = {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <Button size="sm">
-            Create Project
-          </Button>
-          <Button  size="sm">
-            Import Project
-          </Button>
+          <Button size="sm">Create Project</Button>
+          <Button size="sm">Import Project</Button>
         </div>
       </EmptyContent>
       <Button

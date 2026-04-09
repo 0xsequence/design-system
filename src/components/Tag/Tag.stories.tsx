@@ -19,6 +19,11 @@ export const Default: Story = {
 
 export const WithIcon: Story = {
   args: {
-    children: <><SettingsIcon size="xxs"/>ERC1155</>,
+    children: (
+      <>
+        <SettingsIcon size="xxs" />
+        ERC1155
+      </>
+    ),
   },
 }

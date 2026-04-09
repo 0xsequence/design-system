@@ -36,7 +36,7 @@ export const Default: Story = {
 }
 
 export const Basic: Story = {
-  render: () => <Calendar mode="single"  />,
+  render: () => <Calendar mode="single" />,
 }
 
 export const Range: Story = {
@@ -60,12 +60,7 @@ export const Range: Story = {
 
 export const Caption: Story = {
   name: 'Month & Year Selector',
-  render: () => (
-    <Calendar
-      mode="single"
-      captionLayout="dropdown"
-    />
-  ),
+  render: () => <Calendar mode="single" captionLayout="dropdown" />,
 }
 
 export const Multiple: Story = {
@@ -81,10 +76,10 @@ export const Multiple: Story = {
 export const WithPresets: Story = {
   render: () => {
     const [date, setDate] = React.useState<Date | undefined>(
-      new Date(new Date().getFullYear(), 1, 12),
+      new Date(new Date().getFullYear(), 1, 12)
     )
     const [currentMonth, setCurrentMonth] = React.useState<Date>(
-      new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+      new Date(new Date().getFullYear(), new Date().getMonth(), 1)
     )
 
     return (
@@ -117,7 +112,7 @@ export const WithPresets: Story = {
                 const newDate = addDays(new Date(), preset.value)
                 setDate(newDate)
                 setCurrentMonth(
-                  new Date(newDate.getFullYear(), newDate.getMonth(), 1),
+                  new Date(newDate.getFullYear(), newDate.getMonth(), 1)
                 )
               }}
             >
@@ -133,11 +128,11 @@ export const WithPresets: Story = {
 export const BookedDates: Story = {
   render: () => {
     const [date, setDate] = React.useState<Date | undefined>(
-      new Date(new Date().getFullYear(), 0, 6),
+      new Date(new Date().getFullYear(), 0, 6)
     )
     const bookedDates = Array.from(
       { length: 15 },
-      (_, i) => new Date(new Date().getFullYear(), 0, 12 + i),
+      (_, i) => new Date(new Date().getFullYear(), 0, 12 + i)
     )
 
     return (
@@ -192,11 +187,7 @@ export const CustomDays: Story = {
                   day.date.getDay() === 0 || day.date.getDay() === 6
 
                 return (
-                  <CalendarDayButton
-                    day={day}
-                    modifiers={modifiers}
-                    {...props}
-                  >
+                  <CalendarDayButton day={day} modifiers={modifiers} {...props}>
                     {children}
                     {!modifiers.outside && (
                       <span>{isWeekend ? '$120' : '$100'}</span>
@@ -215,7 +206,7 @@ export const CustomDays: Story = {
 export const WeekNumbers: Story = {
   render: () => {
     const [date, setDate] = React.useState<Date | undefined>(
-      new Date(new Date().getFullYear(), 0, 12),
+      new Date(new Date().getFullYear(), 0, 12)
     )
 
     return (
