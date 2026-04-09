@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from 'lucide-react'
 import type { ComponentProps, ReactNode } from 'react'
 import { useState } from 'react'
-import { ChevronLeftIcon, ChevronRightIcon } from 'src/icons/index.js'
 
 import {
   Select,
@@ -379,8 +379,7 @@ function FirstLastPaginationStory() {
                 targetPage: 1,
               })}
             >
-              <ChevronLeftIcon className="size-4" />
-              <ChevronLeftIcon className="-ml-2.5 size-4" />
+              <ChevronsLeftIcon className="size-4" />
             </PaginationLink>
           </PaginationItem>
           <PaginationItem>
@@ -443,8 +442,7 @@ function FirstLastPaginationStory() {
                 targetPage: totalPages,
               })}
             >
-              <ChevronRightIcon className="size-4" />
-              <ChevronRightIcon className="-ml-2.5 size-4" />
+              <ChevronsRightIcon className="size-4" />
             </PaginationLink>
           </PaginationItem>
         </PaginationContent>

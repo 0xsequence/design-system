@@ -1,9 +1,5 @@
+import { ChevronLeftIcon, ChevronRightIcon, EllipsisIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ContextMenuIcon,
-} from 'src/icons/index.js'
 
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
@@ -45,7 +41,7 @@ function PaginationLink({
     <Button
       variant={isActive ? 'outline' : 'ghost'}
       size={size}
-      className={cn(className)}
+      className={cn('justify-center', className)}
       nativeButton={false}
       render={
         <a
@@ -103,7 +99,7 @@ function PaginationEllipsis({ className, ...props }: ComponentProps<'span'>) {
       )}
       {...props}
     >
-      <ContextMenuIcon />
+      <EllipsisIcon />
       <span className="sr-only">More pages</span>
     </span>
   )
@@ -115,5 +111,6 @@ export {
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious,
+  PaginationPrevious
 }
+

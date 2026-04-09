@@ -1,5 +1,10 @@
 'use client'
 
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from 'lucide-react'
 import { useEffect, useRef, type ComponentProps } from 'react'
 import {
   DayPicker,
@@ -9,11 +14,6 @@ import {
 } from 'react-day-picker'
 import { cn } from 'src/utils/classnames.js'
 
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from '../../icons/index.js'
 import { Button, buttonVariants } from '../Button/Button.js'
 
 function Calendar({
@@ -59,12 +59,12 @@ function Calendar({
           defaultClassNames.nav
         ),
         button_previous: cn(
-          buttonVariants({ variant: buttonVariant }),
+          buttonVariants({ variant: buttonVariant, iconOnly: true }),
           'size-(--cell-size) p-0 select-none aria-disabled:opacity-50',
           defaultClassNames.button_previous
         ),
         button_next: cn(
-          buttonVariants({ variant: buttonVariant }),
+          buttonVariants({ variant: buttonVariant, iconOnly: true }),
           'size-(--cell-size) p-0 select-none aria-disabled:opacity-50',
           defaultClassNames.button_next
         ),
