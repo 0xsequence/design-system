@@ -33,7 +33,7 @@ function Table({ className, stickyHeader, maxHeight, ...props }: TableProps) {
         data-slot="table"
         className={cn(
           'text-xs',
-          'w-full caption-bottom  border-spacing-0',
+          'w-full caption-bottom  border-spacing-0 border-separate',
           className
         )}
         {...props}
@@ -62,8 +62,7 @@ function TableRow({ className, ...props }: ComponentProps<'tr'>) {
         'group',
         'hover:[&>td]:bg-background-hover data-[state=selected]:[&>td]:bg-background-hover',
         'focus-within:[&>td]:bg-background-hover',
-        '[&>td]:first:rounded-l-lg [&>td]:last:rounded-r-lg',
-        'border-b border-border-normal',
+        'not-last:[&>td]:border-b not-last:[&>td]:border-border-normal',
         className
       )}
       {...props}
@@ -77,7 +76,8 @@ function TableHead({ className, ...props }: ComponentProps<'th'>) {
       data-slot="table-head"
       className={cn(
         'text-base font-bold text-primary',
-        'border-b border-border-normal h-9 px-3 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has(button)]:px-0',
+        'h-9 px-3 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has(button)]:px-0',
+        'border-b border-border-normal',
         className
       )}
       {...props}
@@ -91,7 +91,7 @@ function TableCell({ className, ...props }: ComponentProps<'td'>) {
       data-slot="table-cell"
       className={cn(
         'text-sm font-medium text-primary',
-        'h-14 px-3 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0',
+        'h-14 px-3 py-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0',
         className
       )}
       {...props}
