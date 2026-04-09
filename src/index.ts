@@ -26,13 +26,6 @@ export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'
 export { Button, buttonVariants } from './components/Button/Button.js'
 export { Calendar, CalendarDayButton } from './components/Calendar/Calendar.js'
 export {
-  Callout,
-  CalloutButton,
-  CalloutContent,
-  CalloutHeader,
-  CalloutIcon
-} from './components/Callout/Callout.js'
-export {
   Card,
   CardAction,
   CardContent,
