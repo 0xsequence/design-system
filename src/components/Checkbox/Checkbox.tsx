@@ -1,8 +1,8 @@
 import { Checkbox as CheckboxPrimitive } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { CheckIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
 
-import { CheckmarkIcon } from '../../icons/index.js'
 import {
   disabledStyle,
   focusRingVariants,
@@ -46,7 +46,9 @@ function Checkbox({
         data-slot="checkbox-indicator"
         className="grid place-content-center text-current transition-none"
       >
-        <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xxs'} />
+        <CheckIcon
+          className={size === 'lg' ? 'size-5' : 'size-3'}
+        />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   )
