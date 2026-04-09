@@ -23,7 +23,7 @@
   --button-primary: var(--color-white);
 
   /* Background colors */
-  --background-primary: var(--color-slate-50);
+  --background-primary: white;
   --background-secondary: white;
   --background-muted: var(--color-slate-100);
   --background-inverse: var(--color-slate-950);
