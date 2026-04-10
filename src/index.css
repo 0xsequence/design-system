@@ -225,13 +225,15 @@
   font-family: var(--font-sans);
 }
 
-.lucide {
-  stroke-width: 2;
-}
+@layer base {
+  .lucide {
+    stroke-width: 2;
+  }
 
-/* .lucide * {
-  vector-effect: non-scaling-stroke;
-} */
+  /* .lucide * {
+    vector-effect: non-scaling-stroke;
+  } */
+}
 
 @utility grid-stack {
   @apply grid grid-cols-1 grid-rows-1 *:col-start-1 *:row-start-1;

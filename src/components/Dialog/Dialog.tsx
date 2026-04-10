@@ -143,6 +143,5 @@ export {
   DialogPortal,
   DialogPrimitive,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 }
-

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import {
+  ArrowLeftRightIcon,
   ChevronDownIcon,
   HomeIcon,
   MailIcon,
@@ -197,44 +198,82 @@ export const Default: Story = {
 export const Inset: Story = {
   render: () => {
     return (
-      <div className="flex h-full w-full">
-        <Sidebar variant="inset">
-          <SidebarHeader>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <HomeIcon />
-                  Inset layout
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarHeader>
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-              <SidebarGroupContent>
+      <SidebarProvider>
+        <div className="flex h-full w-full">
+          <Sidebar side="left">
+            <SidebarHeader>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <HomeIcon />
+                    Inset layout
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarHeader>
+            <SidebarContent>
+              <SidebarGroup>
+                <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton isActive>
+                        <MailIcon />
+                        Inbox
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton>
+                        <ArrowLeftRightIcon />
+                        Transactions
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
+
+              <SidebarGroup>
+                <SidebarGroupLabel>Admin</SidebarGroupLabel>
+
                 <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton isActive>
-                      <MailIcon />
-                      Inbox
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton>
-                      <SettingsIcon />
-                      Settings
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
+                  <Collapsible defaultOpen className="group/collapsible">
+                    <SidebarMenuItem>
+                      <SidebarMenuButton
+                        className="cursor-pointer"
+                        render={<CollapsibleTrigger />}
+                      >
+                        <SettingsIcon />
+                        Settings
+                        <ChevronDownIcon className="ml-auto transition-transform group-data-open/collapsible:rotate-180" />
+                      </SidebarMenuButton>
+                      <CollapsibleContent>
+                        <SidebarMenuSub className="border-l-0">
+                          <SidebarMenuItem>
+                            <SidebarMenuButton>Profile</SidebarMenuButton>
+                          </SidebarMenuItem>
+
+                          <SidebarMenuItem>
+                            <SidebarMenuButton>Billing</SidebarMenuButton>
+                          </SidebarMenuItem>
+
+                          <SidebarMenuItem>
+                            <SidebarMenuButton>Organization</SidebarMenuButton>
+                          </SidebarMenuItem>
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    </SidebarMenuItem>
+                  </Collapsible>
                 </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
-        </Sidebar>
-        <SidebarInset className="p-4">
-          <SidebarTrigger />
-        </SidebarInset>
-      </div>
+              </SidebarGroup>
+            </SidebarContent>
+          </Sidebar>
+          <SidebarInset>
+            <div>
+              <SidebarTrigger />
+            </div>
+          </SidebarInset>
+        </div>
+      </SidebarProvider>
     )
   },
 }
