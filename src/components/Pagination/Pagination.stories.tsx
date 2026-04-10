@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from 'lucide-react'
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronsLeftIcon,
+  ChevronsRightIcon,
+} from 'lucide-react'
 import type { ComponentProps, ReactNode } from 'react'
 import { useState } from 'react'
 

@@ -108,6 +108,5 @@ export {
   Collapsible,
   CollapsibleContent,
   CollapsiblePrimitive,
-  CollapsibleTrigger
+  CollapsibleTrigger,
 }
-

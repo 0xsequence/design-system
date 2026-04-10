@@ -8,10 +8,10 @@ import {
   CircleXIcon,
   TriangleAlertIcon,
   XIcon,
+  type LucideProps,
 } from 'lucide-react'
 import { type ComponentType } from 'react'
 
-import { type IconProps } from '../../icons/types.js'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 
@@ -19,7 +19,7 @@ type ToastVariant = 'normal' | 'success' | 'warning' | 'error'
 
 type ToastData = {
   isDismissible?: boolean
-  icon?: ComponentType<IconProps>
+  icon?: ComponentType<LucideProps>
 }
 
 export type ToastProps = ToastManagerAddOptions<ToastData>
@@ -112,7 +112,11 @@ function Toast({
       <ToastPrimitive.Content className="overflow-hidden transition-opacity duration-250 data-behind:opacity-0 data-expanded:opacity-100">
         <div className="w-full flex justify-between">
           <div className="flex gap-3 items-center">
-            {Icon ? <Icon /> : <ToastIcon variant={variant} />}
+            {Icon ? (
+              <Icon className="size-5" />
+            ) : (
+              <ToastIcon variant={variant} />
+            )}
 
             <div className="flex flex-col gap-1">
               <ToastPrimitive.Title className="text-base font-bold text-primary" />

@@ -1,4 +1,4 @@
-import { ExternalLinkIcon, FolderIcon } from 'src/icons/index.js'
+import { ExternalLinkIcon, FolderIcon } from 'lucide-react'
 
 import { Button } from '../Button/Button.js'
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import InfoIcon from 'src/icons/InfoIcon.js'
+import { InfoIcon } from 'lucide-react'
 
 import { Badge } from './Badge.js'
 

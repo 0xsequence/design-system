@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
-
-import SearchIcon from '../../icons/SearchIcon.js'
 
 import {
   InputGroup,

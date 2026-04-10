@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import {
-  AddIcon,
   ChevronDownIcon,
-  EmailIcon,
   HomeIcon,
-  KitIcon,
-  ProfileIcon,
+  MailIcon,
+  PlusIcon,
   SearchIcon,
   SettingsIcon,
-} from 'src/icons/index.js'
+  ToolboxIcon,
+  UserRoundIcon,
+} from 'lucide-react'
 
 import {
   Collapsible,
@@ -86,7 +86,7 @@ export const Default: Story = {
             <SidebarGroup>
               <SidebarGroupLabel>Application</SidebarGroupLabel>
               <SidebarGroupAction>
-                <AddIcon /> <span className="sr-only">Add Project</span>
+                <PlusIcon /> <span className="sr-only">Add Project</span>
               </SidebarGroupAction>
               <SidebarGroupContent>
                 <SidebarMenu>
@@ -98,7 +98,7 @@ export const Default: Story = {
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton>
-                      <EmailIcon />
+                      <MailIcon />
                       Inbox
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -111,7 +111,7 @@ export const Default: Story = {
                 </SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <KitIcon />
+                    <ToolboxIcon />
                     Playground
                   </SidebarMenuButton>
                   <SidebarMenuSub>
@@ -168,7 +168,7 @@ export const Default: Story = {
                 <SidebarMenu>
                   <SidebarMenuItem>
                     <SidebarMenuButton>
-                      <ProfileIcon />
+                      <UserRoundIcon />
                       Profile
                     </SidebarMenuButton>
                   </SidebarMenuItem>

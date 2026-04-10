@@ -3,6 +3,7 @@
 import { mergeProps } from '@base-ui/react/merge-props'
 import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { PanelLeftIcon } from 'lucide-react'
 import {
   createContext,
   useCallback,
@@ -13,7 +14,6 @@ import {
   type ComponentProps,
   type CSSProperties,
 } from 'react'
-import SidebarIcon from 'src/icons/SidebarIcon.js'
 
 import { useIsMobile } from '../../hooks/useIsMobile.js'
 import { cn } from '../../utils/classnames.js'
@@ -258,7 +258,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <SidebarIcon />
+      <PanelLeftIcon />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )

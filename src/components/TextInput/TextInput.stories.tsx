@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { XIcon } from 'lucide-react'
+import { ArrowRightIcon, ScanIcon, SearchIcon, XIcon } from 'lucide-react'
 
-import { ArrowRightIcon, ScanIcon, SearchIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 
 import { TextInput } from './TextInput.js'

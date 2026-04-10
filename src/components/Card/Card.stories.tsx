@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { SettingsIcon } from 'lucide-react'
 
-import { SettingsIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 
 import {
