@@ -1,4 +1,4 @@
-import { Checkbox as CheckboxPrimitive } from '@base-ui/react'
+import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { CheckIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'

@@ -1,4 +1,4 @@
-import { Dialog as SheetPrimitive } from '@base-ui/react'
+import { Dialog as SheetPrimitive } from '@base-ui/react/dialog'
 import { XIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
 
@@ -120,5 +120,6 @@ export {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 }
+

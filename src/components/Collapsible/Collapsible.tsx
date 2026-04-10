@@ -1,4 +1,4 @@
-import { Collapsible as CollapsiblePrimitive } from '@base-ui/react'
+import { Collapsible as CollapsiblePrimitive } from '@base-ui/react/collapsible'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { ChevronDownIcon } from 'lucide-react'
@@ -108,5 +108,6 @@ export {
   Collapsible,
   CollapsibleContent,
   CollapsiblePrimitive,
-  CollapsibleTrigger,
+  CollapsibleTrigger
 }
+

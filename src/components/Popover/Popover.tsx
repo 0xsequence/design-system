@@ -1,4 +1,4 @@
-import { Popover as PopoverPrimitive } from '@base-ui/react'
+import { Popover as PopoverPrimitive } from '@base-ui/react/popover'
 import type { ComponentProps } from 'react'
 
 import { cn } from '../../utils/classnames.js'
@@ -58,5 +58,6 @@ export {
   PopoverClose,
   PopoverContent,
   PopoverPrimitive,
-  PopoverTrigger,
+  PopoverTrigger
 }
+

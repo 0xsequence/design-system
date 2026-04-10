@@ -1,4 +1,4 @@
-import { Menu as DropdownMenuPrimitive } from '@base-ui/react'
+import { Menu as DropdownMenuPrimitive } from '@base-ui/react/menu'
 import { CheckIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
 
@@ -215,5 +215,6 @@ export {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 }
+

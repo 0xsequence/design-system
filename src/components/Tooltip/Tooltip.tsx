@@ -1,4 +1,4 @@
-import { Tooltip as TooltipPrimitive } from '@base-ui/react'
+import { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip'
 import {
   isValidElement,
   type PropsWithChildren,
@@ -129,5 +129,6 @@ export {
   TooltipContent,
   TooltipPrimitive,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 }
+

@@ -1,4 +1,4 @@
-import { Tabs as TabsPrimitive } from '@base-ui/react'
+import { Tabs as TabsPrimitive } from '@base-ui/react/tabs'
 import { type ComponentProps, type ReactNode } from 'react'
 
 import { disabledStyle, focusRingVariants } from '../../styles.js'
