@@ -31,6 +31,8 @@ interface PINCodeInputProps {
   onConfirm?: () => void
   disabled?: boolean
   value: string[]
+  className?: string
+  inputClassName?: string
 }
 
 export const PINCodeInput = (props: PINCodeInputProps) => {
@@ -41,6 +43,8 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
     onChange,
     onConfirm,
     disabled = false,
+    className,
+    inputClassName,
   } = props
 
   const inputRefs = useMemo(() => {
@@ -134,12 +138,12 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
   }
 
   return (
-    <div className="flex gap-2">
+    <div className={cn('flex gap-2', className)}>
       {range(0, digits).map(idx => (
         <Fragment key={idx}>
           {!!group && idx > 0 && idx % group === 0 && <span />}
           <input
-            className={cn(digitInputVariants())}
+            className={cn(digitInputVariants(), inputClassName)}
             value={value[idx] || ''}
             ref={inputRefs[idx]}
             type="text"
