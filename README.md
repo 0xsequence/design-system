@@ -138,6 +138,8 @@ V4 is a larger departure than previous releases and includes many breaking chang
 
 12. Tooltip now exports its primitives, use Tooltip.Helper for old behavior.
 
+13. Icons have been migrated to lucide. `lucide-react` is now a peer dependency of the project.
+
 
 ## Migrating from v2 to v3
 
