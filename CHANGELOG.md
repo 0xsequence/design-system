@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.6
+
+### Patch Changes
+
+- Migrating to lucide icons
+
 ## 4.0.0-alpha.5
 
 ### Patch Changes
