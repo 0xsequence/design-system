@@ -62,9 +62,10 @@ describe('<Sheet />', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Open sheet' }))
 
-    expect(
-      document.querySelector('[data-slot=sheet-content]')
-    ).toHaveAttribute('data-side', 'right')
+    expect(document.querySelector('[data-slot=sheet-content]')).toHaveAttribute(
+      'data-side',
+      'right'
+    )
   })
 
   it('applies left-side when side="left"', () => {
@@ -72,8 +73,9 @@ describe('<Sheet />', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Open sheet' }))
 
-    expect(
-      document.querySelector('[data-slot=sheet-content]')
-    ).toHaveAttribute('data-side', 'left')
+    expect(document.querySelector('[data-slot=sheet-content]')).toHaveAttribute(
+      'data-side',
+      'left'
+    )
   })
 })

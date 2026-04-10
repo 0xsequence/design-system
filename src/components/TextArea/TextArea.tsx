@@ -1,9 +1,9 @@
 import type { ComponentProps } from 'react'
 
 import {
-    disabledStyle,
-    focusRingVariants,
-    inputBorderStyle,
+  disabledStyle,
+  focusRingVariants,
+  inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 

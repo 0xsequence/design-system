@@ -1,10 +1,10 @@
 import { Collapsible as CollapsiblePrimitive } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
+import { ChevronDownIcon } from 'lucide-react'
 import { useState, type ComponentProps, type ReactNode } from 'react'
 import { cn } from 'src/utils/classnames.js'
 
-import { ChevronDownIcon } from '../../icons/index.js'
 import { focusRingVariants } from '../../styles.js'
 
 function Collapsible({ ...props }: CollapsiblePrimitive.Root.Props) {
@@ -93,7 +93,7 @@ const CollapsibleHelper = (props: CollapsibleHelperProps) => {
         )}
       >
         {label}
-        <ChevronDownIcon className="h-5 w-5 block text-muted absolute right-0 mr-4 group-data-panel-open:rotate-180 transition-transform duration-150" />
+        <ChevronDownIcon className="size-5 block text-muted absolute right-0 mr-4 group-data-panel-open:rotate-180 transition-transform duration-150" />
       </CollapsibleTrigger>
       <CollapsibleContent className="flex flex-col justify-end overflow-hidden w-full transition-[height, opacity] duration-150 ease-out h-(--collapsible-panel-height) data-starting-style:h-0 data-ending-style:h-0 opacity-100 data-starting-style:opacity-0 data-ending-style:opacity-0">
         <div className="pt-0 px-4 pb-4">{children}</div>
@@ -104,4 +104,9 @@ const CollapsibleHelper = (props: CollapsibleHelperProps) => {
 
 Collapsible.Helper = CollapsibleHelper
 
-export { Collapsible, CollapsibleContent, CollapsiblePrimitive, CollapsibleTrigger }
+export {
+  Collapsible,
+  CollapsibleContent,
+  CollapsiblePrimitive,
+  CollapsibleTrigger,
+}

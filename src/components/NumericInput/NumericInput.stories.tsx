@@ -1,6 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import { WalletIcon } from 'lucide-react'
 import { useState } from 'react'
-import { WalletIcon } from 'src/icons/index.js'
 
 import { NumericInput } from './NumericInput.js'
 

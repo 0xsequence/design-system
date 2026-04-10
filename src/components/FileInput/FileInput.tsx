@@ -1,12 +1,12 @@
+import { XIcon } from 'lucide-react'
 import {
-    useImperativeHandle,
-    useRef,
-    useState,
-    type ChangeEvent,
-    type ComponentProps,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type ComponentProps,
 } from 'react'
 
-import { CloseIcon } from '../../icons/index.js'
 import { focusRingVariants, inputBorderStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
@@ -137,7 +137,7 @@ export const FileInput = (props: FileInputProps) => {
             setFileData(null)
           }}
         >
-          <CloseIcon />
+          <XIcon />
         </Button>
       )}
     </div>

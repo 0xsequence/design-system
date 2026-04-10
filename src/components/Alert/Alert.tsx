@@ -1,7 +1,12 @@
 import { cva, type VariantProps } from 'class-variance-authority'
+import {
+  CircleCheckIcon,
+  CircleXIcon,
+  InfoIcon,
+  TriangleAlertIcon,
+  type LucideProps,
+} from 'lucide-react'
 import { type ComponentProps, type ReactNode } from 'react'
-import { CheckmarkIcon, InfoIcon, WarningIcon } from 'src/icons/index.js'
-import type { IconProps } from 'src/icons/types.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
@@ -9,7 +14,7 @@ import { Button } from '../Button/Button.js'
 const alertVariants = cva(
   [
     'text-sm text-(--alert-accent) relative w-full rounded-3xl border border-(--alert-border) bg-(--alert-background) p-4 md:p-6 grid gap-y-2 items-center grid-cols-[auto_1fr_auto]',
-    '[&>svg]:mr-4 [&>svg]:text-(--alert-accent) [&>svg]:self-start [&_[data-slot=alert-button]]:text-(--alert-accent)',
+    '[&>svg]:mr-3 [&>svg]:text-(--alert-accent) [&>svg]:self-center [&_[data-slot=alert-button]]:text-(--alert-accent)',
   ],
   {
     variants: {
@@ -62,7 +67,7 @@ function AlertTitle({ className, ...props }: ComponentProps<'div'>) {
     <div
       data-slot="alert-title"
       className={cn(
-        'text-xl font-bold text-primary',
+        'text-lg md:text-2xl font-bold text-primary',
         'text-black dark:text-white col-start-2 col-end-4 min-h-4 sm:col-end-3',
         className
       )}
@@ -76,7 +81,7 @@ function AlertDescription({ className, ...props }: ComponentProps<'div'>) {
     <div
       data-slot="alert-description"
       className={cn(
-        'text-sm',
+        'text-xs md:text-sm font-medium',
         'text-(--alert-accent) col-start-2 col-end-4 grid justify-items-start gap-1 sm:col-end-3',
         className
       )}
@@ -91,7 +96,6 @@ function AlertButton({ className, ...props }: ComponentProps<typeof Button>) {
       data-slot="alert-button"
       variant="outline"
       size="sm"
-      
       className={cn(
         'row-start-3 col-start-3 mt-2 sm:mt-0 sm:row-start-1 sm:row-end-3 sm:col-start-3',
         className
@@ -103,17 +107,20 @@ function AlertButton({ className, ...props }: ComponentProps<typeof Button>) {
 
 function AlertIcon({
   variant,
-  size = 'sm',
+  className,
   ...props
-}: IconProps & { variant: VariantProps<typeof alertVariants>['variant'] }) {
+}: LucideProps & { variant: VariantProps<typeof alertVariants>['variant'] }) {
+  className = cn('size-4 md:size-5', className)
+
   switch (variant) {
     case 'info':
-      return <InfoIcon size={size} {...props} />
+      return <InfoIcon className={className} {...props} />
     case 'success':
-      return <CheckmarkIcon size={size} {...props} />
+      return <CircleCheckIcon className={className} {...props} />
     case 'warning':
+      return <TriangleAlertIcon className={className} {...props} />
     case 'error':
-      return <WarningIcon size={size} {...props} />
+      return <CircleXIcon className={className} {...props} />
     default:
       return null
   }

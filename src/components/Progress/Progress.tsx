@@ -16,7 +16,8 @@ const progressVariants = cva('', {
   },
 })
 
-interface ProgressProps extends ProgressPrimitive.Root.Props, VariantProps<typeof progressVariants> {
+interface ProgressProps
+  extends ProgressPrimitive.Root.Props, VariantProps<typeof progressVariants> {
   indicatorClassName?: string
   trackClassName?: string
 }
@@ -34,7 +35,7 @@ function Progress({
     <ProgressPrimitive.Root
       value={value}
       data-slot="progress"
-      className={cn("flex flex-wrap gap-3", className)}
+      className={cn('flex flex-wrap gap-3', className)}
       {...props}
     >
       {children}
@@ -49,7 +50,7 @@ function ProgressTrack({ className, ...props }: ProgressPrimitive.Track.Props) {
   return (
     <ProgressPrimitive.Track
       className={cn(
-        "relative flex h-1 w-full items-center overflow-x-hidden rounded-full bg-background-muted",
+        'relative flex h-1 w-full items-center overflow-x-hidden rounded-full bg-background-muted',
         className
       )}
       data-slot="progress-track"
@@ -65,7 +66,7 @@ function ProgressIndicator({
   return (
     <ProgressPrimitive.Indicator
       data-slot="progress-indicator"
-      className={cn("h-full bg-brand transition-all", className)}
+      className={cn('h-full bg-brand transition-all', className)}
       {...props}
     />
   )
@@ -74,7 +75,7 @@ function ProgressIndicator({
 function ProgressLabel({ className, ...props }: ProgressPrimitive.Label.Props) {
   return (
     <ProgressPrimitive.Label
-      className={cn("text-sm text-primary font-medium", className)}
+      className={cn('text-sm text-primary font-medium', className)}
       data-slot="progress-label"
       {...props}
     />
@@ -84,10 +85,7 @@ function ProgressLabel({ className, ...props }: ProgressPrimitive.Label.Props) {
 function ProgressValue({ className, ...props }: ProgressPrimitive.Value.Props) {
   return (
     <ProgressPrimitive.Value
-      className={cn(
-        "ml-auto text-sm text-muted tabular-nums",
-        className
-      )}
+      className={cn('ml-auto text-sm text-muted tabular-nums', className)}
       data-slot="progress-value"
       {...props}
     />
@@ -99,6 +97,5 @@ export {
   ProgressIndicator,
   ProgressLabel,
   ProgressTrack,
-  ProgressValue
+  ProgressValue,
 }
-

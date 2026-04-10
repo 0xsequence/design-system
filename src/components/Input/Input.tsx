@@ -6,7 +6,6 @@ import {
 } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
-
 function Input({
   className,
   type,

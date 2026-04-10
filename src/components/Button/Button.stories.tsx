@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { ArrowRightIcon, ScanIcon, WalletIcon } from 'lucide-react'
 
-import { ArrowRightIcon, ScanIcon, WalletIcon } from '../../icons/index.js'
 import { Spinner } from '../Spinner/Spinner.js'
 
 import { Button } from './Button.js'

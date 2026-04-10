@@ -166,9 +166,5 @@ const SetThemeButton = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
-  return (
-    <Button onClick={toggleTheme}>
-      Set {themeLabel} Mode
-    </Button>
-  )
+  return <Button onClick={toggleTheme}>Set {themeLabel} Mode</Button>
 }

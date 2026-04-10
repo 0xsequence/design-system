@@ -1,6 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import { ArrowLeftRightIcon } from 'lucide-react'
 
-import { TransactionIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 
@@ -54,7 +54,7 @@ export const WithIcon: Story = {
     title: 'Transaction Sent',
     description: 'Waiting for confirmation',
     data: {
-      icon: TransactionIcon,
+      icon: ArrowLeftRightIcon,
     },
   },
 }

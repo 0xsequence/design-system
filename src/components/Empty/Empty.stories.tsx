@@ -1,4 +1,4 @@
-import { ExternalLinkIcon, FolderIcon } from 'src/icons/index.js'
+import { ExternalLinkIcon, FolderIcon } from 'lucide-react'
 
 import { Button } from '../Button/Button.js'
 
@@ -30,12 +30,8 @@ export const Default = {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <Button size="sm">
-            Create Project
-          </Button>
-          <Button  size="sm">
-            Import Project
-          </Button>
+          <Button size="sm">Create Project</Button>
+          <Button size="sm">Import Project</Button>
         </div>
       </EmptyContent>
       <Button

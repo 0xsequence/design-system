@@ -1,7 +1,7 @@
 'use client'
 
+import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
-import { ArrowDownIcon, ArrowUpIcon } from 'src/icons/index.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
@@ -114,7 +114,6 @@ function TableHeadButton({
   return (
     <Button
       variant={null}
-      
       data-active={active}
       className={cn(
         'inline-flex w-full h-full items-center gap-1 overflow-visible relative text-base font-bold px-3',
@@ -145,9 +144,9 @@ function TableSortIcon({
       {...props}
     >
       {direction === 'asc' ? (
-        <ArrowUpIcon size="xs" />
+        <ArrowUpIcon className="size-4" />
       ) : (
-        <ArrowDownIcon size="xs" />
+        <ArrowDownIcon className="size-4" />
       )}
     </div>
   )
@@ -162,6 +161,5 @@ export {
   TableHeadButton,
   TableHeader,
   TableRow,
-  TableSortIcon
+  TableSortIcon,
 }
-

@@ -1,10 +1,21 @@
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cloneElement, isValidElement, type ComponentProps, type ReactElement, type ReactNode } from 'react';
+import { cva, type VariantProps } from 'class-variance-authority'
+import {
+  cloneElement,
+  isValidElement,
+  type ComponentProps,
+  type ReactElement,
+  type ReactNode,
+} from 'react'
 
-type AnyProps = { className?: string; children?: ReactNode; ref?: unknown; [key: string]: unknown }
+type AnyProps = {
+  className?: string
+  children?: ReactNode
+  ref?: unknown
+  [key: string]: unknown
+}
 
-import { focusRingVariants } from '../../styles.js';
-import { cn } from '../../utils/classnames.js';
+import { focusRingVariants } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 export const cardVariants = cva(
   ['overflow-hidden', 'rounded-3xl', 'p-6', 'w-full'],
@@ -29,8 +40,7 @@ export const cardVariants = cva(
 )
 
 interface CardProps
-  extends ComponentProps<'div'>,
-    VariantProps<typeof cardVariants> {
+  extends ComponentProps<'div'>, VariantProps<typeof cardVariants> {
   render?: ReactElement
 }
 
@@ -70,7 +80,11 @@ export const Card = (props: CardProps) => {
   )
 }
 
-export const CardHeader = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+export const CardHeader = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
   <div
     ref={ref}
     data-slot="card-header"
@@ -79,7 +93,11 @@ export const CardHeader = ({ ref, className, ...props }: ComponentProps<'div'>) 
   />
 )
 
-export const CardTitle = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+export const CardTitle = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
   <div
     ref={ref}
     data-slot="card-title"
@@ -88,7 +106,11 @@ export const CardTitle = ({ ref, className, ...props }: ComponentProps<'div'>) =
   />
 )
 
-export const CardDescription = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+export const CardDescription = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
   <div
     ref={ref}
     data-slot="card-description"
@@ -97,7 +119,11 @@ export const CardDescription = ({ ref, className, ...props }: ComponentProps<'di
   />
 )
 
-export const CardAction = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+export const CardAction = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
   <div
     ref={ref}
     data-slot="card-action"
@@ -106,7 +132,11 @@ export const CardAction = ({ ref, className, ...props }: ComponentProps<'div'>) 
   />
 )
 
-export const CardContent = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+export const CardContent = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
   <div
     ref={ref}
     data-slot="card-content"
@@ -115,11 +145,18 @@ export const CardContent = ({ ref, className, ...props }: ComponentProps<'div'>)
   />
 )
 
-export const CardFooter = ({ ref, className, ...props }: ComponentProps<'div'>) => (
+export const CardFooter = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
   <div
     ref={ref}
     data-slot="card-footer"
-    className={cn('flex items-center pt-3 border-t border-border-card', className)}
+    className={cn(
+      'flex items-center pt-3 border-t border-border-card',
+      className
+    )}
     {...props}
   />
 )

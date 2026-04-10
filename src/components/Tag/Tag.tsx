@@ -21,7 +21,8 @@ const tagVariants = cva(
   }
 )
 
-interface TagProps extends ComponentProps<'div'>, VariantProps<typeof tagVariants> {
+interface TagProps
+  extends ComponentProps<'div'>, VariantProps<typeof tagVariants> {
   className?: string
 }
 

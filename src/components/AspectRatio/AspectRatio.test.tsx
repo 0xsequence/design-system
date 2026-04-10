@@ -17,7 +17,11 @@ describe('<AspectRatio />', () => {
   })
 
   it('has the correct data-slot attribute', () => {
-    render(<AspectRatio ratio={1}><div /></AspectRatio>)
+    render(
+      <AspectRatio ratio={1}>
+        <div />
+      </AspectRatio>
+    )
 
     expect(
       document.querySelector('[data-slot=aspect-ratio]')
@@ -31,9 +35,9 @@ describe('<AspectRatio />', () => {
       </AspectRatio>
     )
 
-    expect(
-      document.querySelector('[data-slot=aspect-ratio]')
-    ).toHaveClass('my-ratio')
+    expect(document.querySelector('[data-slot=aspect-ratio]')).toHaveClass(
+      'my-ratio'
+    )
   })
 
   it('renders with text content children', () => {

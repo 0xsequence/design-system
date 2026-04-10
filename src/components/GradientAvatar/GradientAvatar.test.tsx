@@ -26,7 +26,9 @@ describe('<GradientAvatar />', () => {
 
     const defs = container.querySelector('defs')
     expect(defs).toBeInTheDocument()
-    expect(defs!.querySelectorAll('linearGradient,radialGradient').length).toBeGreaterThan(0)
+    expect(
+      defs!.querySelectorAll('linearGradient,radialGradient').length
+    ).toBeGreaterThan(0)
   })
 
   it('produces deterministic output for the same address', () => {
@@ -56,12 +58,8 @@ describe('<GradientAvatar />', () => {
   })
 
   it('is case-insensitive for address input', () => {
-    const { container: lower } = render(
-      <GradientAvatar address="0xabcdef" />
-    )
-    const { container: upper } = render(
-      <GradientAvatar address="0xABCDEF" />
-    )
+    const { container: lower } = render(<GradientAvatar address="0xabcdef" />)
+    const { container: upper } = render(<GradientAvatar address="0xABCDEF" />)
 
     const stopColors = (c: Element) =>
       Array.from(c.querySelectorAll('stop')).map(s =>

@@ -1,6 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import { ArrowRightIcon } from 'lucide-react'
 
-import { ArrowRightIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 
 import { StopClickPropagation } from './StopClickPropagation.js'

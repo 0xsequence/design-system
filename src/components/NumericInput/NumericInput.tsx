@@ -1,3 +1,4 @@
+import type { LucideProps } from 'lucide-react'
 import {
   useEffect,
   type ChangeEvent,
@@ -6,7 +7,6 @@ import {
   type FocusEvent,
   type ReactNode,
 } from 'react'
-import type { IconProps } from 'src/icons/types.js'
 
 import {
   InputGroup,
@@ -22,8 +22,8 @@ function escapeRegExp(string: string): string {
 
 interface NumericInputProps extends ComponentProps<'input'> {
   decimals?: number
-  leftIcon?: ComponentType<IconProps>
-  rightIcon?: ComponentType<IconProps>
+  leftIcon?: ComponentType<LucideProps>
+  rightIcon?: ComponentType<LucideProps>
   controls?: ReactNode
 }
 
@@ -149,12 +149,12 @@ export const NumericInput = (props: NumericInputProps) => {
 
       {LeftIcon && (
         <InputGroupAddon align="inline-start">
-          <LeftIcon size="sm" />
+          <LeftIcon className="size-4" />
         </InputGroupAddon>
       )}
       {RightIcon && (
         <InputGroupAddon align="inline-end">
-          <RightIcon size="sm" />
+          <RightIcon className="size-4" />
         </InputGroupAddon>
       )}
       {controls && (

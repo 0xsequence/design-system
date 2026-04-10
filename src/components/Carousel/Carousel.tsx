@@ -1,3 +1,4 @@
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import {
   Children,
   cloneElement,
@@ -13,8 +14,6 @@ import {
 } from 'react'
 
 import { useTransitionState } from '../../hooks/useTransitionState.js'
-import ArrowLeftIcon from '../../icons/ArrowLeftIcon.js'
-import ArrowRightIcon from '../../icons/ArrowRightIcon.js'
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
 
@@ -365,6 +364,5 @@ export {
   CarouselPrevButton,
   CarouselSlide,
   CarouselStatus,
-  useCarousel
+  useCarousel,
 }
-

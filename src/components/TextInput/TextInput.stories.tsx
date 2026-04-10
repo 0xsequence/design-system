@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { ArrowRightIcon, ScanIcon, SearchIcon, XIcon } from 'lucide-react'
 
-import {
-  ArrowRightIcon,
-  CloseIcon,
-  ScanIcon,
-  SearchIcon,
-} from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 
 import { TextInput } from './TextInput.js'
@@ -48,7 +43,7 @@ export const SearchInput: Story = {
     leftIcon: SearchIcon,
     controls: (
       <Button size="xs" iconOnly>
-        <CloseIcon />
+        <XIcon />
       </Button>
     ),
   },
@@ -65,12 +60,10 @@ export const WithComplexControls: Story = {
     placeholder: 'This is the placeholder',
     controls: (
       <div className="flex gap-2">
-        <Button size="xs"  disabled>
+        <Button size="xs" disabled>
           Max
         </Button>
-        <Button size="xs" >
-          Paste
-        </Button>
+        <Button size="xs">Paste</Button>
       </div>
     ),
   },

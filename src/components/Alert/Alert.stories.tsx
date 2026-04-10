@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-
-import { RefreshIcon, SettingsIcon } from '../../icons/index.js'
+import { RefreshCwIcon, SettingsIcon } from 'lucide-react'
 
 import {
   Alert,
@@ -167,7 +166,7 @@ export const BottomButtons: StoryObj<{
           Configure
         </AlertButton>
         <AlertButton>
-          <RefreshIcon />
+          <RefreshCwIcon />
           Reset
         </AlertButton>
       </div>

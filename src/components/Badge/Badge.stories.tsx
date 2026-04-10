@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import InfoIcon from 'src/icons/InfoIcon.js'
+import { InfoIcon } from 'lucide-react'
 
 import { Badge } from './Badge.js'
 
@@ -26,15 +26,36 @@ export const MultiCharacter: Story = {
 }
 
 export const AllVariants: Story = {
-  render: (args) => (
+  render: args => (
     <div className="flex gap-4">
-      <Badge variant="default" {...args}><InfoIcon/>Default</Badge>
-      <Badge variant="neutral" {...args}><InfoIcon/>Neutral</Badge>
-      <Badge variant="outline" {...args}><InfoIcon/>Outline</Badge>
-      <Badge variant="info" {...args}><InfoIcon/>Info</Badge>
-      <Badge variant="warning" {...args}><InfoIcon/>Warning</Badge>
-      <Badge variant="success" {...args}><InfoIcon/>Success</Badge>
-      <Badge variant="error" {...args}><InfoIcon/>Error</Badge>
+      <Badge variant="default" {...args}>
+        <InfoIcon />
+        Default
+      </Badge>
+      <Badge variant="neutral" {...args}>
+        <InfoIcon />
+        Neutral
+      </Badge>
+      <Badge variant="outline" {...args}>
+        <InfoIcon />
+        Outline
+      </Badge>
+      <Badge variant="info" {...args}>
+        <InfoIcon />
+        Info
+      </Badge>
+      <Badge variant="warning" {...args}>
+        <InfoIcon />
+        Warning
+      </Badge>
+      <Badge variant="success" {...args}>
+        <InfoIcon />
+        Success
+      </Badge>
+      <Badge variant="error" {...args}>
+        <InfoIcon />
+        Error
+      </Badge>
     </div>
   ),
   args: {

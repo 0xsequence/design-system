@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { EllipsisIcon } from 'lucide-react'
 import { useState } from 'react'
 
-import { ContextMenuIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 
 import {
@@ -36,7 +36,7 @@ export const Default: Story = {
           <DropdownMenuTrigger
             render={
               <Button iconOnly>
-                <ContextMenuIcon />
+                <EllipsisIcon />
               </Button>
             }
           />
