@@ -45,23 +45,6 @@
   --border-button: var(--color-slate-300);
 
   /* Gradients */
-  --gradient-backdrop: linear-gradient(
-    243.18deg,
-    rgba(86, 52, 189, 0.85) 0%,
-    rgba(49, 41, 223, 0.85) 63.54%,
-    rgba(7, 98, 149, 0.85) 100%
-  );
-  --gradient-primary: linear-gradient(
-    89.69deg,
-    #4411e1 0.27%,
-    #7537f9 99.73%
-  );
-  --gradient-secondary: linear-gradient(
-    32.51deg,
-    #951990 -15.23%,
-    #3a35b1 48.55%,
-    #20a8b0 100%
-  );
   --gradient-skeleton: linear-gradient(
     -45deg,
     transparent,
@@ -116,23 +99,6 @@
   --border-button: var(--color-zinc-700);
 
   /* Gradients */
-  --gradient-backdrop: linear-gradient(
-    243.18deg,
-    rgba(86, 52, 189, 0.85) 0%,
-    rgba(49, 41, 223, 0.85) 63.54%,
-    rgba(7, 98, 149, 0.85) 100%
-  );
-  --gradient-primary: linear-gradient(
-    89.69deg,
-    #4411e1 0.27%,
-    #7537f9 99.73%
-  );
-  --gradient-secondary: linear-gradient(
-    32.51deg,
-    #951990 -15.23%,
-    #3a35b1 48.55%,
-    #20a8b0 100%
-  );
   --gradient-skeleton: linear-gradient(
     -45deg,
     transparent,
@@ -199,9 +165,6 @@
   --color-border-card: var(--border-card);
   --color-border-button: var(--border-button);
 
-  --background-image-gradient-backdrop: var(--gradient-backdrop);
-  --background-image-gradient-primary: var(--gradient-primary);
-  --background-image-gradient-secondary: var(--gradient-secondary);
   --background-image-gradient-skeleton: var(--gradient-skeleton);
 
   --animate-skeleton: skeleton 3s ease infinite;

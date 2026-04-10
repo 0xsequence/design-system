@@ -11,7 +11,7 @@ import { cn } from '../../utils/classnames.js'
 
 const switchVariants = cva(
   [
-    'flex peer rounded-full bg-background-input bg-origin-border cursor-pointer data-[checked]:bg-gradient-primary data-[checked]:border-transparent!',
+    'flex peer rounded-full bg-background-input bg-origin-border cursor-pointer data-[checked]:bg-background-inverse data-[checked]:border-transparent!',
   ],
   {
     variants: {
@@ -49,7 +49,7 @@ export const Switch = (props: SwitchProps) => {
       <div className="relative w-full h-full">
         <SwitchPrimitive.Thumb
           data-slot="switch-thumb"
-          className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-[checked]:bg-white data-[checked]:translate-x-full"
+          className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-checked:bg-inverse data-checked:translate-x-full"
         />
       </div>
     </SwitchPrimitive.Root>

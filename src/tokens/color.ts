@@ -28,9 +28,6 @@ export const colorNames = [
   'borderButton',
   'borderCard',
 
-  'gradientBackdrop',
-  'gradientPrimary',
-  'gradientSecondary',
   'gradientSkeleton',
 
   'sidebar',
