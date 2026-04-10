@@ -7,7 +7,7 @@
 
 :root,
 [data-theme='light'] {
-  --brand: var(--color-violet-700);
+  --brand: var(--color-purple-500);
 
   /* Status colors */
   --positive: var(--color-emerald-600);
@@ -40,7 +40,7 @@
   /* Border colors */
   --border-normal: var(--color-slate-300);
   --border-hover: var(--color-slate-400);
-  --border-focus: var(--color-violet-400);
+  --border-focus: var(--color-purple-300);
   --border-card: var(--color-slate-200);
   --border-button: var(--color-slate-300);
 
@@ -78,7 +78,7 @@
 }
 
 [data-theme='dark'] {
-  --brand: #670DE5;
+  --brand: var(--color-purple-300);
 
   /* Status colors */
   --positive: var(--color-emerald-500);
@@ -111,7 +111,7 @@
   /* Border colors */
   --border-normal: var(--color-zinc-700);
   --border-hover: var(--color-zinc-600);
-  --border-focus: var(--color-violet-500);
+  --border-focus: var(--color-purple-500);
   --border-card: var(--color-zinc-800);
   --border-button: var(--color-zinc-700);
 
@@ -155,6 +155,19 @@
   --font-mono:
     'Roboto', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
+
+  /* Polygon branded purple color scale */
+  --color-purple-50: #F6F3FB;
+  --color-purple-100: #EAE4F5;
+  --color-purple-200: #D5C4F2;
+  --color-purple-300: #B78EEF;
+  --color-purple-400: #9551F5;
+  --color-purple-500: #670DE5;
+  --color-purple-600: #500AB2;
+  --color-purple-700: #400A8E;
+  --color-purple-800: #32086E;
+  --color-purple-900: #2F0B55;
+  --color-purple-950: #1E0735;
 
   --color-brand: var(--brand);
 
