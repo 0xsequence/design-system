@@ -148,7 +148,7 @@ function FieldDescription({ className, ...props }: ComponentProps<'p'>) {
     <p
       data-slot="field-description"
       className={cn(
-        'text-sm',
+        'text-xs font-medium',
         'text-muted group-has-[[data-orientation=horizontal]]/field:text-balance',
         'last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5',
         '[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4',
@@ -228,7 +228,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn('text-xs', 'text-destructive', className)}
+      className={cn('text-sm font-medium text-destructive', className)}
       {...props}
     >
       {content}
@@ -246,5 +246,6 @@ export {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-  FieldTitle,
+  FieldTitle
 }
+

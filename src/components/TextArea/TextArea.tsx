@@ -18,8 +18,8 @@ function TextArea({
     <textarea
       data-slot="textarea"
       className={cn(
-        'text-sm',
-        'bg-background-input text-primary placeholder:text-muted flex field-sizing-content min-h-16 w-full rounded-xl p-4',
+        'text-sm font-medium',
+        'bg-background-input text-primary placeholder:text-muted flex field-sizing-content min-h-16 w-full rounded-xl p-3',
         'aria-invalid:outline-destructive aria-invalid:border-destructive',
         resize ? 'resize-y' : 'resize-none',
         inputBorderStyle,

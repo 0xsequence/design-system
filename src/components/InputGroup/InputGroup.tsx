@@ -13,7 +13,7 @@ function InputGroup({ className, ...props }: ComponentProps<'div'>) {
       role="group"
       className={cn(
         'group/input-group relative flex w-full items-center rounded-xl',
-        'h-13 min-w-0 has-[>textarea]:h-auto bg-background-input',
+        'h-10 min-w-0 has-[>textarea]:h-auto bg-background-input',
         inputBorderStyle,
 
         // Variants based on alignment
@@ -70,17 +70,17 @@ function InputGroupTextarea({
 
 const inputGroupAddonVariants = cva(
   [
-    'text-xs text-primary flex h-auto cursor-text items-center justify-center gap-2 py-1.5 select-none group-data-[disabled=true]/input-group:opacity-50',
+    'text-xs text-primary flex h-auto cursor-text items-center justify-center gap-2 py-1.5 select-none group-data-[disabled=true]/input-group:opacity-50 [&_svg:not([class*="size-"])]:size-4',
   ],
   {
     variants: {
       align: {
-        'inline-start': 'order-first pl-4',
-        'inline-end': 'order-last pr-4',
+        'inline-start': 'order-first pl-3',
+        'inline-end': 'order-last pr-3',
         'block-start':
-          'order-first w-full justify-start px-4 pt-4 [.border-b]:pb-3 group-has-[>input]/input-group:pt-2.5',
+          'order-first w-full justify-start px-3 pt-3 [.border-b]:pb-3 group-has-[>input]/input-group:pt-2.5',
         'block-end':
-          'order-last w-full justify-start px-4 pb-4 [.border-t]:pt-3 group-has-[>input]/input-group:pb-2.5',
+          'order-last w-full justify-start px-3 pb-3 [.border-t]:pt-3 group-has-[>input]/input-group:pb-2.5',
       },
     },
     defaultVariants: {
@@ -128,5 +128,6 @@ export {
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-  InputGroupTextarea,
+  InputGroupTextarea
 }
+
