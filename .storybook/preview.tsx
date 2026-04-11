@@ -16,8 +16,6 @@ const customThemes: CustomThemes = {
     primary: 'var(--color-violet-950)',
     muted: 'var(--color-violet-600)',
 
-    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
-
     backgroundPrimary: 'var(--color-violet-50)',
     backgroundSecondary: 'var(--color-violet-100)',
     backgroundRaised: 'var(--color-violet-200)',
@@ -33,8 +31,6 @@ const customThemes: CustomThemes = {
   dark: {
     primary: 'var(--color-violet-50)',
     muted: 'var(--color-violet-400)',
-
-    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
 
     backgroundPrimary: 'var(--color-violet-950)',
     backgroundSecondary: 'var(--color-violet-900)',

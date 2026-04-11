@@ -26,14 +26,12 @@ const customThemes: CustomThemes = {
     muted: '#009',
     backgroundPrimary: 'white',
     backgroundSecondary: '#EEF',
-    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
   },
   dark: {
     primary: 'white',
     muted: '#888',
     backgroundPrimary: 'black',
     backgroundSecondary: '#004',
-    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
   },
 }
 
