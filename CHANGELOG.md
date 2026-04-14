@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.7
+
+### Patch Changes
+
+- Updating color scales to match polygon branding, and updated input styling
+
 ## 4.0.0-alpha.6
 
 ### Patch Changes
