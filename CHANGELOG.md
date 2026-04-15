@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.8
+
+### Patch Changes
+
+- Fixing render prop on Card component
+
 ## 4.0.0-alpha.7
 
 ### Patch Changes
