@@ -87,13 +87,11 @@ export const Outline: Story = {
 
 export const Clickable: Story = {
   render: args => (
-    <Card {...args}>
-      <button>
-        <CardHeader>
-          <CardTitle>Clickable Card</CardTitle>
-          <CardDescription>Click me</CardDescription>
-        </CardHeader>
-      </button>
+    <Card {...args} render={<button />}>
+      <CardHeader>
+        <CardTitle>Clickable Card</CardTitle>
+        <CardDescription>Click me</CardDescription>
+      </CardHeader>
     </Card>
   ),
   args: {

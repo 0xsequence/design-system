@@ -1,18 +1,6 @@
+import { mergeProps, useRender } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import {
-  cloneElement,
-  isValidElement,
-  type ComponentProps,
-  type ReactElement,
-  type ReactNode,
-} from 'react'
-
-type AnyProps = {
-  className?: string
-  children?: ReactNode
-  ref?: unknown
-  [key: string]: unknown
-}
+import { type ComponentProps } from 'react'
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
@@ -39,45 +27,33 @@ export const cardVariants = cva(
   }
 )
 
-interface CardProps
-  extends ComponentProps<'div'>, VariantProps<typeof cardVariants> {
-  render?: ReactElement
-}
-
-export const Card = (props: CardProps) => {
-  const {
-    ref,
-    className,
-    children,
-    variant,
-    clickable,
-    disabled,
+export const Card = ({
+  className,
+  variant,
+  clickable,
+  disabled,
+  render,
+  ...rest
+}: useRender.ComponentProps<'div'> & VariantProps<typeof cardVariants>) => {
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>(
+      {
+        className: cn(
+          cardVariants({ variant, clickable, disabled }),
+          className
+        ),
+      },
+      rest
+    ),
     render,
-    ...rest
-  } = props
-
-  const computedClassName = cn(
-    cardVariants({ variant, clickable, disabled }),
-    className
-  )
-
-  if (render && isValidElement(render)) {
-    const renderProps = render.props as AnyProps
-    return cloneElement(render as ReactElement<AnyProps>, {
-      ref,
-      'data-slot': 'card',
-      ...rest,
-      ...renderProps,
-      className: cn(computedClassName, renderProps.className),
-      children,
-    })
-  }
-
-  return (
-    <div ref={ref} data-slot="card" className={computedClassName} {...rest}>
-      {children}
-    </div>
-  )
+    state: {
+      slot: 'card',
+      variant,
+      clickable,
+      disabled,
+    },
+  })
 }
 
 export const CardHeader = ({
