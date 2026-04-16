@@ -30,7 +30,7 @@ function RadioGroupItem({
     <Radio.Root
       data-slot="radio-group-item"
       className={cn(
-        'bg-background-input size-5 aspect-square shrink-0 rounded-full',
+        'bg-background-input size-5 aspect-square shrink-0 rounded-full cursor-pointer',
         focusRingVariants(),
         inputBorderStyle,
         disabledStyle,
