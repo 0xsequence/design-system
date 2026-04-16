@@ -59,7 +59,7 @@ function DialogContent({
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
-          'bg-background-primary border border-border-card grid max-w-[calc(100%-2rem)] gap-4 rounded-3xl p-6 duration-100 sm:max-w-sm fixed top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 outline-none',
+          'bg-background-primary border border-border-card shadow-lg grid max-w-[calc(100%-2rem)] gap-4 rounded-3xl p-6 duration-100 sm:max-w-sm fixed top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 outline-none',
           'data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95',
           className
         )}
@@ -143,5 +143,6 @@ export {
   DialogPortal,
   DialogPrimitive,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 }
+
