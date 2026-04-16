@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { ComponentProps } from 'react'
 import { useMemo, useState } from 'react'
+import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
 import { Input } from '../Input/Input.js'
@@ -55,9 +56,17 @@ export const Default: StoryObj<typeof DialogContent> = {
                 />
               </div>
             </div>
-            <DialogFooter>
-              <DialogClose render={<Button variant="outline">Cancel</Button>} />
-              <Button type="submit">Save changes</Button>
+            <DialogFooter className="flex-row gap-2">
+              <DialogClose
+                render={
+                  <Button variant="secondary" size="lg" className="w-full">
+                    Cancel
+                  </Button>
+                }
+              />
+              <Button type="submit" size="lg" className="w-full">
+                Save changes
+              </Button>
             </DialogFooter>
           </DialogContent>
         </form>
@@ -153,4 +162,53 @@ function DetachedPayloadDialogStory(
 export const DetachedWithPayload: StoryObj<typeof DialogContent> = {
   render: args => <DetachedPayloadDialogStory {...args} />,
   args: {},
+}
+
+export const Responsive: StoryObj<typeof DialogContent> = {
+  render: args => <ResponsiveDialogStory {...args} />,
+  args: {},
+}
+
+function ResponsiveDialogStory(args: ComponentProps<typeof DialogContent>) {
+  return (
+    <Dialog>
+      <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} />
+      <DialogContent
+        className={cn(
+          'max-sm:rounded-b-none max-sm:top-auto max-sm:bottom-0 max-sm:left-0 max-sm:right-0 max-sm:max-w-full max-sm:translate-x-0 max-sm:translate-y-0',
+          'max-sm:duration-250 max-sm:data-starting-style:-bottom-full max-sm:data-ending-style:-bottom-full max-sm:scale-100!'
+        )}
+        {...args}
+      >
+        <DialogHeader>
+          <DialogTitle>Edit profile</DialogTitle>
+          <DialogDescription>
+            Make changes to your profile here. Click save when you&apos;re done.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4">
+          <div className="grid gap-3">
+            <Label htmlFor="name-1">Name</Label>
+            <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+          </div>
+          <div className="grid gap-3">
+            <Label htmlFor="username-1">Username</Label>
+            <Input id="username-1" name="username" defaultValue="@peduarte" />
+          </div>
+        </div>
+        <DialogFooter className="flex-row gap-2">
+          <DialogClose
+            render={
+              <Button variant="secondary" size="lg" className="w-full">
+                Cancel
+              </Button>
+            }
+          />
+          <Button type="submit" size="lg" className="w-full">
+            Save changes
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
 }
