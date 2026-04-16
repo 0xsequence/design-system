@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.9
+
+### Patch Changes
+
+- Fixing Sheet styles, and allowing to disable close button for custom button
+
 ## 4.0.0-alpha.8
 
 ### Patch Changes
