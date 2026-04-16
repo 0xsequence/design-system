@@ -29,7 +29,7 @@
   --background-inverse: var(--color-slate-950);
   --background-overlay: color-mix(
     in oklab,
-    var(--color-slate-300) 80%,
+    var(--color-slate-950) 20%,
     transparent
   );
   --background-raised: white;

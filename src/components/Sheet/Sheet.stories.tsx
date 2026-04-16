@@ -37,10 +37,12 @@ export const Default: Story = {
       <>
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
+        </SheetHeader>
+        <div className="flex flex-col gap-1.5 p-4 overflow-y-auto">
           <SheetDescription>
             Make changes to your profile here. Click save when you&apos;re done.
           </SheetDescription>
-        </SheetHeader>
+        </div>
         <SheetFooter>
           <Button>Save changes</Button>
           <SheetClose render={<Button variant="secondary">Close</Button>} />
