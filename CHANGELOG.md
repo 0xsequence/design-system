@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.10
+
+### Patch Changes
+
+- Updating Dialogs, Checkboxes, and Radios"
+
 ## 4.0.0-alpha.9
 
 ### Patch Changes
