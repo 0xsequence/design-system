@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { ComponentProps } from 'react'
 import { useMemo, useState } from 'react'
-import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
 import { Input } from '../Input/Input.js'
@@ -174,10 +173,7 @@ function ResponsiveDialogStory(args: ComponentProps<typeof DialogContent>) {
     <Dialog>
       <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} />
       <DialogContent
-        className={cn(
-          'max-sm:rounded-b-none max-sm:top-auto max-sm:bottom-0 max-sm:left-0 max-sm:right-0 max-sm:max-w-full max-sm:translate-x-0 max-sm:translate-y-0',
-          'max-sm:duration-250 max-sm:data-starting-style:-bottom-full max-sm:data-ending-style:-bottom-full max-sm:scale-100!'
-        )}
+        responsive
         {...args}
       >
         <DialogHeader>

@@ -50,9 +50,11 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
+  responsive = false,
   ...props
 }: ComponentProps<typeof DialogPrimitive.Popup> & {
   showCloseButton?: boolean
+  responsive?: boolean
 }) {
   return (
     <DialogPortal data-slot="dialog-portal">
@@ -62,6 +64,10 @@ function DialogContent({
         className={cn(
           'bg-background-primary border border-border-card shadow-lg grid max-w-[calc(100%-2rem)] gap-4 rounded-3xl p-6 sm:max-w-sm fixed top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 outline-none',
           'duration-150 opacity-100 data-starting-style:opacity-0 data-ending-style:opacity-0 data-starting-style:scale-95 data-ending-style:scale-95',
+          responsive && [
+            'max-sm:rounded-b-none max-sm:top-auto max-sm:bottom-0 max-sm:left-0 max-sm:right-0 max-sm:max-w-full max-sm:translate-x-0 max-sm:translate-y-0',
+            'max-sm:duration-250 max-sm:data-starting-style:-bottom-full max-sm:data-ending-style:-bottom-full max-sm:scale-100!',
+          ],
           className
         )}
         {...props}
@@ -144,5 +150,6 @@ export {
   DialogPortal,
   DialogPrimitive,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 }
+
