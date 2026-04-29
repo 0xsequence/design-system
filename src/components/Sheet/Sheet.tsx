@@ -102,7 +102,7 @@ function SheetTitle({
   return (
     <SheetPrimitive.Title
       data-slot="sheet-title"
-      className={cn('text-2xl leading-none text-primary font-bold', className)}
+      className={cn('text-xl leading-none text-primary font-bold', className)}
       {...props}
     />
   )
@@ -127,5 +127,6 @@ export {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 }
+
