@@ -21,7 +21,8 @@ export const All = {
         <AlertIcon variant="info" />
         <AlertTitle>Info Alert</AlertTitle>
         <AlertDescription>
-          This is an alert with icon, title and description. <a href="https://www.google.com">Read more</a>
+          This is an alert with icon, title and description.{' '}
+          <a href="https://www.google.com">Read more</a>
         </AlertDescription>
         <AlertButton>
           <SettingsIcon />
@@ -32,7 +33,8 @@ export const All = {
         <AlertIcon variant="success" />
         <AlertTitle>Success Alert</AlertTitle>
         <AlertDescription>
-        This is an alert with icon, title and description. <a href="https://www.google.com">Read more</a>
+          This is an alert with icon, title and description.{' '}
+          <a href="https://www.google.com">Read more</a>
         </AlertDescription>
         <AlertButton>
           <SettingsIcon />
@@ -43,7 +45,8 @@ export const All = {
         <AlertIcon variant="warning" />
         <AlertTitle>Warning Alert</AlertTitle>
         <AlertDescription>
-        This is an alert with icon, title and description. <a href="https://www.google.com">Read more</a>
+          This is an alert with icon, title and description.{' '}
+          <a href="https://www.google.com">Read more</a>
         </AlertDescription>
         <AlertButton>
           <SettingsIcon />
@@ -54,7 +57,8 @@ export const All = {
         <AlertIcon variant="error" />
         <AlertTitle>Error Alert</AlertTitle>
         <AlertDescription>
-        This is an alert with icon, title and description. <a href="https://www.google.com">Read more</a>
+          This is an alert with icon, title and description.{' '}
+          <a href="https://www.google.com">Read more</a> and more text.
         </AlertDescription>
         <AlertButton>
           <SettingsIcon />

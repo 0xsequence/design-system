@@ -4,7 +4,7 @@ export const disabledStyle =
   'disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-events-none'
 
 export const inputBorderStyle =
-  'border-1 border-border-normal hover:not-disabled:not-[[aria-invalid=true]]:not-has-[[aria-invalid=true]]:border-border-hover'
+  'border-1 border-border-normal hover:not-disabled:not-[[aria-invalid=true]]:not-has-[[aria-invalid=true]]:border-border-hover focus:border-border-hover'
 
 export const focusRingVariants = cva('outline-offset-2', {
   variants: {

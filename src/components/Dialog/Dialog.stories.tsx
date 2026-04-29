@@ -172,10 +172,7 @@ function ResponsiveDialogStory(args: ComponentProps<typeof DialogContent>) {
   return (
     <Dialog>
       <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} />
-      <DialogContent
-        responsive
-        {...args}
-      >
+      <DialogContent responsive {...args}>
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
