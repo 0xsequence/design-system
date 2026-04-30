@@ -92,8 +92,8 @@ const networks: Network[] = [
 
 const NetworkItem = ({ network }: { network: Network }) => {
   return (
-    <div className="flex items-center gap-2 text-sm font-bold">
-      <NetworkImage chainId={network.chainId} />
+    <div className="flex items-center gap-1 text-sm font-bold">
+      <NetworkImage chainId={network.chainId} size="sm"/>
       {network.name}
     </div>
   )
@@ -112,7 +112,7 @@ export const NetworkSelect: Story = {
         </SelectValue>
       </SelectTrigger>
       <SelectContent align="start">
-        <SelectGroup className="*:h-13">
+        <SelectGroup>
           {networks.map(network => (
             <SelectItem key={network.chainId} value={network}>
               <NetworkItem network={network} />

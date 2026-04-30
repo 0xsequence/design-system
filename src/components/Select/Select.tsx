@@ -43,7 +43,7 @@ function SelectTrigger({
         focusRingVariants(),
         inputBorderStyle,
         disabledStyle,
-        'bg-background-input text-primary select-none cursor-pointer data-placeholder:text-muted flex w-fit items-center justify-between gap-2 rounded-xl px-4 py-2 whitespace-nowrap data-[size=default]:h-13 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2',
+        'bg-background-input text-primary select-none cursor-pointer data-placeholder:text-muted flex w-fit items-center justify-between gap-2 rounded-xl px-3 py-2 whitespace-nowrap data-[size=default]:h-10 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2',
         "[&_svg:not([class*='text-'])]:text-muted [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         'aria-invalid:border-destructive aria-invalid:outline-destructive',
         className
@@ -258,5 +258,6 @@ export {
   SelectScrollUpButton,
   SelectSeparator,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 }
+
