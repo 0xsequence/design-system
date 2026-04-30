@@ -127,6 +127,5 @@ export {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger
+  SheetTrigger,
 }
-

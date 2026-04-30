@@ -93,7 +93,7 @@ const networks: Network[] = [
 const NetworkItem = ({ network }: { network: Network }) => {
   return (
     <div className="flex items-center gap-1 text-sm font-bold">
-      <NetworkImage chainId={network.chainId} size="sm"/>
+      <NetworkImage chainId={network.chainId} size="sm" />
       {network.name}
     </div>
   )

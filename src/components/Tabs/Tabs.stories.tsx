@@ -23,7 +23,9 @@ export const Default: Story = {
           <TabsTrigger value="coins">Coins</TabsTrigger>
           <TabsTrigger value="collectibles">Collectibles</TabsTrigger>
           <TabsTrigger value="rwas">RWAs</TabsTrigger>
-          <TabsTrigger value="not-available" disabled>Not available</TabsTrigger>
+          <TabsTrigger value="not-available" disabled>
+            Not available
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="coins">
           <Content>Coins content</Content>

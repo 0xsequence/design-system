@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.11
+
+### Patch Changes
+
+- Updating Select, PINCodeInput, Tabs, Sheet, and Alert styling
+
 ## 4.0.0-alpha.10
 
 ### Patch Changes
