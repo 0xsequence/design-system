@@ -11,7 +11,7 @@ import { cn } from '../../utils/classnames.js'
 const digitInputVariants = cva(
   [
     'text-xl font-bold',
-    'flex justify-center items-center h-12 w-10 p-[10px]',
+    'flex justify-center items-center h-10 w-10 p-[10px]',
     'rounded-lg text-primary bg-background-input text-center',
     'caret-transparent selection:bg-transparent',
     focusRingVariants(),
