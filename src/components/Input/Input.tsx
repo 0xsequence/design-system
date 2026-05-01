@@ -1,4 +1,5 @@
-import { useEffect, useState, type ComponentProps } from 'react'
+import { type ComponentProps } from 'react'
+import { useIsKeyboardFocused } from 'src/hooks/useIsKeyboardFocused.js'
 import {
   disabledStyle,
   focusRingVariants,
@@ -13,24 +14,7 @@ function Input({
   spellCheck = 'false',
   ...props
 }: ComponentProps<'input'>) {
-  const [isKeyboardFocused, setIsKeyboardFocused] = useState(false)
-
-  useEffect(() => {
-    const handleKeyDown = (ev: KeyboardEvent) => {
-      if (ev.key === 'Tab') {
-        setIsKeyboardFocused(true)
-      }
-    }
-    const handleMouseDown = () => setIsKeyboardFocused(false)
-
-    window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('mousedown', handleMouseDown)
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('mousedown', handleMouseDown)
-    }
-  }, [])
+  const isKeyboardFocused = useIsKeyboardFocused()
 
   return (
     <input

@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentProps } from 'react'
+import { useIsKeyboardFocused } from 'src/hooks/useIsKeyboardFocused.js'
 import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
@@ -7,6 +8,8 @@ import { Input } from '../Input/Input.js'
 import { TextArea } from '../TextArea/TextArea.js'
 
 function InputGroup({ className, ...props }: ComponentProps<'div'>) {
+  const isKeyboardFocused = useIsKeyboardFocused()
+  
   return (
     <div
       data-slot="input-group"
@@ -26,8 +29,7 @@ function InputGroup({ className, ...props }: ComponentProps<'div'>) {
         'has-[[data-slot=input-group-control]:disabled]:opacity-50 has-[[data-slot=input-group-control]:disabled]:cursor-not-allowed has-[[data-slot=input-group-control]:disabled]:pointer-events-none',
 
         // Focus state
-        //'has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]',
-        focusRingVariants({ variant: 'within' }),
+        isKeyboardFocused ? focusRingVariants({ variant: 'within' }) : 'focus:outline-none',
 
         // Error state
         'has-[[data-slot][aria-invalid=true]]:outline-destructive has-[[data-slot][aria-invalid=true]]:border-destructive',
@@ -128,5 +130,6 @@ export {
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-  InputGroupTextarea,
+  InputGroupTextarea
 }
+
