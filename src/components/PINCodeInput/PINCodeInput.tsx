@@ -1,25 +1,7 @@
-import { cva } from 'class-variance-authority'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
-import { disabledStyle, inputBorderStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-
-const digitInputVariants = cva(
-  [
-    'text-sm font-medium',
-    'flex justify-center items-center h-10 w-10 p-[10px]',
-    'rounded-lg text-primary bg-background-input text-center',
-    'caret-transparent selection:bg-transparent',
-    'focus:outline-none',
-    // focusRingVariants(),
-    inputBorderStyle,
-    disabledStyle,
-  ],
-  {
-    variants: {},
-    defaultVariants: {},
-  }
-)
+import { Input } from '../Input/Input.js'
 
 interface PINCodeInputProps {
   digits: number
@@ -139,8 +121,14 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
       {range(0, digits).map(idx => (
         <Fragment key={idx}>
           {!!group && idx > 0 && idx % group === 0 && <span />}
-          <input
-            className={cn(digitInputVariants(), inputClassName)}
+          <Input
+            className={cn(
+              'flex justify-center items-center h-10 w-10 p-[10px]',
+              'rounded-lg text-primary bg-background-input text-center',
+              'selection:bg-transparent',
+              'caret-transparent',
+              inputClassName
+            )}
             value={value[idx] || ''}
             ref={inputRefs[idx]}
             type="text"
