@@ -1,5 +1,4 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
-import { WalletIcon } from 'lucide-react'
 import { useState } from 'react'
 
 import { NumericInput } from './NumericInput.js'
@@ -40,13 +39,6 @@ export const IntegerOnly: Story = {
   render: StoryWrapper,
   args: {
     decimals: 0,
-  },
-}
-
-export const WithLeftIcon: Story = {
-  render: StoryWrapper,
-  args: {
-    leftIcon: WalletIcon,
   },
 }
 

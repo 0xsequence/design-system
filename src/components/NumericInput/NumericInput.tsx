@@ -1,18 +1,12 @@
-import type { LucideProps } from 'lucide-react'
 import {
   useEffect,
   type ChangeEvent,
   type ComponentProps,
-  type ComponentType,
   type FocusEvent,
-  type ReactNode,
 } from 'react'
+import { cn } from 'src/utils/classnames.js'
 
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from '../InputGroup/InputGroup.js'
+import { Input } from '../Input/Input.js'
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`)
 
@@ -22,9 +16,6 @@ function escapeRegExp(string: string): string {
 
 interface NumericInputProps extends ComponentProps<'input'> {
   decimals?: number
-  leftIcon?: ComponentType<LucideProps>
-  rightIcon?: ComponentType<LucideProps>
-  controls?: ReactNode
 }
 
 function truncateDecimals(value: string, decimals?: number): string {
@@ -48,16 +39,11 @@ function truncateDecimals(value: string, decimals?: number): string {
 export const NumericInput = (props: NumericInputProps) => {
   const {
     className,
-    id,
-    name = 'amount',
     placeholder = '0',
     onChange,
     onBlur,
     decimals,
     value,
-    leftIcon: LeftIcon,
-    rightIcon: RightIcon,
-    controls,
     ...rest
   } = props
 
@@ -127,39 +113,21 @@ export const NumericInput = (props: NumericInputProps) => {
   }
 
   return (
-    <InputGroup className={className}>
-      <InputGroupInput
-        className="text-xl font-bold"
-        id={id ?? name}
-        name={name}
-        value={value}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        inputMode="decimal"
-        autoComplete="off"
-        autoCorrect="off"
-        spellCheck="false"
-        type="text"
-        pattern="^[0-9]*[.,]?[0-9]*$"
-        placeholder={placeholder}
-        minLength={1}
-        maxLength={79}
-        {...rest}
-      />
-
-      {LeftIcon && (
-        <InputGroupAddon align="inline-start">
-          <LeftIcon className="size-4" />
-        </InputGroupAddon>
-      )}
-      {RightIcon && (
-        <InputGroupAddon align="inline-end">
-          <RightIcon className="size-4" />
-        </InputGroupAddon>
-      )}
-      {controls && (
-        <InputGroupAddon align="inline-end">{controls}</InputGroupAddon>
-      )}
-    </InputGroup>
+    <Input
+      className={cn('text-xl font-bold', className)}
+      value={value}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      inputMode="decimal"
+      autoComplete="off"
+      autoCorrect="off"
+      spellCheck="false"
+      type="text"
+      pattern="^[0-9]*[.,]?[0-9]*$"
+      placeholder={placeholder}
+      minLength={1}
+      maxLength={79}
+      {...rest}
+    />
   )
 }
