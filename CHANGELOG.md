@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.12
+
+### Patch Changes
+
+- Updating input behavior and styles
+
 ## 4.0.0-alpha.11
 
 ### Patch Changes
