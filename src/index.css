@@ -33,7 +33,7 @@
     transparent
   );
   --background-raised: white;
-  --background-input: var(--color-slate-50);
+  --background-input: white;
   --background-hover: var(--color-slate-100);
   --background-active: var(--color-slate-200);
 
