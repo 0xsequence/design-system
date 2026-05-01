@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react'
+import { useEffect, useState, type ComponentProps } from 'react'
 import {
   disabledStyle,
   focusRingVariants,
@@ -13,6 +13,25 @@ function Input({
   spellCheck = 'false',
   ...props
 }: ComponentProps<'input'>) {
+  const [isKeyboardFocused, setIsKeyboardFocused] = useState(false)
+
+  useEffect(() => {
+    const handleKeyDown = (ev: KeyboardEvent) => {
+      if (ev.key === 'Tab') {
+        setIsKeyboardFocused(true)
+      }
+    }
+    const handleMouseDown = () => setIsKeyboardFocused(false)
+
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('mousedown', handleMouseDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('mousedown', handleMouseDown)
+    }
+  }, [])
+
   return (
     <input
       type={type}
@@ -22,7 +41,7 @@ function Input({
         'file:text-primary file:inline-flex file:h-13 file:border-0 file:bg-transparent file:text-sm file:font-medium',
         'text-sm font-medium',
         inputBorderStyle,
-        focusRingVariants(),
+        isKeyboardFocused ? focusRingVariants() : 'focus:outline-none',
         'aria-invalid:outline-destructive aria-invalid:border-destructive',
         disabledStyle,
         className
