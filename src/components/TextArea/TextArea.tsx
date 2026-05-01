@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react'
 
+import { useIsKeyboardFocused } from 'src/hooks/useIsKeyboardFocused.js'
 import {
   disabledStyle,
   focusRingVariants,
@@ -14,6 +15,7 @@ function TextArea({
   spellCheck = 'false',
   ...props
 }: ComponentProps<'textarea'> & { resize?: boolean }) {
+  const isKeyboardFocused = useIsKeyboardFocused()
   return (
     <textarea
       data-slot="textarea"
@@ -23,7 +25,7 @@ function TextArea({
         'aria-invalid:outline-destructive aria-invalid:border-destructive',
         resize ? 'resize-y' : 'resize-none',
         inputBorderStyle,
-        focusRingVariants(),
+        isKeyboardFocused ? focusRingVariants() : 'focus:outline-none',
         disabledStyle,
         className
       )}
