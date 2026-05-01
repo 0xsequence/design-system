@@ -1,11 +1,7 @@
 import { cva } from 'class-variance-authority'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
-import {
-  disabledStyle,
-  focusRingVariants,
-  inputBorderStyle,
-} from '../../styles.js'
+import { disabledStyle, inputBorderStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 
 const digitInputVariants = cva(
@@ -14,7 +10,8 @@ const digitInputVariants = cva(
     'flex justify-center items-center h-10 w-10 p-[10px]',
     'rounded-lg text-primary bg-background-input text-center',
     'caret-transparent selection:bg-transparent',
-    focusRingVariants(),
+    'focus:outline-none',
+    // focusRingVariants(),
     inputBorderStyle,
     disabledStyle,
   ],

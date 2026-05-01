@@ -105,6 +105,7 @@ export {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
+  InputGroupNumericInput,
   InputGroupText,
   InputGroupTextarea,
 } from './components/InputGroup/InputGroup.js'
