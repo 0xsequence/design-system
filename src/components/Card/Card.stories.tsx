@@ -101,3 +101,30 @@ export const Clickable: Story = {
     onClick: () => console.log('Clicked!'),
   },
 }
+
+export const ClickableHover: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Hover a clickable card to surface the `border-hover` color swap.',
+      },
+    },
+  },
+  render: args => (
+    <div className="flex flex-col gap-4">
+      {(['default', 'outline', 'muted'] as const).map(variant => (
+        <Card key={variant} {...args} variant={variant} render={<button />}>
+          <CardHeader>
+            <CardTitle className="capitalize">{variant}</CardTitle>
+            <CardDescription>Hover me</CardDescription>
+          </CardHeader>
+        </Card>
+      ))}
+    </div>
+  ),
+  args: {
+    clickable: true,
+    onClick: () => console.log('Clicked!'),
+  },
+}

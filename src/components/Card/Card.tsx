@@ -15,7 +15,10 @@ export const cardVariants = cva(
         muted: 'bg-background-muted border-1 border-border-card',
       },
       clickable: {
-        true: ['cursor-pointer hover:opacity-80', focusRingVariants()],
+        true: [
+          'cursor-pointer hover:border-transparent hover:outline-2 hover:outline-border-hover hover:outline-offset-0',
+          focusRingVariants(),
+        ],
       },
       disabled: {
         true: 'opacity-50 cursor-default pointer-events-none hover:border-border-card',
