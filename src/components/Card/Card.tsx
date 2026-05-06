@@ -16,7 +16,7 @@ export const cardVariants = cva(
       },
       clickable: {
         true: [
-          'cursor-pointer hover:border-transparent hover:outline-2 hover:outline-border-hover hover:outline-offset-0',
+          'cursor-pointer hover:border-transparent hover:ring-2 hover:ring-border-hover',
           focusRingVariants(),
         ],
       },
