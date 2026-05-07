@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.13
+
+### Patch Changes
+
+- Updating Card clickable state, updating to base-ui v1.4.1
+
 ## 4.0.0-alpha.12
 
 ### Patch Changes
