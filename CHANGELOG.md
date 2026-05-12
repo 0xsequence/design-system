@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.14
+
+### Patch Changes
+
+- Adding combobox and consolidating popup styling
+
 ## 4.0.0-alpha.13
 
 ### Patch Changes
