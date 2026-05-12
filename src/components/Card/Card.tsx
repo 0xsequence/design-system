@@ -80,7 +80,7 @@ export const CardTitle = ({
   <div
     ref={ref}
     data-slot="card-title"
-    className={cn('text-lg font-semibold leading-none', className)}
+    className={cn('text-lg font-bold leading-none', className)}
     {...props}
   />
 )
