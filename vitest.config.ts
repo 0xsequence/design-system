@@ -1,10 +1,8 @@
-import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 
 import { version } from './package.json'
 
 export default defineConfig({
-  plugins: [tsconfigPaths()],
   test: {
     silent: true,
     environment: 'happy-dom',
