@@ -106,7 +106,7 @@ export const NetworkSelect: Story = {
       disabled={args.disabled}
       defaultValue={networks[0]}
     >
-      <SelectTrigger>
+      <SelectTrigger className="w-40">
         <SelectValue placeholder="Select a network">
           {network => <NetworkItem network={network} />}
         </SelectValue>

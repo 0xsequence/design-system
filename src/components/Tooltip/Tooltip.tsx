@@ -5,6 +5,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react'
+import { popupTransitionStyle } from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { useTheme } from '../../providers/ThemeProvider/ThemeProvider.js'
@@ -57,7 +58,7 @@ function TooltipContent({
           data-slot="tooltip-content"
           className={cn(
             'bg-primary fill-primary text-inverse text-xs rounded-lg shadow-lg p-2 inline-flex items-center gap-1.5 has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm  z-50 w-fit max-w-xs origin-(--transform-origin)',
-            'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=delayed-open]:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2',
+            popupTransitionStyle,
             className
           )}
           {...props}
