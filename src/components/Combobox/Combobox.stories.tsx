@@ -205,9 +205,7 @@ export const CustomItems: Story = {
             <ComboboxItem key={framework.value} value={framework}>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-medium">{framework.label}</span>
-                <span className="text-xs text-muted">
-                  {framework.value}
-                </span>
+                <span className="text-xs text-muted">{framework.value}</span>
               </div>
             </ComboboxItem>
           )}

@@ -2,7 +2,12 @@ import { Combobox as ComboboxPrimitive } from '@base-ui/react'
 import { CheckIcon, ChevronDownIcon, XIcon } from 'lucide-react'
 import { useRef, type ComponentPropsWithRef } from 'react'
 import { useIsKeyboardFocused } from 'src/hooks/useIsKeyboardFocused.js'
-import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
+import {
+  focusRingVariants,
+  inputBorderStyle,
+  popupContentStyle,
+  popupTransitionStyle,
+} from 'src/styles.js'
 import { cn } from 'src/utils/classnames.js'
 
 import { Button } from '../Button/Button.js'
@@ -42,7 +47,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
       className={cn(className)}
       {...props}
       render={
-        <Button variant="ghost" size="xs" iconOnly>
+        <Button variant="ghost" size="xs" iconOnly className="rounded-full">
           <XIcon className="pointer-events-none" />
         </Button>
       }
@@ -72,10 +77,10 @@ function ComboboxInput({
           <Button
             size="xs"
             iconOnly
-            variant="ghost"
+            variant={null}
             render={<ComboboxTrigger />}
             data-slot="input-group-button"
-            className="group-has-data-[slot=combobox-clear]/input-group:hidden data-pressed:bg-transparent"
+            className="group-has-data-[slot=combobox-clear]/input-group:hidden data-pressed:bg-transparent rounded-full text-muted hover:text-primary"
             disabled={disabled}
           />
         )}
@@ -89,7 +94,7 @@ function ComboboxInput({
 function ComboboxContent({
   className,
   side = 'bottom',
-  sideOffset = 6,
+  sideOffset = 4,
   align = 'start',
   alignOffset = 0,
   anchor,
@@ -113,7 +118,9 @@ function ComboboxContent({
           data-slot="combobox-content"
           data-chips={!!anchor}
           className={cn(
-            'group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-lg bg-background-raised text-primary border border-normal shadow-lg duration-100 data-[chips=true]:min-w-(--anchor-width) data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-border-normal/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95',
+            popupContentStyle,
+            popupTransitionStyle,
+            'group/combobox-content w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(9))] data-[chips=true]:min-w-(--anchor-width) *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-border-normal/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none',
             className
           )}
           {...props}
@@ -232,7 +239,8 @@ function ComboboxChips({
         inputBorderStyle,
         isKeyboardFocused
           ? focusRingVariants({ variant: 'within' })
-          : 'focus:outline-none',        className
+          : 'focus:outline-none',
+        className
       )}
       {...props}
     />
@@ -262,7 +270,12 @@ function ComboboxChip({
           className="-ml-1 opacity-50 hover:opacity-100"
           data-slot="combobox-chip-remove"
           render={
-            <Button variant={null} className="text-muted hover:text-primary" size="xs" iconOnly>
+            <Button
+              variant={null}
+              className="text-muted hover:text-primary"
+              size="xs"
+              iconOnly
+            >
               <XIcon className="pointer-events-none" />
             </Button>
           }

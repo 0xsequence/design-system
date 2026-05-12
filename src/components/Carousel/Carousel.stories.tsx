@@ -38,9 +38,7 @@ export const Default: Story = {
                 <CarouselSlide key={index}>
                   <div className="p-1">
                     <Card className="flex aspect-video items-center justify-center p-6">
-                      <span className="text-4xl font-bold">
-                        {index + 1}
-                      </span>
+                      <span className="text-4xl font-bold">{index + 1}</span>
                     </Card>
                   </div>
                 </CarouselSlide>
@@ -90,9 +88,7 @@ export const Small: Story = {
                 <CarouselSlide key={index}>
                   <div className="p-1">
                     <Card className="flex aspect-video items-center justify-center p-6">
-                      <span className="text-4xl font-bold">
-                        {index + 1}
-                      </span>
+                      <span className="text-4xl font-bold">{index + 1}</span>
                     </Card>
                   </div>
                 </CarouselSlide>

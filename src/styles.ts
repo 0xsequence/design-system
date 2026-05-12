@@ -20,3 +20,10 @@ export const focusRingVariants = cva('outline-offset-2', {
     variant: 'visible',
   },
 })
+
+// Used for select, combobox, etc content
+export const popupContentStyle =
+  'relative z-50 isolate bg-background-raised border border-border-normal shadow-lg rounded-2xl origin-(--transform-origin) max-h-(--available-height) w-(--anchor-width) min-w-36 overflow-hidden'
+
+export const popupTransitionStyle =
+  'duration-150 data-starting-style:opacity-0 data-starting-style:scale-95 data-ending-style:opacity-0 data-ending-style:scale-95'

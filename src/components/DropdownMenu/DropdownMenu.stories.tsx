@@ -85,5 +85,8 @@ export const Default: Story = {
   },
   args: {
     sideOffset: 4,
+    side: 'bottom',
+    align: 'start',
+    alignOffset: 0,
   },
 }
