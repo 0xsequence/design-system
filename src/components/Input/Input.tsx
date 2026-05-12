@@ -1,11 +1,12 @@
 import { type ComponentProps } from 'react'
-import { useIsKeyboardFocused } from 'src/hooks/useIsKeyboardFocused.js'
+
+import { useIsKeyboardFocused } from '../../hooks/useIsKeyboardFocused.js'
 import {
   disabledStyle,
   focusRingVariants,
   inputBorderStyle,
-} from 'src/styles.js'
-import { cn } from 'src/utils/classnames.js'
+} from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 function Input({
   className,

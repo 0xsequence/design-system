@@ -2,8 +2,8 @@
 
 import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
-import { cn } from 'src/utils/classnames.js'
 
+import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
 
 type TableProps = ComponentProps<'table'> & {

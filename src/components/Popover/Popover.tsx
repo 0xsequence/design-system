@@ -1,7 +1,7 @@
 import { Popover as PopoverPrimitive } from '@base-ui/react/popover'
 import type { ComponentProps } from 'react'
-import { popupTransitionStyle } from 'src/styles.js'
 
+import { popupTransitionStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 
 function Popover({ ...props }: ComponentProps<typeof PopoverPrimitive.Root>) {

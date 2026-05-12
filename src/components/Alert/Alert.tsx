@@ -7,8 +7,8 @@ import {
   type LucideProps,
 } from 'lucide-react'
 import { type ComponentProps, type ReactNode } from 'react'
-import { cn } from 'src/utils/classnames.js'
 
+import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
 
 const alertVariants = cva(

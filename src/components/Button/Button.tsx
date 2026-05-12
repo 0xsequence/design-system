@@ -1,7 +1,8 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { focusRingVariants } from 'src/styles.js'
-import { cn } from 'src/utils/classnames.js'
+
+import { focusRingVariants } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 const buttonVariants = cva(
   [

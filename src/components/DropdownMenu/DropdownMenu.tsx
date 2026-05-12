@@ -1,8 +1,8 @@
 import { Menu as DropdownMenuPrimitive } from '@base-ui/react/menu'
 import { CheckIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
-import { popupContentStyle, popupTransitionStyle } from 'src/styles.js'
 
+import { popupContentStyle, popupTransitionStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 
 export { DropdownMenuPrimitive }

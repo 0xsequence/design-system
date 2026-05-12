@@ -4,8 +4,8 @@ import {
   type ComponentProps,
   type FocusEvent,
 } from 'react'
-import { cn } from 'src/utils/classnames.js'
 
+import { cn } from '../../utils/classnames.js'
 import { Input } from '../Input/Input.js'
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`)

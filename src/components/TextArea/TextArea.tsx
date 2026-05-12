@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react'
-import { useIsKeyboardFocused } from 'src/hooks/useIsKeyboardFocused.js'
 
+import { useIsKeyboardFocused } from '../../hooks/useIsKeyboardFocused.js'
 import {
   disabledStyle,
   focusRingVariants,

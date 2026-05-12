@@ -1,8 +1,8 @@
 import { Dialog as DialogPrimitive } from '@base-ui/react/dialog'
 import { XIcon } from 'lucide-react'
 import { type ComponentProps } from 'react'
-import { popupTransitionStyle } from 'src/styles.js'
 
+import { popupTransitionStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
 

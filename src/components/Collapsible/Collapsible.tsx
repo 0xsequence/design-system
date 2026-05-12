@@ -3,9 +3,9 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { ChevronDownIcon } from 'lucide-react'
 import { useState, type ComponentProps, type ReactNode } from 'react'
-import { cn } from 'src/utils/classnames.js'
 
 import { focusRingVariants } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 function Collapsible({ ...props }: CollapsiblePrimitive.Root.Props) {
   return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />

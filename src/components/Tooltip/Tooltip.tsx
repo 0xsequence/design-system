@@ -5,10 +5,10 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react'
-import { popupTransitionStyle } from 'src/styles.js'
-import { cn } from 'src/utils/classnames.js'
 
 import { useTheme } from '../../providers/ThemeProvider/ThemeProvider.js'
+import { popupTransitionStyle } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 
 function TooltipProvider({
   delay = 0,

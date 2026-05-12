@@ -1,9 +1,9 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentProps } from 'react'
-import { useIsKeyboardFocused } from 'src/hooks/useIsKeyboardFocused.js'
-import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
-import { cn } from 'src/utils/classnames.js'
 
+import { useIsKeyboardFocused } from '../../hooks/useIsKeyboardFocused.js'
+import { focusRingVariants, inputBorderStyle } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 import { Input } from '../Input/Input.js'
 import { NumericInput } from '../NumericInput/NumericInput.js'
 import { TextArea } from '../TextArea/TextArea.js'

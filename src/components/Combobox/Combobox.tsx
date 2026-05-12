@@ -1,15 +1,15 @@
 import { Combobox as ComboboxPrimitive } from '@base-ui/react'
 import { CheckIcon, ChevronDownIcon, XIcon } from 'lucide-react'
 import { useRef, type ComponentPropsWithRef } from 'react'
-import { useIsKeyboardFocused } from 'src/hooks/useIsKeyboardFocused.js'
+
+import { useIsKeyboardFocused } from '../../hooks/useIsKeyboardFocused.js'
 import {
   focusRingVariants,
   inputBorderStyle,
   popupContentStyle,
   popupTransitionStyle,
-} from 'src/styles.js'
-import { cn } from 'src/utils/classnames.js'
-
+} from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
 import {
   InputGroup,
@@ -318,6 +318,5 @@ export {
   ComboboxSeparator,
   ComboboxTrigger,
   ComboboxValue,
-  useComboboxAnchor
+  useComboboxAnchor,
 }
-

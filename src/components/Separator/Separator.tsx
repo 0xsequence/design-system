@@ -1,5 +1,6 @@
 import { type ComponentProps } from 'react'
-import { cn } from 'src/utils/classnames.js'
+
+import { cn } from '../../utils/classnames.js'
 
 function Separator({
   className,
