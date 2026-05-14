@@ -101,7 +101,7 @@ function SelectContent({
           {...props}
         >
           <SelectScrollUpButton />
-          <SelectPrimitive.List className="overflow-y-auto">
+          <SelectPrimitive.List className="overflow-y-auto max-h-(--available-height)">
             {children}
           </SelectPrimitive.List>
           <SelectScrollDownButton />
@@ -271,5 +271,6 @@ export {
   SelectScrollUpButton,
   SelectSeparator,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 }
+
