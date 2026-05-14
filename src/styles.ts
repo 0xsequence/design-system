@@ -8,12 +8,11 @@ export const disabledStyle =
 export const inputBorderStyle =
   'border-1 border-border-normal hover:not-disabled:not-[[aria-invalid=true]]:not-has-[[aria-invalid=true]]:border-border-hover focus-within:border-border-hover'
 
-export const focusRingVariants = cva('outline-offset-2', {
+export const focusRingVariants = cva('outline-offset-2 outline-border-focus', {
   variants: {
     variant: {
-      visible: 'focus-visible:outline-2 focus-visible:outline-border-focus',
-      within:
-        'has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-border-focus',
+      visible: 'focus-visible:outline-2',
+      within: 'has-[:focus-visible]:outline-2',
     },
   },
   defaultVariants: {
