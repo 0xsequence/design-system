@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
+
+import { Spinner } from '../Spinner/Spinner.js'
 
 import {
   Combobox,
@@ -8,13 +10,14 @@ import {
   ComboboxChipsInput,
   ComboboxCollection,
   ComboboxContent,
+  ComboboxCreateItem,
   ComboboxEmpty,
   ComboboxGroup,
   ComboboxInput,
   ComboboxItem,
   ComboboxLabel,
   ComboboxList,
-  ComboboxSeparator,
+  ComboboxTrigger,
   ComboboxValue,
   useComboboxAnchor,
 } from './Combobox.js'
@@ -36,8 +39,11 @@ type Story = StoryObj
 export const Basic: Story = {
   render: () => (
     <Combobox items={[...frameworks]}>
-      <ComboboxInput className="w-72" placeholder="Select a framework" />
+      <ComboboxTrigger className="w-72">
+        <ComboboxValue placeholder="Select a framework" />
+      </ComboboxTrigger>
       <ComboboxContent>
+        <ComboboxInput placeholder="Search..." />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
           {item => (
@@ -49,70 +55,6 @@ export const Basic: Story = {
       </ComboboxContent>
     </Combobox>
   ),
-}
-
-export const WithClear: Story = {
-  name: 'With clear',
-  render: () => (
-    <Combobox defaultValue={frameworks[0]} items={[...frameworks]}>
-      <ComboboxInput
-        className="w-72"
-        placeholder="Select a framework"
-        showClear
-      />
-      <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {item => (
-            <ComboboxItem key={item} value={item}>
-              {item}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
-    </Combobox>
-  ),
-}
-
-function ComboboxMultipleStory() {
-  const anchor = useComboboxAnchor()
-
-  return (
-    <Combobox
-      multiple
-      autoHighlight
-      defaultValue={[frameworks[0]]}
-      items={[...frameworks]}
-    >
-      <ComboboxChips ref={anchor} className="w-full max-w-xs">
-        <ComboboxValue>
-          {values => (
-            <Fragment>
-              {(values as string[]).map(value => (
-                <ComboboxChip key={value}>{value}</ComboboxChip>
-              ))}
-              <ComboboxChipsInput placeholder="Add framework" />
-            </Fragment>
-          )}
-        </ComboboxValue>
-      </ComboboxChips>
-      <ComboboxContent anchor={anchor}>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {item => (
-            <ComboboxItem key={item} value={item}>
-              {item}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
-    </Combobox>
-  )
-}
-
-export const Multiple: Story = {
-  name: 'Multiple (chips)',
-  render: () => <ComboboxMultipleStory />,
 }
 
 const timezones = [
@@ -154,11 +96,14 @@ const timezones = [
 export const Groups: Story = {
   render: () => (
     <Combobox items={[...timezones]}>
-      <ComboboxInput className="w-80" placeholder="Select a timezone" />
+      <ComboboxTrigger className="w-80">
+        <ComboboxValue placeholder="Select a timezone" />
+      </ComboboxTrigger>
       <ComboboxContent>
+        <ComboboxInput placeholder="Search..." />
         <ComboboxEmpty>No timezones found.</ComboboxEmpty>
         <ComboboxList>
-          {(group, index) => (
+          {group => (
             <ComboboxGroup key={group.value} items={[...group.items]}>
               <ComboboxLabel>{group.value}</ComboboxLabel>
               <ComboboxCollection>
@@ -168,7 +113,6 @@ export const Groups: Story = {
                   </ComboboxItem>
                 )}
               </ComboboxCollection>
-              {index < timezones.length - 1 ? <ComboboxSeparator /> : null}
             </ComboboxGroup>
           )}
         </ComboboxList>
@@ -197,8 +141,11 @@ export const CustomItems: Story = {
       items={frameworkOptions}
       itemToStringValue={(framework: FrameworkOption) => framework.label}
     >
-      <ComboboxInput className="w-72" placeholder="Select a framework" />
+      <ComboboxTrigger className="w-72">
+        <ComboboxValue placeholder="Select a framework" />
+      </ComboboxTrigger>
       <ComboboxContent>
+        <ComboboxInput placeholder="Search..." />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
           {(framework: FrameworkOption) => (
@@ -218,12 +165,11 @@ export const CustomItems: Story = {
 export const Invalid: Story = {
   render: () => (
     <Combobox items={[...frameworks]}>
-      <ComboboxInput
-        className="w-72"
-        placeholder="Select a framework"
-        aria-invalid
-      />
+      <ComboboxTrigger className="w-72" aria-invalid>
+        <ComboboxValue placeholder="Select a framework" />
+      </ComboboxTrigger>
       <ComboboxContent>
+        <ComboboxInput placeholder="Search..." />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
           {item => (
@@ -239,13 +185,12 @@ export const Invalid: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <Combobox items={[...frameworks]}>
-      <ComboboxInput
-        className="w-72"
-        placeholder="Select a framework"
-        disabled
-      />
+    <Combobox disabled items={[...frameworks]}>
+      <ComboboxTrigger className="w-72">
+        <ComboboxValue placeholder="Select a framework" />
+      </ComboboxTrigger>
       <ComboboxContent>
+        <ComboboxInput placeholder="Search..." />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
           {item => (
@@ -263,8 +208,11 @@ export const AutoHighlight: Story = {
   name: 'Auto highlight',
   render: () => (
     <Combobox autoHighlight items={[...frameworks]}>
-      <ComboboxInput className="w-72" placeholder="Select a framework" />
+      <ComboboxTrigger className="w-72">
+        <ComboboxValue placeholder="Select a framework" />
+      </ComboboxTrigger>
       <ComboboxContent>
+        <ComboboxInput placeholder="Search..." />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
           {item => (
@@ -276,4 +224,150 @@ export const AutoHighlight: Story = {
       </ComboboxContent>
     </Combobox>
   ),
+}
+
+function WithCreateStory() {
+  const [items, setItems] = useState<string[]>([...frameworks])
+  const [inputValue, setInputValue] = useState('')
+
+  return (
+    <Combobox
+      items={items}
+      inputValue={inputValue}
+      onInputValueChange={setInputValue}
+    >
+      <ComboboxTrigger className="w-72">
+        <ComboboxValue placeholder="Select a framework" />
+      </ComboboxTrigger>
+      <ComboboxContent>
+        <ComboboxInput placeholder="Search..." />
+        <ComboboxList>
+          {item => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+        <ComboboxCreateItem
+          value={inputValue}
+          onSelect={value => {
+            setItems(prev => [...prev, value])
+            setInputValue('')
+          }}
+        />
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+
+export const WithCreate: Story = {
+  name: 'With create',
+  render: () => <WithCreateStory />,
+}
+
+function WithAsyncCreateStory() {
+  const [items, setItems] = useState<string[]>([...frameworks])
+  const [inputValue, setInputValue] = useState('')
+  const [isCreating, setIsCreating] = useState(false)
+
+  const handleCreate = async (value: string) => {
+    if (!value || isCreating) {
+      return
+    }
+    setIsCreating(true)
+    await new Promise(resolve => setTimeout(resolve, 1200))
+    setItems(prev => [...prev, value])
+    setInputValue('')
+    setIsCreating(false)
+  }
+
+  return (
+    <Combobox
+      items={items}
+      inputValue={inputValue}
+      onInputValueChange={value => {
+        if (!isCreating) {
+          setInputValue(value)
+        }
+      }}
+    >
+      <ComboboxTrigger className="w-72">
+        <ComboboxValue placeholder="Select a framework" />
+      </ComboboxTrigger>
+      <ComboboxContent>
+        <ComboboxInput placeholder="Search..." disabled={isCreating} />
+        <ComboboxList>
+          {item => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+        <ComboboxCreateItem
+          value={inputValue}
+          onSelect={handleCreate}
+          className={
+            isCreating
+              ? 'pointer-events-none opacity-70 [&>svg:first-child]:hidden'
+              : undefined
+          }
+        >
+          {isCreating ? (
+            <>
+              <Spinner size="sm" />
+              Adding {inputValue}...
+            </>
+          ) : (
+            `Add ${inputValue}`
+          )}
+        </ComboboxCreateItem>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+
+export const WithAsyncCreate: Story = {
+  name: 'With async create',
+  render: () => <WithAsyncCreateStory />,
+}
+
+function ComboboxMultipleStory() {
+  const anchor = useComboboxAnchor()
+
+  return (
+    <Combobox
+      multiple
+      autoHighlight
+      defaultValue={[frameworks[0]]}
+      items={[...frameworks]}
+    >
+      <ComboboxChips ref={anchor} className="w-full max-w-xs">
+        <ComboboxValue>
+          {values => (
+            <Fragment>
+              {(values as string[]).map(value => (
+                <ComboboxChip key={value}>{value}</ComboboxChip>
+              ))}
+              <ComboboxChipsInput placeholder="Add framework" />
+            </Fragment>
+          )}
+        </ComboboxValue>
+      </ComboboxChips>
+      <ComboboxContent anchor={anchor}>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {item => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+
+export const Multiple: Story = {
+  name: 'Multiple (chips)',
+  render: () => <ComboboxMultipleStory />,
 }
