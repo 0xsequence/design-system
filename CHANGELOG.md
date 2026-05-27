@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.15
+
+### Patch Changes
+
+- Fixing Select scroll height
+
 ## 4.0.0-alpha.14
 
 ### Patch Changes
