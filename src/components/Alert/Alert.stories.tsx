@@ -164,7 +164,8 @@ export const WithoutTitle: StoryObj<{
     </Alert>
   ),
   args: {
-    description: 'This is an alert with description only, no title, icon, or button.',
+    description:
+      'This is an alert with description only, no title, icon, or button.',
     variant: 'info',
   },
 }

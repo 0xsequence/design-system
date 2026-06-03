@@ -20,6 +20,28 @@ export const Default: Story = {
   },
 }
 
+export const Alignment: Story = {
+  render: args => (
+    <div className="flex h-[200px] items-center justify-center">
+      <Tooltip.Helper
+        {...args}
+        message="A longer tooltip message shows alignment more clearly"
+      >
+        <Button>Hover me</Button>
+      </Tooltip.Helper>
+    </div>
+  ),
+  argTypes: {
+    align: { control: 'radio', options: ['start', 'center', 'end'] },
+    side: { control: 'radio', options: ['top', 'bottom', 'left', 'right'] },
+  },
+  args: {
+    align: 'center',
+    side: 'top',
+    children: <Button>Hover me</Button>,
+  },
+}
+
 export const Multiple: Story = {
   render: args => {
     return (
