@@ -16,8 +16,7 @@ const TOOLTIP_ARROW_HEIGHT = 6
 /** Match popup `border` so the arrow base overlaps the outer edge. */
 const TOOLTIP_BORDER_WIDTH = 1
 /** Tuned per side so the SVG base meets the border without a visible gap. */
-const TOOLTIP_ARROW_OUTSET_Y =
-  TOOLTIP_ARROW_HEIGHT + TOOLTIP_BORDER_WIDTH - 1
+const TOOLTIP_ARROW_OUTSET_Y = TOOLTIP_ARROW_HEIGHT + TOOLTIP_BORDER_WIDTH - 1
 const TOOLTIP_ARROW_OUTSET_X = TOOLTIP_ARROW_WIDTH - 3
 /** Inset from the popup corner when align is start/end (center uses Floating UI). */
 const TOOLTIP_ARROW_ALIGN_INSET = 8
@@ -241,6 +240,5 @@ export {
   TooltipContent,
   TooltipPrimitive,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 }
-

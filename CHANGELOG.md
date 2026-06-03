@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.16
+
+### Patch Changes
+
+- Updating Alerts and Tooltips styling
+
 ## 4.0.0-alpha.15
 
 ### Patch Changes

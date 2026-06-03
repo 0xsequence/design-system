@@ -13,7 +13,7 @@ describe('<Tooltip />', () => {
     const user = userEvent.setup()
 
     const res = renderWithTheme(
-      <Tooltip.Helper message="Tip">
+      <Tooltip.Helper message="Tip" delay={0}>
         <button>Hover me</button>
       </Tooltip.Helper>
     )
