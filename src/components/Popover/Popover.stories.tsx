@@ -48,3 +48,23 @@ export const Default: Story = {
     side: 'bottom',
   },
 }
+
+export const WithArrow: Story = {
+  render: StoryWrapper,
+  argTypes: {
+    side: { control: 'radio', options: ['top', 'bottom', 'left', 'right'] },
+    align: { control: 'radio', options: ['start', 'center', 'end'] },
+  },
+  args: {
+    showArrow: true,
+    sideOffset: 8,
+    align: 'center',
+    alignOffset: 0,
+    side: 'bottom',
+    children: (
+      <div className="p-4">
+        <span className="text-sm text-primary">Popover with arrow</span>
+      </div>
+    ),
+  },
+}
