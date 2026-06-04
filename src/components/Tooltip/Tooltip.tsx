@@ -1,7 +1,7 @@
 import { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip'
+import type { ComponentProps } from 'react'
 import {
   isValidElement,
-  type CSSProperties,
   type PropsWithChildren,
   type ReactElement,
   type ReactNode,
@@ -10,110 +10,6 @@ import {
 import { useTheme } from '../../providers/ThemeProvider/ThemeProvider.js'
 import { popupTransitionStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-
-const TOOLTIP_ARROW_WIDTH = 12
-const TOOLTIP_ARROW_HEIGHT = 6
-/** Match popup `border` so the arrow base overlaps the outer edge. */
-const TOOLTIP_BORDER_WIDTH = 1
-/** Tuned per side so the SVG base meets the border without a visible gap. */
-const TOOLTIP_ARROW_OUTSET_Y = TOOLTIP_ARROW_HEIGHT + TOOLTIP_BORDER_WIDTH - 1
-const TOOLTIP_ARROW_OUTSET_X = TOOLTIP_ARROW_WIDTH - 3
-/** Inset from the popup corner when align is start/end (center uses Floating UI). */
-const TOOLTIP_ARROW_ALIGN_INSET = 8
-
-/** Default shape points down (tooltip placed above the anchor). */
-function TooltipArrowSvg() {
-  return (
-    <svg
-      width={TOOLTIP_ARROW_WIDTH}
-      height={TOOLTIP_ARROW_HEIGHT}
-      viewBox={`0 0 ${TOOLTIP_ARROW_WIDTH} ${TOOLTIP_ARROW_HEIGHT}`}
-      aria-hidden
-      className="block h-full w-full"
-    >
-      <path d="M1 0 L6 6 L11 0 Z" className="fill-background-tooltip" />
-      <path
-        d="M1 0.5 L6 5.5 L11 0.5"
-        fill="none"
-        className="stroke-border-normal"
-        strokeWidth={1}
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function tooltipArrowEdgeStyle(
-  side: TooltipPrimitive.Arrow.State['side']
-): CSSProperties {
-  switch (side) {
-    case 'top':
-      return { top: 'auto', bottom: -TOOLTIP_ARROW_OUTSET_Y }
-    case 'bottom':
-      return { bottom: 'auto', top: -TOOLTIP_ARROW_OUTSET_Y }
-    case 'left':
-    case 'inline-start':
-      return { left: 'auto', right: -TOOLTIP_ARROW_OUTSET_X }
-    case 'right':
-    case 'inline-end':
-      return { right: 'auto', left: -TOOLTIP_ARROW_OUTSET_X }
-    default:
-      return {}
-  }
-}
-
-/** Pin start/end along the popup edge; center keeps Floating UI anchor tracking. */
-function tooltipArrowAlignStyle(
-  side: TooltipPrimitive.Arrow.State['side'],
-  align: TooltipPrimitive.Arrow.State['align']
-): CSSProperties {
-  if (align === 'center') {
-    return {}
-  }
-
-  const inset = TOOLTIP_ARROW_ALIGN_INSET
-
-  switch (side) {
-    case 'top':
-    case 'bottom':
-      return align === 'start'
-        ? { left: inset, right: 'auto' }
-        : { right: inset, left: 'auto' }
-    case 'left':
-    case 'inline-start':
-      return align === 'start'
-        ? { top: inset, bottom: 'auto' }
-        : { bottom: inset, top: 'auto' }
-    case 'right':
-    case 'inline-end':
-      return align === 'start'
-        ? { top: inset, bottom: 'auto' }
-        : { bottom: inset, top: 'auto' }
-    default:
-      return {}
-  }
-}
-
-function tooltipArrowStyle(
-  side: TooltipPrimitive.Arrow.State['side'],
-  align: TooltipPrimitive.Arrow.State['align']
-): CSSProperties {
-  return {
-    ...tooltipArrowEdgeStyle(side),
-    ...tooltipArrowAlignStyle(side, align),
-  }
-}
-
-function tooltipArrowClassName(state: TooltipPrimitive.Arrow.State) {
-  const { side } = state
-
-  return cn(
-    'pointer-events-none block h-1.5 w-3 origin-center',
-    side === 'bottom' && 'rotate-180',
-    (side === 'left' || side === 'inline-start') && '-rotate-90',
-    (side === 'right' || side === 'inline-end') && 'rotate-90'
-  )
-}
 
 function TooltipProvider({
   delay = 0,
@@ -127,6 +23,7 @@ function TooltipProvider({
     />
   )
 }
+
 function Tooltip({ ...props }: TooltipPrimitive.Root.Props) {
   return <TooltipPrimitive.Root data-slot="tooltip" {...props} />
 }
@@ -135,12 +32,40 @@ function TooltipTrigger({ ...props }: TooltipPrimitive.Trigger.Props) {
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
 }
 
+function TooltipArrow({
+  className,
+  ...props
+}: ComponentProps<typeof TooltipPrimitive.Arrow>) {
+  return (
+    <TooltipPrimitive.Arrow
+      data-slot="tooltip-arrow"
+      className={cn(
+        'pointer-events-none relative block h-1.5 w-3 overflow-clip',
+        "before:absolute before:bottom-0 before:left-1/2 before:box-border before:block before:content-['']",
+        'before:h-[calc(6px*sqrt(2))] before:w-[calc(6px*sqrt(2))]',
+        'before:translate-x-[-50%] before:translate-y-1/2 before:rotate-45',
+        'before:border before:border-border-normal before:bg-background-tooltip',
+        'dark:before:border-primary',
+        'data-[side=top]:bottom-[-6px] data-[side=top]:rotate-180',
+        'data-[side=bottom]:top-[-6px] data-[side=bottom]:rotate-0',
+        'data-[side=left]:right-[-9px] data-[side=left]:rotate-90',
+        'data-[side=right]:left-[-9px] data-[side=right]:-rotate-90',
+        'data-[side=inline-start]:right-[-9px] data-[side=inline-start]:rotate-90',
+        'data-[side=inline-end]:left-[-9px] data-[side=inline-end]:-rotate-90',
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 function TooltipContent({
   className,
   side = 'top',
   sideOffset = 4,
   align = 'center',
   alignOffset = 0,
+  showArrow = true,
   children,
   container,
   ...props
@@ -149,7 +74,9 @@ function TooltipContent({
     TooltipPrimitive.Positioner.Props,
     'align' | 'alignOffset' | 'side' | 'sideOffset'
   > &
-  Pick<TooltipPrimitive.Portal.Props, 'container'>) {
+  Pick<TooltipPrimitive.Portal.Props, 'container'> & {
+    showArrow?: boolean
+  }) {
   return (
     <TooltipPrimitive.Portal container={container}>
       <TooltipPrimitive.Positioner
@@ -168,12 +95,7 @@ function TooltipContent({
           )}
           {...props}
         >
-          <TooltipPrimitive.Arrow
-            className={tooltipArrowClassName}
-            style={state => tooltipArrowStyle(state.side, state.align)}
-          >
-            <TooltipArrowSvg />
-          </TooltipPrimitive.Arrow>
+          {showArrow ? <TooltipArrow /> : null}
           {children}
         </TooltipPrimitive.Popup>
       </TooltipPrimitive.Positioner>
@@ -183,24 +105,26 @@ function TooltipContent({
 
 interface TooltipHelperProps {
   align?: 'center' | 'end' | 'start'
+  alignOffset?: number
   delay?: number
   disabled?: boolean
-  sideOffset?: number
-  alignOffset?: number
   message: ReactNode
+  showArrow?: boolean
   side?: 'top' | 'bottom' | 'left' | 'right'
+  sideOffset?: number
 }
 
 const TooltipHelper = (props: PropsWithChildren<TooltipHelperProps>) => {
   const {
     align = 'center',
+    alignOffset = 0,
     children,
     delay = 0,
     disabled = false,
-    sideOffset = 4,
-    alignOffset = 0,
     message,
+    showArrow = true,
     side = 'top',
+    sideOffset = 4,
   } = props
 
   const { container } = useTheme()
@@ -220,11 +144,12 @@ const TooltipHelper = (props: PropsWithChildren<TooltipHelperProps>) => {
         }
       />
       <TooltipContent
-        container={container}
-        side={side}
         align={align}
-        sideOffset={sideOffset}
         alignOffset={alignOffset}
+        container={container}
+        showArrow={showArrow}
+        side={side}
+        sideOffset={sideOffset}
       >
         {message}
       </TooltipContent>

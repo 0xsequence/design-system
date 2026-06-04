@@ -13,10 +13,36 @@ export default {
 type Story = StoryObj<typeof Tooltip.Helper>
 
 export const Default: Story = {
+  render: () => (
+    <div className="flex h-[280px] items-center justify-center">
+      <div className="grid grid-cols-3 grid-rows-3 items-center justify-items-center gap-4">
+        <div />
+        <Tooltip.Helper message="Tooltip on top" side="top">
+          <Button>Top</Button>
+        </Tooltip.Helper>
+        <div />
+        <Tooltip.Helper message="Tooltip on left" side="left">
+          <Button>Left</Button>
+        </Tooltip.Helper>
+        <div className="size-8" />
+        <Tooltip.Helper message="Tooltip on right" side="right">
+          <Button>Right</Button>
+        </Tooltip.Helper>
+        <div />
+        <Tooltip.Helper message="Tooltip on bottom" side="bottom">
+          <Button>Bottom</Button>
+        </Tooltip.Helper>
+        <div />
+      </div>
+    </div>
+  ),
+}
+
+export const WithoutArrow: Story = {
   args: {
-    message: 'Hello, world!',
+    message: 'No arrow',
     children: <Button>Hover me</Button>,
-    disabled: false,
+    showArrow: false,
   },
 }
 
