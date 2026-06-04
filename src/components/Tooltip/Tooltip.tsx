@@ -31,7 +31,7 @@ function TooltipArrowSvg() {
       aria-hidden
       className="block h-full w-full"
     >
-      <path d="M1 0 L6 6 L11 0 Z" className="fill-slate-50" />
+      <path d="M1 0 L6 6 L11 0 Z" className="fill-background-tooltip" />
       <path
         d="M1 0.5 L6 5.5 L11 0.5"
         fill="none"
@@ -116,7 +116,7 @@ function tooltipArrowClassName(state: TooltipPrimitive.Arrow.State) {
 }
 
 function TooltipProvider({
-  delay = 250,
+  delay = 0,
   ...props
 }: TooltipPrimitive.Provider.Props) {
   return (
@@ -162,7 +162,7 @@ function TooltipContent({
         <TooltipPrimitive.Popup
           data-slot="tooltip-content"
           className={cn(
-            'relative overflow-visible bg-slate-50 text-primary text-xs font-medium rounded-lg border border-border-normal px-3 py-2 filter-[drop-shadow(0_2px_4px_rgba(0,0,0,0.10))_drop-shadow(0_4px_6px_rgba(0,0,0,0.10))] inline-flex items-center gap-1.5 has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm z-50 w-fit max-w-xs origin-(--transform-origin)',
+            'relative overflow-visible bg-background-tooltip text-primary text-xs font-medium rounded-lg border border-border-normal px-3 py-2 filter-[drop-shadow(0_2px_4px_rgba(0,0,0,0.10))_drop-shadow(0_4px_6px_rgba(0,0,0,0.10))] inline-flex items-center gap-1.5 has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm z-50 w-fit max-w-xs origin-(--transform-origin)',
             popupTransitionStyle,
             className
           )}
@@ -185,22 +185,22 @@ interface TooltipHelperProps {
   align?: 'center' | 'end' | 'start'
   delay?: number
   disabled?: boolean
-  hOffset?: number
+  sideOffset?: number
+  alignOffset?: number
   message: ReactNode
   side?: 'top' | 'bottom' | 'left' | 'right'
-  vOffset?: number
 }
 
 const TooltipHelper = (props: PropsWithChildren<TooltipHelperProps>) => {
   const {
     align = 'center',
     children,
-    delay = 250,
+    delay = 0,
     disabled = false,
-    hOffset = 0,
+    sideOffset = 4,
+    alignOffset = 0,
     message,
     side = 'top',
-    vOffset = 0,
   } = props
 
   const { container } = useTheme()
@@ -208,28 +208,27 @@ const TooltipHelper = (props: PropsWithChildren<TooltipHelperProps>) => {
   return disabled ? (
     <>{children}</>
   ) : (
-    <TooltipProvider delay={delay}>
-      <Tooltip disabled={disabled}>
-        <TooltipTrigger
-          render={
-            isValidElement(children) ? (
-              (children as ReactElement)
-            ) : (
-              <span>{children}</span>
-            )
-          }
-        />
-        <TooltipContent
-          container={container}
-          side={side}
-          align={align}
-          sideOffset={vOffset}
-          alignOffset={hOffset}
-        >
-          {message}
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <Tooltip disabled={disabled}>
+      <TooltipTrigger
+        delay={delay}
+        render={
+          isValidElement(children) ? (
+            (children as ReactElement)
+          ) : (
+            <span>{children}</span>
+          )
+        }
+      />
+      <TooltipContent
+        container={container}
+        side={side}
+        align={align}
+        sideOffset={sideOffset}
+        alignOffset={alignOffset}
+      >
+        {message}
+      </TooltipContent>
+    </Tooltip>
   )
 }
 

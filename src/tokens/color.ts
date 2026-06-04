@@ -21,6 +21,7 @@ export const colorNames = [
   'backgroundInput',
   'backgroundHover',
   'backgroundActive',
+  'backgroundTooltip',
 
   'borderNormal',
   'borderHover',

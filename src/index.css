@@ -34,6 +34,7 @@
   --background-input: white;
   --background-hover: var(--color-slate-100);
   --background-active: var(--color-slate-200);
+  --background-tooltip: var(--color-slate-50);
 
   /* Border colors */
   --border-normal: var(--color-slate-300);
@@ -88,6 +89,7 @@
   --background-input: var(--color-zinc-950);
   --background-hover: var(--color-zinc-900);
   --background-active: var(--color-zinc-700);
+  --background-tooltip: var(--color-zinc-900);
 
   /* Border colors */
   --border-normal: var(--color-zinc-700);
@@ -154,6 +156,7 @@
   --color-background-input: var(--background-input);
   --color-background-hover: var(--background-hover);
   --color-background-active: var(--background-active);
+  --color-background-tooltip: var(--background-tooltip);
 
   --color-border-normal: var(--border-normal);
   --color-border-hover: var(--border-hover);
