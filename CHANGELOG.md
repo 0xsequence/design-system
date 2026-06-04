@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.17
+
+### Patch Changes
+
+- Adding showArrow prop to Popover and Tooltips, change vOffset and hOffset to sideOffset and alignOffset on TooltipHelper."
+
 ## 4.0.0-alpha.16
 
 ### Patch Changes
