@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.18
+
+### Patch Changes
+
+- Updating Switch styling
+
 ## 4.0.0-alpha.17
 
 ### Patch Changes
