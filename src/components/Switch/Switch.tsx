@@ -11,13 +11,13 @@ import { cn } from '../../utils/classnames.js'
 
 const switchVariants = cva(
   [
-    'flex peer rounded-full bg-background-input bg-origin-border cursor-pointer data-[checked]:bg-background-inverse data-[checked]:border-transparent!',
+    'flex peer rounded-full bg-border-hover border-transparent! p-px bg-origin-border cursor-pointer data-[checked]:bg-brand data-[checked]:border-transparent!',
   ],
   {
     variants: {
       size: {
-        sm: 'w-[32px] h-5 p-0.75 [&_span]:size-[12px]',
-        md: 'w-[46px] h-7 p-1 [&_span]:size-[18px]',
+        sm: 'w-9 h-5 [&_span]:size-4',
+        md: 'w-11 h-6 [&_span]:size-5',
       },
     },
     defaultVariants: {
@@ -49,7 +49,7 @@ export const Switch = (props: SwitchProps) => {
       <div className="relative w-full h-full">
         <SwitchPrimitive.Thumb
           data-slot="switch-thumb"
-          className="absolute top-0 left-0 bg-primary/50 rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-checked:bg-inverse data-checked:translate-x-full"
+          className="absolute top-0 left-0 bg-white rounded-full transition-transform duration-100 ease-out will-change-transform translate-x-0 data-checked:bg-inverse data-checked:translate-x-full"
         />
       </div>
     </SwitchPrimitive.Root>
