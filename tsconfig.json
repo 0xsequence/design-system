@@ -20,7 +20,9 @@
     "types": ["@testing-library/jest-dom"],
     "jsx": "react-jsx",
 
-    "baseUrl": "."
+    // tsup's dts build force-injects the deprecated `baseUrl` option (see
+    // tsup/dist/rollup.js), so we must silence the TS6 deprecation error here.
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
