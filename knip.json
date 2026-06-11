@@ -9,5 +9,8 @@
   ],
   "entry": [
     "src/index.ts"
+  ],
+  "ignore": [
+    "docs/**"
   ]
 }

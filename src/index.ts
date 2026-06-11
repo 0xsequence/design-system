@@ -21,7 +21,7 @@ export {
   AlertTitle,
 } from './components/Alert/Alert.js'
 export { AspectRatio } from './components/AspectRatio/AspectRatio.js'
-export { Badge } from './components/Badge/Badge.js'
+export { Badge, badgeVariants } from './components/Badge/Badge.js'
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'
 export { Button, buttonVariants } from './components/Button/Button.js'
 export { Calendar, CalendarDayButton } from './components/Calendar/Calendar.js'
@@ -44,7 +44,7 @@ export {
   CarouselStatus,
   useCarousel,
 } from './components/Carousel/Carousel.js'
-export { Checkbox } from './components/Checkbox/Checkbox.js'
+export { Checkbox, CheckboxPrimitive } from './components/Checkbox/Checkbox.js'
 export {
   Collapsible,
   CollapsibleContent,
@@ -158,6 +158,7 @@ export {
 export {
   RadioGroup,
   RadioGroupItem,
+  RadioGroupPrimitive,
 } from './components/RadioGroup/RadioGroup.js'
 export { Scroll } from './components/Scroll/Scroll.js'
 export { SearchInput } from './components/SearchInput/SearchInput.js'
@@ -214,7 +215,7 @@ export {
 export { Skeleton } from './components/Skeleton/Skeleton.js'
 export { Spinner } from './components/Spinner/Spinner.js'
 export { StopClickPropagation } from './components/StopClickPropagation/StopClickPropagation.js'
-export { Switch } from './components/Switch/Switch.js'
+export { Switch, SwitchPrimitive } from './components/Switch/Switch.js'
 export {
   Table,
   TableBody,
