@@ -1,6 +1,6 @@
+import type { DateRange } from '@daypicker/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import * as React from 'react'
-import type { DateRange } from 'react-day-picker'
 
 import { Button } from '../Button/Button.js'
 import { Card, CardContent, CardFooter } from '../Card/Card.js'

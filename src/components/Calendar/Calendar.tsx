@@ -1,17 +1,17 @@
 'use client'
 
 import {
+  DayPicker,
+  getDefaultClassNames,
+  type DayButton,
+  type Locale,
+} from '@daypicker/react'
+import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
 } from 'lucide-react'
 import { useEffect, useRef, type ComponentProps } from 'react'
-import {
-  DayPicker,
-  getDefaultClassNames,
-  type DayButton,
-  type Locale,
-} from 'react-day-picker'
 
 import { cn } from '../../utils/classnames.js'
 import { Button, buttonVariants } from '../Button/Button.js'
@@ -91,7 +91,6 @@ function Calendar({
             : 'cn-calendar-caption-label flex items-center gap-1 rounded-(--cell-radius) text-sm [&>svg]:size-3.5 [&>svg]:text-muted',
           defaultClassNames.caption_label
         ),
-        table: 'w-full border-collapse',
         weekdays: cn('flex', defaultClassNames.weekdays),
         weekday: cn(
           'flex-1 rounded-(--cell-radius) text-[0.8rem] font-normal text-muted select-none',
@@ -114,20 +113,20 @@ function Calendar({
           defaultClassNames.day
         ),
         range_start: cn(
-          'relative isolate z-0 rounded-l-(--cell-radius) bg-background-muted after:absolute after:inset-y-0 after:right-0 after:w-4 after:bg-background-muted',
+          'rounded-l-full bg-brand/10',
           defaultClassNames.range_start
         ),
         range_middle: cn('rounded-none', defaultClassNames.range_middle),
         range_end: cn(
-          'relative isolate z-0 rounded-r-(--cell-radius) bg-background-muted after:absolute after:inset-y-0 after:left-0 after:w-4 after:bg-background-muted',
+          'rounded-r-full bg-brand/10',
           defaultClassNames.range_end
         ),
         today: cn(
-          'rounded-(--cell-radius) bg-background-muted text-primary data-[selected=true]:rounded-none',
+          'rounded-full bg-background-muted text-primary data-[selected=true]:bg-transparent',
           defaultClassNames.today
         ),
         outside: cn(
-          'text-muted aria-selected:text-muted',
+          'text-muted opacity-50 aria-selected:text-muted',
           defaultClassNames.outside
         ),
         disabled: cn('text-muted opacity-50', defaultClassNames.disabled),
@@ -219,7 +218,7 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        'relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 border-0 leading-none font-normal group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-ring/50 data-[range-end=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-r-(--cell-radius) data-[range-end=true]:bg-background-primary data-[range-end=true]:text-primary data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-background-muted data-[range-middle=true]:text-primary data-[range-start=true]:rounded-(--cell-radius) data-[range-start=true]:rounded-l-(--cell-radius) data-[range-start=true]:bg-background-primary data-[range-start=true]:text-primary data-[selected-single=true]:bg-background-primary data-[selected-single=true]:text-primary dark:hover:text-primary [&>span]:text-xs [&>span]:opacity-70',
+        'relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 border-0 text-xs leading-none font-medium group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 data-[range-end=true]:rounded-full! data-[range-end=true]:bg-brand data-[range-end=true]:text-white dark:data-[range-end=true]:text-purple-950 data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-brand/10 data-[range-middle=true]:text-brand data-[range-start=true]:rounded-full! data-[range-start=true]:bg-brand data-[range-start=true]:text-white dark:data-[range-start=true]:text-purple-950 data-[selected-single=true]:rounded-full! data-[selected-single=true]:bg-brand data-[selected-single=true]:text-white dark:data-[selected-single=true]:text-purple-950 dark:hover:text-primary [&>span]:text-xs [&>span]:opacity-70',
         defaultClassNames.day,
         className
       )}
