@@ -272,9 +272,4 @@ export { useCombinedRefs } from './hooks/useCombinedRefs.js'
 export { useIsMobile } from './hooks/useIsMobile.js'
 export { useMediaQuery } from './hooks/useMediaQuery.js'
 
-// Icons
-// export * from './icons/aliased.js'
-// export * from './icons/index.js'
-// export type { Icon, IconProps } from './icons/types.js'
-
 import './index.css'

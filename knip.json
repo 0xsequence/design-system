@@ -9,9 +9,5 @@
   ],
   "entry": [
     "src/index.ts"
-  ],
-  "ignore": [
-    "src/icons/icon-template.cjs",
-    "src/icons/index-template.cjs"
   ]
 }
