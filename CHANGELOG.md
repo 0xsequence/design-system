@@ -1,5 +1,11 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.19
+
+### Patch Changes
+
+- Updating dependencies, removing custom icons, and fixing Calendar styling bugs
+
 ## 4.0.0-alpha.18
 
 ### Patch Changes
