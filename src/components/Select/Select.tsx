@@ -1,6 +1,6 @@
 import { Select as SelectPrimitive } from '@base-ui/react/select'
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
-import { type ComponentProps, type ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
 import { useTheme } from '../../providers/ThemeProvider/ThemeProvider.js'
 import {

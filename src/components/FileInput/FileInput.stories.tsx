@@ -22,6 +22,6 @@ export const Error: Story = {
     name: 'myFileInput',
     validExtensions: ['images'],
     onValueChange: file => console.log(file),
-    ['aria-invalid']: true,
+    'aria-invalid': true,
   },
 }

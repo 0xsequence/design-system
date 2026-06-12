@@ -1,5 +1,5 @@
 import type { LucideProps } from 'lucide-react'
-import { type ComponentProps, type ComponentType, type ReactNode } from 'react'
+import type { ComponentProps, ComponentType, ReactNode } from 'react'
 
 import {
   InputGroup,

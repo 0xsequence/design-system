@@ -1,11 +1,11 @@
 import { SearchIcon, XIcon } from 'lucide-react'
 import {
+  type ChangeEvent,
+  type ComponentProps,
   useCallback,
   useEffect,
   useImperativeHandle,
   useRef,
-  type ChangeEvent,
-  type ComponentProps,
 } from 'react'
 
 import { isMacOS } from '../../utils/platform.js'

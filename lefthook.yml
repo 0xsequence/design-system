@@ -6,7 +6,7 @@ pre-commit:
       glob:
         - "src/*.{ts,tsx}"
         - "src/**/*.{ts,tsx}"
-      run: pnpm exec eslint --fix {staged_files} && pnpm exec prettier --write {staged_files}
+      run: pnpm exec biome check --write --no-errors-on-unmatched {staged_files}
       stage_fixed: true
     build:
       priority: 2

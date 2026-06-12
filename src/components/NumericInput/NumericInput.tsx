@@ -1,14 +1,14 @@
 import {
-  useEffect,
   type ChangeEvent,
   type ComponentProps,
   type FocusEvent,
+  useEffect,
 } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 import { Input } from '../Input/Input.js'
 
-const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`)
+const inputRegex = /^\d*(?:\\[.])?\d*$/
 
 function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')

@@ -45,6 +45,6 @@ export const IntegerOnly: Story = {
 export const WithError: Story = {
   render: StoryWrapper,
   args: {
-    ['aria-invalid']: true,
+    'aria-invalid': true,
   },
 }

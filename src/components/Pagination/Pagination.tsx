@@ -104,6 +104,7 @@ function PaginationEllipsis({ className, ...props }: ComponentProps<'span'>) {
     </span>
   )
 }
+
 export {
   Pagination,
   PaginationContent,

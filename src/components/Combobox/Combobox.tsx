@@ -1,6 +1,6 @@
 import { Combobox as ComboboxPrimitive } from '@base-ui/react'
 import { CheckIcon, ChevronDownIcon, XIcon } from 'lucide-react'
-import { useRef, type ComponentPropsWithRef } from 'react'
+import { type ComponentPropsWithRef, useRef } from 'react'
 
 import { useIsKeyboardFocused } from '../../hooks/useIsKeyboardFocused.js'
 import {

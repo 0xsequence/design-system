@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
 
 import { useIsKeyboardFocused } from '../../hooks/useIsKeyboardFocused.js'
 import {

@@ -5,14 +5,14 @@ import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { PanelLeftIcon } from 'lucide-react'
 import {
+  type ComponentProps,
+  type CSSProperties,
   createContext,
   useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
-  type ComponentProps,
-  type CSSProperties,
 } from 'react'
 
 import { useIsMobile } from '../../hooks/useIsMobile.js'
@@ -648,6 +648,7 @@ function SidebarMenuSubButton({
     },
   })
 }
+
 export {
   Sidebar,
   SidebarContent,

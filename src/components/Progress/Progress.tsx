@@ -18,7 +18,8 @@ const progressVariants = cva('', {
 })
 
 interface ProgressProps
-  extends ProgressPrimitive.Root.Props, VariantProps<typeof progressVariants> {
+  extends ProgressPrimitive.Root.Props,
+    VariantProps<typeof progressVariants> {
   indicatorClassName?: string
   trackClassName?: string
 }

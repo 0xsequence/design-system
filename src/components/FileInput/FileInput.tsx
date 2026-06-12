@@ -1,10 +1,10 @@
 import { XIcon } from 'lucide-react'
 import {
+  type ChangeEvent,
+  type ComponentProps,
   useImperativeHandle,
   useRef,
   useState,
-  type ChangeEvent,
-  type ComponentProps,
 } from 'react'
 
 import { focusRingVariants, inputBorderStyle } from '../../styles.js'
@@ -33,10 +33,8 @@ type FileData = {
   extension: string
 }
 
-export interface FileInputProps extends Omit<
-  ComponentProps<'input'>,
-  'type' | 'onChange'
-> {
+export interface FileInputProps
+  extends Omit<ComponentProps<'input'>, 'type' | 'onChange'> {
   name: string
   validExtensions: AllowedMimeTypes[]
   onValueChange?: (value: File | null) => void

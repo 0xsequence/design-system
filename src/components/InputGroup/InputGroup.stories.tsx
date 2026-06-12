@@ -26,7 +26,7 @@ export const Default: Story = {
   },
   args: {
     disabled: false,
-    ['aria-invalid']: false,
+    'aria-invalid': false,
   },
 }
 
@@ -85,7 +85,7 @@ export const WithError: Story = {
   },
   args: {
     disabled: false,
-    ['aria-invalid']: true,
+    'aria-invalid': true,
   },
 }
 
@@ -108,6 +108,6 @@ export const TextareaInput: StoryObj<typeof InputGroupTextarea> = {
   },
   args: {
     disabled: false,
-    ['aria-invalid']: false,
+    'aria-invalid': false,
   },
 }

@@ -4,7 +4,7 @@ import { ArrowLeftRightIcon } from 'lucide-react'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 
-import { ToastProvider, useToast, type ToastProps } from './Toast.js'
+import { type ToastProps, ToastProvider, useToast } from './Toast.js'
 
 export default {
   title: 'Components/Toast',

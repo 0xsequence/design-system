@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { useMemo, type ComponentProps, type ReactNode } from 'react'
+import { type ComponentProps, type ReactNode, useMemo } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 import { Label } from '../Label/Label.js'

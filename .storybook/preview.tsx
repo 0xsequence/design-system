@@ -2,9 +2,9 @@ import type { Decorator, Preview } from '@storybook/react-vite'
 import React from 'react'
 
 import {
-  ThemeProvider,
   type CustomThemes,
   type Theme,
+  ThemeProvider,
 } from '../src/providers/ThemeProvider/ThemeProvider.js'
 
 import docsTheme from './theme'

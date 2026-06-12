@@ -1,16 +1,16 @@
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import {
   Children,
+  type ComponentProps,
   cloneElement,
   createContext,
+  type Dispatch,
   isValidElement,
+  type SetStateAction,
   useContext,
   useEffect,
   useId,
   useState,
-  type ComponentProps,
-  type Dispatch,
-  type SetStateAction,
 } from 'react'
 
 import { useTransitionState } from '../../hooks/useTransitionState.js'

@@ -4,13 +4,7 @@
     "interface": true,
     "type": true
   },
-  "tags": [
-    "-lintignore"
-  ],
-  "entry": [
-    "src/index.ts"
-  ],
-  "ignore": [
-    "docs/**"
-  ]
+  "tags": ["-lintignore"],
+  "entry": ["src/index.ts"],
+  "ignore": ["docs/**"]
 }

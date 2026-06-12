@@ -1,6 +1,6 @@
 import { Radio } from '@base-ui/react/radio'
 import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group'
-import { type ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
 
 import {
   disabledStyle,

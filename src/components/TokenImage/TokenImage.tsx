@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { memo, type HTMLAttributes } from 'react'
+import { type HTMLAttributes, memo } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
@@ -29,8 +29,7 @@ const maskClass =
   '[mask-image:radial-gradient(circle_at_82%_82%,transparent_22%,black_0)]'
 
 interface TokenImageProps
-  extends
-    HTMLAttributes<HTMLDivElement>,
+  extends HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof tokenImageVariants> {
   src?: string
   symbol?: string

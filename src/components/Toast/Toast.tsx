@@ -1,16 +1,16 @@
 import {
-  Toast as ToastPrimitive,
   type ToastManagerAddOptions,
+  Toast as ToastPrimitive,
 } from '@base-ui/react/toast'
 import { clsx } from 'clsx'
 import {
   CircleCheckBigIcon,
   CircleXIcon,
+  type LucideProps,
   TriangleAlertIcon,
   XIcon,
-  type LucideProps,
 } from 'lucide-react'
-import { type ComponentType } from 'react'
+import type { ComponentType } from 'react'
 
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'

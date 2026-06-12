@@ -46,7 +46,8 @@ const overlayVariants = cva(['relative w-full h-full'], {
 })
 
 interface ScrollProps
-  extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof overlayVariants> {
+  extends HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof overlayVariants> {
   contentProps?: HTMLAttributes<HTMLDivElement>
 }
 

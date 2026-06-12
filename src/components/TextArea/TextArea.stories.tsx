@@ -14,7 +14,7 @@ export const Default: Story = {
     placeholder: 'Enter message...',
     rows: 3,
     resize: false,
-    ['aria-invalid']: false,
+    'aria-invalid': false,
     disabled: false,
   },
 }
@@ -24,6 +24,6 @@ export const Error: Story = {
     rows: 3,
     placeholder: 'Enter message...',
     resize: false,
-    ['aria-invalid']: true,
+    'aria-invalid': true,
   },
 }

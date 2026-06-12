@@ -1,6 +1,6 @@
 import { mergeProps, useRender } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { type ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'

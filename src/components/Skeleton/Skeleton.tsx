@@ -24,7 +24,8 @@ const skeletonVariants = cva(
 )
 
 interface SkeletonProps
-  extends React.ComponentProps<'div'>, VariantProps<typeof skeletonVariants> {}
+  extends React.ComponentProps<'div'>,
+    VariantProps<typeof skeletonVariants> {}
 
 export const Skeleton = (props: SkeletonProps) => {
   const { className, size, ...rest } = props

@@ -1,9 +1,9 @@
 'use client'
 
 import {
+  type DayButton,
   DayPicker,
   getDefaultClassNames,
-  type DayButton,
   type Locale,
 } from '@daypicker/react'
 import {
@@ -11,7 +11,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from 'lucide-react'
-import { useEffect, useRef, type ComponentProps } from 'react'
+import { type ComponentProps, useEffect, useRef } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 import { Button, buttonVariants } from '../Button/Button.js'

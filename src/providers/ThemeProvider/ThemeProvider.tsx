@@ -1,13 +1,13 @@
 import {
   createContext,
+  type ReactNode,
   useContext,
   useEffect,
   useMemo,
   useState,
-  type ReactNode,
 } from 'react'
 
-import { colorNames, type ColorTokens } from '../../tokens/color.js'
+import { type ColorTokens, colorNames } from '../../tokens/color.js'
 import { kebabize } from '../../utils/string.js'
 
 const THEME_ATTR = 'data-theme'

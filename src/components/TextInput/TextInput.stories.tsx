@@ -51,7 +51,7 @@ export const SearchInput: Story = {
 export const Error: Story = {
   args: {
     placeholder: 'This is the placeholder',
-    ['aria-invalid']: true,
+    'aria-invalid': true,
   },
 }
 

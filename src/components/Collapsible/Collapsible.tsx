@@ -2,7 +2,7 @@ import { Collapsible as CollapsiblePrimitive } from '@base-ui/react/collapsible'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
 import { ChevronDownIcon } from 'lucide-react'
-import { useState, type ComponentProps, type ReactNode } from 'react'
+import { type ComponentProps, type ReactNode, useState } from 'react'
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
@@ -43,8 +43,10 @@ const collapsibleVariants = cva(
 )
 
 interface CollapsibleHelperProps
-  extends
-    Omit<ComponentProps<typeof CollapsiblePrimitive.Root>, 'onOpenChange'>,
+  extends Omit<
+      ComponentProps<typeof CollapsiblePrimitive.Root>,
+      'onOpenChange'
+    >,
     VariantProps<typeof collapsibleVariants> {
   label: ReactNode
   onOpenChange?: (open: boolean) => void
