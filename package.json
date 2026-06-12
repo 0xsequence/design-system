@@ -38,7 +38,13 @@
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "pnpm build && pnpm test && changeset publish",
-    "knip": "knip"
+    "fallow": "fallow",
+    "fallow:summary": "fallow --summary",
+    "fallow:dead-code": "fallow dead-code",
+    "fallow:dupes": "fallow dupes",
+    "fallow:health": "fallow health",
+    "fallow:audit": "fallow audit",
+    "fallow:fix": "fallow fix"
   },
   "dependencies": {
     "@base-ui/react": "1.5.0",
@@ -66,8 +72,8 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
     "@vitest/coverage-v8": "4.1.7",
+    "fallow": "2.84.0",
     "happy-dom": "20.9.0",
-    "knip": "6.14.2",
     "lefthook": "^2.1.8",
     "lucide-react": "^1.17.0",
     "ox": "0.14.25",

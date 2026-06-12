@@ -75,6 +75,22 @@ Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/
 pnpm install && pnpm dev
 ```
 
+#### Code analysis
+
+We use [fallow](https://docs.fallow.tools) to find unused code, duplication, and complexity hotspots. Run the full suite or scope it to a single analysis:
+
+| Script | What it runs |
+| --- | --- |
+| `pnpm fallow` | Full suite: dead-code + duplication + health |
+| `pnpm fallow:summary` | Category counts only, without individual findings |
+| `pnpm fallow:dead-code` | Unused files, exports, dependencies, and circular deps |
+| `pnpm fallow:dupes` | Copy-paste and structural code duplication |
+| `pnpm fallow:health` | Complexity, maintainability, and hotspots |
+| `pnpm fallow:audit` | Review only files changed since the base branch (CI/PR) |
+| `pnpm fallow:fix` | Auto-fix safe unused-code findings |
+
+Configuration lives in `.fallowrc.json`.
+
 #### Manual project updates
 
 ##### 1. Upgrade the design system to the latest version
