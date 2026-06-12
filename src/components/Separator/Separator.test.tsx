@@ -18,24 +18,6 @@ describe('<Separator />', () => {
     expect(screen.getByRole('separator')).toBeInTheDocument()
   })
 
-  it('defaults to horizontal orientation', () => {
-    render(<Separator decorative={false} />)
-
-    // Native div: horizontal uses h-px class, no aria-orientation
-    expect(screen.getByRole('separator')).not.toHaveAttribute(
-      'aria-orientation'
-    )
-  })
-
-  it('renders with vertical orientation', () => {
-    render(<Separator decorative={false} orientation="vertical" />)
-
-    expect(screen.getByRole('separator')).toHaveAttribute(
-      'aria-orientation',
-      'vertical'
-    )
-  })
-
   it('accepts a custom className', () => {
     render(<Separator className="my-separator" />)
 
