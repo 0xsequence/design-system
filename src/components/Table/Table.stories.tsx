@@ -30,108 +30,21 @@ const invoices = Array.from({ length: 20 }, (_, i) => ({
   paymentMethod: paymentMethods[i % 3],
 }))
 
-const stickyHeaderInvoices = Array.from({ length: 20 }, (_, i) => ({
-  invoice: `INV${String(i + 1).padStart(3, '0')}`,
-  paymentStatus: paymentStatuses[i % 3],
-  totalAmount: `$${(100 + (i + 1) * 25).toFixed(2)}`,
-  paymentMethod: paymentMethods[i % 3],
-}))
+type SortColumn = 'invoice' | 'status' | 'method' | 'amount'
 
-export const Default: Story = {
-  render: () => {
-    const [activeColumn, setActiveColumn] = useState<
-      'invoice' | 'status' | 'method' | 'amount'
-    >('amount')
-    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
-
-    const handleSort = (column: 'invoice' | 'status' | 'method' | 'amount') => {
-      if (activeColumn === column) {
-        setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
-      } else {
-        setActiveColumn(column)
-        setSortDirection('asc')
-      }
-    }
-
-    return (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead />
-            <TableHead className="w-[100px]">
-              <TableHeadButton
-                active={activeColumn === 'invoice'}
-                direction={sortDirection}
-                onClick={() => handleSort('invoice')}
-              >
-                Invoice
-              </TableHeadButton>
-            </TableHead>
-            <TableHead>
-              <TableHeadButton
-                active={activeColumn === 'status'}
-                direction={sortDirection}
-                onClick={() => handleSort('status')}
-              >
-                Status
-              </TableHeadButton>
-            </TableHead>
-            <TableHead>
-              <TableHeadButton
-                active={activeColumn === 'method'}
-                direction={sortDirection}
-                onClick={() => handleSort('method')}
-              >
-                Method
-              </TableHeadButton>
-            </TableHead>
-            <TableHead>
-              <TableHeadButton
-                className="justify-end"
-                active={activeColumn === 'amount'}
-                direction={sortDirection}
-                onClick={() => handleSort('amount')}
-              >
-                Amount
-              </TableHeadButton>
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-
-        <TableBody>
-          {invoices.map(invoice => (
-            <TableRow key={invoice.invoice}>
-              <TableCell>
-                <Checkbox />
-              </TableCell>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell>{invoice.paymentStatus}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right">
-                {invoice.totalAmount}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    )
-  },
-  args: {},
-}
-
-const StickyHeaderTableContent = ({
-  invoices: data,
+function InvoiceTable({
+  stickyHeader,
   maxHeight,
+  showFooter,
 }: {
-  invoices: typeof stickyHeaderInvoices
+  stickyHeader?: boolean
   maxHeight?: string
-}) => {
-  const [activeColumn, setActiveColumn] = useState<
-    'invoice' | 'status' | 'method' | 'amount'
-  >('amount')
+  showFooter?: boolean
+}) {
+  const [activeColumn, setActiveColumn] = useState<SortColumn>('amount')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
 
-  const handleSort = (column: 'invoice' | 'status' | 'method' | 'amount') => {
+  const handleSort = (column: SortColumn) => {
     if (activeColumn === column) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
     } else {
@@ -141,7 +54,7 @@ const StickyHeaderTableContent = ({
   }
 
   return (
-    <Table stickyHeader maxHeight={maxHeight}>
+    <Table stickyHeader={stickyHeader} maxHeight={maxHeight}>
       <TableHeader>
         <TableRow>
           <TableHead />
@@ -186,7 +99,7 @@ const StickyHeaderTableContent = ({
       </TableHeader>
 
       <TableBody>
-        {data.map(invoice => (
+        {invoices.map(invoice => (
           <TableRow key={invoice.invoice}>
             <TableCell>
               <Checkbox />
@@ -199,23 +112,25 @@ const StickyHeaderTableContent = ({
         ))}
       </TableBody>
 
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={4}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter>
+      {showFooter && (
+        <TableFooter>
+          <TableRow>
+            <TableCell colSpan={4}>Total</TableCell>
+            <TableCell className="text-right">$2,500.00</TableCell>
+          </TableRow>
+        </TableFooter>
+      )}
     </Table>
   )
 }
 
+export const Default: Story = {
+  render: () => <InvoiceTable />,
+  args: {},
+}
+
 export const StickyHeader: Story = {
-  render: () => (
-    <StickyHeaderTableContent
-      invoices={stickyHeaderInvoices}
-      maxHeight="300px"
-    />
-  ),
+  render: () => <InvoiceTable stickyHeader maxHeight="300px" showFooter />,
   args: {},
 }
 
@@ -233,7 +148,7 @@ export const StickyHeaderWithPageScroll: Story = {
           When you scroll down, the header stays fixed at the top of the
           viewport.
         </p>
-        <StickyHeaderTableContent invoices={stickyHeaderInvoices} />
+        <InvoiceTable stickyHeader showFooter />
         <div className="h-96 bg-background-secondary rounded-xl flex items-center justify-center text-muted">
           Bottom content — scroll to see the sticky header behavior
         </div>

@@ -115,6 +115,31 @@ function getVisiblePages(
   return [1, 'start-ellipsis', ...middle, 'end-ellipsis', totalPages]
 }
 
+function renderPageItems(
+  visiblePages: (number | string)[],
+  currentPage: number,
+  setPage: (page: number) => void,
+  getLinkClassName?: (isActive: boolean) => string
+) {
+  return visiblePages.map(page =>
+    typeof page === 'string' ? (
+      <PaginationItem key={page}>
+        <PaginationEllipsis />
+      </PaginationItem>
+    ) : (
+      <PaginationItem key={page}>
+        <PaginationLink
+          {...createPageLinkProps(page, setPage)}
+          isActive={currentPage === page}
+          className={getLinkClassName?.(currentPage === page)}
+        >
+          {page}
+        </PaginationLink>
+      </PaginationItem>
+    )
+  )
+}
+
 function DefaultPaginationStory() {
   const [currentPage, setCurrentPage] = useState(2)
   const totalPages = 10
@@ -133,22 +158,7 @@ function DefaultPaginationStory() {
               })}
             />
           </PaginationItem>
-          {visiblePages.map(page =>
-            typeof page === 'string' ? (
-              <PaginationItem key={page}>
-                <PaginationEllipsis />
-              </PaginationItem>
-            ) : (
-              <PaginationItem key={page}>
-                <PaginationLink
-                  {...createPageLinkProps(page, setCurrentPage)}
-                  isActive={currentPage === page}
-                >
-                  {page}
-                </PaginationLink>
-              </PaginationItem>
-            )
-          )}
+          {renderPageItems(visiblePages, currentPage, setCurrentPage)}
           <PaginationItem>
             <PaginationNext
               {...createNavigationLinkProps({
@@ -331,22 +341,7 @@ function RowsPerPagePaginationStory() {
                 })}
               />
             </PaginationItem>
-            {visiblePages.map(page =>
-              typeof page === 'string' ? (
-                <PaginationItem key={page}>
-                  <PaginationEllipsis />
-                </PaginationItem>
-              ) : (
-                <PaginationItem key={page}>
-                  <PaginationLink
-                    {...createPageLinkProps(page, setCurrentPage)}
-                    isActive={currentPage === page}
-                  >
-                    {page}
-                  </PaginationLink>
-                </PaginationItem>
-              )
-            )}
+            {renderPageItems(visiblePages, currentPage, setCurrentPage)}
             <PaginationItem>
               <PaginationNext
                 text=""
@@ -401,26 +396,14 @@ function FirstLastPaginationStory() {
               <ChevronLeftIcon className="size-4" />
             </PaginationLink>
           </PaginationItem>
-          {visiblePages.map(page =>
-            typeof page === 'string' ? (
-              <PaginationItem key={page}>
-                <PaginationEllipsis />
-              </PaginationItem>
-            ) : (
-              <PaginationItem key={page}>
-                <PaginationLink
-                  {...createPageLinkProps(page, setCurrentPage)}
-                  isActive={currentPage === page}
-                  className={
-                    currentPage === page
-                      ? 'rounded-full bg-background-secondary border-border-button'
-                      : 'rounded-full'
-                  }
-                >
-                  {page}
-                </PaginationLink>
-              </PaginationItem>
-            )
+          {renderPageItems(
+            visiblePages,
+            currentPage,
+            setCurrentPage,
+            isActive =>
+              isActive
+                ? 'rounded-full bg-background-secondary border-border-button'
+                : 'rounded-full'
           )}
           <PaginationItem>
             <PaginationLink

@@ -25,6 +25,42 @@ export default {
   component: DialogContent,
 } as Meta<typeof DialogContent>
 
+/** Shared "edit profile" body used by the Default and Responsive stories. */
+function EditProfileContent() {
+  return (
+    <>
+      <DialogHeader>
+        <DialogTitle>Edit profile</DialogTitle>
+        <DialogDescription>
+          Make changes to your profile here. Click save when you&apos;re done.
+        </DialogDescription>
+      </DialogHeader>
+      <div className="grid gap-4">
+        <div className="grid gap-3">
+          <Label htmlFor="name-1">Name</Label>
+          <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+        </div>
+        <div className="grid gap-3">
+          <Label htmlFor="username-1">Username</Label>
+          <Input id="username-1" name="username" defaultValue="@peduarte" />
+        </div>
+      </div>
+      <DialogFooter className="flex-row gap-2">
+        <DialogClose
+          render={
+            <Button variant="secondary" size="lg" className="w-full">
+              Cancel
+            </Button>
+          }
+        />
+        <Button type="submit" size="lg" className="w-full">
+          Save changes
+        </Button>
+      </DialogFooter>
+    </>
+  )
+}
+
 export const Default: StoryObj<typeof DialogContent> = {
   render: args => {
     return (
@@ -34,39 +70,7 @@ export const Default: StoryObj<typeof DialogContent> = {
             render={<Button variant="outline">Open Dialog</Button>}
           />
           <DialogContent className="sm:max-w-[425px]" {...args}>
-            <DialogHeader>
-              <DialogTitle>Edit profile</DialogTitle>
-              <DialogDescription>
-                Make changes to your profile here. Click save when you&apos;re
-                done.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="grid gap-4">
-              <div className="grid gap-3">
-                <Label htmlFor="name-1">Name</Label>
-                <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="username-1">Username</Label>
-                <Input
-                  id="username-1"
-                  name="username"
-                  defaultValue="@peduarte"
-                />
-              </div>
-            </div>
-            <DialogFooter className="flex-row gap-2">
-              <DialogClose
-                render={
-                  <Button variant="secondary" size="lg" className="w-full">
-                    Cancel
-                  </Button>
-                }
-              />
-              <Button type="submit" size="lg" className="w-full">
-                Save changes
-              </Button>
-            </DialogFooter>
+            <EditProfileContent />
           </DialogContent>
         </form>
       </Dialog>
@@ -173,34 +177,7 @@ function ResponsiveDialogStory(args: ComponentProps<typeof DialogContent>) {
     <Dialog>
       <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} />
       <DialogContent responsive {...args}>
-        <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4">
-          <div className="grid gap-3">
-            <Label htmlFor="name-1">Name</Label>
-            <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-          </div>
-          <div className="grid gap-3">
-            <Label htmlFor="username-1">Username</Label>
-            <Input id="username-1" name="username" defaultValue="@peduarte" />
-          </div>
-        </div>
-        <DialogFooter className="flex-row gap-2">
-          <DialogClose
-            render={
-              <Button variant="secondary" size="lg" className="w-full">
-                Cancel
-              </Button>
-            }
-          />
-          <Button type="submit" size="lg" className="w-full">
-            Save changes
-          </Button>
-        </DialogFooter>
+        <EditProfileContent />
       </DialogContent>
     </Dialog>
   )
