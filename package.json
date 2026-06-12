@@ -2,22 +2,25 @@
   "name": "@0xsequence/design-system",
   "version": "4.0.0-alpha.19",
   "license": "Apache-2.0",
-  "type": "module",
-  "main": "dist/index.js",
-  "style": "dist/index.css",
-  "types": "dist/index.d.ts",
   "homepage": "https://0xsequence.github.io/design-system/",
+  "type": "module",
+  "main": "./dist/index.js",
+  "style": "./dist/index.css",
+  "types": "./dist/index.d.ts",
   "exports": {
-    "./package.json": "./package.json",
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./index.css": "./dist/index.css",
-    "./preset": "./dist/index.css"
+    "./preset": "./dist/index.css",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist/**"
+  ],
+  "sideEffects": [
+    "*.css"
   ],
   "scripts": {
     "dev": "pnpm storybook",
@@ -35,7 +38,6 @@
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "pnpm build && pnpm test && changeset publish",
-    "attw": "attw --pack .",
     "knip": "knip"
   },
   "dependencies": {
@@ -47,7 +49,6 @@
     "tailwindcss": "4.3.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.18.2",
     "@biomejs/biome": "2.4.16",
     "@changesets/changelog-github": "0.7.0",
     "@changesets/cli": "2.31.0",
