@@ -17,7 +17,7 @@ export const Default: Story = {
   },
 }
 
-export const Error: Story = {
+export const Invalid: Story = {
   args: {
     name: 'myFileInput',
     validExtensions: ['images'],

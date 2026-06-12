@@ -130,7 +130,7 @@ const TooltipHelper = (props: PropsWithChildren<TooltipHelperProps>) => {
   const { container } = useTheme()
 
   return disabled ? (
-    <>{children}</>
+    children
   ) : (
     <Tooltip disabled={disabled}>
       <TooltipTrigger

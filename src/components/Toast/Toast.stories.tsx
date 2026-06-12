@@ -59,7 +59,7 @@ export const WithIcon: Story = {
   },
 }
 
-export const Success = {
+export const WithSuccess: Story = {
   render: StoryWrapper,
   args: {
     type: 'success',
@@ -68,7 +68,7 @@ export const Success = {
   },
 }
 
-export const Warning = {
+export const WithWarning: Story = {
   render: StoryWrapper,
   args: {
     type: 'warning',
@@ -78,7 +78,7 @@ export const Warning = {
   },
 }
 
-export const Error = {
+export const WithError: Story = {
   render: StoryWrapper,
   args: {
     type: 'error',

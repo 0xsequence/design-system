@@ -114,7 +114,7 @@ describe('<Empty /> composing all parts', () => {
           <EmptyDescription>Add one to get started.</EmptyDescription>
         </EmptyHeader>
         <EmptyContent>
-          <button>Add item</button>
+          <button type="button">Add item</button>
         </EmptyContent>
       </Empty>
     )

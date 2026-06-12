@@ -14,7 +14,7 @@ describe('<Tooltip />', () => {
 
     const res = renderWithTheme(
       <Tooltip.Helper message="Tip" delay={0}>
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip.Helper>
     )
 

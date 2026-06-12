@@ -5,7 +5,11 @@ import { type ToastProps, ToastProvider, useToast } from './Toast.js'
 
 const Trigger = (props: ToastProps) => {
   const toast = useToast()
-  return <button onClick={() => toast.add(props)}>Trigger</button>
+  return (
+    <button type="button" onClick={() => toast.add(props)}>
+      Trigger
+    </button>
+  )
 }
 
 const setup = (props: ToastProps) =>

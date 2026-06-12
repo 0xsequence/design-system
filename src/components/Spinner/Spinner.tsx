@@ -22,6 +22,7 @@ interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
 export const Spinner = ({ size, className }: SpinnerProps) => {
   return (
     <svg
+      aria-label="Spinner"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       stroke="currentColor"

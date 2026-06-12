@@ -61,7 +61,7 @@ export const FileInput = (props: FileInputProps) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const filelist = e.currentTarget.files as FileList
-    if (!filelist || !filelist[0]) {
+    if (!filelist?.[0]) {
       return
     }
 

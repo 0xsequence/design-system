@@ -1,4 +1,4 @@
-import { ExternalLinkIcon, FolderIcon } from 'lucide-react'
+import { FolderIcon } from 'lucide-react'
 
 import { Button } from '../Button/Button.js'
 
@@ -38,10 +38,12 @@ export const Default = {
         variant="link"
         className="text-muted underline underline-offset-4"
         size="sm"
-        render={<a href="#" />}
-      >
-        Learn More <ExternalLinkIcon />
-      </Button>
+        render={
+          <a href="/" aria-label="Learn More">
+            Learn More
+          </a>
+        }
+      />
     </Empty>
   ),
 }

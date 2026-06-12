@@ -19,7 +19,7 @@ export const Default: Story = {
   },
 }
 
-export const Error: Story = {
+export const Invalid: Story = {
   args: {
     rows: 3,
     placeholder: 'Enter message...',

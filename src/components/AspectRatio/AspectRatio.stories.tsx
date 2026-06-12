@@ -14,6 +14,7 @@ export const Default: Story = {
     <AspectRatio ratio={args.ratio} className="bg-muted rounded-lg">
       <img
         src="https://skyweaver.ghost.io/content/images/size/w600/2023/01/hexbound_promo.png"
+        alt="Hexbound"
         className="h-full w-full rounded-lg object-cover"
       />
     </AspectRatio>

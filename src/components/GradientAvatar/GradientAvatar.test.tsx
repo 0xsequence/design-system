@@ -27,7 +27,7 @@ describe('<GradientAvatar />', () => {
     const defs = container.querySelector('defs')
     expect(defs).toBeInTheDocument()
     expect(
-      defs!.querySelectorAll('linearGradient,radialGradient').length
+      defs?.querySelectorAll('linearGradient,radialGradient').length
     ).toBeGreaterThan(0)
   })
 

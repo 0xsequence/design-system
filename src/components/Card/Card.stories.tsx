@@ -87,7 +87,7 @@ export const Outline: Story = {
 
 export const Clickable: Story = {
   render: args => (
-    <Card {...args} render={<button />}>
+    <Card {...args} render={<button type="button" />}>
       <CardHeader>
         <CardTitle>Clickable Card</CardTitle>
         <CardDescription>Click me</CardDescription>
@@ -97,7 +97,7 @@ export const Clickable: Story = {
   args: {
     clickable: true,
     disabled: false,
-    render: <button />,
+    render: <button type="button" />,
     onClick: () => console.log('Clicked!'),
   },
 }
@@ -114,7 +114,12 @@ export const ClickableHover: Story = {
   render: args => (
     <div className="flex flex-col gap-4">
       {(['default', 'outline', 'muted'] as const).map(variant => (
-        <Card key={variant} {...args} variant={variant} render={<button />}>
+        <Card
+          key={variant}
+          {...args}
+          variant={variant}
+          render={<button type="button" />}
+        >
           <CardHeader>
             <CardTitle className="capitalize">{variant}</CardTitle>
             <CardDescription>Hover me</CardDescription>

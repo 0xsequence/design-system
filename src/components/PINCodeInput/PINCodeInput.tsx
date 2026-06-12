@@ -96,7 +96,7 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
   }
 
   const handlePaste = (
-    idx: number,
+    _idx: number,
     ev: React.ClipboardEvent<HTMLInputElement>
   ) => {
     ev.preventDefault()
@@ -149,4 +149,4 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
 }
 
 const range = (start: number, end: number) =>
-  Array.from({ length: end - start }, (v, k) => k + start)
+  Array.from({ length: end - start }, (_v, k) => k + start)

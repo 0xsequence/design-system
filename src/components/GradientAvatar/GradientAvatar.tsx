@@ -67,7 +67,7 @@ const cyrb53 = (str: string, seed: number = 0): number => {
   let h1 = 0xdeadbeef ^ seed,
     h2 = 0x41c6ce57 ^ seed
 
-  for (let i = 0, ch; i < str.length; i++) {
+  for (let i = 0, ch = 0; i < str.length; i++) {
     ch = str.charCodeAt(i)
     h1 = Math.imul(h1 ^ ch, 2654435761)
     h2 = Math.imul(h2 ^ ch, 1597334677)
@@ -85,7 +85,7 @@ const cyrb53 = (str: string, seed: number = 0): number => {
 
 const createId = (name: string, id: string) => `${prefix}${name}${id}`
 
-const createHues = (a: number, b: number, c: number) => {
+const createHues = (a: number, _b: number, c: number) => {
   const hueA = a % 360
   const hueB = (a + 120) % 360
   const hueC = c % 360
@@ -99,12 +99,12 @@ const createHues = (a: number, b: number, c: number) => {
 
 const createGradients = (id: string, address: string): Gradients => {
   const hash: HashState = {
-    a: cyrb53(address + 'a', 0),
-    b: cyrb53(address + 'b', 1),
-    c: cyrb53(address + 'c', 2),
-    x: cyrb53(address + 'd', 3),
-    y: cyrb53(address + 'e', 4),
-    r: cyrb53(address + 'f', 5),
+    a: cyrb53(`${address}a`, 0),
+    b: cyrb53(`${address}b`, 1),
+    c: cyrb53(`${address}c`, 2),
+    x: cyrb53(`${address}d`, 3),
+    y: cyrb53(`${address}e`, 4),
+    r: cyrb53(`${address}f`, 5),
   }
 
   const { hueA, hueB, hueC } = createHues(hash.a, hash.b, hash.c)
@@ -152,6 +152,7 @@ export const GradientAvatar = memo((props: GradientAvatarProps) => {
 
   return (
     <svg
+      aria-label="Avatar"
       className={cn(avatarVariants({ size }), className)}
       viewBox={`0 0 ${SIZE} ${SIZE}`}
       version="1.1"

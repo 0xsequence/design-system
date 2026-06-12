@@ -14,9 +14,7 @@ const StoryWrapper: StoryFn<typeof PINCodeInput> = args => {
   const [pinCode, setPINCode] = useState([])
 
   return (
-    <>
-      <PINCodeInput {...(args as any)} onChange={setPINCode} value={pinCode} />
-    </>
+    <PINCodeInput {...(args as any)} onChange={setPINCode} value={pinCode} />
   )
 }
 

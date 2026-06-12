@@ -13,13 +13,11 @@ type Story = StoryObj<typeof NumericInput>
 const StoryWrapper: StoryFn<typeof NumericInput> = args => {
   const [value, setValue] = useState('')
   return (
-    <>
-      <NumericInput
-        value={value}
-        onChange={ev => setValue(ev.target.value)}
-        {...args}
-      />
-    </>
+    <NumericInput
+      value={value}
+      onChange={ev => setValue(ev.target.value)}
+      {...args}
+    />
   )
 }
 

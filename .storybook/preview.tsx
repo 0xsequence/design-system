@@ -1,4 +1,5 @@
 import type { Decorator, Preview } from '@storybook/react-vite'
+// biome-ignore lint/correctness/noUnusedImports: Storybook requires React
 import React from 'react'
 
 import {

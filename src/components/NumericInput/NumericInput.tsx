@@ -72,7 +72,7 @@ export const NumericInput = (props: NumericInputProps) => {
 
     // Add leading zero if needed
     if (value.startsWith('.')) {
-      value = '0' + value
+      value = `0${value}`
     }
 
     // strip leading zeros

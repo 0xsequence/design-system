@@ -48,7 +48,7 @@ export const SearchInput: Story = {
     ),
   },
 }
-export const Error: Story = {
+export const Invalid: Story = {
   args: {
     placeholder: 'This is the placeholder',
     'aria-invalid': true,

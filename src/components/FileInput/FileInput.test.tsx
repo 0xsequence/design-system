@@ -123,7 +123,7 @@ describe('<FileInput />', () => {
 
     const input = document.querySelector('input[type=file]')
     expect(input).toHaveAttribute('accept')
-    expect(input!.getAttribute('accept')).toContain('pdf')
-    expect(input!.getAttribute('accept')).toContain('csv')
+    expect(input?.getAttribute('accept')).toContain('pdf')
+    expect(input?.getAttribute('accept')).toContain('csv')
   })
 })
