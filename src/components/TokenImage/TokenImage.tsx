@@ -1,10 +1,8 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { memo, type HTMLAttributes } from 'react'
+import { type HTMLAttributes, memo } from 'react'
 
 import { cn } from '../../utils/classnames.js'
-import { Image } from '../Image/Image.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
-import { Text } from '../Text/Text.js'
 
 const NETWORK_IMAGE_SIZE = '40%'
 const NETWORK_IMAGE_OFFSET = '-2%'
@@ -36,7 +34,6 @@ interface TokenImageProps
   src?: string
   symbol?: string
   withNetwork?: number
-  fadeIn?: boolean
 }
 
 export const TokenImage = memo((props: TokenImageProps) => {
@@ -47,7 +44,6 @@ export const TokenImage = memo((props: TokenImageProps) => {
     symbol,
     size = 'md',
     withNetwork,
-    fadeIn,
     ...rest
   } = props
 
@@ -58,33 +54,28 @@ export const TokenImage = memo((props: TokenImageProps) => {
       {...rest}
     >
       {src ? (
-        <Image
+        <img
           className={cn(
             'rounded-full max-w-full max-h-full object-cover w-full overflow-hidden',
             withNetwork && maskClass
           )}
-          fadeIn={fadeIn}
           src={src}
+          alt={`${symbol} Token Logo`}
         />
       ) : (
-        <Text
+        <span
           className={cn(
-            'bg-background-secondary rounded-full w-full h-full flex items-center justify-center overflow-hidden',
+            'text-muted uppercase font-medium bg-background-secondary rounded-full w-full h-full flex items-center justify-center overflow-hidden',
             withNetwork && maskClass
           )}
-          variant="inherit"
-          fontWeight="medium"
-          color="muted"
-          uppercase
         >
           {symbol?.replace(/\s/, '').slice(0, 4)}
-        </Text>
+        </span>
       )}
       {withNetwork && (
         <NetworkImage
           chainId={withNetwork}
           className="absolute z-1"
-          fadeIn={fadeIn}
           style={{
             width: NETWORK_IMAGE_SIZE,
             height: NETWORK_IMAGE_SIZE,

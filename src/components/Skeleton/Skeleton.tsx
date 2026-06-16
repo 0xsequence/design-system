@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { motion, type HTMLMotionProps } from 'motion/react'
 
 import { cn } from '../../utils/classnames.js'
 
@@ -25,18 +24,11 @@ const skeletonVariants = cva(
 )
 
 interface SkeletonProps
-  extends HTMLMotionProps<'div'>,
+  extends React.ComponentProps<'div'>,
     VariantProps<typeof skeletonVariants> {}
 
 export const Skeleton = (props: SkeletonProps) => {
   const { className, size, ...rest } = props
 
-  return (
-    <motion.div
-      className={cn(skeletonVariants({ size }), className)}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      {...rest}
-    />
-  )
+  return <div className={cn(skeletonVariants({ size }), className)} {...rest} />
 }

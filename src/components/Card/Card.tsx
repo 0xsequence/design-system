@@ -1,12 +1,12 @@
-import { Slot } from '@radix-ui/react-slot'
+import { mergeProps, useRender } from '@base-ui/react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { type ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 
 export const cardVariants = cva(
-  ['overflow-hidden', 'rounded-xl', 'p-4', 'w-full'],
+  ['overflow-hidden', 'rounded-3xl', 'p-6', 'w-full'],
   {
     variants: {
       variant: {
@@ -15,7 +15,10 @@ export const cardVariants = cva(
         muted: 'bg-background-muted border-1 border-border-card',
       },
       clickable: {
-        true: ['cursor-pointer hover:opacity-80', focusRingVariants()],
+        true: [
+          'cursor-pointer hover:border-transparent hover:ring-2 hover:ring-border-hover',
+          focusRingVariants(),
+        ],
       },
       disabled: {
         true: 'opacity-50 cursor-default pointer-events-none hover:border-border-card',
@@ -27,40 +30,112 @@ export const cardVariants = cva(
   }
 )
 
-interface CardProps
-  extends ComponentProps<'div'>,
-    VariantProps<typeof cardVariants> {
-  asChild?: boolean
+export const Card = ({
+  className,
+  variant,
+  clickable,
+  disabled,
+  render,
+  ...rest
+}: useRender.ComponentProps<'div'> & VariantProps<typeof cardVariants>) => {
+  return useRender({
+    defaultTagName: 'div',
+    props: mergeProps<'div'>(
+      {
+        className: cn(
+          cardVariants({ variant, clickable, disabled }),
+          className
+        ),
+      },
+      rest
+    ),
+    render,
+    state: {
+      slot: 'card',
+      variant,
+      clickable,
+      disabled,
+    },
+  })
 }
 
-export const Card = (props: CardProps) => {
-  const {
-    ref,
-    className,
-    children,
-    variant,
-    clickable,
-    disabled,
-    asChild,
-    ...rest
-  } = props
+export const CardHeader = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    data-slot="card-header"
+    className={cn('flex flex-col gap-1.5 relative', className)}
+    {...props}
+  />
+)
 
-  const Comp = asChild ? Slot : 'div'
+export const CardTitle = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    data-slot="card-title"
+    className={cn('text-lg font-bold leading-none', className)}
+    {...props}
+  />
+)
 
-  return (
-    <Comp
-      ref={ref}
-      className={cn(
-        cardVariants({
-          variant,
-          clickable,
-          disabled,
-        }),
-        className
-      )}
-      {...rest}
-    >
-      {children}
-    </Comp>
-  )
-}
+export const CardDescription = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    data-slot="card-description"
+    className={cn('text-sm text-muted', className)}
+    {...props}
+  />
+)
+
+export const CardAction = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    data-slot="card-action"
+    className={cn('absolute top-0 right-0', className)}
+    {...props}
+  />
+)
+
+export const CardContent = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    data-slot="card-content"
+    className={cn('pt-3', className)}
+    {...props}
+  />
+)
+
+export const CardFooter = ({
+  ref,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    data-slot="card-footer"
+    className={cn(
+      'flex items-center pt-3 border-t border-border-card',
+      className
+    )}
+    {...props}
+  />
+)

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Card } from '../Card/Card.js'
-import { Text } from '../Text/Text.js'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs.js'
 
@@ -13,11 +12,7 @@ export default {
 type Story = StoryObj<typeof Tabs>
 
 const Content = ({ children }: any) => (
-  <Card className="mt-4">
-    <Text variant="normal" color="secondary">
-      {children}
-    </Text>
-  </Card>
+  <Card className="mt-4 text-sm text-primary">{children}</Card>
 )
 
 export const Default: Story = {
@@ -28,6 +23,9 @@ export const Default: Story = {
           <TabsTrigger value="coins">Coins</TabsTrigger>
           <TabsTrigger value="collectibles">Collectibles</TabsTrigger>
           <TabsTrigger value="rwas">RWAs</TabsTrigger>
+          <TabsTrigger value="not-available" disabled>
+            Not available
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="coins">
           <Content>Coins content</Content>

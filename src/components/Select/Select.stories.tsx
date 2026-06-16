@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useState } from 'react'
 
 import { Button } from '../Button/Button.js'
-import { Modal } from '../Modal/Modal.js'
+import { Dialog, DialogContent, DialogTrigger } from '../Dialog/Dialog.js'
 import { NetworkImage } from '../NetworkImage/NetworkImage.js'
 
 import {
@@ -55,46 +54,70 @@ export const Default: Story = {
   },
 }
 
+interface Network {
+  name: string
+  chainId: number
+}
+
+const networks: Network[] = [
+  {
+    name: 'Mainnet',
+    chainId: 1,
+  },
+  {
+    name: 'Polygon',
+    chainId: 137,
+  },
+  {
+    name: 'BNB Smart Chain',
+    chainId: 56,
+  },
+  {
+    name: 'Avalanche',
+    chainId: 43114,
+  },
+  {
+    name: 'Arbitrum',
+    chainId: 42161,
+  },
+  {
+    name: 'Optimism',
+    chainId: 10,
+  },
+  {
+    name: 'Base',
+    chainId: 8453,
+  },
+]
+
+const NetworkItem = ({ network }: { network: Network }) => {
+  return (
+    <div className="flex items-center gap-1 text-sm font-bold">
+      <NetworkImage chainId={network.chainId} size="sm" />
+      {network.name}
+    </div>
+  )
+}
+
 export const NetworkSelect: Story = {
   render: args => (
     <Select
-      defaultValue={args.defaultValue}
       onValueChange={args.onValueChange}
       disabled={args.disabled}
+      defaultValue={networks[0]}
     >
-      <SelectTrigger>
-        <SelectValue placeholder="Select a network" />
+      <SelectTrigger className="w-40">
+        <SelectValue placeholder="Select a network">
+          {network => <NetworkItem network={network} />}
+        </SelectValue>
       </SelectTrigger>
-      <SelectContent align="start" position="popper">
-        <SelectGroup className="[&>*]:h-13">
-          <SelectItem value="mainnet">
-            <NetworkImage chainId={1} />
-            Mainnet
-          </SelectItem>
-          <SelectItem value="polygon">
-            <NetworkImage chainId={137} />
-            Polygon
-          </SelectItem>
-          <SelectItem value="bsc">
-            <NetworkImage chainId={56} />
-            BNB Smart Chain
-          </SelectItem>
-          <SelectItem value="avalanche">
-            <NetworkImage chainId={43114} />
-            Avalanche
-          </SelectItem>
-          <SelectItem value="arbitrum">
-            <NetworkImage chainId={42161} />
-            Arbitrum
-          </SelectItem>
-          <SelectItem value="optimism">
-            <NetworkImage chainId={10} />
-            Optimism
-          </SelectItem>
-          <SelectItem value="base">
-            <NetworkImage chainId={8453} />
-            Base
-          </SelectItem>
+      <SelectContent align="start">
+        <SelectGroup>
+          {networks.map(network => (
+            <SelectItem key={network.chainId} value={network}>
+              <NetworkItem network={network} />
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>
@@ -104,7 +127,6 @@ export const NetworkSelect: Story = {
       console.log('selected: ', value)
     },
     disabled: false,
-    defaultValue: 'mainnet',
   },
 }
 
@@ -118,47 +140,46 @@ export const TooManyOptions: Story = {
   },
 }
 
-export const WithinModal: Story = {
+export const FullWidth: Story = {
+  args: {
+    ...Default.args,
+    className: 'w-full',
+  },
+}
+
+export const WithinDialog: Story = {
   tags: ['!autodocs'],
   render: args => {
-    const [isOpen, setIsOpen] = useState(false)
-
     return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Dialog>
+        <DialogTrigger
+          render={<Button variant="outline">Open Dialog</Button>}
+        />
 
-        {isOpen && (
-          <Modal onClose={() => setIsOpen(false)}>
-            <div className="p-4">
-              <Select.Helper className="w-full" {...args} />
-            </div>
-          </Modal>
-        )}
-      </>
+        <DialogContent>
+          <Select.Helper className="w-full" {...args} />
+        </DialogContent>
+      </Dialog>
     )
   },
   args: Default.args,
 }
 
-export const TooManyOptionsWithModal: Story = {
+export const TooManyOptionsWithinDialog: Story = {
   args: {
     ...TooManyOptions.args,
   },
   render: args => {
-    const [isOpen, setIsOpen] = useState(false)
-
     return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Dialog>
+        <DialogTrigger
+          render={<Button variant="outline">Open Dialog</Button>}
+        />
 
-        {isOpen && (
-          <Modal onClose={() => setIsOpen(false)}>
-            <div className="p-4">
-              <Select.Helper className="w-full" {...args} />
-            </div>
-          </Modal>
-        )}
-      </>
+        <DialogContent>
+          <Select.Helper className="w-full" {...args} />
+        </DialogContent>
+      </Dialog>
     )
   },
 }

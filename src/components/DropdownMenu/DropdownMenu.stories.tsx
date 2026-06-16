@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { EllipsisIcon } from 'lucide-react'
 import { useState } from 'react'
 
-import { ContextMenuIcon } from '../../icons/index.js'
-import { IconButton } from '../IconButton/IconButton.js'
+import { Button } from '../Button/Button.js'
 
 import {
   DropdownMenu,
@@ -33,9 +33,13 @@ export const Default: Story = {
     return (
       <div className="flex justify-center">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <IconButton icon={ContextMenuIcon} />
-          </DropdownMenuTrigger>
+          <DropdownMenuTrigger
+            render={
+              <Button iconOnly>
+                <EllipsisIcon />
+              </Button>
+            }
+          />
           <DropdownMenuContent {...args}>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuGroup>
@@ -80,9 +84,9 @@ export const Default: Story = {
     )
   },
   args: {
-    align: 'center',
-    alignOffset: 0,
-    side: 'bottom',
     sideOffset: 4,
+    side: 'bottom',
+    align: 'start',
+    alignOffset: 0,
   },
 }

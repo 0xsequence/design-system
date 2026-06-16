@@ -1,8 +1,8 @@
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
+import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { CheckIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
 
-import { CheckmarkIcon } from '../../icons/index.js'
 import {
   disabledStyle,
   focusRingVariants,
@@ -32,7 +32,7 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        'peer shrink-0 text-primary flex items-center justify-center bg-background-input rounded-sm cursor-pointer',
+        'peer shrink-0 text-inverse flex items-center justify-center rounded cursor-pointer transition-background duration-150 bg-background-input data-checked:bg-background-inverse data-checked:border-background-inverse!',
         checkboxVariants({ size }),
         focusRingVariants(),
         inputBorderStyle,
@@ -46,10 +46,10 @@ function Checkbox({
         data-slot="checkbox-indicator"
         className="grid place-content-center text-current transition-none"
       >
-        <CheckmarkIcon size={size === 'lg' ? 'sm' : 'xxs'} />
+        <CheckIcon className={size === 'lg' ? 'size-5' : 'size-4'} />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   )
 }
 
-export { Checkbox }
+export { Checkbox, CheckboxPrimitive }

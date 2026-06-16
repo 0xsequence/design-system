@@ -1,15 +1,15 @@
+import { SearchIcon, XIcon } from 'lucide-react'
 import {
+  type ChangeEvent,
+  type ComponentProps,
   useCallback,
   useEffect,
   useImperativeHandle,
   useRef,
-  type ChangeEvent,
-  type ComponentProps,
 } from 'react'
 
-import { CloseIcon, SearchIcon } from '../../icons/index.js'
 import { isMacOS } from '../../utils/platform.js'
-import { IconButton } from '../IconButton/IconButton.js'
+import { Button } from '../Button/Button.js'
 import {
   InputGroup,
   InputGroupAddon,
@@ -67,7 +67,7 @@ export const SearchInput = (props: SearchInputProps) => {
   return (
     <InputGroup className={className}>
       <InputGroupAddon align="inline-start">
-        <SearchIcon />
+        <SearchIcon className="size-4" />
       </InputGroupAddon>
 
       <InputGroupInput
@@ -79,14 +79,16 @@ export const SearchInput = (props: SearchInputProps) => {
 
       <InputGroupAddon align="inline-end" className="relative">
         {showClear && (
-          <IconButton
+          <Button
             className="transition-opacity opacity-100 inert:opacity-0"
-            icon={CloseIcon}
+            iconOnly
             size="xs"
             variant="ghost"
             onClick={handleClear}
             inert={!internalRef.current?.value.length}
-          />
+          >
+            <XIcon />
+          </Button>
         )}
         {showKeyboardShortcut && (
           <Kbd

@@ -3,7 +3,6 @@ import type { ComponentProps } from 'react'
 
 import { Button } from '../Button/Button.js'
 import { Separator } from '../Separator/Separator.js'
-import { Text } from '../Text/Text.js'
 
 import { Popover, PopoverContent, PopoverTrigger } from './Popover.js'
 
@@ -18,9 +17,7 @@ const StoryWrapper = (props: ComponentProps<typeof PopoverContent>) => {
   return (
     <div className="flex justify-center">
       <Popover>
-        <PopoverTrigger asChild>
-          <Button>Open Popover</Button>
-        </PopoverTrigger>
+        <PopoverTrigger render={<Button>Open Popover</Button>} />
         <PopoverContent className="w-[480px]" {...rest}>
           {children}
         </PopoverContent>
@@ -35,15 +32,13 @@ export const Default: Story = {
     children: (
       <div>
         <div className="p-4">
-          <Text variant="large" color="primary">
-            This is a popover
-          </Text>
+          <span className="text-xl text-primary">This is a popover</span>
         </div>
         <Separator />
         <div className="p-4">
-          <Text variant="normal" color="muted">
+          <span className="text-sm text-muted">
             It can contain any content you like.
-          </Text>
+          </span>
         </div>
       </div>
     ),
@@ -51,5 +46,25 @@ export const Default: Story = {
     align: 'center',
     alignOffset: 0,
     side: 'bottom',
+  },
+}
+
+export const WithArrow: Story = {
+  render: StoryWrapper,
+  argTypes: {
+    side: { control: 'radio', options: ['top', 'bottom', 'left', 'right'] },
+    align: { control: 'radio', options: ['start', 'center', 'end'] },
+  },
+  args: {
+    showArrow: true,
+    sideOffset: 8,
+    align: 'center',
+    alignOffset: 0,
+    side: 'bottom',
+    children: (
+      <div className="p-4">
+        <span className="text-sm text-primary">Popover with arrow</span>
+      </div>
+    ),
   },
 }

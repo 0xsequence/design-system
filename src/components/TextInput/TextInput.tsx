@@ -1,6 +1,6 @@
-import { type ComponentProps, type ComponentType, type ReactNode } from 'react'
+import type { LucideProps } from 'lucide-react'
+import type { ComponentProps, ComponentType, ReactNode } from 'react'
 
-import type { IconProps } from '../../icons/types.js'
 import {
   InputGroup,
   InputGroupAddon,
@@ -8,8 +8,8 @@ import {
 } from '../InputGroup/InputGroup.js'
 
 interface TextInputProps extends ComponentProps<'input'> {
-  leftIcon?: ComponentType<IconProps>
-  rightIcon?: ComponentType<IconProps>
+  leftIcon?: ComponentType<LucideProps>
+  rightIcon?: ComponentType<LucideProps>
   controls?: ReactNode
 }
 
@@ -27,12 +27,12 @@ export const TextInput = ({
       <InputGroupInput id={id ?? name} name={name} {...props} />
       {LeftIcon && (
         <InputGroupAddon align="inline-start">
-          <LeftIcon size="sm" />
+          <LeftIcon className="size-4" />
         </InputGroupAddon>
       )}
       {RightIcon && (
         <InputGroupAddon align="inline-end">
-          <RightIcon size="sm" />
+          <RightIcon className="size-4" />
         </InputGroupAddon>
       )}
       {controls && (

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
-
-import SearchIcon from '../../icons/SearchIcon.js'
 
 import {
   InputGroup,
@@ -27,7 +26,7 @@ export const Default: Story = {
   },
   args: {
     disabled: false,
-    ['aria-invalid']: false,
+    'aria-invalid': false,
   },
 }
 
@@ -86,7 +85,7 @@ export const WithError: Story = {
   },
   args: {
     disabled: false,
-    ['aria-invalid']: true,
+    'aria-invalid': true,
   },
 }
 
@@ -109,6 +108,6 @@ export const TextareaInput: StoryObj<typeof InputGroupTextarea> = {
   },
   args: {
     disabled: false,
-    ['aria-invalid']: false,
+    'aria-invalid': false,
   },
 }

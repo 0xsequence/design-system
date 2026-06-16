@@ -1,16 +1,4 @@
 // Tokens
-export { colorNames, type ColorName, type ColorTokens } from './tokens/color.js'
-
-// Providers
-export {
-  ThemeContext,
-  ThemeProvider,
-  useTheme,
-  type CustomThemes,
-  type ResolvedTheme,
-  type Theme,
-  type ThemeColors,
-} from './providers/ThemeProvider/ThemeProvider.js'
 
 // Components
 export {
@@ -21,17 +9,20 @@ export {
   AlertTitle,
 } from './components/Alert/Alert.js'
 export { AspectRatio } from './components/AspectRatio/AspectRatio.js'
-export { Badge } from './components/Badge/Badge.js'
+export { Badge, badgeVariants } from './components/Badge/Badge.js'
 export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.js'
 export { Button, buttonVariants } from './components/Button/Button.js'
+export { Calendar, CalendarDayButton } from './components/Calendar/Calendar.js'
 export {
-  Callout,
-  CalloutButton,
-  CalloutContent,
-  CalloutHeader,
-  CalloutIcon,
-} from './components/Callout/Callout.js'
-export { Card, cardVariants } from './components/Card/Card.js'
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  cardVariants,
+} from './components/Card/Card.js'
 export {
   Carousel,
   CarouselDeck,
@@ -41,12 +32,31 @@ export {
   CarouselStatus,
   useCarousel,
 } from './components/Carousel/Carousel.js'
-export { Checkbox } from './components/Checkbox/Checkbox.js'
-export { ControlledCheckbox } from './components/Checkbox/ControlledCheckbox.js'
+export { Checkbox, CheckboxPrimitive } from './components/Checkbox/Checkbox.js'
 export {
   Collapsible,
+  CollapsibleContent,
   CollapsiblePrimitive,
+  CollapsibleTrigger,
 } from './components/Collapsible/Collapsible.js'
+export {
+  Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
+  ComboboxCollection,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxLabel,
+  ComboboxList,
+  ComboboxSeparator,
+  ComboboxTrigger,
+  ComboboxValue,
+  useComboboxAnchor,
+} from './components/Combobox/Combobox.js'
 export {
   Dialog,
   DialogClose,
@@ -62,7 +72,6 @@ export {
 } from './components/Dialog/Dialog.js'
 export {
   DropdownMenu,
-  DropdownMenuCheckboxIndicator,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -71,7 +80,6 @@ export {
   DropdownMenuPortal,
   DropdownMenuPrimitive,
   DropdownMenuRadioGroup,
-  DropdownMenuRadioIndicator,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -96,44 +104,52 @@ export {
   FieldSet,
   FieldTitle,
 } from './components/Field/Field.js'
-export { ControlledFileInput } from './components/FileInput/ControlledFileInput.js'
 export { FileInput } from './components/FileInput/FileInput.js'
-export { Form } from './components/Form/Form.js'
 export { GradientAvatar } from './components/GradientAvatar/GradientAvatar.js'
-export { IconButton } from './components/IconButton/IconButton.js'
-export { Image } from './components/Image/Image.js'
 export { Input } from './components/Input/Input.js'
 export {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
+  InputGroupNumericInput,
   InputGroupText,
   InputGroupTextarea,
 } from './components/InputGroup/InputGroup.js'
 export { Kbd, KbdGroup } from './components/Kbd/Kbd.js'
 export { Label } from './components/Label/Label.js'
-export { Modal } from './components/Modal/Modal.js'
 export { NetworkImage } from './components/NetworkImage/NetworkImage.js'
-export { ControlledNumericInput } from './components/NumericInput/ControlledNumericInput.js'
 export { NumericInput } from './components/NumericInput/NumericInput.js'
+export {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from './components/Pagination/Pagination.js'
 export { PINCodeInput } from './components/PINCodeInput/PINCodeInput.js'
 export {
   Popover,
-  PopoverAnchor,
   PopoverClose,
   PopoverContent,
   PopoverPrimitive,
   PopoverTrigger,
 } from './components/Popover/Popover.js'
-export { Progress } from './components/Progress/Progress.js'
-export { ControlledRadioGroup } from './components/RadioGroup/ControlledRadioGroup.js'
+export {
+  Progress,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressValue,
+} from './components/Progress/Progress.js'
 export {
   RadioGroup,
   RadioGroupItem,
+  RadioGroupPrimitive,
 } from './components/RadioGroup/RadioGroup.js'
 export { Scroll } from './components/Scroll/Scroll.js'
 export { SearchInput } from './components/SearchInput/SearchInput.js'
-export { ControlledSelect } from './components/Select/ControlledSelect.js'
 export {
   Select,
   SelectContent,
@@ -158,11 +174,36 @@ export {
   SheetTitle,
   SheetTrigger,
 } from './components/Sheet/Sheet.js'
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInput,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuBadge,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSkeleton,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarSeparator,
+  SidebarTrigger,
+  useSidebar,
+} from './components/Sidebar/Sidebar.js'
 export { Skeleton } from './components/Skeleton/Skeleton.js'
 export { Spinner } from './components/Spinner/Spinner.js'
 export { StopClickPropagation } from './components/StopClickPropagation/StopClickPropagation.js'
-export { ControlledSwitch } from './components/Switch/ControlledSwitch.js'
-export { Switch } from './components/Switch/Switch.js'
+export { Switch, SwitchPrimitive } from './components/Switch/Switch.js'
 export {
   Table,
   TableBody,
@@ -183,19 +224,41 @@ export {
   TabsTrigger,
 } from './components/Tabs/Tabs.js'
 export { Tag } from './components/Tag/Tag.js'
-export { Text, textVariants, type TextProps } from './components/Text/Text.js'
-export { ControlledTextArea } from './components/TextArea/ControlledTextArea.js'
 export { TextArea } from './components/TextArea/TextArea.js'
-export { ControlledTextInput } from './components/TextInput/ControlledTextInput.js'
 export { TextInput } from './components/TextInput/TextInput.js'
-export { Toast, ToastProvider, useToast } from './components/Toast/Toast.js'
+export {
+  Toast,
+  ToastPrimitive,
+  ToastProvider,
+  useToast,
+} from './components/Toast/Toast.js'
 export { TokenImage } from './components/TokenImage/TokenImage.js'
-export { Tooltip, TooltipPrimitive } from './components/Tooltip/Tooltip.js'
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipPrimitive,
+  TooltipProvider,
+  TooltipTrigger,
+} from './components/Tooltip/Tooltip.js'
 export { VisuallyHidden } from './components/VisuallyHidden/VisuallyHidden.js'
-
+// Hooks
+export { type Breakpoint, useBreakpoint } from './hooks/useBreakpoint.js'
+export { useCombinedRefs } from './hooks/useCombinedRefs.js'
+export { useIsMobile } from './hooks/useIsMobile.js'
+export { useMediaQuery } from './hooks/useMediaQuery.js'
+// Providers
+export {
+  type CustomThemes,
+  type ResolvedTheme,
+  type Theme,
+  type ThemeColors,
+  ThemeContext,
+  ThemeProvider,
+  useTheme,
+} from './providers/ThemeProvider/ThemeProvider.js'
 // Styles
 export { disabledStyle, focusRingVariants, inputBorderStyle } from './styles.js'
-
+export { type ColorName, type ColorTokens, colorNames } from './tokens/color.js'
 // Utils
 export {
   nativeTokenImageUrl,
@@ -205,17 +268,5 @@ export {
 } from './utils/assets.js'
 export { cn } from './utils/classnames.js'
 export { getCssVar } from './utils/css.js'
-export { capitalize, kebabize, pluralize } from './utils/string.js'
-
-// Hooks
-export { useBreakpoint, type Breakpoint } from './hooks/useBreakpoint.js'
-export { useCombinedRefs } from './hooks/useCombinedRefs.js'
-export { useIsMobile } from './hooks/useIsMobile.js'
-export { useMediaQuery } from './hooks/useMediaQuery.js'
-
-// Icons
-export * from './icons/aliased.js'
-export * from './icons/index.js'
-export type { Icon, IconProps } from './icons/types.js'
 
 import './index.css'

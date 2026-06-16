@@ -3,9 +3,8 @@ import type { Meta } from '@storybook/react-vite'
 import { Button } from '../../components/Button/Button.js'
 import { Card } from '../../components/Card/Card.js'
 import { Collapsible } from '../../components/Collapsible/Collapsible.js'
-import { Text } from '../../components/Text/Text.js'
 
-import { ThemeProvider, useTheme, type CustomThemes } from './ThemeProvider.js'
+import { type CustomThemes, ThemeProvider, useTheme } from './ThemeProvider.js'
 
 export default {
   title: 'Providers/ThemeProvider',
@@ -24,34 +23,28 @@ export const Default = () => {
 const customThemes: CustomThemes = {
   light: {
     primary: 'black',
-    secondary: '#006',
     muted: '#009',
     backgroundPrimary: 'white',
     backgroundSecondary: '#EEF',
-    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
   },
   dark: {
     primary: 'white',
-    secondary: '#CCC',
     muted: '#888',
     backgroundPrimary: 'black',
     backgroundSecondary: '#004',
-    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
   },
 }
 
 export const Nested = () => {
   return (
     <Card>
-      <Text variant="normal" color="primary" fontWeight="bold">
-        Root Application
-      </Text>
+      <div className="text-sm text-primary font-bold">Root Application</div>
 
       <div id="app1">
         <ThemeProvider root="#app1" storageKey="theme1" defaultTheme="light">
           <Card className="bg-background-primary mt-4">
-            <Collapsible label="Nested Application 1" defaultOpen>
-              <Text variant="normal" color="primary">
+            <Collapsible.Helper label="Nested Application 1" defaultOpen>
+              <p className="text-sm text-primary">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -59,7 +52,7 @@ export const Nested = () => {
                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </Text>
+              </p>
 
               <div className="mt-4">
                 <SetThemeButton />
@@ -72,11 +65,11 @@ export const Nested = () => {
                   defaultTheme="dark"
                 >
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible
+                    <Collapsible.Helper
                       label="Nested Application 2 (Dark)"
                       defaultOpen
                     >
-                      <Text variant="normal" color="primary">
+                      <p className="text-sm text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -86,12 +79,12 @@ export const Nested = () => {
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
-                      </Text>
+                      </p>
 
                       <div className="mt-4">
                         <SetThemeButton />
                       </div>
-                    </Collapsible>
+                    </Collapsible.Helper>
                   </Card>
                 </ThemeProvider>
               </div>
@@ -104,11 +97,11 @@ export const Nested = () => {
                   customThemes={customThemes}
                 >
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible
+                    <Collapsible.Helper
                       label="Nested Application 3 (Custom Theme)"
                       defaultOpen
                     >
-                      <Text variant="normal" color="primary">
+                      <p className="text-sm text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -118,12 +111,12 @@ export const Nested = () => {
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
-                      </Text>
+                      </p>
 
                       <div className="mt-4">
                         <SetThemeButton />
                       </div>
-                    </Collapsible>
+                    </Collapsible.Helper>
                   </Card>
                 </ThemeProvider>
               </div>
@@ -135,11 +128,11 @@ export const Nested = () => {
                   defaultTheme="system"
                 >
                   <Card className="bg-background-primary mt-4">
-                    <Collapsible
+                    <Collapsible.Helper
                       label="Nested Application 4 (Prefers Color Scheme)"
                       defaultOpen
                     >
-                      <Text variant="normal" color="primary">
+                      <p className="text-sm text-primary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -149,12 +142,12 @@ export const Nested = () => {
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.
-                      </Text>
-                    </Collapsible>
+                      </p>
+                    </Collapsible.Helper>
                   </Card>
                 </ThemeProvider>
               </div>
-            </Collapsible>
+            </Collapsible.Helper>
           </Card>
         </ThemeProvider>
       </div>
@@ -171,9 +164,5 @@ const SetThemeButton = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
-  return (
-    <Button variant="primary" onClick={toggleTheme}>
-      Set {themeLabel} Mode
-    </Button>
-  )
+  return <Button onClick={toggleTheme}>Set {themeLabel} Mode</Button>
 }

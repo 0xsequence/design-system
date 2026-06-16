@@ -18,7 +18,7 @@ pnpm add @0xsequence/design-system
 
 The design system relies on these peer dependencies to be installed in your application:
 
-- `pnpm add react react-dom motion`
+- `pnpm add react react-dom`
 
 ### Use
 
@@ -54,13 +54,13 @@ root.render(
 Then import components from the design system to build your UI:
 
 ```jsx
-import { Text, Button, useTheme } from '@0xsequence/design-system'
+import { Button, useTheme } from '@0xsequence/design-system'
 
 const App = () => (
   const { theme, setTheme } = useTheme()
 
   <div>
-    <Text variant="normal">Hello, World!</Text>
+    <span className="text-sm">Hello, World!</span>
     <Button variant="primary" label="Change theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
   </div>
 )
@@ -72,8 +72,24 @@ const App = () => (
 Clone the [Sequence Design System GitHub Project](https://github.com/0xsequence/design-system) then start Storybook.
 
 ```
-pnpm install && pnpm storybook
+pnpm install && pnpm dev
 ```
+
+#### Code analysis
+
+We use [fallow](https://docs.fallow.tools) to find unused code, duplication, and complexity hotspots. Run the full suite or scope it to a single analysis:
+
+| Script | What it runs |
+| --- | --- |
+| `pnpm fallow` | Full suite: dead-code + duplication + health |
+| `pnpm fallow:summary` | Category counts only, without individual findings |
+| `pnpm fallow:dead-code` | Unused files, exports, dependencies, and circular deps |
+| `pnpm fallow:dupes` | Copy-paste and structural code duplication |
+| `pnpm fallow:health` | Complexity, maintainability, and hotspots |
+| `pnpm fallow:audit` | Review only files changed since the base branch (CI/PR) |
+| `pnpm fallow:fix` | Auto-fix safe unused-code findings |
+
+Configuration lives in `.fallowrc.json`.
 
 #### Manual project updates
 
@@ -110,33 +126,12 @@ export default defineConfig({
 })
 ```
 
-## Migrating from v2 to v3
+## Migration
 
-V3 attemps to be mostly compatible but there are some breaking changes that will need to be addressed.
+Upgrading between major versions? See **[MIGRATION.md](./MIGRATION.md)** for the full breaking-change guides:
 
-1. Form components are no longer wrapped in a Field component so properties like `labelLocation`, `label`, `description` are no longer on components like CheckBox, TextInput, etc. You will need to wrap these components in a Field components manually. Field is now broken up between a collection of Field based components like FieldSet, FieldGroup, Field, FieldLabel, FieldDescription, FieldError to give more control how fields are displayed. Check the Field and Form examples in storybook to see how to use these or refer to the shadcn Field docs.
-
-2. RadioGroup no longer takes an options object. Instead you must use RadioGroup and RadioGroupItem components:
-
-```
-  <RadioGroup>
-    <RadioGroupItem>
-    <RadioGroupItem>
-    <RadioGroupItem>
-  </RadioGroup>
-```
-
-3. Button component is now a simple component which allows you to easily create your own Buttons with children content of your choice, the Legacy Button component is renamed Button.Helper which accepts properties like `leftIcon`, `rightIcon`, `label`, etc.
-
-4. Button variants have changed, `glass` is no longer available, now uses `secondary` as the default. Some variants have been removed like `feature`, `glass`, `emphasis`, and `raised`.
-
-5. Glass layers and blur effects: many of the raised popover layers like Toast, Popover, Tooltip, Select, used glass blurred effect. While this looked pretty good in certain cases, it caused issues with contrast and readability when overlayed ontop of certain user generated content and lighter content would show through too much. It was decided to switch to opaque layers instead.
-
-6. Divider component is replaced with shadcn Separator component which supports horizontal and vertical orientation
-
-7. TabbedNav has been removed in favor of the Tabs components. If you want a similar behavior as the TabbedNav it is suggested you create a component within your project built from Tabs, TabsList, and TabsTrigger components.
-
-8. Select component has been broken up into composite components, the legacy Select bahavior can be accessed via Select.Helper
+- [Migrating from v3 to v4](./MIGRATION.md#migrating-from-v3-to-v4)
+- [Migrating from v2 to v3](./MIGRATION.md#migrating-from-v2-to-v3)
 
 ### Used by
 

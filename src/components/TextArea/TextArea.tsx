@@ -1,12 +1,12 @@
 import type { ComponentProps } from 'react'
 
+import { useIsKeyboardFocused } from '../../hooks/useIsKeyboardFocused.js'
 import {
   disabledStyle,
   focusRingVariants,
   inputBorderStyle,
 } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 function TextArea({
   className,
@@ -15,16 +15,17 @@ function TextArea({
   spellCheck = 'false',
   ...props
 }: ComponentProps<'textarea'> & { resize?: boolean }) {
+  const isKeyboardFocused = useIsKeyboardFocused()
   return (
     <textarea
       data-slot="textarea"
       className={cn(
-        textVariants({ variant: 'normal' }),
-        'bg-background-input text-primary placeholder:text-muted flex field-sizing-content min-h-16 w-full rounded-xl p-4',
+        'text-sm font-medium',
+        'bg-background-input text-primary placeholder:text-muted flex field-sizing-content min-h-16 w-full rounded-xl p-3',
         'aria-invalid:outline-destructive aria-invalid:border-destructive',
         resize ? 'resize-y' : 'resize-none',
         inputBorderStyle,
-        focusRingVariants(),
+        isKeyboardFocused ? focusRingVariants() : 'focus:outline-none',
         disabledStyle,
         className
       )}

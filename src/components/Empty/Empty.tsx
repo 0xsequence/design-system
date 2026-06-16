@@ -2,12 +2,10 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '../../utils/classnames.js'
 import { Card } from '../Card/Card.js'
-import { textVariants } from '../Text/Text.js'
 
 function Empty({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <Card
-      variant="muted"
       data-slot="empty"
       className={cn(
         'flex min-w-0 flex-1 flex-col items-center justify-center gap-6 p-6 text-center md:p-12',
@@ -65,11 +63,7 @@ function EmptyTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="empty-title"
-      className={cn(
-        textVariants({ variant: 'medium' }),
-        'text-primary',
-        className
-      )}
+      className={cn('text-xl md:text-2xl font-bold', 'text-primary', className)}
       {...props}
     />
   )
@@ -80,7 +74,7 @@ function EmptyDescription({ className, ...props }: React.ComponentProps<'p'>) {
     <div
       data-slot="empty-description"
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-sm md:text-base font-medium',
         'text-muted [&>a]:underline [&>a]:underline-offset-4',
         className
       )}
@@ -94,7 +88,7 @@ function EmptyContent({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="empty-content"
       className={cn(
-        textVariants({ variant: 'small' }),
+        'text-xs',
         'flex w-full max-w-sm min-w-0 flex-col items-center gap-4',
         className
       )}

@@ -1,21 +1,14 @@
 import {
-  useEffect,
   type ChangeEvent,
   type ComponentProps,
-  type ComponentType,
   type FocusEvent,
-  type ReactNode,
+  useEffect,
 } from 'react'
-import type { IconProps } from 'src/icons/types.js'
 
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from '../InputGroup/InputGroup.js'
-import { textVariants } from '../Text/Text.js'
+import { cn } from '../../utils/classnames.js'
+import { Input } from '../Input/Input.js'
 
-const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`)
+const inputRegex = /^\d*(?:\\[.])?\d*$/
 
 function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -23,9 +16,6 @@ function escapeRegExp(string: string): string {
 
 interface NumericInputProps extends ComponentProps<'input'> {
   decimals?: number
-  leftIcon?: ComponentType<IconProps>
-  rightIcon?: ComponentType<IconProps>
-  controls?: ReactNode
 }
 
 function truncateDecimals(value: string, decimals?: number): string {
@@ -49,16 +39,11 @@ function truncateDecimals(value: string, decimals?: number): string {
 export const NumericInput = (props: NumericInputProps) => {
   const {
     className,
-    id,
-    name = 'amount',
     placeholder = '0',
     onChange,
     onBlur,
     decimals,
     value,
-    leftIcon: LeftIcon,
-    rightIcon: RightIcon,
-    controls,
     ...rest
   } = props
 
@@ -87,7 +72,7 @@ export const NumericInput = (props: NumericInputProps) => {
 
     // Add leading zero if needed
     if (value.startsWith('.')) {
-      value = '0' + value
+      value = `0${value}`
     }
 
     // strip leading zeros
@@ -128,39 +113,21 @@ export const NumericInput = (props: NumericInputProps) => {
   }
 
   return (
-    <InputGroup className={className}>
-      <InputGroupInput
-        className={textVariants({ variant: 'large' })}
-        id={id ?? name}
-        name={name}
-        value={value}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        inputMode="decimal"
-        autoComplete="off"
-        autoCorrect="off"
-        spellCheck="false"
-        type="text"
-        pattern="^[0-9]*[.,]?[0-9]*$"
-        placeholder={placeholder}
-        minLength={1}
-        maxLength={79}
-        {...rest}
-      />
-
-      {LeftIcon && (
-        <InputGroupAddon align="inline-start">
-          <LeftIcon size="sm" />
-        </InputGroupAddon>
-      )}
-      {RightIcon && (
-        <InputGroupAddon align="inline-end">
-          <RightIcon size="sm" />
-        </InputGroupAddon>
-      )}
-      {controls && (
-        <InputGroupAddon align="inline-end">{controls}</InputGroupAddon>
-      )}
-    </InputGroup>
+    <Input
+      className={cn('text-xl font-bold', className)}
+      value={value}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      inputMode="decimal"
+      autoComplete="off"
+      autoCorrect="off"
+      spellCheck="false"
+      type="text"
+      pattern="^[0-9]*[.,]?[0-9]*$"
+      placeholder={placeholder}
+      minLength={1}
+      maxLength={79}
+      {...rest}
+    />
   )
 }

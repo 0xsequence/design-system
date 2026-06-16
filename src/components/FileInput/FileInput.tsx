@@ -1,17 +1,15 @@
+import { XIcon } from 'lucide-react'
 import {
+  type ChangeEvent,
+  type ComponentProps,
   useImperativeHandle,
   useRef,
   useState,
-  type ChangeEvent,
-  type ComponentProps,
 } from 'react'
 
-import { CloseIcon } from '../../icons/index.js'
 import { focusRingVariants, inputBorderStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { IconButton } from '../IconButton/IconButton.js'
-import { Text } from '../Text/Text.js'
-import { textVariants } from '../Text/Text.js'
+import { Button } from '../Button/Button.js'
 
 const MIME_TYPES = {
   png: '.png,image/png',
@@ -63,7 +61,7 @@ export const FileInput = (props: FileInputProps) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const filelist = e.currentTarget.files as FileList
-    if (!filelist || !filelist[0]) {
+    if (!filelist?.[0]) {
       return
     }
 
@@ -85,7 +83,7 @@ export const FileInput = (props: FileInputProps) => {
   return (
     <div
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-sm',
         'w-full min-w-0 inline-flex items-center flex-row justify-start p-4 relative h-13',
         'rounded-xl bg-background-input',
         '[&:has(:disabled)]:cursor-default [&:has(:disabled)]:opacity-50',
@@ -99,17 +97,13 @@ export const FileInput = (props: FileInputProps) => {
     >
       {fileData ? (
         <div className="flex flex-row gap-2 items-center min-w-0">
-          <Text ellipsis asChild>
-            <p>{fileData.name}</p>
-          </Text>
-          <Text color="muted" variant="xsmall" nowrap>
+          <p className="truncate">{fileData.name}</p>
+          <span className="text-xxs text-muted whitespace-nowrap">
             {fileData.size.toFixed(2)} kb
-          </Text>
+          </span>
         </div>
       ) : (
-        <Text ellipsis asChild>
-          <p>{placeholder}</p>
-        </Text>
+        <p className="truncate">{placeholder}</p>
       )}
 
       <input
@@ -125,10 +119,10 @@ export const FileInput = (props: FileInputProps) => {
       />
 
       {fileData && (
-        <IconButton
+        <Button
           className="cursor-pointer z-10 ml-1"
-          icon={CloseIcon}
           size="xs"
+          iconOnly
           onClick={ev => {
             ev.preventDefault()
             ev.stopPropagation()
@@ -140,7 +134,9 @@ export const FileInput = (props: FileInputProps) => {
             onValueChange?.(null)
             setFileData(null)
           }}
-        />
+        >
+          <XIcon />
+        </Button>
       )}
     </div>
   )

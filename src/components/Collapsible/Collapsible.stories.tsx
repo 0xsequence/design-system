@@ -2,32 +2,31 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
 import { Card } from '../Card/Card.js'
-import { Text } from '../Text/Text.js'
 
 import { Collapsible } from './Collapsible.js'
 
 export default {
   title: 'Components/Collapsible',
-  component: Collapsible,
-} as Meta<typeof Collapsible>
+  component: Collapsible.Helper,
+} as Meta<typeof Collapsible.Helper>
 
-type Story = StoryObj<typeof Collapsible>
+type Story = StoryObj<typeof Collapsible.Helper>
 
 const CollapsibleStory = () => {
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <Collapsible
+    <Collapsible.Helper
       open={isOpen}
       label="My Heading"
       onOpenChange={open => setIsOpen(open)}
     >
       {[1, 2, 3, 4, 5].map(x => (
-        <Text variant="normal" color="secondary" key={x} asChild>
-          <p>Item {x}</p>
-        </Text>
+        <p className="text-sm text-primary" key={x}>
+          Item {x}
+        </p>
       ))}
-    </Collapsible>
+    </Collapsible.Helper>
   )
 }
 
@@ -37,9 +36,9 @@ export const Default: Story = {
     children: (
       <Card>
         {[1, 2, 3, 4, 5].map(x => (
-          <Text variant="normal" color="secondary" key={x} asChild>
-            <p>Item {x}</p>
-          </Text>
+          <p className="text-sm text-primary" key={x}>
+            Item {x}
+          </p>
         ))}
       </Card>
     ),

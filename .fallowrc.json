@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+  // Migrated from knip.json
+  "entry": [
+    "src/index.ts"
+  ],
+  "ignorePatterns": [
+    "docs/**",
+    "src/docs/**"
+  ],
+  "ignoreExportsUsedInFile": {
+    "type": true,
+    "interface": true
+  },
+  // Auto-detected and used by tsdown at build time, never imported in source
+  "ignoreDependencies": [
+    "@tsdown/css"
+  ]
+}

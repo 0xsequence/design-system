@@ -1,6 +1,5 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
-import { WalletIcon } from 'src/icons/index.js'
 
 import { NumericInput } from './NumericInput.js'
 
@@ -14,13 +13,11 @@ type Story = StoryObj<typeof NumericInput>
 const StoryWrapper: StoryFn<typeof NumericInput> = args => {
   const [value, setValue] = useState('')
   return (
-    <>
-      <NumericInput
-        value={value}
-        onChange={ev => setValue(ev.target.value)}
-        {...args}
-      />
-    </>
+    <NumericInput
+      value={value}
+      onChange={ev => setValue(ev.target.value)}
+      {...args}
+    />
   )
 }
 
@@ -43,16 +40,9 @@ export const IntegerOnly: Story = {
   },
 }
 
-export const WithLeftIcon: Story = {
-  render: StoryWrapper,
-  args: {
-    leftIcon: WalletIcon,
-  },
-}
-
 export const WithError: Story = {
   render: StoryWrapper,
   args: {
-    ['aria-invalid']: true,
+    'aria-invalid': true,
   },
 }

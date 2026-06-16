@@ -1,8 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import { ArrowRightIcon } from 'lucide-react'
 
-import { ArrowRightIcon } from '../../icons/index.js'
-import { IconButton } from '../IconButton/IconButton.js'
-import { Text } from '../Text/Text.js'
+import { Button } from '../Button/Button.js'
 
 import { StopClickPropagation } from './StopClickPropagation.js'
 
@@ -15,25 +14,26 @@ type Story = StoryObj<typeof StopClickPropagation>
 
 const StoryWrapper: StoryFn<typeof StopClickPropagation> = () => {
   return (
-    <div
+    <button
+      type="button"
       className="flex items-center bg-background-secondary hover:opacity-80 rounded-xl cursor-pointer justify-between p-4"
       onClick={() => console.log('Container Clicked!!')}
     >
-      <div>
-        <Text variant="normal" color="secondary">
-          This container here has a click action. The button on the right also
-          has a click action. Since the button is wrapped in a
-          StopClickPropagation component, the click-through is prevented.
-        </Text>
+      <div className="text-sm text-primary">
+        This container here has a click action. The button on the right also has
+        a click action. Since the button is wrapped in a StopClickPropagation
+        component, the click-through is prevented.
       </div>
 
       <StopClickPropagation>
-        <IconButton
-          icon={ArrowRightIcon}
+        <Button
+          iconOnly
           onClick={() => console.log('Button Clicked! Propagation Stopped!')}
-        />
+        >
+          <ArrowRightIcon />
+        </Button>
       </StopClickPropagation>
-    </div>
+    </button>
   )
 }
 

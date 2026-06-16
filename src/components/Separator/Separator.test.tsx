@@ -18,29 +18,11 @@ describe('<Separator />', () => {
     expect(screen.getByRole('separator')).toBeInTheDocument()
   })
 
-  it('defaults to horizontal orientation', () => {
-    render(<Separator decorative={false} />)
-
-    expect(screen.getByRole('separator')).toHaveAttribute(
-      'data-orientation',
-      'horizontal'
-    )
-  })
-
-  it('renders with vertical orientation', () => {
-    render(<Separator decorative={false} orientation="vertical" />)
-
-    expect(screen.getByRole('separator')).toHaveAttribute(
-      'data-orientation',
-      'vertical'
-    )
-  })
-
   it('accepts a custom className', () => {
     render(<Separator className="my-separator" />)
 
-    expect(
-      document.querySelector('[data-slot=separator]')
-    ).toHaveClass('my-separator')
+    expect(document.querySelector('[data-slot=separator]')).toHaveClass(
+      'my-separator'
+    )
   })
 })

@@ -1,9 +1,8 @@
-import * as TabsPrimitive from '@radix-ui/react-tabs'
-import { type ComponentProps, type ReactNode } from 'react'
+import { Tabs as TabsPrimitive } from '@base-ui/react/tabs'
+import type { ComponentProps, ReactNode } from 'react'
 
 import { disabledStyle, focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 function Tabs({
   className,
@@ -37,16 +36,17 @@ function TabsList({
 function TabsTrigger({
   className,
   ...props
-}: ComponentProps<typeof TabsPrimitive.Trigger>) {
+}: ComponentProps<typeof TabsPrimitive.Tab>) {
   return (
-    <TabsPrimitive.Trigger
+    <TabsPrimitive.Tab
       data-slot="tabs-trigger"
       className={cn(
-        textVariants({ variant: 'normal-bold' }),
-        'h-full text-muted inline-flex items-center justify-center whitespace-nowrap cursor-pointer border-b-2 border-transparent px-4 -mb-[2px] rounded-t-sm',
-        'hover:not-[[data-state=active]]:opacity-80 data-[state=active]:border-border-focus data-[state=active]:text-border-focus',
+        'text-sm font-medium text-primary',
+        'h-full inline-flex items-center justify-center whitespace-nowrap cursor-pointer border-b-2 border-transparent px-4 -mb-[2px] rounded-t-md',
+        'hover:not-data-active:opacity-80 data-active:border-brand data-active:font-bold data-active:tracking-[-0.015em]',
         focusRingVariants(),
         disabledStyle,
+        'outline-offset-0',
         className
       )}
       {...props}
@@ -57,9 +57,9 @@ function TabsTrigger({
 function TabsContent({
   className,
   ...props
-}: ComponentProps<typeof TabsPrimitive.Content>) {
+}: ComponentProps<typeof TabsPrimitive.Panel>) {
   return (
-    <TabsPrimitive.Content
+    <TabsPrimitive.Panel
       data-slot="tabs-content"
       className={cn('flex-1 outline-none', className)}
       {...props}
@@ -108,16 +108,16 @@ export const TabsHeader = (props: TabsHeaderProps) => {
       </div>
 
       {tabs.map(tab => (
-        <TabsPrimitive.Trigger
+        <TabsPrimitive.Tab
           className={cn(
-            textVariants({ variant: 'normal-bold' }),
-            'w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-secondary outline-hidden appearance-none border-none z-2 data-[state=active]:text-primary disabled:opacity-50'
+            'text-sm font-bold',
+            'w-full h-full rounded-lg cursor-pointer relative bg-transparent select-none text-primary outline-hidden appearance-none border-none z-2 data-active:text-primary disabled:opacity-50'
           )}
           key={tab.value}
           value={tab.value}
         >
           {tab.label}
-        </TabsPrimitive.Trigger>
+        </TabsPrimitive.Tab>
       ))}
     </TabsPrimitive.List>
   )

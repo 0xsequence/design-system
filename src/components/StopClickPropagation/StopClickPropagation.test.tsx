@@ -9,7 +9,7 @@ describe('<StopClickPropagation />', () => {
   it('renders children', () => {
     render(
       <StopClickPropagation>
-        <button>Inner</button>
+        <button type="button">Inner</button>
       </StopClickPropagation>
     )
 
@@ -19,11 +19,11 @@ describe('<StopClickPropagation />', () => {
   it('prevents click events from reaching a parent handler', () => {
     const parentClick = vi.fn()
     render(
-      <div onClick={parentClick}>
+      <button type="button" onClick={parentClick}>
         <StopClickPropagation>
-          <button>Inner</button>
+          <button type="button">Inner</button>
         </StopClickPropagation>
-      </div>
+      </button>
     )
 
     fireEvent.click(screen.getByText('Inner'))
@@ -34,11 +34,11 @@ describe('<StopClickPropagation />', () => {
   it('prevents Enter key events from reaching a parent handler', () => {
     const parentKeyDown = vi.fn()
     render(
-      <div onKeyDown={parentKeyDown}>
+      <button type="button" onKeyDown={parentKeyDown}>
         <StopClickPropagation>
-          <button>Inner</button>
+          <button type="button">Inner</button>
         </StopClickPropagation>
-      </div>
+      </button>
     )
 
     fireEvent.keyDown(screen.getByText('Inner'), { key: 'Enter' })
@@ -49,11 +49,11 @@ describe('<StopClickPropagation />', () => {
   it('prevents Space key events from reaching a parent handler', () => {
     const parentKeyDown = vi.fn()
     render(
-      <div onKeyDown={parentKeyDown}>
+      <button type="button" onKeyDown={parentKeyDown}>
         <StopClickPropagation>
           <span>Inner</span>
         </StopClickPropagation>
-      </div>
+      </button>
     )
 
     fireEvent.keyDown(screen.getByText('Inner'), { key: ' ' })
@@ -64,11 +64,11 @@ describe('<StopClickPropagation />', () => {
   it('does not block unrelated key events from propagating', () => {
     const parentKeyDown = vi.fn()
     render(
-      <div onKeyDown={parentKeyDown}>
+      <button type="button" onKeyDown={parentKeyDown}>
         <StopClickPropagation>
           <input aria-label="search" />
         </StopClickPropagation>
-      </div>
+      </button>
     )
 
     fireEvent.keyDown(screen.getByRole('textbox', { name: 'search' }), {

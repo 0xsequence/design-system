@@ -1,14 +1,17 @@
 export const colorNames = [
+  'brand',
+
   'positive',
   'negative',
   'info',
   'warning',
   'destructive',
+
   'primary',
-  'secondary',
   'muted',
   'inverse',
   'buttonPrimary',
+
   'backgroundPrimary',
   'backgroundSecondary',
   'backgroundMuted',
@@ -18,15 +21,22 @@ export const colorNames = [
   'backgroundInput',
   'backgroundHover',
   'backgroundActive',
+  'backgroundTooltip',
+
   'borderNormal',
   'borderHover',
   'borderFocus',
   'borderButton',
   'borderCard',
-  'gradientBackdrop',
-  'gradientPrimary',
-  'gradientSecondary',
+
   'gradientSkeleton',
+
+  'sidebar',
+  'sidebarForeground',
+  'sidebarAccent',
+  'sidebarAccentForeground',
+  'sidebarBorder',
+  'sidebarRing',
 ] as const
 
 export type ColorName = (typeof colorNames)[number]

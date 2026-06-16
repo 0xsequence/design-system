@@ -1,191 +1,160 @@
-import * as ToastPrimitive from '@radix-ui/react-toast'
-import { cva } from 'class-variance-authority'
-import { AnimatePresence, motion } from 'motion/react'
 import {
-  createContext,
-  useContext,
-  useState,
-  type ComponentType,
-  type Dispatch,
-  type SetStateAction,
-} from 'react'
+  type ToastManagerAddOptions,
+  Toast as ToastPrimitive,
+} from '@base-ui/react/toast'
+import { clsx } from 'clsx'
+import {
+  CircleCheckBigIcon,
+  CircleXIcon,
+  type LucideProps,
+  TriangleAlertIcon,
+  XIcon,
+} from 'lucide-react'
+import type { ComponentType } from 'react'
 
-import { CheckmarkIcon, CloseIcon } from '../../icons/index.js'
-import { type IconProps } from '../../icons/types.js'
+import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
-import { IconButton } from '../IconButton/IconButton.js'
-import { Text } from '../Text/Text.js'
 
-const toastVariants = cva(
-  [
-    'will-change-transform will-change-opacity',
-    'data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x)',
-    'data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-transform data-[swipe=cancel]:duration-200 data-[swipe=cancel]:ease-out',
-    'data-[swipe=end]:animate-swipe-out',
-  ],
-  {
-    variants: {
-      variant: {
-        normal: '',
-        success: 'text-positive',
-        error: 'text-negative',
-      },
-    },
-    defaultVariants: {
-      variant: 'normal',
-    },
-  }
-)
+type ToastVariant = 'normal' | 'success' | 'warning' | 'error'
 
-export type ToastProps = ToastPrimitive.ToastProps & {
-  id?: string
-  title?: string
-  description?: string
-  variant?: 'normal' | 'success' | 'error'
+type ToastData = {
   isDismissible?: boolean
-  icon?: ComponentType<IconProps>
+  icon?: ComponentType<LucideProps>
 }
 
-const ToastQueueContext = createContext<
-  Dispatch<SetStateAction<Set<ToastProps>>>
->(null as any)
+export type ToastProps = ToastManagerAddOptions<ToastData>
 
-export const ToastProvider = (props: ToastPrimitive.ToastProviderProps) => {
+const ToastProvider = (props: ToastPrimitive.Provider.Props) => {
   const { children, ...rest } = props
-  const [toasts, setToasts] = useState<Set<ToastProps>>(new Set())
 
   return (
     <ToastPrimitive.Provider {...rest}>
-      <ToastQueueContext.Provider value={setToasts}>
-        {children}
-
-        <AnimatePresence>
-          {Array.from(toasts).map(toast => (
-            <Toast key={toast.id} {...toast} />
-          ))}
-        </AnimatePresence>
-      </ToastQueueContext.Provider>
-
-      <ToastViewport />
+      {children}
+      <ToastPrimitive.Portal>
+        <ToastList />
+      </ToastPrimitive.Portal>
     </ToastPrimitive.Provider>
   )
 }
 
-const ToastViewport = () => (
-  <ToastPrimitive.Viewport className="fixed right-0 bottom-0 focus:outline-hidden w-full flex flex-col gap-2 p-4 pt-0 z-1000 list-none max-w-[532px]" />
-)
+function ToastList() {
+  const { toasts } = ToastPrimitive.useToastManager<ToastData>()
 
-export const Toast = (props: ToastProps) => {
-  const {
-    id,
-    variant,
-    title,
-    description,
-    icon: Icon,
-    isDismissible = true,
-    ...rest
-  } = props
+  return (
+    <ToastPrimitive.Viewport className="fixed z-1 w-[250px] bottom-4 right-4 left-auto top-auto mx-auto sm:bottom-8 sm:right-8 sm:w-[300px] focus:outline-hidden">
+      {toasts.map(toast => (
+        <Toast key={toast.id} toast={toast} />
+      ))}
+    </ToastPrimitive.Viewport>
+  )
+}
 
-  const renderIcon = () => {
-    if (Icon) {
-      return <Icon />
-    }
-
-    switch (variant) {
-      case 'success':
-        return (
-          <div className="bg-positive text-white rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
-            <CheckmarkIcon />
-          </div>
-        )
-      case 'error':
-        return (
-          <div className="bg-negative text-white rounded-full w-8 h-8 place-items-center min-w-0 shrink-0 flex items-center justify-center">
-            <CloseIcon />
-          </div>
-        )
-      default:
-        return null
-    }
-  }
+function Toast({
+  toast,
+}: {
+  toast: ToastPrimitive.Root.ToastObject<ToastData>
+}) {
+  const variant = (toast.type ?? 'normal') as ToastVariant
+  const isDismissible = toast.data?.isDismissible ?? true
+  const Icon = toast.data?.icon
 
   return (
     <ToastPrimitive.Root
-      className={toastVariants({ variant })}
-      open
-      forceMount
-      asChild
-      {...rest}
+      toast={toast}
+      className={clsx([
+        '[--gap:0.75rem]',
+        '[--peek:0.75rem]',
+        '[--scale:calc(max(0,1-(var(--toast-index)*0.1)))]',
+        '[--shrink:calc(1-var(--scale))]',
+        '[--height:var(--toast-frontmost-height,var(--toast-height))]',
+        '[--offset-y:calc(var(--toast-offset-y)*-1+(var(--toast-index)*var(--gap)*-1)+var(--toast-swipe-movement-y))]',
+
+        // layout / base
+        'absolute right-0 bottom-0 left-auto mx-auto mr-0',
+        'origin-bottom select-none',
+        'cursor-default',
+
+        // transitions & stacking
+        '[transition:transform_0.5s_cubic-bezier(0.22,1,0.36,1),opacity_0.5s,height_0.15s]',
+        'z-[calc(1000-var(--toast-index))]',
+
+        // height & default transform (matches your "transform: translateX(...) translateY(...) scale(...)")
+        'h-(--height)',
+        'transform-[translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))]',
+
+        // expanded state: move to offset-y and set height
+        'data-expanded:transform-[translateX(var(--toast-swipe-movement-x))_translateY(var(--offset-y))]',
+        'data-expanded:h-(--toast-height)',
+
+        // starting / ending off-screen
+        'data-starting-style:transform-[translateY(150%)]!',
+        'data-ending-style:transform-[translateY(150%)]!',
+
+        // ending style
+        'data-ending-style:opacity-0',
+
+        // limited opacity
+        'data-limited:opacity-0',
+
+        // swipe-direction specifics
+        'data-ending-style:data-[swipe-direction=up]:transform-[translateY(calc(var(--toast-swipe-movement-y)-150%))]',
+        'data-ending-style:data-[swipe-direction=left]:transform-[translateX(calc(var(--toast-swipe-movement-x)-150%))_translateY(var(--offset-y))]',
+        'data-ending-style:data-[swipe-direction=right]:transform-[translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]',
+        'data-ending-style:data-[swipe-direction=down]:transform-[translateY(calc(var(--toast-swipe-movement-y)+150%))]',
+
+        // pseudo spacer (after)
+        "after:content-[''] after:absolute after:top-full after:left-0 after:w-full after:h-[calc(var(--gap)+1px)]",
+      ])}
+      render={
+        <Card className="w-[360px] px-4 py-6 rounded-3xl bg-background-raised shadow-lg overflow-visible" />
+      }
     >
-      <Card
-        className="rounded-md bg-background-raised relative flex justify-between w-full shadow-primary"
-        asChild
-      >
-        <motion.li
-          layoutId={id}
-          layout
-          initial={{ x: '100%' }}
-          animate={{ x: 0 }}
-          exit={{ y: '100%', opacity: 0 }}
-        >
+      <ToastPrimitive.Content className="overflow-hidden transition-opacity duration-250 data-behind:opacity-0 data-expanded:opacity-100">
+        <div className="w-full flex justify-between">
           <div className="flex gap-3 items-center">
-            {renderIcon()}
+            {Icon ? (
+              <Icon className="size-5" />
+            ) : (
+              <ToastIcon variant={variant} />
+            )}
 
             <div className="flex flex-col gap-1">
-              {title && (
-                <ToastPrimitive.Title>
-                  <Text
-                    variant="normal"
-                    fontWeight="bold"
-                    color="secondary"
-                    asChild
-                  >
-                    <div>{title}</div>
-                  </Text>
-                </ToastPrimitive.Title>
-              )}
-
-              <ToastPrimitive.Description>
-                <Text
-                  variant="normal"
-                  fontWeight="medium"
-                  color="muted"
-                  asChild
-                >
-                  <div>{description}</div>
-                </Text>
-              </ToastPrimitive.Description>
+              <ToastPrimitive.Title className="text-base font-bold text-primary" />
+              <ToastPrimitive.Description className="text-sm font-medium text-muted" />
             </div>
           </div>
 
           {isDismissible && (
-            <ToastPrimitive.Close aria-label="Close" asChild>
-              <IconButton icon={CloseIcon} size="xs" />
-            </ToastPrimitive.Close>
+            <ToastPrimitive.Close
+              aria-label="Close"
+              render={
+                <Button size="xs" variant="ghost" iconOnly>
+                  <XIcon />
+                </Button>
+              }
+            />
           )}
-        </motion.li>
-      </Card>
+        </div>
+      </ToastPrimitive.Content>
     </ToastPrimitive.Root>
   )
 }
 
-export const useToast = () => {
-  const setToasts = useContext(ToastQueueContext)
-
-  return (props: ToastProps) => {
-    const toast: ToastProps = {
-      ...props,
-      id: Math.random().toString(36).slice(2, 12),
-      onOpenChange: open => {
-        if (!open) {
-          setToasts(toasts => {
-            toasts.delete(toast)
-            return new Set([...toasts])
-          })
-        }
-      },
-    }
-
-    setToasts(toasts => new Set([...toasts, toast]))
+const ToastIcon = ({ variant }: { variant: ToastVariant }) => {
+  switch (variant) {
+    case 'success':
+      return <CircleCheckBigIcon className="size-5 text-success shrink-0" />
+    case 'warning':
+      return <TriangleAlertIcon className="size-5 text-warning shrink-0" />
+    case 'error':
+      return <CircleXIcon className="size-5 text-destructive shrink-0" />
+    default:
+      return null
   }
+}
+
+export { Toast, ToastPrimitive, ToastProvider }
+
+export const useToast = () => {
+  return ToastPrimitive.useToastManager<ToastData>()
 }

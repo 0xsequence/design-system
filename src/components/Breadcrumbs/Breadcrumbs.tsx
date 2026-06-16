@@ -1,17 +1,24 @@
-import type { HTMLAttributes, JSX, ReactNode } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
 import { focusRingVariants } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { Text } from '../Text/Text.js'
 
 interface Path {
   label: string
   url?: string
 }
 
+interface BreadcrumbLinkProps {
+  className?: string
+}
+
 interface BreadcrumbsProps extends HTMLAttributes<HTMLDivElement> {
   paths: Path[]
-  renderLink?: (path: Path, children: ReactNode) => JSX.Element
+  renderLink?: (
+    path: Path,
+    children: ReactNode,
+    props?: BreadcrumbLinkProps
+  ) => ReactNode
 }
 
 export const Breadcrumbs = (props: BreadcrumbsProps) => {
@@ -19,18 +26,16 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
 
   return (
     <div className={className} {...rest}>
-      <Text variant="small" fontWeight="medium" asChild>
-        <div>
-          {paths.map((path, idx) => (
-            <BreadcrumbSegment
-              key={idx}
-              path={path}
-              active={idx === paths.length - 1}
-              renderLink={renderLink}
-            />
-          ))}
-        </div>
-      </Text>
+      <div className="text-xs">
+        {paths.map((path, idx) => (
+          <BreadcrumbSegment
+            key={idx}
+            path={path}
+            active={idx === paths.length - 1}
+            renderLink={renderLink}
+          />
+        ))}
+      </div>
     </div>
   )
 }
@@ -38,35 +43,39 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
 interface BreadcrumbSegmentProps {
   path: Path
   active?: boolean
-  renderLink?: (path: Path, children: ReactNode) => JSX.Element
+  renderLink?: (
+    path: Path,
+    children: ReactNode,
+    props?: BreadcrumbLinkProps
+  ) => ReactNode
 }
 
-const defaultRenderLink = (path: Path, children: ReactNode) => (
-  <a href={path.url}>{children}</a>
+const defaultRenderLink = (
+  path: Path,
+  children: ReactNode,
+  props?: BreadcrumbLinkProps
+): ReactNode => (
+  <a href={path.url} className={props?.className}>
+    {children}
+  </a>
 )
 
 const BreadcrumbSegment = (props: BreadcrumbSegmentProps) => {
   const { path, active, renderLink = defaultRenderLink } = props
 
+  const linkClassName = cn(
+    'text-muted whitespace-nowrap capitalize no-underline hover:opacity-80 rounded-sm',
+    focusRingVariants()
+  )
+
   return active ? (
-    <Text color="primary" nowrap capitalize>
+    <span className="text-primary whitespace-nowrap capitalize">
       {path.label}
-    </Text>
+    </span>
   ) : (
     <>
-      <Text
-        color="muted"
-        nowrap
-        capitalize
-        className={cn(
-          'no-underline hover:opacity-80 rounded-sm',
-          focusRingVariants({ inner: false })
-        )}
-        asChild
-      >
-        {renderLink(path, path.label)}
-      </Text>
-      <Text color="muted">{' / '}</Text>
+      {renderLink(path, path.label, { className: linkClassName })}
+      <span className="text-muted">{' / '}</span>
     </>
   )
 }

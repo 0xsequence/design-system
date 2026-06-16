@@ -45,7 +45,7 @@ describe('<DropdownMenu />', () => {
       <DropdownMenu>
         <DropdownMenuTrigger>Menu</DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem onSelect={onClick}>Action</DropdownMenuItem>
+          <DropdownMenuItem onClick={onClick}>Action</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     )
@@ -139,7 +139,7 @@ describe('<DropdownMenu />', () => {
     await open(user)
     await user.click(screen.getByText('Show Bookmarks'))
 
-    expect(onCheckedChange).toHaveBeenCalledWith(true)
+    expect(onCheckedChange).toHaveBeenCalledWith(true, expect.anything())
   })
 
   it('renders DropdownMenuRadioGroup and calls onValueChange', async () => {
@@ -160,6 +160,6 @@ describe('<DropdownMenu />', () => {
     await open(user)
     await user.click(screen.getByText('Grid'))
 
-    expect(onValueChange).toHaveBeenCalledWith('grid')
+    expect(onValueChange).toHaveBeenCalledWith('grid', expect.anything())
   })
 })

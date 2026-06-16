@@ -1,8 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { SettingsIcon } from 'lucide-react'
 
-import { Text } from '../Text/Text.js'
+import { Button } from '../Button/Button.js'
 
-import { Card } from './Card.js'
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './Card.js'
 
 export default {
   title: 'Components/Card',
@@ -14,39 +23,113 @@ type Story = StoryObj<typeof Card>
 export const Default: Story = {
   render: args => (
     <Card {...args}>
-      <div className="flex flex-col">
-        <Text variant="large" color="primary">
-          Card
-        </Text>
-        <Text variant="normal" color="muted">
-          Description
-        </Text>
-      </div>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter>
+        <p>Card Footer</p>
+      </CardFooter>
     </Card>
   ),
   args: {
     variant: 'default',
   },
 }
-export const Clickable: Story = {
+
+export const WithAction: Story = {
   render: args => (
     <Card {...args}>
-      <button>
-        <div className="flex flex-col">
-          <Text variant="large" color="primary">
-            Card
-          </Text>
-          <Text variant="normal" color="muted">
-            Description
-          </Text>
-        </div>
-      </button>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+        <CardAction>
+          <Button iconOnly size="xs">
+            <SettingsIcon />
+          </Button>
+        </CardAction>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter className="flex gap-2">
+        <Button variant="ghost" size="sm">
+          Cancel
+        </Button>
+        <Button size="sm">Confirm</Button>
+      </CardFooter>
+    </Card>
+  ),
+  args: {
+    variant: 'default',
+  },
+}
+
+export const Outline: Story = {
+  render: args => (
+    <Card {...args}>
+      <CardHeader>
+        <CardTitle>Outline Card</CardTitle>
+        <CardDescription>This card uses the outline variant</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+    </Card>
+  ),
+  args: {
+    variant: 'outline',
+  },
+}
+
+export const Clickable: Story = {
+  render: args => (
+    <Card {...args} render={<button type="button" />}>
+      <CardHeader>
+        <CardTitle>Clickable Card</CardTitle>
+        <CardDescription>Click me</CardDescription>
+      </CardHeader>
     </Card>
   ),
   args: {
     clickable: true,
     disabled: false,
-    asChild: true,
+    render: <button type="button" />,
+    onClick: () => console.log('Clicked!'),
+  },
+}
+
+export const ClickableHover: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Hover a clickable card to surface the `border-hover` color swap.',
+      },
+    },
+  },
+  render: args => (
+    <div className="flex flex-col gap-4">
+      {(['default', 'outline', 'muted'] as const).map(variant => (
+        <Card
+          key={variant}
+          {...args}
+          variant={variant}
+          render={<button type="button" />}
+        >
+          <CardHeader>
+            <CardTitle className="capitalize">{variant}</CardTitle>
+            <CardDescription>Hover me</CardDescription>
+          </CardHeader>
+        </Card>
+      ))}
+    </div>
+  ),
+  args: {
+    clickable: true,
     onClick: () => console.log('Clicked!'),
   },
 }

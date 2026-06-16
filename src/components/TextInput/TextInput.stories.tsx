@@ -1,13 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { ArrowRightIcon, ScanIcon, SearchIcon, XIcon } from 'lucide-react'
 
-import {
-  ArrowRightIcon,
-  CloseIcon,
-  ScanIcon,
-  SearchIcon,
-} from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
-import { IconButton } from '../IconButton/IconButton.js'
 
 import { TextInput } from './TextInput.js'
 
@@ -47,13 +41,17 @@ export const SearchInput: Story = {
   args: {
     placeholder: 'Search for coins or collectibles',
     leftIcon: SearchIcon,
-    controls: <IconButton icon={CloseIcon} size="xs" />,
+    controls: (
+      <Button size="xs" iconOnly>
+        <XIcon />
+      </Button>
+    ),
   },
 }
-export const Error: Story = {
+export const Invalid: Story = {
   args: {
     placeholder: 'This is the placeholder',
-    ['aria-invalid']: true,
+    'aria-invalid': true,
   },
 }
 
@@ -62,12 +60,10 @@ export const WithComplexControls: Story = {
     placeholder: 'This is the placeholder',
     controls: (
       <div className="flex gap-2">
-        <Button size="xs" shape="square" disabled>
+        <Button size="xs" disabled>
           Max
         </Button>
-        <Button size="xs" shape="square">
-          Paste
-        </Button>
+        <Button size="xs">Paste</Button>
       </div>
     ),
   },

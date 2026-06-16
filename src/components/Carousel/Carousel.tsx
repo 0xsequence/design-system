@@ -1,19 +1,19 @@
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import {
   Children,
+  type ComponentProps,
   cloneElement,
   createContext,
+  type Dispatch,
   isValidElement,
+  type SetStateAction,
   useContext,
   useEffect,
+  useId,
   useState,
-  type ComponentProps,
-  type Dispatch,
-  type SetStateAction,
 } from 'react'
 
 import { useTransitionState } from '../../hooks/useTransitionState.js'
-import ArrowLeftIcon from '../../icons/ArrowLeftIcon.js'
-import ArrowRightIcon from '../../icons/ArrowRightIcon.js'
 import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
 
@@ -29,6 +29,8 @@ interface CarouselContext {
   setTotalSlides: Dispatch<SetStateAction<number>>
   setPaused: Dispatch<SetStateAction<boolean>>
   direction: 'ltr' | 'rtl'
+  /** Unique id for this carousel instance (e.g. for radio group name) */
+  carouselId: string
 }
 
 const CarouselContext = createContext<CarouselContext | null>(null)
@@ -51,6 +53,7 @@ function Carousel({
   duration?: number
   className?: string
 }) {
+  const carouselId = useId()
   const [totalSlides, setTotalSlides] = useState(0)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setPaused] = useState(false)
@@ -125,6 +128,7 @@ function Carousel({
         setTotalSlides,
         currentSlide,
         direction,
+        carouselId,
       }}
     >
       <div
@@ -220,8 +224,7 @@ function CarouselSlide({
 function CarouselPrevButton({
   children,
   variant = 'secondary',
-  shape = 'circle',
-  size = 'md',
+  size = 'default',
   ...props
 }: ComponentProps<typeof Button>) {
   const { prevSlide } = useCarousel()
@@ -230,7 +233,6 @@ function CarouselPrevButton({
     <Button
       data-slot="carousel-prev-button"
       variant={variant}
-      shape={shape}
       size={size}
       onClick={prevSlide}
       iconOnly
@@ -244,8 +246,7 @@ function CarouselPrevButton({
 function CarouselNextButton({
   children,
   variant = 'secondary',
-  shape = 'circle',
-  size = 'md',
+  size = 'default',
   ...props
 }: ComponentProps<typeof Button>) {
   const { nextSlide } = useCarousel()
@@ -254,7 +255,6 @@ function CarouselNextButton({
     <Button
       data-slot="carousel-next-button"
       variant={variant}
-      shape={shape}
       size={size}
       onClick={nextSlide}
       iconOnly
@@ -279,9 +279,8 @@ function CarouselStatus({
     isPaused,
     totalSlides,
     currentSlide,
+    carouselId,
   } = useCarousel()
-
-  console.log(totalSlides)
 
   return (
     <div
@@ -302,6 +301,7 @@ function CarouselStatus({
           current={currentSlide === i}
           autoAdvance={autoAdvance}
           onChangeSlide={setSlide}
+          carouselId={carouselId}
         />
       ))}
     </div>
@@ -314,12 +314,14 @@ function StatusDot({
   isPaused,
   autoAdvance,
   onChangeSlide,
+  carouselId,
 }: {
   current: boolean
   index: number
   isPaused: boolean
   autoAdvance?: boolean
   onChangeSlide: (index: number) => void
+  carouselId: string
 }) {
   const [active, setActive] = useState(false)
 
@@ -333,7 +335,7 @@ function StatusDot({
     <label
       data-slot="carousel-status-dot"
       data-index={index}
-      className="grid-stack size-2.5 data-auto-advance:data-current:w-6 transition-all rounded-full bg-background-inverse/20 overflow-clip has-[:focus-visible]:outline-2 outline-offset-1 has-[:focus-visible]:outline-border-focus cursor-pointer"
+      className="grid-stack size-2.5 data-auto-advance:data-current:w-6 transition-all rounded-full bg-background-inverse/20 overflow-clip has-focus-visible:outline-2 outline-offset-1 has-focus-visible:outline-border-focus cursor-pointer"
       data-current={active || undefined}
       data-auto-advance={autoAdvance || undefined}
     >
@@ -345,7 +347,7 @@ function StatusDot({
       <input
         type="radio"
         value={`Slide ${index + 1}`}
-        name="current-slide"
+        name={`${carouselId}-current-slide`}
         onChange={() => onChangeSlide(index)}
         className="sr-only"
         tabIndex={active ? 0 : -1}

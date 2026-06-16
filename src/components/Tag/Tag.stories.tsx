@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-
-import { SettingsIcon } from '../../icons/index.js'
+import { SettingsIcon } from 'lucide-react'
 
 import { Tag } from './Tag.js'
 
@@ -13,13 +12,17 @@ type Story = StoryObj<typeof Tag>
 
 export const Default: Story = {
   args: {
-    label: 'ERC1155',
+    children: 'ERC1155',
   },
 }
 
 export const WithIcon: Story = {
   args: {
-    label: 'ERC1155',
-    icon: SettingsIcon,
+    children: (
+      <>
+        <SettingsIcon className="size-3" />
+        ERC1155
+      </>
+    ),
   },
 }

@@ -1,10 +1,11 @@
 import type { Decorator, Preview } from '@storybook/react-vite'
+// biome-ignore lint/correctness/noUnusedImports: Storybook requires React
 import React from 'react'
 
 import {
-  ThemeProvider,
   type CustomThemes,
   type Theme,
+  ThemeProvider,
 } from '../src/providers/ThemeProvider/ThemeProvider.js'
 
 import docsTheme from './theme'
@@ -15,8 +16,6 @@ const customThemes: CustomThemes = {
   light: {
     primary: 'var(--color-violet-950)',
     muted: 'var(--color-violet-600)',
-
-    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
 
     backgroundPrimary: 'var(--color-violet-50)',
     backgroundSecondary: 'var(--color-violet-100)',
@@ -33,8 +32,6 @@ const customThemes: CustomThemes = {
   dark: {
     primary: 'var(--color-violet-50)',
     muted: 'var(--color-violet-400)',
-
-    gradientPrimary: 'linear-gradient(45deg, darkblue 0%, blue 100%)',
 
     backgroundPrimary: 'var(--color-violet-950)',
     backgroundSecondary: 'var(--color-violet-900)',
@@ -62,7 +59,7 @@ const withTheme: Decorator = (StoryFn, context) => {
       customThemes={isCustomTheme ? customThemes : undefined}
       storageKey={null}
     >
-      <div className="bg-background-primary p-4">
+      <div className="bg-background-primary p-4 isolate">
         <StoryFn />
       </div>
     </ThemeProvider>

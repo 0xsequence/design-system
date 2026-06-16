@@ -1,13 +1,13 @@
 import {
   createContext,
+  type ReactNode,
   useContext,
   useEffect,
   useMemo,
   useState,
-  type ReactNode,
 } from 'react'
 
-import { colorNames, type ColorTokens } from '../../tokens/color.js'
+import { type ColorTokens, colorNames } from '../../tokens/color.js'
 import { kebabize } from '../../utils/string.js'
 
 const THEME_ATTR = 'data-theme'
@@ -153,7 +153,7 @@ const validThemes: Theme[] = ['light', 'dark', 'system']
 const isValidTheme = (theme: any): theme is Theme =>
   typeof theme === 'string' && validThemes.includes(theme as any)
 
-const toCSSVar = (key: string) => `--seq-color-${kebabize(key)}`
+const toCSSVar = (key: string) => `--${kebabize(key)}`
 
 const themeVarNames = colorNames.map(key => toCSSVar(key))
 

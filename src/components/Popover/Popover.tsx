@@ -1,6 +1,7 @@
-import * as PopoverPrimitive from '@radix-ui/react-popover'
+import { Popover as PopoverPrimitive } from '@base-ui/react/popover'
 import type { ComponentProps } from 'react'
 
+import { popupTransitionStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
 
 function Popover({ ...props }: ComponentProps<typeof PopoverPrimitive.Root>) {
@@ -17,29 +18,69 @@ function PopoverContent({
   className,
   align = 'center',
   sideOffset = 4,
+  side,
+  alignOffset,
+  showArrow = false,
+  children,
   ...props
-}: ComponentProps<typeof PopoverPrimitive.Content>) {
+}: ComponentProps<typeof PopoverPrimitive.Popup> &
+  Pick<
+    ComponentProps<typeof PopoverPrimitive.Positioner>,
+    'align' | 'side' | 'sideOffset' | 'alignOffset'
+  > & {
+    showArrow?: boolean
+  }) {
   return (
     <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Content
-        data-slot="popover-content"
+      <PopoverPrimitive.Positioner
+        side={side}
         align={align}
         sideOffset={sideOffset}
-        className={cn(
-          'shadow-primary rounded-2xl bg-background-raised border-1 border-border-normal',
-          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 origin-(--radix-popover-content-transform-origin) outline-hidden',
-          className
-        )}
-        {...props}
-      />
+        alignOffset={alignOffset}
+      >
+        <PopoverPrimitive.Popup
+          data-slot="popover-content"
+          className={cn(
+            'relative overflow-visible shadow-lg rounded-3xl bg-background-raised border border-border-normal',
+            'w-72 origin-(--transform-origin) outline-hidden',
+            popupTransitionStyle,
+            className
+          )}
+          {...props}
+        >
+          {showArrow ? <PopoverArrow /> : null}
+          {children}
+        </PopoverPrimitive.Popup>
+      </PopoverPrimitive.Positioner>
     </PopoverPrimitive.Portal>
   )
 }
 
-function PopoverAnchor({
+function PopoverArrow({
+  className,
   ...props
-}: ComponentProps<typeof PopoverPrimitive.Anchor>) {
-  return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />
+}: ComponentProps<typeof PopoverPrimitive.Arrow>) {
+  return (
+    <PopoverPrimitive.Arrow
+      data-slot="popover-arrow"
+      className={cn(
+        'pointer-events-none relative block h-1.5 w-3 overflow-clip',
+        "before:absolute before:bottom-0 before:left-1/2 before:box-border before:block before:content-['']",
+        'before:h-[calc(6px*sqrt(2))] before:w-[calc(6px*sqrt(2))]',
+        'before:translate-x-[-50%] before:translate-y-1/2 before:rotate-45',
+        'before:border before:border-border-normal before:bg-background-raised',
+        'dark:before:border-primary',
+        'data-[side=top]:bottom-[-6px] data-[side=top]:rotate-180',
+        'data-[side=bottom]:top-[-6px] data-[side=bottom]:rotate-0',
+        'data-[side=left]:right-[-9px] data-[side=left]:rotate-90',
+        'data-[side=right]:left-[-9px] data-[side=right]:-rotate-90',
+        'data-[side=inline-start]:right-[-9px] data-[side=inline-start]:rotate-90',
+        'data-[side=inline-end]:left-[-9px] data-[side=inline-end]:-rotate-90',
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
 function PopoverClose({
@@ -50,7 +91,6 @@ function PopoverClose({
 
 export {
   Popover,
-  PopoverAnchor,
   PopoverClose,
   PopoverContent,
   PopoverPrimitive,

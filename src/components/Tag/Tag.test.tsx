@@ -5,7 +5,7 @@ import { Tag } from './Tag.js'
 
 describe('<Tag />', () => {
   it('renders', () => {
-    render(<Tag label="ERC1155" />)
+    render(<Tag>ERC1155</Tag>)
 
     expect(screen.getByText('ERC1155')).toBeInTheDocument()
   })

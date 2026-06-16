@@ -1,2 +1,0 @@
-pnpm build
-pnpm run test --changed master

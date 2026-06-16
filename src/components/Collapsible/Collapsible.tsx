@@ -1,14 +1,27 @@
-import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
+import { Collapsible as CollapsiblePrimitive } from '@base-ui/react/collapsible'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { clsx } from 'clsx'
-import { AnimatePresence, motion } from 'motion/react'
-import { useState, type ReactNode } from 'react'
+import { ChevronDownIcon } from 'lucide-react'
+import { type ComponentProps, type ReactNode, useState } from 'react'
 
-import { ChevronDownIcon } from '../../icons/index.js'
 import { focusRingVariants } from '../../styles.js'
-import { Text } from '../Text/Text.js'
+import { cn } from '../../utils/classnames.js'
 
-const COLLAPSED_HEIGHT = '64px'
+function Collapsible({ ...props }: CollapsiblePrimitive.Root.Props) {
+  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
+}
+
+function CollapsibleTrigger({ ...props }: CollapsiblePrimitive.Trigger.Props) {
+  return (
+    <CollapsiblePrimitive.Trigger data-slot="collapsible-trigger" {...props} />
+  )
+}
+
+function CollapsibleContent({ ...props }: CollapsiblePrimitive.Panel.Props) {
+  return (
+    <CollapsiblePrimitive.Panel data-slot="collapsible-content" {...props} />
+  )
+}
 
 const collapsibleVariants = cva(
   [
@@ -29,13 +42,17 @@ const collapsibleVariants = cva(
   }
 )
 
-interface CollapsibleProps
-  extends CollapsiblePrimitive.CollapsibleProps,
+interface CollapsibleHelperProps
+  extends Omit<
+      ComponentProps<typeof CollapsiblePrimitive.Root>,
+      'onOpenChange'
+    >,
     VariantProps<typeof collapsibleVariants> {
   label: ReactNode
+  onOpenChange?: (open: boolean) => void
 }
 
-export const Collapsible = (props: CollapsibleProps) => {
+const CollapsibleHelper = (props: CollapsibleHelperProps) => {
   const {
     className,
     variant,
@@ -64,58 +81,34 @@ export const Collapsible = (props: CollapsibleProps) => {
   }
 
   return (
-    <CollapsiblePrimitive.Root
+    <Collapsible
       open={isOpen}
       defaultOpen={defaultOpen}
       onOpenChange={handleOpenChange}
-      asChild
+      className={cn(collapsibleVariants({ variant }), className)}
       {...rest}
     >
-      <motion.div
-        className={clsx(collapsibleVariants({ variant }), className)}
-        initial={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
-        animate={{ height: isOpen ? 'auto' : COLLAPSED_HEIGHT }}
-        transition={{ ease: 'easeOut', duration: 0.3 }}
+      <CollapsibleTrigger
+        className={clsx(
+          'group flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden',
+          'text-sm font-bold text-primary hover:text-primary/80'
+        )}
       >
-        <CollapsiblePrimitive.Trigger
-          className={clsx(
-            'flex items-center p-4 bg-transparent w-full cursor-pointer select-none rounded-xl border-none appearance-none h-[64px] focus:outline-hidden',
-            'text-primary hover:text-primary/80'
-          )}
-        >
-          <Text variant="normal" fontWeight="bold" asChild ellipsis>
-            <div>{label}</div>
-          </Text>
-          <motion.div
-            className="absolute right-0 mr-4"
-            initial={{ rotate: isOpen ? 180 : 0 }}
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ ease: 'linear', duration: 0.1 }}
-          >
-            <ChevronDownIcon className="h-5 w-5 block text-muted" />
-          </motion.div>
-        </CollapsiblePrimitive.Trigger>
-        <AnimatePresence>
-          {isOpen && (
-            <CollapsiblePrimitive.Content
-              className="pt-0 px-4 pb-4 w-full origin-top"
-              asChild
-              forceMount
-            >
-              <motion.div
-                initial={{ opacity: isOpen ? 1 : 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ ease: 'easeOut', duration: 0.3 }}
-              >
-                {children}
-              </motion.div>
-            </CollapsiblePrimitive.Content>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    </CollapsiblePrimitive.Root>
+        {label}
+        <ChevronDownIcon className="size-5 block text-muted absolute right-0 mr-4 group-data-panel-open:rotate-180 transition-transform duration-150" />
+      </CollapsibleTrigger>
+      <CollapsibleContent className="flex flex-col justify-end overflow-hidden w-full transition-[height, opacity] duration-150 ease-out h-(--collapsible-panel-height) data-starting-style:h-0 data-ending-style:h-0 opacity-100 data-starting-style:opacity-0 data-ending-style:opacity-0">
+        <div className="pt-0 px-4 pb-4">{children}</div>
+      </CollapsibleContent>
+    </Collapsible>
   )
 }
 
-export { CollapsiblePrimitive }
+Collapsible.Helper = CollapsibleHelper
+
+export {
+  Collapsible,
+  CollapsibleContent,
+  CollapsiblePrimitive,
+  CollapsibleTrigger,
+}

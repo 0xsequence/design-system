@@ -1,29 +1,7 @@
-import { cva } from 'class-variance-authority'
 import { createRef, Fragment, useEffect, useMemo } from 'react'
 
-import {
-  disabledStyle,
-  focusRingVariants,
-  inputBorderStyle,
-} from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
-
-const digitInputVariants = cva(
-  [
-    textVariants({ variant: 'large' }),
-    'flex justify-center items-center h-12 w-10 p-[10px]',
-    'rounded-lg text-primary bg-background-input text-center',
-    'caret-transparent selection:bg-transparent',
-    focusRingVariants(),
-    inputBorderStyle,
-    disabledStyle,
-  ],
-  {
-    variants: {},
-    defaultVariants: {},
-  }
-)
+import { Input } from '../Input/Input.js'
 
 interface PINCodeInputProps {
   digits: number
@@ -32,6 +10,8 @@ interface PINCodeInputProps {
   onConfirm?: () => void
   disabled?: boolean
   value: string[]
+  className?: string
+  inputClassName?: string
 }
 
 export const PINCodeInput = (props: PINCodeInputProps) => {
@@ -42,6 +22,8 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
     onChange,
     onConfirm,
     disabled = false,
+    className,
+    inputClassName,
   } = props
 
   const inputRefs = useMemo(() => {
@@ -114,7 +96,7 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
   }
 
   const handlePaste = (
-    idx: number,
+    _idx: number,
     ev: React.ClipboardEvent<HTMLInputElement>
   ) => {
     ev.preventDefault()
@@ -135,12 +117,18 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
   }
 
   return (
-    <div className="flex gap-2">
+    <div className={cn('flex gap-2', className)}>
       {range(0, digits).map(idx => (
         <Fragment key={idx}>
           {!!group && idx > 0 && idx % group === 0 && <span />}
-          <input
-            className={cn(digitInputVariants())}
+          <Input
+            className={cn(
+              'flex justify-center items-center h-10 w-10 p-[10px]',
+              'rounded-lg text-primary bg-background-input text-center',
+              'selection:bg-transparent',
+              'caret-transparent',
+              inputClassName
+            )}
             value={value[idx] || ''}
             ref={inputRefs[idx]}
             type="text"
@@ -161,4 +149,4 @@ export const PINCodeInput = (props: PINCodeInputProps) => {
 }
 
 const range = (start: number, end: number) =>
-  Array.from({ length: end - start }, (v, k) => k + start)
+  Array.from({ length: end - start }, (_v, k) => k + start)

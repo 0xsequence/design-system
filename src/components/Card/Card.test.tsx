@@ -38,13 +38,9 @@ describe('<Card />', () => {
     expect(screen.getByTestId('card')).toHaveClass('opacity-50')
   })
 
-  it('renders as the child element when asChild is true', () => {
+  it('renders as the child element when render prop is used', () => {
     render(
-      <Card asChild>
-        <a href="/home" data-testid="card-link">
-          Link card
-        </a>
-      </Card>
+      <Card render={<a href="/home" data-testid="card-link" />}>Link card</Card>
     )
 
     expect(screen.getByTestId('card-link').tagName).toBe('A')

@@ -20,7 +20,7 @@ export const WithError: Story = {
   args: {
     value: 'invalid value',
     disabled: false,
-    ['aria-invalid']: true,
+    'aria-invalid': true,
     onChange: () => {},
   },
 }

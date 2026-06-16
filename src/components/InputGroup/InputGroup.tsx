@@ -1,20 +1,23 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentProps } from 'react'
-import { focusRingVariants, inputBorderStyle } from 'src/styles.js'
-import { cn } from 'src/utils/classnames.js'
 
+import { useIsKeyboardFocused } from '../../hooks/useIsKeyboardFocused.js'
+import { focusRingVariants, inputBorderStyle } from '../../styles.js'
+import { cn } from '../../utils/classnames.js'
 import { Input } from '../Input/Input.js'
-import { textVariants } from '../Text/Text.js'
+import { NumericInput } from '../NumericInput/NumericInput.js'
 import { TextArea } from '../TextArea/TextArea.js'
 
 function InputGroup({ className, ...props }: ComponentProps<'div'>) {
+  const isKeyboardFocused = useIsKeyboardFocused()
+
   return (
     <div
       data-slot="input-group"
       role="group"
       className={cn(
         'group/input-group relative flex w-full items-center rounded-xl',
-        'h-13 min-w-0 has-[>textarea]:h-auto bg-background-input',
+        'h-10 min-w-0 has-[>textarea]:h-auto bg-background-input',
         inputBorderStyle,
 
         // Variants based on alignment
@@ -27,8 +30,9 @@ function InputGroup({ className, ...props }: ComponentProps<'div'>) {
         'has-[[data-slot=input-group-control]:disabled]:opacity-50 has-[[data-slot=input-group-control]:disabled]:cursor-not-allowed has-[[data-slot=input-group-control]:disabled]:pointer-events-none',
 
         // Focus state
-        //'has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]',
-        focusRingVariants({ variant: 'within' }),
+        isKeyboardFocused
+          ? focusRingVariants({ variant: 'within' })
+          : 'focus:outline-none',
 
         // Error state
         'has-[[data-slot][aria-invalid=true]]:outline-destructive has-[[data-slot][aria-invalid=true]]:border-destructive',
@@ -43,6 +47,22 @@ function InputGroup({ className, ...props }: ComponentProps<'div'>) {
 function InputGroupInput({ className, ...props }: ComponentProps<'input'>) {
   return (
     <Input
+      data-slot="input-group-control"
+      className={cn(
+        'flex-1 rounded-none border-0 bg-transparent outline-none disabled:opacity-100',
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function InputGroupNumericInput({
+  className,
+  ...props
+}: ComponentProps<'input'>) {
+  return (
+    <NumericInput
       data-slot="input-group-control"
       className={cn(
         'flex-1 rounded-none border-0 bg-transparent outline-none disabled:opacity-100',
@@ -71,18 +91,17 @@ function InputGroupTextarea({
 
 const inputGroupAddonVariants = cva(
   [
-    textVariants({ variant: 'small' }),
-    'text-primary flex h-auto cursor-text items-center justify-center gap-2 py-1.5 select-none group-data-[disabled=true]/input-group:opacity-50',
+    'text-xs text-primary flex h-auto cursor-text items-center justify-center gap-2 py-1.5 select-none group-data-[disabled=true]/input-group:opacity-50 [&_svg:not([class*="size-"])]:size-4',
   ],
   {
     variants: {
       align: {
-        'inline-start': 'order-first pl-4',
-        'inline-end': 'order-last pr-4',
+        'inline-start': 'order-first pl-3',
+        'inline-end': 'order-last pr-3',
         'block-start':
-          'order-first w-full justify-start px-4 pt-4 [.border-b]:pb-3 group-has-[>input]/input-group:pt-2.5',
+          'order-first w-full justify-start px-3 pt-3 [.border-b]:pb-3 group-has-[>input]/input-group:pt-2.5',
         'block-end':
-          'order-last w-full justify-start px-4 pb-4 [.border-t]:pt-3 group-has-[>input]/input-group:pb-2.5',
+          'order-last w-full justify-start px-3 pb-3 [.border-t]:pt-3 group-has-[>input]/input-group:pb-2.5',
       },
     },
     defaultVariants: {
@@ -117,8 +136,7 @@ function InputGroupText({ className, ...props }: ComponentProps<'span'>) {
   return (
     <span
       className={cn(
-        textVariants({ variant: 'normal' }),
-        'text-muted flex items-center gap-2 [&_svg]:pointer-events-none',
+        'text-sm text-muted flex items-center gap-2 [&_svg]:pointer-events-none',
         className
       )}
       {...props}
@@ -130,6 +148,7 @@ export {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
+  InputGroupNumericInput,
   InputGroupText,
   InputGroupTextarea,
 }

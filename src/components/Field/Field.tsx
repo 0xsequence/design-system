@@ -1,96 +1,9 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { useMemo, type ComponentProps, type ReactNode } from 'react'
+import { type ComponentProps, type ReactNode, useMemo } from 'react'
 
 import { cn } from '../../utils/classnames.js'
 import { Label } from '../Label/Label.js'
 import { Separator } from '../Separator/Separator.js'
-import { textVariants } from '../Text/Text.js'
-
-// const fieldVariants = cva('flex', {
-//   variants: {
-//     labelLocation: {
-//       top: ['flex-col', 'items-stretch', 'gap-1'],
-//       left: ['flex-row', 'items-center', 'gap-2', 'grid-cols-[1fr_2fr]'],
-//       right: ['flex-row', 'items-center', 'gap-2', 'grid-cols-[2fr_1fr]'],
-//       hidden: ['gap-0'],
-//     },
-//   },
-// })
-
-// export interface FieldProps extends VariantProps<typeof fieldVariants> {
-//   id?: string
-//   label?: string | ReactNode
-//   description?: string | ReactNode
-//   trailDescription?: string | ReactNode
-//   disabled?: boolean
-//   required?: boolean // TODO
-//   error?: string // TODO
-//   className?: string
-//   children?: ReactNode
-// }
-
-// export const Field = (props: FieldProps) => {
-//   const {
-//     id,
-//     label,
-//     description,
-//     trailDescription,
-//     labelLocation = 'top',
-//     error,
-//     children,
-//     className,
-//     ...rest
-//   } = props
-
-//   const renderLabel = () =>
-//     label || description ? (
-//       <div className="flex flex-col gap-0.5">
-//         {label && (
-//           <Text
-//             variant="small"
-//             color="primary"
-//             hidden={labelLocation === 'hidden'}
-//           >
-//             {label}
-//           </Text>
-//         )}
-
-//         {description && (
-//           <Text
-//             variant="small"
-//             color="muted"
-//             hidden={labelLocation === 'hidden'}
-//           >
-//             {description}
-//           </Text>
-//         )}
-//       </div>
-//     ) : null
-
-//   const renderTrailText = () =>
-//     error || trailDescription ? (
-//       <Text variant="small" color={error ? 'negative' : 'muted'}>
-//         {error ? error : trailDescription}
-//       </Text>
-//     ) : null
-
-//   return (
-//     <label
-//       className={cn(fieldVariants({ labelLocation }), className)}
-//       htmlFor={id}
-//       {...rest}
-//     >
-//       {['left', 'top', 'hidden'].includes(labelLocation!) && renderLabel()}
-
-//       <div className="flex flex-col gap-1">
-//         {children}
-//         {renderTrailText()}
-//       </div>
-
-//       {labelLocation === 'right' && renderLabel()}
-//     </label>
-//   )
-// }
 
 function FieldSet({ className, ...props }: ComponentProps<'fieldset'>) {
   return (
@@ -116,7 +29,7 @@ function FieldLegend({
       data-slot="field-legend"
       data-variant={variant}
       className={cn(
-        textVariants({ variant: variant === 'legend' ? 'medium' : 'normal' }),
+        variant === 'legend' ? 'text-base font-bold' : 'text-sm',
         'text-primary mb-3',
         className
       )}
@@ -235,7 +148,7 @@ function FieldDescription({ className, ...props }: ComponentProps<'p'>) {
     <p
       data-slot="field-description"
       className={cn(
-        textVariants({ variant: 'normal' }),
+        'text-xs font-medium',
         'text-muted group-has-[[data-orientation=horizontal]]/field:text-balance',
         'last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5',
         '[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4',
@@ -293,7 +206,7 @@ function FieldError({
       return null
     }
 
-    if (errors?.length == 1) {
+    if (errors?.length === 1) {
       return errors[0]?.message
     }
 
@@ -315,11 +228,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn(
-        textVariants({ variant: 'small' }),
-        'text-destructive',
-        className
-      )}
+      className={cn('text-sm font-medium text-destructive', className)}
       {...props}
     >
       {content}

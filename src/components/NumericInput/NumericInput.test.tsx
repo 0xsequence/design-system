@@ -254,7 +254,9 @@ describe('<NumericInput />', () => {
     fireEvent.blur(el, { target: { value: '5.' } })
 
     expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ target: expect.objectContaining({ value: '5' }) })
+      expect.objectContaining({
+        target: expect.objectContaining({ value: '5' }),
+      })
     )
   })
 
@@ -266,7 +268,9 @@ describe('<NumericInput />', () => {
     fireEvent.blur(el, { target: { value: '5.0' } })
 
     expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ target: expect.objectContaining({ value: '5' }) })
+      expect.objectContaining({
+        target: expect.objectContaining({ value: '5' }),
+      })
     )
   })
 
@@ -278,7 +282,9 @@ describe('<NumericInput />', () => {
     fireEvent.blur(el, { target: { value: '0' } })
 
     expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ target: expect.objectContaining({ value: '' }) })
+      expect.objectContaining({
+        target: expect.objectContaining({ value: '' }),
+      })
     )
   })
 

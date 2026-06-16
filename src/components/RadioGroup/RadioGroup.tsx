@@ -1,5 +1,6 @@
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
-import { type ComponentProps } from 'react'
+import { Radio } from '@base-ui/react/radio'
+import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group'
+import type { ComponentProps } from 'react'
 
 import {
   disabledStyle,
@@ -11,24 +12,25 @@ import { cn } from '../../utils/classnames.js'
 function RadioGroup({
   className,
   ...props
-}: ComponentProps<typeof RadioGroupPrimitive.Root>) {
+}: ComponentProps<typeof RadioGroupPrimitive>) {
   return (
-    <RadioGroupPrimitive.Root
+    <RadioGroupPrimitive
       data-slot="radio-group"
       className={cn('grid gap-3', className)}
       {...props}
     />
   )
 }
+
 function RadioGroupItem({
   className,
   ...props
-}: ComponentProps<typeof RadioGroupPrimitive.Item>) {
+}: ComponentProps<typeof Radio.Root>) {
   return (
-    <RadioGroupPrimitive.Item
+    <Radio.Root
       data-slot="radio-group-item"
       className={cn(
-        'bg-background-input size-5 aspect-square shrink-0 rounded-full',
+        'bg-background-input size-5 aspect-square shrink-0 rounded-full cursor-pointer',
         focusRingVariants(),
         inputBorderStyle,
         disabledStyle,
@@ -37,13 +39,14 @@ function RadioGroupItem({
       )}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator
+      <Radio.Indicator
         data-slot="radio-group-indicator"
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center w-full h-full"
       >
         <div className="size-3 bg-primary rounded-full" />
-      </RadioGroupPrimitive.Indicator>
-    </RadioGroupPrimitive.Item>
+      </Radio.Indicator>
+    </Radio.Root>
   )
 }
-export { RadioGroup, RadioGroupItem }
+
+export { RadioGroup, RadioGroupItem, RadioGroupPrimitive }

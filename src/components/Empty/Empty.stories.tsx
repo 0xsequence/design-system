@@ -1,4 +1,4 @@
-import { ExternalLinkIcon, FolderIcon } from 'src/icons/index.js'
+import { FolderIcon } from 'lucide-react'
 
 import { Button } from '../Button/Button.js'
 
@@ -30,24 +30,20 @@ export const Default = {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <Button variant="emphasis" shape="square" size="sm">
-            Create Project
-          </Button>
-          <Button shape="square" size="sm">
-            Import Project
-          </Button>
+          <Button size="sm">Create Project</Button>
+          <Button size="sm">Import Project</Button>
         </div>
       </EmptyContent>
       <Button
-        variant="text"
+        variant="link"
         className="text-muted underline underline-offset-4"
         size="sm"
-        asChild
-      >
-        <a href="#">
-          Learn More <ExternalLinkIcon />
-        </a>
-      </Button>
+        render={
+          <a href="/" aria-label="Learn More">
+            Learn More
+          </a>
+        }
+      />
     </Empty>
   ),
 }

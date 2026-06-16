@@ -1,13 +1,15 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 
-import { CheckmarkIcon } from '../../icons/index.js'
-
-import { Toast, ToastProvider, useToast, type ToastProps } from './Toast.js'
+import { type ToastProps, ToastProvider, useToast } from './Toast.js'
 
 const Trigger = (props: ToastProps) => {
   const toast = useToast()
-  return <button onClick={() => toast(props)}>Trigger</button>
+  return (
+    <button type="button" onClick={() => toast.add(props)}>
+      Trigger
+    </button>
+  )
 }
 
 const setup = (props: ToastProps) =>
@@ -41,38 +43,11 @@ describe('<Toast />', () => {
   })
 
   it('hides dismiss button when isDismissible is false', () => {
-    setup({ title: 'Hello', isDismissible: false })
+    setup({ title: 'Hello', data: { isDismissible: false } })
 
     fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
 
     expect(document.querySelector('button[aria-label="Close"]')).toBeNull()
-  })
-
-  it('shows a success icon for the success variant', () => {
-    setup({ title: 'Done', variant: 'success' })
-    fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
-
-    expect(document.querySelector('.bg-positive')).toBeInTheDocument()
-  })
-
-  it('shows an error icon for the error variant', () => {
-    setup({ title: 'Oops', variant: 'error' })
-    fireEvent.click(screen.getByRole('button', { name: 'Trigger' }))
-
-    expect(document.querySelector('.bg-negative')).toBeInTheDocument()
-  })
-
-  it('renders a custom icon when provided', () => {
-    render(
-      <ToastProvider>
-        <Toast title="Custom" icon={CheckmarkIcon} />
-      </ToastProvider>
-    )
-
-    // CheckmarkIcon renders an svg
-    expect(document.querySelector('svg')).toBeInTheDocument()
-    // No variant-specific wrapper should appear
-    expect(document.querySelector('.bg-positive')).toBeNull()
   })
 
   it('can show multiple toasts', () => {

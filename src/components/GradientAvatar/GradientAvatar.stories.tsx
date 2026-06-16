@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Address, Mnemonic } from 'ox'
 
-import { Text } from '../Text/Text.js'
-
 import { GradientAvatar } from './GradientAvatar.js'
 
 const mnemonic =
@@ -69,9 +67,7 @@ for (let row = 0; row < ROWS; row++) {
 export const Multiple = () => {
   return (
     <>
-      <Text variant="normal" color="primary" fontWeight="bold" asChild>
-        <div>SVG</div>
-      </Text>
+      <div className="text-sm text-primary font-bold">SVG</div>
 
       <div className="flex flex-col gap-4">
         {rows.map((cols, idx) => (

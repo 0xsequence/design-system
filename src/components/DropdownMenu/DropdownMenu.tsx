@@ -1,9 +1,9 @@
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
+import { Menu as DropdownMenuPrimitive } from '@base-ui/react/menu'
+import { CheckIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
 
-import { CheckmarkIcon } from '../../icons/index.js'
+import { popupContentStyle, popupTransitionStyle } from '../../styles.js'
 import { cn } from '../../utils/classnames.js'
-import { textVariants } from '../Text/Text.js'
 
 export { DropdownMenuPrimitive }
 
@@ -31,25 +31,37 @@ function DropdownMenuTrigger({
 }
 
 const DropdownMenuContent = ({
+  align = 'center',
+  alignOffset = 0,
+  side = 'bottom',
+  sideOffset = 4,
   className,
   children,
-  sideOffset = 4,
-  ...rest
-}: ComponentProps<typeof DropdownMenuPrimitive.Content>) => (
-  <DropdownMenuPortal>
-    <DropdownMenuPrimitive.Content
-      data-slot="dropdown-menu-content"
-      className={cn(
-        'w-40 bg-background-raised border-1 border-border-normal shadow-primary p-1 rounded-md',
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto',
-        className
-      )}
+  ...props
+}: DropdownMenuPrimitive.Popup.Props &
+  Pick<
+    DropdownMenuPrimitive.Positioner.Props,
+    'align' | 'alignOffset' | 'side' | 'sideOffset'
+  >) => (
+  <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.Positioner
+      side={side}
       sideOffset={sideOffset}
-      {...rest}
+      align={align}
+      alignOffset={alignOffset}
+      className="isolate z-50 outline-none"
     >
-      {children}
-    </DropdownMenuPrimitive.Content>
-  </DropdownMenuPortal>
+      <DropdownMenuPrimitive.Popup
+        data-slot="dropdown-menu-content"
+        className={cn(popupContentStyle, popupTransitionStyle, className)}
+        {...props}
+      >
+        <div className="p-1 overflow-y-auto no-scrollbar max-h-(--available-height)">
+          {children}
+        </div>
+      </DropdownMenuPrimitive.Popup>
+    </DropdownMenuPrimitive.Positioner>
+  </DropdownMenuPrimitive.Portal>
 )
 
 function DropdownMenuGroup({
@@ -75,8 +87,8 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        textVariants({ variant: 'small' }),
-        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-secondary outline-hidden',
+        'text-xs',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-primary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-primary/50',
         'data-highlighted:bg-background-hover',
         className
@@ -103,20 +115,22 @@ function DropdownMenuLabel({
   className,
   inset,
   ...props
-}: ComponentProps<typeof DropdownMenuPrimitive.Label> & {
+}: ComponentProps<typeof DropdownMenuPrimitive.GroupLabel> & {
   inset?: boolean
 }) {
   return (
-    <DropdownMenuPrimitive.Label
-      data-slot="dropdown-menu-label"
-      data-inset={inset}
-      className={cn(
-        textVariants({ variant: 'small-bold' }),
-        'text-primary px-2 py-1.5 data-[inset]:pl-8',
-        className
-      )}
-      {...props}
-    />
+    <DropdownMenuPrimitive.Group>
+      <DropdownMenuPrimitive.GroupLabel
+        data-slot="dropdown-menu-label"
+        data-inset={inset}
+        className={cn(
+          'text-xs font-bold',
+          'text-primary px-2 py-1.5 data-inset:pl-8',
+          className
+        )}
+        {...props}
+      />
+    </DropdownMenuPrimitive.Group>
   )
 }
 
@@ -132,38 +146,25 @@ const DropdownMenuCheckboxItem = ({
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       className={cn(
-        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none  relative text-secondary outline-hidden',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none  relative text-primary outline-hidden',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
-        'data-highlighted:bg-background-hover text-small',
+        'data-highlighted:bg-background-hover text-xs',
         className
       )}
       {...rest}
     >
-      {children}
-
       {defaultIndicator ? (
-        <span className="ml-auto">
-          <DropdownMenuCheckboxIndicator />
+        <span
+          className="pointer-events-none absolute right-2 flex items-center justify-center"
+          data-slot="dropdown-menu-checkbox-item-indicator"
+        >
+          <DropdownMenuPrimitive.CheckboxItemIndicator>
+            <CheckIcon className="size-4" />
+          </DropdownMenuPrimitive.CheckboxItemIndicator>
         </span>
       ) : null}
+      {children}
     </DropdownMenuPrimitive.CheckboxItem>
-  )
-}
-
-function DropdownMenuCheckboxIndicator({
-  className,
-  size = 'xl',
-  ...rest
-}: ComponentProps<typeof DropdownMenuPrimitive.DropdownMenuItemIndicator> &
-  Pick<ComponentProps<typeof CheckmarkIcon>, 'size'>) {
-  return (
-    <DropdownMenuPrimitive.DropdownMenuItemIndicator
-      data-slot="dropdown-menu-radio-indicator"
-      className={cn(`*:size-4`, className)}
-      {...rest}
-    >
-      <CheckmarkIcon size={size} />
-    </DropdownMenuPrimitive.DropdownMenuItemIndicator>
   )
 }
 
@@ -189,45 +190,30 @@ const DropdownMenuRadioItem = ({
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-secondary outline-hidden text-small',
+        'flex items-center justify-between rounded-sm px-2 py-2 cursor-pointer select-none relative text-primary outline-hidden text-xs',
         'data-disabled:opacity-80 data-disabled:cursor-default data-disabled:pointer-events-none data-disabled:text-muted',
         'data-highlighted:bg-background-hover',
         className
       )}
       {...rest}
     >
-      {children}
       {defaultIndicator ? (
-        <span className="ml-auto">
-          <DropdownMenuRadioIndicator />
+        <span
+          className="pointer-events-none absolute right-2 flex items-center justify-center"
+          data-slot="dropdown-menu-radio-item-indicator"
+        >
+          <DropdownMenuPrimitive.RadioItemIndicator>
+            <CheckIcon className="size-4" />
+          </DropdownMenuPrimitive.RadioItemIndicator>
         </span>
       ) : null}
+      {children}
     </DropdownMenuPrimitive.RadioItem>
-  )
-}
-
-function DropdownMenuRadioIndicator({
-  className,
-  ...rest
-}: ComponentProps<'div'>) {
-  return (
-    <DropdownMenuPrimitive.ItemIndicator
-      data-slot="dropdown-menu-radio-indicator"
-      className={cn(
-        'size-4 flex items-center justify-center',
-        '*:size-2 *:rounded-full *:bg-primary',
-        className
-      )}
-      {...rest}
-    >
-      <div />
-    </DropdownMenuPrimitive.ItemIndicator>
   )
 }
 
 export {
   DropdownMenu,
-  DropdownMenuCheckboxIndicator,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -235,7 +221,6 @@ export {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuRadioGroup,
-  DropdownMenuRadioIndicator,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,

@@ -1,26 +1,26 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite'
+import { ArrowLeftRightIcon } from 'lucide-react'
 
-import { TransactionIcon } from '../../icons/index.js'
 import { Button } from '../Button/Button.js'
 import { Card } from '../Card/Card.js'
 
-import { Toast, ToastProvider, useToast, type ToastProps } from './Toast.js'
+import { type ToastProps, ToastProvider, useToast } from './Toast.js'
 
 export default {
   title: 'Components/Toast',
-  component: Toast,
-} as Meta<typeof Toast>
+} as Meta
 
-type Story = StoryObj<typeof Toast>
+type Story = StoryObj<ToastProps>
 
-const StoryWrapper: StoryFn<typeof Toast> = args => {
+const StoryWrapper: StoryFn<ToastProps> = args => {
   return (
-    <ToastProvider swipeDirection="right">
+    <ToastProvider>
       <ToastStory {...args} />
     </ToastProvider>
   )
 }
 
+let count = 0
 const ToastStory = (args: ToastProps) => {
   const toast = useToast()
 
@@ -28,9 +28,9 @@ const ToastStory = (args: ToastProps) => {
     <Card>
       <Button
         onClick={() => {
-          toast({
+          toast.add({
             ...args,
-            title: args.title + ' ' + new Date().getMilliseconds(),
+            title: `${args.title} ${++count}`,
           })
         }}
       >
@@ -51,27 +51,39 @@ export const Default: Story = {
 export const WithIcon: Story = {
   render: StoryWrapper,
   args: {
-    icon: TransactionIcon,
     title: 'Transaction Sent',
     description: 'Waiting for confirmation',
+    data: {
+      icon: ArrowLeftRightIcon,
+    },
   },
 }
 
-export const Success: Story = {
+export const WithSuccess: Story = {
   render: StoryWrapper,
   args: {
+    type: 'success',
     title: 'Success',
     description: 'Description',
-    variant: 'success',
   },
 }
 
-export const Error: Story = {
+export const WithWarning: Story = {
   render: StoryWrapper,
   args: {
+    type: 'warning',
+    title: 'Warning',
+    description:
+      'The servers are scheduled for maintenance in 10 minutes. Please check back later.',
+  },
+}
+
+export const WithError: Story = {
+  render: StoryWrapper,
+  args: {
+    type: 'error',
     title: 'Error',
     description:
       'The transaction failed to send because the relayer encountered an error. "Not enough gas"',
-    variant: 'error',
   },
 }

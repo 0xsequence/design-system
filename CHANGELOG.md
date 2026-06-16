@@ -1,5 +1,128 @@
 # @0xsequence/design-system
 
+## 4.0.0-alpha.19
+
+### Patch Changes
+
+- Updating dependencies, removing custom icons, and fixing Calendar styling bugs
+
+## 4.0.0-alpha.18
+
+### Patch Changes
+
+- Updating Switch styling
+
+## 4.0.0-alpha.17
+
+### Patch Changes
+
+- Adding showArrow prop to Popover and Tooltips, change vOffset and hOffset to sideOffset and alignOffset on TooltipHelper."
+
+## 4.0.0-alpha.16
+
+### Patch Changes
+
+- Updating Alerts and Tooltips styling
+
+## 4.0.0-alpha.15
+
+### Patch Changes
+
+- Fixing Select scroll height
+
+## 4.0.0-alpha.14
+
+### Patch Changes
+
+- Adding combobox and consolidating popup styling
+
+## 4.0.0-alpha.13
+
+### Patch Changes
+
+- Updating Card clickable state, updating to base-ui v1.4.1
+
+## 4.0.0-alpha.12
+
+### Patch Changes
+
+- Updating input behavior and styles
+
+## 4.0.0-alpha.11
+
+### Patch Changes
+
+- Updating Select, PINCodeInput, Tabs, Sheet, and Alert styling
+
+## 4.0.0-alpha.10
+
+### Patch Changes
+
+- Updating Dialogs, Checkboxes, and Radios"
+
+## 4.0.0-alpha.9
+
+### Patch Changes
+
+- Fixing Sheet styles, and allowing to disable close button for custom button
+
+## 4.0.0-alpha.8
+
+### Patch Changes
+
+- Fixing render prop on Card component
+
+## 4.0.0-alpha.7
+
+### Patch Changes
+
+- Updating color scales to match polygon branding, and updated input styling
+
+## 4.0.0-alpha.6
+
+### Patch Changes
+
+- Migrating to lucide icons
+
+## 4.0.0-alpha.5
+
+### Patch Changes
+
+- Updating Table, Progress, and Empty component styling
+
+## 4.0.0-alpha.4
+
+### Patch Changes
+
+- Updating styling of components to match final alpha
+
+## 4.0.0-alpha.3
+
+### Patch Changes
+
+- Updating Button styles, Alert styles, Progress, and Pagination
+
+## 4.0.0-alpha.2
+
+### Patch Changes
+
+- Card components — Added new Card component system (#142)
+- Dialog typing fix — Fixed Dialog and DialogTrigger Payload typing
+- Badge styling — Updated Badge component styling
+- Border-radius updates — Updated border-radius on Alert, Card, and Popover components
+
+## 4.0.0-alpha.1
+
+### Patch Changes
+
+- Added Sidebar component, removed old text classes in favor of default tailwind classes.
+
+## 4.0.0-alpha.0
+
+### Major Changes
+
+- Migrated to base-ui
+
 ## 3.2.9
 
 ### Patch Changes

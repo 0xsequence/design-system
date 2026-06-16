@@ -104,7 +104,9 @@ describe('<ThemeProvider />', () => {
       <ThemeProvider>
         <ThemeContext.Consumer>
           {ctx => (
-            <button onClick={() => ctx?.setTheme('light')}>Switch</button>
+            <button type="button" onClick={() => ctx?.setTheme('light')}>
+              Switch
+            </button>
           )}
         </ThemeContext.Consumer>
       </ThemeProvider>

@@ -68,7 +68,9 @@ describe('<FieldDescription />', () => {
   })
 
   it('renders nothing when children are absent', () => {
-    const { container } = render(<FieldDescription>{undefined}</FieldDescription>)
+    const { container } = render(
+      <FieldDescription>{undefined}</FieldDescription>
+    )
 
     expect(container.firstChild).toBeNull()
   })

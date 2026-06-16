@@ -1,18 +1,18 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import type { ComponentType } from 'react'
+import type { ComponentProps } from 'react'
 
-import type { IconProps } from '../../icons/types.js'
-import { Text } from '../Text/Text.js'
+import { cn } from '../../utils/classnames.js'
 
 const tagVariants = cva(
   [
-    'inline-flex',
-    'gap-1',
+    'text-xxs font-bold',
+    'inline-flex items-center',
+    'gap-0.5',
     'px-2',
     'py-1',
     'whitespace-nowrap',
     'bg-background-active',
-    'text-secondary',
+    'text-primary',
     'rounded-xs',
   ],
   {
@@ -22,19 +22,18 @@ const tagVariants = cva(
   }
 )
 
-interface TagProps extends VariantProps<typeof tagVariants> {
-  label: string
-  icon?: ComponentType<IconProps>
+interface TagProps
+  extends ComponentProps<'div'>,
+    VariantProps<typeof tagVariants> {
   className?: string
 }
 
 export const Tag = (props: TagProps) => {
-  const { icon: Icon, label, className, ...rest } = props
+  const { children, className, ...rest } = props
 
   return (
-    <div className={tagVariants({ className })} {...rest}>
-      {Icon && <Icon size="xs" />}
-      <Text variant="xsmall">{label}</Text>
+    <div className={cn(tagVariants({ className }), className)} {...rest}>
+      {children}
     </div>
   )
 }

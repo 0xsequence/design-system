@@ -1,0 +1,16 @@
+# Git hooks managed by lefthook — https://lefthook.dev
+pre-commit:
+  commands:
+    format:
+      priority: 1
+      glob:
+        - "src/*.{ts,tsx}"
+        - "src/**/*.{ts,tsx}"
+      run: pnpm exec biome check --write --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+    build:
+      priority: 2
+      run: pnpm build
+    test:
+      priority: 3
+      run: pnpm test --changed master

@@ -57,23 +57,25 @@ describe('<Sheet />', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 
-  it('applies right-side classes by default', () => {
+  it('applies right-side by default', () => {
     render(<TestSheet />)
 
     fireEvent.click(screen.getByRole('button', { name: 'Open sheet' }))
 
-    expect(
-      document.querySelector('[data-slot=sheet-content]')
-    ).toHaveClass('right-0')
+    expect(document.querySelector('[data-slot=sheet-content]')).toHaveAttribute(
+      'data-side',
+      'right'
+    )
   })
 
-  it('applies left-side classes when side="left"', () => {
+  it('applies left-side when side="left"', () => {
     render(<TestSheet side="left" />)
 
     fireEvent.click(screen.getByRole('button', { name: 'Open sheet' }))
 
-    expect(
-      document.querySelector('[data-slot=sheet-content]')
-    ).toHaveClass('left-0')
+    expect(document.querySelector('[data-slot=sheet-content]')).toHaveAttribute(
+      'data-side',
+      'left'
+    )
   })
 })

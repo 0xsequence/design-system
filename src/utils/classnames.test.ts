@@ -4,12 +4,20 @@ import { cn } from './classnames.js'
 
 describe('Utils / Classnames', () => {
   it('should merge classes based on extended twMerge classGroups config', () => {
-    expect(cn('text-large', 'text-small')).toEqual('text-small')
+    expect(cn('text-xl', 'text-xs')).toEqual('text-xs')
+  })
+
+  it('should merge classes based on extended twMerge classGroups config', () => {
+    expect(cn('text-xl', 'text-xxs')).toEqual('text-xxs')
+  })
+
+  it('should merge classes based on extended twMerge classGroups config', () => {
+    expect(cn('text-xxs', 'text-xl')).toEqual('text-xl')
   })
 
   it('should merge tailwind text- utility with our text variant classes', () => {
-    expect(cn('text-small', 'text-yellow-500')).toEqual(
-      'text-small text-yellow-500'
+    expect(cn('text-xxs', 'text-yellow-500')).toEqual(
+      'text-xxs text-yellow-500'
     )
   })
 })

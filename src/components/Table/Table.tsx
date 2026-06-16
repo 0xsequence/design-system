@@ -1,11 +1,10 @@
 'use client'
 
+import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react'
 import type { ComponentProps } from 'react'
-import { ArrowDownIcon, ArrowUpIcon } from 'src/icons/index.js'
-import { cn } from 'src/utils/classnames.js'
 
+import { cn } from '../../utils/classnames.js'
 import { Button } from '../Button/Button.js'
-import { textVariants } from '../Text/Text.js'
 
 type TableProps = ComponentProps<'table'> & {
   stickyHeader?: boolean
@@ -33,8 +32,8 @@ function Table({ className, stickyHeader, maxHeight, ...props }: TableProps) {
       <table
         data-slot="table"
         className={cn(
-          textVariants({ variant: 'small' }),
-          'w-full caption-bottom border-separate border-spacing-0',
+          'text-xs',
+          'w-full caption-bottom  border-spacing-0 border-separate',
           className
         )}
         {...props}
@@ -63,7 +62,7 @@ function TableRow({ className, ...props }: ComponentProps<'tr'>) {
         'group',
         'hover:[&>td]:bg-background-hover data-[state=selected]:[&>td]:bg-background-hover',
         'focus-within:[&>td]:bg-background-hover',
-        '[&>td]:first:rounded-l-lg [&>td]:last:rounded-r-lg',
+        'not-last:[&>td]:border-b not-last:[&>td]:border-border-normal',
         className
       )}
       {...props}
@@ -76,9 +75,9 @@ function TableHead({ className, ...props }: ComponentProps<'th'>) {
     <th
       data-slot="table-head"
       className={cn(
-        textVariants({ variant: 'normal' }),
-        'h-13 py-2 px-4 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has(button)]:px-0',
-        'text-muted font-medium',
+        'text-base font-bold text-primary',
+        'h-9 px-3 text-left align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has(button)]:px-0',
+        'border-b border-border-normal',
         className
       )}
       {...props}
@@ -91,8 +90,8 @@ function TableCell({ className, ...props }: ComponentProps<'td'>) {
     <td
       data-slot="table-cell"
       className={cn(
-        textVariants({ variant: 'normal' }),
-        'text-primary p-4 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0',
+        'text-sm font-medium text-primary',
+        'h-14 px-3 py-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0',
         className
       )}
       {...props}
@@ -115,11 +114,9 @@ function TableHeadButton({
   return (
     <Button
       variant={null}
-      shape="square"
       data-active={active}
       className={cn(
-        'inline-flex w-full h-full items-center gap-1 overflow-visible relative text-inherit px-4 hover:bg-background-hover',
-        'data-[active=true]:font-bold data-[active=true]:text-border-focus',
+        'inline-flex w-full h-full items-center gap-1 overflow-visible relative text-base font-bold px-3',
         className
       )}
       {...props}
@@ -143,13 +140,13 @@ function TableSortIcon({
   return (
     <div
       data-slot="table-sort-icon"
-      className={cn(className, 'text-border-focus')}
+      className={cn(className, 'text-inherit')}
       {...props}
     >
       {direction === 'asc' ? (
-        <ArrowUpIcon size="xs" />
+        <ArrowUpIcon className="size-4" />
       ) : (
-        <ArrowDownIcon size="xs" />
+        <ArrowDownIcon className="size-4" />
       )}
     </div>
   )

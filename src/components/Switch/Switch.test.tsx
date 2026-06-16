@@ -43,9 +43,11 @@ describe('<Switch />', () => {
       />
     )
 
-    fireEvent.click(screen.getByRole('switch', { name: 'Enable notifications' }))
+    fireEvent.click(
+      screen.getByRole('switch', { name: 'Enable notifications' })
+    )
 
-    expect(onCheckedChange).toHaveBeenCalledWith(true)
+    expect(onCheckedChange).toHaveBeenCalledWith(true, expect.anything())
   })
 
   it('does not toggle when disabled', () => {
