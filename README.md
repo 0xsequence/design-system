@@ -126,64 +126,12 @@ export default defineConfig({
 })
 ```
 
-## Migrating from v3 to v4
+## Migration
 
-V4 is a larger departure than previous releases and includes many breaking changes.
+Upgrading between major versions? See **[MIGRATION.md](./MIGRATION.md)** for the full breaking-change guides:
 
-1. Migrated from radix-ui components to base-ui. This should largely be a smooth transition, the most notable breaking change is that the @radix-ui/react-slot `asChild` behavior is no longer valid; base-ui uses a standard `render` prop https://base-ui.com/react/handbook/composition.
-
-2. `react-hook-form` dependency is removed as well as all controlled form components which depended on it, including `Form`, `ControlledTextInput`, `ControlledCheckbox`, `ControlledSelect`, etc. This is out of scope of the design system as it should not dictate how you should use the primitives or which form library. Check out https://ui.shadcn.com/docs/forms for details on how you could integrate the design-system primitives with a few different react form library options or simply copy over the Controlled implementations from v3.
-
-3. We no longer export string utils `capitalize`, `pluralize`, and `kebabize`. These were used internally in the design-system but never meant to be exported as they fall outside its scope.
-
-4. `Image` component is removed. This was superfluous and only served to add fade in animation support on image load.
-
-5. `Modal` component is removed. Use Dialog primitive components instead.
-
-6. `motion` dependency removed. We are opting to use css transistions and animation classes on primitive components instead so they can be easily overridden. If you want to use motion to animate you can do so within your individual project.
-
-7. IconButton component removed. Use <Button iconOnly><XIcon /></Button> instead
-
-8. Button.Helper component removed.
-
-9. Text component is removed. Use default text classes instead.
-
-10. textVariants have been removed. Use default tailwind text classes instead
-
-11. Collapsible now exports its primitives, use Collapsible.Helper for old behavior.
-
-12. Tooltip now exports its primitives, use Tooltip.Helper for old behavior.
-
-13. Icons have been migrated to lucide. `lucide-react` is now a peer dependency of the project.
-
-
-## Migrating from v2 to v3
-
-V3 attemps to be mostly compatible but there are some breaking changes that will need to be addressed.
-
-1. Form components are no longer wrapped in a Field component so properties like `labelLocation`, `label`, `description` are no longer on components like CheckBox, TextInput, etc. You will need to wrap these components in a Field components manually. Field is now broken up between a collection of Field based components like FieldSet, FieldGroup, Field, FieldLabel, FieldDescription, FieldError to give more control how fields are displayed. Check the Field and Form examples in storybook to see how to use these or refer to the shadcn Field docs.
-
-2. RadioGroup no longer takes an options object. Instead you must use RadioGroup and RadioGroupItem components:
-
-```
-  <RadioGroup>
-    <RadioGroupItem>
-    <RadioGroupItem>
-    <RadioGroupItem>
-  </RadioGroup>
-```
-
-3. Button component is now a simple component which allows you to easily create your own Buttons with children content of your choice, the Legacy Button component is renamed Button.Helper which accepts properties like `leftIcon`, `rightIcon`, `label`, etc.
-
-4. Button variants have changed, `glass` is no longer available, now uses `secondary` as the default. Some variants have been removed like `feature`, `glass`, `emphasis`, and `raised`.
-
-5. Glass layers and blur effects: many of the raised popover layers like Toast, Popover, Tooltip, Select, used glass blurred effect. While this looked pretty good in certain cases, it caused issues with contrast and readability when overlayed ontop of certain user generated content and lighter content would show through too much. It was decided to switch to opaque layers instead.
-
-6. Divider component is replaced with shadcn Separator component which supports horizontal and vertical orientation
-
-7. TabbedNav has been removed in favor of the Tabs components. If you want a similar behavior as the TabbedNav it is suggested you create a component within your project built from Tabs, TabsList, and TabsTrigger components.
-
-8. Select component has been broken up into composite components, the legacy Select bahavior can be accessed via Select.Helper
+- [Migrating from v3 to v4](./MIGRATION.md#migrating-from-v3-to-v4)
+- [Migrating from v2 to v3](./MIGRATION.md#migrating-from-v2-to-v3)
 
 ### Used by
 
