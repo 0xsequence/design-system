@@ -1,3 +1,5 @@
+packages:
+  - '.'
 minimumReleaseAge: 20160
 
 minimumReleaseAgeExclude:
@@ -5,3 +7,27 @@ minimumReleaseAgeExclude:
   - '@0xtrails/*'
   - '0xtrails'
   - '0xsequence'
+overrides:
+  'minimatch@>=5.0.0 <5.1.8': '^5.1.8'
+  'minimatch@>=3.0.0 <3.1.4': '^3.1.4'
+  'minimatch@>=9.0.0 <9.0.7': '^9.0.7'
+  'flatted@>=3.0.0 <3.4.2': '^3.4.2'
+  'js-yaml@>=4.0.0 <4.3.2': '^4.3.2'
+  'js-yaml@>=3.0.0 <3.15.2': '^3.15.2'
+  'ajv@>=8.0.0 <8.18.0': '^8.18.0'
+  'ajv@>=6.0.0 <6.14.0': '^6.14.0'
+  'svgo@>=3.0.0 <3.3.5': '^3.3.5'
+  'brace-expansion@>=5.0.0 <5.0.12': '^5.0.12'
+  'brace-expansion@>=2.0.0 <2.1.7': '^2.1.7'
+  'brace-expansion@>=1.0.0 <1.1.21': '^1.1.21'
+  'picomatch@>=4.0.0 <4.0.4': '^4.0.4'
+  '@babel/core@>=7.0.0 <7.29.6': '^7.29.6'
+  'browserslist@>=4.0.0 <4.28.7': '^4.28.7'
+  'smol-toml@>=1.0.0 <1.9.0': '^1.9.0'
+  'zod@>=4.0.0 <4.6.6': '^4.6.6'
+  'rollup@>=2.0.0 <2.80.0': '^2.80.0'
+  'rollup@>=4.0.0 <4.59.0': '^4.59.0'
+  '@humanfs/node@>=0.16.0 <0.16.8': '^0.16.8'
+  'fflate@>=0.8.0 <0.8.3': '^0.8.3'
+  'lodash@>=4.0.0 <4.18.0': '^4.18.0'
+  'baseline-browser-mapping@>=2.0.0 <2.11.0': '^2.11.0'
