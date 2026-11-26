@@ -89,7 +89,7 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-storybook": "10.2.13",
-    "happy-dom": "^20.7.0",
+    "happy-dom": "^20.14.6",
     "husky": "^9.1.7",
     "knip": "^5.85.0",
     "motion": "^12.34.3",
@@ -98,15 +98,15 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-hook-form": "^7.71.2",
-    "storybook": "^10.2.13",
+    "storybook": "^10.6.7",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "^7.3.1",
+    "vite": "^7.3.8",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.12"
   },
   "peerDependencies": {
     "motion": ">= 12",
@@ -114,5 +114,32 @@
     "react-dom": ">= 17",
     "react-hook-form": ">= 7"
   },
-  "packageManager": "pnpm@10.30.1"
+  "packageManager": "pnpm@10.30.1",
+  "pnpm": {
+    "overrides": {
+      "minimatch@>=5.0.0 <5.1.8": "^5.1.8",
+      "minimatch@>=3.0.0 <3.1.4": "^3.1.4",
+      "minimatch@>=9.0.0 <9.0.7": "^9.0.7",
+      "flatted@>=3.0.0 <3.4.2": "^3.4.2",
+      "js-yaml@>=4.0.0 <4.3.2": "^4.3.2",
+      "js-yaml@>=3.0.0 <3.15.2": "^3.15.2",
+      "ajv@>=8.0.0 <8.18.0": "^8.18.0",
+      "ajv@>=6.0.0 <6.14.0": "^6.14.0",
+      "svgo@>=3.0.0 <3.3.5": "^3.3.5",
+      "brace-expansion@>=5.0.0 <5.0.12": "^5.0.12",
+      "brace-expansion@>=2.0.0 <2.1.7": "^2.1.7",
+      "brace-expansion@>=1.0.0 <1.1.21": "^1.1.21",
+      "picomatch@>=4.0.0 <4.0.4": "^4.0.4",
+      "@babel/core@>=7.0.0 <7.29.6": "^7.29.6",
+      "browserslist@>=4.0.0 <4.28.7": "^4.28.7",
+      "smol-toml@>=1.0.0 <1.9.0": "^1.9.0",
+      "zod@>=4.0.0 <4.6.6": "^4.6.6",
+      "rollup@>=2.0.0 <2.80.0": "^2.80.0",
+      "rollup@>=4.0.0 <4.59.0": "^4.59.0",
+      "@humanfs/node@>=0.16.0 <0.16.8": "^0.16.8",
+      "fflate@>=0.8.0 <0.8.3": "^0.8.3",
+      "lodash@>=4.0.0 <4.18.0": "^4.18.0",
+      "baseline-browser-mapping@>=2.0.0 <2.11.0": "^2.11.0"
+    }
+  }
 }
